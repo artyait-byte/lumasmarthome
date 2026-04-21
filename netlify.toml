@@ -1,0 +1,108 @@
+# LUMA Smart Home — Netlify deployment config
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  publish    = "."
+  # No build step: static HTML/CSS/JS. Netlify serves publish/ directly.
+  command    = "echo 'No build step — static site'"
+
+# ----- Pretty URLs ---------------------------------------------------------
+# /contact -> /contact.html (and friends). Keeps URLs clean without renaming.
+[[redirects]]
+  from   = "/contact"
+  to     = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from   = "/about"
+  to     = "/about.html"
+  status = 200
+
+[[redirects]]
+  from   = "/projects"
+  to     = "/projects.html"
+  status = 200
+
+[[redirects]]
+  from   = "/budget"
+  to     = "/budget.html"
+  status = 200
+
+[[redirects]]
+  from   = "/lighting"
+  to     = "/lighting.html"
+  status = 200
+
+[[redirects]]
+  from   = "/shading"
+  to     = "/shading.html"
+  status = 200
+
+[[redirects]]
+  from   = "/security"
+  to     = "/security.html"
+  status = 200
+
+[[redirects]]
+  from   = "/networking"
+  to     = "/networking.html"
+  status = 200
+
+[[redirects]]
+  from   = "/audio"
+  to     = "/audio.html"
+  status = 200
+
+[[redirects]]
+  from   = "/builders"
+  to     = "/builders.html"
+  status = 200
+
+[[redirects]]
+  from   = "/designers"
+  to     = "/designers.html"
+  status = 200
+
+# ----- Security & performance headers --------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=(self)"
+    # Light CSP: permits inline styles/scripts used by the static prototype,
+    # Unsplash image CDN, and Google Fonts (if added later). Tighten as needed.
+    # img-src allow-list covers vendor CDNs we pull product photos from:
+    #   images.unsplash.com          - placeholder fallbacks
+    #   *.lutron.com, lutron.imgix.net  - Lutron RadioRA 3 / Sunnata / Sivoia
+    #   *.ui.com, *.svc.ui.com       - Ubiquiti UniFi / Protect
+    #   *.ctfassets.net              - Contentful (used by Sonos, Somfy, UI)
+    #   *.sonos.com, cf.sonos.com    - Sonos press/product
+    #   *.somfysystems.com, *.somfy.com - Somfy
+    #   *.josh.ai                    - Josh.ai
+    #   *.sonance.com                - Sonance
+    # Data URIs allowed for inline SVG icons and base64 previews.
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://images.unsplash.com https://*.lutron.com https://lutron.imgix.net https://*.ui.com https://*.svc.ui.com https://*.ctfassets.net https://*.sonos.com https://cf.sonos.com https://*.somfysystems.com https://*.somfy.com https://*.josh.ai https://*.sonance.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+
+# Long cache for hashed assets; images/fonts.
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML should revalidate.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Budget Calculator — LUMA Smart Home</title>
+<meta name="description" content="Estimate your LUMA Smart Home project in 8 quick questions. Line-item, open-platform — no dealer markup." />
+<link rel="stylesheet" href="css/styles.css?v=3" />
+<!-- SEO:injected START -->
+<link rel="canonical" href="https://www.lumasmarthome.com/budget.html" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#1A6B60" />
+<meta name="author" content="LUMA Home Systems LLC" />
+<meta property="og:site_name" content="LUMA Smart Home" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Budget Calculator — LUMA Smart Home" />
+<meta property="og:description" content="Estimate your LUMA Smart Home project in 8 quick questions. Line-item, open-platform — no dealer markup." />
+<meta property="og:url" content="https://www.lumasmarthome.com/budget.html" />
+<meta property="og:image" content="https://www.lumasmarthome.com/assets/og-cover.svg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Budget Calculator — LUMA Smart Home" />
+<meta name="twitter:description" content="Estimate your LUMA Smart Home project in 8 quick questions. Line-item, open-platform — no dealer markup." />
+<meta name="twitter:image" content="https://www.lumasmarthome.com/assets/og-cover.svg" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<!-- SEO:injected END -->
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-links"><span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span></div>
+    <div class="topbar-links"><span>Mon–Sat · 9am – 6pm</span><a href="tel:+19415551234">+1 (941) 555-1234</a></div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" aria-label="LUMA Smart Home">
+      <span class="brand-dot"></span><span>LUMA<small>Smart Home</small></span>
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <div class="nav-item"><a href="index.html">Home</a></div>
+      <div class="nav-item"><a href="index.html#solutions">Smart Home Solutions</a></div>
+      <div class="nav-item"><a href="budget.html" class="is-active">Budget Calculator</a></div>
+      <div class="nav-item"><a href="index.html#testimonials">Testimonials</a></div>
+      <div class="nav-item"><a href="projects.html">Our Work</a></div>
+      <div class="nav-item"><a href="about.html">About</a></div>
+    </div>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn--outline">Customer Support</a>
+      <a href="contact.html" class="btn btn--primary">Start Your Project <span class="arrow">→</span></a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+
+<!-- Page head -->
+<header class="page-head">
+  <div class="container">
+    <div class="page-head-grid">
+      <div>
+        <div class="crumbs">Home · Budget Calculator</div>
+        <h1 class="display">Estimate your <em class="accent">LUMA-tuned</em> home.</h1>
+      </div>
+      <div>
+        <p class="lead">Eight quick questions. Each answer shows three columns — low, high, and what you've selected. Real pricing, not a brochure. Submit to receive a line-item PDF in your inbox.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Calculator -->
+<section class="section">
+  <div class="container container--narrow">
+    <div class="calc-shell" data-calc>
+      <div class="calc-head">
+        <div class="step-count" data-step-count>Step 1 / 8</div>
+        <h3>Tell us about your home.</h3>
+        <p class="muted" style="margin:0.25rem 0 0; font-size:0.9rem;">No email required until the end.</p>
+        <div class="calc-progress"><span data-progress style="width:12.5%"></span></div>
+      </div>
+
+      <div class="calc-body" data-body>
+        <!-- Step 1 — Home size -->
+        <div class="calc-step is-active" data-key="home-size">
+          <h4>What's the size of your home?</h4>
+          <p class="sub">We use square footage as a baseline for device count and cable runs.</p>
+          <div class="calc-opts">
+            <button type="button" class="calc-opt" data-label="Under 2,500 sq ft" data-low="12000" data-high="22000" data-pick="16000"><strong>Under 2,500 sq ft</strong><span>Condo / small home</span></button>
+            <button type="button" class="calc-opt" data-label="2,500 – 4,500 sq ft" data-low="22000" data-high="45000" data-pick="32000"><strong>2,500 – 4,500 sq ft</strong><span>Single-family home</span></button>
+            <button type="button" class="calc-opt" data-label="4,500 – 7,500 sq ft" data-low="45000" data-high="85000" data-pick="62000"><strong>4,500 – 7,500 sq ft</strong><span>Large residence</span></button>
+            <button type="button" class="calc-opt" data-label="7,500+ sq ft" data-low="85000" data-high="160000" data-pick="110000"><strong>7,500+ sq ft</strong><span>Estate / waterfront</span></button>
+          </div>
+        </div>
+
+        <!-- Step 2 — Lighting -->
+        <div class="calc-step" data-key="lighting">
+          <h4>How deep do we go on lighting?</h4>
+          <p class="sub">Lutron RadioRA 3 — keypads, dimming, scenes.</p>
+          <div class="calc-opts">
+            <button type="button" class="calc-opt" data-label="Just smart switches" data-low="4000" data-high="9000" data-pick="6500"><strong>Just smart switches</strong><span>Replace existing switches only</span></button>
+            <button type="button" class="calc-opt" data-label="Core rooms + scenes" data-low="9000" data-high="20000" data-pick="14000"><strong>Core rooms + scenes</strong><span>Main living areas, keypads, 5–6 scenes</span></button>
+            <button type="button" class="calc-opt" data-label="Whole-home lighting" data-low="20000" data-high="45000" data-pick="30000"><strong>Whole-home lighting</strong><span>Every zone, tunable color, landscape</span></button>
+            <button type="button" class="calc-opt" data-label="Skip lighting" data-low="0" data-high="0" data-pick="0"><strong>Skip lighting</strong><span>Not part of this project</span></button>
+          </div>
+        </div>
+
+        <!-- Step 3 — Shading -->
+        <div class="calc-step" data-key="shading">
+          <h4>Motorized shading — how many windows?</h4>
+          <p class="sub">Somfy &amp; Lutron Sivoia QS — solar, blackout, and drapery tracks.</p>
+          <div class="calc-opts">
+            <button type="button" class="calc-opt" data-label="No shading" data-low="0" data-high="0" data-pick="0"><strong>No shading</strong><span>Skip for now</span></button>
+            <button type="button" class="calc-opt" data-label="5 – 10 windows" data-low="8000" data-high="18000" data-pick="12000"><strong>5 – 10 windows</strong><span>Just the west elevation</span></button>
+            <button type="button" class="calc-opt" data-label="10 – 20 windows" data-low="18000" data-high="38000" data-pick="26000"><strong>10 – 20 windows</strong><span>Main living zones + primary</span></button>
+            <button type="button" class="calc-opt" data-label="Whole home (20+)" data-low="38000" data-high="80000" data-pick="55000"><strong>Whole home (20+)</strong><span>Every opening on every elevation</span></button>
+          </div>
+        </div>
+
+        <!-- Step 4 — Security -->
+        <div class="calc-step" data-key="security">
+          <h4>Security &amp; surveillance?</h4>
+          <p class="sub">Ubiquiti UniFi Protect — cameras, NVR, access, no monthly fees.</p>
+          <div class="calc-opts">
+            <button type="button" class="calc-opt" data-label="Skip security" data-low="0" data-high="0" data-pick="0"><strong>Skip security</strong><span>Not needed</span></button>
+            <button type="button" class="calc-opt" data-label="4 – 6 cameras" data-low="5000" data-high="10000" data-pick="7000"><strong>4 – 6 cameras</strong><span>Key perimeter angles + NVR</span></button>
+            <button type="button" class="calc-opt" data-label="8 – 12 cameras" data-low="10000" data-high="22000" data-pick="15000"><strong>8 – 12 cameras</strong><span>Full perimeter + driveway + lanai</span></button>
+            <button type="button" class="calc-opt" data-label="Comprehensive (16+)" data-low="22000" data-high="50000" data-pick="34000"><strong>Comprehensive (16+)</strong><span>Cameras + access + alarm integration</span></button>
+          </div>
+        </div>
+
+        <!-- Step 5 — Networking -->
+        <div class="calc-step" data-key="networking">
+          <h4>Network backbone.</h4>
+          <p class="sub">Enterprise Wi-Fi 6 / 7 &amp; structured cabling — the foundation of every system.</p>
+          <div class="calc-opts">
+            <button type="button" class="calc-opt" data-label="Consumer-grade stays" data-low="2500" data-high="5000" data-pick="3500"><strong>Consumer-grade stays</strong><span>Light tune-up only</span></button>
+            <button type="button" class="calc-opt" data-label="UniFi upgrade" data-low="5000" data-high="12000" data-pick="8000"><strong>UniFi upgrade</strong><span>AP + switch + gateway + 1 day</span></button>
+            <button type="button" class="calc-opt" data-label="Full structured cabling" data-low="12000" data-high="28000" data-pick="18000"><strong>Full structured cabling</strong><span>Cat6 runs, patch panel, rack</span></button>
+            <button type="button" class="calc-opt" data-label="Enterprise Wi-Fi 7" data-low="18000" data-high="40000" data-pick="28000"><strong>Enterprise Wi-Fi 7</strong><span>Multiple APs, VLANs, edge routing</span></button>
+          </div>
+        </div>
+
+        <!-- Step 6 — Audio -->
+        <div class="calc-step" data-key="audio">
+          <h4>Audio &amp; video distribution?</h4>
+          <p class="sub">Sonos, Sonance, Episode — in-ceiling, outdoor, whole-home.</p>
+          <div class="calc-opts">
+            <button type="button" class="calc-opt" data-label="Skip audio" data-low="0" data-high="0" data-pick="0"><strong>Skip audio</strong><span>Not part of this project</span></button>
+            <button type="button" class="calc-opt" data-label="2 – 3 zones" data-low="4000" data-high="10000" data-pick="6500"><strong>2 – 3 zones</strong><span>Living + kitchen + primary</span></button>
+            <button type="button" class="calc-opt" data-label="4 – 6 zones + lanai" data-low="10000" data-high="22000" data-pick="15000"><strong>4 – 6 zones + lanai</strong><span>Main areas + outdoor</span></button>
+            <button type="button" class="calc-opt" data-label="Whole-home + theater" data-low="22000" data-high="60000" data-pick="38000"><strong>Whole-home + theater</strong><span>8+ zones + dedicated theater</span></button>
+          </div>
+        </div>
+
+        <!-- Step 7 — Automation -->
+        <div class="calc-step" data-key="automation">
+          <h4>Home automation &amp; control.</h4>
+          <p class="sub">One-touch scenes — Alba, Day, Sera, Notte.</p>
+          <div class="calc-opts">
+            <button type="button" class="calc-opt" data-label="App-only control" data-low="1500" data-high="3500" data-pick="2500"><strong>App-only control</strong><span>Remote access, no extra hardware</span></button>
+            <button type="button" class="calc-opt" data-label="Keypads + scenes" data-low="3500" data-high="9000" data-pick="5500"><strong>Keypads + scenes</strong><span>Pico keypads in key rooms</span></button>
+            <button type="button" class="calc-opt" data-label="Voice (Josh.ai)" data-low="9000" data-high="20000" data-pick="13000"><strong>Voice (Josh.ai)</strong><span>Privacy-first voice control</span></button>
+            <button type="button" class="calc-opt" data-label="Advanced orchestration" data-low="20000" data-high="45000" data-pick="30000"><strong>Advanced orchestration</strong><span>Geofencing · weather · HVAC · pool</span></button>
+          </div>
+        </div>
+
+        <!-- Step 8 — Timeline -->
+        <div class="calc-step" data-key="timeline">
+          <h4>When do you want to begin?</h4>
+          <p class="sub">Timeline affects schedule &amp; procurement, not price.</p>
+          <div class="calc-opts">
+            <button type="button" class="calc-opt" data-label="This month" data-low="0" data-high="0" data-pick="0"><strong>This month</strong><span>Ready to sign and schedule</span></button>
+            <button type="button" class="calc-opt" data-label="1 – 3 months" data-low="0" data-high="0" data-pick="0"><strong>1 – 3 months</strong><span>Finalizing architect / GC</span></button>
+            <button type="button" class="calc-opt" data-label="3 – 6 months" data-low="0" data-high="0" data-pick="0"><strong>3 – 6 months</strong><span>New build in progress</span></button>
+            <button type="button" class="calc-opt" data-label="Just exploring" data-low="0" data-high="0" data-pick="0"><strong>Just exploring</strong><span>Early research phase</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result view -->
+      <div class="calc-result" data-result>
+        <h3 class="display" style="font-size:clamp(1.8rem,3vw,2.6rem);">Your estimated <em class="accent">investment</em>.</h3>
+        <p class="muted">Real numbers. Low and high are the market range — "Your selection" is what a LUMA line-item proposal would land near.</p>
+        <table>
+          <thead><tr><th>Category</th><th>Selection</th><th>Low</th><th>High</th><th>Your pick</th></tr></thead>
+          <tbody></tbody>
+        </table>
+
+        <form class="email-capture" data-email-form
+              name="budget-estimate" method="POST"
+              data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="budget-estimate" />
+          <input type="hidden" name="selections" data-selections value="" />
+          <input type="hidden" name="total-low"  data-total-low  value="" />
+          <input type="hidden" name="total-high" data-total-high value="" />
+          <input type="hidden" name="total-pick" data-total-pick value="" />
+          <p hidden><label>Don't fill: <input name="bot-field" /></label></p>
+          <div class="field" style="gap:0.25rem;">
+            <label>Send this estimate to my inbox</label>
+            <input type="email" name="email" placeholder="you@email.com" required />
+          </div>
+          <button class="btn btn--primary" type="submit">Send PDF <span class="arrow">→</span></button>
+          <div data-email-status style="grid-column:1/-1; font-size:0.88rem; color:var(--ink-muted);">A line-item version with device models &amp; labor hours follows.</div>
+        </form>
+
+        <div style="margin-top:2rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn--teal">Book a 60-minute consultation <span class="arrow">→</span></a>
+          <a href="projects.html" class="btn btn--ghost">See projects in this range</a>
+        </div>
+      </div>
+
+      <div class="calc-actions" data-actions>
+        <button class="btn btn--text" type="button" data-prev>← Back</button>
+        <div style="flex:1"></div>
+        <button class="btn btn--ghost" type="button" data-next>Next <span class="arrow">→</span></button>
+        <button class="btn btn--primary" type="button" data-submit style="display:none;">See my estimate <span class="arrow">→</span></button>
+      </div>
+    </div>
+
+    <p class="muted text-center" style="margin-top:1.75rem; font-size:0.85rem;">
+      Prices are for planning. A LUMA site visit produces a binding line-item proposal — every device, every hour of labor, every foot of cable.
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-dot"></span><span>LUMA<small>Smart Home</small></span></div>
+        <p>Residential technology, tuned to the Gulf Coast hour. Lighting, shading, security, audio, network — under one roof.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="lighting.html">Lighting</a></li>
+          <li><a href="shading.html">Window Treatments</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="networking.html">Networking</a></li>
+          <li><a href="audio.html">Audio / Theater</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="budget.html">Budget Calculator</a></li>
+          <li><a href="builders.html">For Builders</a></li>
+          <li><a href="designers.html">For Designers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>Southwest Florida</li>
+          <li>Sarasota · Manatee</li>
+          <li>Charlotte · Lee · Collier</li>
+          <li><a href="tel:+19415551234">+1 (941) 555-1234</a></li>
+          <li><a href="mailto:hello@lumasmarthome.com">hello@lumasmarthome.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span data-year></span> LUMA Home Systems LLC. All rights reserved.</div>
+      <div>Florida licensed low-voltage contractor.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/images.js?v=1"></script>
+<script src="js/main.js?v=3"></script>
+</body>
+</html>

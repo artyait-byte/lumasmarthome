@@ -1,0 +1,13 @@
+# Netlify _redirects — fallback if netlify.toml is ignored by a plugin.
+# Pretty URLs.
+/contact       /contact.html       200
+/about         /about.html         200
+/projects      /projects.html      200
+/budget        /budget.html        200
+/lighting      /lighting.html      200
+/shading       /shading.html       200
+/security      /security.html      200
+/networking    /networking.html    200
+/audio         /audio.html         200
+/builders      /builders.html      200
+/designers     /designers.html     200

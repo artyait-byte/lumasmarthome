@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#F4B860"/>
+      <stop offset="55%" stop-color="#E68A4A"/>
+      <stop offset="100%" stop-color="#B56B3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#1A6B60"/>
+  <circle cx="32" cy="36" r="14" fill="url(#sunset)"/>
+  <path d="M10 48 H54" stroke="#0F4A42" stroke-width="2" stroke-linecap="round"/>
+  <text x="32" y="22" text-anchor="middle" font-family="'Cormorant Garamond', serif"
+        font-size="16" font-style="italic" fill="#F4B860">L</text>
+</svg>
