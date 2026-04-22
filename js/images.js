@@ -14,19 +14,24 @@
 
 window.LUMA_IMAGES = {
   // ---------- Smart Home Solutions — 7 menu categories -------------------
-  'lighting-scene':   '/assets/photos/lighting-scene.jpg',
-  'window-shades':    '/assets/photos/window-shades.jpg',
-  'home-theater':     '/assets/photos/home-theater.jpg',
-  'audio-system':     '/assets/photos/audio-system.jpg',
-  'security-camera':  '/assets/photos/security-camera.jpg',
-  'networking-rack':  '/assets/photos/networking-rack.jpg',
-  'gulf-sunset':      '/assets/photos/gulf-sunset.jpg',
+  //  Curated from licensed stock (Unsplash / Pexels) in the same visual lane as
+  //  premium U.S. integrator sites — not hotlinked from third-party commercial sites.
+  'lighting-scene':   '/assets/photos/lighting-scene.jpg?v=4',
+  'window-shades':    '/assets/photos/window-shades.jpg?v=4',
+  'home-theater':     '/assets/photos/home-theater.jpg?v=4',
+  // Audio & Video: background is set in styles.css class `.luma-bg--audio` (bypasses stale images.js)
+  'security-camera':  '/assets/photos/security-camera.jpg?v=4',
+  'networking-rack':  '/assets/photos/networking-rack.jpg?v=4',
+  'gulf-sunset':      '/assets/photos/gulf-sunset.jpg?v=4',
+
+  // ---------- Lighting page — feature rows (RadioRA 3, designers) ---------
+  'lighting-lutron-hero': '/assets/photos/lighting-lutron-hero.jpg?v=4',
 
   // ---------- Hero / lifestyle -------------------------------------------
-  'waterfront-lanai': '/assets/photos/waterfront-lanai.jpg',
+  'waterfront-lanai': '/assets/photos/waterfront-lanai.jpg?v=4',
 
   // ---------- Designers page (architectural lighting portrait) -----------
-  'designers-chandelier': '/assets/photos/designers-chandelier.jpg',
+  'designers-chandelier': '/assets/photos/designers-chandelier.jpg?v=4',
 
   // ---------- Projects page (one key per unique photo) -------------------
   //   Still on Unsplash hotlink — will migrate to local when we have

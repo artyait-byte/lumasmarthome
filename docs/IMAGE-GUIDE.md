@@ -4,6 +4,29 @@
 
 **Текущее состояние:** все 7 главных категорий + hero + designer-раздел хранятся локально (`/assets/photos/*.jpg`), отдаются с Netlify CDN. Projects page временно ещё на Unsplash hotlink — заменим на собственную съёмку по мере появления.
 
+## Визуальный ориентир (как в luxury integrator «technology & lifestyle guide»)
+
+По **смыслу** (не копируя макет и не забирая картинки с чужих PDF/сайтов) такие буклеты обычно строят на одних и тех же **темах** — их и стоит отражать в стоке / прессе вендоров / своей съёмке:
+
+| Тема | Что показывать в кадре (настроение) |
+|------|--------------------------------------|
+| **Lighting + control** | Слоистый свет, клавиатуры в стене, тёплый dim, «человеко-центричный» свет (рассвет/вечер), работа с дизайнером света и архитектором |
+| **Shades** | Моторизованные полотна, ткань/римские, бесшумность, дневной свет как ресурс (не «просто шторы») |
+| **Скрытая электроника** | TV из картины/зеркала, **invisible / in-ceiling** акустика, минимум «коробок на тумбе» |
+| **Whole-home A/V** | Зоны, потолок/стена, ланай, «все в комнатах разное — вместе одной сценой» |
+| **Theater** | Акустика, рассадка, проекция/тёмная комната (кинозал, не гостиная с одной колонкой) |
+| **Outdoor** | Патио/бассейн, all-weather A/V, вечерний свет |
+| **Network** | «Костяк» Wi‑Fi, предсказуемость, не гигиенический пластиковый роутер в кадре — лучше стойка/шкаф/диаграмма зоны покрытия (осторожно с брендами) |
+| **Питание / wellness** | Батареи/кондиционирование питания, вентиляция, циркадные сценарии — только если это реально продаёте (иначе не вводить в заблуждение) |
+
+**Чего не делать:** скачивать фотографии с **сайтов других integrator'ов** (портфолио, буклеты) — у них **авторское право на фото и дизайн**; риск претензий. Тот же *стиль* достигается **лицензионным** путём ниже.
+
+**Легальные источники «как у премиум-интеграторов»:**
+
+1. **Пресс-центр / for pros** у брендов, которые вы устанавливаете (Lutron, Sonance, Sonos Pro, Savant, Crestron, Ubiquiti, Ketra — у каждого свои правила, часто dealer-only).  
+2. **Unsplash / Pexels** — поиск по словам: `architectural lighting`, `motorized shade living room`, `in ceiling speaker`, `home theater`, `network rack clean`, `smart home interior Florida` (следить за брендами в кадре).  
+3. **Свой объект** — лучшее для доверия; даже 2–3 грамотных кадра с монтажника.
+
 ## Как прислать картинку
 
 **Вариант A — ссылка на изображение:**
@@ -24,7 +47,7 @@
 | `lighting-scene`   | Indoor & Outdoor Lighting  | [Lutron RadioRA 3](https://www.lutron.com/us/en/controls/systems/radiora3), [Sunnata keypads](https://www.lutron.com/us/en/controls/keypads/sunnata) |
 | `window-shades`    | Window Treatments          | [Lutron Sivoia QS Triathlon](https://www.lutron.com/us/en/shades/systems/sivoiaqs-triathlon), [Somfy PRO shades](https://www.somfypro.com/products/window-treatments) |
 | `home-theater`     | Home Theaters              | [Sonance Invisible Series](https://www.sonance.com/product-category/invisible-series/), [Sonos Arc / Arc Ultra](https://www.sonos.com/en-us/shop/arc-ultra) |
-| `audio-system`     | Audio & Video              | [Sonos Era 300/100](https://www.sonos.com/en-us/shop/era-300), [Sonance outdoor](https://www.sonance.com/product-category/landscape-series/)             |
+| *(CSS)* `luma-bg--audio` | Audio & Video (mega + главная) | **Не** `data-img` — фон в `css/styles.css` (`.luma-bg--audio` → `mega-audio-video.jpg`), чтобы кэш старого `images.js` не подставлял устаревшее фото. Сменить картинку: правка URL в CSS + `?v=` в том же правиле. |
 | `security-camera`  | Security & Surveillance    | [UniFi Protect G6 Pro Dome/Turret](https://store.ui.com/us/en/pro/category/cameras-dome-turret), [UniFi Doorbell](https://store.ui.com/us/en/category/doorbells) |
 | `networking-rack`  | Networking                 | [UniFi Dream Machine Pro](https://store.ui.com/us/en/category/all-cloud-gateways), [UniFi Wi-Fi 7 APs](https://store.ui.com/us/en/category/all-wifi)    |
 | `gulf-sunset`      | Home Automation            | [Josh.ai lifestyle gallery](https://www.josh.ai) или editorial-фото интерьера (для сцены "ритуал часа")      |
