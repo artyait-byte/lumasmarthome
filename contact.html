@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contact · LUMA Smart Home — Book a consultation on the Gulf Coast</title>
 <meta name="description" content="Book a free 60–90 minute on-site consultation with LUMA Smart Home. Serving Sarasota, Manatee, Charlotte, Lee, and Collier counties." />
-<link rel="stylesheet" href="css/styles.css?v=3" />
+<link rel="stylesheet" href="css/styles.css?v=5" />
+<!-- Leaflet (interactive map) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="" />
 <!-- SEO:injected START -->
 <link rel="canonical" href="https://www.lumasmarthome.com/contact.html" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
@@ -207,23 +211,23 @@
           </ul>
         </div>
 
-        <div style="margin-top:1.5rem; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-sm);">
-          <svg viewBox="0 0 600 320" style="width:100%; display:block; background:linear-gradient(180deg,#E8F0EE 0%,#FAF7F1 100%);">
-            <!-- Abstract Gulf Coast outline -->
-            <path d="M 20 40 C 60 60, 80 110, 95 160 C 110 200, 130 230, 160 260 C 200 290, 260 300, 320 295 C 380 290, 420 270, 460 250 C 500 230, 540 210, 580 200 L 600 320 L 0 320 Z"
-                  fill="#1A6B60" opacity="0.15"/>
-            <path d="M 20 40 C 60 60, 80 110, 95 160 C 110 200, 130 230, 160 260 C 200 290, 260 300, 320 295"
-                  fill="none" stroke="#1A6B60" stroke-width="1.5"/>
-            <!-- Pins -->
-            <g>
-              <circle cx="95" cy="145" r="6" fill="#B56B3A"/><text x="110" y="148" font-family="DM Sans" font-size="11" fill="#3A4347">Sarasota</text>
-              <circle cx="130" cy="195" r="6" fill="#B56B3A"/><text x="145" y="198" font-family="DM Sans" font-size="11" fill="#3A4347">Punta Gorda</text>
-              <circle cx="190" cy="240" r="6" fill="#B56B3A"/><text x="205" y="243" font-family="DM Sans" font-size="11" fill="#3A4347">Fort Myers</text>
-              <circle cx="280" cy="280" r="6" fill="#B56B3A"/><text x="295" y="283" font-family="DM Sans" font-size="11" fill="#3A4347">Naples</text>
-            </g>
-            <text x="300" y="30" text-anchor="middle" font-family="Cormorant Garamond" font-size="20" fill="#0F4A42">Gulf of Mexico</text>
-          </svg>
+        <div style="margin-top:1.5rem; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-sm); background:var(--paper);">
+          <!-- Interactive Leaflet map of Southwest Florida service area -->
+          <div id="swfl-map" style="width:100%; height:380px;"
+               role="application"
+               aria-label="Interactive map of LUMA Smart Home service area — 5 Southwest Florida counties on the Gulf of Mexico"></div>
+          <div style="padding:0.6rem 0.9rem; font-family:var(--sans); font-size:0.72rem; color:var(--ink-muted); letter-spacing:0.08em; text-transform:uppercase; background:var(--paper); border-top:1px solid rgba(26,107,96,0.12); display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+            <span>On-site consultations across all 5 Southwest Florida counties</span>
+            <span style="text-transform:none; letter-spacing:0; font-size:0.68rem; opacity:0.7;">Drag · scroll to zoom</span>
+          </div>
         </div>
+        <!-- legacy decorative SVG removed — kept placeholder below in case JS is disabled -->
+        <noscript>
+          <div style="margin-top:0.5rem; padding:0.9rem 1rem; background:#E8F0EE; border-radius:var(--r-lg); font-family:var(--sans); font-size:0.85rem; color:var(--ink);">
+            Enable JavaScript to view the interactive service-area map, or call
+            <a href="tel:+19415551234" style="color:var(--teal);">+1&nbsp;(941)&nbsp;555-1234</a>.
+          </div>
+        </noscript>
       </div>
     </div>
   </div>
@@ -238,7 +242,87 @@
   </div>
   <div class="footer-bottom"><div>© <span data-year></span> LUMA Home Systems LLC.</div><div>Florida licensed low-voltage contractor.</div></div>
 </div></footer>
-<script src="js/images.js?v=1"></script>
+<script src="js/images.js?v=2"></script>
 <script src="js/main.js?v=3"></script>
+<!-- Leaflet library -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script>
+  (function initSWFLMap(){
+    if (typeof L === 'undefined') return;
+    var el = document.getElementById('swfl-map');
+    if (!el) return;
+
+    // SW Florida Gulf Coast — centered between Sarasota and Naples
+    var map = L.map('swfl-map', {
+      center: [26.80, -82.20],
+      zoom: 8,
+      scrollWheelZoom: true,
+      zoomControl: true,
+      attributionControl: true
+    });
+
+    // CARTO Positron — light, elegant tiles that sit well on cream backgrounds
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      subdomains: 'abcd',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }).addTo(map);
+
+    // LUMA-branded copper marker
+    var copperIcon = L.divIcon({
+      className: 'luma-pin',
+      html: '<span class="luma-pin__halo"></span><span class="luma-pin__dot"></span>',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14],
+      popupAnchor: [0, -10]
+    });
+
+    var counties = [
+      { name: 'Manatee County',   lat: 27.4989, lng: -82.5748, desc: 'Bradenton · Anna Maria Island · Lakewood Ranch' },
+      { name: 'Sarasota County',  lat: 27.3364, lng: -82.5307, desc: 'Sarasota · Siesta Key · Longboat · Venice' },
+      { name: 'Charlotte County', lat: 26.9298, lng: -82.0454, desc: 'Port Charlotte · Punta Gorda · Boca Grande' },
+      { name: 'Lee County',       lat: 26.6406, lng: -81.8723, desc: 'Fort Myers · Sanibel · Captiva · Bonita Springs' },
+      { name: 'Collier County',   lat: 26.1420, lng: -81.7948, desc: 'Naples · Port Royal · Aqualane Shores · Marco Island' }
+    ];
+
+    var bounds = [];
+    counties.forEach(function(c){
+      var m = L.marker([c.lat, c.lng], { icon: copperIcon, title: c.name }).addTo(map);
+      m.bindPopup(
+        '<div style="font-family:\'DM Sans\',sans-serif; min-width:180px;">' +
+          '<strong style="font-family:\'Cormorant Garamond\',Georgia,serif; font-size:1.05rem; color:#0F4A42;">' + c.name + '</strong>' +
+          '<div style="margin-top:0.25rem; font-size:0.82rem; color:#3A4347;">' + c.desc + '</div>' +
+        '</div>'
+      );
+      bounds.push([c.lat, c.lng]);
+    });
+
+    // Tighten view so all 5 counties frame nicely
+    map.fitBounds(bounds, { padding: [40, 40] });
+
+    // Soft service-area polygon along the Gulf Coast
+    L.polygon([
+      [27.60, -82.75], // NW — Anna Maria
+      [27.35, -82.65], // Sarasota offshore
+      [26.95, -82.30], // Charlotte Harbor mouth
+      [26.45, -82.25], // Sanibel offshore
+      [25.95, -81.95], // Marco Island south
+      [26.05, -81.50], // inland SE (Collier east)
+      [26.60, -81.55], // Lee east
+      [27.00, -81.75], // Charlotte east
+      [27.35, -82.10], // Sarasota east
+      [27.60, -82.30]  // Manatee east — close
+    ], {
+      color: '#1A6B60',
+      weight: 1.2,
+      opacity: 0.55,
+      fillColor: '#B56B3A',
+      fillOpacity: 0.08,
+      interactive: false
+    }).addTo(map);
+  })();
+</script>
 </body>
 </html>

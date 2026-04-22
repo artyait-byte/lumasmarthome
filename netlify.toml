@@ -83,7 +83,7 @@
     #   *.josh.ai                    - Josh.ai
     #   *.sonance.com                - Sonance
     # Data URIs allowed for inline SVG icons and base64 previews.
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://images.unsplash.com https://*.lutron.com https://lutron.imgix.net https://*.ui.com https://*.svc.ui.com https://*.ctfassets.net https://*.sonos.com https://cf.sonos.com https://*.somfysystems.com https://*.somfy.com https://*.josh.ai https://*.sonance.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com https://*.lutron.com https://lutron.imgix.net https://*.ui.com https://*.svc.ui.com https://*.ctfassets.net https://*.sonos.com https://cf.sonos.com https://*.somfysystems.com https://*.somfy.com https://*.josh.ai https://*.sonance.com https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://unpkg.com; connect-src 'self' https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
 
 # Long cache for hashed assets; images/fonts.
 [[headers]]
