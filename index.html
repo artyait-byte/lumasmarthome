@@ -1,625 +1,1866 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LUMA Smart Home — Home, in its best light. | Gulf Coast of Florida</title>
-<meta name="description" content="LUMA Smart Home — premium residential technology integration for Sarasota, Manatee, Charlotte, Lee, and Collier counties. Lutron lighting, Ubiquiti security, motorized shading, audio, and network infrastructure." />
-<link rel="stylesheet" href="css/styles.css?v=6" />
-<!-- SEO:injected START -->
-<link rel="canonical" href="https://www.lumasmarthome.com/" />
-<meta name="robots" content="index,follow,max-image-preview:large" />
-<meta name="theme-color" content="#1A6B60" />
-<meta name="author" content="LUMA Home Systems LLC" />
-<meta property="og:site_name" content="LUMA Smart Home" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="LUMA Smart Home — Home, in its best light. | Gulf Coast of Florida" />
-<meta property="og:description" content="LUMA Smart Home — premium residential technology integration for Sarasota, Manatee, Charlotte, Lee, and Collier counties. Lutron lighting, Ubiquiti security, motorized shading, audio, and network infrastructure." />
-<meta property="og:url" content="https://www.lumasmarthome.com/" />
-<meta property="og:image" content="https://www.lumasmarthome.com/assets/og-cover.svg" />
-<meta property="og:locale" content="en_US" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="LUMA Smart Home — Home, in its best light. | Gulf Coast of Florida" />
-<meta name="twitter:description" content="LUMA Smart Home — premium residential technology integration for Sarasota, Manatee, Charlotte, Lee, and Collier counties. Lutron lighting, Ubiquiti security, motorized shading, audio, and network infrastructure." />
-<meta name="twitter:image" content="https://www.lumasmarthome.com/assets/og-cover.svg" />
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-  "name": "LUMA Smart Home",
-  "legalName": "LUMA Home Systems LLC",
-  "description": "Residential technology studio on Florida's Gulf Coast — lighting, shading, security, audio, and network integration.",
-  "url": "https://www.lumasmarthome.com/",
-  "logo": "https://www.lumasmarthome.com/assets/logo.svg",
-  "image": "https://www.lumasmarthome.com/assets/og-cover.svg",
-  "telephone": "+1-941-555-1234",
-  "email": "hello@lumasmarthome.com",
-  "priceRange": "$15,000 - $50,000+",
-  "address": {
-    "@type": "PostalAddress",
-    "addressRegion": "FL",
-    "addressCountry": "US",
-    "addressLocality": "Sarasota"
-  },
-  "areaServed": [
-    {"@type": "AdministrativeArea", "name": "Sarasota County, FL"},
-    {"@type": "AdministrativeArea", "name": "Manatee County, FL"},
-    {"@type": "AdministrativeArea", "name": "Charlotte County, FL"},
-    {"@type": "AdministrativeArea", "name": "Lee County, FL"},
-    {"@type": "AdministrativeArea", "name": "Collier County, FL"}
-  ],
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-    "opens": "09:00",
-    "closes": "18:00"
-  }],
-  "sameAs": []
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUMA Smart Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F9F5EF;--cream2:#EDE8DF;--cream3:#E5DDD2;
+  --dark:#1B1A28;--mid:#6B6876;
+  --accent:#C57238;--accent2:#B5622A;
+  --teal:#2D5E5A;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
 }
-</script>
-<!-- SEO:injected END -->
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+
+/* ── TOP BAR ── */
+.topbar{background:var(--dark);color:rgba(255,255,255,.65);font-size:12px;letter-spacing:.02em;display:flex;justify-content:space-between;align-items:center;padding:7px 48px}
+
+/* ── NAV ── */
+.nav{display:flex;align-items:center;padding:0 48px;height:66px;border-bottom:1px solid var(--cream2);background:var(--cream);position:sticky;top:0;z-index:200}
+.nav-logo{display:flex;align-items:center;gap:6px;margin-right:36px;cursor:pointer}
+.logo-dot{width:11px;height:11px;background:var(--accent);border-radius:50%}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-luma{font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:.08em}
+.logo-sub{font-size:8px;letter-spacing:.18em;text-transform:uppercase;opacity:.5;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:24px;flex:1;font-size:14px}
+.nav-link{color:var(--dark);opacity:.75;transition:opacity .18s;cursor:pointer;white-space:nowrap}
+.nav-link:hover{opacity:1}
+.nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+.btn-ghost{border:1.5px solid var(--dark);border-radius:100px;padding:7px 18px;font-size:13px;font-family:var(--sans);background:transparent;white-space:nowrap;transition:border-color .18s,color .18s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-solid{background:var(--accent);color:#fff;border-radius:100px;padding:8px 20px;font-size:13px;font-family:var(--sans);display:flex;align-items:center;gap:5px;white-space:nowrap;transition:background .18s;border:none}
+.btn-solid:hover{background:var(--accent2)}
+.dropdown-trigger{display:flex;align-items:center;gap:5px;border:1.5px solid var(--accent);border-radius:100px;padding:6px 14px;font-size:14px;cursor:pointer;transition:background .18s;white-space:nowrap;font-family:var(--sans)}
+.dropdown-trigger:hover,.dropdown-trigger.open{background:rgba(197,114,56,.07)}
+.chevron{transition:transform .25s}
+.chevron.open{transform:rotate(180deg)}
+
+/* ── MEGA DROPDOWN ── */
+.dropdown-wrap{position:absolute;top:66px;left:0;right:0;background:#fff;border-bottom:1px solid var(--cream2);box-shadow:0 12px 48px rgba(0,0,0,.1);z-index:190;display:none}
+.dropdown-wrap.open{display:block}
+.dropdown-inner{display:grid;grid-template-columns:1fr 1fr 300px;padding:28px 48px;gap:0}
+.dropdown-col{display:flex;flex-direction:column;gap:2px}
+.dropdown-col+.dropdown-col{border-left:1px solid var(--cream2);padding-left:24px;margin-left:12px}
+.dropdown-col:last-child{border:none;margin-left:20px;padding-left:0}
+.dd-item{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border-radius:10px;cursor:pointer;transition:background .15s}
+.dd-item:hover,.dd-item.active{background:var(--cream)}
+.dd-text h4{font-size:14px;font-weight:500;margin-bottom:1px}
+.dd-text p{font-size:12px;color:var(--mid);line-height:1.35}
+.dd-preview{border-radius:14px;overflow:hidden;position:relative;height:220px;width:100%}
+.dd-preview img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.dd-preview:hover img{transform:scale(1.04)}
+.dd-preview-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 14px 14px;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.dd-preview-tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:5px;margin-bottom:4px}
+.dd-preview-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.dd-preview-name{color:#fff;font-size:16px;font-weight:500}
+
+/* ── PHOTO CARD (shared) ── */
+.photo-card{position:relative;border-radius:18px;overflow:hidden;cursor:pointer}
+.photo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.photo-card:hover img{transform:scale(1.04)}
+.photo-card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:linear-gradient(transparent 35%,rgba(0,0,0,.6))}
+.photo-card-icon{width:30px;height:30px;margin-bottom:10px}
+.photo-card-title{color:#fff;font-size:16px;font-weight:500;line-height:1.3}
+.photo-card-explore{color:var(--accent);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-top:5px;opacity:0;transition:opacity .2s}
+.photo-card:hover .photo-card-explore{opacity:1}
+
+/* ── PAGES ── */
+.page{min-height:calc(100vh - 110px)}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:72px 80px 80px;max-width:1280px;margin:0 auto}
+.hero-tag{display:inline-flex;border:1px solid var(--teal);color:var(--teal);border-radius:100px;padding:5px 14px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px}
+.hero-title{font-family:var(--serif);font-size:52px;line-height:1.08;font-weight:600;margin-bottom:22px;text-wrap:pretty}
+.hero-title em{color:var(--accent);font-style:italic}
+.hero-body{color:var(--mid);line-height:1.72;margin-bottom:14px;font-size:15px}
+.hero-link{color:var(--accent);font-size:14px;border-bottom:1px solid var(--accent);display:inline-block;padding-bottom:1px;cursor:pointer}
+.hero-img{border-radius:20px;overflow:hidden;position:relative;background:#e8e2d5;aspect-ratio:1/1}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center center}
+
+/* ── SECTION HEADER ── */
+.sec-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;text-align:center}
+.sec-title{font-family:var(--serif);font-size:48px;line-height:1.1;font-weight:600;text-align:center;text-wrap:pretty}
+.sec-title em{color:var(--accent);font-style:italic}
+.sec-body{max-width:520px;margin:14px auto 0;color:var(--mid);text-align:center;line-height:1.7}
+
+/* ── SERVICES GRID ── */
+.services-section{padding:0 48px 80px}
+.services-intro{padding:72px 0 44px}
+.sg-top{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px;margin-bottom:12px}
+.sg-bot{display:grid;grid-template-columns:1.6fr 1fr;gap:12px}
+
+/* ── MOMENTS ── */
+.moments-section{padding:72px 80px 80px;max-width:1280px;margin:0 auto}
+.moments-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.moment-card{border-radius:20px;overflow:hidden;position:relative;height:320px;cursor:pointer}
+.moment-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;filter:saturate(.85)}
+.moment-card:hover img{transform:scale(1.04)}
+.moment-grade{position:absolute;inset:0}
+.moment-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 20px;background:linear-gradient(transparent 20%,rgba(0,0,0,.65))}
+.moment-time{font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.7);margin-bottom:6px}
+.moment-name{font-family:var(--serif);font-size:26px;font-weight:600;color:#fff;margin-bottom:8px}
+.moment-desc{font-size:13px;color:rgba(255,255,255,.75);line-height:1.5;text-wrap:pretty}
+
+/* ── PAGE HEROS (interior sections) ── */
+.split-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:72px 80px;max-width:1280px;margin:0 auto}
+.tag-pill{display:inline-flex;border:1px solid var(--cream3);color:var(--mid);border-radius:100px;padding:5px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:20px}
+.checklist li{display:flex;gap:10px;font-size:14px;color:var(--mid)}
+.checklist li::before{content:'✓';color:var(--accent);font-weight:600;flex-shrink:0}
+.split-photo{border-radius:20px;overflow:hidden;height:420px}
+.split-photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:72px 80px;max-width:1280px;margin:0 auto}
+.contact-title{font-family:var(--serif);font-size:40px;font-weight:600;margin-bottom:28px}
+.form-group{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+.form-input,.form-select,.form-textarea{width:100%;border:1.5px solid var(--cream3);border-radius:10px;padding:11px 14px;font-family:var(--sans);font-size:14px;background:#fff;color:var(--dark);outline:none;transition:border-color .18s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent)}
+.form-textarea{resize:vertical;min-height:110px}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6876' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.service-area{background:#fff;border-radius:16px;padding:24px 28px;margin-bottom:20px}
+.service-area h3{font-size:16px;font-weight:500;margin-bottom:16px}
+.service-area ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.service-area li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--mid)}
+.service-area li::before{content:'✓';color:var(--accent);font-weight:600;flex-shrink:0;margin-top:2px}
+
+/* ── FOOTER ── */
+.footer{background:var(--dark);color:rgba(255,255,255,.55);font-size:13px;padding:40px 48px;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{color:#fff;font-family:var(--serif);font-size:18px;letter-spacing:.06em}
+
+/* ── BENTO (Smart Home Solutions) ── */
+.cat-bento{
+  display:grid;
+  grid-template-columns:1.45fr 1.1fr 0.95fr;
+  grid-template-rows:repeat(3,minmax(240px,1fr));
+  grid-template-areas:
+    "lit  win  sec"
+    "lit  thr  av"
+    "auto auto net";
+  gap:.65rem;
+  margin-top:44px;
+}
+.cat-bento .cat-tile{
+  position:relative;display:block;overflow:hidden;
+  border-radius:14px;background:#1B1A28;isolation:isolate;
+  outline:none;text-decoration:none;
+}
+.cat-bento .cat-tile:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.cat-bento .cat-tile[data-area="lit"] {grid-area:lit}
+.cat-bento .cat-tile[data-area="win"] {grid-area:win}
+.cat-bento .cat-tile[data-area="sec"] {grid-area:sec}
+.cat-bento .cat-tile[data-area="thr"] {grid-area:thr}
+.cat-bento .cat-tile[data-area="av"]  {grid-area:av}
+.cat-bento .cat-tile[data-area="auto"]{grid-area:auto}
+.cat-bento .cat-tile[data-area="net"] {grid-area:net}
+.cat-bento .cat-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transform:scale(1);
+  transition:transform 600ms cubic-bezier(.2,.7,.2,1);
+  z-index:0;
+}
+.cat-bento .cat-tile:hover .cat-bg{transform:scale(1.06)}
+.cat-bento .cat-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,transparent 0%,rgba(15,74,66,0.78) 100%);
+  transition:background 420ms ease;
+}
+.cat-bento .cat-tile:hover .cat-overlay{
+  background:linear-gradient(180deg,rgba(181,107,58,0.18) 0%,rgba(15,74,66,0.92) 100%);
+}
+.cat-bento .hex{
+  position:absolute;top:1.25rem;left:1.25rem;z-index:3;
+  width:38px;height:38px;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+}
+.cat-bento .cat-arrow{
+  position:absolute;top:1.25rem;right:1.25rem;z-index:3;
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.6);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.9);font-size:14px;line-height:1;
+  opacity:0;transform:translateX(-6px);
+  transition:opacity 280ms ease,transform 280ms ease;
+}
+.cat-bento .cat-tile:hover .cat-arrow{opacity:1;transform:translateX(0)}
+@media (max-width:1099px){.cat-bento .cat-arrow{display:none}}
+.cat-bento .cat-text{
+  position:absolute;left:0;bottom:0;z-index:2;
+  padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;max-width:92%;
+}
+.cat-bento .cat-text .eyebrow{
+  font-family:var(--sans);font-size:.72rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+}
+.cat-bento .cat-text h3{
+  font-family:var(--serif);font-weight:400;color:#fff;
+  font-size:clamp(1.5rem,2.4vw,2.1rem);
+  line-height:1.05;margin:0;text-wrap:pretty;
+}
+.cat-bento .luma-bg--audio{
+  background-image:url('https://images.pexels.com/photos/3756879/pexels-photo-3756879.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop');
+}
+@media (max-width:1099px) and (min-width:760px){
+  .cat-bento{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+    grid-template-areas:
+      "lit  lit"
+      "win  sec"
+      "thr  av"
+      "auto auto"
+      "net  net";
+  }
+  .cat-bento .cat-tile{min-height:240px}
+  .cat-bento .cat-tile[data-area="lit"]{min-height:320px}
+}
+@media (max-width:759px){
+  .cat-bento{
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+    grid-template-areas:"lit" "win" "sec" "thr" "av" "auto" "net";
+    gap:.5rem;
+  }
+  .cat-bento .cat-tile{aspect-ratio:4/3}
+}
+
+/* ── THEATERS PAGE ── */
+.th-hero{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;padding:72px 80px 64px;max-width:1280px;margin:0 auto}
+.th-hero-img{border-radius:20px;overflow:hidden;height:520px;background:#1B1A28}
+.th-hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+.th-cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+
+.th-section{padding:88px 80px;max-width:1280px;margin:0 auto}
+.th-section--cream{background:var(--cream2);max-width:none;margin:0;padding:88px 0}
+.th-section--cream-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+
+.th-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.th-card{background:#fff;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--cream2)}
+.th-card-icon{width:42px;height:42px;border-radius:50%;background:rgba(197,114,56,.1);color:var(--accent);display:flex;align-items:center;justify-content:center}
+.th-card h3{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.2}
+.th-card p{color:var(--mid);font-size:14px;line-height:1.6}
+
+.th-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.th-split-img{border-radius:20px;overflow:hidden;height:480px}
+.th-split-img img{width:100%;height:100%;object-fit:cover;display:block}
+.th-rooms{display:flex;flex-direction:column;gap:18px;margin-top:32px}
+.th-room{padding:20px 0;border-top:1px solid var(--cream3)}
+.th-room:last-child{border-bottom:1px solid var(--cream3)}
+.th-room-name{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:6px}
+.th-room-desc{color:var(--mid);font-size:14px;line-height:1.6}
+
+.th-why{display:flex;flex-direction:column;gap:0;margin-top:36px}
+.th-why-row{display:grid;grid-template-columns:120px 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--cream3);align-items:start}
+.th-why-row:last-child{border-bottom:1px solid var(--cream3)}
+.th-why-num{font-family:var(--serif);font-size:48px;font-weight:600;color:var(--accent);line-height:1}
+.th-why-text{font-size:16px;line-height:1.65;color:var(--dark);text-wrap:pretty}
+
+.th-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.th-project{position:relative;border-radius:18px;overflow:hidden;height:340px;cursor:pointer}
+.th-project img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.th-project:hover img{transform:scale(1.05)}
+.th-project-overlay{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.th-project-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:6px}
+.th-project-name{color:#fff;font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.2}
+
+.th-credentials{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:36px}
+
+/* Install grid (Security page) */
+.th-install-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;margin-top:44px}
+.th-install-cell{position:relative;border-radius:14px;overflow:hidden;background:var(--cream2)}
+.th-install-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.th-install-cell:hover img{transform:scale(1.04)}
+.th-install-cell.tall{grid-row:span 2}
+.th-install-cell.wide{grid-column:span 2}
+.th-install-cap{position:absolute;left:12px;bottom:10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(20,18,16,.55);backdrop-filter:blur(4px);padding:5px 9px;border-radius:6px;font-weight:500}
+@media (max-width:959px){
+  .th-install-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:180px}
+  .th-install-cell.wide{grid-column:span 2}
+}
+@media (max-width:639px){
+  .th-install-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .th-install-cell.wide,.th-install-cell.tall{grid-column:span 1;grid-row:span 1}
+}
+.th-chip{border:1px solid var(--cream3);border-radius:100px;padding:9px 20px;font-size:13px;letter-spacing:.04em;color:var(--dark);background:#fff}
+
+.th-cta-combo{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:24px;overflow:hidden;margin:0 80px 88px;max-width:1120px;margin-left:auto;margin-right:auto;background:#1B1A28;color:#fff}
+.th-cta-photo{height:100%;min-height:480px;background-size:cover;background-position:center}
+.th-cta-form{padding:48px 56px;display:flex;flex-direction:column;gap:14px}
+.th-cta-form h2{font-family:var(--serif);font-size:36px;line-height:1.15;font-weight:600;margin-bottom:8px;color:#fff}
+.th-cta-form em{color:var(--accent);font-style:italic}
+.th-cta-form p{color:rgba(255,255,255,.7);font-size:14px;line-height:1.6;margin-bottom:8px}
+.th-cta-form input,.th-cta-form textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:11px 14px;font-family:var(--sans);font-size:14px;color:#fff;outline:none}
+.th-cta-form input:focus,.th-cta-form textarea:focus{border-color:var(--accent)}
+.th-cta-form input::placeholder,.th-cta-form textarea::placeholder{color:rgba(255,255,255,.4)}
+.th-cta-form textarea{min-height:90px;resize:vertical}
+.th-cta-form button{margin-top:6px;align-self:flex-start}
+
+@media (max-width:1099px){
+  .th-hero{grid-template-columns:1fr;padding:48px 40px}
+  .th-hero-img{height:380px}
+  .th-section{padding:64px 40px}
+  .th-section--cream-inner{padding:0 40px}
+  .th-grid-3,.th-projects{grid-template-columns:1fr 1fr}
+  .th-split{grid-template-columns:1fr;gap:32px}
+  .th-split-img{height:360px}
+  .th-cta-combo{grid-template-columns:1fr;margin:0 24px 64px}
+  .th-cta-photo{min-height:280px}
+}
+@media (max-width:759px){
+  .th-grid-3,.th-projects{grid-template-columns:1fr}
+  .th-why-row{grid-template-columns:1fr;gap:8px}
+}
+
+/* ── AUTOMATION PAGE ── */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+@media (max-width:1099px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:559px){.grid-4{grid-template-columns:1fr}}
+.au-card{background:#fff;border:1px solid var(--cream2);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.au-card-clock{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.au-card-time{font-family:var(--serif);font-size:14px;letter-spacing:.08em;color:var(--mid);text-transform:uppercase}
+.au-card-name{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.1;margin-top:-4px}
+.au-card-name em{color:var(--accent);font-style:italic}
+.au-card-desc{color:var(--mid);font-size:14px;line-height:1.6}
+.au-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;justify-content:center}
+.au-chip{border:1px solid var(--cream3);background:#fff;border-radius:100px;padding:10px 22px;font-size:13px;letter-spacing:.04em;color:var(--dark);text-decoration:none;transition:border-color .18s,color .18s,background .18s}
+.au-chip:hover{border-color:var(--accent);color:var(--accent)}
+.au-chip--inert{opacity:.55;cursor:default}
+.au-chip--inert:hover{border-color:var(--cream3);color:var(--dark)}
+.au-vendors{display:flex;flex-wrap:wrap;gap:36px;margin-top:28px;align-items:center}
+.au-vendor{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:.04em;color:var(--mid)}
+.au-vendor span{color:var(--accent);font-style:italic;font-weight:400}
+</style>
 </head>
 <body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState, useEffect, useRef} = React;
 
-<!-- Top bar -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <div class="topbar-links">
-      <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
-    </div>
-    <div class="topbar-links">
-      <span>Mon–Sat · 9am – 6pm</span>
-      <a href="tel:+19415551234">+1 (941) 555-1234</a>
-    </div>
-  </div>
-</div>
+/* ─── PHOTO URLS ─── */
+// All from Unsplash — free to embed
+const PHOTOS = {
+  // Service card backgrounds — Gulf Coast luxury home aesthetic
+  lighting:    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&h=700&fit=crop&auto=format&q=80',
+  window:      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&h=600&fit=crop&auto=format&q=80',
+  theater:     'images/home-theater.jpg',
+  security:    'https://images.unsplash.com/photo-1558002038-1055907df827?w=900&h=600&fit=crop&auto=format&q=80',
+  audio:       'https://images.pexels.com/photos/3756879/pexels-photo-3756879.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop',
+  networking:  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop&auto=format&q=80',
+  automation:  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&auto=format&q=80',
 
-<!-- Navigation with mega-menu -->
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="index.html" class="brand" aria-label="LUMA Smart Home">
-      <span class="brand-dot" aria-hidden="true"></span>
-      <span>LUMA<small>Smart Home</small></span>
-    </a>
+  // Hero images
+  heroHome:        'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=1200&fit=crop&auto=format&q=85',
+  heroShading:     'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&h=600&fit=crop&auto=format&q=85',
+  heroLighting:    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=700&fit=crop&auto=format&q=85',
+  lightingKetra:   'https://images.unsplash.com/photo-1582268611958-ebfd161df9d8?w=900&h=620&fit=crop&auto=format&q=85',
+  lightingRania:   'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&h=620&fit=crop&auto=format&q=85',
+  lightingLumaris: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&h=620&fit=crop&auto=format&q=85',
+  heroDesigners:   'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&h=700&fit=crop&auto=format&q=85',
 
-    <div class="nav-menu" id="navMenu">
-      <div class="nav-item" data-mega>
-        <button type="button" aria-expanded="false">Smart Home Solutions <span class="chev"></span></button>
-        <div class="mega" role="menu">
-          <div class="mega-list">
-            <a class="mega-link is-hot" href="lighting.html" data-preview="lighting" role="menuitem">
-              <div class="hex">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a7 7 0 0 0-4 12.7V18a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 3z"/><path d="M10 22h4"/></svg>
-              </div>
-              <div><h5>Indoor &amp; Outdoor Lighting</h5><p>Lutron RadioRA 3 · dimming · scenes · landscape lighting</p></div>
-            </a>
-            <a class="mega-link" href="shading.html" data-preview="shading" role="menuitem">
-              <div class="hex">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="10"/><path d="M4 9h16M12 14v6M8 20h8"/></svg>
-              </div>
-              <div><h5>Window Treatments</h5><p>Motorized Somfy &amp; Lutron Sivoia · solar + blackout + drapery</p></div>
-            </a>
-            <a class="mega-link" href="audio.html" data-preview="theater" role="menuitem">
-              <div class="hex">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="12" rx="1.5"/><circle cx="12" cy="11" r="3"/><path d="M3 19h18"/></svg>
-              </div>
-              <div><h5>Home Theaters</h5><p>Dedicated rooms · Sonos · Sonance · acoustic calibration</p></div>
-            </a>
-            <a class="mega-link" href="audio.html" data-preview="audio" role="menuitem">
-              <div class="hex">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
-              </div>
-              <div><h5>Audio &amp; Video</h5><p>Whole-home music · lanai zones · 4K video distribution</p></div>
-            </a>
-            <a class="mega-link" href="security.html" data-preview="security" role="menuitem">
-              <div class="hex">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>
-              </div>
-              <div><h5>Security &amp; Surveillance</h5><p>UniFi Protect cameras · access · alarms · no monthly fees</p></div>
-            </a>
-            <a class="mega-link" href="networking.html" data-preview="networking" role="menuitem">
-              <div class="hex">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="16" height="8" rx="1.5"/><circle cx="8" cy="13" r="1"/><circle cx="12" cy="13" r="1"/><circle cx="16" cy="13" r="1"/><path d="M12 3v6M8 6l4-3 4 3"/></svg>
-              </div>
-              <div><h5>Networking</h5><p>Wi-Fi 6 / 7 · structured cabling · Ubiquiti UniFi backbone</p></div>
-            </a>
-            <a class="mega-link" href="index.html#rituals" data-preview="automation" role="menuitem">
-              <div class="hex">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-              </div>
-              <div><h5>Home Automation</h5><p>Alba · Day · Sera · Notte — scenes tuned to the Gulf hour</p></div>
-            </a>
-          </div>
+  // Four Moments — Gulf Coast luxury residence lifestyle
+  moment1: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=700&fit=crop&auto=format&q=80', // modern coastal estate exterior, morning
+  moment2: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=700&fit=crop&auto=format&q=80', // luxury great room with Gulf views, midday
+  moment3: 'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=600&h=700&fit=crop&auto=format&q=80', // infinity pool / terrace at sunset
+  moment4: 'https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=600&h=700&fit=crop&auto=format&q=80', // luxury master suite at night
 
-          <div class="mega-preview" data-preview-stage>
-            <div class="slide is-on" data-for="lighting" data-img="lighting-scene"></div>
-            <div class="slide" data-for="shading" data-img="window-shades"></div>
-            <div class="slide" data-for="theater" data-img="home-theater"></div>
-            <div class="slide luma-bg--audio" data-for="audio"></div>
-            <div class="slide" data-for="security" data-img="security-camera"></div>
-            <div class="slide" data-for="networking" data-img="networking-rack"></div>
-            <div class="slide" data-for="automation" data-img="gulf-sunset"></div>
-            <div class="label">
-              <span class="pill">Live preview</span>
-              <h5 data-preview-title>Indoor &amp; Outdoor Lighting</h5>
+  // Theaters page
+  theaterAnamorphic:    'https://images.unsplash.com/photo-1489599162163-3fb2d5e3a37d?w=1200&h=800&fit=crop&auto=format&q=85',
+  theaterRoom:          'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&h=800&fit=crop&auto=format&q=85',
+  projectBayfront:      'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=900&h=700&fit=crop&auto=format&q=80',
+  projectWarmInterior:  'https://images.unsplash.com/photo-1593696140826-c58b021acf8b?w=900&h=700&fit=crop&auto=format&q=80',
+  projectArchitectural: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=700&fit=crop&auto=format&q=80',
+  gulfSunset:           'https://images.unsplash.com/photo-1502209524164-acea936639a2?w=1600&h=900&fit=crop&auto=format&q=85',
+
+  // Automation page
+  automationKeypad:     'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&h=700&fit=crop&auto=format&q=85',
+  projectAutomation1:   'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&h=700&fit=crop&auto=format&q=80',
+  projectAutomation2:   'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&h=700&fit=crop&auto=format&q=80',
+  projectAutomation3:   'https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=900&h=700&fit=crop&auto=format&q=80',
+
+  // Audio / Security / Networking pages
+  audioHero:            'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1200&h=900&fit=crop&auto=format&q=85',
+  audioInvisible:       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=700&fit=crop&auto=format&q=85',
+  securityHero:         'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=900&fit=crop&auto=format&q=85', // outdoor dome IP camera, warm residential tone (Bernard Hermant / Unsplash)
+  securityFootage:      'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=900&h=700&fit=crop&auto=format&q=85',
+
+  // Security install grid — royalty-free Unsplash / Pexels
+  installDome:      'https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&h=700&fit=crop&auto=format&q=80', // outdoor dome IP camera
+  installDoorbell:  'https://images.unsplash.com/photo-1558002038-1055907df827?w=700&h=700&fit=crop&auto=format&q=80', // residential exterior camera close-up (used as doorbell stand-in)
+  installNvr:       'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=700&h=700&fit=crop&auto=format&q=80', // network rack / NVR
+  installPanel:     'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&h=700&fit=crop&auto=format&q=80', // in-wall touch panel / keypad
+  installDock:      'https://images.unsplash.com/photo-1572883454114-1cf0031ede2a?w=700&h=700&fit=crop&auto=format&q=80', // weatherproof dome on building exterior (dock-side stand-in)
+  installPhone:     'https://images.unsplash.com/photo-1611174743420-3d7df880ce32?w=700&h=700&fit=crop&auto=format&q=80', // hand viewing live cameras on phone
+  installBullet:    'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=700&h=700&fit=crop&auto=format&q=80', // bullet CCTV on soffit
+  installTablet:    'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=700&h=700&fit=crop&auto=format&q=80', // tablet showing live security feeds
+  networkingHero:       'https://images.unsplash.com/photo-1551808525-51a94da548ce?w=1200&h=900&fit=crop&auto=format&q=85',
+  networkingRack:       'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=900&h=700&fit=crop&auto=format&q=85',
+  projectModernVilla:   'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=700&fit=crop&auto=format&q=80',
+  projectLuxuryPool:    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&h=700&fit=crop&auto=format&q=80',
+
+  // Lighting mosaic (data-img keys)
+  'lit-cove':         'https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1100&h=800&fit=crop&auto=format&q=85',
+  'lit-keypad':       'https://images.unsplash.com/photo-1558002038-1055907df827?w=900&h=700&fit=crop&auto=format&q=85',
+  'lit-landscape-fl': 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=900&h=700&fit=crop&auto=format&q=85',
+  'lit-pendants':     'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&h=700&fit=crop&auto=format&q=85',
+  'lit-app':          'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=900&h=700&fit=crop&auto=format&q=85',
+  'lit-lanai-fl':     'https://images.unsplash.com/photo-1598228723793-52759bba239c?w=1200&h=800&fit=crop&auto=format&q=85',
+};
+
+/* ─── ICON PATHS ─── */
+const serviceIcons = {
+  lighting: <g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><circle cx="15" cy="13" r="5"/><path d="M12.5 18.5h5M13 20.5h4"/><line x1="15" y1="6.5" x2="15" y2="5.5"/><line x1="19.5" y1="8.5" x2="20.3" y2="7.7"/><line x1="21" y1="13" x2="22" y2="13"/><line x1="10.5" y1="8.5" x2="9.7" y2="7.7"/><line x1="9" y1="13" x2="8" y2="13"/></g>,
+  window:   <g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><rect x="8" y="7" width="14" height="17" rx="1"/><line x1="8" y1="11.5" x2="22" y2="11.5"/><line x1="8" y1="15.5" x2="22" y2="15.5"/><line x1="8" y1="19.5" x2="22" y2="19.5"/><line x1="15" y1="23" x2="15" y2="25"/><circle cx="15" cy="25.5" r="1" fill="white" stroke="none"/></g>,
+  theater:  <g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><rect x="5" y="7" width="20" height="13" rx="1.5"/><polygon points="12.5,10.5 12.5,16.5 19.5,13.5" fill="rgba(255,255,255,.8)" stroke="none"/><line x1="9" y1="22" x2="21" y2="22"/><line x1="14" y1="20" x2="16" y2="22"/></g>,
+  security: <g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M15 4.5L7 8v6c0 4.8 3.5 8.5 8 10 4.5-1.5 8-5.2 8-10V8L15 4.5z"/><path d="M11.5 13.5l2.5 2.5 4.5-5"/></g>,
+  audio:    <g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><path d="M9 11.5h3l3.5-4.5v16.5L12 19H9V11.5z"/><path d="M18 11a5 5 0 010 8"/><path d="M20 8.5a8.5 8.5 0 010 13"/></g>,
+  networking:<g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><path d="M5.5 11A12.8 12.8 0 0124.5 11" strokeOpacity=".4"/><path d="M8 14a10 10 0 0114 0" strokeOpacity=".65"/><path d="M10.5 17a6.5 6.5 0 019 0" strokeOpacity=".88"/><circle cx="15" cy="21" r="1.8" fill="white" stroke="none"/></g>,
+  automation:<g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="5,15 15,6 25,15"/><path d="M8.5 14.5v8.5h5.5v-5h2v5h5.5v-8.5"/><circle cx="22" cy="9" r="3" fill="rgba(197,114,56,.9)" stroke="white" strokeWidth="1.1"/><line x1="22" y1="7.4" x2="22" y2="10.6" strokeWidth=".9"/><line x1="20.4" y1="9" x2="23.6" y2="9" strokeWidth=".9"/></g>,
+};
+
+function HexIcon({type='lighting', size=30, color='#C57238'}) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 30 30">
+      <polygon points="15,0 27.99,7.5 27.99,22.5 15,30 2.01,22.5 2.01,7.5" fill={color}/>
+      {serviceIcons[type]||serviceIcons.automation}
+    </svg>
+  );
+}
+
+/* ─── SERVICES DATA ─── */
+const services = [
+  {id:'lighting',   name:'Indoor & Outdoor Lighting', sub:'Scenes · cove · landscape',            page:'lighting'},
+  {id:'window',     name:'Window Treatments',          sub:'Motorized shades & drapery',           page:'shading'},
+  {id:'theater',    name:'Home Theaters',              sub:'Calibrated rooms · cinema seating',    page:'theaters'},
+  {id:'security',   name:'Security & Surveillance',    sub:'On-prem cameras · no monthly fees',    page:'security'},
+  {id:'audio',      name:'Audio & Video',              sub:'Whole-home audio · indoor + lanai',    page:'audio'},
+  {id:'networking', name:'Networking',                  sub:'Wi-Fi 6 / 7 · enterprise-grade',       page:'networking'},
+  {id:'automation', name:'Home Automation',             sub:'Daily routines · one tap',             page:'automation'},
+];
+
+/* ─── MEGA DROPDOWN ─── */
+function MegaDropdown({active, hoverId, setHoverId, navigate}) {
+  const left  = services.slice(0,4);
+  const right = services.slice(4,7);
+  const hovered = services.find(s=>s.id===hoverId)||services[0];
+  return (
+    <div className={`dropdown-wrap${active?' open':''}`}>
+      <div className="dropdown-inner">
+        <div className="dropdown-col">
+          {left.map(s=>(
+            <div key={s.id} className={`dd-item${hoverId===s.id?' active':''}`}
+              onMouseEnter={()=>setHoverId(s.id)} onClick={()=>navigate(s.page)}>
+              <HexIcon type={s.id} size={30} color={hoverId===s.id?'#B5622A':'#C57238'}/>
+              <div className="dd-text"><h4>{s.name}</h4><p>{s.sub}</p></div>
+            </div>
+          ))}
+        </div>
+        <div className="dropdown-col">
+          {right.map(s=>(
+            <div key={s.id} className={`dd-item${hoverId===s.id?' active':''}`}
+              onMouseEnter={()=>setHoverId(s.id)} onClick={()=>navigate(s.page)}>
+              <HexIcon type={s.id} size={30} color={hoverId===s.id?'#B5622A':'#C57238'}/>
+              <div className="dd-text"><h4>{s.name}</h4><p>{s.sub}</p></div>
+            </div>
+          ))}
+        </div>
+        <div className="dropdown-col">
+          <div className="dd-preview">
+            <img src={PHOTOS[hovered.id]} alt={hovered.name}/>
+            <div className="dd-preview-overlay">
+              <div className="dd-preview-tag">Live Preview</div>
+              <div className="dd-preview-name">{hovered.name}</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="nav-item"><a href="budget.html">Budget Calculator</a></div>
-      <div class="nav-item"><a href="index.html#testimonials">Testimonials</a></div>
-      <div class="nav-item"><a href="projects.html">Our Work</a></div>
-      <div class="nav-item"><a href="about.html">About</a></div>
     </div>
+  );
+}
 
-    <div class="nav-cta">
-      <a href="contact.html" class="btn btn--outline">Customer Support</a>
-      <a href="contact.html" class="btn btn--primary">Start Your Project <span class="arrow">→</span></a>
-    </div>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
-  </div>
-</nav>
-
-<!-- Hero with carousel & Ken Burns -->
-<header class="hero hero--photo">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow">The Gulf Coast's lighting-first smart home</span>
-      <h1 class="display">Home, <em class="accent">in its best light.</em></h1>
-      <p class="lead">LUMA is a residential technology studio on the Southwest Florida Gulf Coast. We tune your home to the rhythm of the sun — shading, lighting, security, audio, and network — so the hour takes care of itself.</p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn btn--primary">Start Your Project <span class="arrow">→</span></a>
-        <a href="budget.html" class="btn btn--ghost-light">Budget Calculator</a>
+/* ─── NAV ─── */
+function Nav({navigate}) {
+  const [ddOpen, setDdOpen] = useState(false);
+  const [hoverId, setHoverId] = useState('lighting');
+  const navRef = useRef(null);
+  useEffect(()=>{
+    const h = e=>{if(navRef.current&&!navRef.current.contains(e.target))setDdOpen(false);};
+    document.addEventListener('mousedown',h);
+    return()=>document.removeEventListener('mousedown',h);
+  },[]);
+  return (
+    <div ref={navRef} style={{position:'sticky',top:0,zIndex:200}}>
+      <div className="topbar">
+        <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
+        <span>Mon–Sat · 9am – 6pm &nbsp;·&nbsp; +1 (941) 555-1234</span>
       </div>
-      <div class="carousel-dots" data-hero-dots>
-        <button class="is-on" data-idx="0" aria-label="Slide 1"></button>
-        <button data-idx="1" aria-label="Slide 2"></button>
-        <button data-idx="2" aria-label="Slide 3"></button>
-        <button data-idx="3" aria-label="Slide 4"></button>
-      </div>
-      <div class="hero-meta">
-        <div><strong>5</strong><span>Counties served</span></div>
-        <div><strong>$15K–$50K+</strong><span>Project range</span></div>
-        <div><strong>12 mo</strong><span>Service included</span></div>
-      </div>
-    </div>
-
-    <div class="hero-carousel" data-hero>
-      <div class="slide is-on" data-img="gulf-sunset" data-caption="Golden hour · Siesta Key"></div>
-      <div class="slide" data-img="waterfront-lanai" data-caption="Waterfront lanai · Naples"></div>
-      <div class="slide" data-img="lighting-scene" data-caption="Evening scene · Lutron RadioRA 3"></div>
-      <div class="slide" data-img="home-theater" data-caption="Dedicated theater · Longboat Key"></div>
-
-      <div class="hex-overlay" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
-      </div>
-
-      <div class="caption" data-hero-caption>
-        <span>Now playing</span>
-        Golden hour · Siesta Key
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- Partners strip -->
-<section class="section--tight" style="background:var(--cream); border-bottom:1px solid var(--line);">
-  <div class="container">
-    <p class="eyebrow eyebrow--teal text-center" style="display:block;text-align:center;">Built on open, professional-grade platforms</p>
-    <div class="partners">
-      <div class="p-logo">Lutron&nbsp;RadioRA&nbsp;3</div>
-      <div class="p-logo">Ubiquiti&nbsp;UniFi</div>
-      <div class="p-logo">Ubiquiti&nbsp;Protect</div>
-      <div class="p-logo">Somfy</div>
-      <div class="p-logo">Sonos</div>
-      <div class="p-logo">Sonance</div>
-      <div class="p-logo">Josh.ai</div>
-    </div>
-  </div>
-</section>
-
-<!-- Smart Home Solutions — 7-category grid with live images -->
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Smart Home Solutions</span>
-      <h2 class="display">Seven disciplines. <em class="accent">One home.</em></h2>
-      <p>We design, install, and maintain the layers that let a modern Gulf Coast residence feel effortless. Hover each tile — see what your home could look like.</p>
-    </div>
-
-    <div class="cat-grid">
-      <a href="lighting.html" class="cat cat--wide" data-reveal>
-        <div class="cat-bg" data-img="lighting-scene"></div>
-        <div class="cat-body">
-          <div class="hex">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a7 7 0 0 0-4 12.7V18a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 3z"/></svg>
+      <nav className="nav">
+        <div className="nav-logo" onClick={()=>navigate('home')}>
+          <div className="logo-dot"/>
+          <div className="logo-text">
+            <span className="logo-luma">LUMA</span>
+            <span className="logo-sub">Smart Home</span>
           </div>
-          <h3>Indoor &amp; Outdoor Lighting</h3>
-          <span class="go">Explore <span>→</span></span>
         </div>
-      </a>
+        <div className="nav-links">
+          <button className={`dropdown-trigger${ddOpen?' open':''}`} onClick={()=>setDdOpen(v=>!v)}>
+            Smart Home Solutions
+            <svg className={`chevron${ddOpen?' open':''}`} width="12" height="8" viewBox="0 0 12 8" fill="none">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </button>
+          {['Budget Calculator','Testimonials','Our Work','About'].map(l=>(
+            <span key={l} className="nav-link" onClick={()=>navigate(l.toLowerCase().replace(' ','-'))}>{l}</span>
+          ))}
+        </div>
+        <div className="nav-actions">
+          <button className="btn-ghost" onClick={()=>navigate('contact')}>Customer Support</button>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Start Your Project →</button>
+        </div>
+      </nav>
+      <MegaDropdown active={ddOpen} hoverId={hoverId} setHoverId={setHoverId}
+        navigate={p=>{navigate(p);setDdOpen(false)}}/>
+    </div>
+  );
+}
 
-      <a href="shading.html" class="cat" data-reveal>
-        <div class="cat-bg" data-img="window-shades"></div>
-        <div class="cat-body">
-          <div class="hex">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="10"/><path d="M4 9h16"/></svg>
+/* ─── BENTO IMAGE MAP (data-img keys) ─── */
+const BENTO_IMAGES = {
+  'lighting-scene':    PHOTOS.lighting,
+  'window-shades':     PHOTOS.window,
+  'security-camera':   PHOTOS.security,
+  'home-theater':      PHOTOS.theater,
+  'waterfront-lanai':  PHOTOS.heroHome,
+  'networking-rack':   PHOTOS.networking,
+};
+
+/* ─── BENTO ICONS (16px white SVG) ─── */
+const bentoIcons = {
+  lit: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M8 1.5a4 4 0 0 0-2.5 7.1V11h5V8.6A4 4 0 0 0 8 1.5z"/><path d="M6 12.5h4M6.6 14h2.8"/></svg>,
+  win: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round"><rect x="2.5" y="2" width="11" height="12" rx="0.6"/><line x1="2.5" y1="5.5" x2="13.5" y2="5.5"/><line x1="2.5" y1="8.5" x2="13.5" y2="8.5"/><line x1="2.5" y1="11.5" x2="13.5" y2="11.5"/></svg>,
+  sec: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M8 1.5L2.5 3.8v3.7c0 3.2 2.3 5.7 5.5 6.5 3.2-.8 5.5-3.3 5.5-6.5V3.8L8 1.5z"/><path d="M5.5 7.8l1.8 1.8L11 6"/></svg>,
+  thr: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinejoin="round"><rect x="1.5" y="3" width="13" height="9" rx="1.3"/><polygon points="6.5,5.8 6.5,9.7 10.3,7.75" fill="white"/></svg>,
+  av: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round"><path d="M3.5 6h1.7L8 3.5v9L5.2 10H3.5V6z"/><path d="M10 6.2a2.6 2.6 0 0 1 0 3.6"/><path d="M11.7 4.5a5 5 0 0 1 0 7"/></svg>,
+  auto: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="8" r="6"/><polyline points="8,4.5 8,8 5.5,6.2"/></svg>,
+  net: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round"><path d="M2.2 6.2A9 9 0 0 1 13.8 6.2" strokeOpacity=".5"/><path d="M3.8 8.4a7 7 0 0 1 8.4 0" strokeOpacity=".75"/><path d="M5.5 10.6a4.5 4.5 0 0 1 5 0"/><circle cx="8" cy="13" r="1.1" fill="white" stroke="none"/></svg>,
+};
+
+const BENTO_TILES = [
+  {area:'lit',  href:'lighting',   img:'lighting-scene',  eyebrow:'Premium lighting control', h3:'Indoor & outdoor lighting'},
+  {area:'win',  href:'shading',    img:'window-shades',   eyebrow:'Motorized shading systems', h3:'Window treatments'},
+  {area:'sec',  href:'security',   img:'security-camera', eyebrow:'On-prem · Encrypted',       h3:'Security & surveillance'},
+  {area:'thr',  href:'theaters',   img:'home-theater',    eyebrow:'Calibrated · Acoustic',     h3:'Home theaters'},
+  {area:'av',   href:'audio',      img:null, audioBg:true, eyebrow:'Whole-home audio · Indoor + lanai', h3:'Audio & video'},
+  {area:'auto', href:'automation', img:'waterfront-lanai',eyebrow:'One press · The right state',h3:'Home automation'},
+  {area:'net',  href:'networking', img:'networking-rack', eyebrow:'Wi-Fi 6/7 · Enterprise',     h3:'Networking'},
+];
+
+function BentoTile({tile, navigate}) {
+  const onClick = (e) => { e.preventDefault(); navigate(tile.href); };
+  const bgStyle = tile.img
+    ? {backgroundImage:`url(${BENTO_IMAGES[tile.img]})`}
+    : undefined;
+  return (
+    <a className="cat-tile" data-area={tile.area} href={`${tile.href}.html`}
+       onClick={onClick}
+       aria-label={`${tile.h3} service overview`}>
+      {tile.audioBg
+        ? <div className="cat-bg luma-bg--audio"/>
+        : <div className="cat-bg" data-img={tile.img} style={bgStyle}/>}
+      <div className="cat-overlay"/>
+      <span className="hex" aria-hidden="true">{bentoIcons[tile.area]}</span>
+      <span className="cat-arrow" aria-hidden="true">→</span>
+      <div className="cat-text">
+        <span className="eyebrow">{tile.eyebrow}</span>
+        <h3>{tile.h3}</h3>
+      </div>
+    </a>
+  );
+}
+
+/* ─── SERVICE PHOTO CARD ─── */
+function ServiceCard({id, name, height=240}) {
+  return (
+    <div className="photo-card" style={{height}}>
+      <img src={PHOTOS[id]} alt={name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block',transition:'transform .5s'}}/>
+      <div className="photo-card-overlay">
+        <div className="photo-card-icon"><HexIcon type={id} size={30}/></div>
+        <div className="photo-card-title" dangerouslySetInnerHTML={{__html:name}}/>
+        <div className="photo-card-explore">EXPLORE →</div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── HOME PAGE ─── */
+function HomePage({navigate}) {
+  return (
+    <div className="page">
+      {/* Hero */}
+      <section className="hero">
+        <div>
+          <div className="hero-tag">Gulf Coast Smart Home Specialists</div>
+          <h1 className="hero-title">A home that knows <em>how you live.</em></h1>
+          <p className="hero-body">LUMA designs, installs, and maintains the systems that make a modern Gulf Coast residence feel effortless — lighting, shading, climate, audio, security, and networking, all unified under one calm interface.</p>
+          <p className="hero-body">Sarasota-based. Serving discerning homeowners from Bradenton to Naples.</p>
+          <span className="hero-link" onClick={()=>navigate('contact')}>Start your project →</span>
+        </div>
+        <div className="hero-img">
+          <img src={PHOTOS.heroHome} alt="Luxury Gulf Coast residence"/>
+        </div>
+      </section>
+
+      {/* Smart Home Solutions — bento */}
+      <section className="services-section">
+        <div className="services-intro">
+          <div className="sec-label">Smart Home Solutions</div>
+          <h2 className="sec-title">Seven disciplines. <em>One home.</em></h2>
+          <p className="sec-body">We design, install, and maintain the layers that let a modern Gulf Coast residence feel effortless.</p>
+        </div>
+        <div className="cat-bento">
+          {BENTO_TILES.map(t => <BentoTile key={t.area} tile={t} navigate={navigate}/>)}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── SHADING PAGE ─── */
+function ShadingPage({navigate}) {
+  const moments = [
+    {
+      key:'m1', time:'07:10', name:'Open East',
+      desc:'Morning-facing shades rise. West stays closed to preserve coolness until the sun swings.',
+      photo: PHOTOS.moment1,
+      // warm morning gold overlay
+      grade:'linear-gradient(rgba(255,180,60,.18),rgba(120,70,0,.0))',
+    },
+    {
+      key:'m2', time:'14:30', name:'Shield West',
+      desc:'Solar shades drop on west-facing glass. AC load drops. Finishes stay protected from UV.',
+      photo: PHOTOS.moment2,
+      // cool blue midday
+      grade:'linear-gradient(rgba(30,80,120,.25),rgba(0,0,0,.0))',
+    },
+    {
+      key:'m3', time:'19:40', name:'Open All',
+      desc:'Ten minutes before sunset, every shade lifts. The view comes back to the room.',
+      photo: PHOTOS.moment3,
+      // orange sunset
+      grade:'linear-gradient(rgba(200,90,20,.35),rgba(100,30,0,.1))',
+    },
+    {
+      key:'m4', time:'22:45', name:'Close Privacy',
+      desc:'Blackout in bedrooms, drapery closes in living areas. Night mode, one press.',
+      photo: PHOTOS.moment4,
+      // deep night blue
+      grade:'linear-gradient(rgba(10,20,60,.55),rgba(0,0,20,.3))',
+    },
+  ];
+  return (
+    <div className="page">
+      <section style={{padding:'72px 80px 0',maxWidth:1280,margin:'0 auto'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:64,alignItems:'center'}}>
+          <div>
+            <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>Somfy · Lutron Sivoia QS</div>
+            <h1 className="hero-title">Three layers<br/>of light.</h1>
+            <p className="hero-body">A properly shaded Gulf Coast home runs three layers on every elevation: <strong style={{color:'var(--accent)',fontWeight:500}}>solar</strong> (heat and glare during the day), <strong style={{color:'var(--accent)',fontWeight:500}}>blackout</strong> (privacy and sleep), and <strong style={{color:'var(--accent)',fontWeight:500}}>drapery</strong> (softness and warmth). LUMA specs all three into a single motorized system.</p>
+            <ul className="checklist" style={{marginTop:16}}>
+              <li>Lutron Sivoia QS — 1,000 shades, one app</li>
+              <li>Astro-clock: open at first light, close at golden hour</li>
+              <li>Integration with Lutron lighting — one keypad, whole room</li>
+            </ul>
+            <button className="btn-solid" style={{marginTop:28}} onClick={()=>navigate('contact')}>Start Your Project →</button>
           </div>
-          <h3>Window Treatments</h3>
-          <span class="go">Explore <span>→</span></span>
-        </div>
-      </a>
-
-      <a href="audio.html" class="cat" data-reveal>
-        <div class="cat-bg" data-img="home-theater"></div>
-        <div class="cat-body">
-          <div class="hex">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="12" rx="1.5"/><circle cx="12" cy="11" r="3"/></svg>
+          <div className="split-photo">
+            <img src={PHOTOS.heroShading} alt="Motorized shades in luxury living room"/>
           </div>
-          <h3>Home Theaters</h3>
-          <span class="go">Explore <span>→</span></span>
         </div>
-      </a>
+      </section>
 
-      <a href="security.html" class="cat" data-reveal>
-        <div class="cat-bg" data-img="security-camera"></div>
-        <div class="cat-body">
-          <div class="hex">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>
+      {/* Four moments */}
+      <section className="moments-section">
+        <div className="sec-label">Scenes built around the sun</div>
+        <h2 className="sec-title">Four moments <em>your shades<br/>already know.</em></h2>
+        <div className="moments-grid">
+          {moments.map(m=>(
+            <div key={m.key} className="moment-card">
+              <img src={m.photo} alt={m.name}/>
+              {/* colour grade layer */}
+              <div className="moment-grade" style={{background:m.grade, mixBlendMode:'multiply'}}/>
+              <div className="moment-inner">
+                <div className="moment-time">{m.time}</div>
+                <div className="moment-name">{m.name}</div>
+                <p className="moment-desc">{m.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── LIGHTING PORTFOLIO ROW ─── */
+const PORTFOLIO_ITEMS = [
+  {
+    img: 'lightingKetra',
+    eyebrow: 'Scene Design',
+    headline: 'Every moment has its light.',
+    desc: 'Morning coffee, focused work, candlelit dinner, movie night — we pre-program each scene to the exact colour temperature and intensity your life calls for. One keypad tap shifts the entire home.',
+    cta: 'See How Scenes Work →',
+    flip: false,
+  },
+  {
+    img: 'lightingRania',
+    eyebrow: 'Fixture Coordination',
+    headline: 'Your spec, perfectly executed.',
+    desc: 'We work downstream of your interior designer and lighting consultant. Visual Comfort chandeliers, RH pendants, custom cove in the millwork — every fixture is tuned to dim smoothly, hold colour across levels, and respond to the right scene.',
+    cta: 'Talk to a Lighting Specialist →',
+    flip: true,
+  },
+  {
+    img: 'lightingLumaris',
+    eyebrow: 'Unified Control',
+    headline: 'One system. Every zone.',
+    desc: 'Keypads, app, voice — all unified under a single control layer. We match keypad finishes to your hardware and wood tones, commission every zone on-site, and leave you with a system that any family member can use without a manual.',
+    cta: 'Start Your Project →',
+    flip: false,
+  },
+];
+
+function PortfolioRow({item, navigate}) {
+  const imgEl = (
+    <div style={{flex:'0 0 56%', borderRadius:14, overflow:'hidden', boxShadow:'0 8px 48px rgba(0,0,0,0.11)'}}>
+      <img src={PHOTOS[item.img]} alt={item.headline}
+        style={{width:'100%', height:420, objectFit:'cover', display:'block'}}/>
+    </div>
+  );
+  const textEl = (
+    <div style={{flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:14, padding: item.flip ? '0 40px 0 0' : '0 0 0 40px'}}>
+      <span style={{fontFamily:'var(--font-body)', fontSize:12, letterSpacing:'0.12em', textTransform:'uppercase', color:'var(--accent)', fontWeight:600}}>{item.eyebrow}</span>
+      <h3 style={{margin:0, fontFamily:'var(--font-head)', fontSize:28, fontWeight:400, color:'var(--ink)', lineHeight:1.2}}>{item.headline}</h3>
+      <p style={{margin:0, fontFamily:'var(--font-body)', fontSize:16, lineHeight:1.65, color:'var(--ink-light)'}}>{item.desc}</p>
+      <button className="btn-solid" style={{alignSelf:'flex-start', marginTop:6}} onClick={()=>navigate('contact')}>{item.cta}</button>
+    </div>
+  );
+  return (
+    <div style={{display:'flex', gap:0, alignItems:'center', flexDirection: item.flip ? 'row-reverse' : 'row'}}>
+      {imgEl}
+      {textEl}
+    </div>
+  );
+}
+
+/* ─── LIGHTING MOSAIC ("What we install") ─── */
+const MOSAIC_TILES = [
+  {area:'a', img:'lit-cove',         eyebrow:'Architectural',  name:'Cove & soffit',           detail:'Hidden warm 2700K LED tape, dimmable to 0.1%',
+    icon:(<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><path d="M2 5.5h12"/><path d="M3 8h10" strokeOpacity=".7"/><path d="M4 10.5h8" strokeOpacity=".45"/><path d="M5 13h6" strokeOpacity=".25"/></svg>)},
+  {area:'b', img:'lit-keypad',       eyebrow:'Wall control',   name:'Lutron Palladiom keypad', detail:'Engraved buttons in your own words',
+    icon:(<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><rect x="3" y="2.5" width="10" height="11" rx="1"/><line x1="5" y1="5" x2="11" y2="5"/><line x1="5" y1="7.5" x2="11" y2="7.5"/><line x1="5" y1="10" x2="11" y2="10"/><line x1="5" y1="12.5" x2="11" y2="12.5"/></svg>)},
+  {area:'c', img:'lit-landscape-fl', eyebrow:'Exterior',       name:'Landscape uplighting',    detail:'Sabal palms, oak canopies, façade wash',
+    icon:(<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2.5c-2.2 0-3.5 1.8-3 3.5.5-.6 1.4-.9 2.2-.5C6.6 6 6 6.7 6.2 7.6c.6-.5 1.4-.4 1.8.2-.4.6-.4 1.4 0 1.9V14"/><line x1="6" y1="14.5" x2="10" y2="14.5"/><path d="M3.5 13.5l1-2M12.5 13.5l-1-2" strokeOpacity=".55"/></svg>)},
+  {area:'d', img:'lit-pendants',     eyebrow:'Decorative',     name:'Pendants & sconces',      detail:'Phase-cut to ELV, no flicker on camera',
+    icon:(<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="1.5" x2="8" y2="6"/><path d="M5 6h6l-1 4.5H6z"/><path d="M6.3 11l-.5 2M9.7 11l.5 2" strokeOpacity=".55"/></svg>)},
+  {area:'e', img:'lit-app',          eyebrow:'In hand',        name:'Mobile scenes',           detail:'One press: Alba · Day · Sera · Notte',
+    icon:(<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><rect x="4.5" y="1.5" width="7" height="13" rx="1.2"/><path d="M6 5.5c0 1.1.9 2 2 2s2-.9 2-2"/><circle cx="8" cy="12" r=".7" fill="white" stroke="none"/></svg>)},
+  {area:'f', img:'lit-lanai-fl',     eyebrow:'Outdoor living', name:'Lanai & path',            detail:'Warm path tape, gulf-side glare control',
+    icon:(<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="2.5,13 5,13 5,10 8,10 8,7 11,7 11,4 13.5,4"/></svg>)},
+];
+
+function LightingMosaic() {
+  return (
+    <section className="svc-mosaic">
+      <style>{`
+        .svc-mosaic{background:var(--cream);padding:clamp(4rem,8vw,6.5rem) 0}
+        .svc-mosaic-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+        .svc-mosaic-head{text-align:center;max-width:680px;margin:0 auto 44px}
+        .svc-mosaic-head .sec-label{margin-bottom:12px}
+        .svc-mosaic-head h2{font-family:var(--serif);font-size:clamp(2rem,3.4vw,3rem);line-height:1.1;font-weight:600;text-wrap:pretty}
+        .svc-mosaic-head h2 em{color:var(--accent);font-style:italic}
+        .svc-mosaic-head .lead{margin-top:14px;color:var(--mid);line-height:1.7;font-size:15px}
+        .svc-mosaic-grid{display:grid;gap:.5rem;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:repeat(2,320px);grid-template-areas:"a b c" "a d e" "f f e"}
+        .svc-tile{position:relative;overflow:hidden;border-radius:14px;margin:0;background:#1B1A28;isolation:isolate}
+        .svc-tile[data-area="a"]{grid-area:a}
+        .svc-tile[data-area="b"]{grid-area:b}
+        .svc-tile[data-area="c"]{grid-area:c}
+        .svc-tile[data-area="d"]{grid-area:d}
+        .svc-tile[data-area="e"]{grid-area:e}
+        .svc-tile[data-area="f"]{grid-area:f}
+        .svc-tile .svc-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1);transition:transform 600ms cubic-bezier(.2,.7,.2,1);z-index:0}
+        .svc-tile:hover .svc-bg{transform:scale(1.05)}
+        .svc-tile .svc-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 0%,transparent 40%,rgba(15,74,66,0.85) 100%);transition:background 420ms ease}
+        .svc-tile:hover .svc-grad{background:linear-gradient(180deg,transparent 0%,rgba(15,74,66,0.25) 30%,rgba(15,74,66,0.95) 100%)}
+        .svc-tile .hex{position:absolute;top:1.25rem;left:1.25rem;z-index:3;width:38px;height:38px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
+        .svc-tile .svc-text{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.25rem;color:#fff}
+        .svc-tile .svc-eyebrow{display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:6px}
+        .svc-tile h4{font-family:var(--sans);font-size:1.05rem;font-weight:500;color:#fff;margin:0;display:inline-block;position:relative;padding-bottom:3px;line-height:1.3}
+        .svc-tile h4::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 320ms ease}
+        .svc-tile:hover h4::after{transform:scaleX(1)}
+        .svc-tile p{font-family:var(--sans);font-size:.85rem;color:rgba(255,255,255,.7);margin:6px 0 0;line-height:1.45}
+        .svc-mosaic-foot{text-align:center;margin-top:36px;color:var(--mid);font-size:.9rem;font-style:italic}
+        @media (max-width:1099px){
+          .svc-mosaic-inner{padding:0 40px}
+          .svc-mosaic-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;grid-template-areas:"a a" "b c" "d e" "f f"}
+          .svc-tile{min-height:280px}
+        }
+        @media (max-width:759px){
+          .svc-mosaic-inner{padding:0 24px}
+          .svc-mosaic-grid{grid-template-columns:1fr;grid-template-areas:"a" "b" "c" "d" "e" "f"}
+          .svc-tile{aspect-ratio:4/3;min-height:0}
+        }
+      `}</style>
+      <div className="svc-mosaic-inner">
+        <header className="svc-mosaic-head">
+          <span className="sec-label">What we install</span>
+          <h2>Light is <em>six layers</em>, not one switch.</h2>
+          <p className="lead">Recessed downs, cove, accent, decorative, task, and exterior — each on its own dimming track, all on one keypad. Designed with the architect, not after.</p>
+        </header>
+        <div className="svc-mosaic-grid">
+          {MOSAIC_TILES.map(t=>(
+            <figure key={t.area} className="svc-tile" data-area={t.area} aria-label={`${t.eyebrow} — ${t.name}`}>
+              <div className="svc-bg" data-img={t.img} style={{backgroundImage:`url(${PHOTOS[t.img]})`}}/>
+              <div className="svc-grad"/>
+              <span className="hex" aria-hidden="true">{t.icon}</span>
+              <div className="svc-text">
+                <span className="svc-eyebrow">{t.eyebrow}</span>
+                <h4>{t.name}</h4>
+                <p>{t.detail}</p>
+              </div>
+            </figure>
+          ))}
+        </div>
+        <p className="svc-mosaic-foot">All on Lutron RadioRA 3. One scene, one press, the whole house responds.</p>
+      </div>
+    </section>
+  );
+}
+
+/* ─── LIGHTING PAGE ─── */
+function LightingPage({navigate}) {
+  return (
+    <div className="page">
+      {/* hero intro */}
+      <section style={{maxWidth:720, margin:'0 auto', textAlign:'center', padding:'64px 24px 56px'}}>
+        <div className="tag-pill" style={{display:'inline-block', marginBottom:16}}>Decorative &amp; Architectural, Coordinated</div>
+        <h1 className="hero-title" style={{fontSize:50, marginBottom:16}}>Your fixtures.<br/>Our controls.</h1>
+        <p className="hero-body" style={{maxWidth:580, margin:'0 auto 28px'}}>Lighting is the most personal layer of a home. LUMA coordinates your fixture specification with a control design that makes every room feel exactly as intended — at 8am and at 8pm.</p>
+        <ul className="checklist" style={{display:'inline-block', textAlign:'left', margin:'0 auto'}}>
+          <li>Decorative &amp; architectural lighting under one control spec</li>
+          <li>Warm-dim tuned for evening colour temperature (2700K → 1800K)</li>
+          <li>Shading fabric library — compatible motors for your sample selection</li>
+          <li>Keypad finishes matched to switch plates, hardware, and wood tones</li>
+          <li>Trade pricing on Lutron, Somfy, Ubiquiti, and audio partners</li>
+        </ul>
+      </section>
+
+      {/* three service blocks */}
+      <section style={{maxWidth:1120, margin:'0 auto', padding:'0 48px 96px', display:'flex', flexDirection:'column', gap:88}}>
+        {PORTFOLIO_ITEMS.map((item, i) => (
+          <PortfolioRow key={i} item={item} navigate={navigate}/>
+        ))}
+      </section>
+
+      {/* What we install — mosaic */}
+      <LightingMosaic/>
+    </div>
+  );
+}
+
+/* ─── DESIGNERS PAGE ─── */
+function DesignersPage({navigate}) {
+  return (
+    <div className="page">
+      <section className="split-hero">
+        <div>
+          <div className="tag-pill">For Interior Designers &amp; Architects</div>
+          <h1 className="hero-title" style={{fontSize:50}}>Decorative &amp; architectural, <em style={{color:'var(--accent)',fontStyle:'italic'}}>one proposal.</em></h1>
+          <p className="hero-body">We coordinate decorative fixtures with your spec and lighting designer — from Visual Comfort and RH pendants to custom millwork cove lighting. You get a single line-item proposal covering fixtures, drivers, control, and commissioning.</p>
+          <p className="hero-body">We partner with ASID Florida designers and architects across the Gulf Coast.</p>
+          <ul className="checklist">
+            <li>Single proposal: fixtures + drivers + control + commissioning</li>
+            <li>Trade pricing across our full partner network</li>
+            <li>Site visits and lunch-and-learns for your team</li>
+            <li>Submittal packages formatted for your workflow</li>
+          </ul>
+          <button className="btn-solid" style={{marginTop:28}} onClick={()=>navigate('contact')}>Join our designer program →</button>
+        </div>
+        <div className="split-photo">
+          <img src={PHOTOS.heroDesigners} alt="Luxury interior design with smart lighting"/>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── THEATERS PAGE ─── */
+const TH_LAYERS = [
+  {k:'projection', title:'Projection', icon:(
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="2.5" y="6" width="12" height="8" rx="1.5"/><circle cx="8" cy="10" r="2"/><path d="M14.5 8.5l3-1.5v6l-3-1.5z"/></svg>
+  ), desc:'JVC NZ-series or Sony VPL laser projectors paired with Stewart Filmscreen or Seymour AT canvas. 4K HDR, anamorphic option for 2.40:1 rooms.'},
+  {k:'sound', title:'Sound', icon:(
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="3" y="6" width="14" height="8" rx="1.2"/><circle cx="6.5" cy="10" r="1.4"/><circle cx="13.5" cy="10" r="1.4"/><line x1="9.5" y1="9" x2="10.5" y2="9"/><line x1="9.5" y1="11" x2="10.5" y2="11"/></svg>
+  ), desc:'Trinnov Altitude or Storm Audio processing. Dolby Atmos and DTS:X in 7.4.4 or 9.4.6 layouts, every channel tuned to the room.'},
+  {k:'speakers', title:'Speakers', icon:(
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="6" y="2.5" width="8" height="15" rx="1.2"/><circle cx="10" cy="7.5" r="1.4"/><circle cx="10" cy="13" r="2.2"/></svg>
+  ), desc:'Sonance Reference or James Loudspeaker behind acoustically transparent screens. The room reads as architecture; nothing visible.'},
+  {k:'acoustics', title:'Acoustics', icon:(
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M3.5 10c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0"/><path d="M3.5 13.5c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0" strokeOpacity=".55"/><path d="M3.5 6.5c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0" strokeOpacity=".35"/></svg>
+  ), desc:'Fabric-wrapped absorbers and diffusers designed in from day one. Bass traps in corners. No flutter, no slap echo, no audible room.'},
+  {k:'seating', title:'Seating', icon:(
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 14v-4a2 2 0 012-2h8a2 2 0 012 2v4"/><path d="M3 14h14v2.5H3z"/><line x1="6" y1="14" x2="6" y2="17"/><line x1="14" y1="14" x2="14" y2="17"/></svg>
+  ), desc:'Cineak or Fortress motorized seats with butt-kickers and cup-cooled holders. Risers cut on-site so every seat owns a sightline.'},
+  {k:'control', title:'Control', icon:(
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7" cy="7" r="1"/><circle cx="13" cy="7" r="1"/><circle cx="7" cy="13" r="1"/><circle cx="13" cy="13" r="1"/></svg>
+  ), desc:'One Crestron or Josh.ai press: lights dim, shades drop, projector wakes, source ready. Zero remotes on the coffee table.'},
+];
+
+const TH_ROOMS = [
+  {name:'Living room theater', desc:'Visible TV, hidden subs, ambient-friendly. Movie nights without darkening the whole room.'},
+  {name:'Dedicated theater',   desc:'Light-controlled, riser seating, reference sound. Built for the film, not the furniture.'},
+  {name:'Outdoor cinema',      desc:'Weatherized lanai screen, all-weather speakers. Sunset to credits.'},
+];
+
+const TH_WHY = [
+  {n:'01', text:'Acoustically modeled before construction. We send REW data, not vibes — predicted response, treatment placement, and seat-by-seat coverage maps.'},
+  {n:'02', text:'CEDIA-aligned design process. We build theaters every month, not once a year. The mistakes are out of our system.'},
+  {n:'03', text:'Calibrated and recalibrated. Every theater includes a 12-month tune-up visit at no charge — speakers settle, rooms breathe, ears recalibrate.'},
+];
+
+const TH_PROJECTS = [
+  {key:'projectBayfront',      tag:'Sarasota · Bayfront',     name:'9.2.6 Atmos · 144" anamorphic'},
+  {key:'projectWarmInterior',  tag:'Naples · Port Royal',     name:'Walnut-paneled cinema · 12 seats'},
+  {key:'projectArchitectural', tag:'Boca Grande · Beachside', name:'Hidden screen · living-room theater'},
+];
+
+const TH_CREDS = [
+  'CEDIA Member','THX-Aligned Design','Trinnov Certified','ISF Calibrator','12-Month Tune-Up Included',
+];
+
+function TheatersPage({navigate}) {
+  return (
+    <div className="page">
+      {/* 1. Hero */}
+      <section className="th-hero">
+        <div>
+          <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>Dedicated cinema rooms</div>
+          <h1 className="hero-title">A room <em>designed for sound,</em> not retrofit for it.</h1>
+          <p className="hero-body">The difference between a TV in a media room and a true theater is acoustic intent — walls, sightlines, seats, and processing thought through before drywall. We design from the room out, not the screen in.</p>
+          <div className="th-cta-row">
+            <button className="btn-solid" onClick={()=>navigate('our-work')}>Tour a finished theater →</button>
+            <button className="btn-ghost" onClick={()=>navigate('contact')}>Talk to us</button>
           </div>
-          <h3>Security &amp; Surveillance</h3>
-          <span class="go">Explore <span>→</span></span>
         </div>
-      </a>
+        <div className="th-hero-img"><img src={PHOTOS.theaterAnamorphic} alt="Anamorphic home theater"/></div>
+      </section>
 
-      <a href="audio.html" class="cat" data-reveal>
-        <div class="cat-bg luma-bg--audio"></div>
-        <div class="cat-body">
-          <div class="hex">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+      {/* 2. Anatomy */}
+      <section className="th-section">
+        <div className="sec-label">Anatomy</div>
+        <h2 className="sec-title">Six layers, <em>one room.</em></h2>
+        <div className="th-grid-3">
+          {TH_LAYERS.map(l=>(
+            <div key={l.k} className="th-card">
+              <div className="th-card-icon">{l.icon}</div>
+              <h3>{l.title}</h3>
+              <p>{l.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. Where it lives */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="th-split">
+            <div className="th-split-img"><img src={PHOTOS.theaterRoom} alt="Dedicated theater room"/></div>
+            <div>
+              <div className="sec-label" style={{textAlign:'left'}}>Three room types</div>
+              <h2 className="sec-title" style={{textAlign:'left'}}>From <em>media room</em> to <em>private cinema.</em></h2>
+              <div className="th-rooms">
+                {TH_ROOMS.map(r=>(
+                  <div key={r.name} className="th-room">
+                    <div className="th-room-name">{r.name}</div>
+                    <div className="th-room-desc">{r.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <h3>Audio &amp; Video</h3>
-          <span class="go">Explore <span>→</span></span>
         </div>
-      </a>
+      </section>
 
-      <a href="networking.html" class="cat" data-reveal>
-        <div class="cat-bg" data-img="networking-rack"></div>
-        <div class="cat-body">
-          <div class="hex">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="9" width="16" height="8" rx="1.5"/><circle cx="8" cy="13" r="1"/><circle cx="12" cy="13" r="1"/><circle cx="16" cy="13" r="1"/></svg>
+      {/* 4. Why LUMA */}
+      <section className="th-section">
+        <div className="sec-label">Why LUMA</div>
+        <h2 className="sec-title">Theaters that <em>survive their first movie night.</em></h2>
+        <div className="th-why">
+          {TH_WHY.map(r=>(
+            <div key={r.n} className="th-why-row">
+              <div className="th-why-num">{r.n}</div>
+              <div className="th-why-text">{r.text}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. Recent rooms */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">Recent rooms</div>
+          <h2 className="sec-title">A few we're <em>proud of.</em></h2>
+          <div className="th-projects">
+            {TH_PROJECTS.map(p=>(
+              <div key={p.key} className="th-project" onClick={()=>navigate('our-work')}>
+                <img src={PHOTOS[p.key]} alt={p.name}/>
+                <div className="th-project-overlay">
+                  <div className="th-project-tag">{p.tag}</div>
+                  <div className="th-project-name">{p.name}</div>
+                </div>
+              </div>
+            ))}
           </div>
-          <h3>Networking</h3>
-          <span class="go">Explore <span>→</span></span>
         </div>
-      </a>
+      </section>
 
-      <a href="index.html#rituals" class="cat cat--wide" data-reveal>
-        <div class="cat-bg" data-img="waterfront-lanai"></div>
-        <div class="cat-body">
-          <div class="hex">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          </div>
-          <h3>Home Automation — Alba · Day · Sera · Notte</h3>
-          <span class="go">Explore <span>→</span></span>
+      {/* 6. Credentials */}
+      <section className="th-section" style={{paddingTop:48,paddingBottom:48}}>
+        <div className="sec-label">Credentials</div>
+        <div className="th-credentials">
+          {TH_CREDS.map(c=><span key={c} className="th-chip">{c}</span>)}
         </div>
-      </a>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- Lifestyle split -->
-<section class="section section--cream">
-  <div class="container">
-    <div class="split-lifestyle">
-      <div class="split-copy">
-        <span class="eyebrow">Smart Home Living Starts Here</span>
-        <h2 class="display display--light">The only American coast with an <em class="accent">ocean sunset</em>.</h2>
-        <p class="lead">Our homes are oriented to the water. Mid-afternoon sun carves through west-facing glass; evening light is the reason you came here in the first place. LUMA is built to honor both — softening glare without killing the view, warming the house to the hour, and handing the sunset back to you.</p>
-        <div class="hero-actions">
-          <a href="projects.html" class="btn btn--primary">See our work <span class="arrow">→</span></a>
-          <a href="about.html" class="btn btn--ghost-light">About the studio</a>
-        </div>
-      </div>
-      <div class="split-media" data-img="gulf-sunset"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Ritual of the hour -->
-<section class="section" id="rituals">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">The rhythm of your day</span>
-      <h2>Every hour has its <em class="accent">glow</em>.</h2>
-      <p>Your home is built around the sun — not the app. LUMA scenes rise with the light, hold the afternoon open to the Gulf, dim into the golden hour, and close the night on their own.</p>
-    </div>
-
-    <div class="ritual-grid">
-      <div class="ritual ritual--dawn" data-reveal>
-        <div class="ritual-time">06:40 — First light</div>
-        <h3>Alba</h3>
-        <p>Shades rise to the east. Soft warm keypads light the hallway. Coffee station wakes.</p>
-      </div>
-      <div class="ritual ritual--midday" data-reveal>
-        <div class="ritual-time">13:20 — Gulf bright</div>
-        <h3>Day</h3>
-        <p>North-facing shades hold open to the water. South and west glare softens automatically.</p>
-      </div>
-      <div class="ritual ritual--golden" data-reveal>
-        <div class="ritual-time">19:42 — Golden hour</div>
-        <h3>Sera</h3>
-        <p>Lanai warms to amber. Outdoor audio drifts on. The sunset scene, on schedule.</p>
-      </div>
-      <div class="ritual ritual--night" data-reveal>
-        <div class="ritual-time">22:30 — Goodnight</div>
-        <h3>Notte</h3>
-        <p>Perimeter arms. Shades drop. Path lights hold to 5% for quiet passage to the kitchen.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 4-step Process -->
-<section class="section section--cream">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">How we work</span>
-      <h2 class="display">From first call to <em class="accent">first sunset</em>.</h2>
-    </div>
-
-    <div class="process-4">
-      <div class="proc" data-reveal>
-        <div class="ico" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h4>Consultation</h4>
-        <p>60–90 min on-site walk-through of your plans, sightlines, and evening routine.</p>
-      </div>
-      <div class="proc" data-reveal>
-        <div class="ico" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-        </div>
-        <h4>Receive Proposal</h4>
-        <p>Line-item pricing across every device, hour of labor, and cable run. No bundled mysteries.</p>
-      </div>
-      <div class="proc" data-reveal>
-        <div class="ico" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 6 6 1-4 5 1 7-6-3-6 3 1-7-4-5 6-1z"/></svg>
-        </div>
-        <h4>Installation</h4>
-        <p>Licensed low-voltage crew, clean staging, one point of contact through turnover.</p>
-      </div>
-      <div class="proc" data-reveal>
-        <div class="ico" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 13l4 4L19 7"/></svg>
-        </div>
-        <h4>Completion</h4>
-        <p>30-day tuning window. Quarterly check-ins. 12 months of service bundled into your project.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section class="section" id="testimonials">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Testimonials</span>
-      <h2>Homes where <em class="accent">the hour takes care of itself</em>.</h2>
-    </div>
-
-    <div class="testimonials">
-      <div class="testimonial" data-reveal>
-        <div class="stars" aria-label="5 stars">
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-        </div>
-        <blockquote>“They understand the sunset. Our west elevation was unlivable from 4 to 7. Now it's the best room in the house. Line-item proposal, no upsell, clean install.”</blockquote>
-        <div class="who">
-          <div class="avatar">DL</div>
-          <div><strong>Daniel &amp; Laura</strong><span>Longboat Key · Bayfront Estate</span></div>
-        </div>
-      </div>
-
-      <a class="testimonial testimonial--video" data-reveal href="projects.html" data-img="waterfront-lanai">
-        <span class="play" aria-hidden="true"></span>
-        <div class="meta">
-          <strong>“One press, the right state.”</strong>
-          <span>Naples · Port Royal · 2:14</span>
-        </div>
-      </a>
-
-      <div class="testimonial" data-reveal>
-        <div class="stars" aria-label="5 stars">
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-        </div>
-        <blockquote>“Responsiveness that doesn't exist in this industry. A technician arrived the same morning we reported a camera issue — not a ticket, a person.”</blockquote>
-        <div class="who">
-          <div class="avatar">MR</div>
-          <div><strong>Martina R.</strong><span>Naples · Port Royal</span></div>
-        </div>
-      </div>
-
-      <div class="testimonial" data-reveal>
-        <div class="stars" aria-label="5 stars">
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-        </div>
-        <blockquote>“LUMA is the rare integrator that respects the architect's spec. They didn't add a single keypad we didn't agree to — and the ones they placed are invisible.”</blockquote>
-        <div class="who">
-          <div class="avatar">SW</div>
-          <div><strong>Sarah W., AIA</strong><span>Sarasota · residential architect</span></div>
-        </div>
-      </div>
-
-      <a class="testimonial testimonial--video" data-reveal href="projects.html" data-img="window-shades">
-        <span class="play" aria-hidden="true"></span>
-        <div class="meta">
-          <strong>Behind Sera — the golden-hour scene</strong>
-          <span>Siesta Key · 1:48</span>
-        </div>
-      </a>
-
-      <div class="testimonial" data-reveal>
-        <div class="stars" aria-label="5 stars">
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-          <svg viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-        </div>
-        <blockquote>“Open platform, no dealer lockout. When our builder handed over the house we owned the system — not the installer. That's how it should work.”</blockquote>
-        <div class="who">
-          <div class="avatar">JK</div>
-          <div><strong>Jonathan K.</strong><span>Boca Grande · Gulf-front residence</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Projects teaser (selected) -->
-<section class="section section--sand">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Our Work</span>
-      <h2>Selected projects.</h2>
-    </div>
-    <div class="project-grid">
-      <a href="projects.html" class="project" data-reveal style="background-image:none;">
-        <div class="project-bg" data-img="project-bayfront" style="background-size:cover"></div>
-        <div class="project-body">
-          <div class="tag">Longboat Key</div>
-          <h3>Bayfront Estate</h3>
-          <div class="meta">Lutron · Somfy · UniFi Protect</div>
-        </div>
-      </a>
-      <a href="projects.html" class="project" data-reveal>
-        <div class="project-bg" data-img="window-shades" style="background-size:cover"></div>
-        <div class="project-body">
-          <div class="tag">Naples — Port Royal</div>
-          <h3>Coastal Modern</h3>
-          <div class="meta">Full-home · 9 shading zones · theater</div>
-        </div>
-      </a>
-      <a href="projects.html" class="project" data-reveal>
-        <div class="project-bg" data-img="waterfront-lanai" style="background-size:cover"></div>
-        <div class="project-body">
-          <div class="tag">Siesta Key</div>
-          <h3>Gulf-front Villa</h3>
-          <div class="meta">Lanai audio · hurricane routines</div>
-        </div>
-      </a>
-    </div>
-    <div class="text-center" style="margin-top:2rem;">
-      <a href="projects.html" class="btn btn--ghost">All projects <span class="arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- Final CTA — combo -->
-<section class="section">
-  <div class="container">
-    <div class="cta-combo">
-      <a href="projects.html" class="cta-media" data-img="gulf-sunset">
-        <span class="play" aria-hidden="true"></span>
-      </a>
-      <div class="cta-form">
-        <span class="eyebrow" style="color:var(--gold-1);">Free consultation · No obligation</span>
-        <h2>Let's meet at your property.</h2>
-        <p>60–90 minutes on-site. We'll walk your plans, your sightlines to the water, and your evening routine.</p>
-        <form class="form" data-contact-form
-              name="home-consultation" method="POST"
-              data-netlify="true" netlify-honeypot="bot-field"
-              action="/thank-you.html">
-          <input type="hidden" name="form-name" value="home-consultation" />
-          <p hidden><label>Don't fill: <input name="bot-field" /></label></p>
-          <div class="form-row">
-            <div class="field"><label>First name</label><input type="text" name="first" placeholder="Your name" required /></div>
-            <div class="field"><label>Phone</label><input type="tel"  name="phone" placeholder="(941) 555-0000" required /></div>
-          </div>
-          <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@email.com" required /></div>
-          <div class="field">
-            <label>Interested in</label>
-            <select name="interest">
-              <option>Full-home integration (new build)</option>
-              <option>Retrofit / existing home</option>
-              <option>Lighting &amp; shading only</option>
-              <option>Security &amp; networking</option>
-              <option>Audio / theater</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="field"><label>Anything we should know?</label><textarea name="note" rows="3" placeholder="Timing, property address, architect..." ></textarea></div>
-          <button type="submit" class="btn btn--primary">Request a consultation <span class="arrow">→</span></button>
-          <div data-form-status style="font-size:0.9rem; min-height:1.2rem;"></div>
+      {/* 7. CTA combo */}
+      <div className="th-cta-combo">
+        <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
+        <form className="th-cta-form" name="theater-inquiry" onSubmit={e=>{e.preventDefault();navigate('contact');}}>
+          <h2>Start a <em>theater conversation.</em></h2>
+          <p>Tell us about the room. We'll send a calibration plan within 48 hours.</p>
+          <input type="hidden" name="page" value="home-theaters"/>
+          <input name="name" placeholder="Name"/>
+          <input name="email" type="email" placeholder="Email"/>
+          <input name="phone" placeholder="Phone"/>
+          <textarea name="message" placeholder="Square footage, ceiling height, intended use…"/>
+          <button type="submit" className="btn-solid">Send inquiry →</button>
         </form>
       </div>
     </div>
-  </div>
-</section>
+  );
+}
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="brand"><span class="brand-dot"></span><span>LUMA<small>Smart Home</small></span></div>
-        <p>Residential technology, tuned to the Gulf Coast hour. Lighting, shading, security, audio, network — under one roof.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Solutions</h4>
-        <ul>
-          <li><a href="lighting.html">Lighting</a></li>
-          <li><a href="shading.html">Window Treatments</a></li>
-          <li><a href="security.html">Security</a></li>
-          <li><a href="networking.html">Networking</a></li>
-          <li><a href="audio.html">Audio / Theater</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Studio</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="budget.html">Budget Calculator</a></li>
-          <li><a href="builders.html">For Builders</a></li>
-          <li><a href="designers.html">For Designers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Visit</h4>
-        <ul>
-          <li>Southwest Florida</li>
-          <li>Sarasota · Manatee</li>
-          <li>Charlotte · Lee · Collier</li>
-          <li><a href="tel:+19415551234">+1 (941) 555-1234</a></li>
-          <li><a href="mailto:hello@lumasmarthome.com">hello@lumasmarthome.com</a></li>
-        </ul>
+/* ─── AUTOMATION PAGE ─── */
+const AU_STATES = [
+  {time:'06:30', name:'Alba',   hour:6,  min:30, desc:'Shades east rise. Hallway keypads warm to 2700K. Coffee station wakes. Front cameras armed-stay clears.'},
+  {time:'10:00', name:'Day',    hour:10, min:0,  desc:'Glare side shades drop on the sun. Office overheads to task. Alarm to "armed-away" if everyone has left.'},
+  {time:'sunset – 30', name:'Sera', hour:18, min:30, desc:'Lanai lights to 30%. Kitchen pendants warm. Music fades up where you are.'},
+  {time:'22:30', name:'Notte',  hour:22, min:30, desc:'Doors lock, perimeter cameras armed, hallways at 5% footlights, primary bedroom shades close, theater off.'},
+];
+
+function ClockIcon({hour, min}) {
+  // 12-hour analog face with hands at hour/min
+  const h = ((hour % 12) + min/60) * 30 - 90; // degrees from 3 o'clock
+  const m = (min/60) * 360 - 90;
+  const r = 18;
+  const cx = 22, cy = 22;
+  const hx = cx + Math.cos(h*Math.PI/180)*9;
+  const hy = cy + Math.sin(h*Math.PI/180)*9;
+  const mx = cx + Math.cos(m*Math.PI/180)*13;
+  const my = cy + Math.sin(m*Math.PI/180)*13;
+  return (
+    <svg width="22" height="22" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <circle cx={cx} cy={cy} r={r}/>
+      <line x1={cx} y1={cy} x2={hx} y2={hy} strokeWidth="2"/>
+      <line x1={cx} y1={cy} x2={mx} y2={my}/>
+    </svg>
+  );
+}
+
+const AU_CONTROLS = [
+  {label:'Lighting',   page:'lighting'},
+  {label:'Shading',    page:'shading'},
+  {label:'Climate',    page:null},
+  {label:'Audio',      page:'audio'},
+  {label:'Security',   page:'security'},
+  {label:'Networking', page:'networking'},
+];
+
+const AU_WHY = [
+  {n:'01', text:'We program the routines with you for 90 days, not just once on day one. The first month is observation — the second and third are the real tuning.'},
+  {n:'02', text:'Every keypad button is documented and labeled in your own words — "Reading," "Movie," "Goodnight" — not LED1 / Scene 4 / Group 12.'},
+  {n:'03', text:'Annual visit included. We re-tune as your habits change — kids grow up, work hours shift, the lanai becomes a gym. The routines move with you.'},
+];
+
+const AU_PROJECTS = [
+  {key:'projectAutomation1', tag:'Sarasota · Bird Key',   name:'68-keypad estate · 14 routines'},
+  {key:'projectAutomation2', tag:'Naples · Aqualane',     name:'Voice-first · Josh.ai whole home'},
+  {key:'projectAutomation3', tag:'Boca Grande · Beach',   name:'Two-house compound · one Crestron'},
+];
+
+function AutomationPage({navigate}) {
+  return (
+    <div className="page">
+      {/* 1. Hero */}
+      <header className="th-hero page-head">
+        <div>
+          <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>Home automation</div>
+          <h1 className="hero-title">One press, the <em>right state.</em></h1>
+          <p className="hero-body">Automation is the quiet layer that lets lighting, shades, audio, climate, and security speak the same language and move together on cue — so the house responds to a moment instead of staging a phone-tap rodeo.</p>
+          <div className="th-cta-row">
+            <button className="btn-solid" onClick={()=>navigate('budget-calculator')}>See sample budgets →</button>
+            <button className="btn-ghost" onClick={()=>navigate('contact')}>Start a project</button>
+          </div>
+        </div>
+        <div className="th-hero-img"><img src={PHOTOS.heroHome} alt="Waterfront lanai with automation" data-img="waterfront-lanai"/></div>
+      </header>
+
+      {/* 2. Four daily states */}
+      <section className="th-section">
+        <div className="sec-label">Daily routines</div>
+        <h2 className="sec-title"><em>Alba · Day · Sera · Notte.</em></h2>
+        <p className="sec-body">Four states the house already knows. You can override any of them, any time — but most days you won't need to.</p>
+        <div className="grid-4">
+          {AU_STATES.map(s=>(
+            <div key={s.name} className="au-card">
+              <div className="au-card-clock"><ClockIcon hour={s.hour} min={s.min}/></div>
+              <div>
+                <div className="au-card-time">{s.time}</div>
+                <div className="au-card-name">{s.name}</div>
+              </div>
+              <div className="au-card-desc">{s.desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. What it controls */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner" style={{textAlign:'center'}}>
+          <div className="sec-label">What it controls</div>
+          <h2 className="sec-title">Six layers, <em>one orchestration.</em></h2>
+          <div className="au-chips">
+            {AU_CONTROLS.map(c=>(
+              c.page
+                ? <a key={c.label} className="au-chip" href={`#${c.page}`} onClick={e=>{e.preventDefault();navigate(c.page);}}>{c.label} →</a>
+                : <span key={c.label} className="au-chip au-chip--inert">{c.label}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. How we build it */}
+      <section className="th-section">
+        <div className="th-split">
+          <div className="th-split-img"><img src={PHOTOS.lighting} alt="Lutron keypad in luxury home" data-img="lighting-scene"/></div>
+          <div>
+            <div className="sec-label" style={{textAlign:'left'}}>The platform</div>
+            <h2 className="sec-title" style={{textAlign:'left'}}>We build on <em>open, professional</em> platforms.</h2>
+            <p className="hero-body" style={{marginTop:18}}>Lutron RadioRA 3 is the spine — every light, shade, and keypad lives on a single mesh that doesn't depend on anyone's cloud to dim a sconce. Above it, Josh.ai or a Crestron CP4 acts as the brain for voice, scenes, and the cross-system orchestration that makes "Goodnight" actually work.</p>
+            <p className="hero-body">We don't build on closed consumer ecosystems. No rented automations that disappear when a startup pivots. No servers in someone else's basement. Your house's logic lives in your house — fully owned, fully documented, fully serviceable five years from now.</p>
+            <div className="au-vendors">
+              <span className="au-vendor">Lutron <span>RadioRA 3</span></span>
+              <span className="au-vendor">Josh<span>.ai</span></span>
+              <span className="au-vendor">Crestron <span>Home</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Why LUMA */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">Why LUMA</div>
+          <h2 className="sec-title">Routines that <em>survive real life.</em></h2>
+          <div className="th-why">
+            {AU_WHY.map(r=>(
+              <div key={r.n} className="th-why-row">
+                <div className="th-why-num">{r.n}</div>
+                <div className="th-why-text">{r.text}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Recent projects */}
+      <section className="th-section">
+        <div className="sec-label">Recent work</div>
+        <h2 className="sec-title">A few homes <em>running quietly.</em></h2>
+        <div className="th-projects">
+          {AU_PROJECTS.map(p=>(
+            <div key={p.key} className="th-project" onClick={()=>navigate('our-work')}>
+              <img src={PHOTOS[p.key]} alt={p.name}/>
+              <div className="th-project-overlay">
+                <div className="th-project-tag">{p.tag}</div>
+                <div className="th-project-name">{p.name}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 7. CTA combo */}
+      <div className="th-cta-combo">
+        <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
+        <form className="th-cta-form" name="automation-inquiry" onSubmit={e=>{e.preventDefault();navigate('contact');}}>
+          <h2>Start a <em>conversation.</em></h2>
+          <p>Tell us about the home. We'll map a routine plan within 48 hours.</p>
+          <input type="hidden" name="page" value="home-automation"/>
+          <input name="name" placeholder="Name"/>
+          <input name="email" type="email" placeholder="Email"/>
+          <input name="phone" placeholder="Phone"/>
+          <textarea name="message" placeholder="What does a typical day look like? Who lives in the home?"/>
+          <button type="submit" className="btn-solid">Send inquiry →</button>
+        </form>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div>© <span data-year></span> LUMA Home Systems LLC. All rights reserved.</div>
-      <div>Florida licensed low-voltage contractor.</div>
-    </div>
-  </div>
-</footer>
+  );
+}
 
-<script src="js/images.js?v=6"></script>
-<script src="js/main.js?v=3"></script>
+/* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid}) {
+  return (
+    <div className="page">
+      {/* 1. Hero */}
+      <header className="th-hero page-head">
+        <div>
+          <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>{hero.eyebrow}</div>
+          <h1 className="hero-title" dangerouslySetInnerHTML={{__html: hero.h1}}/>
+          <p className="hero-body">{hero.lead}</p>
+          <div className="th-cta-row">
+            <button className="btn-solid" onClick={hero.primaryAction}>{hero.primaryLabel}</button>
+            <button className="btn-ghost" onClick={hero.secondaryAction}>{hero.secondaryLabel}</button>
+          </div>
+        </div>
+        <div className="th-hero-img"><img src={hero.image} alt={hero.eyebrow}/></div>
+      </header>
+
+      {/* 1b. Install grid (Security only) */}
+      {installGrid && (
+        <section className="th-section" style={{paddingTop:64,paddingBottom:24}}>
+          <div className="sec-label">{installGrid.eyebrow || 'On the property'}</div>
+          <h2 className="sec-title" dangerouslySetInnerHTML={{__html: installGrid.h2}}/>
+          {installGrid.lead && <p className="sec-body">{installGrid.lead}</p>}
+          <div className="th-install-grid">
+            {installGrid.items.map((it,i)=>(
+              <div key={i} className={`th-install-cell${it.size?' '+it.size:''}`}>
+                <img src={PHOTOS[it.key]} alt={it.cap}/>
+                <div className="th-install-cap">{it.cap}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 2. Value prop */}
+      <section className="th-section">
+        <div className="sec-label">{valueProp.eyebrow}</div>
+        <h2 className="sec-title" dangerouslySetInnerHTML={{__html: valueProp.h2}}/>
+        <p className="sec-body">{valueProp.lead}</p>
+        <div className="th-grid-3">
+          {valueProp.cards.map(c=>(
+            <div key={c.title} className="th-card">
+              <div className="th-card-icon">{c.icon}</div>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. Unique split section */}
+      {valueProp.split && (
+        <section className="th-section--cream">
+          <div className="th-section--cream-inner">
+            <div className="th-split">
+              <div className="th-split-img"><img src={valueProp.split.image} alt={valueProp.split.alt}/></div>
+              <div>
+                <div className="sec-label" style={{textAlign:'left'}}>{valueProp.split.eyebrow}</div>
+                <h2 className="sec-title" style={{textAlign:'left'}} dangerouslySetInnerHTML={{__html: valueProp.split.h2}}/>
+                <div className="th-rooms">
+                  {valueProp.split.rows.map(r=>(
+                    <div key={r.name} className="th-room">
+                      <div className="th-room-name">{r.name}</div>
+                      <div className="th-room-desc">{r.desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 4. Why LUMA */}
+      <section className="th-section">
+        <div className="sec-label">Why LUMA</div>
+        <h2 className="sec-title" dangerouslySetInnerHTML={{__html: why.h2}}/>
+        <div className="th-why">
+          {why.rows.map(r=>(
+            <div key={r.n} className="th-why-row">
+              <div className="th-why-num">{r.n}</div>
+              <div className="th-why-text">{r.text}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. Recent work */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">Recent work</div>
+          <h2 className="sec-title">{projects.h2}</h2>
+          <div className="th-projects">
+            {projects.items.map(p=>(
+              <div key={p.key} className="th-project">
+                <img src={PHOTOS[p.key]} alt={p.name}/>
+                <div className="th-project-overlay">
+                  <div className="th-project-tag">{p.tag}</div>
+                  <div className="th-project-name">{p.name}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Credentials */}
+      <section className="th-section" style={{paddingTop:48,paddingBottom:48}}>
+        <div className="sec-label">Credentials</div>
+        <div className="th-credentials">
+          {credentials.map(c=><span key={c} className="th-chip">{c}</span>)}
+        </div>
+      </section>
+
+      {/* 7. CTA combo */}
+      <div className="th-cta-combo">
+        <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
+        <form className="th-cta-form" name={formName} onSubmit={e=>{e.preventDefault();ctaCopy.onSubmit();}}>
+          <h2 dangerouslySetInnerHTML={{__html: ctaCopy.h2}}/>
+          <p>{ctaCopy.lead}</p>
+          <input type="hidden" name="page" value={formName}/>
+          <input name="name" placeholder="Name"/>
+          <input name="email" type="email" placeholder="Email"/>
+          <input name="phone" placeholder="Phone"/>
+          <textarea name="message" placeholder={ctaCopy.placeholder}/>
+          <button type="submit" className="btn-solid">Send inquiry →</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+/* ─── AUDIO PAGE ─── */
+function AudioPage({navigate}) {
+  return <ServicePageShell
+    formName="audio-inquiry"
+    hero={{
+      eyebrow:'Audio & video',
+      h1:'Sound that <em>fills the room,</em> not the architecture.',
+      lead:'Whole-home audio that disappears into the architecture — invisible in-ceiling, in-wall, and outdoor speakers tuned to each room\'s geometry, with one app and one source list across every zone.',
+      image: PHOTOS.audioHero,
+      primaryLabel:'Hear a finished system →', primaryAction:()=>navigate('our-work'),
+      secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
+    }}
+    valueProp={{
+      eyebrow:'What we install',
+      h2:'Audio you <em>can\'t see,</em> control you <em>don\'t think about.</em>',
+      lead:'Three layers per home — the speakers in the architecture, the matrix that routes them, and the control surface that makes it all feel like one room.',
+      cards:[
+        {title:'Speakers',  icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="2.5"/></svg>,
+         desc:'Sonance Reference and Architectural in-ceiling, James Loudspeaker outdoor, Sonos Architectural for budget zones. Flush-trim, paint-matched.'},
+        {title:'Matrix',    icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2.5" y="6" width="15" height="8" rx="1"/><line x1="6" y1="6" x2="6" y2="14"/><line x1="10" y1="6" x2="10" y2="14"/><line x1="14" y1="6" x2="14" y2="14"/></svg>,
+         desc:'Sonos, Crestron DM NVX, or Savant audio matrices. 16+ zones, lossless streaming, every source available in every room.'},
+        {title:'Control',   icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="10" cy="10" r="7"/><line x1="10" y1="3" x2="10" y2="6"/><line x1="10" y1="14" x2="10" y2="17"/></svg>,
+         desc:'One app for the family, keypads for the wall, voice through Josh.ai. Zones named in your words — "kitchen," not "Output 7."'},
+      ],
+      split:{
+        eyebrow:'Acoustic detail',
+        h2:'Tuned to <em>each room,</em> not the spec sheet.',
+        image: PHOTOS.audioInvisible,
+        alt:'Invisible in-ceiling audio',
+        rows:[
+          {name:'REW measurement pass',  desc:'Every zone measured with Room EQ Wizard. Bass response, decay, and time alignment captured before final EQ.'},
+          {name:'Lanai & poolside',       desc:'James Loudspeaker AT or LANDSCAPE Series — IP-rated, hurricane-tested, voiced for outdoor air.'},
+          {name:'Theater & two-channel',  desc:'Reference rooms designed alongside our home theater team. Trinnov processing optional.'},
+        ],
+      },
+    }}
+    why={{
+      h2:'Sound that <em>ages well.</em>',
+      rows:[
+        {n:'01', text:'We tune speakers with REW measurements, not by ear in the showroom. Every zone gets a target curve and a measured-response file you keep.'},
+        {n:'02', text:'Every zone is named in your own words ("kitchen," not "Zone 3"). The app you actually use looks like the house you actually live in.'},
+        {n:'03', text:'One-year service visit included — drivers age, rooms change. We re-measure, re-tune, and replace anything that drifts.'},
+      ],
+    }}
+    projects={{
+      h2:'Three rooms we like talking about.',
+      items:[
+        {key:'projectWarmInterior', tag:'Naples · Port Royal',     name:'14-zone whole-home · Sonance Reference'},
+        {key:'projectBayfront',     tag:'Sarasota · Bayfront',     name:'Lanai + pool · James Loudspeaker'},
+        {key:'projectModernVilla',  tag:'Sanibel · Modern villa',  name:'Two-channel listening room · Trinnov'},
+      ],
+    }}
+    credentials={['CEDIA Member','THX-Aligned Design','Trinnov Certified','ISF Calibrator','Insured & bonded']}
+    ctaCopy={{
+      h2:'Start an <em>audio conversation.</em>',
+      lead:'Tell us about the home and the rooms that matter most. We\'ll send a zone plan within 48 hours.',
+      placeholder:'Square footage, indoor + outdoor zones, listening preferences…',
+      onSubmit:()=>navigate('contact'),
+    }}
+  />;
+}
+
+/* ─── SECURITY PAGE ─── */
+function SecurityPage({navigate}) {
+  return <ServicePageShell
+    formName="security-inquiry"
+    hero={{
+      eyebrow:'Security & surveillance',
+      h1:'Your footage. <em>Your property.</em>',
+      lead:'On-premise camera systems with no monthly cloud fees and no third party with a copy of your driveway. Cameras placed by walking the property, not by floor plan.',
+      image: PHOTOS.securityHero,
+      primaryLabel:'See a finished install →', primaryAction:()=>navigate('our-work'),
+      secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
+    }}
+    installGrid={{
+      eyebrow:'On the property',
+      h2:'What a LUMA install <em>looks like.</em>',
+      lead:'Cameras, recorder, panels, and the app — what actually goes on the wall, in the closet, and in your hand.',
+      items:[
+        {key:'installDome',     cap:'Outdoor dome camera',      size:'tall'},
+        {key:'installDoorbell', cap:'Doorbell camera'},
+        {key:'installNvr',      cap:'On-prem NVR'},
+        {key:'installPanel',    cap:'In-wall touch panel'},
+        {key:'installBullet',   cap:'Soffit bullet camera'},
+        {key:'installDock',     cap:'Dock-side weatherproof'},
+        {key:'installPhone',    cap:'Live cameras on phone'},
+        {key:'installTablet',   cap:'Tablet wall mount'},
+      ],
+    }}
+    valueProp={{
+      eyebrow:'How it works',
+      h2:'A system <em>you don\'t manage.</em>',
+      lead:'Three layers — the cameras at the perimeter, the recorder in your network closet, and the alarm system that ties everything to your phone and your local responders.',
+      cards:[
+        {title:'Cameras', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="2.5"/><circle cx="14.5" cy="6" r="0.7" fill="currentColor"/></svg>,
+         desc:'Ubiquiti UniFi Protect G5 series. 4K, dual-lens, AI detection on-camera. PoE+ powered, no batteries to replace.'},
+        {title:'NVR & storage', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="2.5" y="5" width="15" height="3.5" rx="0.6"/><rect x="2.5" y="11.5" width="15" height="3.5" rx="0.6"/><circle cx="14.5" cy="6.75" r="0.6" fill="currentColor"/><circle cx="14.5" cy="13.25" r="0.6" fill="currentColor"/></svg>,
+         desc:'UniFi Protect on-prem NVR. RAID storage, 30+ days retention, encrypted at rest. Your footage stays on your property.'},
+        {title:'Alarm & monitoring', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2.5l-7 3v5c0 4 3 7 7 8 4-1 7-4 7-8v-5l-7-3z"/></svg>,
+         desc:'Alarm.com or DSC PowerSeries integrated with cameras. Glass-break, motion, door contacts. Local response, optional UL monitoring.'},
+      ],
+      split:{
+        eyebrow:'Footage philosophy',
+        h2:'Your video <em>stays on your property.</em>',
+        image: PHOTOS.securityFootage,
+        alt:'On-prem network video recorder',
+        rows:[
+          {name:'No monthly cloud fees',  desc:'UniFi Protect runs on hardware you own. No subscription, no rented storage, no vendor with a backdoor.'},
+          {name:'Walked, not drawn',       desc:'Camera placement done on-site, in the conditions you actually live in — sunset glare, landscape lighting, neighbor angles.'},
+          {name:'Encrypted off-site backup',desc:'Optional encrypted cold backup to a property of your choosing — a second home, an office, a safe deposit drive.'},
+        ],
+      },
+    }}
+    why={{
+      h2:'Surveillance that <em>respects the home.</em>',
+      rows:[
+        {n:'01', text:'All footage stored on-prem on UniFi Protect — no monthly cloud fees, no third party reviewing your driveway, no rented retention windows.'},
+        {n:'02', text:'Cameras placed after a property walkthrough, not from a floor plan. Sunset glare, foliage growth, and neighbor sightlines factored in before mounting.'},
+        {n:'03', text:'Two-year hardware warranty, parts and labor. Anything that fails in normal use, we replace — including the labor to swap it.'},
+      ],
+    }}
+    projects={{
+      h2:'Three properties, fully covered.',
+      items:[
+        {key:'projectArchitectural', tag:'Sarasota · Bird Key',   name:'24 cameras · 8-acre estate'},
+        {key:'projectLuxuryPool',    tag:'Naples · Aqualane',     name:'Pool + dock · weatherized PTZ'},
+        {key:'projectBayfront',      tag:'Sarasota · Bayfront',   name:'Glass-break + perimeter · invisible alarm'},
+      ],
+    }}
+    credentials={['Ubiquiti UVP Partner','UniFi Protect Certified','CEDIA Member','Insured & bonded']}
+    ctaCopy={{
+      h2:'Start a <em>security conversation.</em>',
+      lead:'Tell us about the property. We\'ll send a camera placement plan within 48 hours.',
+      placeholder:'Property size, perimeter, areas of concern, existing system…',
+      onSubmit:()=>navigate('contact'),
+    }}
+  />;
+}
+
+/* ─── NETWORKING PAGE ─── */
+function NetworkingPage({navigate}) {
+  return <ServicePageShell
+    formName="networking-inquiry"
+    hero={{
+      eyebrow:'Networking',
+      h1:'A network <em>your home is built on,</em> not bolted to.',
+      lead:'Enterprise-grade Wi-Fi and structured cabling designed before drywall. Wired wherever wires can land, mesh only where it belongs — so every device works the day you move in.',
+      image: PHOTOS.networkingHero,
+      primaryLabel:'See a finished rack →', primaryAction:()=>navigate('our-work'),
+      secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
+    }}
+    valueProp={{
+      eyebrow:'The wired backbone',
+      h2:'Wires <em>where they should be,</em> wireless where they can\'t.',
+      lead:'A modern Gulf Coast home runs 60–100+ connected devices. Mesh alone doesn\'t scale to that. We engineer a wired spine first, then layer wireless on top.',
+      cards:[
+        {title:'Cabling', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M3.5 16.5C3.5 11 7 9 10 9s6.5 2 6.5 7.5"/><circle cx="10" cy="5" r="2.2"/></svg>,
+         desc:'Cat6A or Cat7 to every TV, AP, camera, and workspace. Fiber backbone between floors. Every drop labeled at both ends.'},
+        {title:'Wi-Fi 6/7', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M2.5 8A12 12 0 0 1 17.5 8" strokeOpacity=".4"/><path d="M5 11a8 8 0 0 1 10 0" strokeOpacity=".7"/><path d="M7.5 14a4 4 0 0 1 5 0"/><circle cx="10" cy="16.5" r="0.9" fill="currentColor"/></svg>,
+         desc:'Ubiquiti U7 Pro or U7 Pro Max access points, surveyed for coverage. 6 GHz where devices support it, 5 GHz fallback for the rest.'},
+        {title:'Rack & gateway', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="3" y="3" width="14" height="14" rx="1"/><line x1="3" y1="7" x2="17" y2="7"/><line x1="3" y1="11" x2="17" y2="11"/><line x1="3" y1="15" x2="17" y2="15"/><circle cx="14.5" cy="5" r="0.5" fill="currentColor"/></svg>,
+         desc:'UniFi Dream Machine SE or Pro Max gateway. PoE switching, VLAN isolation for IoT, dual-WAN failover. Photographed and documented.'},
+      ],
+      split:{
+        eyebrow:'Four signs',
+        h2:'<em>Four signs</em> your network is the bottleneck.',
+        image: PHOTOS.networkingRack,
+        alt:'Network rack with structured cabling',
+        rows:[
+          {name:'Devices reconnect at random',     desc:'Mesh nodes hand off badly when they\'re overloaded. A wired backbone fixes it permanently.'},
+          {name:'Streaming buffers in one room',   desc:'Almost always a coverage gap or an underpowered AP. A site survey finds it in an hour.'},
+          {name:'Smart-home commands lag',         desc:'Lutron, cameras, and Sonos share a flat network with the kids\' Xbox. VLAN isolation removes the contention.'},
+          {name:'Guest Wi-Fi slows the house',     desc:'A separate guest VLAN with rate limits keeps a teenager\'s download from killing the security cameras.'},
+        ],
+      },
+    }}
+    why={{
+      h2:'A network <em>you forget exists.</em>',
+      rows:[
+        {n:'01', text:'Wired wherever wires can land. Mesh only where it belongs — never as a substitute for a Cat6A drop you should have run during framing.'},
+        {n:'02', text:'Every drop is labeled at both ends. Patch panel photographed and filed with you, alongside a network map of every VLAN, AP, and reserved IP.'},
+        {n:'03', text:'We ship the network 30 days before move-in so you arrive online — gateway provisioned, APs surveyed, every device pre-onboarded.'},
+      ],
+    }}
+    projects={{
+      h2:'Three networks running quietly.',
+      items:[
+        {key:'projectModernVilla',   tag:'Sanibel · Modern villa',  name:'Whole-home Cat6A · 8 APs · Wi-Fi 7'},
+        {key:'projectArchitectural', tag:'Sarasota · Bird Key',     name:'Two-building campus · fiber backbone'},
+        {key:'projectWarmInterior',  tag:'Naples · Port Royal',     name:'40+ IoT devices · VLAN-isolated'},
+      ],
+    }}
+    credentials={['Ubiquiti UEWA','Ubiquiti UWA-Pro','Cat6A bonded subcontractor','Insured & bonded']}
+    ctaCopy={{
+      h2:'Start a <em>network conversation.</em>',
+      lead:'Tell us about the home, the floor plan, and the timeline. We\'ll send a cabling plan within 48 hours.',
+      placeholder:'Square footage, # of floors, current pain points, move-in date…',
+      onSubmit:()=>navigate('contact'),
+    }}
+  />;
+}
+
+/* ─── CONTACT PAGE ─── */
+function ContactPage() {
+  return (
+    <div className="page">
+      <div className="contact-grid">
+        <div>
+          <h1 className="contact-title">Start Your Project</h1>
+          <div className="form-row">
+            <div className="form-group"><label className="form-label">First Name</label><input className="form-input" placeholder="Jane"/></div>
+            <div className="form-group"><label className="form-label">Last Name</label><input className="form-input" placeholder="Smith"/></div>
+          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label className="form-label">County</label>
+              <select className="form-select">
+                <option>Select...</option>
+                {['Sarasota County','Manatee County','Charlotte County','Lee County','Collier County'].map(c=><option key={c}>{c}</option>)}
+              </select>
+            </div>
+            <div className="form-group">
+              <label className="form-label">I am a...</label>
+              <select className="form-select">
+                <option>Select...</option>
+                {['Homeowner','Interior Designer','Architect','Builder / GC'].map(c=><option key={c}>{c}</option>)}
+              </select>
+            </div>
+          </div>
+          <div className="form-group">
+            <label className="form-label">What are you looking for?</label>
+            <select className="form-select">
+              <option>Select...</option>
+              {['Lighting Control','Window Treatments','Home Theater','Security & Surveillance','Audio & Video','Networking','Home Automation','Full System'].map(c=><option key={c}>{c}</option>)}
+            </select>
+          </div>
+          <div className="form-group">
+            <label className="form-label">Tell us more</label>
+            <textarea className="form-textarea" placeholder="Square footage, architect, timeline, what you're trying to achieve..."/>
+          </div>
+          <button className="btn-solid" style={{fontSize:15,padding:'12px 28px'}}>Send request →</button>
+        </div>
+        <div>
+          <div className="service-area">
+            <h3>Service Area</h3>
+            <ul>
+              {[
+                'Sarasota County — Sarasota, Siesta Key, Bird Key, Casey Key, Venice',
+                'Manatee County — Bradenton, Anna Maria Island, Lakewood Ranch',
+                'Charlotte County — Port Charlotte, Punta Gorda, Boca Grande',
+                'Lee County — Fort Myers, Sanibel, Captiva, Estero, Bonita Springs',
+                'Collier County — Naples, Port Royal, Aqualane Shores, Marco Island',
+              ].map(item=><li key={item}>{item}</li>)}
+            </ul>
+          </div>
+          <div style={{background:'#fff',borderRadius:16,padding:24,marginBottom:20}}>
+            <h3 style={{fontSize:16,fontWeight:500,marginBottom:16}}>Get in touch directly</h3>
+            <div style={{display:'flex',flexDirection:'column',gap:12}}>
+              <div><div style={{fontWeight:500,marginBottom:2}}>Phone</div><div style={{color:'var(--mid)',fontSize:14}}>+1 (941) 555-1234</div></div>
+              <div><div style={{fontWeight:500,marginBottom:2}}>Email</div><div style={{color:'var(--mid)',fontSize:14}}>hello@lumasmarthome.com</div></div>
+              <div><div style={{fontWeight:500,marginBottom:2}}>Hours</div><div style={{color:'var(--mid)',fontSize:14}}>Mon–Sat · 9am – 6pm</div></div>
+            </div>
+          </div>
+          {/* Gulf Coast map */}
+          <div style={{borderRadius:14,overflow:'hidden',border:'1px solid var(--cream2)',background:'#c8dfe6'}}>
+            <svg viewBox="0 0 420 500" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',display:'block'}}>
+              {/* Ocean */}
+              <rect width="420" height="500" fill="#c8dfe6"/>
+
+              {/* Florida peninsula land */}
+              <path d="
+                M420,0 L200,0
+                C200,0 185,4 175,10
+                C165,16 158,24 152,36
+                C146,48 144,62 143,76
+                C142,90 143,104 141,116
+                C138,132 132,146 126,160
+                C120,174 114,186 110,196
+                C107,204 106,210 106,218
+                C107,228 110,238 116,250
+                C122,262 130,272 136,282
+                C140,290 142,296 142,304
+                C140,316 134,326 128,338
+                C122,350 116,362 114,376
+                C113,388 115,400 120,412
+                C126,424 136,436 148,448
+                C158,458 168,464 176,468
+                C184,472 190,474 194,478
+                L420,478
+                Z
+              " fill="#ddd8c0"/>
+
+              {/* Manatee County highlight */}
+              <path d="M152,36 C162,32 172,30 182,30 C200,30 216,34 228,40 C240,46 248,54 250,64 C252,74 248,84 240,92 C232,100 220,106 206,108 C192,110 178,108 166,102 C154,96 146,86 143,76 C141,66 143,54 152,36 Z" fill="#b5cba0" opacity="0.55"/>
+
+              {/* Sarasota County highlight */}
+              <path d="M143,76 C146,86 154,96 166,102 C178,108 192,110 206,108 C220,106 232,100 240,92 C244,98 246,106 246,116 C246,130 240,144 230,154 C220,164 206,170 192,172 C178,174 164,170 154,162 C144,154 138,142 138,130 C138,116 140,96 143,76 Z" fill="#b5cba0" opacity="0.55"/>
+
+              {/* Charlotte County highlight */}
+              <path d="M138,130 C138,142 144,154 154,162 C164,170 178,174 192,172 C206,170 220,164 230,154 C236,162 240,172 240,184 C240,198 234,212 224,222 C214,232 200,238 186,238 C172,238 158,232 148,222 C138,212 132,198 132,184 C132,168 134,150 138,130 Z" fill="#b5cba0" opacity="0.55"/>
+
+              {/* Lee County highlight */}
+              <path d="M132,184 C132,198 138,212 148,222 C158,232 172,238 186,238 C200,238 214,232 224,222 C230,232 234,244 234,258 C234,274 228,290 218,302 C208,314 194,322 180,324 C166,326 152,320 142,310 C132,300 126,286 126,272 C126,256 128,220 132,184 Z" fill="#b5cba0" opacity="0.55"/>
+
+              {/* Collier County highlight */}
+              <path d="M126,272 C126,286 132,300 142,310 C152,320 166,326 180,324 C194,322 208,314 218,302 C224,314 226,328 224,342 C222,358 214,372 202,382 C190,392 174,396 160,394 C146,392 132,384 122,372 C112,360 108,344 110,328 C112,312 118,292 126,272 Z" fill="#b5cba0" opacity="0.55"/>
+
+              {/* Gulf of Mexico label */}
+              <text x="68" y="280" textAnchor="middle" fontSize="11" fill="#4a8a96" letterSpacing="0.12em" fontFamily="DM Sans,sans-serif" fontStyle="italic" transform="rotate(-90,68,280)">GULF OF MEXICO</text>
+
+              {/* Coverage boundary glow */}
+              <path d="M152,36 C162,32 182,30 200,30 C240,30 260,56 250,110 C244,140 232,168 224,222 C218,260 224,300 218,342 C212,372 196,398 172,408" fill="none" stroke="#C57238" strokeWidth="2.5" strokeDasharray="6,4" opacity="0.7"/>
+
+              {/* County dividers (subtle) */}
+              <line x1="143" y1="76" x2="246" y2="76" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
+              <line x1="138" y1="130" x2="246" y2="130" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
+              <line x1="132" y1="184" x2="240" y2="184" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
+              <line x1="126" y1="238" x2="234" y2="238" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
+
+              {/* Barrier islands */}
+              <ellipse cx="108" cy="54" rx="5" ry="14" fill="#ddd8c0" opacity="0.9" transform="rotate(-10,108,54)"/>
+              <ellipse cx="104" cy="88" rx="4" ry="18" fill="#ddd8c0" opacity="0.9" transform="rotate(-8,104,88)"/>
+              <ellipse cx="102" cy="128" rx="4" ry="16" fill="#ddd8c0" opacity="0.9" transform="rotate(-6,102,128)"/>
+              <ellipse cx="100" cy="165" rx="4" ry="14" fill="#ddd8c0" opacity="0.9" transform="rotate(-5,100,165)"/>
+              <ellipse cx="100" cy="204" rx="3" ry="10" fill="#ddd8c0" opacity="0.9" transform="rotate(-4,100,204)"/>
+
+              {/* City dots + labels */}
+              {[
+                {label:'Bradenton',   sub:'Manatee Co.',  x:190, y:55,  anchor:'start'},
+                {label:'Sarasota',    sub:'Sarasota Co.', x:190, y:103, anchor:'start'},
+                {label:'Venice',      sub:'',             x:168, y:148, anchor:'start'},
+                {label:'Punta Gorda', sub:'Charlotte Co.',x:188, y:158, anchor:'start'},
+                {label:'Fort Myers',  sub:'Lee Co.',      x:188, y:210, anchor:'start'},
+                {label:'Sanibel',     sub:'',             x:148, y:232, anchor:'start'},
+                {label:'Naples',      sub:'Collier Co.',  x:184, y:305, anchor:'start'},
+                {label:'Marco Island',sub:'',             x:172, y:360, anchor:'start'},
+              ].map((c,i)=>(
+                <g key={i}>
+                  <circle cx={c.x-8} cy={c.y} r="4.5" fill="#C57238" opacity="0.92"/>
+                  <circle cx={c.x-8} cy={c.y} r="2.5" fill="#fff"/>
+                  <text x={c.x} y={c.y-4} fontSize="9.5" fill="#2a3a30" fontFamily="DM Sans,sans-serif" fontWeight="600">{c.label}</text>
+                  {c.sub && <text x={c.x} y={c.y+7} fontSize="7.5" fill="#5a7a6a" fontFamily="DM Sans,sans-serif">{c.sub}</text>}
+                </g>
+              ))}
+
+              {/* LUMA HQ pin – Sarasota */}
+              <g>
+                <circle cx="182" cy="103" r="9" fill="#C57238" opacity="0.25"/>
+                <circle cx="182" cy="103" r="5.5" fill="#C57238"/>
+                <circle cx="182" cy="103" r="2.5" fill="#fff"/>
+              </g>
+
+              {/* Coverage zone label */}
+              <rect x="244" y="170" width="160" height="24" rx="5" fill="#C57238" opacity="0.12"/>
+              <text x="324" y="186" textAnchor="middle" fontSize="9" fill="#C57238" fontFamily="DM Sans,sans-serif" letterSpacing="0.08em" fontWeight="700">LUMA SERVICE AREA</text>
+
+              {/* North indicator */}
+              <text x="390" y="20" fontSize="11" fill="#4a6a60" fontFamily="DM Sans,sans-serif" fontWeight="700" textAnchor="middle">N</text>
+              <line x1="390" y1="24" x2="390" y2="36" stroke="#4a6a60" strokeWidth="1.5"/>
+              <polygon points="390,24 387,32 393,32" fill="#4a6a60"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── FOOTER ─── */
+function Footer() {
+  return (
+    <footer className="footer">
+      <span className="footer-logo">LUMA Smart Home</span>
+      <span>© 2025 LUMA Smart Home · Sarasota, FL · hello@lumasmarthome.com</span>
+      <span>+1 (941) 555-1234</span>
+    </footer>
+  );
+}
+
+/* ─── BUDGET CALCULATOR PAGE ─── */
+const BUDGET_TIERS = [
+  {tier:'Foundation',  range:'$45k – $85k',   sqft:'2,500 – 4,000 sq ft',
+   includes:['Lutron RadioRA 3 lighting','Structured cabling + Wi-Fi 6','4–6 cameras + on-prem NVR','One keypad zone, one app']},
+  {tier:'Signature',   range:'$120k – $220k', sqft:'4,000 – 7,500 sq ft', featured:true,
+   includes:['Lutron HomeWorks lighting + shades','Whole-home audio (8–12 zones)','12+ cameras, perimeter alarm','Crestron / Savant control','Theater or media room']},
+  {tier:'Estate',      range:'$300k+',        sqft:'7,500+ sq ft / multi-building',
+   includes:['Multi-residence Crestron','Outdoor audio + dock systems','24+ cameras, PTZ + analytics','Dedicated cinema room','Two-year on-call service']},
+];
+function BudgetCalculatorPage({navigate}) {
+  const [sqft, setSqft] = React.useState(5000);
+  const [picks, setPicks] = React.useState({lighting:true, shading:true, audio:false, theater:false, security:true, network:true, automation:false});
+  const services = [
+    {k:'lighting', label:'Lighting',          per:18},
+    {k:'shading',  label:'Shading',           per:14},
+    {k:'audio',    label:'Audio',             per:12},
+    {k:'theater',  label:'Theater',           flat:55000},
+    {k:'security', label:'Security',          per:10},
+    {k:'network',  label:'Networking',        per:8},
+    {k:'automation',label:'Automation layer', per:6},
+  ];
+  const est = services.reduce((sum,s)=>{
+    if(!picks[s.k]) return sum;
+    return sum + (s.flat || s.per*sqft);
+  }, 15000);
+  const fmt = n => '$'+Math.round(n/1000)+'k';
+  return (
+    <div className="page">
+      <header className="th-hero page-head">
+        <div>
+          <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>Budget calculator</div>
+          <h1 className="hero-title">Three tiers. <em>One honest range.</em></h1>
+          <p className="hero-body">Smart-home budgets vary wildly. These ranges reflect what we actually build for Gulf Coast homes — design, hardware, installation, and two-year service all in.</p>
+          <div className="th-cta-row">
+            <button className="btn-solid" onClick={()=>navigate('contact')}>Get a tailored quote →</button>
+          </div>
+        </div>
+        <div className="th-hero-img"><img src={PHOTOS.heroHome} alt="LUMA residence"/></div>
+      </header>
+
+      <section className="th-section">
+        <div className="sec-label">Sample budgets</div>
+        <h2 className="sec-title">Three tiers <em>of finished home.</em></h2>
+        <div className="th-grid-3" style={{marginTop:44}}>
+          {BUDGET_TIERS.map(t=>(
+            <div key={t.tier} className="th-card" style={t.featured?{borderColor:'var(--accent)',background:'#fff'}:{}}>
+              <div className="sec-label" style={{textAlign:'left',marginBottom:6}}>{t.tier}</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:30,fontWeight:600,margin:'4px 0 4px',color:'var(--accent)'}}>{t.range}</h3>
+              <p style={{margin:'0 0 14px',fontSize:13,color:'var(--mid)'}}>{t.sqft}</p>
+              <ul style={{listStyle:'none',padding:0,margin:0,display:'flex',flexDirection:'column',gap:8}}>
+                {t.includes.map(x=><li key={x} style={{fontSize:14,lineHeight:1.5,color:'var(--dark)',paddingLeft:14,position:'relative'}}><span style={{position:'absolute',left:0,top:8,width:6,height:6,borderRadius:'50%',background:'var(--accent)'}}/>{x}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">Quick estimator</div>
+          <h2 className="sec-title">Roughly, <em>where do you land?</em></h2>
+          <div style={{maxWidth:760,margin:'40px auto 0',background:'#fff',borderRadius:18,padding:'32px 36px',border:'1px solid rgba(0,0,0,.06)'}}>
+            <label style={{display:'block',fontSize:13,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--mid)',marginBottom:10}}>Approx. square footage: <strong style={{color:'var(--accent)',fontSize:16,letterSpacing:0,textTransform:'none'}}>{sqft.toLocaleString()} sq ft</strong></label>
+            <input type="range" min="2000" max="15000" step="250" value={sqft} onChange={e=>setSqft(+e.target.value)} style={{width:'100%',accentColor:'#C57238'}}/>
+            <div style={{display:'flex',flexWrap:'wrap',gap:10,marginTop:24}}>
+              {services.map(s=>(
+                <button key={s.k} onClick={()=>setPicks({...picks,[s.k]:!picks[s.k]})}
+                  style={{padding:'10px 16px',borderRadius:999,border:'1px solid '+(picks[s.k]?'var(--accent)':'rgba(0,0,0,.15)'),background:picks[s.k]?'var(--accent)':'#fff',color:picks[s.k]?'#fff':'var(--dark)',fontSize:13,cursor:'pointer',transition:'all .15s'}}>
+                  {s.label}
+                </button>
+              ))}
+            </div>
+            <div style={{marginTop:32,paddingTop:24,borderTop:'1px solid rgba(0,0,0,.08)',display:'flex',justifyContent:'space-between',alignItems:'baseline'}}>
+              <span style={{fontSize:13,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--mid)'}}>Estimated range</span>
+              <span style={{fontFamily:'var(--serif)',fontSize:36,fontWeight:600,color:'var(--accent)'}}>{fmt(est*0.85)} – {fmt(est*1.2)}</span>
+            </div>
+            <p style={{fontSize:12,color:'var(--mid)',margin:'12px 0 0',lineHeight:1.6}}>Indicative only. Final numbers depend on hardware tier, finish quality, site conditions, and integration depth. We'll send a real proposal within 48 hours of a property walk-through.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="th-section" style={{textAlign:'center',paddingTop:64,paddingBottom:88}}>
+        <h2 className="sec-title">Ready for a <em>real number?</em></h2>
+        <p className="sec-body">Tell us about the property and the systems that matter. We'll send a tailored proposal within two business days.</p>
+        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a conversation →</button>
+          <button className="btn-ghost" onClick={()=>navigate('home')}>Back to home</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── APP ─── */
+function App() {
+  const [page, setPage] = useState('home');
+  function navigate(p){setPage(p);window.scrollTo({top:0,behavior:'smooth'});}
+  const pages = {
+    home:      <HomePage navigate={navigate}/>,
+    shading:   <ShadingPage navigate={navigate}/>,
+    theaters:  <TheatersPage navigate={navigate}/>,
+    automation:<AutomationPage navigate={navigate}/>,
+    audio:     <AudioPage navigate={navigate}/>,
+    security:  <SecurityPage navigate={navigate}/>,
+    networking:<NetworkingPage navigate={navigate}/>,
+    lighting:  <LightingPage navigate={navigate}/>,
+    designers: <DesignersPage navigate={navigate}/>,
+    contact:   <ContactPage/>,
+    'budget-calculator': <BudgetCalculatorPage navigate={navigate}/>,
+    testimonials: <ContactPage/>,
+    'our-work':   <ContactPage/>,
+    about:        <ContactPage/>,
+  };
+  return <div><Nav navigate={navigate}/>{pages[page]||<HomePage navigate={navigate}/>}<Footer/></div>;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
 </body>
 </html>

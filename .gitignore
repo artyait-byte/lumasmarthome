@@ -8,6 +8,10 @@ Thumbs.db
 *.swp
 *.swo
 
+# Claude / Cursor agent metadata
+.claude/
+.cursor/
+
 # Netlify
 .netlify/
 
