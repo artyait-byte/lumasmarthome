@@ -214,7 +214,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   line-height:1.05;margin:0;text-wrap:pretty;
 }
 .cat-bento .luma-bg--audio{
-  background-image:url('https://images.pexels.com/photos/3756879/pexels-photo-3756879.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop');
+  background-image:url('/assets/photos/mega-audio-video.jpg?v=5');
 }
 @media (max-width:1099px) and (min-width:760px){
   .cat-bento{
@@ -454,6 +454,19 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .sp-license-strip strong{color:var(--dark)}
 .sp-band-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;max-width:960px;margin-left:auto;margin-right:auto}
 @media (max-width:899px){.sp-band-cards{grid-template-columns:1fr}}
+
+/* ── Field photo gallery (Work page) ── */
+.fg-section{padding:0 48px 72px;max-width:1280px;margin:0 auto}
+.fg-head{text-align:center;margin-bottom:40px}
+.fg-masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:959px){.fg-masonry{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:559px){.fg-masonry{grid-template-columns:1fr}}
+.fg-item{position:relative;border-radius:16px;overflow:hidden;background:var(--cream2);aspect-ratio:4/3}
+.fg-item.fg-item--tall{grid-row:span 2;aspect-ratio:auto;min-height:min(520px,70vw)}
+.fg-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.fg-item:hover img{transform:scale(1.03)}
+.fg-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(transparent,rgba(27,26,40,.88));font-size:12px;color:rgba(255,255,255,.88);line-height:1.4}
+.fg-note{font-size:12px;color:var(--mid);text-align:center;max-width:560px;margin:28px auto 0;line-height:1.65}
 </style>
 </head>
 <body>
@@ -462,74 +475,80 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 const {useState, useEffect, useRef} = React;
 
 /* ─── PHOTO URLS ─── */
-// All from Unsplash — free to embed
+// Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
+const lu = (path) => path + '?v=5';
 const PHOTOS = {
-  // Service card backgrounds — Gulf Coast luxury home aesthetic
-  lighting:    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&h=700&fit=crop&auto=format&q=80',
-  window:      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&h=600&fit=crop&auto=format&q=80',
-  theater:     'images/home-theater.jpg',
-  security:    'https://images.unsplash.com/photo-1558002038-1055907df827?w=900&h=600&fit=crop&auto=format&q=80',
-  audio:       'https://images.pexels.com/photos/3756879/pexels-photo-3756879.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop',
-  networking:  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop&auto=format&q=80',
-  automation:  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&auto=format&q=80',
+  lighting:    lu('/assets/photos/lighting-scene.jpg'),
+  window:      lu('/assets/photos/window-shades.jpg'),
+  theater:     lu('/assets/photos/home-theater.jpg'),
+  security:    lu('/assets/photos/security-camera.jpg'),
+  audio:       lu('/assets/photos/audio-system.jpg'),
+  networking:  lu('/assets/photos/networking-rack.jpg'),
+  automation:  lu('/assets/photos/waterfront-lanai.jpg'),
 
-  // Hero images
-  heroHome:        'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=1200&fit=crop&auto=format&q=85',
-  heroShading:     'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&h=600&fit=crop&auto=format&q=85',
-  heroLighting:    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=700&fit=crop&auto=format&q=85',
-  lightingKetra:   'https://images.unsplash.com/photo-1582268611958-ebfd161df9d8?w=900&h=620&fit=crop&auto=format&q=85',
-  lightingRania:   'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&h=620&fit=crop&auto=format&q=85',
-  lightingLumaris: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&h=620&fit=crop&auto=format&q=85',
-  heroDesigners:   'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&h=700&fit=crop&auto=format&q=85',
+  heroHome:        lu('/assets/photos/waterfront-lanai.jpg'),
+  heroShading:     lu('/assets/photos/window-shades.jpg'),
+  heroLighting:    lu('/assets/photos/lighting-lutron-hero.jpg'),
+  lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
+  lightingRania:   lu('/assets/photos/lighting-lutron-hero.jpg'),
+  lightingLumaris: lu('/assets/photos/designers-chandelier.jpg'),
+  heroDesigners:   lu('/assets/photos/designers-chandelier.jpg'),
 
-  // Four Moments — Gulf Coast luxury residence lifestyle
-  moment1: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=700&fit=crop&auto=format&q=80', // modern coastal estate exterior, morning
-  moment2: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=700&fit=crop&auto=format&q=80', // luxury great room with Gulf views, midday
-  moment3: 'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=600&h=700&fit=crop&auto=format&q=80', // infinity pool / terrace at sunset
-  moment4: 'https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=600&h=700&fit=crop&auto=format&q=80', // luxury master suite at night
+  moment1: lu('/assets/photos/scene-dawn.jpg'),
+  moment2: lu('/assets/photos/scene-midday.jpg'),
+  moment3: lu('/assets/photos/gulf-sunset.jpg'),
+  moment4: lu('/assets/photos/scene-night.jpg'),
 
-  // Theaters page
-  theaterAnamorphic:    'https://images.unsplash.com/photo-1489599162163-3fb2d5e3a37d?w=1200&h=800&fit=crop&auto=format&q=85',
-  theaterRoom:          'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&h=800&fit=crop&auto=format&q=85',
-  projectBayfront:      'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=900&h=700&fit=crop&auto=format&q=80',
-  projectWarmInterior:  'https://images.unsplash.com/photo-1593696140826-c58b021acf8b?w=900&h=700&fit=crop&auto=format&q=80',
-  projectArchitectural: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=700&fit=crop&auto=format&q=80',
-  gulfSunset:           'https://images.unsplash.com/photo-1502209524164-acea936639a2?w=1600&h=900&fit=crop&auto=format&q=85',
+  theaterAnamorphic:    lu('/assets/photos/home-theater.jpg'),
+  theaterRoom:          lu('/assets/photos/home-theater.jpg'),
+  projectBayfront:      lu('/assets/photos/waterfront-lanai.jpg'),
+  projectWarmInterior:  lu('/assets/photos/lighting-scene.jpg'),
+  projectArchitectural: lu('/assets/photos/designers-chandelier.jpg'),
+  gulfSunset:           lu('/assets/photos/gulf-sunset.jpg'),
 
-  // Automation page
-  automationKeypad:     'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&h=700&fit=crop&auto=format&q=85',
-  projectAutomation1:   'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&h=700&fit=crop&auto=format&q=80',
-  projectAutomation2:   'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&h=700&fit=crop&auto=format&q=80',
-  projectAutomation3:   'https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=900&h=700&fit=crop&auto=format&q=80',
+  automationKeypad:   lu('/assets/photos/lighting-lutron-hero.jpg'),
+  projectAutomation1: lu('/assets/photos/networking-rack.jpg'),
+  projectAutomation2: lu('/assets/photos/waterfront-lanai.jpg'),
+  projectAutomation3: lu('/assets/photos/scene-midday.jpg'),
 
-  // Audio / Security / Networking pages
-  audioHero:            'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1200&h=900&fit=crop&auto=format&q=85',
-  audioInvisible:       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=700&fit=crop&auto=format&q=85',
-  securityHero:         'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=900&fit=crop&auto=format&q=85', // outdoor dome IP camera, warm residential tone (Bernard Hermant / Unsplash)
-  securityFootage:      'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=900&h=700&fit=crop&auto=format&q=85',
+  audioHero:      lu('/assets/photos/mega-audio-video.jpg'),
+  audioInvisible: lu('/assets/photos/audio-system.jpg'),
+  securityHero:   lu('/assets/photos/security-camera.jpg'),
+  securityFootage:lu('/assets/photos/security-camera.jpg'),
 
-  // Security install grid — royalty-free Unsplash / Pexels
-  installDome:      'https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&h=700&fit=crop&auto=format&q=80', // outdoor dome IP camera
-  installDoorbell:  'https://images.unsplash.com/photo-1558002038-1055907df827?w=700&h=700&fit=crop&auto=format&q=80', // residential exterior camera close-up (used as doorbell stand-in)
-  installNvr:       'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=700&h=700&fit=crop&auto=format&q=80', // network rack / NVR
-  installPanel:     'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&h=700&fit=crop&auto=format&q=80', // in-wall touch panel / keypad
-  installDock:      'https://images.unsplash.com/photo-1572883454114-1cf0031ede2a?w=700&h=700&fit=crop&auto=format&q=80', // weatherproof dome on building exterior (dock-side stand-in)
-  installPhone:     'https://images.unsplash.com/photo-1611174743420-3d7df880ce32?w=700&h=700&fit=crop&auto=format&q=80', // hand viewing live cameras on phone
-  installBullet:    'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=700&h=700&fit=crop&auto=format&q=80', // bullet CCTV on soffit
-  installTablet:    'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=700&h=700&fit=crop&auto=format&q=80', // tablet showing live security feeds
-  networkingHero:       'https://images.unsplash.com/photo-1551808525-51a94da548ce?w=1200&h=900&fit=crop&auto=format&q=85',
-  networkingRack:       'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=900&h=700&fit=crop&auto=format&q=85',
-  projectModernVilla:   'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=700&fit=crop&auto=format&q=80',
-  projectLuxuryPool:    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&h=700&fit=crop&auto=format&q=80',
+  installDome:      lu('/assets/photos/security-camera.jpg'),
+  installDoorbell:  lu('/assets/photos/security-camera.jpg'),
+  installNvr:       lu('/assets/photos/networking-rack.jpg'),
+  installPanel:     lu('/assets/photos/lighting-lutron-hero.jpg'),
+  installDock:      lu('/assets/photos/waterfront-lanai.jpg'),
+  installPhone:     lu('/assets/photos/security-camera.jpg'),
+  installBullet:    lu('/assets/photos/security-camera.jpg'),
+  installTablet:    lu('/assets/photos/networking-rack.jpg'),
+  networkingHero:   lu('/assets/photos/networking-rack.jpg'),
+  networkingRack:   lu('/assets/photos/networking-rack.jpg'),
+  projectModernVilla: lu('/assets/photos/waterfront-lanai.jpg'),
+  projectLuxuryPool:  lu('/assets/photos/gulf-sunset.jpg'),
 
-  // Lighting mosaic (data-img keys)
-  'lit-cove':         'https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1100&h=800&fit=crop&auto=format&q=85',
-  'lit-keypad':       'https://images.unsplash.com/photo-1558002038-1055907df827?w=900&h=700&fit=crop&auto=format&q=85',
-  'lit-landscape-fl': 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=900&h=700&fit=crop&auto=format&q=85',
-  'lit-pendants':     'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&h=700&fit=crop&auto=format&q=85',
-  'lit-app':          'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=900&h=700&fit=crop&auto=format&q=85',
-  'lit-lanai-fl':     'https://images.unsplash.com/photo-1598228723793-52759bba239c?w=1200&h=800&fit=crop&auto=format&q=85',
+  'lit-cove':         lu('/assets/photos/lighting-scene.jpg'),
+  'lit-keypad':       lu('/assets/photos/lighting-lutron-hero.jpg'),
+  'lit-landscape-fl': lu('/assets/photos/gulf-sunset.jpg'),
+  'lit-pendants':     lu('/assets/photos/designers-chandelier.jpg'),
+  'lit-app':          lu('/assets/photos/scene-midday.jpg'),
+  'lit-lanai-fl':     lu('/assets/photos/waterfront-lanai.jpg'),
 };
+
+/* Field install gallery — same folder; swap files or edit captions here */
+const FIELD_GALLERY = [
+  {src:lu('/assets/photos/lighting-scene.jpg'), caption:'Layered lighting · living & exterior scenes'},
+  {src:lu('/assets/photos/networking-rack.jpg'), caption:'Structured rack · documented for service'},
+  {src:lu('/assets/photos/security-camera.jpg'), caption:'On-prem surveillance · POE to NVR'},
+  {src:lu('/assets/photos/window-shades.jpg'), caption:'Motorized shades · daylight control'},
+  {src:lu('/assets/photos/home-theater.jpg'), caption:'Dedicated theater · calibration'},
+  {src:lu('/assets/photos/waterfront-lanai.jpg'), caption:'Lanai audio · Gulf-facing'},
+  {src:lu('/assets/photos/audio-system.jpg'), caption:'Whole-home audio · equipment'},
+  {src:lu('/assets/photos/designers-chandelier.jpg'), caption:'Decorative fixtures · dimming'},
+  {src:lu('/assets/photos/gulf-sunset.jpg'), caption:'Exterior · coastal architecture'},
+];
 
 /* ─── ICON PATHS ─── */
 const serviceIcons = {
@@ -2517,7 +2536,8 @@ function CasesPage({navigate}) {
           <p className="hero-body">From 4,500 sq ft Bayfront residences to 9,000 sq ft Naples compounds. Each project below shows the layers we integrated, the partners we coordinated with, and the moment the home started working on its own.</p>
           <div className="th-cta-row">
             <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
-            <a className="btn-ghost" href="#testimonials-grid" style={{textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Read testimonials</a>
+            <a className="btn-ghost" href="#field-photos" style={{textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Install photos</a>
+            <a className="btn-ghost" href="#testimonials-grid" style={{textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Testimonials</a>
           </div>
         </div>
         <div className="th-hero-img"><img src={PHOTOS.gulfSunset} alt="Gulf Coast sunset over a luxury residence"/></div>
@@ -2549,6 +2569,23 @@ function CasesPage({navigate}) {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="fg-section" id="field-photos">
+        <div className="fg-head">
+          <div className="sec-label">On site</div>
+          <h2 className="sec-title">Field &amp; rack <em>photography.</em></h2>
+          <p className="sec-body" style={{maxWidth:580,margin:'0 auto'}}>What we actually install — lighting, shades, racks, cameras, theaters. Replace JPEGs in <span style={{fontSize:13,fontFamily:'ui-monospace,monospace'}}>/assets/photos/</span> on your machine and redeploy; change the <span style={{fontSize:13,fontFamily:'ui-monospace,monospace'}}>?v=</span> number in <span style={{fontSize:13,fontFamily:'ui-monospace,monospace'}}>index.html</span> if browsers cache the old file.</p>
+        </div>
+        <div className="fg-masonry">
+          {FIELD_GALLERY.map((g,i)=>(
+            <div key={i} className="fg-item">
+              <img src={g.src} alt={g.caption} loading="lazy" decoding="async"/>
+              <div className="fg-cap">{g.caption}</div>
+            </div>
+          ))}
+        </div>
+        <p className="fg-note">Illustrative of LUMA deployments; not every residence is pictured. Some clients request anonymity — we honor that.</p>
       </section>
 
       {/* Testimonials */}

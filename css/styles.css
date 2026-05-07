@@ -768,7 +768,7 @@ em.accent { font-style: italic; color: var(--copper); font-family: var(--serif);
 /* Audio & Video: pinned in CSS (not via images.js) so old cached JS can’t
    re-apply a stale Sonos-era URL — whole-home / in-ceiling + living space */
 .luma-bg--audio {
-  background-image: url("/assets/photos/mega-audio-video.jpg?v=8") !important;
+  background-image: url("/assets/photos/mega-audio-video.jpg?v=5") !important;
   background-size: cover !important;
   background-position: center !important;
 }
