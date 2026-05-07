@@ -430,9 +430,30 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .bw-cat-sub{color:var(--mid);font-size:12px;font-weight:400;margin-top:2px}
 @media (max-width:639px){.bw-result-row{grid-template-columns:1fr;gap:4px;padding:12px 0}.bw-rng{text-align:left}}
 
-/* ── SHARED PAGE PADDING TWEAKS ── */
-.page-narrow{max-width:1280px;margin:0 auto;padding:0 80px}
-@media (max-width:1099px){.page-narrow{padding:0 40px}}
+/* ── LUMA CARE / SERVICE PLANS ── */
+.sp-hero-tel{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:22px}
+.sp-hero-tel a{color:var(--accent);font-weight:600;border-bottom:1px solid var(--accent);padding-bottom:1px}
+.sp-plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;align-items:stretch}
+@media (max-width:1099px){.sp-plan-grid{grid-template-columns:1fr}}
+.sp-plan-card{background:#fff;border:1px solid var(--cream2);border-radius:18px;padding:30px 28px 28px;display:flex;flex-direction:column;text-align:center;height:100%}
+.sp-plan-card.sp-plan-card--featured{border-color:var(--accent);box-shadow:0 12px 40px rgba(197,114,56,.12)}
+.sp-plan-tier{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+.sp-plan-name{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--dark);line-height:1.15}
+.sp-plan-price{font-family:var(--serif);font-size:44px;font-weight:600;color:var(--accent);line-height:1;margin:14px 0 2px}
+.sp-plan-period{font-size:14px;color:var(--mid);margin-bottom:18px}
+.sp-plan-tag{font-size:12px;color:var(--teal);font-weight:500;margin-bottom:14px}
+.sp-plan-list{list-style:none;padding:0;margin:0 0 22px;text-align:left;flex:1}
+.sp-plan-list li{font-size:14px;color:var(--dark);padding:10px 0;border-top:1px solid var(--cream2);line-height:1.5;display:flex;gap:8px}
+.sp-plan-list li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+.sp-plan-list li:first-child{border-top:none;padding-top:0}
+.sp-process-3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
+@media (max-width:959px){.sp-process-3{grid-template-columns:1fr}}
+.sp-process-3 h4{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:10px;color:var(--dark)}
+.sp-process-3 p{color:var(--mid);font-size:14px;line-height:1.65;margin:0}
+.sp-license-strip{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center;margin-top:28px;padding:20px 24px;background:var(--cream2);border-radius:14px;font-size:13px;color:var(--mid)}
+.sp-license-strip strong{color:var(--dark)}
+.sp-band-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;max-width:960px;margin-left:auto;margin-right:auto}
+@media (max-width:899px){.sp-band-cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -621,7 +642,7 @@ function Nav({navigate}) {
           ))}
         </div>
         <div className="nav-actions">
-          <button className="btn-ghost" onClick={()=>navigate('contact')}>Customer Support</button>
+          <button type="button" className="btn-ghost" onClick={()=>navigate('support')}>Customer Support</button>
           <button className="btn-solid" onClick={()=>navigate('contact')}>Start Your Project →</button>
         </div>
       </nav>
@@ -2314,6 +2335,136 @@ function AboutPage({navigate}) {
   );
 }
 
+/* ─── LUMA CARE (ongoing service — inspired layout, original copy) ─── */
+function ServiceSupportPage({navigate}) {
+  const plans = [
+    {tier:'Shoreline', subtitle:'LUMA Care', price:75, tag:'Ideal for seasonal residences & lock-and-leave homes',
+     bullets:[
+       'Weekday remote diagnostics (Mon–Sat)',
+       'Secure messaging + email within one business day',
+       'Firmware and patch guidance for gear we installed',
+       '10% off standard on-site service visits',
+     ]},
+    {tier:'Channel', subtitle:'LUMA Care', price:119, featured:true, tag:'Our most popular tier for full-time Gulf Coast homes',
+     bullets:[
+       'Everything in Shoreline',
+       'Priority queue (same team, faster call-backs)',
+       'Proactive log review when vendors ship updates',
+       'Remote scene & keypad tweaks after you move in',
+       '20% off standard on-site service visits',
+     ]},
+    {tier:'Open Gulf', subtitle:'LUMA Care', price:189, tag:'Estates, compounds, and homes where downtime is unacceptable',
+     bullets:[
+       'Everything in Channel',
+       'Extended-hours phone line to the service desk',
+       'Quarterly remote “vitals” check on network, storage & backups',
+       'One annual on-site wellness visit (up to 90 min) within Sarasota County',
+       'Same-day on-site dispatch when available in your county',
+       '30% off standard on-site service visits',
+     ]},
+  ];
+  return (
+    <div className="page">
+      <header className="th-hero page-head">
+        <div>
+          <div className="hero-tag" style={{borderColor:'var(--accent)',color:'var(--accent)'}}>Ongoing care</div>
+          <h1 className="hero-title">Keep the house <em>effortless</em> — long after install.</h1>
+          <p className="hero-body">Smart homes age like boats: sun, salt, and software updates never stop. LUMA Care is ongoing stewardship for the systems we designed — remote tuning, disciplined updates, and technicians who already know your rack, your scenes, and how your family uses the place.</p>
+          <div className="sp-hero-tel">
+            <span style={{fontSize:13,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--mid)'}}>Talk to service</span>
+            <a href="tel:+19415551234">+1 (941) 555-1234</a>
+            <span style={{color:'var(--cream3)'}}>·</span>
+            <a href="mailto:hello@lumasmarthome.com">hello@lumasmarthome.com</a>
+          </div>
+          <div className="th-cta-row" style={{marginTop:8}}>
+            <button type="button" className="btn-solid" onClick={()=>navigate('contact')}>Request support →</button>
+            <button type="button" className="btn-ghost" onClick={()=>navigate('contact')}>Open a ticket (email)</button>
+          </div>
+        </div>
+        <div className="th-hero-img"><img src={PHOTOS.networkingRack} alt="Network rack and smart home infrastructure"/></div>
+      </header>
+
+      <section className="th-section">
+        <div className="sec-label">Support you can trust</div>
+        <h2 className="sec-title">When something drifts, <em>we realign it.</em></h2>
+        <p className="sec-body" style={{maxWidth:640}}>Even careful systems need tune-ups: Wi-Fi maps change, cameras need cleaning and re-aiming, shade limits shift, and vendors ship updates that deserve a measured rollout. LUMA Care keeps a single accountable studio on-call — not a generic help desk reading a script.</p>
+        <div className="sp-band-cards">
+          <div className="th-card">
+            <div className="th-card-icon" aria-hidden="true">◇</div>
+            <h3 style={{fontFamily:'var(--serif)',fontSize:20,marginBottom:8,fontWeight:600}}>Responsive team</h3>
+            <p style={{fontSize:14,color:'var(--mid)',margin:0,lineHeight:1.6}}>Urgent issues get triaged the same day. We route you to remote fix or a scheduled truck — not an endless ticket queue.</p>
+          </div>
+          <div className="th-card">
+            <div className="th-card-icon" aria-hidden="true">◇</div>
+            <h3 style={{fontFamily:'var(--serif)',fontSize:20,marginBottom:8,fontWeight:600}}>Technicians who know the job</h3>
+            <p style={{fontSize:14,color:'var(--mid)',margin:0,lineHeight:1.6}}>Same people who commissioned your scenes and labeled your rack. Continuity matters when a home is complex.</p>
+          </div>
+          <div className="th-card">
+            <div className="th-card-icon" aria-hidden="true">◇</div>
+            <h3 style={{fontFamily:'var(--serif)',fontSize:20,marginBottom:8,fontWeight:600}}>Forward-looking care</h3>
+            <p style={{fontSize:14,color:'var(--mid)',margin:0,lineHeight:1.6}}>We watch for heat, failed disks, and odd client drop-offs before they ruin Saturday dinner — Gulf Coast humidity is part of the math.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">How it works</div>
+          <h2 className="sec-title">Fast answers, <em>clean handoffs.</em></h2>
+          <div className="sp-process-3">
+            <div><h4>01 · You signal us</h4><p>Call, email, or text the service line. Describe what feels wrong — a scene, a shade, a camera, Wi-Fi in the guest wing. Photos and quick videos welcome.</p></div>
+            <div><h4>02 · We diagnose</h4><p>Remote first: VPN into the network you own, pull logs with your consent, and reproduce the issue. If it’s hardware, we schedule a visit with parts on the truck.</p></div>
+            <div><h4>03 · We close the loop</h4><p>Fix, verify, and leave notes in your file so the next technician — five years from now — isn’t guessing.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="th-section">
+        <div className="sec-label">Choose a plan</div>
+        <h2 className="sec-title">LUMA Care <em>membership</em></h2>
+        <p className="sec-body">Month-to-month after the first 90 days. Cancels anytime. Prices shown for single-family homes within our five-county service area; estates over 12,000 sq ft quoted individually.</p>
+        <div className="sp-plan-grid">
+          {plans.map(p=>(
+            <div key={p.tier} className={'sp-plan-card'+(p.featured?' sp-plan-card--featured':'')}>
+              <div className="sp-plan-tier">{p.subtitle}</div>
+              <div className="sp-plan-name">{p.tier}</div>
+              <div className="sp-plan-price">${p.price}<span style={{fontSize:20,fontWeight:500}}>/mo</span></div>
+              <div className="sp-plan-period">billed monthly · plus tax</div>
+              <div className="sp-plan-tag">{p.tag}</div>
+              <ul className="sp-plan-list">
+                {p.bullets.map(b=><li key={b}>{b}</li>)}
+              </ul>
+              <button type="button" className={p.featured?'btn-solid':'btn-ghost'} style={{width:'100%',justifyContent:'center'}} onClick={()=>navigate('contact')}>Start {p.tier} →</button>
+            </div>
+          ))}
+        </div>
+        <p style={{textAlign:'center',fontSize:12,color:'var(--mid)',maxWidth:720,margin:'28px auto 0',lineHeight:1.65}}>Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. Not insurance — it’s professional stewardship.</p>
+      </section>
+
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner" style={{textAlign:'center'}}>
+          <div className="sec-label">Licensed & accountable</div>
+          <h2 className="sec-title">Florida low-voltage <em>contractor of record.</em></h2>
+          <div className="sp-license-strip">
+            <span><strong>LUMA Home Systems LLC</strong> · Sarasota, FL</span>
+            <span>Florida licensed low-voltage contractor · insured for residential & light commercial</span>
+            <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="th-section" style={{textAlign:'center',paddingTop:48,paddingBottom:88}}>
+        <h2 className="sec-title">Need help <em>today?</em></h2>
+        <p className="sec-body">Tell us what’s going wrong. If you’re not sure which tier fits, we’ll recommend one after a short call — no upsell script.</p>
+        <div style={{marginTop:26,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button type="button" className="btn-solid" onClick={()=>navigate('contact')}>Request support →</button>
+          <button type="button" className="btn-ghost" onClick={()=>navigate('home')}>Back to home</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 /* ─── CASES PAGE (Testimonials + Our Work) ─── */
 const PROJECTS = [
   {name:'Bayfront Estate',         loc:'Longboat Key',                sqft:'6,200 sq ft', meta:'Lutron RadioRA 3 · Somfy · UniFi Protect · 4-zone lanai audio', img:PHOTOS.projectBayfront},
@@ -2530,7 +2681,7 @@ function BudgetCalculatorPage({navigate}) {
 }
 
 /* ─── APP ─── */
-const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about']);
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support']);
 
 function readPageFromUrl(){
   try {
@@ -2587,6 +2738,7 @@ function App() {
     'budget-calculator': <BudgetCalculatorPage navigate={navigate}/>,
     work:      <CasesPage navigate={navigate}/>,
     about:     <AboutPage navigate={navigate}/>,
+    support:   <ServiceSupportPage navigate={navigate}/>,
   };
   return <div><Nav navigate={navigate}/>{pages[page]||<HomePage navigate={navigate}/>}<Footer/></div>;
 }

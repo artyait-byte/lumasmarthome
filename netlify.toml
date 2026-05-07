@@ -61,6 +61,21 @@
   status = 302
 
 [[redirects]]
+  from   = "/serviceplans"
+  to     = "/?p=support"
+  status = 302
+
+[[redirects]]
+  from   = "/service-plans"
+  to     = "/?p=support"
+  status = 302
+
+[[redirects]]
+  from   = "/customer-support"
+  to     = "/?p=support"
+  status = 302
+
+[[redirects]]
   from   = "/lighting"
   to     = "/"
   status = 301
