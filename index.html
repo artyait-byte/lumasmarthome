@@ -345,6 +345,94 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .au-vendors{display:flex;flex-wrap:wrap;gap:36px;margin-top:28px;align-items:center}
 .au-vendor{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:.04em;color:var(--mid)}
 .au-vendor span{color:var(--accent);font-style:italic;font-weight:400}
+
+/* ── STAT BAND (About / Cases) ── */
+.stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;background:var(--dark);border-radius:20px;padding:40px 36px;color:#fff}
+.stat-band .stat-num{font-family:var(--serif);font-size:48px;line-height:1;font-weight:600;color:var(--accent);margin-bottom:6px}
+.stat-band .stat-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+@media (max-width:759px){.stat-band{grid-template-columns:1fr 1fr;gap:18px;padding:32px 24px}.stat-band .stat-num{font-size:36px}}
+
+/* ── TESTIMONIAL GRID ── */
+.tm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media (max-width:1099px){.tm-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:639px){.tm-grid{grid-template-columns:1fr}}
+.tm-card{background:#fff;border:1px solid var(--cream2);border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.tm-card.tm-card--video{background:linear-gradient(160deg,#1B1A28 0%,#2D5E5A 100%);color:#fff;cursor:pointer;position:relative;min-height:240px;justify-content:flex-end}
+.tm-card.tm-card--video::before{content:'';position:absolute;inset:0;background:var(--bg-img);background-size:cover;background-position:center;opacity:.35;border-radius:18px}
+.tm-card.tm-card--video > *{position:relative;z-index:1}
+.tm-stars{display:flex;gap:3px;color:var(--accent)}
+.tm-stars svg{width:16px;height:16px;fill:currentColor}
+.tm-quote{font-family:var(--serif);font-size:18px;line-height:1.45;font-weight:500;color:var(--dark);text-wrap:pretty}
+.tm-card--video .tm-quote{color:#fff;font-size:20px}
+.tm-author{display:flex;align-items:center;gap:12px;margin-top:auto}
+.tm-avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;font-weight:600}
+.tm-author-name{font-size:14px;font-weight:500;color:var(--dark);line-height:1.2}
+.tm-card--video .tm-author-name{color:#fff}
+.tm-author-loc{font-size:12px;color:var(--mid);letter-spacing:.04em}
+.tm-card--video .tm-author-loc{color:rgba(255,255,255,.7)}
+.tm-play{position:absolute;top:24px;right:24px;width:48px;height:48px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);z-index:2}
+.tm-play::before{content:'';display:block;width:0;height:0;border-style:solid;border-width:8px 0 8px 12px;border-color:transparent transparent transparent #fff;margin-left:3px}
+
+/* ── PRINCIPLE CARDS (About) ── */
+.prn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media (max-width:1099px){.prn-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:639px){.prn-grid{grid-template-columns:1fr}}
+.prn-card{background:#fff;border:1px solid var(--cream2);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.prn-num{font-family:var(--serif);font-size:14px;letter-spacing:.18em;color:var(--accent)}
+.prn-card h3{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.2;color:var(--dark);text-wrap:pretty}
+.prn-card p{color:var(--mid);font-size:14px;line-height:1.65}
+
+/* ── PROCESS (About) ── */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--cream3)}
+@media (max-width:1099px){.proc-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:559px){.proc-grid{grid-template-columns:1fr}}
+.proc-step{padding:28px 24px 28px 0;border-right:1px solid var(--cream3);position:relative}
+.proc-step:last-child{border-right:none}
+@media (max-width:1099px){.proc-step:nth-child(2n){border-right:none}}
+@media (max-width:559px){.proc-step{border-right:none;border-bottom:1px solid var(--cream3)}}
+.proc-num{font-family:var(--serif);font-size:34px;color:var(--accent);font-weight:600;line-height:1;margin-bottom:14px}
+.proc-step h4{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:8px;color:var(--dark)}
+.proc-step p{color:var(--mid);font-size:14px;line-height:1.65}
+
+/* ── BUDGET WIZARD ── */
+.bw-shell{background:#fff;border-radius:20px;border:1px solid var(--cream2);padding:36px 40px;max-width:920px;margin:44px auto 0}
+@media (max-width:759px){.bw-shell{padding:28px 22px}}
+.bw-progress{display:flex;align-items:center;gap:8px;margin-bottom:28px}
+.bw-step-dot{flex:1;height:4px;background:var(--cream2);border-radius:2px;overflow:hidden;position:relative}
+.bw-step-dot.done{background:var(--accent)}
+.bw-step-dot.active{background:linear-gradient(90deg,var(--accent) 50%,var(--cream2) 50%)}
+.bw-step-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:18px;display:flex;justify-content:space-between;align-items:center}
+.bw-step-label strong{color:var(--accent);font-weight:600}
+.bw-q{margin-bottom:24px}
+.bw-q-label{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.25;margin-bottom:6px;text-wrap:pretty}
+.bw-q-help{font-size:13px;color:var(--mid);line-height:1.55;margin-bottom:14px}
+.bw-options{display:flex;flex-wrap:wrap;gap:8px}
+.bw-option{padding:10px 16px;border-radius:100px;border:1.5px solid var(--cream3);background:#fff;color:var(--dark);font-size:13px;cursor:pointer;transition:all .15s;font-family:var(--sans);text-align:left}
+.bw-option:hover{border-color:var(--accent);color:var(--accent)}
+.bw-option.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+.bw-option-stack{display:grid;gap:8px}
+.bw-option-stack .bw-option{padding:14px 18px;border-radius:12px;display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+.bw-option-stack .bw-option strong{font-size:14px;font-weight:600}
+.bw-option-stack .bw-option span{font-size:12px;opacity:.75;font-weight:400;line-height:1.5;text-wrap:pretty}
+.bw-option-stack .bw-option.selected span{opacity:.9}
+.bw-input{width:140px;border:1.5px solid var(--cream3);border-radius:10px;padding:11px 14px;font-family:var(--sans);font-size:14px;background:#fff;color:var(--dark);outline:none;transition:border-color .18s}
+.bw-input:focus{border-color:var(--accent)}
+.bw-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:36px;padding-top:24px;border-top:1px solid var(--cream2);flex-wrap:wrap}
+.bw-running{font-size:13px;color:var(--mid)}
+.bw-running strong{color:var(--accent);font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:0;margin-left:4px}
+.bw-result{display:flex;flex-direction:column;gap:0;margin-top:14px}
+.bw-result-row{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--cream2);font-size:14px;align-items:center}
+.bw-result-row:first-child{border-top:none;color:var(--mid);text-transform:uppercase;letter-spacing:.08em;font-size:11px;padding-top:0;padding-bottom:6px}
+.bw-result-row.total{border-top:2px solid var(--accent);padding-top:18px;margin-top:6px;font-family:var(--serif);font-size:18px;font-weight:600}
+.bw-result-row.total .bw-rng{color:var(--accent);font-size:22px}
+.bw-rng{text-align:right;font-variant-numeric:tabular-nums}
+.bw-cat{color:var(--dark);font-weight:500}
+.bw-cat-sub{color:var(--mid);font-size:12px;font-weight:400;margin-top:2px}
+@media (max-width:639px){.bw-result-row{grid-template-columns:1fr;gap:4px;padding:12px 0}.bw-rng{text-align:left}}
+
+/* ── SHARED PAGE PADDING TWEAKS ── */
+.page-narrow{max-width:1280px;margin:0 auto;padding:0 80px}
+@media (max-width:1099px){.page-narrow{padding:0 40px}}
 </style>
 </head>
 <body>
@@ -1753,6 +1841,603 @@ const BUDGET_TIERS = [
   {tier:'Estate',      range:'$300k+',        sqft:'7,500+ sq ft / multi-building',
    includes:['Multi-residence Crestron','Outdoor audio + dock systems','24+ cameras, PTZ + analytics','Dedicated cinema room','Two-year on-call service']},
 ];
+
+/* ─── DETAILED BUDGET WIZARD ─── */
+/* Range estimator. Each option contributes [low, high] to a category bucket.
+   Calibrated for Gulf Coast luxury market — slightly above the national HTA reference,
+   reflects union labor + island access fees + post-hurricane site conditions.        */
+const WIZARD_STEPS = [
+  {id:'home',   label:'The home'},
+  {id:'enter',  label:'Entertainment'},
+  {id:'safety', label:'Security & Wi-Fi'},
+  {id:'ctrl',   label:'Lighting & control'},
+  {id:'recap',  label:'Your range'},
+];
+
+function pricePerSqft(sqft, perLow, perHigh){
+  return [Math.round(sqft*perLow), Math.round(sqft*perHigh)];
+}
+
+function DetailedBudgetWizard(){
+  const [step, setStep] = useState(0);
+  const [a, setA] = useState({
+    sqft: 5000,
+    wiring: 'existing',
+    musicRooms: '4-7',
+    tvCount: '4-7',
+    videoMatrix: 'no',
+    theater: 'none',
+    surround: 'enhanced',
+    alarm: 'yes',
+    cameras: '4-7',
+    wifi: 'performance',
+    lighting: 'main-ext',
+    shades: 8,
+    appUnify: 'single',
+    hvac: 'yes',
+    voice: 'yes',
+  });
+  const set = (k,v)=>setA(s=>({...s,[k]:v}));
+
+  // ── pricing tables (Gulf Coast calibration) ──
+  const wiringRange = {
+    'existing':  ['Already wired',           [0,0]],
+    'partial':   ['Some new runs needed',    pricePerSqft(a.sqft, 0.6, 1.6)],
+    'old':       ['Old wiring · full rewire',pricePerSqft(a.sqft, 1.4, 3.6)],
+    'newbuild':  ['New construction · all new',pricePerSqft(a.sqft, 1.6, 3.4)],
+  };
+  const musicRoomRange = {
+    'none':  ['No whole-home audio',[0,0]],
+    '1-3':   ['1–3 rooms',          [3500, 9500]],
+    '4-7':   ['4–7 rooms',          [9500, 26000]],
+    '8-14':  ['8–14 rooms',         [21000, 58000]],
+    '15+':   ['15+ rooms · indoor + lanai',[42000, 130000]],
+  };
+  const tvRange = {
+    'none':  ['No TVs to install',[0,0]],
+    '1-3':   ['1–3 TVs',          [1800, 5500]],
+    '4-7':   ['4–7 TVs',          [5500, 16000]],
+    '8-14':  ['8–14 TVs',         [12000, 36000]],
+    '15+':   ['15+ TVs',          [26000, 80000]],
+  };
+  const videoMatrix = {
+    'no':  ['Each TV stays standalone',[0,0]],
+    'yes': ['Centralized video matrix',[8500, 32000]],
+  };
+  const theaterRange = {
+    'none':       ['No dedicated theater',[0,0]],
+    'coastal':    ['Coastal · 4–6 seats', [11000, 26000]],
+    'resident':   ['Resident · 6–8 seats',[27000, 56000]],
+    'estate':     ['Estate · 8–12 seats', [58000, 130000]],
+    'cinema':     ['Cinema · reference room',[140000, 290000]],
+  };
+  const surroundRange = {
+    'none':      ['No surround room',[0,0]],
+    'soundbar':  ['Soundbar + sub',  [900, 3200]],
+    'enhanced':  ['Receiver-based 5.1 / 7.1',[3500, 11500]],
+    'perform':   ['Atmos 9-spkr performance',[12000, 24000]],
+    'reference': ['Atmos 11-spkr reference',[24000, 48000]],
+  };
+  const alarmRange = {
+    'no':  ['Skip burglar alarm', [0,0]],
+    'yes': ['On-prem alarm · no monthly',[1800, 5500]],
+  };
+  const camerasRange = {
+    'none':  ['No cameras',     [0,0]],
+    '1-3':   ['1–3 cameras',    [2400, 5200]],
+    '4-7':   ['4–7 cameras',    [4800, 12500]],
+    '8-14':  ['8–14 cameras',   [10500, 26000]],
+    '15+':   ['15+ cameras · perimeter',[22000, 55000]],
+  };
+  const wifiRange = {
+    'none':       ['Use existing router',[0,0]],
+    'consumer':   ['Consumer mesh',     [800, 1700]],
+    'performance':['Performance UniFi', [2600, 5400]],
+    'enterprise': ['Enterprise · multi-AP',[6500, 24000]],
+  };
+  const lightingRange = {
+    'none':     ['Conventional switches',[0,0]],
+    'few':      ['A few rooms only',     [1400, 3200]],
+    'main-ext': ['Main areas + exterior',[3800, 9500]],
+    'whole':    ['Whole house + landscape',[12000, 38000]],
+  };
+  const shadesRange = (() => {
+    const n = Math.max(0, Math.min(80, Number(a.shades)||0));
+    return ['Motorized shades · '+n, [Math.round(n*900), Math.round(n*1900)]];
+  })();
+  const unifyRange = {
+    'none':   ['No unified app',     [0,0]],
+    'multi':  ['Multiple vendor apps',[0,0]],
+    'single': ['Single LUMA app',    [6500, 16500]],
+  };
+  const hvacRange = {
+    'no':  ['Standalone thermostats',[0,0]],
+    'yes': ['HVAC integrated to app',[900, 2400]],
+  };
+  const voiceRange = {
+    'no':  ['No voice control',[0,0]],
+    'yes': ['Voice control layer',[600, 1900]],
+  };
+
+  const lines = [
+    {cat:'Pre-wire & infrastructure', sub:wiringRange[a.wiring][0],  rng:wiringRange[a.wiring][1]},
+    {cat:'Whole-home music',          sub:musicRoomRange[a.musicRooms][0], rng:musicRoomRange[a.musicRooms][1]},
+    {cat:'Televisions',               sub:tvRange[a.tvCount][0],     rng:tvRange[a.tvCount][1]},
+    {cat:'Video distribution',        sub:videoMatrix[a.videoMatrix][0], rng:videoMatrix[a.videoMatrix][1]},
+    {cat:'Dedicated theater',         sub:theaterRange[a.theater][0],rng:theaterRange[a.theater][1]},
+    {cat:'Media-room sound',          sub:surroundRange[a.surround][0],rng:surroundRange[a.surround][1]},
+    {cat:'Alarm system',              sub:alarmRange[a.alarm][0],    rng:alarmRange[a.alarm][1]},
+    {cat:'Cameras & NVR',             sub:camerasRange[a.cameras][0],rng:camerasRange[a.cameras][1]},
+    {cat:'Network & Wi-Fi',           sub:wifiRange[a.wifi][0],      rng:wifiRange[a.wifi][1]},
+    {cat:'Lighting control',          sub:lightingRange[a.lighting][0],rng:lightingRange[a.lighting][1]},
+    {cat:'Motorized shading',         sub:shadesRange[0],            rng:shadesRange[1]},
+    {cat:'Unified control app',       sub:unifyRange[a.appUnify][0], rng:unifyRange[a.appUnify][1]},
+    {cat:'HVAC integration',          sub:hvacRange[a.hvac][0],      rng:hvacRange[a.hvac][1]},
+    {cat:'Voice control',             sub:voiceRange[a.voice][0],    rng:voiceRange[a.voice][1]},
+  ];
+  const totalLow  = lines.reduce((s,l)=>s+l.rng[0], 0);
+  const totalHigh = lines.reduce((s,l)=>s+l.rng[1], 0);
+  // Add base design + project management overhead (15% of mid)
+  const base = Math.round((totalLow+totalHigh)/2 * 0.15);
+  const finalLow  = totalLow + base;
+  const finalHigh = totalHigh + Math.round(base * 1.4);
+  const fmt = n => n>=1000 ? '$'+Math.round(n/1000)+'k' : '$'+n;
+
+  const Pill = ({k,v,label,group}) => (
+    <button type="button" onClick={()=>set(group, k)}
+      className={'bw-option'+(a[group]===k?' selected':'')}>{label||v}</button>
+  );
+  const Stack = ({k,group,title,sub}) => (
+    <button type="button" onClick={()=>set(group, k)}
+      className={'bw-option'+(a[group]===k?' selected':'')}><strong>{title}</strong><span>{sub}</span></button>
+  );
+
+  return (
+    <section className="th-section--cream" id="detailed-wizard">
+      <div className="th-section--cream-inner">
+        <div className="sec-label">Detailed estimator</div>
+        <h2 className="sec-title">Walk through it <em>like we would.</em></h2>
+        <p className="sec-body">Twelve quick questions, organized the way we'd ask them on a property walk-through. The range adjusts as you answer. No email required to see the number.</p>
+
+        <div className="bw-shell">
+          {/* progress */}
+          <div className="bw-step-label"><span>Step {Math.min(step+1,WIZARD_STEPS.length)} of {WIZARD_STEPS.length}</span><strong>{WIZARD_STEPS[step].label}</strong></div>
+          <div className="bw-progress">
+            {WIZARD_STEPS.map((s,i)=>(
+              <span key={s.id} className={'bw-step-dot'+(i<step?' done':i===step?' active':'')}/>
+            ))}
+          </div>
+
+          {/* STEP 0 — HOME */}
+          {step===0 && <>
+            <div className="bw-q">
+              <div className="bw-q-label">How large is the residence?</div>
+              <div className="bw-q-help">Heated/cooled square footage. Lanais and detached structures we'll cover separately on the proposal.</div>
+              <div style={{display:'flex',alignItems:'center',gap:14,flexWrap:'wrap'}}>
+                <input type="number" className="bw-input" value={a.sqft} step="100" min="1500" max="25000"
+                  onChange={e=>set('sqft', Math.max(1500, Math.min(25000, +e.target.value||0)))} />
+                <span style={{fontSize:13,color:'var(--mid)'}}>sq ft</span>
+                <input type="range" min="1500" max="20000" step="250" value={a.sqft}
+                  onChange={e=>set('sqft', +e.target.value)} style={{flex:1,minWidth:200,accentColor:'#C57238'}}/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">What's the wiring situation?</div>
+              <div className="bw-q-help">Pre-wire is the single biggest swing factor. Honest input here keeps the range tight.</div>
+              <div className="bw-option-stack" style={{gridTemplateColumns:'1fr 1fr'}}>
+                <Stack k="existing" group="wiring" title="Already wired" sub="House has structured cabling and we just integrate."/>
+                <Stack k="partial"  group="wiring" title="Some new runs" sub="Add a few drops to existing infrastructure."/>
+                <Stack k="old"      group="wiring" title="Old wiring, full rewire" sub="Pull and replace through finished walls."/>
+                <Stack k="newbuild" group="wiring" title="New construction" sub="Coordinated rough-in with the builder."/>
+              </div>
+            </div>
+          </>}
+
+          {/* STEP 1 — ENTERTAINMENT */}
+          {step===1 && <>
+            <div className="bw-q">
+              <div className="bw-q-label">Whole-home music — how many rooms?</div>
+              <div className="bw-q-help">Count interior rooms + outdoor zones (lanai, pool, dock).</div>
+              <div className="bw-options">
+                <Pill k="none" group="musicRooms" label="None"/>
+                <Pill k="1-3" group="musicRooms" label="1–3"/>
+                <Pill k="4-7" group="musicRooms" label="4–7"/>
+                <Pill k="8-14" group="musicRooms" label="8–14"/>
+                <Pill k="15+" group="musicRooms" label="15+"/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">How many televisions across the home?</div>
+              <div className="bw-options">
+                <Pill k="none" group="tvCount" label="None"/>
+                <Pill k="1-3" group="tvCount" label="1–3"/>
+                <Pill k="4-7" group="tvCount" label="4–7"/>
+                <Pill k="8-14" group="tvCount" label="8–14"/>
+                <Pill k="15+" group="tvCount" label="15+"/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">Centralize sources to one rack?</div>
+              <div className="bw-q-help">Cable boxes, Apple TVs, and security feeds in one closet — viewable from any TV.</div>
+              <div className="bw-options">
+                <Pill k="yes" group="videoMatrix" label="Yes, video matrix"/>
+                <Pill k="no" group="videoMatrix" label="No, keep separate"/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">Dedicated theater room?</div>
+              <div className="bw-q-help">Hardware + calibration only — seating and architectural build-out priced separately.</div>
+              <div className="bw-option-stack" style={{gridTemplateColumns:'1fr 1fr'}}>
+                <Stack k="none"     group="theater" title="No theater" sub="Skip for now."/>
+                <Stack k="coastal"  group="theater" title="Coastal · $11k–$26k" sub="4–6 seats, 100″–120″ screen, in-wall speakers."/>
+                <Stack k="resident" group="theater" title="Resident · $27k–$56k" sub="6–8 seats, brighter projector, dedicated processor."/>
+                <Stack k="estate"   group="theater" title="Estate · $58k–$130k" sub="8–12 seats, 12–15ft screen, theater-grade sound."/>
+                <Stack k="cinema"   group="theater" title="Cinema · $140k–$290k" sub="Reference room: acoustics, riser, 4K laser."/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">Surround sound in a media room?</div>
+              <div className="bw-options">
+                <Pill k="none" group="surround" label="None"/>
+                <Pill k="soundbar" group="surround" label="Soundbar + sub"/>
+                <Pill k="enhanced" group="surround" label="5.1 / 7.1 receiver"/>
+                <Pill k="perform" group="surround" label="9-spkr Atmos"/>
+                <Pill k="reference" group="surround" label="11-spkr reference"/>
+              </div>
+            </div>
+          </>}
+
+          {/* STEP 2 — SAFETY */}
+          {step===2 && <>
+            <div className="bw-q">
+              <div className="bw-q-label">Burglar alarm?</div>
+              <div className="bw-q-help">We install on-prem (no monthly contract). Optional cellular monitoring later.</div>
+              <div className="bw-options">
+                <Pill k="yes" group="alarm" label="Yes"/>
+                <Pill k="no"  group="alarm" label="No"/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">How many cameras?</div>
+              <div className="bw-q-help">A typical Gulf Coast home runs 6–12: front door, drive, sides, lanai, pool, dock.</div>
+              <div className="bw-options">
+                <Pill k="none" group="cameras" label="None"/>
+                <Pill k="1-3" group="cameras" label="1–3"/>
+                <Pill k="4-7" group="cameras" label="4–7"/>
+                <Pill k="8-14" group="cameras" label="8–14"/>
+                <Pill k="15+" group="cameras" label="15+ · perimeter"/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">Wi-Fi & networking grade?</div>
+              <div className="bw-q-help">Network is the foundation. Underspec'd Wi-Fi sinks every other system.</div>
+              <div className="bw-option-stack" style={{gridTemplateColumns:'1fr 1fr'}}>
+                <Stack k="none"        group="wifi" title="Use existing" sub="Keep your current router. Risky for whole-home automation."/>
+                <Stack k="consumer"    group="wifi" title="Consumer mesh" sub="Eero / Orbi class · OK for under 3,500 sq ft."/>
+                <Stack k="performance" group="wifi" title="Performance UniFi" sub="Pro AP + switching, our common spec."/>
+                <Stack k="enterprise"  group="wifi" title="Enterprise" sub="Multi-AP, segmented VLANs, dual-WAN failover."/>
+              </div>
+            </div>
+          </>}
+
+          {/* STEP 3 — CONTROL */}
+          {step===3 && <>
+            <div className="bw-q">
+              <div className="bw-q-label">Lighting control coverage?</div>
+              <div className="bw-option-stack" style={{gridTemplateColumns:'1fr 1fr'}}>
+                <Stack k="none"     group="lighting" title="Conventional switches" sub="Manual everything. We'll skip the layer."/>
+                <Stack k="few"      group="lighting" title="A few rooms" sub="Living, primary, key exterior fixtures."/>
+                <Stack k="main-ext" group="lighting" title="Main + exterior" sub="Most living areas, lanai, landscape lights."/>
+                <Stack k="whole"    group="lighting" title="Whole house + landscape" sub="Every keypad and dimmer, including landscape DMX."/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">Motorized shades — how many windows?</div>
+              <div className="bw-q-help">Round-number guess is fine. Lanai screens count if you'd like them automated.</div>
+              <div style={{display:'flex',alignItems:'center',gap:14,flexWrap:'wrap'}}>
+                <input type="number" className="bw-input" value={a.shades} min="0" max="80"
+                  onChange={e=>set('shades', Math.max(0,Math.min(80, +e.target.value||0)))}/>
+                <span style={{fontSize:13,color:'var(--mid)'}}>shades</span>
+                <input type="range" min="0" max="40" step="1" value={a.shades}
+                  onChange={e=>set('shades', +e.target.value)} style={{flex:1,minWidth:200,accentColor:'#C57238'}}/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">Single app or multiple apps?</div>
+              <div className="bw-q-help">Single app means lighting, music, locks, cameras, climate — all unified. Costs more to integrate, but daily life is dramatically simpler.</div>
+              <div className="bw-options">
+                <Pill k="single" group="appUnify" label="Single unified app"/>
+                <Pill k="multi"  group="appUnify" label="Multiple vendor apps"/>
+                <Pill k="none"   group="appUnify" label="No app control"/>
+              </div>
+            </div>
+            <div className="bw-q">
+              <div className="bw-q-label">HVAC + voice control?</div>
+              <div style={{display:'flex',gap:24,flexWrap:'wrap'}}>
+                <div>
+                  <div className="bw-q-help" style={{margin:0,marginBottom:8}}>Thermostats in the app</div>
+                  <div className="bw-options">
+                    <Pill k="yes" group="hvac" label="Yes"/>
+                    <Pill k="no"  group="hvac" label="No"/>
+                  </div>
+                </div>
+                <div>
+                  <div className="bw-q-help" style={{margin:0,marginBottom:8}}>Voice (Alexa / Google / Apple)</div>
+                  <div className="bw-options">
+                    <Pill k="yes" group="voice" label="Yes"/>
+                    <Pill k="no"  group="voice" label="No"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>}
+
+          {/* STEP 4 — RECAP */}
+          {step===4 && <>
+            <div className="bw-q">
+              <div className="bw-q-label">Your estimated range</div>
+              <div className="bw-q-help">Indicative only — design, hardware, installation, and one year of service all in. Final number depends on hardware tier, finish quality, site conditions, and integration depth. We'll send a real proposal within 48 hours of a property walk-through.</div>
+            </div>
+            <div className="bw-result">
+              <div className="bw-result-row"><span>Category</span><span className="bw-rng">Low</span><span className="bw-rng">High</span></div>
+              {lines.filter(l=>l.rng[1]>0).map(l=>(
+                <div key={l.cat} className="bw-result-row">
+                  <div className="bw-cat">{l.cat}<div className="bw-cat-sub">{l.sub}</div></div>
+                  <div className="bw-rng">{fmt(l.rng[0])}</div>
+                  <div className="bw-rng">{fmt(l.rng[1])}</div>
+                </div>
+              ))}
+              <div className="bw-result-row">
+                <div className="bw-cat">Design + project management<div className="bw-cat-sub">~15% of hardware + labor</div></div>
+                <div className="bw-rng">{fmt(base)}</div>
+                <div className="bw-rng">{fmt(Math.round(base*1.4))}</div>
+              </div>
+              <div className="bw-result-row total">
+                <span>Total range</span>
+                <div className="bw-rng">{fmt(finalLow)}</div>
+                <div className="bw-rng">{fmt(finalHigh)}</div>
+              </div>
+            </div>
+          </>}
+
+          {/* nav */}
+          <div className="bw-nav">
+            <button type="button" className="btn-ghost" onClick={()=>setStep(s=>Math.max(0,s-1))} disabled={step===0} style={step===0?{opacity:.4,cursor:'default'}:{}}>← Back</button>
+            <span className="bw-running">Running estimate <strong>{fmt(finalLow)} – {fmt(finalHigh)}</strong></span>
+            {step<WIZARD_STEPS.length-1
+              ? <button type="button" className="btn-solid" onClick={()=>setStep(s=>Math.min(WIZARD_STEPS.length-1, s+1))}>Continue →</button>
+              : <button type="button" className="btn-solid" onClick={()=>{document.querySelector('#detailed-wizard')?.scrollIntoView({behavior:'smooth'});setTimeout(()=>setStep(0),200);}}>Start over</button>}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── ABOUT PAGE ─── */
+function AboutPage({navigate}) {
+  return (
+    <div className="page">
+      <header className="th-hero page-head">
+        <div>
+          <div className="hero-tag">Our studio</div>
+          <h1 className="hero-title">We build homes around the <em>Gulf Coast hour.</em></h1>
+          <p className="hero-body">LUMA is a residential technology studio based on Florida's Southwest Gulf Coast. We integrate lighting, shading, security, audio, and networking into homes that feel effortless — and we stay engaged long after turnover, because that's when most integrators disappear.</p>
+          <div className="th-cta-row">
+            <button className="btn-solid" onClick={()=>navigate('contact')}>Book a consultation →</button>
+            <button className="btn-ghost" onClick={()=>navigate('our-work')}>See our work</button>
+          </div>
+        </div>
+        <div className="th-hero-img"><img src={PHOTOS.heroHome} alt="Gulf Coast residence at golden hour"/></div>
+      </header>
+
+      {/* Story */}
+      <section className="th-section">
+        <div className="th-split">
+          <div>
+            <div className="sec-label" style={{textAlign:'left'}}>Our story</div>
+            <h2 className="sec-title" style={{textAlign:'left'}}>A different kind of <em>integrator.</em></h2>
+            <p className="hero-body" style={{marginTop:22}}>LUMA was founded on a simple observation: the Southwest Florida smart-home market is crowded with dealer-locked systems, opaque pricing, and integrators who vanish after turnover. High-end homeowners pay for premium gear and receive a black box they can't manage, can't modify, and can't get serviced without waiting weeks for a call back.</p>
+            <p className="hero-body">We started LUMA to flip that model. Open platforms — Lutron, Ubiquiti, Somfy, Sonos, Crestron — so you own your system. Line-item proposals, so you know exactly what you're paying for. Two-hour response times. Twelve months of service bundled into every project. And a studio that stays with your home for years, not weeks.</p>
+          </div>
+          <div className="th-split-img"><img src={PHOTOS.heroDesigners} alt="Architectural lighting in a Gulf Coast living room"/></div>
+        </div>
+      </section>
+
+      {/* Stat band */}
+      <section className="th-section" style={{paddingTop:0}}>
+        <div className="stat-band">
+          <div><div className="stat-num">5</div><div className="stat-label">Counties served</div></div>
+          <div><div className="stat-num">2 h</div><div className="stat-label">Urgent response</div></div>
+          <div><div className="stat-num">12 mo</div><div className="stat-label">Service included</div></div>
+          <div><div className="stat-num">100%</div><div className="stat-label">Line-item pricing</div></div>
+        </div>
+      </section>
+
+      {/* Six principles */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">What we believe</div>
+          <h2 className="sec-title">Six principles, <em>non-negotiable.</em></h2>
+          <div className="prn-grid">
+            <div className="prn-card"><div className="prn-num">01</div><h3>Open over proprietary</h3><p>Lutron, Ubiquiti, Somfy, Crestron. Professional platforms with documented APIs. No dealer lock — your home stays yours if you ever leave us.</p></div>
+            <div className="prn-card"><div className="prn-num">02</div><h3>Network first</h3><p>Every project begins with the network. Wired backbone, segmented Wi-Fi, on-prem control. Everything else fails without it.</p></div>
+            <div className="prn-card"><div className="prn-num">03</div><h3>Pricing in lines</h3><p>Every device, every labor hour. No bundled mysteries, no surprise change orders. Our margin is clear and defensible.</p></div>
+            <div className="prn-card"><div className="prn-num">04</div><h3>Design with architects</h3><p>We show up early in the build, not after drywall. Integration happens in plans, not in patches.</p></div>
+            <div className="prn-card"><div className="prn-num">05</div><h3>Stay after turnover</h3><p>Twelve months of service bundled. Quarterly check-ins. Quiet system updates. Your home keeps getting better, not worse.</p></div>
+            <div className="prn-card"><div className="prn-num">06</div><h3>Respect the hour</h3><p>Technology should disappear into the day. The best system is the one you stop noticing.</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* How we work */}
+      <section className="th-section">
+        <div className="sec-label">How we work</div>
+        <h2 className="sec-title">Four phases, <em>one studio.</em></h2>
+        <div className="proc-grid">
+          <div className="proc-step"><div className="proc-num">01</div><h4>Walk-through</h4><p>60–90 minutes on site. We listen first, then sketch the system layers. Free, no obligation.</p></div>
+          <div className="proc-step"><div className="proc-num">02</div><h4>Proposal</h4><p>Line-item document within two business days. Every device priced, every hour counted, scope locked.</p></div>
+          <div className="proc-step"><div className="proc-num">03</div><h4>Install</h4><p>Coordinated with the builder, electrician, and AV trades. Daily clean-up, weekly progress photos.</p></div>
+          <div className="proc-step"><div className="proc-num">04</div><h4>Service</h4><p>Twelve months of priority service included. Same technicians, same phone number, same morning if needed.</p></div>
+        </div>
+      </section>
+
+      {/* Founder pull-quote */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner" style={{maxWidth:820,textAlign:'center'}}>
+          <div className="sec-label">Built by</div>
+          <blockquote style={{fontFamily:'var(--serif)',fontSize:32,lineHeight:1.3,fontWeight:500,color:'var(--dark)',margin:'18px auto 24px',textWrap:'pretty'}}>
+            "The best smart home is the one you stop noticing. The windows are already where they should be. The music is already at dinner volume. The sun is still doing the work."
+          </blockquote>
+          <div style={{fontSize:14,color:'var(--mid)',letterSpacing:'.04em'}}>
+            <strong style={{color:'var(--dark)',fontWeight:600,letterSpacing:'.06em'}}>LUMA Design Principles</strong>
+            <span style={{margin:'0 10px',color:'var(--cream3)'}}>·</span>
+            Sarasota · Lutron / Crestron / Ubiquiti certified · CEDIA member
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="th-section" style={{textAlign:'center',paddingTop:64,paddingBottom:88}}>
+        <h2 className="sec-title">Let's meet at <em>your property.</em></h2>
+        <p className="sec-body">First visit is free. 60–90 minutes on site. No obligation. You'll walk away knowing what a LUMA-tuned home could look like — whether we build it together or not.</p>
+        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Book a consultation →</button>
+          <button className="btn-ghost" onClick={()=>navigate('budget-calculator')}>See budget ranges</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── CASES PAGE (Testimonials + Our Work) ─── */
+const PROJECTS = [
+  {name:'Bayfront Estate',         loc:'Longboat Key',                sqft:'6,200 sq ft', meta:'Lutron RadioRA 3 · Somfy · UniFi Protect · 4-zone lanai audio', img:PHOTOS.projectBayfront},
+  {name:'Coastal Modern',          loc:'Naples · Port Royal',         sqft:'8,900 sq ft', meta:'Full-home · 9 shading zones · Trinnov theater',                  img:PHOTOS.projectArchitectural},
+  {name:'Gulf-front Villa',        loc:'Siesta Key',                  sqft:'4,800 sq ft', meta:'Lanai audio · hurricane routines · keyless access',              img:PHOTOS.gulfSunset},
+  {name:'Mid-century Renovation',  loc:'Sarasota · Bird Key',         sqft:'5,400 sq ft', meta:'Network rebuild · 48 Lutron keypads · landscape audio',          img:PHOTOS.projectLuxuryPool},
+  {name:'Gulf-facing New Build',   loc:'Marco Island',                sqft:'7,100 sq ft', meta:'Architect-coordinated rough-in · 7 shading zones · dock cameras',img:PHOTOS.projectModernVilla},
+  {name:'Waterfront Retreat',      loc:'Fort Myers · Gulf Harbour',   sqft:'5,900 sq ft', meta:'Boat-lift cameras · whole-home audio · Lutron scenes',           img:PHOTOS.heroHome},
+  {name:'Beachfront Modern',       loc:'Sarasota · Casey Key',        sqft:'6,800 sq ft', meta:'Blackout drapery · dedicated theater · 10-camera perimeter',     img:PHOTOS.theaterAnamorphic},
+  {name:'Island Estate',           loc:'Boca Grande',                 sqft:'5,200 sq ft', meta:'Off-season monitoring · caretaker access · full automation',     img:PHOTOS.projectAutomation1},
+  {name:'Italianate Villa',        loc:'Naples · Aqualane Shores',    sqft:'7,400 sq ft', meta:'Drapery tracks · chandelier dimming · silent cove lighting',     img:PHOTOS.projectWarmInterior},
+];
+
+const TESTIMONIALS = [
+  {kind:'quote', stars:5,
+   quote:"They understand the sunset. Our west elevation was unlivable from 4 to 7. Now it's the best room in the house. Line-item proposal, no upsell, clean install.",
+   name:'Daniel & Laura', loc:'Longboat Key · Bayfront Estate', avatar:'DL'},
+  {kind:'video',
+   quote:'"One press, the right state."', meta:'Naples · Port Royal · 2:14',
+   bg: PHOTOS.heroHome},
+  {kind:'quote', stars:5,
+   quote:"Responsiveness that doesn't exist in this industry. A technician arrived the same morning we reported a camera issue — not a ticket, a person.",
+   name:'Martina R.', loc:'Naples · Port Royal', avatar:'MR'},
+  {kind:'quote', stars:5,
+   quote:"LUMA is the rare integrator that respects the architect's spec. They didn't add a single keypad we didn't agree to — and the ones they placed are invisible.",
+   name:'Sarah W., AIA', loc:'Sarasota · residential architect', avatar:'SW'},
+  {kind:'video',
+   quote:'Behind Sera — the golden-hour scene', meta:'Siesta Key · 1:48',
+   bg: PHOTOS.heroShading},
+  {kind:'quote', stars:5,
+   quote:"Open platform, no dealer lockout. When our builder handed over the house we owned the system — not the installer. That's how it should work.",
+   name:'Jonathan K.', loc:'Boca Grande · Gulf-front residence', avatar:'JK'},
+];
+
+function Stars({n=5}){
+  return <div className="tm-stars" aria-label={`${n} stars`}>
+    {Array.from({length:n}).map((_,i)=>(
+      <svg key={i} viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
+    ))}
+  </div>;
+}
+
+function CasesPage({navigate}) {
+  return (
+    <div className="page">
+      <header className="th-hero page-head">
+        <div>
+          <div className="hero-tag">Selected work · 2024–2026</div>
+          <h1 className="hero-title">Homes where <em>the hour takes care of itself.</em></h1>
+          <p className="hero-body">From 4,500 sq ft Bayfront residences to 9,000 sq ft Naples compounds. Each project below shows the layers we integrated, the partners we coordinated with, and the moment the home started working on its own.</p>
+          <div className="th-cta-row">
+            <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
+            <a className="btn-ghost" href="#testimonials-grid" style={{textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Read testimonials</a>
+          </div>
+        </div>
+        <div className="th-hero-img"><img src={PHOTOS.gulfSunset} alt="Gulf Coast sunset over a luxury residence"/></div>
+      </header>
+
+      {/* Stats */}
+      <section className="th-section" style={{paddingTop:0}}>
+        <div className="stat-band">
+          <div><div className="stat-num">9+</div><div className="stat-label">Featured projects</div></div>
+          <div><div className="stat-num">5★</div><div className="stat-label">Average rating</div></div>
+          <div><div className="stat-num">5</div><div className="stat-label">Counties served</div></div>
+          <div><div className="stat-num">2024+</div><div className="stat-label">On the Gulf Coast</div></div>
+        </div>
+      </section>
+
+      {/* Projects grid */}
+      <section className="th-section">
+        <div className="sec-label">Our work</div>
+        <h2 className="sec-title">Selected residences <em>across the coast.</em></h2>
+        <div className="th-projects" style={{gridTemplateColumns:'repeat(3,1fr)'}}>
+          {PROJECTS.map(p => (
+            <div key={p.name} className="th-project" onClick={()=>navigate('contact')} role="button" tabIndex={0}>
+              <img src={p.img} alt={`${p.name} — ${p.loc}`}/>
+              <div className="th-project-overlay">
+                <div className="th-project-tag">{p.loc} · {p.sqft}</div>
+                <div className="th-project-name">{p.name}</div>
+                <div style={{fontSize:12,color:'rgba(255,255,255,.7)',marginTop:6,lineHeight:1.5}}>{p.meta}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="th-section--cream" id="testimonials-grid">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">Testimonials</div>
+          <h2 className="sec-title">Homes where <em>the hour takes care of itself.</em></h2>
+          <p className="sec-body">Five-star reviews from the homeowners, architects, and builders we've worked with along the Gulf Coast.</p>
+          <div className="tm-grid">
+            {TESTIMONIALS.map((t,i) => t.kind==='quote' ? (
+              <div key={i} className="tm-card">
+                <Stars n={t.stars}/>
+                <blockquote className="tm-quote">"{t.quote}"</blockquote>
+                <div className="tm-author">
+                  <div className="tm-avatar">{t.avatar}</div>
+                  <div>
+                    <div className="tm-author-name">{t.name}</div>
+                    <div className="tm-author-loc">{t.loc}</div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div key={i} className="tm-card tm-card--video" style={{['--bg-img']:`url(${t.bg})`}} onClick={()=>navigate('contact')}>
+                <span className="tm-play" aria-hidden="true"/>
+                <div className="tm-quote">{t.quote}</div>
+                <div className="tm-author-loc">{t.meta}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="th-section" style={{textAlign:'center',paddingTop:64,paddingBottom:88}}>
+        <h2 className="sec-title">Your project could be <em>next.</em></h2>
+        <p className="sec-body">Send us your plans or a walk-through video. First proposal in under two weeks.</p>
+        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
+          <button className="btn-ghost" onClick={()=>navigate('budget-calculator')}>See budget ranges</button>
+        </div>
+      </section>
+    </div>
+  );
+}
 function BudgetCalculatorPage({navigate}) {
   const [sqft, setSqft] = React.useState(5000);
   const [picks, setPicks] = React.useState({lighting:true, shading:true, audio:false, theater:false, security:true, network:true, automation:false});
@@ -1825,6 +2510,9 @@ function BudgetCalculatorPage({navigate}) {
         </div>
       </section>
 
+      {/* Detailed multi-step wizard */}
+      <DetailedBudgetWizard/>
+
       <section className="th-section" style={{textAlign:'center',paddingTop:64,paddingBottom:88}}>
         <h2 className="sec-title">Ready for a <em>real number?</em></h2>
         <p className="sec-body">Tell us about the property and the systems that matter. We'll send a tailored proposal within two business days.</p>
@@ -1853,9 +2541,9 @@ function App() {
     designers: <DesignersPage navigate={navigate}/>,
     contact:   <ContactPage/>,
     'budget-calculator': <BudgetCalculatorPage navigate={navigate}/>,
-    testimonials: <ContactPage/>,
-    'our-work':   <ContactPage/>,
-    about:        <ContactPage/>,
+    testimonials: <CasesPage navigate={navigate}/>,
+    'our-work':   <CasesPage navigate={navigate}/>,
+    about:        <AboutPage navigate={navigate}/>,
   };
   return <div><Nav navigate={navigate}/>{pages[page]||<HomePage navigate={navigate}/>}<Footer/></div>;
 }
