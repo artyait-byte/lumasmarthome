@@ -21,33 +21,44 @@
 
 [[redirects]]
   from   = "/about"
-  to     = "/"
-  status = 301
+  to     = "/?p=about"
+  status = 302
 
 [[redirects]]
   from   = "/about.html"
-  to     = "/"
-  status = 301
+  to     = "/?p=about"
+  status = 302
 
 [[redirects]]
   from   = "/projects"
-  to     = "/"
-  status = 301
+  to     = "/?p=work"
+  status = 302
 
 [[redirects]]
   from   = "/projects.html"
-  to     = "/"
-  status = 301
+  to     = "/?p=work"
+  status = 302
 
+# Budget tool lives in the SPA — preserve deep link after static 301 to /
 [[redirects]]
   from   = "/budget"
-  to     = "/"
-  status = 301
+  to     = "/?p=budget-calculator"
+  status = 302
 
 [[redirects]]
   from   = "/budget.html"
-  to     = "/"
-  status = 301
+  to     = "/?p=budget-calculator"
+  status = 302
+
+[[redirects]]
+  from   = "/testimonials"
+  to     = "/?p=work"
+  status = 302
+
+[[redirects]]
+  from   = "/our-work"
+  to     = "/?p=work"
+  status = 302
 
 [[redirects]]
   from   = "/lighting"

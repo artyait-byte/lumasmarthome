@@ -612,8 +612,12 @@ function Nav({navigate}) {
               <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </button>
-          {['Budget Calculator','Testimonials','Our Work','About'].map(l=>(
-            <span key={l} className="nav-link" onClick={()=>navigate(l.toLowerCase().replace(' ','-'))}>{l}</span>
+          {[
+            {label:'Budget Calculator', page:'budget-calculator'},
+            {label:'Work & Testimonials', page:'work'},
+            {label:'About', page:'about'},
+          ].map(({label,page})=>(
+            <span key={page} className="nav-link" onClick={()=>navigate(page)}>{label}</span>
           ))}
         </div>
         <div className="nav-actions">
@@ -1050,7 +1054,7 @@ function TheatersPage({navigate}) {
           <h1 className="hero-title">A room <em>designed for sound,</em> not retrofit for it.</h1>
           <p className="hero-body">The difference between a TV in a media room and a true theater is acoustic intent — walls, sightlines, seats, and processing thought through before drywall. We design from the room out, not the screen in.</p>
           <div className="th-cta-row">
-            <button className="btn-solid" onClick={()=>navigate('our-work')}>Tour a finished theater →</button>
+            <button className="btn-solid" onClick={()=>navigate('work')}>Tour a finished theater →</button>
             <button className="btn-ghost" onClick={()=>navigate('contact')}>Talk to us</button>
           </div>
         </div>
@@ -1114,7 +1118,7 @@ function TheatersPage({navigate}) {
           <h2 className="sec-title">A few we're <em>proud of.</em></h2>
           <div className="th-projects">
             {TH_PROJECTS.map(p=>(
-              <div key={p.key} className="th-project" onClick={()=>navigate('our-work')}>
+              <div key={p.key} className="th-project" onClick={()=>navigate('work')}>
                 <img src={PHOTOS[p.key]} alt={p.name}/>
                 <div className="th-project-overlay">
                   <div className="th-project-tag">{p.tag}</div>
@@ -1291,7 +1295,7 @@ function AutomationPage({navigate}) {
         <h2 className="sec-title">A few homes <em>running quietly.</em></h2>
         <div className="th-projects">
           {AU_PROJECTS.map(p=>(
-            <div key={p.key} className="th-project" onClick={()=>navigate('our-work')}>
+            <div key={p.key} className="th-project" onClick={()=>navigate('work')}>
               <img src={PHOTOS[p.key]} alt={p.name}/>
               <div className="th-project-overlay">
                 <div className="th-project-tag">{p.tag}</div>
@@ -1462,7 +1466,7 @@ function AudioPage({navigate}) {
       h1:'Sound that <em>fills the room,</em> not the architecture.',
       lead:'Whole-home audio that disappears into the architecture — invisible in-ceiling, in-wall, and outdoor speakers tuned to each room\'s geometry, with one app and one source list across every zone.',
       image: PHOTOS.audioHero,
-      primaryLabel:'Hear a finished system →', primaryAction:()=>navigate('our-work'),
+      primaryLabel:'Hear a finished system →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
     valueProp={{
@@ -1524,7 +1528,7 @@ function SecurityPage({navigate}) {
       h1:'Your footage. <em>Your property.</em>',
       lead:'On-premise camera systems with no monthly cloud fees and no third party with a copy of your driveway. Cameras placed by walking the property, not by floor plan.',
       image: PHOTOS.securityHero,
-      primaryLabel:'See a finished install →', primaryAction:()=>navigate('our-work'),
+      primaryLabel:'See a finished install →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
     installGrid={{
@@ -1601,7 +1605,7 @@ function NetworkingPage({navigate}) {
       h1:'A network <em>your home is built on,</em> not bolted to.',
       lead:'Enterprise-grade Wi-Fi and structured cabling designed before drywall. Wired wherever wires can land, mesh only where it belongs — so every device works the day you move in.',
       image: PHOTOS.networkingHero,
-      primaryLabel:'See a finished rack →', primaryAction:()=>navigate('our-work'),
+      primaryLabel:'See a finished rack →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
     valueProp={{
@@ -2206,7 +2210,7 @@ function DetailedBudgetWizard(){
             <span className="bw-running">Running estimate <strong>{fmt(finalLow)} – {fmt(finalHigh)}</strong></span>
             {step<WIZARD_STEPS.length-1
               ? <button type="button" className="btn-solid" onClick={()=>setStep(s=>Math.min(WIZARD_STEPS.length-1, s+1))}>Continue →</button>
-              : <button type="button" className="btn-solid" onClick={()=>{document.querySelector('#detailed-wizard')?.scrollIntoView({behavior:'smooth'});setTimeout(()=>setStep(0),200);}}>Start over</button>}
+              : <button type="button" className="btn-solid" onClick={()=>{const el=document.querySelector('#detailed-wizard');if(el)el.scrollIntoView({behavior:'smooth'});setTimeout(()=>setStep(0),200);}}>Start over</button>}
           </div>
         </div>
       </div>
@@ -2225,7 +2229,7 @@ function AboutPage({navigate}) {
           <p className="hero-body">LUMA is a residential technology studio based on Florida's Southwest Gulf Coast. We integrate lighting, shading, security, audio, and networking into homes that feel effortless — and we stay engaged long after turnover, because that's when most integrators disappear.</p>
           <div className="th-cta-row">
             <button className="btn-solid" onClick={()=>navigate('contact')}>Book a consultation →</button>
-            <button className="btn-ghost" onClick={()=>navigate('our-work')}>See our work</button>
+            <button className="btn-ghost" onClick={()=>navigate('work')}>See our work</button>
           </div>
         </div>
         <div className="th-hero-img"><img src={PHOTOS.heroHome} alt="Gulf Coast residence at golden hour"/></div>
@@ -2495,7 +2499,7 @@ function BudgetCalculatorPage({navigate}) {
             <input type="range" min="2000" max="15000" step="250" value={sqft} onChange={e=>setSqft(+e.target.value)} style={{width:'100%',accentColor:'#C57238'}}/>
             <div style={{display:'flex',flexWrap:'wrap',gap:10,marginTop:24}}>
               {services.map(s=>(
-                <button key={s.k} onClick={()=>setPicks({...picks,[s.k]:!picks[s.k]})}
+                <button type="button" key={s.k} onClick={()=>setPicks({...picks,[s.k]:!picks[s.k]})}
                   style={{padding:'10px 16px',borderRadius:999,border:'1px solid '+(picks[s.k]?'var(--accent)':'rgba(0,0,0,.15)'),background:picks[s.k]?'var(--accent)':'#fff',color:picks[s.k]?'#fff':'var(--dark)',fontSize:13,cursor:'pointer',transition:'all .15s'}}>
                   {s.label}
                 </button>
@@ -2526,9 +2530,49 @@ function BudgetCalculatorPage({navigate}) {
 }
 
 /* ─── APP ─── */
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about']);
+
+function readPageFromUrl(){
+  try {
+    const sp = new URLSearchParams(window.location.search||'');
+    const q = sp.get('p');
+    if (q && ROUTE_KEYS.has(q)) return q;
+  } catch(e) {}
+  const h = (window.location.hash||'').replace(/^#\/?/,'').split(/[?#]/)[0];
+  if (h && ROUTE_KEYS.has(h)) return h;
+  return 'home';
+}
+
 function App() {
-  const [page, setPage] = useState('home');
-  function navigate(p){setPage(p);window.scrollTo({top:0,behavior:'smooth'});}
+  const [page, setPage] = useState(readPageFromUrl);
+
+  useEffect(()=>{
+    const sync = ()=> setPage(readPageFromUrl());
+    window.addEventListener('popstate', sync);
+    window.addEventListener('hashchange', sync);
+    return ()=>{
+      window.removeEventListener('popstate', sync);
+      window.removeEventListener('hashchange', sync);
+    };
+  }, []);
+
+  function navigate(p){
+    setPage(p);
+    try {
+      const url = new URL(window.location.href);
+      if (p==='home') {
+        url.searchParams.delete('p');
+      } else {
+        url.searchParams.set('p', p);
+      }
+      window.history.replaceState(null, '', url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : ''));
+    } catch(e) {
+      if (p==='home') window.location.hash='';
+      else window.location.hash='/' + p;
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
   const pages = {
     home:      <HomePage navigate={navigate}/>,
     shading:   <ShadingPage navigate={navigate}/>,
@@ -2541,9 +2585,8 @@ function App() {
     designers: <DesignersPage navigate={navigate}/>,
     contact:   <ContactPage/>,
     'budget-calculator': <BudgetCalculatorPage navigate={navigate}/>,
-    testimonials: <CasesPage navigate={navigate}/>,
-    'our-work':   <CasesPage navigate={navigate}/>,
-    about:        <AboutPage navigate={navigate}/>,
+    work:      <CasesPage navigate={navigate}/>,
+    about:     <AboutPage navigate={navigate}/>,
   };
   return <div><Nav navigate={navigate}/>{pages[page]||<HomePage navigate={navigate}/>}<Footer/></div>;
 }

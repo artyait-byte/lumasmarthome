@@ -1,13 +1,13 @@
 # Netlify _redirects — fallback if netlify.toml is ignored by a plugin.
-# All previous multi-page URLs now collapse onto the SPA root.
+# SPA routes use ?p= so the client can open the right view on first load.
 /contact          /  301
 /contact.html     /  301
-/about            /  301
-/about.html       /  301
-/projects         /  301
-/projects.html    /  301
-/budget           /  301
-/budget.html      /  301
+/about            /?p=about        302
+/about.html       /?p=about        302
+/projects         /?p=work         302
+/projects.html    /?p=work         302
+/budget           /?p=budget-calculator  302
+/budget.html      /?p=budget-calculator  302
 /lighting         /  301
 /lighting.html    /  301
 /shading          /  301
@@ -24,3 +24,5 @@
 /designers.html   /  301
 /theaters         /  301
 /automation       /  301
+/testimonials     /?p=work         302
+/our-work         /?p=work         302
