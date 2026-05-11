@@ -99,26 +99,27 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 }
 .home-hero-photo{
   position:absolute; inset:0; z-index:-2;
-  background-size:cover; background-position:center 42%;
-  filter:saturate(1.06) contrast(1.04);
+  background-size:cover; background-position:center 38%;
+  filter:saturate(1.05) contrast(1.03);
   transform:scale(1.04);
 }
 .home-hero-photo::after{
   content:''; position:absolute; inset:0;
   background:
-    radial-gradient(ellipse 75% 55% at 78% 32%, rgba(255,180,120,.22), transparent 72%),
-    radial-gradient(ellipse 55% 45% at 14% 88%, rgba(45,94,90,.42), transparent 70%);
+    radial-gradient(ellipse 70% 50% at 72% 28%, rgba(255,190,130,.11), transparent 68%),
+    radial-gradient(ellipse 58% 48% at 12% 92%, rgba(45,94,90,.38), transparent 72%);
   mix-blend-mode:soft-light;
 }
 .home-hero-overlay{
   position:absolute; inset:0; z-index:-1;
   background:
     linear-gradient(100deg,
-      rgba(13,29,44,.82) 0%,
-      rgba(13,29,44,.58) 30%,
-      rgba(13,29,44,.18) 58%,
-      transparent 80%),
-    linear-gradient(180deg, rgba(13,29,44,.20) 0%, transparent 28%, transparent 58%, rgba(13,29,44,.62) 100%);
+      rgba(13,29,44,.90) 0%,
+      rgba(13,29,44,.72) 26%,
+      rgba(13,29,44,.32) 52%,
+      rgba(13,29,44,.08) 74%,
+      transparent 92%),
+    linear-gradient(180deg, rgba(13,29,44,.14) 0%, transparent 26%, transparent 55%, rgba(13,29,44,.55) 100%);
 }
 .home-hero-frond{
   position:absolute; top:-30px; right:-50px;
@@ -356,7 +357,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   line-height:1.05;margin:0;text-wrap:pretty;
 }
 .cat-bento .luma-bg--audio{
-  background-image:url('/assets/photos/mega-audio-video.jpg?v=5');
+  background-image:url('/assets/photos/mega-audio-video.jpg?v=6');
 }
 @media (max-width:1099px) and (min-width:760px){
   .cat-bento{
@@ -618,7 +619,7 @@ const {useState, useEffect, useRef} = React;
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=5';
+const lu = (path) => path + '?v=6';
 const PHOTOS = {
   lighting:    lu('/assets/photos/lighting-scene.jpg'),
   window:      lu('/assets/photos/window-shades.jpg'),
@@ -629,6 +630,7 @@ const PHOTOS = {
   automation:  lu('/assets/photos/waterfront-lanai.jpg'),
 
   heroHome:        lu('/assets/photos/waterfront-lanai.jpg'),
+  heroSplash:      lu('/assets/photos/sarasota-downtown-bayfront.jpg'),
   heroShading:     lu('/assets/photos/window-shades.jpg'),
   heroLighting:    lu('/assets/photos/lighting-lutron-hero.jpg'),
   lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
@@ -887,7 +889,7 @@ function HomePage({navigate}) {
     <div className="page">
       {/* Hero — cinematic Florida home */}
       <section className="home-hero" aria-label="LUMA Smart Home — Gulf Coast residences">
-        <div className="home-hero-photo" style={{backgroundImage:`url(${PHOTOS.heroHome})`}} role="img" aria-label="Modern Gulf Coast residence at dusk"/>
+        <div className="home-hero-photo" style={{backgroundImage:`url(${PHOTOS.heroSplash})`}} role="img" aria-label="Sarasota downtown skyline from Sarasota Bay"/>
         <div className="home-hero-overlay"/>
         <svg className="home-hero-frond" viewBox="0 0 600 600" fill="none" aria-hidden="true">
           <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity=".9">
