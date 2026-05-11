@@ -811,6 +811,7 @@ function Nav({navigate}) {
           {[
             {label:'Budget Calculator', page:'budget-calculator'},
             {label:'Work & Testimonials', page:'work'},
+            {label:'For Designers & Builders', page:'designers'},
             {label:'About', page:'about'},
           ].map(({label,page})=>(
             <span key={page} className="nav-link" onClick={()=>navigate(page)}>{label}</span>
@@ -1223,27 +1224,184 @@ function LightingPage({navigate}) {
 }
 
 /* ─── DESIGNERS PAGE ─── */
+/* ─── DESIGNERS & BUILDERS PAGE ─── */
+const DB_DESIGNER_STEPS = [
+  {n:'01', title:'You send us your FF&E schedule',
+   body:'Share fixture specs, CAD drawings, or even a rough list. We review your decorative selections and flag anything that needs a dimmer, driver, or special wiring before walls close.'},
+  {n:'02', title:'We write a single coordinated proposal',
+   body:'One line-item document covers all fixtures, LED drivers, Lutron or Ketra dimmers, wall plates, and commissioning — formatted for your client presentation and matched to your interior finishes.'},
+  {n:'03', title:'Trade pricing, no runaround',
+   body:'ASID and AIA members get trade pricing across our full network: Visual Comfort, RH, Circa, Arteriors, and the Lutron designer palette. No retail markups, no middle step.'},
+  {n:'04', title:'On-site coordination at your pace',
+   body:'We attend your site visits or schedule separately. If something changes after demolition — ceiling height, beam location, last-minute fixture swap — we adjust the spec the same day.'},
+  {n:'05', title:'Submittal packages your way',
+   body:'Cut sheets, dimmer curves, wiring diagrams. Formatted for your workflow: PDF, Revit, or email to the GC. The electrician gets exactly what they need — once.'},
+];
+
+const DB_BUILDER_STEPS = [
+  {n:'01', title:'Pre-construction meeting',
+   body:'We join your kickoff call or site walk. We review the architectural plans and mark up every conduit run, J-box location, and equipment room so nothing needs to be re-opened later.'},
+  {n:'02', title:'Rough-in package for your electrician',
+   body:'A single PDF: conduit layout, home-run map, box heights, rack dimensions, and PoE drop locations. Your electrician installs in one pass. No callbacks, no guesswork.'},
+  {n:'03', title:'Milestone check-ins through framing and drywall',
+   body:'We walk the job before insulation and before drywall so the GC can catch issues at cost — not at trim-out. We document everything and update the package if the plan shifts.'},
+  {n:'04', title:'Trim-out and commissioning',
+   body:'We install all devices, pull and terminate every cable, and program the system while other trades finish. Our work does not hold up your certificate of occupancy.'},
+  {n:'05', title:'Punch-list and client handoff',
+   body:'We attend the final walk with you. Every scene, shade, and camera is verified. The client gets a 60-minute orientation and a printed quick-reference card for the home.'},
+];
+
+const DB_WHY = [
+  {icon:'◇', title:'One trade, not four',
+   body:'Lighting control, shading, AV, security, and networking under one contractor. Your GC has one contact, one schedule, and one RFI queue for all of it.'},
+  {icon:'◇', title:'Florida licensed · insured',
+   body:'Low-voltage contractor of record. We carry general liability and workers\' comp. Certificate of insurance on request — standard format, same day.'},
+  {icon:'◇', title:'Referral program',
+   body:'For designers and builders who refer projects: a formal referral fee on signed contracts, paid at commissioning. Ask us for the one-page agreement.'},
+];
+
 function DesignersPage({navigate}) {
+  const [tab, setTab] = React.useState('designers');
+  const steps = tab === 'designers' ? DB_DESIGNER_STEPS : DB_BUILDER_STEPS;
   return (
     <div className="page">
-      <section className="split-hero">
+
+      {/* Hero */}
+      <header className="th-hero" style={{paddingBottom:48}}>
         <div>
-          <div className="tag-pill">For Interior Designers &amp; Architects</div>
-          <h1 className="hero-title" style={{fontSize:50}}>Decorative &amp; architectural, <em style={{color:'var(--accent)',fontStyle:'italic'}}>one proposal.</em></h1>
-          <p className="hero-body">We coordinate decorative fixtures with your spec and lighting designer — from Visual Comfort and RH pendants to custom millwork cove lighting. You get a single line-item proposal covering fixtures, drivers, control, and commissioning.</p>
-          <p className="hero-body">We partner with ASID Florida designers and architects across the Gulf Coast.</p>
-          <ul className="checklist">
-            <li>Single proposal: fixtures + drivers + control + commissioning</li>
-            <li>Trade pricing across our full partner network</li>
-            <li>Site visits and lunch-and-learns for your team</li>
-            <li>Submittal packages formatted for your workflow</li>
-          </ul>
-          <button className="btn-solid" style={{marginTop:28}} onClick={()=>navigate('contact')}>Join our designer program →</button>
+          <div className="tag-pill" style={{marginBottom:18}}>For Interior Designers &amp; Custom Builders</div>
+          <h1 className="hero-title" style={{fontSize:'clamp(36px,4.2vw,58px)',marginBottom:20}}>
+            Your vision. <em style={{color:'var(--accent)',fontStyle:'italic'}}>Our wiring.</em>
+          </h1>
+          <p className="hero-body" style={{fontSize:17,lineHeight:1.72,maxWidth:560}}>
+            LUMA works alongside interior designers, architects, and custom home builders across the Gulf Coast. We fit our process to yours — from FF&amp;E coordination and submittal packages to pre-wire rough-in and final punch-list.
+          </p>
+          <p className="hero-body" style={{fontSize:16,color:'var(--mid)',maxWidth:560}}>
+            One contractor for lighting control, motorized shading, AV, security, and networking. One schedule. One line-item proposal your client can actually read.
+          </p>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap',marginTop:28}}>
+            <button className="btn-solid" onClick={()=>navigate('contact')}>Start a trade inquiry →</button>
+            <button className="btn-ghost" onClick={()=>navigate('work')}>View completed projects</button>
+          </div>
         </div>
-        <div className="split-photo">
-          <img src={PHOTOS.heroDesigners} alt="Luxury interior design with smart lighting"/>
+        <div className="th-hero-img">
+          <img src={PHOTOS.heroDesigners} alt="Luxury Gulf Coast residence with smart lighting and shading"/>
+        </div>
+      </header>
+
+      {/* Why work with LUMA */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">Why LUMA</div>
+          <h2 className="sec-title" style={{marginBottom:40}}>Built to fit <em>your workflow.</em></h2>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20,maxWidth:960,margin:'0 auto'}} className="db-why-grid">
+            {DB_WHY.map(w=>(
+              <div key={w.title} className="th-card">
+                <div className="th-card-icon" aria-hidden="true">{w.icon}</div>
+                <h3 style={{fontFamily:'var(--serif)',fontSize:20,fontWeight:600,marginBottom:8}}>{w.title}</h3>
+                <p style={{fontSize:15,lineHeight:1.68,color:'var(--mid)',margin:0}}>{w.body}</p>
+              </div>
+            ))}
+          </div>
+          <style>{`@media(max-width:899px){.db-why-grid{grid-template-columns:1fr!important}}`}</style>
         </div>
       </section>
+
+      {/* Tab switcher: Designers vs Builders */}
+      <section className="th-section" style={{paddingTop:72}}>
+        <div className="sec-label">How we work together</div>
+        <h2 className="sec-title" style={{marginBottom:36}}>A clear process, <em>start to finish.</em></h2>
+
+        {/* Tab buttons */}
+        <div style={{display:'flex',gap:0,justifyContent:'center',marginBottom:52,border:'1px solid var(--cream3)',borderRadius:100,width:'fit-content',margin:'0 auto 52px',overflow:'hidden'}}>
+          {[
+            {key:'designers', label:'For Interior Designers & Architects'},
+            {key:'builders',  label:'For Custom Builders & Developers'},
+          ].map(t=>(
+            <button key={t.key} type="button"
+              onClick={()=>setTab(t.key)}
+              style={{
+                padding:'12px 28px', fontSize:14, fontFamily:'var(--sans)', fontWeight:600,
+                border:'none', cursor:'pointer', whiteSpace:'nowrap', letterSpacing:'.02em',
+                background: tab===t.key ? 'var(--dark)' : 'transparent',
+                color: tab===t.key ? '#fff' : 'var(--mid)',
+                transition:'background .18s,color .18s',
+              }}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Steps */}
+        <div style={{maxWidth:800,margin:'0 auto',display:'flex',flexDirection:'column',gap:0}}>
+          {steps.map((s,i)=>(
+            <div key={s.n} style={{
+              display:'grid', gridTemplateColumns:'56px 1fr', gap:'0 28px',
+              paddingBottom:36,
+              borderLeft: i < steps.length-1 ? '1px solid var(--cream3)' : 'none',
+              marginLeft:27,
+            }}>
+              <div style={{
+                width:54, height:54, borderRadius:'50%',
+                background:'var(--cream2)', border:'1px solid var(--cream3)',
+                display:'flex', alignItems:'center', justifyContent:'center',
+                fontFamily:'var(--serif)', fontSize:15, fontWeight:600,
+                color:'var(--accent)', flexShrink:0, marginLeft:-28,
+              }}>{s.n}</div>
+              <div style={{paddingTop:12}}>
+                <h3 style={{fontFamily:'var(--serif)',fontSize:22,fontWeight:600,marginBottom:8,color:'var(--dark)'}}>{s.title}</h3>
+                <p style={{fontSize:16,lineHeight:1.72,color:'var(--mid)',margin:0}}>{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Trade details & referral */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,maxWidth:960,margin:'0 auto',alignItems:'start'}} className="db-details-grid">
+            <div>
+              <div className="sec-label" style={{textAlign:'left'}}>For Designers</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:28,fontWeight:600,lineHeight:1.2,marginBottom:16}}>Trade program details</h3>
+              <ul className="checklist" style={{gap:12}}>
+                <li style={{fontSize:16}}>Trade pricing on Lutron, Ketra, Sivoia QS Wireless, and partner fixtures</li>
+                <li style={{fontSize:16}}>Single coordinated proposal — fixtures, drivers, control, commissioning</li>
+                <li style={{fontSize:16}}>Submittal packages in PDF or Revit format</li>
+                <li style={{fontSize:16}}>On-site visits and lunch-and-learns for your team</li>
+                <li style={{fontSize:16}}>Dedicated project manager for your account</li>
+                <li style={{fontSize:16}}>ASID and AIA Florida network — we know your colleagues</li>
+              </ul>
+              <button className="btn-solid" style={{marginTop:28}} onClick={()=>navigate('contact')}>Apply for trade access →</button>
+            </div>
+            <div>
+              <div className="sec-label" style={{textAlign:'left'}}>For Builders</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:28,fontWeight:600,lineHeight:1.2,marginBottom:16}}>What we deliver</h3>
+              <ul className="checklist" style={{gap:12}}>
+                <li style={{fontSize:16}}>Pre-construction walk and marked-up plan set</li>
+                <li style={{fontSize:16}}>Rough-in package for electrician: conduit, J-box, home-run map</li>
+                <li style={{fontSize:16}}>Milestone inspections before insulation and before drywall</li>
+                <li style={{fontSize:16}}>Full trim-out and commissioning on your schedule</li>
+                <li style={{fontSize:16}}>Client orientation and printed quick-reference guide</li>
+                <li style={{fontSize:16}}>Referral fee on signed contracts — paid at commissioning</li>
+              </ul>
+              <button className="btn-solid" style={{marginTop:28}} onClick={()=>navigate('contact')}>Discuss a new project →</button>
+            </div>
+          </div>
+          <style>{`@media(max-width:899px){.db-details-grid{grid-template-columns:1fr!important;gap:40px}}`}</style>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:96}}>
+        <h2 className="sec-title" style={{marginBottom:16}}>Ready to work together?</h2>
+        <p className="sec-body" style={{fontSize:17,marginBottom:32}}>Send us your plans or a quick note about the project. We'll respond the same business day.</p>
+        <div style={{display:'flex',gap:14,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start a trade inquiry →</button>
+          <button className="btn-ghost" style={{fontSize:16,padding:'14px 24px'}} onClick={()=>navigate('home')}>Back to home</button>
+        </div>
+      </section>
+
     </div>
   );
 }
