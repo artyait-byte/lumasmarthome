@@ -631,7 +631,7 @@ const {useState, useEffect, useRef} = React;
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=6';
+const lu = (path) => path + '?v=7';
 const PHOTOS = {
   lighting:    lu('/assets/photos/lighting-scene.jpg'),
   window:      lu('/assets/photos/window-shades.jpg'),
@@ -643,7 +643,7 @@ const PHOTOS = {
 
   heroHome:        lu('/assets/photos/waterfront-lanai.jpg'),
   heroSplash:      lu('/assets/photos/sarasota-downtown-bayfront.jpg'),
-  heroShading:     lu('/assets/photos/window-shades.jpg'),
+  heroShading:     lu('/assets/photos/hero-shading.jpg'),
   heroLighting:    lu('/assets/photos/lighting-lutron-hero.jpg'),
   lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
   lightingRania:   lu('/assets/photos/interior-recessed-warm.jpg'),
@@ -655,21 +655,22 @@ const PHOTOS = {
   moment3: lu('/assets/photos/gulf-sunset.jpg'),
   moment4: lu('/assets/photos/scene-night.jpg'),
 
-  theaterAnamorphic:    lu('/assets/photos/home-theater.jpg'),
-  theaterRoom:          lu('/assets/photos/home-theater.jpg'),
+  theaterAnamorphic:    lu('/assets/photos/hero-theater.jpg'),
+  theaterRoom:          lu('/assets/photos/hero-theater.jpg'),
   projectBayfront:      lu('/assets/photos/waterfront-lanai.jpg'),
   projectWarmInterior:  lu('/assets/photos/lighting-scene.jpg'),
   projectArchitectural: lu('/assets/photos/designers-chandelier.jpg'),
   gulfSunset:           lu('/assets/photos/gulf-sunset.jpg'),
 
+  automationHero:     lu('/assets/photos/hero-automation.jpg'),
   automationKeypad:   lu('/assets/photos/lighting-lutron-hero.jpg'),
   projectAutomation1: lu('/assets/photos/networking-rack.jpg'),
   projectAutomation2: lu('/assets/photos/waterfront-lanai.jpg'),
   projectAutomation3: lu('/assets/photos/scene-midday.jpg'),
 
-  audioHero:      lu('/assets/photos/mega-audio-video.jpg'),
+  audioHero:      lu('/assets/photos/hero-audio.jpg'),
   audioInvisible: lu('/assets/photos/audio-system.jpg'),
-  securityHero:   lu('/assets/photos/security-camera.jpg'),
+  securityHero:   lu('/assets/photos/hero-security.jpg'),
   securityFootage:lu('/assets/photos/security-camera.jpg'),
 
   installDome:      lu('/assets/photos/security-camera.jpg'),
@@ -680,7 +681,7 @@ const PHOTOS = {
   installPhone:     lu('/assets/photos/security-camera.jpg'),
   installBullet:    lu('/assets/photos/security-camera.jpg'),
   installTablet:    lu('/assets/photos/networking-rack.jpg'),
-  networkingHero:   lu('/assets/photos/networking-rack.jpg'),
+  networkingHero:   lu('/assets/photos/hero-networking.jpg'),
   networkingRack:   lu('/assets/photos/networking-rack.jpg'),
   projectModernVilla: lu('/assets/photos/waterfront-lanai.jpg'),
   projectLuxuryPool:  lu('/assets/photos/gulf-sunset.jpg'),
@@ -1015,23 +1016,41 @@ function ShadingPage({navigate}) {
   ];
   return (
     <div className="page">
-      <section style={{padding:'72px 80px 0',maxWidth:1280,margin:'0 auto'}}>
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:64,alignItems:'center'}}>
-          <div>
-            <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>Somfy · Lutron Sivoia QS</div>
-            <h1 className="hero-title">Three layers<br/>of light.</h1>
-            <p className="hero-body">A properly shaded Gulf Coast home runs three layers on every elevation: <strong style={{color:'var(--accent)',fontWeight:500}}>solar</strong> (heat and glare during the day), <strong style={{color:'var(--accent)',fontWeight:500}}>blackout</strong> (privacy and sleep), and <strong style={{color:'var(--accent)',fontWeight:500}}>drapery</strong> (softness and warmth). LUMA specs all three into a single motorized system.</p>
-            <ul className="checklist" style={{marginTop:16}}>
-              <li>Lutron Sivoia QS — 1,000 shades, one app</li>
-              <li>Astro-clock: open at first light, close at golden hour</li>
-              <li>Integration with Lutron lighting — one keypad, whole room</li>
-            </ul>
-            <button className="btn-solid" style={{marginTop:28}} onClick={()=>navigate('contact')}>Start Your Project →</button>
-          </div>
-          <div className="split-photo">
-            <img src={PHOTOS.heroShading} alt="Motorized shades in luxury living room"/>
+      {/* Hero — dark full-bleed split */}
+      <section style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr',
+        minHeight:'min(88vh,780px)', background:'var(--dark)',
+        overflow:'hidden',
+      }} className="lit-hero-wrap">
+        <div style={{
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
+        }} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Motorized shades · Somfy · Lutron Sivoia QS</div>
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
+            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
+            margin:'0 0 24px', textWrap:'balance',
+            textShadow:'0 2px 20px rgba(0,0,0,.3)',
+          }}>Three layers <em style={{color:'#F4C9A8',fontStyle:'italic'}}>of shade.</em></h1>
+          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 24px'}}>A Gulf Coast home needs solar shades for heat and glare, blackout for sleep and privacy, and drapery for warmth. LUMA specs all three into one motorized Lutron system — one app, one keypad, one schedule.</p>
+          <ul style={{listStyle:'none',padding:0,margin:'0 0 32px',display:'flex',flexDirection:'column',gap:10}}>
+            {['Lutron Sivoia QS — up to 1,000 shades, one app','Astro-clock schedule: open at first light, close at sunset','Integrated with Lutron lighting — one keypad controls the room'].map(t=>(
+              <li key={t} style={{display:'flex',alignItems:'flex-start',gap:10,fontSize:16,color:'rgba(252,250,246,.82)',lineHeight:1.5}}>
+                <span style={{color:'var(--accent)',flexShrink:0,marginTop:3}}>✓</span>{t}
+              </li>
+            ))}
+          </ul>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start Your Project →</button>
+            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('budget-calculator')}>See budgets</button>
           </div>
         </div>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={PHOTOS.heroShading} alt="Motorized blackout shades in luxury Gulf Coast home" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
+        </div>
+        <style>{`@media(max-width:899px){.lit-hero-wrap{grid-template-columns:1fr!important}.lit-hero-text{padding:60px 24px 48px!important}}`}</style>
       </section>
 
       {/* Four moments */}
@@ -1505,18 +1524,33 @@ const TH_CREDS = [
 function TheatersPage({navigate}) {
   return (
     <div className="page">
-      {/* 1. Hero */}
-      <section className="th-hero">
-        <div>
-          <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>Dedicated cinema rooms</div>
-          <h1 className="hero-title">A room <em>designed for sound,</em> not retrofit for it.</h1>
-          <p className="hero-body">The difference between a TV in a media room and a true theater is acoustic intent — walls, sightlines, seats, and processing thought through before drywall. We design from the room out, not the screen in.</p>
-          <div className="th-cta-row">
-            <button className="btn-solid" onClick={()=>navigate('work')}>Tour a finished theater →</button>
-            <button className="btn-ghost" onClick={()=>navigate('contact')}>Talk to us</button>
+      {/* 1. Hero — dark full-bleed split */}
+      <section style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr',
+        minHeight:'min(88vh,780px)', background:'var(--dark)',
+        overflow:'hidden',
+      }} className="lit-hero-wrap">
+        <div style={{
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
+        }} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Dedicated cinema rooms</div>
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
+            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
+            margin:'0 0 24px', textWrap:'balance',
+            textShadow:'0 2px 20px rgba(0,0,0,.3)',
+          }}>Designed for <em style={{color:'#F4C9A8',fontStyle:'italic'}}>sound,</em><br/>not retrofitted.</h1>
+          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>The difference between a TV in a media room and a true home theater is acoustic intent — walls, sightlines, seats, and signal processing thought through before drywall. LUMA designs from the room out.</p>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('work')}>Tour a finished theater →</button>
+            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('contact')}>Talk to us</button>
           </div>
         </div>
-        <div className="th-hero-img"><img src={PHOTOS.theaterAnamorphic} alt="Anamorphic home theater"/></div>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={PHOTOS.theaterAnamorphic} alt="Luxury home theater with projection screen" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(10,8,20,.35) 0%,transparent 42%)'}}/>
+        </div>
       </section>
 
       {/* 2. Anatomy */}
@@ -1665,19 +1699,34 @@ const AU_PROJECTS = [
 function AutomationPage({navigate}) {
   return (
     <div className="page">
-      {/* 1. Hero */}
-      <header className="th-hero page-head">
-        <div>
-          <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>Home automation</div>
-          <h1 className="hero-title">One press, the <em>right state.</em></h1>
-          <p className="hero-body">Automation is the quiet layer that lets lighting, shades, audio, climate, and security speak the same language and move together on cue — so the house responds to a moment instead of staging a phone-tap rodeo.</p>
-          <div className="th-cta-row">
-            <button className="btn-solid" onClick={()=>navigate('budget-calculator')}>See sample budgets →</button>
-            <button className="btn-ghost" onClick={()=>navigate('contact')}>Start a project</button>
+      {/* 1. Hero — dark full-bleed split */}
+      <section style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr',
+        minHeight:'min(88vh,780px)', background:'var(--dark)',
+        overflow:'hidden',
+      }} className="lit-hero-wrap">
+        <div style={{
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
+        }} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Home automation · Control4 · Lutron · Josh.ai</div>
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
+            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
+            margin:'0 0 24px', textWrap:'balance',
+            textShadow:'0 2px 20px rgba(0,0,0,.3)',
+          }}>One press, <em style={{color:'#F4C9A8',fontStyle:'italic'}}>the right state.</em></h1>
+          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>Automation is the quiet layer that lets lighting, shades, climate, audio, and security move together on cue — so the house responds to a moment, not a phone-tap rodeo.</p>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('budget-calculator')}>See sample budgets →</button>
+            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('contact')}>Start a project</button>
           </div>
         </div>
-        <div className="th-hero-img"><img src={PHOTOS.heroHome} alt="Waterfront lanai with automation" data-img="waterfront-lanai"/></div>
-      </header>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={PHOTOS.automationHero} alt="Smart home control — iPhone at the door" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 42%)'}}/>
+        </div>
+      </section>
 
       {/* 2. Four daily states */}
       <section className="th-section">
@@ -1786,19 +1835,34 @@ function AutomationPage({navigate}) {
 function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid}) {
   return (
     <div className="page">
-      {/* 1. Hero */}
-      <header className="th-hero page-head">
-        <div>
-          <div className="hero-tag" style={{borderColor:'var(--teal)',color:'var(--teal)'}}>{hero.eyebrow}</div>
-          <h1 className="hero-title" dangerouslySetInnerHTML={{__html: hero.h1}}/>
-          <p className="hero-body">{hero.lead}</p>
-          <div className="th-cta-row">
-            <button className="btn-solid" onClick={hero.primaryAction}>{hero.primaryLabel}</button>
-            <button className="btn-ghost" onClick={hero.secondaryAction}>{hero.secondaryLabel}</button>
+      {/* 1. Hero — dark full-bleed split */}
+      <section style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr',
+        minHeight:'min(88vh,780px)', background:'var(--dark)',
+        overflow:'hidden',
+      }} className="lit-hero-wrap">
+        <div style={{
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
+        }} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>{hero.eyebrow}</div>
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
+            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
+            margin:'0 0 24px', textWrap:'balance',
+            textShadow:'0 2px 20px rgba(0,0,0,.3)',
+          }} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">') }}/>
+          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>{hero.lead}</p>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={hero.primaryAction}>{hero.primaryLabel}</button>
+            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={hero.secondaryAction}>{hero.secondaryLabel}</button>
           </div>
         </div>
-        <div className="th-hero-img"><img src={hero.image} alt={hero.eyebrow}/></div>
-      </header>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.32) 0%,transparent 38%)'}}/>
+        </div>
+      </section>
 
       {/* 1b. Install grid (Security only) */}
       {installGrid && (
