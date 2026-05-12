@@ -646,8 +646,8 @@ const PHOTOS = {
   heroShading:     lu('/assets/photos/window-shades.jpg'),
   heroLighting:    lu('/assets/photos/lighting-lutron-hero.jpg'),
   lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
-  lightingRania:   lu('/assets/photos/lighting-lutron-hero.jpg'),
-  lightingLumaris: lu('/assets/photos/designers-chandelier.jpg'),
+  lightingRania:   lu('/assets/photos/interior-recessed-warm.jpg'),
+  lightingLumaris: lu('/assets/photos/interior-living-fl.jpg'),
   heroDesigners:   lu('/assets/photos/designers-chandelier.jpg'),
 
   moment1: lu('/assets/photos/scene-dawn.jpg'),
@@ -1196,18 +1196,70 @@ function LightingMosaic() {
 function LightingPage({navigate}) {
   return (
     <div className="page">
-      {/* hero intro */}
-      <section style={{maxWidth:720, margin:'0 auto', textAlign:'center', padding:'64px 24px 56px'}}>
-        <div className="tag-pill" style={{display:'inline-block', marginBottom:16}}>Decorative &amp; Architectural, Coordinated</div>
-        <h1 className="hero-title" style={{fontSize:50, marginBottom:16}}>Your fixtures.<br/>Our controls.</h1>
-        <p className="hero-body" style={{maxWidth:580, margin:'0 auto 28px'}}>Lighting is the most personal layer of a home. LUMA coordinates your fixture specification with a control design that makes every room feel exactly as intended — at 8am and at 8pm.</p>
-        <ul className="checklist" style={{display:'inline-block', textAlign:'left', margin:'0 auto'}}>
-          <li>Decorative &amp; architectural lighting under one control spec</li>
-          <li>Warm-dim tuned for evening colour temperature (2700K → 1800K)</li>
-          <li>Shading fabric library — compatible motors for your sample selection</li>
-          <li>Keypad finishes matched to switch plates, hardware, and wood tones</li>
-          <li>Trade pricing on Lutron, Somfy, Ubiquiti, and audio partners</li>
-        </ul>
+      {/* hero — full-bleed split */}
+      <section style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr',
+        minHeight:'min(88vh,780px)', background:'var(--dark)',
+        overflow:'hidden',
+      }} className="lit-hero-wrap">
+        {/* left — text panel */}
+        <div style={{
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
+        }} className="lit-hero-text">
+          <div style={{
+            fontSize:12, letterSpacing:'.16em', textTransform:'uppercase',
+            color:'var(--accent)', fontWeight:600, marginBottom:22,
+          }}>Decorative &amp; Architectural, Coordinated</div>
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
+            fontWeight:600, lineHeight:1.06, letterSpacing:'-.01em',
+            color:'#FCFAF6', margin:'0 0 24px', textWrap:'balance',
+          }}>
+            Your fixtures.<br/><em style={{color:'#F4C9A8',fontStyle:'italic'}}>Our controls.</em>
+          </h1>
+          <p style={{fontSize:18, lineHeight:1.72, color:'rgba(252,250,246,.85)', maxWidth:480, margin:'0 0 10px'}}>
+            Lighting is the most personal layer of a home. LUMA coordinates your fixture specification with a control design that makes every room feel exactly as intended — at 8am and at 8pm.
+          </p>
+          <ul style={{
+            listStyle:'none', margin:'18px 0 32px', padding:0,
+            display:'flex', flexDirection:'column', gap:10,
+          }}>
+            {[
+              'Decorative & architectural lighting under one control spec',
+              'Warm-dim tuned for evening colour temperature (2700 K → 1800 K)',
+              'Keypad finishes matched to switch plates, hardware, and wood tones',
+              'Trade pricing on Lutron, Ketra, Somfy, and audio partners',
+            ].map(t=>(
+              <li key={t} style={{display:'flex',gap:10,fontSize:16,color:'rgba(252,250,246,.84)',alignItems:'flex-start'}}>
+                <span style={{color:'var(--accent)',fontWeight:700,flexShrink:0,marginTop:2}}>✓</span>
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start your lighting project →</button>
+            <button className="btn-ghost" style={{
+              fontSize:16,padding:'13px 24px',
+              color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',
+            }} onClick={()=>navigate('designers')}>For designers &amp; builders</button>
+          </div>
+        </div>
+        {/* right — photo */}
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img
+            src={PHOTOS.lightingKetra}
+            alt="Warm interior lighting in a luxury Gulf Coast living room"
+            style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}
+          />
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.38) 0%,transparent 40%)'}}/>
+        </div>
+        <style>{`
+          @media(max-width:959px){
+            .lit-hero-wrap{grid-template-columns:1fr!important;min-height:auto!important}
+            .lit-hero-text{padding:56px 32px!important}
+          }
+        `}</style>
       </section>
 
       {/* three service blocks */}
