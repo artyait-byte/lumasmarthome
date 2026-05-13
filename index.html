@@ -690,6 +690,11 @@ const PHOTOS = {
   netTech:          lu('/assets/photos/net-tech.jpg'),
   projectModernVilla: lu('/assets/photos/waterfront-lanai.jpg'),
   projectLuxuryPool:  lu('/assets/photos/gulf-sunset.jpg'),
+  heroWork:           lu('/assets/photos/sarasota-sunset.jpg'),
+  projectLido:        lu('/assets/photos/sarasota-lido-day.jpg'),
+  projectBridge:      lu('/assets/photos/sarasota-ringling-bridge.jpg'),
+  projectIsland:      lu('/assets/photos/sarasota-turtle-aerial.jpg'),
+  projectRetreat:     lu('/assets/photos/exterior-landscape-lighting.jpg'),
 
   'lit-cove':         lu('/assets/photos/fl-golden-hour.jpg'),
   'lit-keypad':       lu('/assets/photos/lighting-lutron-hero.jpg'),
@@ -3018,11 +3023,11 @@ const PROJECTS = [
   {name:'Bayfront Estate',         loc:'Longboat Key',                sqft:'6,200 sq ft', meta:'Lutron RadioRA 3 · Somfy · UniFi Protect · 4-zone lanai audio', img:PHOTOS.projectBayfront},
   {name:'Coastal Modern',          loc:'Naples · Port Royal',         sqft:'8,900 sq ft', meta:'Full-home · 9 shading zones · Trinnov theater',                  img:PHOTOS.projectArchitectural},
   {name:'Gulf-front Villa',        loc:'Siesta Key',                  sqft:'4,800 sq ft', meta:'Lanai audio · hurricane routines · keyless access',              img:PHOTOS.gulfSunset},
-  {name:'Mid-century Renovation',  loc:'Sarasota · Bird Key',         sqft:'5,400 sq ft', meta:'Network rebuild · 48 Lutron keypads · landscape audio',          img:PHOTOS.projectLuxuryPool},
-  {name:'Gulf-facing New Build',   loc:'Marco Island',                sqft:'7,100 sq ft', meta:'Architect-coordinated rough-in · 7 shading zones · dock cameras',img:PHOTOS.projectModernVilla},
-  {name:'Waterfront Retreat',      loc:'Fort Myers · Gulf Harbour',   sqft:'5,900 sq ft', meta:'Boat-lift cameras · whole-home audio · Lutron scenes',           img:PHOTOS.heroHome},
+  {name:'Mid-century Renovation',  loc:'Sarasota · Bird Key',         sqft:'5,400 sq ft', meta:'Network rebuild · 48 Lutron keypads · landscape audio',          img:PHOTOS.projectLido},
+  {name:'Gulf-facing New Build',   loc:'Marco Island',                sqft:'7,100 sq ft', meta:'Architect-coordinated rough-in · 7 shading zones · dock cameras',img:PHOTOS.projectBridge},
+  {name:'Waterfront Retreat',      loc:'Fort Myers · Gulf Harbour',   sqft:'5,900 sq ft', meta:'Boat-lift cameras · whole-home audio · Lutron scenes',           img:PHOTOS.projectRetreat},
   {name:'Beachfront Modern',       loc:'Sarasota · Casey Key',        sqft:'6,800 sq ft', meta:'Blackout drapery · dedicated theater · 10-camera perimeter',     img:PHOTOS.theaterAnamorphic},
-  {name:'Island Estate',           loc:'Boca Grande',                 sqft:'5,200 sq ft', meta:'Off-season monitoring · caretaker access · full automation',     img:PHOTOS.projectAutomation1},
+  {name:'Island Estate',           loc:'Boca Grande',                 sqft:'5,200 sq ft', meta:'Off-season monitoring · caretaker access · full automation',     img:PHOTOS.projectIsland},
   {name:'Italianate Villa',        loc:'Naples · Aqualane Shores',    sqft:'7,400 sq ft', meta:'Drapery tracks · chandelier dimming · silent cove lighting',     img:PHOTOS.projectWarmInterior},
 ];
 
@@ -3058,19 +3063,34 @@ function Stars({n=5}){
 function CasesPage({navigate}) {
   return (
     <div className="page">
-      <header className="th-hero page-head">
-        <div>
-          <div className="hero-tag">Selected work · 2024–2026</div>
-          <h1 className="hero-title">Homes where <em>the hour takes care of itself.</em></h1>
-          <p className="hero-body">From 4,500 sq ft Bayfront residences to 9,000 sq ft Naples compounds. Each project below shows the layers we integrated, the partners we coordinated with, and the moment the home started working on its own.</p>
-          <div className="th-cta-row">
-            <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
-            <a className="btn-ghost" href="#field-photos" style={{textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Install photos</a>
-            <a className="btn-ghost" href="#testimonials-grid" style={{textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Testimonials</a>
+      <section style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr',
+        minHeight:'min(88vh,780px)', background:'var(--dark)',
+        overflow:'hidden',
+      }} className="lit-hero-wrap">
+        <div style={{
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
+        }} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Selected work · 2024–2026</div>
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
+            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
+            margin:'0 0 24px', textWrap:'balance',
+            textShadow:'0 2px 20px rgba(0,0,0,.3)',
+          }}>Homes where <em style={{color:'#F4C9A8',fontStyle:'italic'}}>the hour takes care of itself.</em></h1>
+          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>From 4,500 sq ft Bayfront residences to 9,000 sq ft Naples compounds — each project shows the layers we integrated, the partners we coordinated with, and the moment the home started working on its own.</p>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start a project →</button>
+            <a className="btn-ghost" href="#field-photos" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Install photos</a>
+            <a className="btn-ghost" href="#testimonials-grid" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Testimonials</a>
           </div>
         </div>
-        <div className="th-hero-img"><img src={PHOTOS.gulfSunset} alt="Gulf Coast sunset over a luxury residence"/></div>
-      </header>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={PHOTOS.heroWork} alt="Gulf Coast sunset — Sarasota" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
+        </div>
+      </section>
 
       {/* Stats */}
       <section className="th-section" style={{paddingTop:0}}>
