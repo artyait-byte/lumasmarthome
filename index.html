@@ -648,7 +648,7 @@ const PHOTOS = {
   lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
   lightingRania:   lu('/assets/photos/interior-recessed-warm.jpg'),
   lightingLumaris: lu('/assets/photos/interior-living-fl.jpg'),
-  heroDesigners:   lu('/assets/photos/designers-chandelier.jpg'),
+  heroDesigners:   lu('/assets/photos/hero-designers-new.jpg'),
 
   moment1: lu('/assets/photos/shade-open.jpg'),
   moment2: lu('/assets/photos/shade-closed.jpg'),
@@ -1344,27 +1344,34 @@ function DesignersPage({navigate}) {
     <div className="page">
 
       {/* Hero */}
-      <header className="th-hero" style={{paddingBottom:48}}>
-        <div>
-          <div className="tag-pill" style={{marginBottom:18}}>For Interior Designers &amp; Custom Builders</div>
-          <h1 className="hero-title" style={{fontSize:'clamp(36px,4.2vw,58px)',marginBottom:20}}>
-            Your vision. <em style={{color:'var(--accent)',fontStyle:'italic'}}>Our wiring.</em>
-          </h1>
-          <p className="hero-body" style={{fontSize:17,lineHeight:1.72,maxWidth:560}}>
-            LUMA works alongside interior designers, architects, and custom home builders across the Gulf Coast. We fit our process to yours — from FF&amp;E coordination and submittal packages to pre-wire rough-in and final punch-list.
-          </p>
-          <p className="hero-body" style={{fontSize:16,color:'var(--mid)',maxWidth:560}}>
-            One contractor for lighting control, motorized shading, AV, security, and networking. One schedule. One line-item proposal your client can actually read.
-          </p>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap',marginTop:28}}>
-            <button className="btn-solid" onClick={()=>navigate('contact')}>Start a trade inquiry →</button>
-            <button className="btn-ghost" onClick={()=>navigate('work')}>View completed projects</button>
+      <section style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr',
+        minHeight:'min(88vh,780px)', background:'var(--dark)',
+        overflow:'hidden',
+      }} className="lit-hero-wrap">
+        <div style={{
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
+        }} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>For Interior Designers &amp; Custom Builders</div>
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
+            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
+            margin:'0 0 24px', textWrap:'balance',
+            textShadow:'0 2px 20px rgba(0,0,0,.3)',
+          }}>Your vision. <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Our wiring.</em></h1>
+          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 16px'}}>LUMA works alongside interior designers, architects, and custom builders across the Gulf Coast. We fit our process to yours — FF&amp;E coordination, submittal packages, pre-wire rough-in, and final punch-list.</p>
+          <p style={{fontSize:15,lineHeight:1.68,color:'rgba(252,250,246,.55)',maxWidth:500,margin:'0 0 32px'}}>One contractor for lighting, shading, AV, security, and networking. One schedule. One proposal your client can actually read.</p>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start a trade inquiry →</button>
+            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('work')}>View completed projects</button>
           </div>
         </div>
-        <div className="th-hero-img">
-          <img src={PHOTOS.heroDesigners} alt="Luxury Gulf Coast residence with smart lighting and shading"/>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={PHOTOS.heroDesigners} alt="Luxury modern living room — smart home collaboration" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.32) 0%,transparent 38%)'}}/>
         </div>
-      </header>
+      </section>
 
       {/* Why work with LUMA */}
       <section className="th-section--cream">
