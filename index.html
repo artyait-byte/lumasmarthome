@@ -683,6 +683,10 @@ const PHOTOS = {
   installTablet:    lu('/assets/photos/networking-rack.jpg'),
   networkingHero:   lu('/assets/photos/hero-networking.jpg'),
   networkingRack:   lu('/assets/photos/networking-rack.jpg'),
+  netAP:            lu('/assets/photos/net-wifi-ap.jpg'),
+  netSwitch:        lu('/assets/photos/net-switch.jpg'),
+  netPatch:         lu('/assets/photos/net-patch.jpg'),
+  netTech:          lu('/assets/photos/net-tech.jpg'),
   projectModernVilla: lu('/assets/photos/waterfront-lanai.jpg'),
   projectLuxuryPool:  lu('/assets/photos/gulf-sunset.jpg'),
 
@@ -1861,8 +1865,10 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.32) 0%,transparent 38%)'}}/>
+          {hero.rightPanel ? hero.rightPanel : (<>
+            <img src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+            <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.32) 0%,transparent 38%)'}}/>
+          </>)}
         </div>
       </section>
 
@@ -2122,13 +2128,29 @@ function SecurityPage({navigate}) {
 
 /* ─── NETWORKING PAGE ─── */
 function NetworkingPage({navigate}) {
+  const netMosaic = [
+    {src: PHOTOS.netAP,     label:'Wi-Fi 6 / 7',        pos:'center center'},
+    {src: PHOTOS.netSwitch, label:'Managed switching',   pos:'center center'},
+    {src: PHOTOS.netPatch,  label:'Structured cabling',  pos:'center center'},
+    {src: PHOTOS.netTech,   label:'Clean rack',          pos:'center center'},
+  ];
   return <ServicePageShell
     formName="networking-inquiry"
     hero={{
       eyebrow:'Networking',
       h1:'A network <em>your home is built on,</em> not bolted to.',
       lead:'Enterprise-grade Wi-Fi and structured cabling designed before drywall. Wired wherever wires can land, mesh only where it belongs — so every device works the day you move in.',
-      image: PHOTOS.networkingHero,
+      rightPanel:(
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gridTemplateRows:'1fr 1fr',height:'100%',gap:3,background:'var(--dark)'}}>
+          {netMosaic.map((cell,i)=>(
+            <div key={i} style={{position:'relative',overflow:'hidden'}}>
+              <img src={cell.src} alt={cell.label} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:cell.pos,display:'block'}}/>
+              <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(27,26,40,.75) 0%,transparent 55%)'}}/>
+              <div style={{position:'absolute',bottom:10,left:12,fontSize:10,letterSpacing:'.14em',textTransform:'uppercase',color:'rgba(252,250,246,.9)',fontWeight:600,textShadow:'0 1px 4px rgba(0,0,0,.6)'}}>{cell.label}</div>
+            </div>
+          ))}
+        </div>
+      ),
       primaryLabel:'See a finished rack →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
