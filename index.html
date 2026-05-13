@@ -643,6 +643,7 @@ const PHOTOS = {
 
   heroHome:        lu('/assets/photos/waterfront-lanai.jpg'),
   heroSplash:      lu('/assets/photos/sarasota-downtown-bayfront.jpg'),
+  heroAbout:       lu('/assets/photos/sarasota-marina.jpg'),
   heroShading:     lu('/assets/photos/hero-shading.jpg'),
   heroLighting:    lu('/assets/photos/lighting-lutron-hero.jpg'),
   lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
@@ -2775,18 +2776,33 @@ function DetailedBudgetWizard(){
 function AboutPage({navigate}) {
   return (
     <div className="page">
-      <header className="th-hero page-head">
-        <div>
-          <div className="hero-tag">Our studio</div>
-          <h1 className="hero-title">We build homes around the <em>Gulf Coast hour.</em></h1>
-          <p className="hero-body">LUMA is a residential technology studio based on Florida's Southwest Gulf Coast. We integrate lighting, shading, security, audio, and networking into homes that feel effortless — and we stay engaged long after turnover, because that's when most integrators disappear.</p>
-          <div className="th-cta-row">
-            <button className="btn-solid" onClick={()=>navigate('contact')}>Book a consultation →</button>
-            <button className="btn-ghost" onClick={()=>navigate('work')}>See our work</button>
+      <section style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr',
+        minHeight:'min(88vh,780px)', background:'var(--dark)',
+        overflow:'hidden',
+      }} className="lit-hero-wrap">
+        <div style={{
+          display:'flex', flexDirection:'column', justifyContent:'center',
+          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
+        }} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Our studio</div>
+          <h1 style={{
+            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
+            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
+            margin:'0 0 24px', textWrap:'balance',
+            textShadow:'0 2px 20px rgba(0,0,0,.3)',
+          }}>We build homes around the <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Gulf Coast hour.</em></h1>
+          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>LUMA is a residential technology studio based in Sarasota, FL. We integrate lighting, shading, security, audio, and networking into homes that feel effortless — and stay engaged long after turnover, because that's when most integrators disappear.</p>
+          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Book a consultation →</button>
+            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('work')}>See our work</button>
           </div>
         </div>
-        <div className="th-hero-img"><img src={PHOTOS.heroHome} alt="Gulf Coast residence at golden hour"/></div>
-      </header>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={PHOTOS.heroAbout} alt="Sarasota marina — Gulf Coast" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
+        </div>
+      </section>
 
       {/* Story */}
       <section className="th-section">
