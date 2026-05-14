@@ -692,6 +692,14 @@ const PHOTOS = {
   projectLuxuryPool:  lu('/assets/photos/gulf-sunset.jpg'),
   heroWork:           lu('/assets/photos/sarasota-sunset.jpg'),
   projMrExterior:     lu('/assets/photos/proj-mr-exterior.jpg'),
+  projBmExterior:     lu('/assets/photos/proj-bm-exterior.jpg'),
+  projBmTv:           lu('/assets/photos/proj-bm-tv.jpg'),
+  projBmLiving:       lu('/assets/photos/proj-bm-living.jpg'),
+  projBmRack:         lu('/assets/photos/proj-bm-rack.jpg'),
+  projBmPatio:        lu('/assets/photos/proj-bm-patio.jpg'),
+  projBmGameroom:     lu('/assets/photos/proj-bm-gameroom.jpg'),
+  projBmKef:          lu('/assets/photos/proj-bm-kef.jpg'),
+  projBmControl:      lu('/assets/photos/proj-bm-control.jpg'),
   projMrTv:           lu('/assets/photos/proj-mr-tv-fireplace.jpg'),
   projMrLiving:       lu('/assets/photos/proj-mr-living-view.jpg'),
   projMrAvRoom:       lu('/assets/photos/proj-mr-av-room.jpg'),
@@ -3149,6 +3157,62 @@ function CasesPage({navigate}) {
             </div>
           </div>
           <style>{`@media(max-width:899px){.db-why-grid{grid-template-columns:1fr!important}}`}</style>
+        </div>
+      </section>
+
+      {/* ── FEATURED PROJECT: Big Modern House ── */}
+      <section className="th-section" style={{background:'var(--dark)',paddingTop:72,paddingBottom:72}}>
+        <div style={{maxWidth:1200,margin:'0 auto',padding:'0 40px'}}>
+          <div style={{fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12,textAlign:'center'}}>Featured project · Texas Hill Country</div>
+          <h2 style={{fontFamily:'var(--serif)',fontSize:'clamp(30px,3.6vw,52px)',fontWeight:600,color:'#FCFAF6',textAlign:'center',margin:'0 0 12px',lineHeight:1.1}}>Big Modern House — <em style={{color:'#F4C9A8',fontStyle:'italic'}}>16 audio zones, one processor.</em></h2>
+          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.7)',maxWidth:680,margin:'0 auto 44px',textAlign:'center'}}>A full-home integration built around a URC processor: 16 independent audio zones, six video zones, a dedicated Dolby Atmos theater, and surveillance across the entire property — all designed for the client's long-term smart home ownership.</p>
+
+          {/* Main mosaic */}
+          <div style={{display:'grid',gridTemplateColumns:'1.4fr 1fr',gridTemplateRows:'1fr 1fr',gap:6,borderRadius:12,overflow:'hidden',maxHeight:600,marginBottom:6}}>
+            <div style={{gridRow:'1 / 3',overflow:'hidden'}}>
+              <img src={PHOTOS.projBmExterior} alt="Big modern house exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 30%',display:'block'}}/>
+            </div>
+            <div style={{overflow:'hidden'}}>
+              <img src={PHOTOS.projBmTv} alt="Samsung TV on dark marble with linear fireplace" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 20%',display:'block'}}/>
+            </div>
+            <div style={{overflow:'hidden'}}>
+              <img src={PHOTOS.projBmLiving} alt="Finished living room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+
+          {/* Detail strip */}
+          <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:6,borderRadius:'0 0 12px 12px',overflow:'hidden',marginBottom:48}}>
+            {[
+              {src:PHOTOS.projBmRack,   alt:'URC rack — 16-zone processor'},
+              {src:PHOTOS.projBmPatio,  alt:'Covered patio with pool'},
+              {src:PHOTOS.projBmGameroom, alt:'Game room · ceiling speakers · motorized shades'},
+              {src:PHOTOS.projBmKef,    alt:'KEF speaker delivery — 80+ units'},
+            ].map((p,i)=>(
+              <div key={i} style={{height:160,overflow:'hidden'}}>
+                <img src={p.src} alt={p.alt} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              </div>
+            ))}
+          </div>
+
+          {/* Equipment cards */}
+          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20,maxWidth:960,margin:'0 auto'}} className="bm-cards">
+            <div style={{background:'rgba(255,255,255,.06)',borderRadius:12,padding:'28px 24px',border:'1px solid rgba(255,255,255,.1)'}}>
+              <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12}}>Control backbone</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:18,fontWeight:600,marginBottom:10,color:'#FCFAF6'}}>URC Processor</h3>
+              <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.6)',margin:0}}>16 independent audio zones and 6 video zones managed from a single URC processor. Designed for the client's future unified DIY integration — open architecture, documented and expandable.</p>
+            </div>
+            <div style={{background:'rgba(255,255,255,.06)',borderRadius:12,padding:'28px 24px',border:'1px solid rgba(255,255,255,.1)'}}>
+              <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12}}>Home Theater</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:18,fontWeight:600,marginBottom:10,color:'#FCFAF6'}}>Epson 4K · KEF · Dolby Atmos 7.2.4</h3>
+              <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.6)',margin:0}}>4K Epson laser projector onto a 130" Severtson screen. Full 7.2.4 Dolby Atmos ceiling and surround array powered by KEF architectural speakers. Calibrated to the room dimensions.</p>
+            </div>
+            <div style={{background:'rgba(255,255,255,.06)',borderRadius:12,padding:'28px 24px',border:'1px solid rgba(255,255,255,.1)'}}>
+              <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12}}>Whole-home</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:18,fontWeight:600,marginBottom:10,color:'#FCFAF6'}}>80+ Speakers · Cameras · Automation</h3>
+              <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.6)',margin:0}}>Over 80 ceiling and outdoor speakers distributed across all zones. Perimeter surveillance cameras, motorized shades, and whole-home automation tied into a single control interface.</p>
+            </div>
+          </div>
+          <style>{`@media(max-width:899px){.bm-cards{grid-template-columns:1fr!important}}`}</style>
         </div>
       </section>
 
