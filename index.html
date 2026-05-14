@@ -631,7 +631,7 @@ const {useState, useEffect, useRef} = React;
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=12';
+const lu = (path) => path + '?v=13';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -3344,9 +3344,8 @@ function CaseModernPage({navigate}) {
           <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Sony · Denon AVR · Martin Logan ceiling speakers · Sonos Arc · Polk Audio outdoor · WiiM amplifiers</p>
           <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
         </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:340}}>
-          <img src={PHOTOS.projMrExterior} alt="Modern Residence exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 50%',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.3) 0%,transparent 40%)'}}/>
+        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <img src={PHOTOS.projMrExterior} alt="Modern Residence exterior" style={{width:'100%',height:'auto',maxHeight:'100%',objectFit:'contain',display:'block'}}/>
         </div>
       </section>
 
@@ -3414,9 +3413,8 @@ function CaseBigHousePage({navigate}) {
           <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>URC · KEF · Epson 4K laser · 130" Severtson · Dolby Atmos 7.2.4 · perimeter cameras · whole-home automation</p>
           <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
         </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:340}}>
-          <img src={PHOTOS.projBmExterior} alt="Big Modern House exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 50%',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.3) 0%,transparent 40%)'}}/>
+        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <img src={PHOTOS.projBmExterior} alt="Big Modern House exterior" style={{width:'100%',height:'auto',maxHeight:'100%',objectFit:'contain',display:'block'}}/>
         </div>
       </section>
 
