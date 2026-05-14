@@ -3115,122 +3115,30 @@ function CasesPage({navigate}) {
         </div>
       </section>
 
-      {/* ══ CASE STUDY 1: Modern Residence ══ */}
-      <div style={{background:'var(--dark)'}}>
-        {/* Cover photo — full width, explicit height, never collapses */}
-        <div style={{position:'relative',width:'100%',height:520,overflow:'hidden'}}>
-          <img src={PHOTOS.projMrExterior} alt="Modern Residence — exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 40%',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(27,26,40,.82) 0%,rgba(27,26,40,.2) 60%,transparent 100%)'}}/>
-          <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'40px 80px'}}>
-            <div style={{fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12}}>Case study 01 · Tampa Bay Area</div>
-            <h2 style={{fontFamily:'var(--serif)',fontSize:'clamp(32px,4vw,56px)',fontWeight:600,color:'#FCFAF6',margin:0,lineHeight:1.06}}>Modern Residence</h2>
-          </div>
+      {/* ── Featured cases ── */}
+      <section className="th-section" style={{paddingTop:32,paddingBottom:48}}>
+        <div className="sec-label">Detailed case studies</div>
+        <h2 className="sec-title" style={{marginBottom:36}}>Two projects, <em>fully documented.</em></h2>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16}} className="cases-grid">
+          {[
+            {page:'case-modern',   img:PHOTOS.projMrExterior,  tag:'Case 01 · Tampa Bay Area',  title:'Modern Residence',      sub:'Sony · Denon AVR · Martin Logan · Sonos · Polk outdoor'},
+            {page:'case-bighouse', img:PHOTOS.projBmExterior,  tag:'Case 02 · Texas Hill Country', title:'Big Modern House',    sub:'URC · KEF · Epson 4K · Dolby Atmos 7.2.4 · 80+ speakers'},
+          ].map(c=>(
+            <div key={c.page} onClick={()=>navigate(c.page)} role="button" tabIndex={0} style={{cursor:'pointer',position:'relative',height:420,borderRadius:12,overflow:'hidden'}}
+              onKeyDown={e=>e.key==='Enter'&&navigate(c.page)}>
+              <img src={c.img} alt={c.title} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block'}}/>
+              <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(27,26,40,.88) 0%,rgba(27,26,40,.1) 55%,transparent 100%)'}}/>
+              <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'32px 36px'}}>
+                <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>{c.tag}</div>
+                <h3 style={{fontFamily:'var(--serif)',fontSize:32,fontWeight:600,color:'#FCFAF6',margin:'0 0 10px',lineHeight:1.1}}>{c.title}</h3>
+                <p style={{fontSize:13,color:'rgba(252,250,246,.65)',margin:'0 0 18px',lineHeight:1.5}}>{c.sub}</p>
+                <span style={{display:'inline-flex',alignItems:'center',gap:8,fontSize:14,fontWeight:600,color:'var(--accent)'}}>View full case study →</span>
+              </div>
+            </div>
+          ))}
         </div>
-
-        {/* Description + equipment */}
-        <div style={{maxWidth:1200,margin:'0 auto',padding:'56px 80px 72px'}} className="case-inner">
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:48,alignItems:'start'}} className="case-desc-grid">
-            <div>
-              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'0 0 20px'}}>A modern hillside home with five distinct AV zones unified under a single control layer. Entertainment room, main living room, and three outdoor patios — each independently addressable, all from one app.</p>
-              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>Clean installation throughout: no exposed cables, no visible hardware. Every zone calibrated after install and documented for future expansion.</p>
-            </div>
-            <div style={{display:'grid',gap:12}}>
-              {[
-                {room:'Entertainment room', gear:'Denon AVR · Martin Logan ceiling · Sony TV · 5.1 surround'},
-                {room:'Main living room',   gear:'Sony 85" · Sonos Arc soundbar · panoramic glass wall'},
-                {room:'Three patios',       gear:'Polk Audio outdoor speakers · WiiM amplifier per zone'},
-              ].map(r=>(
-                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:16}}>
-                  <div style={{fontSize:12,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:4}}>{r.room}</div>
-                  <div style={{fontSize:14,color:'rgba(252,250,246,.75)',lineHeight:1.5}}>{r.gear}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Photo row — explicit height per img, always visible */}
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:8}}>
-            <div style={{height:280,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projMrTv} alt="Sony TV over linear fireplace" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 20%',display:'block'}}/>
-            </div>
-            <div style={{height:280,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projMrLiving} alt="Living room with panoramic view" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:280,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projMrAvRoom} alt="AV entertainment room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ══ CASE STUDY 2: Big Modern House ══ */}
-      <div style={{background:'var(--cream2)'}}>
-        {/* Cover photo */}
-        <div style={{position:'relative',width:'100%',height:520,overflow:'hidden'}}>
-          <img src={PHOTOS.projBmExterior} alt="Big Modern House — exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(27,26,40,.82) 0%,rgba(27,26,40,.15) 60%,transparent 100%)'}}/>
-          <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'40px 80px'}}>
-            <div style={{fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12}}>Case study 02 · Texas Hill Country</div>
-            <h2 style={{fontFamily:'var(--serif)',fontSize:'clamp(32px,4vw,56px)',fontWeight:600,color:'#FCFAF6',margin:0,lineHeight:1.06}}>Big Modern House</h2>
-          </div>
-        </div>
-
-        {/* Description + equipment */}
-        <div style={{maxWidth:1200,margin:'0 auto',padding:'56px 80px 72px'}} className="case-inner">
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:48,alignItems:'start'}} className="case-desc-grid">
-            <div>
-              <p style={{fontSize:18,lineHeight:1.75,color:'var(--dark)',margin:'0 0 20px'}}>A full-home integration planned in close collaboration with the client and built for long-term smart home ownership. The URC processor manages 16 independent audio zones and 6 video zones across the entire property.</p>
-              <p style={{fontSize:15,lineHeight:1.7,color:'var(--mid)',margin:0}}>Over 80 KEF architectural ceiling speakers installed throughout. The dedicated theater delivers a 4K laser projection experience with 7.2.4 Dolby Atmos — calibrated to the room. Perimeter cameras, motorized shades, and whole-home automation all tied into one interface.</p>
-            </div>
-            <div style={{display:'grid',gap:12}}>
-              {[
-                {room:'Control backbone',  gear:'URC processor · 16 audio zones · 6 video zones'},
-                {room:'Home Theater',      gear:'Epson 4K laser · 130" Severtson screen · KEF 7.2.4 Dolby Atmos'},
-                {room:'Whole-home audio',  gear:'80+ KEF ceiling speakers · distributed across all zones'},
-                {room:'Security & auto',   gear:'Perimeter cameras · motorized shades · full automation'},
-              ].map(r=>(
-                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:16}}>
-                  <div style={{fontSize:12,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:4}}>{r.room}</div>
-                  <div style={{fontSize:14,color:'var(--mid)',lineHeight:1.5}}>{r.gear}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Photo row */}
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr 1fr',gap:8,marginBottom:8}}>
-            <div style={{height:240,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projBmTv} alt="Samsung TV on dark marble" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 20%',display:'block'}}/>
-            </div>
-            <div style={{height:240,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projBmLiving} alt="Finished living room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:240,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projBmRack} alt="URC equipment rack" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:240,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projBmPatio} alt="Covered patio with pool" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:8}}>
-            <div style={{height:200,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projBmGameroom} alt="Game room with pool table" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:200,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projBmKef} alt="KEF speaker boxes" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:200,overflow:'hidden',borderRadius:8}}>
-              <img src={PHOTOS.projBmControl} alt="Control panel" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <style>{`
-        @media(max-width:899px){
-          .case-inner{padding:40px 24px 56px!important}
-          .case-desc-grid{grid-template-columns:1fr!important}
-        }
-      `}</style>
+        <style>{`@media(max-width:767px){.cases-grid{grid-template-columns:1fr!important}}`}</style>
+      </section>
 
       {/* Projects grid */}
       <section className="th-section">
@@ -3420,8 +3328,136 @@ function BudgetCalculatorPage({navigate}) {
   );
 }
 
+/* ─── CASE STUDY: Modern Residence ─── */
+function CaseModernPage({navigate}) {
+  return (
+    <div className="page">
+      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case study 01 · Tampa Bay Area</div>
+          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Modern <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Residence</em></h1>
+          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>Five independent AV zones in a single hillside home — entertainment room, main living room, and three outdoor patios — unified under one control layer.</p>
+          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Sony · Denon AVR · Martin Logan ceiling speakers · Sonos Arc · Polk Audio outdoor · WiiM amplifiers</p>
+          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
+        </div>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={PHOTOS.projMrExterior} alt="Modern Residence exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 40%',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.3) 0%,transparent 40%)'}}/>
+        </div>
+      </section>
+
+      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
+        <div style={{maxWidth:1160,margin:'0 auto'}}>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
+            <div>
+              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
+              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>A modern hillside home designed around five distinct entertainment zones. The client wanted each area to feel complete on its own — and seamlessly connected when the whole house is in use.</p>
+              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>No exposed wiring, no visible hardware. Every zone was calibrated post-install and fully documented for future expansion.</p>
+            </div>
+            <div style={{display:'grid',gap:16}}>
+              {[
+                {room:'Entertainment room', gear:'Denon AVR · Martin Logan architectural ceiling speakers · Sony TV · 5.1 surround'},
+                {room:'Main living room',   gear:'Sony 85" display · Sonos Arc soundbar · flush-mount over linear fireplace'},
+                {room:'Patios × 3',         gear:'Polk Audio outdoor speakers · WiiM amplifier per zone · independent source & volume'},
+              ].map(r=>(
+                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
+                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
+                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10}}>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projMrTv} alt="Sony TV over fireplace" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 20%',display:'block'}}/></div>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projMrLiving} alt="Living room with panoramic view" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projMrAvRoom} alt="AV entertainment room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+          </div>
+        </div>
+      </section>
+      <style>{`.case-body{padding:64px 80px 72px!important} @media(max-width:899px){.case-2col{grid-template-columns:1fr!important}.case-body{padding:40px 24px 56px!important}}`}</style>
+
+      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
+        <h2 className="sec-title">Want a similar setup?</h2>
+        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
+        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
+          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── CASE STUDY: Big Modern House ─── */
+function CaseBigHousePage({navigate}) {
+  return (
+    <div className="page">
+      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case study 02 · Texas Hill Country</div>
+          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Big Modern <em style={{color:'#F4C9A8',fontStyle:'italic'}}>House</em></h1>
+          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>16 audio zones, 6 video zones, a full Dolby Atmos theater, and 80+ speakers — all running from a single URC processor, built for long-term client ownership.</p>
+          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>URC · KEF · Epson 4K laser · 130" Severtson · Dolby Atmos 7.2.4 · perimeter cameras · whole-home automation</p>
+          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
+        </div>
+        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
+          <img src={PHOTOS.projBmExterior} alt="Big Modern House exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.3) 0%,transparent 40%)'}}/>
+        </div>
+      </section>
+
+      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
+        <div style={{maxWidth:1160,margin:'0 auto'}}>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
+            <div>
+              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
+              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>A full-home integration designed in close collaboration with the client, built around a URC processor managing 16 audio zones and 6 video zones. Planned for the client's long-term smart home ownership — open architecture, fully documented.</p>
+              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>The dedicated theater features a 4K Epson laser projector, a 130" Severtson screen, and a 7.2.4 Dolby Atmos array powered by KEF speakers — calibrated to the room dimensions.</p>
+            </div>
+            <div style={{display:'grid',gap:16}}>
+              {[
+                {room:'Control backbone', gear:'URC processor · 16 audio zones · 6 video zones · open architecture'},
+                {room:'Home Theater',     gear:'Epson 4K laser · 130" Severtson screen · KEF 7.2.4 Dolby Atmos'},
+                {room:'Whole-home audio', gear:'80+ KEF architectural ceiling speakers across all zones'},
+                {room:'Security & auto',  gear:'Perimeter cameras · motorized shades · whole-home automation'},
+              ].map(r=>(
+                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
+                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
+                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr 1fr',gap:10,marginBottom:10}}>
+            <div style={{height:260,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmTv}       alt="Samsung TV on dark marble" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 20%',display:'block'}}/></div>
+            <div style={{height:260,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmLiving}   alt="Finished living room"      style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:260,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmRack}     alt="URC equipment rack"        style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:260,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmPatio}    alt="Covered patio with pool"   style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10}}>
+            <div style={{height:220,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmGameroom} alt="Game room with ceiling speakers" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:220,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmKef}      alt="KEF speaker delivery"           style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:220,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmControl}  alt="Control panel"                  style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
+        <h2 className="sec-title">Want a similar setup?</h2>
+        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
+        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
+          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 /* ─── APP ─── */
-const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support']);
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse']);
 
 function readPageFromUrl(){
   try {
@@ -3477,6 +3513,8 @@ function App() {
     contact:   <ContactPage/>,
     'budget-calculator': <BudgetCalculatorPage navigate={navigate}/>,
     work:      <CasesPage navigate={navigate}/>,
+    'case-modern':   <CaseModernPage navigate={navigate}/>,
+    'case-bighouse': <CaseBigHousePage navigate={navigate}/>,
     about:     <AboutPage navigate={navigate}/>,
     support:   <ServiceSupportPage navigate={navigate}/>,
   };
