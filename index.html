@@ -631,7 +631,7 @@ const {useState, useEffect, useRef} = React;
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=7';
+const lu = (path) => path + '?v=8';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -3105,6 +3105,48 @@ function CasesPage({navigate}) {
         </div>
       </section>
 
+      {/* ── Featured Case Studies — first thing after hero ── */}
+      <section style={{background:'var(--dark)',padding:'64px 80px 72px'}} className="cases-featured-wrap">
+        <div style={{maxWidth:1280,margin:'0 auto'}}>
+          <div style={{display:'flex',alignItems:'baseline',justifyContent:'space-between',marginBottom:40,flexWrap:'wrap',gap:12}}>
+            <div>
+              <div style={{fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Detailed case studies</div>
+              <h2 style={{fontFamily:'var(--serif)',fontSize:'clamp(32px,3.5vw,52px)',fontWeight:600,color:'#FCFAF6',margin:0,lineHeight:1.1}}>Two projects, <em style={{color:'#F4C9A8',fontStyle:'italic'}}>fully documented.</em></h2>
+            </div>
+            <p style={{fontSize:15,color:'rgba(252,250,246,.5)',maxWidth:340,margin:0,lineHeight:1.6}}>Click either card to see the full equipment list, room-by-room breakdown, and project photos.</p>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:20}} className="cases-grid">
+            {[
+              {page:'case-modern',   img:PHOTOS.projMrExterior,  tag:'Case 01 · Tampa Bay Area',          title:'Modern Residence',   sub:'Sony · Denon AVR · Martin Logan · Sonos · Polk outdoor · 5 zones'},
+              {page:'case-bighouse', img:PHOTOS.projBmExterior,  tag:'Case 02 · Texas Hill Country',      title:'Big Modern House',   sub:'URC · KEF · Epson 4K laser · Dolby Atmos 7.2.4 · 80+ speakers'},
+            ].map(c=>(
+              <div key={c.page} onClick={()=>navigate(c.page)} role="button" tabIndex={0}
+                style={{cursor:'pointer',position:'relative',height:480,borderRadius:14,overflow:'hidden',
+                  outline:'none',transition:'transform .18s ease',boxShadow:'0 8px 40px rgba(0,0,0,.45)'}}
+                onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-4px)';e.currentTarget.style.boxShadow='0 16px 56px rgba(0,0,0,.55)';}}
+                onMouseLeave={e=>{e.currentTarget.style.transform='translateY(0)';e.currentTarget.style.boxShadow='0 8px 40px rgba(0,0,0,.45)';}}
+                onKeyDown={e=>e.key==='Enter'&&navigate(c.page)}>
+                <img src={c.img} alt={c.title} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',transition:'transform .3s ease'}}/>
+                <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(10,9,22,.92) 0%,rgba(10,9,22,.35) 50%,transparent 100%)'}}/>
+                <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'36px 40px'}}>
+                  <div style={{fontSize:11,letterSpacing:'.15em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:12}}>{c.tag}</div>
+                  <h3 style={{fontFamily:'var(--serif)',fontSize:36,fontWeight:600,color:'#FCFAF6',margin:'0 0 10px',lineHeight:1.08}}>{c.title}</h3>
+                  <p style={{fontSize:14,color:'rgba(252,250,246,.6)',margin:'0 0 22px',lineHeight:1.55}}>{c.sub}</p>
+                  <span style={{display:'inline-flex',alignItems:'center',gap:8,fontSize:15,fontWeight:700,color:'var(--accent)',
+                    background:'rgba(212,163,115,.12)',border:'1px solid rgba(212,163,115,.35)',padding:'9px 18px',borderRadius:8}}>
+                    View full case study →
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <style>{`
+          @media(max-width:767px){.cases-grid{grid-template-columns:1fr!important}}
+          @media(max-width:900px){.cases-featured-wrap{padding:40px 24px 56px!important}}
+        `}</style>
+      </section>
+
       {/* Stats */}
       <section className="th-section" style={{paddingTop:0}}>
         <div className="stat-band">
@@ -3113,31 +3155,6 @@ function CasesPage({navigate}) {
           <div><div className="stat-num">5</div><div className="stat-label">Counties served</div></div>
           <div><div className="stat-num">2024+</div><div className="stat-label">On the Gulf Coast</div></div>
         </div>
-      </section>
-
-      {/* ── Featured cases ── */}
-      <section className="th-section" style={{paddingTop:32,paddingBottom:48}}>
-        <div className="sec-label">Detailed case studies</div>
-        <h2 className="sec-title" style={{marginBottom:36}}>Two projects, <em>fully documented.</em></h2>
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16}} className="cases-grid">
-          {[
-            {page:'case-modern',   img:PHOTOS.projMrExterior,  tag:'Case 01 · Tampa Bay Area',  title:'Modern Residence',      sub:'Sony · Denon AVR · Martin Logan · Sonos · Polk outdoor'},
-            {page:'case-bighouse', img:PHOTOS.projBmExterior,  tag:'Case 02 · Texas Hill Country', title:'Big Modern House',    sub:'URC · KEF · Epson 4K · Dolby Atmos 7.2.4 · 80+ speakers'},
-          ].map(c=>(
-            <div key={c.page} onClick={()=>navigate(c.page)} role="button" tabIndex={0} style={{cursor:'pointer',position:'relative',height:420,borderRadius:12,overflow:'hidden'}}
-              onKeyDown={e=>e.key==='Enter'&&navigate(c.page)}>
-              <img src={c.img} alt={c.title} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block'}}/>
-              <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(27,26,40,.88) 0%,rgba(27,26,40,.1) 55%,transparent 100%)'}}/>
-              <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'32px 36px'}}>
-                <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>{c.tag}</div>
-                <h3 style={{fontFamily:'var(--serif)',fontSize:32,fontWeight:600,color:'#FCFAF6',margin:'0 0 10px',lineHeight:1.1}}>{c.title}</h3>
-                <p style={{fontSize:13,color:'rgba(252,250,246,.65)',margin:'0 0 18px',lineHeight:1.5}}>{c.sub}</p>
-                <span style={{display:'inline-flex',alignItems:'center',gap:8,fontSize:14,fontWeight:600,color:'var(--accent)'}}>View full case study →</span>
-              </div>
-            </div>
-          ))}
-        </div>
-        <style>{`@media(max-width:767px){.cases-grid{grid-template-columns:1fr!important}}`}</style>
       </section>
 
       {/* Projects grid */}
