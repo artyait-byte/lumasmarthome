@@ -631,7 +631,7 @@ const {useState, useEffect, useRef} = React;
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=8';
+const lu = (path) => path + '?v=9';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -3076,6 +3076,7 @@ function Stars({n=5}){
 function CasesPage({navigate}) {
   return (
     <div className="page">
+      {/* ── HERO ── */}
       <section style={{
         display:'grid', gridTemplateColumns:'1fr 1fr',
         minHeight:'min(88vh,780px)', background:'var(--dark)',
@@ -3095,8 +3096,7 @@ function CasesPage({navigate}) {
           <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>From 4,500 sq ft Bayfront residences to 9,000 sq ft Naples compounds — each project shows the layers we integrated, the partners we coordinated with, and the moment the home started working on its own.</p>
           <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
             <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start a project →</button>
-            <a className="btn-ghost" href="#field-photos" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Install photos</a>
-            <a className="btn-ghost" href="#testimonials-grid" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Testimonials</a>
+            <a className="btn-ghost" href="#testimonials-grid" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Testimonials ↓</a>
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
@@ -3105,47 +3105,109 @@ function CasesPage({navigate}) {
         </div>
       </section>
 
-      {/* ── Featured Case Studies — first thing after hero ── */}
-      <section style={{background:'var(--dark)',padding:'64px 80px 72px'}} className="cases-featured-wrap">
-        <div style={{maxWidth:1280,margin:'0 auto'}}>
-          <div style={{display:'flex',alignItems:'baseline',justifyContent:'space-between',marginBottom:40,flexWrap:'wrap',gap:12}}>
-            <div>
-              <div style={{fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Detailed case studies</div>
-              <h2 style={{fontFamily:'var(--serif)',fontSize:'clamp(32px,3.5vw,52px)',fontWeight:600,color:'#FCFAF6',margin:0,lineHeight:1.1}}>Two projects, <em style={{color:'#F4C9A8',fontStyle:'italic'}}>fully documented.</em></h2>
-            </div>
-            <p style={{fontSize:15,color:'rgba(252,250,246,.5)',maxWidth:340,margin:0,lineHeight:1.6}}>Click either card to see the full equipment list, room-by-room breakdown, and project photos.</p>
-          </div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:20}} className="cases-grid">
-            {[
-              {page:'case-modern',   img:PHOTOS.projMrExterior,  tag:'Case 01 · Tampa Bay Area',          title:'Modern Residence',   sub:'Sony · Denon AVR · Martin Logan · Sonos · Polk outdoor · 5 zones'},
-              {page:'case-bighouse', img:PHOTOS.projBmExterior,  tag:'Case 02 · Texas Hill Country',      title:'Big Modern House',   sub:'URC · KEF · Epson 4K laser · Dolby Atmos 7.2.4 · 80+ speakers'},
-            ].map(c=>(
-              <div key={c.page} onClick={()=>navigate(c.page)} role="button" tabIndex={0}
-                style={{cursor:'pointer',position:'relative',height:480,borderRadius:14,overflow:'hidden',
-                  outline:'none',transition:'transform .18s ease',boxShadow:'0 8px 40px rgba(0,0,0,.45)'}}
-                onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-4px)';e.currentTarget.style.boxShadow='0 16px 56px rgba(0,0,0,.55)';}}
-                onMouseLeave={e=>{e.currentTarget.style.transform='translateY(0)';e.currentTarget.style.boxShadow='0 8px 40px rgba(0,0,0,.45)';}}
-                onKeyDown={e=>e.key==='Enter'&&navigate(c.page)}>
-                <img src={c.img} alt={c.title} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',transition:'transform .3s ease'}}/>
-                <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(10,9,22,.92) 0%,rgba(10,9,22,.35) 50%,transparent 100%)'}}/>
-                <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'36px 40px'}}>
-                  <div style={{fontSize:11,letterSpacing:'.15em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:12}}>{c.tag}</div>
-                  <h3 style={{fontFamily:'var(--serif)',fontSize:36,fontWeight:600,color:'#FCFAF6',margin:'0 0 10px',lineHeight:1.08}}>{c.title}</h3>
-                  <p style={{fontSize:14,color:'rgba(252,250,246,.6)',margin:'0 0 22px',lineHeight:1.55}}>{c.sub}</p>
-                  <span style={{display:'inline-flex',alignItems:'center',gap:8,fontSize:15,fontWeight:700,color:'var(--accent)',
-                    background:'rgba(212,163,115,.12)',border:'1px solid rgba(212,163,115,.35)',padding:'9px 18px',borderRadius:8}}>
-                    View full case study →
-                  </span>
-                </div>
-              </div>
-            ))}
+      {/* ═══════════════════════════════════════════════════
+          CASE STUDY 01 — Modern Residence
+      ═══════════════════════════════════════════════════ */}
+      <section style={{background:'var(--dark)',padding:0,borderTop:'1px solid rgba(255,255,255,.06)'}}>
+        {/* Cover photo — full width */}
+        <div style={{position:'relative',height:'min(65vh,620px)',overflow:'hidden'}}>
+          <img src={PHOTOS.projMrExterior} alt="Modern Residence — exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 40%',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(10,9,22,.82) 0%,rgba(10,9,22,.18) 55%,transparent 100%)'}}/>
+          <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'40px 80px',maxWidth:1280,margin:'0 auto'}}>
+            <div style={{fontSize:11,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:12}}>Case 01 · Tampa Bay Area</div>
+            <h2 style={{fontFamily:'var(--serif)',fontSize:'clamp(36px,4.2vw,64px)',fontWeight:600,color:'#FCFAF6',margin:'0 0 12px',lineHeight:1.06}}>Modern Residence</h2>
+            <p style={{fontSize:16,color:'rgba(252,250,246,.65)',margin:0,maxWidth:600}}>Sony · Denon AVR · Martin Logan ceiling speakers · Sonos Arc · Polk Audio outdoor · WiiM amplifiers</p>
           </div>
         </div>
-        <style>{`
-          @media(max-width:767px){.cases-grid{grid-template-columns:1fr!important}}
-          @media(max-width:900px){.cases-featured-wrap{padding:40px 24px 56px!important}}
-        `}</style>
+        {/* Details */}
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'56px 80px 72px'}} className="case-body">
+          <div style={{display:'grid',gridTemplateColumns:'1.1fr 1fr',gap:56,marginBottom:52,alignItems:'start'}} className="case-2col">
+            <div>
+              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.45)'}}>About the project</div>
+              <p style={{fontSize:19,lineHeight:1.75,color:'rgba(252,250,246,.9)',margin:'16px 0 16px'}}>A modern hillside home designed around five distinct entertainment zones. The client wanted each area to feel complete on its own — and seamlessly connected when the whole house is in use.</p>
+              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.5)',margin:0}}>No exposed wiring, no visible hardware. Every zone was calibrated post-install and fully documented for future expansion.</p>
+            </div>
+            <div style={{display:'grid',gap:18}}>
+              {[
+                {room:'Entertainment room', gear:'Denon AVR · Martin Logan architectural ceiling speakers · Sony TV · 5.1 surround'},
+                {room:'Main living room',   gear:'Sony 85" display · Sonos Arc soundbar · flush-mount over linear fireplace'},
+                {room:'Patios × 3',         gear:'Polk Audio outdoor speakers · WiiM amplifier per zone · independent source & volume'},
+              ].map(r=>(
+                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
+                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:5}}>{r.room}</div>
+                  <div style={{fontSize:14,color:'rgba(252,250,246,.65)',lineHeight:1.6}}>{r.gear}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Photo gallery */}
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12}}>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projMrTv} alt="Sony TV over fireplace" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 20%',display:'block'}}/></div>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projMrLiving} alt="Living room with panoramic view" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projMrAvRoom} alt="AV entertainment room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+          </div>
+        </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════════
+          CASE STUDY 02 — Big Modern House
+      ═══════════════════════════════════════════════════ */}
+      <section style={{background:'#13121f',padding:0,borderTop:'1px solid rgba(255,255,255,.06)'}}>
+        {/* Cover photo — full width */}
+        <div style={{position:'relative',height:'min(65vh,620px)',overflow:'hidden'}}>
+          <img src={PHOTOS.projBmExterior} alt="Big Modern House — exterior" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(10,9,22,.82) 0%,rgba(10,9,22,.18) 55%,transparent 100%)'}}/>
+          <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'40px 80px',maxWidth:1280,margin:'0 auto'}}>
+            <div style={{fontSize:11,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:12}}>Case 02 · Texas Hill Country</div>
+            <h2 style={{fontFamily:'var(--serif)',fontSize:'clamp(36px,4.2vw,64px)',fontWeight:600,color:'#FCFAF6',margin:'0 0 12px',lineHeight:1.06}}>Big Modern House</h2>
+            <p style={{fontSize:16,color:'rgba(252,250,246,.65)',margin:0,maxWidth:600}}>URC · KEF · Epson 4K laser · 130" Severtson screen · Dolby Atmos 7.2.4 · 80+ speakers · perimeter cameras</p>
+          </div>
+        </div>
+        {/* Details */}
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'56px 80px 72px'}} className="case-body">
+          <div style={{display:'grid',gridTemplateColumns:'1.1fr 1fr',gap:56,marginBottom:52,alignItems:'start'}} className="case-2col">
+            <div>
+              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.45)'}}>About the project</div>
+              <p style={{fontSize:19,lineHeight:1.75,color:'rgba(252,250,246,.9)',margin:'16px 0 16px'}}>A full-home integration built around a URC processor managing 16 audio zones and 6 video zones. Planned for the client's long-term smart home ownership — open architecture, fully documented.</p>
+              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.5)',margin:0}}>The dedicated theater features a 4K Epson laser projector, a 130" Severtson screen, and a 7.2.4 Dolby Atmos array powered by KEF speakers — calibrated to the room dimensions.</p>
+            </div>
+            <div style={{display:'grid',gap:18}}>
+              {[
+                {room:'Control backbone', gear:'URC processor · 16 audio zones · 6 video zones · open architecture'},
+                {room:'Home Theater',     gear:'Epson 4K laser · 130" Severtson screen · KEF 7.2.4 Dolby Atmos'},
+                {room:'Whole-home audio', gear:'80+ KEF architectural ceiling speakers across all zones'},
+                {room:'Security & auto',  gear:'Perimeter cameras · motorized shades · whole-home automation'},
+              ].map(r=>(
+                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
+                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:5}}>{r.room}</div>
+                  <div style={{fontSize:14,color:'rgba(252,250,246,.65)',lineHeight:1.6}}>{r.gear}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Photo gallery */}
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr 1fr',gap:12,marginBottom:12}}>
+            <div style={{height:260,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmTv}     alt="TV on dark marble" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 20%',display:'block'}}/></div>
+            <div style={{height:260,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmLiving} alt="Finished living room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:260,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmRack}   alt="URC equipment rack" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:260,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmPatio}  alt="Covered patio with pool" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12}}>
+            <div style={{height:220,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmGameroom} alt="Game room with ceiling speakers" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:220,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmKef}      alt="KEF speaker delivery" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+            <div style={{height:220,overflow:'hidden',borderRadius:10}}><img src={PHOTOS.projBmControl}  alt="Control panel" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+          </div>
+        </div>
+      </section>
+
+      <style>{`
+        @media(max-width:899px){
+          .case-body{padding:32px 24px 48px!important}
+          .case-2col{grid-template-columns:1fr!important;gap:32px!important}
+          .lit-hero-wrap{grid-template-columns:1fr!important}
+          .lit-hero-text{padding:56px 24px 44px!important}
+        }
+      `}</style>
 
       {/* Stats */}
       <section className="th-section" style={{paddingTop:0}}>
@@ -3154,24 +3216,6 @@ function CasesPage({navigate}) {
           <div><div className="stat-num">5★</div><div className="stat-label">Average rating</div></div>
           <div><div className="stat-num">5</div><div className="stat-label">Counties served</div></div>
           <div><div className="stat-num">2024+</div><div className="stat-label">On the Gulf Coast</div></div>
-        </div>
-      </section>
-
-      {/* Projects grid */}
-      <section className="th-section">
-        <div className="sec-label">Our work</div>
-        <h2 className="sec-title">Selected residences <em>across the coast.</em></h2>
-        <div className="th-projects" style={{gridTemplateColumns:'repeat(3,1fr)'}}>
-          {PROJECTS.map(p => (
-            <div key={p.name} className="th-project" onClick={()=>navigate('contact')} role="button" tabIndex={0}>
-              <img src={p.img} alt={`${p.name} — ${p.loc}`}/>
-              <div className="th-project-overlay">
-                <div className="th-project-tag">{p.loc} · {p.sqft}</div>
-                <div className="th-project-name">{p.name}</div>
-                <div style={{fontSize:12,color:'rgba(255,255,255,.7)',marginTop:6,lineHeight:1.5}}>{p.meta}</div>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
