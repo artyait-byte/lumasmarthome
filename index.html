@@ -691,6 +691,11 @@ const PHOTOS = {
   projectModernVilla: lu('/assets/photos/waterfront-lanai.jpg'),
   projectLuxuryPool:  lu('/assets/photos/gulf-sunset.jpg'),
   heroWork:           lu('/assets/photos/sarasota-sunset.jpg'),
+  projMrExterior:     lu('/assets/photos/proj-mr-exterior.jpg'),
+  projMrTv:           lu('/assets/photos/proj-mr-tv-fireplace.jpg'),
+  projMrLiving:       lu('/assets/photos/proj-mr-living-view.jpg'),
+  projMrAvRoom:       lu('/assets/photos/proj-mr-av-room.jpg'),
+  projMrPatio:        lu('/assets/photos/proj-mr-patio.jpg'),
   projectLido:        lu('/assets/photos/sarasota-lido-day.jpg'),
   projectBridge:      lu('/assets/photos/sarasota-ringling-bridge.jpg'),
   projectIsland:      lu('/assets/photos/sarasota-turtle-aerial.jpg'),
@@ -3099,6 +3104,51 @@ function CasesPage({navigate}) {
           <div><div className="stat-num">5★</div><div className="stat-label">Average rating</div></div>
           <div><div className="stat-num">5</div><div className="stat-label">Counties served</div></div>
           <div><div className="stat-num">2024+</div><div className="stat-label">On the Gulf Coast</div></div>
+        </div>
+      </section>
+
+      {/* ── FEATURED PROJECT: Modern Residence ── */}
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner" style={{maxWidth:1200}}>
+          <div className="sec-label">Featured project · Tampa Bay Area</div>
+          <h2 className="sec-title" style={{marginBottom:8}}>Modern Residence — <em>five zones, one system.</em></h2>
+          <p className="sec-body" style={{maxWidth:680,margin:'0 auto 48px'}}>A 4,800 sq ft hillside home with three distinct AV environments — entertainment room, main living room, and three outdoor patios — all running from a single control layer. Clean installation, no visible cables, every zone independently addressable.</p>
+
+          {/* Photo mosaic */}
+          <div style={{display:'grid',gridTemplateColumns:'1.4fr 1fr',gridTemplateRows:'1fr 1fr',gap:6,borderRadius:12,overflow:'hidden',maxHeight:580,marginBottom:48}}>
+            {/* Large left photo */}
+            <div style={{gridRow:'1 / 3',position:'relative',overflow:'hidden'}}>
+              <img src={PHOTOS.projMrExterior} alt="Modern residence exterior" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+            {/* Top right */}
+            <div style={{position:'relative',overflow:'hidden'}}>
+              <img src={PHOTOS.projMrTv} alt="Sony TV with linear fireplace" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 30%',display:'block'}}/>
+            </div>
+            {/* Bottom right */}
+            <div style={{position:'relative',overflow:'hidden'}}>
+              <img src={PHOTOS.projMrLiving} alt="Living room with panoramic view" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+
+          {/* Equipment breakdown */}
+          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20,maxWidth:960,margin:'0 auto 40px'}} className="db-why-grid">
+            <div className="th-card">
+              <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12}}>Entertainment room</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:18,fontWeight:600,marginBottom:10,color:'var(--dark)'}}>5.1 Surround · Denon AVR</h3>
+              <p style={{fontSize:14,lineHeight:1.65,color:'var(--mid)',margin:0}}>Denon AVR receiver driving Martin Logan architectural ceiling speakers in a true 5.1 configuration. Sony display, calibrated imaging, no exposed wiring.</p>
+            </div>
+            <div className="th-card">
+              <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12}}>Main living room</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:18,fontWeight:600,marginBottom:10,color:'var(--dark)'}}>Sony · Sonos Arc</h3>
+              <p style={{fontSize:14,lineHeight:1.65,color:'var(--mid)',margin:0}}>85" Sony display flush-mounted over a linear fireplace. Sonos Arc soundbar tucked below, matched acoustically to the open-plan space and panoramic glass wall.</p>
+            </div>
+            <div className="th-card">
+              <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:12}}>Three patios</div>
+              <h3 style={{fontFamily:'var(--serif)',fontSize:18,fontWeight:600,marginBottom:10,color:'var(--dark)'}}>Polk Outdoor · WiiM Amp</h3>
+              <p style={{fontSize:14,lineHeight:1.65,color:'var(--mid)',margin:0}}>Polk Audio outdoor speakers on each patio, each zone driven by a WiiM amplifier. Independent source and volume per zone, tied into the same app as the interior.</p>
+            </div>
+          </div>
+          <style>{`@media(max-width:899px){.db-why-grid{grid-template-columns:1fr!important}}`}</style>
         </div>
       </section>
 
