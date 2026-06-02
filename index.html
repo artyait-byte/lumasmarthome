@@ -19,7 +19,7 @@
   --sans:'DM Sans',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--dark);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden}
+body{background:var(--cream);color:var(--dark);font-family:var(--sans);font-size:16.5px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
@@ -679,53 +679,66 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .demo-plan-stage{position:relative;width:100%;aspect-ratio:3/2;border-radius:14px;overflow:hidden;background:#F4EFE6;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
 .demo-plan-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none;pointer-events:none}
 .demo-plan-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-.demo-plan-hint{text-align:center;margin-top:22px;font-size:13px;letter-spacing:.04em;color:rgba(252,250,246,.6);font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:10px}
+.demo-plan-hint{text-align:center;margin-top:24px;font-size:16px;letter-spacing:.02em;color:rgba(252,250,246,.78);font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:12px;font-weight:500}
 .demo-plan-hint-pulse{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(197,114,56,.6);animation:nav-pulse 2s ease-out infinite}
 
 /* HOVER CARD (appears at zone centroid — full room features visible at glance) */
-.demo-hover-card{position:absolute;transform:translate(-50%,-50%);background:rgba(10,9,23,.96);backdrop-filter:blur(8px);color:#FCFAF6;padding:14px 16px;border-radius:12px;font-family:var(--sans);min-width:230px;max-width:290px;border:1.5px solid var(--accent);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 6px rgba(197,114,56,.13);pointer-events:none;opacity:0;transition:opacity .18s;z-index:5}
+.demo-hover-card{position:absolute;transform:translate(-50%,-50%);background:rgba(10,9,23,.96);backdrop-filter:blur(8px);color:#FCFAF6;padding:16px 18px;border-radius:14px;font-family:var(--sans);min-width:260px;max-width:320px;border:1.5px solid var(--accent);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 6px rgba(197,114,56,.13);pointer-events:none;opacity:0;transition:opacity .18s;z-index:5}
 .demo-hover-card.show{opacity:1}
-.demo-hover-title{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.1;margin-bottom:4px;color:#FCFAF6}
-.demo-hover-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
-.demo-hover-list{list-style:none;padding:0;margin:0 0 10px;display:flex;flex-direction:column;gap:5px}
-.demo-hover-list li{font-size:13px;color:rgba(252,250,246,.85);display:flex;align-items:flex-start;gap:8px;line-height:1.35}
-.demo-hover-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
-.demo-hover-cta{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;border-top:1px solid rgba(197,114,56,.25);padding-top:9px;display:flex;align-items:center;gap:6px}
+.demo-hover-title{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.1;margin-bottom:5px;color:#FCFAF6}
+.demo-hover-tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+.demo-hover-list{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-direction:column;gap:6px}
+.demo-hover-list li{font-size:14.5px;color:rgba(252,250,246,.88);display:flex;align-items:flex-start;gap:9px;line-height:1.4}
+.demo-hover-list li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
+.demo-hover-cta{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;border-top:1px solid rgba(197,114,56,.3);padding-top:10px;display:flex;align-items:center;gap:6px}
 
-/* MODAL — picture-in-picture room detail */
-.demo-modal-backdrop{position:fixed;inset:0;background:rgba(10,9,23,.85);backdrop-filter:blur(10px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:32px;animation:demo-modal-fade .25s ease-out}
-.demo-modal{background:#13121F;color:#FCFAF6;border-radius:20px;width:100%;max-width:1100px;max-height:90vh;overflow:hidden;display:grid;grid-template-columns:5fr 4fr;box-shadow:0 40px 100px rgba(0,0,0,.7);border:1px solid rgba(252,250,246,.08);animation:demo-modal-zoom .28s cubic-bezier(.2,.9,.3,1.1);position:relative}
-.demo-modal-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;background:rgba(10,9,23,.7);backdrop-filter:blur(8px);border:1px solid rgba(252,250,246,.2);color:#FCFAF6;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;font-size:20px;line-height:1;transition:background .15s,border-color .15s,transform .15s}
-.demo-modal-close:hover{background:rgba(197,114,56,.25);border-color:var(--accent);transform:rotate(90deg)}
-.demo-modal-image{position:relative;min-height:420px;overflow:hidden;background-color:#0A0917;background-image:url('/assets/smart-home-demo/dollhouse.jpg');background-size:280%;background-repeat:no-repeat;transition:background-position .4s ease-out}
-.demo-modal-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(19,18,31,.4));pointer-events:none}
-.demo-modal-image-tag{position:absolute;top:18px;left:18px;background:rgba(10,9,23,.85);backdrop-filter:blur(8px);padding:8px 16px;border-radius:100px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;border:1px solid rgba(197,114,56,.4);z-index:2}
-.demo-modal-body{padding:40px 36px 32px;overflow-y:auto;display:flex;flex-direction:column}
-.demo-modal-eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
-.demo-modal-title{font-family:var(--serif);font-size:36px;font-weight:600;line-height:1.05;margin:0 0 6px;color:#FCFAF6}
-.demo-modal-sub{font-size:14px;color:rgba(252,250,246,.55);margin:0 0 24px;line-height:1.5}
-.demo-modal-section-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(252,250,246,.5);font-weight:600;margin-bottom:14px;margin-top:6px}
+/* MODAL — picture-in-picture room detail (tuned for 60+ readers) */
+.demo-modal-backdrop{position:fixed;inset:0;background:rgba(10,9,23,.86);backdrop-filter:blur(10px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:28px;animation:demo-modal-fade .25s ease-out}
+.demo-modal{background:#13121F;color:#FCFAF6;border-radius:20px;width:100%;max-width:1180px;height:min(92vh,860px);overflow:hidden;display:grid;grid-template-columns:5fr 4fr;box-shadow:0 40px 100px rgba(0,0,0,.7);border:1px solid rgba(252,250,246,.08);animation:demo-modal-zoom .28s cubic-bezier(.2,.9,.3,1.1);position:relative}
+.demo-modal-close{position:absolute;top:18px;right:18px;width:48px;height:48px;border-radius:50%;background:rgba(10,9,23,.72);backdrop-filter:blur(8px);border:1px solid rgba(252,250,246,.25);color:#FCFAF6;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;font-size:26px;line-height:1;transition:background .15s,border-color .15s,transform .15s}
+.demo-modal-close:hover{background:rgba(197,114,56,.28);border-color:var(--accent);transform:rotate(90deg)}
+/* IMAGE column — zoom locked to the chosen room via JS-set background-size + position */
+.demo-modal-image{position:relative;min-height:0;overflow:hidden;background-color:#0A0917;background-image:url('/assets/smart-home-demo/dollhouse.jpg');background-repeat:no-repeat;transition:background-position .45s ease-out,background-size .45s ease-out}
+.demo-modal-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 70%,rgba(19,18,31,.45));pointer-events:none}
+.demo-modal-image-tag{position:absolute;top:20px;left:20px;background:rgba(10,9,23,.86);backdrop-filter:blur(8px);padding:10px 18px;border-radius:100px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;border:1px solid rgba(197,114,56,.5);z-index:2}
+/* Spotlight ring drawn at the chosen room's center — confirms which zone is open */
+.demo-modal-spot{position:absolute;width:96px;height:96px;border-radius:50%;border:3px solid var(--accent);box-shadow:0 0 0 4px rgba(19,18,31,.55),0 0 0 14px rgba(197,114,56,.18),0 0 30px rgba(197,114,56,.35);transform:translate(-50%,-50%);z-index:2;pointer-events:none;animation:demo-spot-pulse 2.2s ease-out infinite}
+.demo-modal-spot::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(252,250,246,.45)}
+@keyframes demo-spot-pulse{
+  0%{box-shadow:0 0 0 4px rgba(19,18,31,.55),0 0 0 10px rgba(197,114,56,.28),0 0 24px rgba(197,114,56,.4)}
+  60%{box-shadow:0 0 0 4px rgba(19,18,31,.55),0 0 0 24px rgba(197,114,56,0),0 0 24px rgba(197,114,56,.2)}
+  100%{box-shadow:0 0 0 4px rgba(19,18,31,.55),0 0 0 10px rgba(197,114,56,.28),0 0 24px rgba(197,114,56,.4)}
+}
+/* BODY column — must be the scrollable area. min-height:0 is critical inside a grid track. */
+.demo-modal-body{padding:44px 40px 36px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;min-height:0;height:100%;scrollbar-width:thin;scrollbar-color:rgba(252,250,246,.25) transparent}
+.demo-modal-body::-webkit-scrollbar{width:8px}
+.demo-modal-body::-webkit-scrollbar-thumb{background:rgba(252,250,246,.22);border-radius:8px}
+.demo-modal-eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+.demo-modal-title{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1.05;margin:0 0 10px;color:#FCFAF6}
+.demo-modal-sub{font-size:17px;color:rgba(252,250,246,.7);margin:0 0 28px;line-height:1.55}
+.demo-modal-section-label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(252,250,246,.6);font-weight:700;margin-bottom:16px;margin-top:6px}
 
 /* features inside modal */
-.demo-feats{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
-.demo-feat{display:flex;gap:12px;align-items:flex-start}
-.demo-feat-num{font-size:10px;font-weight:700;min-width:24px;padding-top:2px;letter-spacing:.06em;font-family:var(--sans);color:var(--accent)}
-.demo-feat-title{font-size:13px;font-weight:600;color:#FCFAF6;margin-bottom:3px;font-family:var(--sans)}
-.demo-feat-body{font-size:12px;color:rgba(252,250,246,.62);line-height:1.55;font-family:var(--sans)}
+.demo-feats{display:flex;flex-direction:column;gap:18px;margin-bottom:8px}
+.demo-feat{display:flex;gap:14px;align-items:flex-start}
+.demo-feat-num{font-size:13px;font-weight:700;min-width:28px;padding-top:2px;letter-spacing:.06em;font-family:var(--sans);color:var(--accent)}
+.demo-feat-title{font-size:17px;font-weight:600;color:#FCFAF6;margin-bottom:5px;font-family:var(--sans);line-height:1.3}
+.demo-feat-body{font-size:15px;color:rgba(252,250,246,.72);line-height:1.55;font-family:var(--sans)}
 
 /* packages inside modal */
-.demo-packages{margin-top:24px}
-.demo-package-list{display:flex;flex-direction:column;gap:10px}
-.demo-package{padding:14px 16px;border-radius:10px;border:1px solid rgba(252,250,246,.08);background:rgba(252,250,246,.03);transition:border-color .2s,background .2s,transform .2s;cursor:pointer}
-.demo-package:hover{border-color:rgba(197,114,56,.5);background:rgba(197,114,56,.06);transform:translateX(2px)}
-.demo-package--accent{border-color:rgba(197,114,56,.4);background:rgba(197,114,56,.07)}
-.demo-package-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;gap:10px}
-.demo-package-name{font-size:14px;font-weight:600;color:#FCFAF6;font-family:var(--sans);letter-spacing:.01em}
-.demo-package-tier{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.45);font-weight:600;font-family:var(--sans)}
-.demo-package-price{font-size:12px;color:var(--accent);font-family:var(--sans);font-weight:600;letter-spacing:.02em;white-space:nowrap}
-.demo-package-desc{font-size:12px;color:rgba(252,250,246,.6);line-height:1.55;font-family:var(--sans)}
+.demo-packages{margin-top:28px}
+.demo-package-list{display:flex;flex-direction:column;gap:12px}
+.demo-package{padding:18px 20px;border-radius:12px;border:1px solid rgba(252,250,246,.1);background:rgba(252,250,246,.035);transition:border-color .2s,background .2s,transform .2s;cursor:pointer}
+.demo-package:hover{border-color:rgba(197,114,56,.55);background:rgba(197,114,56,.07);transform:translateX(2px)}
+.demo-package--accent{border-color:rgba(197,114,56,.45);background:rgba(197,114,56,.08)}
+.demo-package-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;gap:12px;flex-wrap:wrap}
+.demo-package-name{font-size:18px;font-weight:600;color:#FCFAF6;font-family:var(--sans);letter-spacing:.01em}
+.demo-package-tier{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.55);font-weight:700;font-family:var(--sans);margin-top:2px}
+.demo-package-price{font-size:16px;color:var(--accent);font-family:var(--sans);font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.demo-package-desc{font-size:14.5px;color:rgba(252,250,246,.7);line-height:1.55;font-family:var(--sans)}
 
-.demo-modal-cta{margin-top:28px;padding-top:22px;border-top:1px solid rgba(252,250,246,.08);display:flex;gap:10px;flex-wrap:wrap}
+.demo-modal-cta{margin-top:30px;padding-top:24px;border-top:1px solid rgba(252,250,246,.1);display:flex;gap:12px;flex-wrap:wrap}
+.demo-modal-cta .btn-solid,.demo-modal-cta .btn-ghost{font-size:15px!important;padding:14px 24px!important;min-height:48px}
 
 @keyframes demo-modal-fade{from{opacity:0}to{opacity:1}}
 @keyframes demo-modal-zoom{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -738,9 +751,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 @media(max-width:880px){
   .demo-plan-wrap{padding:18px}
-  .demo-modal{grid-template-columns:1fr;max-height:92vh}
-  .demo-modal-image{min-height:240px;background-size:240%}
-  .demo-modal-body{padding:24px}
+  .demo-modal{grid-template-columns:1fr;grid-template-rows:38vh 1fr;height:100vh;max-height:100vh;border-radius:0}
+  .demo-modal-image{min-height:0}
+  .demo-modal-body{padding:26px 22px 30px}
+  .demo-modal-title{font-size:34px}
+  .demo-modal-sub{font-size:15.5px;margin-bottom:22px}
+  .demo-feat-title{font-size:16px}
+  .demo-feat-body{font-size:14px}
+  .demo-package-name{font-size:17px}
+  .demo-package-price{font-size:15px}
+  .demo-modal-spot{width:72px;height:72px}
   .demo-hover-card{display:none}
 }
 
@@ -796,21 +816,19 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .demo-plan-stage{aspect-ratio:4/3}
   .demo-plan-hint{font-size:12px;padding:0 12px}
   .demo-modal-backdrop{padding:0}
-  .demo-modal{border-radius:0;max-height:100vh;height:100vh;max-width:100%}
-  .demo-modal-image{min-height:200px;background-size:260%}
-  .demo-modal-body{padding:22px 20px 28px}
-  .demo-modal-title{font-size:28px}
   .demo-modal-cta .btn-solid,.demo-modal-cta .btn-ghost{width:100%;justify-content:center}
-  .demo-modal-close{top:12px;right:12px;width:38px;height:38px}
+  .demo-modal-close{top:12px;right:12px;width:46px;height:46px;font-size:24px}
 }
 
 @media (max-width:599px){
-  body{font-size:14.5px}
+  body{font-size:15.5px}
   .hero{padding:36px 18px 44px;gap:24px}
   .hero-title{font-size:clamp(30px,8vw,38px)}
   .topbar{flex-direction:column;gap:2px;padding:6px 14px;line-height:1.3}
-  .footer{padding:24px 16px;font-size:12px}
+  .footer{padding:24px 16px;font-size:13px}
   .demo-plan-stage{aspect-ratio:5/4}
+  .demo-modal-title{font-size:30px}
+  .demo-modal-body{padding:22px 18px 28px}
 }
 </style>
 </head>
@@ -3956,9 +3974,24 @@ function SmartHomeDemoPage({navigate}) {
     };
   }, [modal]);
 
-  /* Compute crop position for picture-in-picture image */
+  /* Compute zoom-in crop for the picture-in-picture image.
+     Strategy: 350% size + position so the chosen room's centroid lands at 50/50
+     of the visible viewport. Clamp position to keep image edges from showing. */
+  const ZOOM = 350; // % of container width
   const cropPos = modal
-    ? `${Math.min(Math.max(modal.cx,15),85)}% ${Math.min(Math.max(modal.cy,15),85)}%`
+    ? (() => {
+        // For background-size N% on element width W, the image draws at N% of W.
+        // background-position: P% means image-pct P aligns with container-pct P.
+        // To place modal.cx,modal.cy at 50%,50% of container:
+        //   we want the room point to be at center → set position so the room sits in middle.
+        //   formula: pos_pct = cx (since at pos=cx the image-cx aligns to container-cx,
+        //   but we want it at 50%). Convert with: P = cx · imageSize / (imageSize - containerSize) etc.
+        // Simpler: position percentage = (cx - 50)·(N/(N-100)) + 50, clamped 0–100.
+        const k = ZOOM / (ZOOM - 100);
+        const px = Math.max(0, Math.min(100, (modal.cx - 50) * k + 50));
+        const py = Math.max(0, Math.min(100, (modal.cy - 50) * k + 50));
+        return `${px}% ${py}%`;
+      })()
     : 'center';
 
   return (
@@ -4104,8 +4137,16 @@ function SmartHomeDemoPage({navigate}) {
           <div className="demo-modal" onClick={e=>e.stopPropagation()}>
             <button className="demo-modal-close" onClick={()=>setModalRoomId(null)} aria-label="Close">×</button>
 
-            {/* Picture-in-picture — zoomed crop of the dollhouse focused on this room */}
-            <div className="demo-modal-image" style={{backgroundPosition:cropPos}}>
+            {/* Picture-in-picture — zoomed crop of the dollhouse focused on this room.
+                Spotlight ring at 50/50 reinforces which zone the modal represents. */}
+            <div className="demo-modal-image" style={{
+              backgroundPosition: cropPos,
+              backgroundSize: `${ZOOM}%`,
+            }}>
+              <div className="demo-modal-spot" style={{
+                top: '50%', left: '50%',
+                borderColor: modal.color,
+              }}/>
               <div className="demo-modal-image-tag" style={{borderColor:`${modal.color}66`,color:modal.color}}>{modal.tag}</div>
             </div>
 
