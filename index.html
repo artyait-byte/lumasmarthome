@@ -58,7 +58,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-.nav-mobile-panel{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:300;overflow-y:auto;padding:20px 22px 32px;animation:mob-fade .22s ease-out}
+.nav-mobile-panel{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:300;overflow-y:auto;padding:16px 16px 28px;animation:mob-fade .22s ease-out}
 .nav-mobile-panel.open{display:block}
 .nav-mobile-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;margin-bottom:14px;border-bottom:1px solid var(--cream2)}
 .nav-mobile-close{width:44px;height:44px;border-radius:12px;background:transparent;border:1.5px solid var(--cream3);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;cursor:pointer;transition:border-color .18s,color .18s}
@@ -70,11 +70,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .nav-mobile-link--feature{background:rgba(197,114,56,.08);border:1px solid rgba(197,114,56,.3);color:var(--accent);font-weight:600}
 .nav-mobile-link--feature:hover{background:rgba(197,114,56,.14)}
 .nav-mobile-link--feature .nav-link-dot{margin-right:10px}
-.nav-mobile-solutions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.nav-mobile-sol-tile{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:12px;background:#fff;border:1px solid var(--cream2);cursor:pointer;transition:transform .18s,border-color .18s}
+.nav-mobile-solutions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nav-mobile-sol-tile{display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:12px;background:#fff;border:1px solid var(--cream2);cursor:pointer;transition:transform .18s,border-color .18s;min-width:0;overflow:hidden}
 .nav-mobile-sol-tile:hover{border-color:var(--accent);transform:translateY(-2px)}
-.nav-mobile-sol-tile h4{font-size:14px;font-weight:600;color:var(--dark);margin:0}
-.nav-mobile-sol-tile p{font-size:11px;color:var(--mid);line-height:1.4;margin:0}
+.nav-mobile-sol-tile h4{font-size:13.5px;font-weight:600;color:var(--dark);margin:0;line-height:1.25;word-wrap:break-word;overflow-wrap:break-word}
+.nav-mobile-sol-tile p{font-size:11px;color:var(--mid);line-height:1.35;margin:0;word-wrap:break-word;overflow-wrap:break-word}
 .nav-mobile-cta{display:flex;flex-direction:column;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid var(--cream2)}
 .nav-mobile-cta .btn-solid,.nav-mobile-cta .btn-ghost{width:100%;justify-content:center;padding:14px 22px;font-size:15px;min-height:50px}
 .nav-mobile-contact{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--mid);margin-top:18px;padding:14px 16px;background:#fff;border-radius:12px;border:1px solid var(--cream2)}
@@ -729,6 +729,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 @keyframes demo-modal-fade{from{opacity:0}to{opacity:1}}
 @keyframes demo-modal-zoom{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
+/* DEMO HERO (3D demo page) — responsive sizing */
+.demo-hero{padding:80px 80px 56px}
+.demo-hero-title{font-size:clamp(36px,4.5vw,58px)}
+.demo-hero-body{font-size:18px}
+.demo-plan-section{padding:0 48px 80px}
+
 @media(max-width:880px){
   .demo-plan-wrap{padding:18px}
   .demo-modal{grid-template-columns:1fr;max-height:92vh}
@@ -773,7 +779,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .split-hero{grid-template-columns:1fr;gap:28px;padding:48px 22px}
   .contact-grid{grid-template-columns:1fr;gap:28px;padding:48px 22px}
 
-  /* Demo plan stage — taller on phones (3D image legibility) */
+  /* Demo page hero + stage */
+  .demo-hero{padding:54px 22px 38px}
+  .demo-hero-title{font-size:clamp(30px,8vw,40px)}
+  .demo-hero-body{font-size:15px}
+  .demo-plan-section{padding:0 16px 56px}
   .demo-plan-stage{aspect-ratio:4/3}
   .demo-plan-hint{font-size:12px;padding:0 12px}
   .demo-modal-backdrop{padding:0}
@@ -3946,21 +3956,21 @@ function SmartHomeDemoPage({navigate}) {
     <div className="page">
 
       {/* ── Hero ── */}
-      <section style={{
+      <section className="demo-hero" style={{
         background:'var(--dark)', color:'#FCFAF6',
-        padding:'80px 80px 56px', textAlign:'center',
+        textAlign:'center',
       }}>
         <div style={{fontSize:11,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:18,fontFamily:'var(--sans)'}}>Interactive 3D Demo</div>
-        <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(36px,4.5vw,58px)',fontWeight:600,lineHeight:1.1,maxWidth:780,margin:'0 auto 20px'}}>
+        <h1 className="demo-hero-title" style={{fontFamily:'var(--serif)',fontWeight:600,lineHeight:1.1,maxWidth:780,margin:'0 auto 20px'}}>
           See every system <em style={{color:'#F4C9A8',fontStyle:'italic'}}>in place.</em>
         </h1>
-        <p style={{fontSize:18,lineHeight:1.7,color:'rgba(252,250,246,.75)',maxWidth:600,margin:'0 auto'}}>
-          Hover over any glowing zone to preview the smart systems inside. Click to open a full picture-in-picture detail view with packages and pricing.
+        <p className="demo-hero-body" style={{lineHeight:1.7,color:'rgba(252,250,246,.75)',maxWidth:600,margin:'0 auto'}}>
+          Tap any glowing zone (or hover on desktop) to preview the smart systems inside. Open the full picture-in-picture view with packages and pricing.
         </p>
       </section>
 
       {/* ── 3D Dollhouse Plan ── */}
-      <section style={{background:'var(--dark)',padding:'0 48px 80px'}}>
+      <section className="demo-plan-section" style={{background:'var(--dark)'}}>
         <div className="demo-wrap">
           <div className="demo-plan-wrap">
             <div className="demo-plan-stage">
