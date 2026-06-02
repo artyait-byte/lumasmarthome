@@ -3605,12 +3605,14 @@ function SmartHomeDemoPage({navigate}) {
      the 3D dollhouse render. All coordinates are percent (0-100). The polygon
      forms a large, intuitive click target and a hover overlay that lights up
      the actual room footprint — not just a tiny dot. */
-  /* Each room is mapped to an ellipse (cx, cy, rx, ry, rot) — much cleaner
-     visual fit on an isometric render than ragged polygons. Coordinates are
-     percent of the dollhouse image. rot is degrees (negative = ccw). */
+  /* Each room is mapped to a 4-point parallelogram polygon that traces the
+     isometric footprint on the dollhouse. cx/cy = dot center (visual middle).
+     cardPos = preferred hover-card placement (T/B/L/R) so cards stay inside
+     the image and never float over the wrong room. */
   const ROOMS = [
     {
-      id:'garage', name:'Garage', cx:15, cy:22, rx:13, ry:11, rot:-12,
+      id:'garage', name:'Garage', cx:18, cy:21,
+      shape:'4,14 29,7 33,30 9,36', cardPos:'R',
       color:'#C57238', tag:'Security · Entry · EV',
       features:[
         {title:'Smart Door Entry',    body:'App or keypad unlock — arrival triggers a Welcome scene throughout the house.'},
@@ -3625,7 +3627,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'foyer', name:'Entry & Foyer', cx:35, cy:17, rx:8, ry:11, rot:-10,
+      id:'foyer', name:'Entry & Foyer', cx:37, cy:17,
+      shape:'29,7 41,4 44,27 33,30', cardPos:'B',
       color:'#C57238', tag:'Keypad · Security · Lighting',
       features:[
         {title:'Welcome Scene',       body:'Arrival lights the foyer, disarms the alarm, and sets climate — all at once.'},
@@ -3640,7 +3643,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'office', name:'Home Office', cx:50, cy:17, rx:9, ry:11, rot:-10,
+      id:'office', name:'Home Office', cx:51, cy:17,
+      shape:'41,4 58,7 60,30 44,27', cardPos:'B',
       color:'#C57238', tag:'Networking · Shading · Focus',
       features:[
         {title:'Dedicated Wi-Fi 6E',  body:'Separate access point — zero bandwidth contention with IoT or streaming.'},
@@ -3655,7 +3659,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'living', name:'Living Room', cx:27, cy:44, rx:18, ry:12, rot:-12,
+      id:'living', name:'Living Room', cx:25, cy:46,
+      shape:'9,32 42,26 43,55 11,62', cardPos:'T',
       color:'#C57238', tag:'Lighting · Audio · Scenes',
       features:[
         {title:'Scene Control',       body:'Morning, Entertain, Movie, Goodnight — one keypad tap shifts every system at once.'},
@@ -3670,7 +3675,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'kitchen', name:'Kitchen & Dining', cx:52, cy:38, rx:10, ry:13, rot:-10,
+      id:'kitchen', name:'Kitchen & Dining', cx:52, cy:42,
+      shape:'42,26 60,30 62,55 43,55', cardPos:'T',
       color:'#C57238', tag:'Lighting · Climate · Scenes',
       features:[
         {title:'Tunable White',       body:'Under-cabinet lighting follows your circadian rhythm — warm morning, crisp afternoon.'},
@@ -3685,22 +3691,24 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'master', name:'Master Suite', cx:22, cy:66, rx:13, ry:12, rot:-10,
-      color:'#C57238', tag:'Shading · Climate · Audio',
+      id:'master', name:'Master Suite + Bath', cx:19, cy:72,
+      shape:'4,55 35,52 37,88 7,95', cardPos:'R',
+      color:'#C57238', tag:'Shading · Climate · Audio · Spa',
       features:[
         {title:'Sunrise Wake Routine', body:'Shades rise slowly with dawn or a set schedule — no alarm sound required.'},
         {title:'Goodnight Keypad',    body:'One tap: shades down, lights off, thermostat to sleep temperature.'},
-        {title:'Invisible Audio',     body:'Flush in-wall speakers disappear into millwork — audiophile-grade output.'},
+        {title:'En-Suite Spa Scene',  body:'Mirror lighting, heated floors, exhaust fan, and music — all from one keypad.'},
         {title:'Sleep Zone Climate',  body:'Master kept 2–3° cooler than common areas for optimal rest.'},
       ],
       packages:[
-        {name:'Master Foundation', tier:'Essential',  price:'from $4,200', desc:'4 dimmed zones, bedside Pico remote, single motorized roller shade, dedicated thermostat.'},
-        {name:'Master Signature',  tier:'Recommended', price:'from $9,800', desc:'Adds 5-button keypad both bedsides, dual motorized blackout + sheer, in-ceiling audio, Sleep / Wake routines.'},
-        {name:'Master Curated',    tier:'Concierge',   price:'from $22,000', desc:'Includes dawn-simulation lighting, in-wall LCR speakers, motorized drapery, en-suite scene control.'},
+        {name:'Master Foundation', tier:'Essential',  price:'from $5,200', desc:'4 dimmed zones in bedroom, 2 in bath, bedside Pico, single motorized roller shade, dedicated thermostat.'},
+        {name:'Master Signature',  tier:'Recommended', price:'from $12,500', desc:'Adds 5-button keypad both bedsides, dual blackout + sheer shades, in-ceiling audio in both rooms, mirror lighting, Sleep / Wake routines.'},
+        {name:'Master Curated',    tier:'Concierge',   price:'from $26,000', desc:'Includes dawn-simulation lighting, in-wall LCR speakers, motorized drapery, heated floors, full spa scene control.'},
       ],
     },
     {
-      id:'theater', name:'Home Theater', cx:49, cy:73, rx:12, ry:14, rot:-10,
+      id:'theater', name:'Home Theater', cx:48, cy:71,
+      shape:'37,55 60,55 60,88 37,88', cardPos:'T',
       color:'#C57238', tag:'Theater · Atmos · Control',
       features:[
         {title:'4K Laser Projection',  body:'JVC or Sony 4K laser projector on a 120″ acoustically transparent screen.'},
@@ -3715,7 +3723,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'lanai', name:'Covered Lanai', cx:74, cy:24, rx:14, ry:18, rot:-6,
+      id:'lanai', name:'Covered Lanai', cx:74, cy:24,
+      shape:'62,5 88,7 88,42 62,42', cardPos:'L',
       color:'#2D5E5A', tag:'Outdoor AV · Lighting · Shade',
       features:[
         {title:'Weather-Rated Audio', body:'Sonance Marine in-ceiling speakers tuned for outdoor acoustics.'},
@@ -3730,7 +3739,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'pool', name:'Pool & Spa', cx:78, cy:72, rx:15, ry:17, rot:-6,
+      id:'pool', name:'Pool & Spa', cx:77, cy:72,
+      shape:'62,55 92,55 92,90 62,90', cardPos:'L',
       color:'#2D5E5A', tag:'Pool Control · LED · Heat',
       features:[
         {title:'Pool Automation',     body:'Pentair or Jandy integration — temperature, jets, and filtration from any device.'},
@@ -3802,7 +3812,6 @@ function SmartHomeDemoPage({navigate}) {
 
                 {ROOMS.map(room => {
                   const isHover = room.id === hoverId;
-                  const xform = `rotate(${room.rot} ${room.cx} ${room.cy})`;
                   return (
                     <g key={room.id} style={{cursor:'pointer'}}
                       onClick={()=>setModalRoomId(room.id)}
@@ -3810,23 +3819,21 @@ function SmartHomeDemoPage({navigate}) {
                       onMouseLeave={()=>setHoverId(null)}
                     >
                       {/* SOFT IDLE FILL — barely visible, just so eye notices zones */}
-                      <ellipse
-                        cx={room.cx} cy={room.cy} rx={room.rx} ry={room.ry}
-                        transform={xform}
+                      <polygon
+                        points={room.shape}
                         fill={room.color}
-                        opacity={isHover ? 0.42 : 0.09}
+                        opacity={isHover ? 0.42 : 0.08}
                         style={{transition:'opacity .35s'}}
                       >
                         {/* BREATHING animation on hover — room "lights up" rhythmically */}
                         {isHover && (
                           <animate attributeName="opacity" values="0.34;0.56;0.34" dur="1.6s" repeatCount="indefinite"/>
                         )}
-                      </ellipse>
+                      </polygon>
 
-                      {/* OUTLINE — soft idle ring, bright + animated on hover */}
-                      <ellipse
-                        cx={room.cx} cy={room.cy} rx={room.rx} ry={room.ry}
-                        transform={xform}
+                      {/* OUTLINE — soft idle ring, bright + glowing on hover */}
+                      <polygon
+                        points={room.shape}
                         fill="none"
                         stroke={room.color}
                         strokeWidth={isHover ? 0.85 : 0.4}
@@ -3836,10 +3843,9 @@ function SmartHomeDemoPage({navigate}) {
                         style={{transition:'all .25s'}}
                       />
 
-                      {/* Transparent hit area — full ellipse is clickable */}
-                      <ellipse
-                        cx={room.cx} cy={room.cy} rx={room.rx} ry={room.ry}
-                        transform={xform}
+                      {/* Transparent hit polygon */}
+                      <polygon
+                        points={room.shape}
                         fill="rgba(255,255,255,0.001)"
                       />
 
@@ -3892,14 +3898,18 @@ function SmartHomeDemoPage({navigate}) {
                 })}
               </svg>
 
-              {/* HOVER CARD — appears at zone centroid with full features (Wicked-style) */}
+              {/* HOVER CARD — anchored per-room with cardPos (T/B/L/R) so it
+                  appears right next to the zone and never floats over the wrong room. */}
               {ROOMS.map(room => {
                 const isHover = room.id === hoverId;
-                // Smart positioning: cards near top of image flip below, near right edge flip left
-                const flipY = room.cy < 30;
-                const flipX = room.cx > 65;
-                const offsetY = flipY ? 'calc(50% + 50px)' : 'calc(-50% - 12px)';
-                const transformOrigin = `${flipX?'right':'left'} ${flipY?'top':'bottom'}`;
+                const pos = room.cardPos || 'T';
+                // Pre-baked transform offsets — point-relative
+                const transforms = {
+                  T: 'translate(-50%, calc(-100% - 18px))',
+                  B: 'translate(-50%, calc(0% + 18px))',
+                  L: 'translate(calc(-100% - 18px), -50%)',
+                  R: 'translate(calc(0% + 18px), -50%)',
+                };
                 return (
                   <div
                     key={room.id+'_hover'}
@@ -3907,9 +3917,7 @@ function SmartHomeDemoPage({navigate}) {
                     style={{
                       left:`${room.cx}%`,
                       top:`${room.cy}%`,
-                      transform:`translate(${flipX?'-100%':'0%'}, ${flipY?'12px':'calc(-100% - 12px)'})`,
-                      marginLeft: flipX ? '-12px' : '12px',
-                      transformOrigin,
+                      transform: transforms[pos],
                       borderColor: room.color,
                       boxShadow:`0 20px 50px rgba(0,0,0,.6),0 0 0 6px ${room.color}22`,
                     }}
