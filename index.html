@@ -50,6 +50,51 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .chevron{transition:transform .25s}
 .chevron.open{transform:rotate(180deg)}
 
+/* ── MOBILE NAV (hamburger + slide-down panel) ── */
+.nav-burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;background:transparent;border:1.5px solid var(--cream3);align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer;transition:border-color .18s,background .18s;padding:0}
+.nav-burger:hover{border-color:var(--accent)}
+.nav-burger span{display:block;width:20px;height:2px;background:var(--dark);border-radius:2px;transition:transform .25s,opacity .2s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.nav-mobile-panel{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:300;overflow-y:auto;padding:20px 22px 32px;animation:mob-fade .22s ease-out}
+.nav-mobile-panel.open{display:block}
+.nav-mobile-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;margin-bottom:14px;border-bottom:1px solid var(--cream2)}
+.nav-mobile-close{width:44px;height:44px;border-radius:12px;background:transparent;border:1.5px solid var(--cream3);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;cursor:pointer;transition:border-color .18s,color .18s}
+.nav-mobile-close:hover{border-color:var(--accent);color:var(--accent)}
+.nav-mobile-section-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);font-weight:600;margin:20px 4px 8px}
+.nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:12px;font-size:16px;color:var(--dark);cursor:pointer;transition:background .15s,color .15s;font-weight:500}
+.nav-mobile-link:hover,.nav-mobile-link:active{background:var(--cream2)}
+.nav-mobile-link .arr{color:var(--accent);font-size:18px}
+.nav-mobile-link--feature{background:rgba(197,114,56,.08);border:1px solid rgba(197,114,56,.3);color:var(--accent);font-weight:600}
+.nav-mobile-link--feature:hover{background:rgba(197,114,56,.14)}
+.nav-mobile-link--feature .nav-link-dot{margin-right:10px}
+.nav-mobile-solutions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nav-mobile-sol-tile{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:12px;background:#fff;border:1px solid var(--cream2);cursor:pointer;transition:transform .18s,border-color .18s}
+.nav-mobile-sol-tile:hover{border-color:var(--accent);transform:translateY(-2px)}
+.nav-mobile-sol-tile h4{font-size:14px;font-weight:600;color:var(--dark);margin:0}
+.nav-mobile-sol-tile p{font-size:11px;color:var(--mid);line-height:1.4;margin:0}
+.nav-mobile-cta{display:flex;flex-direction:column;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid var(--cream2)}
+.nav-mobile-cta .btn-solid,.nav-mobile-cta .btn-ghost{width:100%;justify-content:center;padding:14px 22px;font-size:15px;min-height:50px}
+.nav-mobile-contact{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--mid);margin-top:18px;padding:14px 16px;background:#fff;border-radius:12px;border:1px solid var(--cream2)}
+.nav-mobile-contact strong{color:var(--dark);font-weight:600;font-size:14px}
+@keyframes mob-fade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+@media (max-width:959px){
+  .nav{padding:0 22px;height:62px}
+  .nav-logo{margin-right:0}
+  .nav-links,.nav-actions{display:none}
+  .nav-burger{display:flex}
+  .topbar{padding:6px 22px;font-size:11px;letter-spacing:.01em;gap:8px;flex-wrap:wrap;justify-content:center;text-align:center}
+  .topbar span:first-child{display:none}
+}
+@media (max-width:599px){
+  .topbar{font-size:10.5px;padding:5px 16px}
+  .logo-luma{font-size:20px}
+  .nav{padding:0 16px}
+}
+
 /* ── MEGA DROPDOWN ── */
 .dropdown-wrap{position:absolute;top:66px;left:0;right:0;background:#fff;border-bottom:1px solid var(--cream2);box-shadow:0 12px 48px rgba(0,0,0,.1);z-index:190;display:none}
 .dropdown-wrap.open{display:block}
@@ -691,6 +736,63 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .demo-modal-body{padding:24px}
   .demo-hover-card{display:none}
 }
+
+/* ─────────────────────────────────────────────
+   MOBILE OVERRIDES — universal cleanup for ≤959px / ≤599px
+   ───────────────────────────────────────────── */
+@media (max-width:959px){
+  /* HERO (interior pages) */
+  .hero{grid-template-columns:1fr;gap:32px;padding:48px 22px 56px}
+  .hero-title{font-size:clamp(34px,7.5vw,46px);margin-bottom:18px}
+  .hero-body{font-size:14.5px}
+  .hero-img{aspect-ratio:4/3}
+
+  /* HOME-HERO already adapted above but extra polish */
+  .home-hero-cta{gap:10px}
+  .home-hero-cta-primary,.home-hero-cta-ghost{width:100%;justify-content:center}
+
+  /* FOOTER */
+  .footer{flex-direction:column;text-align:center;gap:10px;padding:28px 22px;font-size:12.5px}
+  .footer-logo{font-size:17px}
+
+  /* BENTO — collapses to single column on phone */
+  .cat-bento{
+    grid-template-columns:1fr;
+    grid-template-rows:repeat(7,minmax(180px,auto));
+    grid-template-areas:"lit" "win" "sec" "thr" "av" "auto" "net";
+    gap:10px;margin-top:28px;
+  }
+  .cat-bento .cat-text{padding:1.1rem 1.2rem}
+  .cat-bento .hex{top:1rem;left:1rem;width:34px;height:34px}
+
+  /* Section headers / generic page padding wrappers */
+  .topbar span{font-size:11px}
+
+  /* Universal section padding overrides */
+  .moments-section{padding:48px 22px 56px}
+  .split-hero{grid-template-columns:1fr;gap:28px;padding:48px 22px}
+  .contact-grid{grid-template-columns:1fr;gap:28px;padding:48px 22px}
+
+  /* Demo plan stage — taller on phones (3D image legibility) */
+  .demo-plan-stage{aspect-ratio:4/3}
+  .demo-plan-hint{font-size:12px;padding:0 12px}
+  .demo-modal-backdrop{padding:0}
+  .demo-modal{border-radius:0;max-height:100vh;height:100vh;max-width:100%}
+  .demo-modal-image{min-height:200px;background-size:260%}
+  .demo-modal-body{padding:22px 20px 28px}
+  .demo-modal-title{font-size:28px}
+  .demo-modal-cta .btn-solid,.demo-modal-cta .btn-ghost{width:100%;justify-content:center}
+  .demo-modal-close{top:12px;right:12px;width:38px;height:38px}
+}
+
+@media (max-width:599px){
+  body{font-size:14.5px}
+  .hero{padding:36px 18px 44px;gap:24px}
+  .hero-title{font-size:clamp(30px,8vw,38px)}
+  .topbar{flex-direction:column;gap:2px;padding:6px 14px;line-height:1.3}
+  .footer{padding:24px 16px;font-size:12px}
+  .demo-plan-stage{aspect-ratio:5/4}
+}
 </style>
 </head>
 <body>
@@ -876,12 +978,25 @@ function MegaDropdown({active, hoverId, setHoverId, navigate}) {
 function Nav({navigate}) {
   const [ddOpen, setDdOpen] = useState(false);
   const [hoverId, setHoverId] = useState('lighting');
+  const [mobOpen, setMobOpen] = useState(false);
   const navRef = useRef(null);
   useEffect(()=>{
     const h = e=>{if(navRef.current&&!navRef.current.contains(e.target))setDdOpen(false);};
     document.addEventListener('mousedown',h);
     return()=>document.removeEventListener('mousedown',h);
   },[]);
+  useEffect(()=>{
+    document.body.style.overflow = mobOpen ? 'hidden' : '';
+    return ()=>{ document.body.style.overflow=''; };
+  },[mobOpen]);
+  const goMobile = (page)=>{ setMobOpen(false); navigate(page); };
+  const SECONDARY_LINKS = [
+    {label:'Budget Calculator', page:'budget-calculator'},
+    {label:'Work & Testimonials', page:'work'},
+    {label:'For Designers & Builders', page:'designers'},
+    {label:'About', page:'about'},
+    {label:'Customer Support', page:'support'},
+  ];
   return (
     <div ref={navRef} style={{position:'sticky',top:0,zIndex:200}}>
       <div className="topbar">
@@ -906,12 +1021,7 @@ function Nav({navigate}) {
           <span className="nav-link nav-link--feature" onClick={()=>navigate('smart-home-demo')}>
             <span className="nav-link-dot"/>Live 3D Demo
           </span>
-          {[
-            {label:'Budget Calculator', page:'budget-calculator'},
-            {label:'Work & Testimonials', page:'work'},
-            {label:'For Designers & Builders', page:'designers'},
-            {label:'About', page:'about'},
-          ].map(({label,page})=>(
+          {SECONDARY_LINKS.slice(0,4).map(({label,page})=>(
             <span key={page} className="nav-link" onClick={()=>navigate(page)}>{label}</span>
           ))}
         </div>
@@ -919,9 +1029,63 @@ function Nav({navigate}) {
           <button type="button" className="btn-ghost" onClick={()=>navigate('support')}>Customer Support</button>
           <button className="btn-solid" onClick={()=>navigate('contact')}>Start Your Project →</button>
         </div>
+        <button type="button" className={`nav-burger${mobOpen?' open':''}`}
+          onClick={()=>setMobOpen(v=>!v)} aria-label="Toggle menu" aria-expanded={mobOpen}>
+          <span/><span/><span/>
+        </button>
       </nav>
       <MegaDropdown active={ddOpen} hoverId={hoverId} setHoverId={setHoverId}
         navigate={p=>{navigate(p);setDdOpen(false)}}/>
+
+      {/* MOBILE PANEL */}
+      <div className={`nav-mobile-panel${mobOpen?' open':''}`}>
+        <div className="nav-mobile-head">
+          <div className="nav-logo" onClick={()=>goMobile('home')}>
+            <div className="logo-dot"/>
+            <div className="logo-text">
+              <span className="logo-luma">LUMA</span>
+              <span className="logo-sub">Smart Home</span>
+            </div>
+          </div>
+          <button className="nav-mobile-close" onClick={()=>setMobOpen(false)} aria-label="Close menu">×</button>
+        </div>
+
+        <div className="nav-mobile-link nav-mobile-link--feature" onClick={()=>goMobile('smart-home-demo')}>
+          <span style={{display:'inline-flex',alignItems:'center'}}>
+            <span className="nav-link-dot"/>Live 3D Demo
+          </span>
+          <span className="arr">→</span>
+        </div>
+
+        <div className="nav-mobile-section-label">Smart Home Solutions</div>
+        <div className="nav-mobile-solutions">
+          {services.map(s=>(
+            <div key={s.id} className="nav-mobile-sol-tile" onClick={()=>goMobile(s.page)}>
+              <h4>{s.name}</h4>
+              <p>{s.sub}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="nav-mobile-section-label">Explore</div>
+        {SECONDARY_LINKS.map(({label,page})=>(
+          <div key={page} className="nav-mobile-link" onClick={()=>goMobile(page)}>
+            <span>{label}</span>
+            <span className="arr">→</span>
+          </div>
+        ))}
+
+        <div className="nav-mobile-cta">
+          <button className="btn-solid" onClick={()=>goMobile('contact')}>Start Your Project →</button>
+          <button className="btn-ghost" onClick={()=>goMobile('budget-calculator')}>Get a Budget Estimate</button>
+        </div>
+
+        <div className="nav-mobile-contact">
+          <strong>+1 (941) 555-1234</strong>
+          <span>Mon – Sat · 9am – 6pm</span>
+          <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -3908,7 +4072,8 @@ function SmartHomeDemoPage({navigate}) {
               })}
             </div>
             <div className="demo-plan-hint">
-              <span className="demo-plan-hint-pulse"/> Hover any zone for a preview · Click to open the full detail view
+              <span className="demo-plan-hint-pulse"/>
+              <span>Tap any room to see what we install · Hover for a quick preview</span>
             </div>
           </div>
         </div>
