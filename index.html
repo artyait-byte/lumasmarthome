@@ -19,7 +19,7 @@
   --sans:'DM Sans',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--dark);font-family:var(--sans);font-size:16.5px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--cream);color:var(--dark);font-family:var(--sans);font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
@@ -778,82 +778,121 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
    MOBILE OVERRIDES — universal cleanup for ≤959px / ≤599px
    ───────────────────────────────────────────── */
 @media (max-width:959px){
-  /* HERO (interior pages) */
+  /* HERO (interior pages) — bigger type, landscape-format imagery */
   .hero{grid-template-columns:1fr;gap:32px;padding:48px 22px 56px}
-  .hero-title{font-size:clamp(34px,7.5vw,46px);margin-bottom:18px}
-  .hero-body{font-size:14.5px}
-  .hero-img{aspect-ratio:4/3}
+  .hero-title{font-size:clamp(38px,8.4vw,52px);margin-bottom:20px;line-height:1.06}
+  .hero-body{font-size:17px;line-height:1.7}
+  .hero-img{aspect-ratio:16/10}
+  .hero-link{font-size:16px}
 
-  /* HOME-HERO already adapted above but extra polish */
-  .home-hero-cta{gap:10px}
-  .home-hero-cta-primary,.home-hero-cta-ghost{width:100%;justify-content:center}
+  /* HOME-HERO */
+  .home-hero-cta{gap:12px}
+  .home-hero-cta-primary,.home-hero-cta-ghost{width:100%;justify-content:center;font-size:17px;min-height:54px;padding:16px 24px}
+  .home-hero-sub{font-size:17px;line-height:1.65}
+  .home-hero-sub--soft{font-size:16px;line-height:1.6}
+  .home-hero-place{font-size:14px}
+  .home-hero-eyebrow{font-size:14px}
+
+  /* CTA buttons everywhere — bigger touch targets for 60+ */
+  .btn-solid{font-size:16px;padding:14px 24px;min-height:52px}
+  .btn-ghost{font-size:16px;padding:13px 22px;min-height:52px}
 
   /* FOOTER */
-  .footer{flex-direction:column;text-align:center;gap:10px;padding:28px 22px;font-size:12.5px}
-  .footer-logo{font-size:17px}
+  .footer{flex-direction:column;text-align:center;gap:12px;padding:32px 22px;font-size:14px}
+  .footer-logo{font-size:19px}
 
-  /* BENTO — collapses to single column on phone */
+  /* BENTO — collapses to single column on phone, taller cards for clearer photos */
   .cat-bento{
     grid-template-columns:1fr;
-    grid-template-rows:repeat(7,minmax(180px,auto));
+    grid-template-rows:repeat(7,minmax(240px,auto));
     grid-template-areas:"lit" "win" "sec" "thr" "av" "auto" "net";
-    gap:10px;margin-top:28px;
+    gap:12px;margin-top:32px;
   }
-  .cat-bento .cat-text{padding:1.1rem 1.2rem}
-  .cat-bento .hex{top:1rem;left:1rem;width:34px;height:34px}
+  .cat-bento .cat-tile{aspect-ratio:16/11}
+  .cat-bento .cat-text{padding:1.4rem 1.4rem}
+  .cat-bento .cat-text .eyebrow{font-size:.84rem}
+  .cat-bento .cat-text h3{font-size:1.7rem}
+  .cat-bento .hex{top:1.1rem;left:1.1rem;width:40px;height:40px}
 
   /* Section headers / generic page padding wrappers */
-  .topbar span{font-size:11px}
+  .topbar{font-size:12px}
+  .topbar span{font-size:12px}
+
+  /* Section titles + body copy — global readability bump */
+  .sec-label{font-size:13px;letter-spacing:.18em}
+  .sec-title{font-size:clamp(32px,7vw,42px);line-height:1.1}
+  .sec-body{font-size:16.5px;line-height:1.7}
 
   /* Universal section padding overrides */
   .moments-section{padding:48px 22px 56px}
   .moments-grid{grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
-  .moment-card{height:240px}
-  .moment-name{font-size:22px}
-  .moment-desc{font-size:13.5px}
+  .moment-card{height:280px;aspect-ratio:3/4}
+  .moment-name{font-size:24px;line-height:1.1}
+  .moment-desc{font-size:14.5px;line-height:1.45}
+  .moment-time{font-size:13px}
   .split-hero{grid-template-columns:1fr;gap:28px;padding:48px 22px}
   .contact-grid{grid-template-columns:1fr;gap:28px;padding:48px 22px}
 
-  /* Lighting page portfolio rows — stack image over text */
-  .portfolio-row,.portfolio-row--flip{flex-direction:column;gap:20px}
+  /* Lighting page portfolio rows — stack image over text, landscape photo */
+  .portfolio-row,.portfolio-row--flip{flex-direction:column;gap:22px}
   .portfolio-row-img{flex:none;width:100%}
-  .portfolio-row-img img{height:240px}
-  .portfolio-row-title{font-size:24px}
-  .portfolio-row-body{font-size:15px}
+  .portfolio-row-img img{height:auto;aspect-ratio:16/10}
+  .portfolio-row-eyebrow{font-size:14px}
+  .portfolio-row-title{font-size:28px;line-height:1.15}
+  .portfolio-row-body{font-size:16.5px;line-height:1.65}
 
   /* Case study body — stack 2-col layouts */
   .case-2col{grid-template-columns:1fr!important;gap:32px!important}
   .case-body{padding:40px 22px 56px!important}
 
-  /* Interior page hero (Budget Calculator, Lighting, Audio, etc. — all use .lit-hero-wrap) */
+  /* Interior page hero (Budget, Lighting, Audio, etc. — all use .lit-hero-wrap) */
   .lit-hero-wrap{grid-template-columns:1fr!important;min-height:auto!important}
-  .lit-hero-text{padding:56px 22px 44px!important}
-  .lit-hero-text h1{font-size:clamp(34px,7.5vw,46px)!important}
-  .lit-hero-text p{font-size:15.5px!important}
-  .lit-hero-text ul li{font-size:14.5px!important}
+  .lit-hero-text{padding:56px 22px 40px!important}
+  .lit-hero-text h1{font-size:clamp(38px,8.5vw,52px)!important;line-height:1.06!important;margin-bottom:20px!important}
+  .lit-hero-text p{font-size:17px!important;line-height:1.7!important}
+  .lit-hero-text ul li{font-size:16px!important;line-height:1.5!important}
   .lit-hero-text .btn-solid,.lit-hero-text .btn-ghost{width:100%;justify-content:center}
+  .lit-hero-wrap > div:last-child{aspect-ratio:16/10;min-height:0!important;max-height:60vh}
 
   /* Demo page hero + stage */
-  .demo-hero{padding:54px 22px 38px}
-  .demo-hero-title{font-size:clamp(30px,8vw,40px)}
-  .demo-hero-body{font-size:15px}
+  .demo-hero{padding:56px 22px 40px}
+  .demo-hero-title{font-size:clamp(34px,8.6vw,46px);line-height:1.08}
+  .demo-hero-body{font-size:16.5px;line-height:1.65}
   .demo-plan-section{padding:0 16px 56px}
   .demo-plan-stage{aspect-ratio:4/3}
-  .demo-plan-hint{font-size:12px;padding:0 12px}
+  .demo-plan-hint{font-size:14px;padding:0 14px;line-height:1.4}
   .demo-modal-backdrop{padding:0}
   .demo-modal-cta .btn-solid,.demo-modal-cta .btn-ghost{width:100%;justify-content:center}
-  .demo-modal-close{top:12px;right:12px;width:46px;height:46px;font-size:24px}
+  .demo-modal-close{top:12px;right:12px;width:48px;height:48px;font-size:26px}
+
+  /* Photo / service cards — give Instagram-style square crop */
+  .photo-card{aspect-ratio:4/5}
+  .photo-card-title{font-size:18px}
+
+  /* Mobile nav panel — larger tap targets */
+  .nav-mobile-link{font-size:17px;padding:16px 18px}
+  .nav-mobile-link .arr{font-size:20px}
+  .nav-mobile-sol-tile h4{font-size:14.5px}
+  .nav-mobile-sol-tile p{font-size:11.5px}
+  .nav-mobile-section-label{font-size:11px}
 }
 
 @media (max-width:599px){
-  body{font-size:15.5px}
-  .hero{padding:36px 18px 44px;gap:24px}
-  .hero-title{font-size:clamp(30px,8vw,38px)}
-  .topbar{flex-direction:column;gap:2px;padding:6px 14px;line-height:1.3}
-  .footer{padding:24px 16px;font-size:13px}
+  body{font-size:17px;line-height:1.65}
+  .hero{padding:40px 18px 48px;gap:24px}
+  .hero-title{font-size:clamp(34px,9vw,42px)}
+  .hero-body{font-size:16.5px}
+  .topbar{flex-direction:column;gap:2px;padding:7px 14px;line-height:1.35;font-size:12px}
+  .topbar span{font-size:12px}
+  .footer{padding:28px 18px;font-size:14px}
   .demo-plan-stage{aspect-ratio:5/4}
-  .demo-modal-title{font-size:30px}
-  .demo-modal-body{padding:22px 18px 28px}
+  .demo-modal-title{font-size:32px}
+  .demo-modal-body{padding:24px 18px 30px}
+  .lit-hero-text h1{font-size:clamp(34px,9vw,44px)!important}
+  .sec-title{font-size:clamp(30px,7.5vw,38px)}
+  .moment-card{height:260px}
+  .moment-name{font-size:22px}
+  .cat-bento .cat-text h3{font-size:1.55rem}
 }
 </style>
 </head>
