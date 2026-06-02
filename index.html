@@ -36,6 +36,10 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .nav-links{display:flex;align-items:center;gap:24px;flex:1;font-size:14px}
 .nav-link{color:var(--dark);opacity:.75;transition:opacity .18s;cursor:pointer;white-space:nowrap}
 .nav-link:hover{opacity:1}
+.nav-link--feature{display:inline-flex;align-items:center;gap:7px;color:var(--accent);opacity:1;font-weight:500;padding:6px 12px;border-radius:100px;border:1px solid rgba(197,114,56,.35);background:rgba(197,114,56,.06);transition:background .18s,border-color .18s,transform .18s}
+.nav-link--feature:hover{background:rgba(197,114,56,.13);border-color:var(--accent);transform:translateY(-1px)}
+.nav-link-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(197,114,56,.6);animation:nav-pulse 2s ease-out infinite}
+@keyframes nav-pulse{0%{box-shadow:0 0 0 0 rgba(197,114,56,.6)}70%{box-shadow:0 0 0 8px rgba(197,114,56,0)}100%{box-shadow:0 0 0 0 rgba(197,114,56,0)}}
 .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
 .btn-ghost{border:1.5px solid var(--dark);border-radius:100px;padding:7px 18px;font-size:13px;font-family:var(--sans);background:transparent;white-space:nowrap;transition:border-color .18s,color .18s}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
@@ -624,50 +628,68 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .fg-note{font-size:12px;color:var(--mid);text-align:center;max-width:560px;margin:28px auto 0;line-height:1.65}
 
 /* ── Smart Home Demo Floor Plan ── */
-.demo-wrap{display:grid;grid-template-columns:1fr 400px;align-items:stretch;border:1px solid rgba(252,250,246,.07);border-radius:20px;overflow:hidden;max-width:1240px;margin:0 auto}
-.demo-plan-wrap{background:#13121F;padding:24px;position:relative}
-.demo-plan-stage{position:relative;width:100%;aspect-ratio:3/2;border-radius:12px;overflow:hidden;background:#F4EFE6;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.demo-wrap{position:relative;border:1px solid rgba(252,250,246,.07);border-radius:20px;overflow:hidden;max-width:1280px;margin:0 auto;background:#13121F}
+.demo-plan-wrap{padding:32px;position:relative}
+.demo-plan-stage{position:relative;width:100%;aspect-ratio:3/2;border-radius:14px;overflow:hidden;background:#F4EFE6;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
 .demo-plan-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none;pointer-events:none}
 .demo-plan-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-.demo-plan-hint{text-align:center;margin-top:18px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.32);font-family:var(--sans)}
-.demo-tooltip{position:absolute;pointer-events:none;background:rgba(10,9,23,.94);color:#FCFAF6;font-family:var(--sans);font-size:11px;font-weight:500;padding:6px 10px;border-radius:6px;letter-spacing:.04em;white-space:nowrap;transform:translate(-50%,calc(-100% - 16px));border:1px solid rgba(197,114,56,.4);transition:opacity .15s}
-.demo-tooltip::after{content:'';position:absolute;left:50%;bottom:-4px;width:8px;height:8px;background:rgba(10,9,23,.94);border-right:1px solid rgba(197,114,56,.4);border-bottom:1px solid rgba(197,114,56,.4);transform:translateX(-50%) rotate(45deg)}
-/* clickable zone badge (HTML overlay) */
-.demo-zone-badge{position:absolute;transform:translate(-50%,-50%);background:rgba(10,9,23,.96);color:#FCFAF6;padding:9px 16px 9px 14px;border-radius:100px;display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.02em;border:1px solid rgba(197,114,56,.5);box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 0 6px rgba(197,114,56,.08);pointer-events:none;white-space:nowrap;opacity:0;transition:opacity .2s,transform .25s;transform-origin:center}
-.demo-zone-badge.show{opacity:1}
-.demo-zone-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
-.demo-zone-badge-arrow{color:var(--accent);font-weight:700;font-size:13px;margin-left:2px}
-/* packages */
-.demo-packages{margin-top:24px;border-top:1px solid rgba(252,250,246,.08);padding-top:22px}
-.demo-packages-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(252,250,246,.45);font-weight:600;margin-bottom:14px;font-family:var(--sans)}
-.demo-package-list{display:flex;flex-direction:column;gap:9px}
-.demo-package{padding:13px 14px;border-radius:10px;border:1px solid rgba(252,250,246,.07);background:rgba(252,250,246,.025);transition:border-color .2s,background .2s,transform .2s;cursor:pointer;position:relative}
-.demo-package:hover{border-color:rgba(197,114,56,.45);background:rgba(197,114,56,.05);transform:translateX(2px)}
-.demo-package--accent{border-color:rgba(197,114,56,.35);background:rgba(197,114,56,.06)}
-.demo-package-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;gap:8px}
-.demo-package-name{font-size:13px;font-weight:600;color:#FCFAF6;font-family:var(--sans);letter-spacing:.01em}
-.demo-package-tier{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(252,250,246,.4);font-weight:600;font-family:var(--sans)}
-.demo-package-price{font-size:11.5px;color:var(--accent);font-family:var(--sans);font-weight:500;letter-spacing:.02em}
-.demo-package-desc{font-size:11.5px;color:rgba(252,250,246,.55);line-height:1.5;font-family:var(--sans)}
-.demo-panel{background:#13121F;padding:40px 36px;display:flex;flex-direction:column;gap:0;overflow-y:auto;max-height:660px;transition:border-left-color .3s}
-.demo-panel-eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:10px;font-family:var(--sans);transition:color .3s}
-.demo-panel-title{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);font-weight:600;color:#FCFAF6;line-height:1.12;margin:0 0 6px}
-.demo-panel-sub{font-size:13px;color:rgba(252,250,246,.4);margin:0 0 28px;font-family:var(--sans)}
-.demo-feats{display:flex;flex-direction:column;gap:18px;flex:1}
-.demo-feat{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:10px;background:rgba(252,250,246,.04);transition:background .2s}
-.demo-feat:hover{background:rgba(252,250,246,.07)}
-.demo-feat-num{font-size:10px;font-weight:700;min-width:22px;padding-top:3px;letter-spacing:.06em;font-family:var(--sans);transition:color .3s}
-.demo-feat-title{font-size:13px;font-weight:500;color:#FCFAF6;margin-bottom:4px;font-family:var(--sans)}
-.demo-feat-body{font-size:12px;color:rgba(252,250,246,.55);line-height:1.6;font-family:var(--sans)}
-.demo-panel-cta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(252,250,246,.08)}
-.demo-room-tab{display:none}
-/* floor plan room cursor */
-.demo-room{cursor:pointer}
-@keyframes demo-ring-pulse{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(3.2)}}
-.demo-pulse{transform-box:fill-box;transform-origin:center;animation:demo-ring-pulse 2.4s ease-out infinite}
-@media(max-width:960px){
-  .demo-wrap{grid-template-columns:1fr}
-  .demo-panel{max-height:none;border-left:none!important;border-top:2px solid rgba(197,114,56,.3)}
+.demo-plan-hint{text-align:center;margin-top:22px;font-size:13px;letter-spacing:.04em;color:rgba(252,250,246,.6);font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:10px}
+.demo-plan-hint-pulse{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(197,114,56,.6);animation:nav-pulse 2s ease-out infinite}
+
+/* HOVER CARD (appears at zone centroid — full room features visible at glance) */
+.demo-hover-card{position:absolute;transform:translate(-50%,-50%);background:rgba(10,9,23,.96);backdrop-filter:blur(8px);color:#FCFAF6;padding:14px 16px;border-radius:12px;font-family:var(--sans);min-width:230px;max-width:290px;border:1.5px solid var(--accent);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 6px rgba(197,114,56,.13);pointer-events:none;opacity:0;transition:opacity .18s;z-index:5}
+.demo-hover-card.show{opacity:1}
+.demo-hover-title{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.1;margin-bottom:4px;color:#FCFAF6}
+.demo-hover-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+.demo-hover-list{list-style:none;padding:0;margin:0 0 10px;display:flex;flex-direction:column;gap:5px}
+.demo-hover-list li{font-size:13px;color:rgba(252,250,246,.85);display:flex;align-items:flex-start;gap:8px;line-height:1.35}
+.demo-hover-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
+.demo-hover-cta{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;border-top:1px solid rgba(197,114,56,.25);padding-top:9px;display:flex;align-items:center;gap:6px}
+
+/* MODAL — picture-in-picture room detail */
+.demo-modal-backdrop{position:fixed;inset:0;background:rgba(10,9,23,.85);backdrop-filter:blur(10px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:32px;animation:demo-modal-fade .25s ease-out}
+.demo-modal{background:#13121F;color:#FCFAF6;border-radius:20px;width:100%;max-width:1100px;max-height:90vh;overflow:hidden;display:grid;grid-template-columns:5fr 4fr;box-shadow:0 40px 100px rgba(0,0,0,.7);border:1px solid rgba(252,250,246,.08);animation:demo-modal-zoom .28s cubic-bezier(.2,.9,.3,1.1);position:relative}
+.demo-modal-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;background:rgba(10,9,23,.7);backdrop-filter:blur(8px);border:1px solid rgba(252,250,246,.2);color:#FCFAF6;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;font-size:20px;line-height:1;transition:background .15s,border-color .15s,transform .15s}
+.demo-modal-close:hover{background:rgba(197,114,56,.25);border-color:var(--accent);transform:rotate(90deg)}
+.demo-modal-image{position:relative;min-height:420px;overflow:hidden;background-color:#0A0917;background-image:url('/assets/smart-home-demo/dollhouse.jpg');background-size:280%;background-repeat:no-repeat;transition:background-position .4s ease-out}
+.demo-modal-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(19,18,31,.4));pointer-events:none}
+.demo-modal-image-tag{position:absolute;top:18px;left:18px;background:rgba(10,9,23,.85);backdrop-filter:blur(8px);padding:8px 16px;border-radius:100px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;border:1px solid rgba(197,114,56,.4);z-index:2}
+.demo-modal-body{padding:40px 36px 32px;overflow-y:auto;display:flex;flex-direction:column}
+.demo-modal-eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+.demo-modal-title{font-family:var(--serif);font-size:36px;font-weight:600;line-height:1.05;margin:0 0 6px;color:#FCFAF6}
+.demo-modal-sub{font-size:14px;color:rgba(252,250,246,.55);margin:0 0 24px;line-height:1.5}
+.demo-modal-section-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(252,250,246,.5);font-weight:600;margin-bottom:14px;margin-top:6px}
+
+/* features inside modal */
+.demo-feats{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
+.demo-feat{display:flex;gap:12px;align-items:flex-start}
+.demo-feat-num{font-size:10px;font-weight:700;min-width:24px;padding-top:2px;letter-spacing:.06em;font-family:var(--sans);color:var(--accent)}
+.demo-feat-title{font-size:13px;font-weight:600;color:#FCFAF6;margin-bottom:3px;font-family:var(--sans)}
+.demo-feat-body{font-size:12px;color:rgba(252,250,246,.62);line-height:1.55;font-family:var(--sans)}
+
+/* packages inside modal */
+.demo-packages{margin-top:24px}
+.demo-package-list{display:flex;flex-direction:column;gap:10px}
+.demo-package{padding:14px 16px;border-radius:10px;border:1px solid rgba(252,250,246,.08);background:rgba(252,250,246,.03);transition:border-color .2s,background .2s,transform .2s;cursor:pointer}
+.demo-package:hover{border-color:rgba(197,114,56,.5);background:rgba(197,114,56,.06);transform:translateX(2px)}
+.demo-package--accent{border-color:rgba(197,114,56,.4);background:rgba(197,114,56,.07)}
+.demo-package-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;gap:10px}
+.demo-package-name{font-size:14px;font-weight:600;color:#FCFAF6;font-family:var(--sans);letter-spacing:.01em}
+.demo-package-tier{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.45);font-weight:600;font-family:var(--sans)}
+.demo-package-price{font-size:12px;color:var(--accent);font-family:var(--sans);font-weight:600;letter-spacing:.02em;white-space:nowrap}
+.demo-package-desc{font-size:12px;color:rgba(252,250,246,.6);line-height:1.55;font-family:var(--sans)}
+
+.demo-modal-cta{margin-top:28px;padding-top:22px;border-top:1px solid rgba(252,250,246,.08);display:flex;gap:10px;flex-wrap:wrap}
+
+@keyframes demo-modal-fade{from{opacity:0}to{opacity:1}}
+@keyframes demo-modal-zoom{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+@media(max-width:880px){
+  .demo-plan-wrap{padding:18px}
+  .demo-modal{grid-template-columns:1fr;max-height:92vh}
+  .demo-modal-image{min-height:240px;background-size:240%}
+  .demo-modal-body{padding:24px}
+  .demo-hover-card{display:none}
 }
 </style>
 </head>
@@ -881,6 +903,9 @@ function Nav({navigate}) {
               <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </button>
+          <span className="nav-link nav-link--feature" onClick={()=>navigate('smart-home-demo')}>
+            <span className="nav-link-dot"/>Live 3D Demo
+          </span>
           {[
             {label:'Budget Calculator', page:'budget-calculator'},
             {label:'Work & Testimonials', page:'work'},
@@ -3573,8 +3598,8 @@ function CaseBigHousePage({navigate}) {
 
 /* ─── SMART HOME DEMO ─── */
 function SmartHomeDemoPage({navigate}) {
-  const [activeRoom, setActiveRoom] = React.useState('living');
   const [hoverId, setHoverId] = React.useState(null);
+  const [modalRoomId, setModalRoomId] = React.useState(null);
 
   /* Each room: centroid (cx,cy) and a rough polygon (shape) tracing the room on
      the 3D dollhouse render. All coordinates are percent (0-100). The polygon
@@ -3727,9 +3752,27 @@ function SmartHomeDemoPage({navigate}) {
     },
   ];
 
-  const displayId = hoverId || activeRoom;
-  const active = ROOMS.find(r => r.id === displayId) || ROOMS[3];
   const hovered = hoverId ? ROOMS.find(r => r.id === hoverId) : null;
+  const modal = modalRoomId ? ROOMS.find(r => r.id === modalRoomId) : null;
+
+  /* Close modal on Escape */
+  React.useEffect(()=>{
+    if (!modal) return;
+    const onKey = e => { if (e.key === 'Escape') setModalRoomId(null); };
+    window.addEventListener('keydown', onKey);
+    /* lock body scroll while modal open */
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [modal]);
+
+  /* Compute crop position for picture-in-picture image */
+  const cropPos = modal
+    ? `${Math.min(Math.max(modal.cx,15),85)}% ${Math.min(Math.max(modal.cy,15),85)}%`
+    : 'center';
 
   return (
     <div className="page">
@@ -3740,18 +3783,17 @@ function SmartHomeDemoPage({navigate}) {
         padding:'80px 80px 56px', textAlign:'center',
       }}>
         <div style={{fontSize:11,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:18,fontFamily:'var(--sans)'}}>Interactive 3D Demo</div>
-        <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(36px,4.5vw,58px)',fontWeight:600,lineHeight:1.1,maxWidth:680,margin:'0 auto 20px'}}>
+        <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(36px,4.5vw,58px)',fontWeight:600,lineHeight:1.1,maxWidth:780,margin:'0 auto 20px'}}>
           See every system <em style={{color:'#F4C9A8',fontStyle:'italic'}}>in place.</em>
         </h1>
-        <p style={{fontSize:18,lineHeight:1.7,color:'rgba(252,250,246,.75)',maxWidth:540,margin:'0 auto'}}>
-          Tap any glowing point on the home below to explore the smart systems behind a fully automated LUMA residence.
+        <p style={{fontSize:18,lineHeight:1.7,color:'rgba(252,250,246,.75)',maxWidth:600,margin:'0 auto'}}>
+          Hover over any glowing zone to preview the smart systems inside. Click to open a full picture-in-picture detail view with packages and pricing.
         </p>
       </section>
 
       {/* ── 3D Dollhouse Plan ── */}
       <section style={{background:'var(--dark)',padding:'0 48px 80px'}}>
         <div className="demo-wrap">
-
           <div className="demo-plan-wrap">
             <div className="demo-plan-stage">
               <img className="demo-plan-img" src="/assets/smart-home-demo/dollhouse.jpg" alt="3D cutaway view of a LUMA smart home — every system in place"/>
@@ -3759,61 +3801,70 @@ function SmartHomeDemoPage({navigate}) {
               <svg className="demo-plan-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <defs>
                   <filter id="glow-hot" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="0.7" result="blur"/>
+                    <feGaussianBlur stdDeviation="0.9" result="blur"/>
                     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                   </filter>
                 </defs>
 
                 {ROOMS.map(room => {
-                  const isActive = room.id === activeRoom;
-                  const isHover  = room.id === hoverId;
-                  const lit      = isActive || isHover;
+                  const isHover = room.id === hoverId;
                   return (
                     <g key={room.id} style={{cursor:'pointer'}}
-                      onClick={()=>setActiveRoom(room.id)}
+                      onClick={()=>setModalRoomId(room.id)}
                       onMouseEnter={()=>setHoverId(room.id)}
                       onMouseLeave={()=>setHoverId(null)}
                     >
-                      {/* idle very-subtle outline so user sees a zone is here */}
+                      {/* always-visible faint zone fill so user sees zones exist */}
                       <polygon
                         points={room.shape}
                         fill={room.color}
-                        opacity={isActive ? 0.32 : (isHover ? 0.28 : 0)}
+                        opacity={isHover ? 0.32 : 0.07}
                         style={{transition:'opacity .25s'}}
                       />
+                      {/* always-visible outline (thicker + brighter on hover) */}
                       <polygon
                         points={room.shape}
                         fill="none"
                         stroke={room.color}
-                        strokeWidth={lit ? 0.45 : 0.25}
-                        opacity={lit ? 1 : 0.35}
-                        strokeDasharray={lit ? '0' : '0.8 0.8'}
+                        strokeWidth={isHover ? 0.6 : 0.35}
+                        opacity={isHover ? 1 : 0.5}
+                        strokeDasharray={isHover ? '0' : '1.2 0.7'}
                         vectorEffect="non-scaling-stroke"
                         style={{transition:'all .25s'}}
                       />
-                      {/* transparent hit polygon for full-zone click */}
+                      {/* transparent click hit polygon */}
                       <polygon points={room.shape} fill="rgba(255,255,255,0.001)"/>
 
-                      {/* pulse ring (idle only) */}
-                      {!lit && (
-                        <circle cx={room.cx} cy={room.cy} r="1.4" fill="none" stroke={room.color} strokeWidth="0.3" opacity="0.8" vectorEffect="non-scaling-stroke" pointerEvents="none">
-                          <animate attributeName="r"       from="1.4" to="3.6" dur="2.2s" repeatCount="indefinite"/>
-                          <animate attributeName="opacity" from="0.8" to="0"   dur="2.2s" repeatCount="indefinite"/>
-                        </circle>
+                      {/* triple pulse rings — large, attention-grabbing for 65+ */}
+                      {!isHover && (
+                        <>
+                          <circle cx={room.cx} cy={room.cy} r="2.5" fill="none" stroke={room.color} strokeWidth="0.45" opacity="0.9" vectorEffect="non-scaling-stroke" pointerEvents="none">
+                            <animate attributeName="r"       from="2.5" to="7"   dur="2.4s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" from="0.9" to="0"   dur="2.4s" repeatCount="indefinite"/>
+                          </circle>
+                          <circle cx={room.cx} cy={room.cy} r="2.5" fill="none" stroke={room.color} strokeWidth="0.45" opacity="0.9" vectorEffect="non-scaling-stroke" pointerEvents="none">
+                            <animate attributeName="r"       from="2.5" to="7"   dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" from="0.9" to="0"   dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+                          </circle>
+                          <circle cx={room.cx} cy={room.cy} r="2.5" fill="none" stroke={room.color} strokeWidth="0.45" opacity="0.9" vectorEffect="non-scaling-stroke" pointerEvents="none">
+                            <animate attributeName="r"       from="2.5" to="7"   dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" from="0.9" to="0"   dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
+                          </circle>
+                        </>
                       )}
 
-                      {/* halo on active */}
-                      {lit && (
-                        <circle cx={room.cx} cy={room.cy} r="2.6" fill={room.color} opacity="0.22" pointerEvents="none"/>
+                      {/* halo when hovered */}
+                      {isHover && (
+                        <circle cx={room.cx} cy={room.cy} r="4.2" fill={room.color} opacity="0.28" pointerEvents="none"/>
                       )}
 
-                      {/* main dot */}
+                      {/* MAIN DOT — much bigger now (for 65+ visibility) */}
                       <circle
                         cx={room.cx} cy={room.cy}
-                        r={lit ? 1.5 : 1.1}
+                        r={isHover ? 2.8 : 2.4}
                         fill="#FCFAF6"
                         stroke={room.color}
-                        strokeWidth={lit ? 0.4 : 0.3}
+                        strokeWidth={isHover ? 0.7 : 0.55}
                         vectorEffect="non-scaling-stroke"
                         filter="url(#glow-hot)"
                         style={{transition:'all .2s'}}
@@ -3821,9 +3872,17 @@ function SmartHomeDemoPage({navigate}) {
                       />
                       <circle
                         cx={room.cx} cy={room.cy}
-                        r={lit ? 0.7 : 0.5}
+                        r={isHover ? 1.4 : 1.1}
                         fill={room.color}
                         style={{transition:'all .2s'}}
+                        pointerEvents="none"
+                      />
+                      {/* inner white dot for crisp focal point */}
+                      <circle
+                        cx={room.cx} cy={room.cy}
+                        r="0.4"
+                        fill="#FCFAF6"
+                        opacity={isHover ? 1 : 0.7}
                         pointerEvents="none"
                       />
                     </g>
@@ -3831,51 +3890,82 @@ function SmartHomeDemoPage({navigate}) {
                 })}
               </svg>
 
-              {/* HTML badge on hover/active — appears at zone centroid */}
+              {/* HOVER CARD — appears at zone centroid with full features (Wicked-style) */}
               {ROOMS.map(room => {
-                const isActive = room.id === activeRoom;
-                const isHover  = room.id === hoverId;
-                const lit      = isActive || isHover;
+                const isHover = room.id === hoverId;
+                // Smart positioning: cards near top of image flip below, near right edge flip left
+                const flipY = room.cy < 30;
+                const flipX = room.cx > 65;
+                const offsetY = flipY ? 'calc(50% + 50px)' : 'calc(-50% - 12px)';
+                const transformOrigin = `${flipX?'right':'left'} ${flipY?'top':'bottom'}`;
                 return (
                   <div
-                    key={room.id+'_badge'}
-                    className={`demo-zone-badge ${lit ? 'show' : ''}`}
-                    style={{left:`${room.cx}%`,top:`${room.cy}%`}}
+                    key={room.id+'_hover'}
+                    className={`demo-hover-card ${isHover ? 'show' : ''}`}
+                    style={{
+                      left:`${room.cx}%`,
+                      top:`${room.cy}%`,
+                      transform:`translate(${flipX?'-100%':'0%'}, ${flipY?'12px':'calc(-100% - 12px)'})`,
+                      marginLeft: flipX ? '-12px' : '12px',
+                      transformOrigin,
+                      borderColor: room.color,
+                      boxShadow:`0 20px 50px rgba(0,0,0,.6),0 0 0 6px ${room.color}22`,
+                    }}
                   >
-                    <span className="demo-zone-badge-dot" style={{background:room.color,boxShadow:`0 0 8px ${room.color}`}}/>
-                    {room.name}
-                    <span className="demo-zone-badge-arrow" style={{color:room.color}}>→</span>
+                    <div className="demo-hover-title">{room.name}</div>
+                    <div className="demo-hover-tag" style={{color:room.color}}>{room.tag}</div>
+                    <ul className="demo-hover-list">
+                      {room.features.slice(0,4).map(f=>(
+                        <li key={f.title}>{f.title}</li>
+                      ))}
+                    </ul>
+                    <div className="demo-hover-cta" style={{color:room.color,borderTopColor:`${room.color}40`}}>
+                      Click to open detail view <span style={{fontSize:14}}>→</span>
+                    </div>
                   </div>
                 );
               })}
             </div>
-            <div className="demo-plan-hint">Hover or tap any zone to open it →</div>
+            <div className="demo-plan-hint">
+              <span className="demo-plan-hint-pulse"/> Hover any zone for a preview · Click to open the full detail view
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Feature & Package Panel */}
-          <div className="demo-panel" style={{borderLeft:`2px solid ${active.color}40`}}>
-            <div className="demo-panel-eyebrow" style={{color:active.color}}>{active.tag}</div>
-            <h3 className="demo-panel-title">{active.name}</h3>
-            <p className="demo-panel-sub">What's wired into this space — and at what level.</p>
+      {/* ── Picture-in-picture MODAL ── */}
+      {modal && (
+        <div className="demo-modal-backdrop" onClick={()=>setModalRoomId(null)}>
+          <div className="demo-modal" onClick={e=>e.stopPropagation()}>
+            <button className="demo-modal-close" onClick={()=>setModalRoomId(null)} aria-label="Close">×</button>
 
-            <div className="demo-feats">
-              {active.features.map((f,i)=>(
-                <div key={f.title} className="demo-feat">
-                  <div className="demo-feat-num" style={{color:active.color}}>{String(i+1).padStart(2,'0')}</div>
-                  <div>
-                    <div className="demo-feat-title">{f.title}</div>
-                    <div className="demo-feat-body">{f.body}</div>
-                  </div>
-                </div>
-              ))}
+            {/* Picture-in-picture — zoomed crop of the dollhouse focused on this room */}
+            <div className="demo-modal-image" style={{backgroundPosition:cropPos}}>
+              <div className="demo-modal-image-tag" style={{borderColor:`${modal.color}66`,color:modal.color}}>{modal.tag}</div>
             </div>
 
-            {/* Package tiers */}
-            {active.packages && (
+            <div className="demo-modal-body">
+              <div className="demo-modal-eyebrow" style={{color:modal.color}}>Smart systems · this zone</div>
+              <h3 className="demo-modal-title">{modal.name}</h3>
+              <p className="demo-modal-sub">What we install in this space — and at what level.</p>
+
+              <div className="demo-modal-section-label">What's included</div>
+              <div className="demo-feats">
+                {modal.features.map((f,i)=>(
+                  <div key={f.title} className="demo-feat">
+                    <div className="demo-feat-num" style={{color:modal.color}}>{String(i+1).padStart(2,'0')}</div>
+                    <div>
+                      <div className="demo-feat-title">{f.title}</div>
+                      <div className="demo-feat-body">{f.body}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
               <div className="demo-packages">
-                <div className="demo-packages-label">Choose a package</div>
+                <div className="demo-modal-section-label">Choose a package</div>
                 <div className="demo-package-list">
-                  {active.packages.map((p,i)=>(
+                  {modal.packages.map((p,i)=>(
                     <div
                       key={p.name}
                       className={`demo-package ${i===1 ? 'demo-package--accent' : ''}`}
@@ -3884,26 +3974,24 @@ function SmartHomeDemoPage({navigate}) {
                       <div className="demo-package-head">
                         <div>
                           <div className="demo-package-name">{p.name}</div>
-                          <div className="demo-package-tier" style={{color: i===1 ? active.color : undefined}}>{p.tier}</div>
+                          <div className="demo-package-tier" style={{color: i===1 ? modal.color : undefined}}>{p.tier}</div>
                         </div>
-                        <div className="demo-package-price">{p.price}</div>
+                        <div className="demo-package-price" style={{color:modal.color}}>{p.price}</div>
                       </div>
                       <div className="demo-package-desc">{p.desc}</div>
                     </div>
                   ))}
                 </div>
               </div>
-            )}
 
-            <div className="demo-panel-cta">
-              <button className="btn-solid" style={{fontSize:14,padding:'12px 22px'}} onClick={()=>navigate('contact')}>
-                Plan this zone →
-              </button>
+              <div className="demo-modal-cta">
+                <button className="btn-solid" style={{fontSize:14,padding:'12px 22px'}} onClick={()=>{setModalRoomId(null);navigate('contact');}}>Plan this zone →</button>
+                <button className="btn-ghost" style={{fontSize:14,padding:'11px 22px'}} onClick={()=>setModalRoomId(null)}>Back to home plan</button>
+              </div>
             </div>
           </div>
-
         </div>
-      </section>
+      )}
 
       {/* ── Bottom CTA ── */}
       <section className="th-section" style={{textAlign:'center'}}>
