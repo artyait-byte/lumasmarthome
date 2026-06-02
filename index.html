@@ -622,6 +622,32 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .fg-item:hover img{transform:scale(1.03)}
 .fg-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(transparent,rgba(27,26,40,.88));font-size:12px;color:rgba(255,255,255,.88);line-height:1.4}
 .fg-note{font-size:12px;color:var(--mid);text-align:center;max-width:560px;margin:28px auto 0;line-height:1.65}
+
+/* ── Smart Home Demo Floor Plan ── */
+.demo-wrap{display:grid;grid-template-columns:1fr 400px;align-items:stretch;border:1px solid rgba(252,250,246,.07);border-radius:20px;overflow:hidden;max-width:1240px;margin:0 auto}
+.demo-plan-wrap{background:#0A0917;padding:20px 20px 36px;position:relative}
+.demo-plan-svg{width:100%;height:auto;display:block}
+.demo-plan-hint{text-align:center;margin-top:14px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.25);font-family:var(--sans)}
+.demo-panel{background:#13121F;padding:40px 36px;display:flex;flex-direction:column;gap:0;overflow-y:auto;max-height:660px;transition:border-left-color .3s}
+.demo-panel-eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:10px;font-family:var(--sans);transition:color .3s}
+.demo-panel-title{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);font-weight:600;color:#FCFAF6;line-height:1.12;margin:0 0 6px}
+.demo-panel-sub{font-size:13px;color:rgba(252,250,246,.4);margin:0 0 28px;font-family:var(--sans)}
+.demo-feats{display:flex;flex-direction:column;gap:18px;flex:1}
+.demo-feat{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:10px;background:rgba(252,250,246,.04);transition:background .2s}
+.demo-feat:hover{background:rgba(252,250,246,.07)}
+.demo-feat-num{font-size:10px;font-weight:700;min-width:22px;padding-top:3px;letter-spacing:.06em;font-family:var(--sans);transition:color .3s}
+.demo-feat-title{font-size:13px;font-weight:500;color:#FCFAF6;margin-bottom:4px;font-family:var(--sans)}
+.demo-feat-body{font-size:12px;color:rgba(252,250,246,.55);line-height:1.6;font-family:var(--sans)}
+.demo-panel-cta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(252,250,246,.08)}
+.demo-room-tab{display:none}
+/* floor plan room cursor */
+.demo-room{cursor:pointer}
+@keyframes demo-ring-pulse{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(3.2)}}
+.demo-pulse{transform-box:fill-box;transform-origin:center;animation:demo-ring-pulse 2.4s ease-out infinite}
+@media(max-width:960px){
+  .demo-wrap{grid-template-columns:1fr}
+  .demo-panel{max-height:none;border-left:none!important;border-top:2px solid rgba(197,114,56,.3)}
+}
 </style>
 </head>
 <body>
@@ -1789,6 +1815,40 @@ function AutomationPage({navigate}) {
               c.page
                 ? <a key={c.label} className="au-chip" href={`#${c.page}`} onClick={e=>{e.preventDefault();navigate(c.page);}}>{c.label} →</a>
                 : <span key={c.label} className="au-chip au-chip--inert">{c.label}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3.5 Interactive Demo teaser */}
+      <section className="th-section" style={{background:'var(--dark)',maxWidth:'none',margin:0,padding:'72px 0'}}>
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 80px',display:'grid',gridTemplateColumns:'1fr 1fr',gap:64,alignItems:'center'}}>
+          <div>
+            <div className="sec-label" style={{color:'var(--accent)'}}>Room by room</div>
+            <h2 className="sec-title" style={{color:'#FCFAF6',textAlign:'left'}}>See the whole home <em style={{color:'#F4C9A8'}}>in one view.</em></h2>
+            <p style={{fontSize:16,lineHeight:1.7,color:'rgba(252,250,246,.72)',maxWidth:460,margin:'0 0 32px',fontFamily:'var(--sans)'}}>Explore an interactive floor plan — every smart system, every room, exactly how we'd build it for your Gulf Coast home.</p>
+            <button className="btn-solid" style={{fontSize:15,padding:'13px 26px'}} onClick={()=>navigate('smart-home-demo')}>Explore the floor plan →</button>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
+            {[
+              {label:'Lighting & Scenes',  color:'#C57238'},
+              {label:'Shading & Climate',  color:'#C57238'},
+              {label:'Outdoor Lanai & Pool', color:'#2D5E5A'},
+              {label:'Home Theater',       color:'#C57238'},
+              {label:'Security & Entry',   color:'#6B6876'},
+              {label:'Networking',         color:'#2D5E5A'},
+            ].map(item=>(
+              <div key={item.label} style={{
+                padding:'14px 16px',borderRadius:10,
+                border:`1px solid ${item.color}44`,
+                background:`${item.color}10`,
+                fontSize:12,fontWeight:500,color:'rgba(252,250,246,.8)',
+                fontFamily:'var(--sans)',letterSpacing:'.01em',
+                display:'flex',alignItems:'center',gap:8,
+              }}>
+                <div style={{width:6,height:6,borderRadius:'50%',background:item.color,flexShrink:0}}/>
+                {item.label}
+              </div>
             ))}
           </div>
         </div>
@@ -3490,8 +3550,263 @@ function CaseBigHousePage({navigate}) {
   );
 }
 
+/* ─── SMART HOME DEMO ─── */
+function SmartHomeDemoPage({navigate}) {
+  const [activeRoom, setActiveRoom] = React.useState('living');
+  const [hoverId, setHoverId] = React.useState(null);
+
+  const ROOMS = [
+    {
+      id:'garage', name:'Garage', x:4,   y:4,   w:199, h:151, cx:103, cy:79,
+      color:'#6B6876', tag:'Security · Entry · EV',
+      features:[
+        {title:'Smart Door Entry',    body:'App or keypad unlock — arrival triggers a Welcome scene throughout the house.'},
+        {title:'4K Security Cameras', body:'Cameras cover driveway and garage interior, stored on local NVR — no cloud subscription.'},
+        {title:'EV Charger Control',  body:'Level 2 charger scheduled to off-peak rates via the automation panel.'},
+        {title:'Motion Lighting',     body:'Full brightness on entry, steps to 20% after 3 minutes idle.'},
+      ],
+    },
+    {
+      id:'foyer', name:'Entry & Foyer', x:208, y:4, w:169, h:151, cx:292, cy:79,
+      color:'#C57238', tag:'Keypad · Security · Lighting',
+      features:[
+        {title:'Welcome Scene',       body:'Arrival lights the foyer, disarms the alarm, and sets climate — all at once.'},
+        {title:'Lutron Keypad Hub',   body:'Seetouch keypad at the front door controls every scene in the house.'},
+        {title:'Video Doorbell',      body:'Rings to your TV and phone simultaneously — answer from the couch.'},
+        {title:'Zone Alarm',          body:'Smart alarm with instant push alerts and optional central monitoring.'},
+      ],
+    },
+    {
+      id:'office', name:'Home Office', x:382, y:4, w:221, h:151, cx:492, cy:79,
+      color:'#2D5E5A', tag:'Networking · Shading · Focus',
+      features:[
+        {title:'Dedicated Wi-Fi 6E',  body:'Separate access point for the office — zero bandwidth contention with IoT or streaming.'},
+        {title:'Motorized Blackout',  body:'Shades scheduled down at 9 AM to cut glare, up at 5 PM automatically.'},
+        {title:'Focus Scene',         body:'4000K task lighting, DND on phones, and whole-home audio paused in this zone.'},
+        {title:'Display Matrix',      body:'Route any source — laptop, conferencing, Apple TV — to the monitor in one tap.'},
+      ],
+    },
+    {
+      id:'living', name:'Living Room', x:4, y:160, w:319, h:215, cx:163, cy:267,
+      color:'#C57238', tag:'Lighting · Audio · Scenes',
+      features:[
+        {title:'Scene Control',       body:'Morning, Entertain, Movie, Goodnight — one keypad tap shifts every system at once.'},
+        {title:'Lutron Dimming',      body:'Fine-grain dimmer control across cove lights, pendants, and table lamps on one mesh.'},
+        {title:'In-Ceiling Audio',    body:'Sonos architectural speakers calibrated for the space — balanced and invisible.'},
+        {title:'Motorized Shades',    body:'Gulf-facing glass auto-tinted at peak sun hours; clear again at golden hour.'},
+      ],
+    },
+    {
+      id:'kitchen', name:'Kitchen & Dining', x:328, y:160, w:275, h:215, cx:465, cy:267,
+      color:'#2D5E5A', tag:'Lighting · Climate · Scenes',
+      features:[
+        {title:'Tunable White',       body:'Under-cabinet lighting follows your circadian rhythm — warm morning, crisp afternoon.'},
+        {title:'Climate Zone',        body:'Kitchen on its own HVAC zone — pre-cool before guests arrive at 6 PM.'},
+        {title:'Entertain Scene',     body:'Dims pendants, activates under-cabinet fill, sets music to 30% background level.'},
+        {title:'Exhaust Automation',  body:'Range hood activates when cooking sensors detect heat — no manual switch needed.'},
+      ],
+    },
+    {
+      id:'master', name:'Master Suite', x:4, y:380, w:299, h:224, cx:153, cy:492,
+      color:'#C57238', tag:'Shading · Climate · Audio',
+      features:[
+        {title:'Sunrise Wake Routine', body:'Shades rise slowly with dawn or a set schedule — no alarm sound required.'},
+        {title:'Goodnight Keypad',    body:'One tap: shades down, lights off, thermostat to sleep temperature.'},
+        {title:'Invisible Audio',     body:'Flush in-wall speakers disappear into millwork — audiophile-grade output.'},
+        {title:'Sleep Zone Climate',  body:'Master kept 2–3° cooler than common areas for optimal rest.'},
+      ],
+    },
+    {
+      id:'theater', name:'Home Theater', x:308, y:380, w:295, h:224, cx:455, cy:492,
+      color:'#C57238', tag:'Theater · Atmos · Control',
+      features:[
+        {title:'4K Laser Projection',  body:'JVC or Sony 4K laser projector on a 120″ acoustically transparent screen.'},
+        {title:'Dolby Atmos 7.2.4',   body:'Full speaker layout with acoustic treatment designed into the room.'},
+        {title:'Motorized Blackout',  body:'Room-darkening shades drop and lights dim when Movie mode activates.'},
+        {title:'Single Touch Panel',  body:'Crestron TSW controls projector, AVR, streaming, and lighting from one screen.'},
+      ],
+    },
+    {
+      id:'lanai', name:'Covered Lanai', x:608, y:4, w:236, h:371, cx:726, cy:189,
+      color:'#2D5E5A', tag:'Outdoor AV · Lighting · Shade',
+      features:[
+        {title:'Weather-Rated Audio', body:'Sonance Marine in-ceiling speakers tuned for outdoor acoustics.'},
+        {title:'SunBrite Outdoor TV', body:'Outdoor-rated 4K display in a shaded niche — built for Florida heat and humidity.'},
+        {title:'Wind-Linked Screen',  body:'Motorized privacy screen drops automatically when Gulf gusts exceed 15 mph.'},
+        {title:'Landscape Lighting',  body:'Soffit and landscape on scene control — Entertain, Dine, or Party modes.'},
+      ],
+    },
+    {
+      id:'pool', name:'Pool & Spa', x:608, y:380, w:236, h:224, cx:726, cy:492,
+      color:'#2D5E5A', tag:'Pool Control · LED · Heat',
+      features:[
+        {title:'Pool Automation',     body:'Pentair or Jandy integration — temp, jets, and filtration from any device.'},
+        {title:'LED Color Sync',      body:'Pool and spa lighting changes with scenes — teal for Entertain, warm for Relax.'},
+        {title:'Spa Pre-Heat',        body:'Schedule the spa to heat by 6 PM Friday — automated, no manual switches.'},
+        {title:'Safety Sensors',      body:'Water level and temperature alerts pushed to your phone instantly.'},
+      ],
+    },
+  ];
+
+  const displayId = hoverId || activeRoom;
+  const active = ROOMS.find(r => r.id === displayId) || ROOMS[3];
+
+  return (
+    <div className="page">
+
+      {/* ── Hero ── */}
+      <section style={{
+        background:'var(--dark)', color:'#FCFAF6',
+        padding:'80px 80px 64px', textAlign:'center',
+      }}>
+        <div style={{fontSize:11,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:18,fontFamily:'var(--sans)'}}>Interactive Floor Plan</div>
+        <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(36px,4.5vw,58px)',fontWeight:600,lineHeight:1.1,maxWidth:680,margin:'0 auto 20px'}}>
+          See every system <em style={{color:'#F4C9A8',fontStyle:'italic'}}>in place.</em>
+        </h1>
+        <p style={{fontSize:18,lineHeight:1.7,color:'rgba(252,250,246,.75)',maxWidth:540,margin:'0 auto'}}>
+          Click any room to explore what a fully automated LUMA home looks like — system by system, space by space.
+        </p>
+      </section>
+
+      {/* ── Floor Plan ── */}
+      <section style={{background:'var(--dark)',padding:'0 48px 80px'}}>
+        <div className="demo-wrap">
+
+          {/* SVG Plan */}
+          <div className="demo-plan-wrap">
+            <svg className="demo-plan-svg" viewBox="0 0 848 608" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+
+              {/* Dark outer background = walls */}
+              <rect x="0" y="0" width="848" height="608" fill="#0A0917" rx="4"/>
+
+              {/* Outdoor zone subtle tint */}
+              <rect x="604" y="0" width="244" height="608" fill="rgba(45,94,90,.06)" rx="0"/>
+
+              {/* Divider lines (very subtle) */}
+              <line x1="4"   y1="155" x2="603" y2="155" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
+              <line x1="4"   y1="376" x2="603" y2="376" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
+              <line x1="603" y1="4"   x2="603" y2="604" stroke="rgba(245,240,234,.1)"  strokeWidth="1"/>
+              <line x1="608" y1="375" x2="844" y2="375" stroke="rgba(45,94,90,.25)"    strokeWidth="1"/>
+              <line x1="203" y1="4"   x2="203" y2="155" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
+              <line x1="377" y1="4"   x2="377" y2="155" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
+              <line x1="323" y1="160" x2="323" y2="375" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
+              <line x1="303" y1="380" x2="303" y2="604" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
+
+              {/* Rooms */}
+              {ROOMS.map(room => {
+                const isActive = room.id === activeRoom;
+                const isHover  = room.id === hoverId;
+                const lit      = isActive || isHover;
+                return (
+                  <g key={room.id} className="demo-room"
+                    onClick={()=>setActiveRoom(room.id)}
+                    onMouseEnter={()=>setHoverId(room.id)}
+                    onMouseLeave={()=>setHoverId(null)}
+                  >
+                    {/* Room fill */}
+                    <rect
+                      x={room.x} y={room.y} width={room.w} height={room.h}
+                      fill={lit ? room.color+'22' : 'rgba(245,240,234,.04)'}
+                      stroke={lit ? room.color+'99' : 'rgba(245,240,234,.1)'}
+                      strokeWidth={lit ? 1 : 0.5}
+                      rx="2"
+                      style={{transition:'fill .25s,stroke .25s'}}
+                    />
+                    {/* Room name label */}
+                    <text
+                      x={room.cx} y={room.cy - 18}
+                      textAnchor="middle"
+                      fontSize="8.5"
+                      fill={lit ? room.color : 'rgba(245,240,234,.38)'}
+                      fontFamily="'DM Sans',system-ui,sans-serif"
+                      fontWeight="500"
+                      letterSpacing="0.13em"
+                      style={{textTransform:'uppercase',transition:'fill .25s',userSelect:'none'}}
+                    >
+                      {room.name.toUpperCase()}
+                    </text>
+                    {/* Pulse ring (SMIL animation) */}
+                    {!lit && (
+                      <circle cx={room.cx} cy={room.cy+5} r="5" fill="none" stroke={room.color} strokeWidth="1" opacity="0.5">
+                        <animate attributeName="r"       from="5"  to="16"  dur="2.4s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" from="0.5" to="0"  dur="2.4s" repeatCount="indefinite"/>
+                      </circle>
+                    )}
+                    {/* Hotspot dot */}
+                    <circle
+                      cx={room.cx} cy={room.cy+5} r={lit ? 5 : 3.5}
+                      fill={lit ? room.color : room.color+'99'}
+                      filter={lit ? 'url(#glow-sm)' : undefined}
+                      style={{transition:'all .25s'}}
+                    />
+                    {/* Active center dot */}
+                    {isActive && (
+                      <circle cx={room.cx} cy={room.cy+5} r="2" fill="#FCFAF6"/>
+                    )}
+                  </g>
+                );
+              })}
+
+              {/* Outdoor label */}
+              <text x="726" y="590" textAnchor="middle" fontSize="8" fill="rgba(45,94,90,.6)" fontFamily="'DM Sans',system-ui,sans-serif" letterSpacing="0.14em" style={{userSelect:'none'}}>OUTDOOR</text>
+
+              {/* Compass */}
+              <text x="830" y="20" textAnchor="middle" fontSize="8" fill="rgba(245,240,234,.2)" fontFamily="'DM Sans',system-ui,sans-serif" letterSpacing="0.08em">N</text>
+              <line x1="830" y1="23" x2="830" y2="34" stroke="rgba(245,240,234,.15)" strokeWidth="0.8"/>
+              <polygon points="830,18 827.5,25 832.5,25" fill="rgba(245,240,234,.15)"/>
+            </svg>
+            <div className="demo-plan-hint">Click any room to explore its smart systems</div>
+          </div>
+
+          {/* Feature Panel */}
+          <div className="demo-panel" style={{borderLeft:`2px solid ${active.color}40`}}>
+            <div className="demo-panel-eyebrow" style={{color:active.color}}>{active.tag}</div>
+            <h3 className="demo-panel-title">{active.name}</h3>
+            <p className="demo-panel-sub">Smart systems installed in this space</p>
+            <div className="demo-feats">
+              {active.features.map((f,i)=>(
+                <div key={f.title} className="demo-feat">
+                  <div className="demo-feat-num" style={{color:active.color}}>{String(i+1).padStart(2,'0')}</div>
+                  <div>
+                    <div className="demo-feat-title">{f.title}</div>
+                    <div className="demo-feat-body">{f.body}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="demo-panel-cta">
+              <button className="btn-solid" style={{fontSize:14,padding:'12px 22px'}} onClick={()=>navigate('contact')}>
+                Plan this system →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── Bottom CTA ── */}
+      <section className="th-section" style={{textAlign:'center'}}>
+        <div className="sec-label">Ready to automate?</div>
+        <h2 className="sec-title">Your home, <em>fully orchestrated.</em></h2>
+        <p className="sec-body" style={{maxWidth:520,margin:'0 auto 32px'}}>Every system in this floor plan is available for your Sarasota or Gulf Coast home. We scope, design, and install — all under one roof.</p>
+        <div style={{display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start your project →</button>
+          <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px'}} onClick={()=>navigate('work')}>See completed homes</button>
+        </div>
+      </section>
+
+    </div>
+  );
+}
+
 /* ─── APP ─── */
-const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse']);
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','smart-home-demo']);
 
 function readPageFromUrl(){
   try {
@@ -3551,6 +3866,7 @@ function App() {
     'case-bighouse': <CaseBigHousePage navigate={navigate}/>,
     about:     <AboutPage navigate={navigate}/>,
     support:   <ServiceSupportPage navigate={navigate}/>,
+    'smart-home-demo': <SmartHomeDemoPage navigate={navigate}/>,
   };
   return <div><Nav navigate={navigate}/>{pages[page]||<HomePage navigate={navigate}/>}<Footer/></div>;
 }
