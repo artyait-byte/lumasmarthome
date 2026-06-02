@@ -632,6 +632,23 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .demo-plan-hint{text-align:center;margin-top:18px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.32);font-family:var(--sans)}
 .demo-tooltip{position:absolute;pointer-events:none;background:rgba(10,9,23,.94);color:#FCFAF6;font-family:var(--sans);font-size:11px;font-weight:500;padding:6px 10px;border-radius:6px;letter-spacing:.04em;white-space:nowrap;transform:translate(-50%,calc(-100% - 16px));border:1px solid rgba(197,114,56,.4);transition:opacity .15s}
 .demo-tooltip::after{content:'';position:absolute;left:50%;bottom:-4px;width:8px;height:8px;background:rgba(10,9,23,.94);border-right:1px solid rgba(197,114,56,.4);border-bottom:1px solid rgba(197,114,56,.4);transform:translateX(-50%) rotate(45deg)}
+/* clickable zone badge (HTML overlay) */
+.demo-zone-badge{position:absolute;transform:translate(-50%,-50%);background:rgba(10,9,23,.96);color:#FCFAF6;padding:9px 16px 9px 14px;border-radius:100px;display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.02em;border:1px solid rgba(197,114,56,.5);box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 0 6px rgba(197,114,56,.08);pointer-events:none;white-space:nowrap;opacity:0;transition:opacity .2s,transform .25s;transform-origin:center}
+.demo-zone-badge.show{opacity:1}
+.demo-zone-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.demo-zone-badge-arrow{color:var(--accent);font-weight:700;font-size:13px;margin-left:2px}
+/* packages */
+.demo-packages{margin-top:24px;border-top:1px solid rgba(252,250,246,.08);padding-top:22px}
+.demo-packages-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(252,250,246,.45);font-weight:600;margin-bottom:14px;font-family:var(--sans)}
+.demo-package-list{display:flex;flex-direction:column;gap:9px}
+.demo-package{padding:13px 14px;border-radius:10px;border:1px solid rgba(252,250,246,.07);background:rgba(252,250,246,.025);transition:border-color .2s,background .2s,transform .2s;cursor:pointer;position:relative}
+.demo-package:hover{border-color:rgba(197,114,56,.45);background:rgba(197,114,56,.05);transform:translateX(2px)}
+.demo-package--accent{border-color:rgba(197,114,56,.35);background:rgba(197,114,56,.06)}
+.demo-package-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;gap:8px}
+.demo-package-name{font-size:13px;font-weight:600;color:#FCFAF6;font-family:var(--sans);letter-spacing:.01em}
+.demo-package-tier{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(252,250,246,.4);font-weight:600;font-family:var(--sans)}
+.demo-package-price{font-size:11.5px;color:var(--accent);font-family:var(--sans);font-weight:500;letter-spacing:.02em}
+.demo-package-desc{font-size:11.5px;color:rgba(252,250,246,.55);line-height:1.5;font-family:var(--sans)}
 .demo-panel{background:#13121F;padding:40px 36px;display:flex;flex-direction:column;gap:0;overflow-y:auto;max-height:660px;transition:border-left-color .3s}
 .demo-panel-eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:10px;font-family:var(--sans);transition:color .3s}
 .demo-panel-title{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);font-weight:600;color:#FCFAF6;line-height:1.12;margin:0 0 6px}
@@ -3559,41 +3576,62 @@ function SmartHomeDemoPage({navigate}) {
   const [activeRoom, setActiveRoom] = React.useState('living');
   const [hoverId, setHoverId] = React.useState(null);
 
-  /* Hotspot coordinates positioned on the 3D dollhouse render.
-     cx / cy are in percent (0-100) of the image width/height. */
+  /* Each room: centroid (cx,cy) and a rough polygon (shape) tracing the room on
+     the 3D dollhouse render. All coordinates are percent (0-100). The polygon
+     forms a large, intuitive click target and a hover overlay that lights up
+     the actual room footprint — not just a tiny dot. */
   const ROOMS = [
     {
-      id:'garage', name:'Garage', cx:14.5, cy:21,
+      id:'garage', name:'Garage', cx:16, cy:22,
+      shape:'4,11 28,4 33,28 9,36',
       color:'#C57238', tag:'Security · Entry · EV',
       features:[
         {title:'Smart Door Entry',    body:'App or keypad unlock — arrival triggers a Welcome scene throughout the house.'},
-        {title:'4K Security Cameras', body:'Cameras cover driveway and garage interior, stored on local NVR — no cloud subscription.'},
+        {title:'4K Security Cameras', body:'Cameras cover driveway and garage, stored on a local NVR — no cloud subscription.'},
         {title:'EV Charger Control',  body:'Level 2 charger scheduled to off-peak rates via the automation panel.'},
-        {title:'Motion Lighting',     body:'Full brightness on entry, steps to 20% after 3 minutes idle.'},
+        {title:'Motion Lighting',     body:'Full brightness on entry, steps to 20% after 3 minutes of idle.'},
+      ],
+      packages:[
+        {name:'Garage Foundation', tier:'Essential',  price:'from $2,800', desc:'Smart deadbolt, 2 outdoor 4K cameras to local NVR, motion-linked LED.'},
+        {name:'Garage Signature',  tier:'Recommended', price:'from $6,400', desc:'Adds video doorbell, EV charger integration, app-controlled door operator, keypad with house scenes.'},
+        {name:'Garage Curated',    tier:'Concierge',   price:'from $11,000', desc:'Includes full 4-camera perimeter, license-plate recognition, automation triggers for Welcome / Goodbye routines.'},
       ],
     },
     {
-      id:'foyer', name:'Entry & Foyer', cx:32, cy:14,
+      id:'foyer', name:'Entry & Foyer', cx:36, cy:17,
+      shape:'28,4 42,2 46,22 33,28',
       color:'#C57238', tag:'Keypad · Security · Lighting',
       features:[
         {title:'Welcome Scene',       body:'Arrival lights the foyer, disarms the alarm, and sets climate — all at once.'},
-        {title:'Lutron Keypad Hub',   body:'Seetouch keypad at the front door controls every scene in the house.'},
+        {title:'Lutron Keypad Hub',   body:'A keypad at the front door controls every scene in the house.'},
         {title:'Video Doorbell',      body:'Rings to your TV and phone simultaneously — answer from the couch.'},
         {title:'Zone Alarm',          body:'Smart alarm with instant push alerts and optional central monitoring.'},
       ],
-    },
-    {
-      id:'office', name:'Home Office', cx:47, cy:14,
-      color:'#C57238', tag:'Networking · Shading · Focus',
-      features:[
-        {title:'Dedicated Wi-Fi 6E',  body:'Separate access point for the office — zero bandwidth contention with IoT or streaming.'},
-        {title:'Motorized Blackout',  body:'Shades scheduled down at 9 AM to cut glare, up at 5 PM automatically.'},
-        {title:'Focus Scene',         body:'4000K task lighting, DND on phones, and whole-home audio paused in this zone.'},
-        {title:'Display Matrix',      body:'Route any source — laptop, conferencing, Apple TV — to the monitor in one tap.'},
+      packages:[
+        {name:'Foyer Foundation', tier:'Essential',  price:'from $1,900', desc:'2 dimmed circuits, smart entry lock, doorbell camera, one Lutron Pico remote.'},
+        {name:'Foyer Signature',  tier:'Recommended', price:'from $4,800', desc:'Adds 5-button Lutron Seetouch keypad with Welcome / Away / Goodnight scenes and entry-zone alarm.'},
+        {name:'Foyer Curated',    tier:'Concierge',   price:'from $9,500', desc:'Includes Josh.ai voice, intercom-to-room, biometric lock, and full house-wide trigger orchestration.'},
       ],
     },
     {
-      id:'living', name:'Living Room', cx:32, cy:43,
+      id:'office', name:'Home Office', cx:50, cy:17,
+      shape:'42,2 58,4 60,22 46,22',
+      color:'#C57238', tag:'Networking · Shading · Focus',
+      features:[
+        {title:'Dedicated Wi-Fi 6E',  body:'Separate access point — zero bandwidth contention with IoT or streaming.'},
+        {title:'Motorized Blackout',  body:'Shades scheduled down at 9 AM to cut glare, up at 5 PM automatically.'},
+        {title:'Focus Scene',         body:'4000K task lighting, do-not-disturb on phones, music paused in this zone.'},
+        {title:'Display Matrix',      body:'Route any source — laptop, conferencing, Apple TV — to the monitor in one tap.'},
+      ],
+      packages:[
+        {name:'Office Foundation', tier:'Essential',  price:'from $2,400', desc:'Wired Cat6A drops, dedicated Wi-Fi 6 AP, dimmable downlights on Focus scene.'},
+        {name:'Office Signature',  tier:'Recommended', price:'from $5,800', desc:'Adds motorized blackout shades, conferencing mic + camera, single-touch keypad.'},
+        {name:'Office Curated',    tier:'Concierge',   price:'from $12,000', desc:'Includes A/V matrix to 2 displays, acoustic treatment, KVM, and Wi-Fi 6E + segregated VLAN.'},
+      ],
+    },
+    {
+      id:'living', name:'Living Room', cx:30, cy:43,
+      shape:'10,38 42,28 44,52 13,58',
       color:'#C57238', tag:'Lighting · Audio · Scenes',
       features:[
         {title:'Scene Control',       body:'Morning, Entertain, Movie, Goodnight — one keypad tap shifts every system at once.'},
@@ -3601,9 +3639,15 @@ function SmartHomeDemoPage({navigate}) {
         {title:'In-Ceiling Audio',    body:'Sonos architectural speakers calibrated for the space — balanced and invisible.'},
         {title:'Motorized Shades',    body:'Gulf-facing glass auto-tinted at peak sun hours; clear again at golden hour.'},
       ],
+      packages:[
+        {name:'Living Foundation', tier:'Essential',  price:'from $6,500', desc:'6 Lutron dimmed zones, 4 in-ceiling speakers on one Sonos Amp, single keypad with 4 scenes.'},
+        {name:'Living Signature',  tier:'Recommended', price:'from $14,000', desc:'Adds tunable cove lighting, motorized solar shades, 5.1 audio, larger keypad with full scene set.'},
+        {name:'Living Curated',    tier:'Concierge',   price:'from $32,000', desc:'Includes Ketra tunable-white, 7.1.4 Atmos, automated drapery, art lighting, hidden TV reveal.'},
+      ],
     },
     {
-      id:'kitchen', name:'Kitchen & Dining', cx:50, cy:35,
+      id:'kitchen', name:'Kitchen & Dining', cx:52, cy:37,
+      shape:'44,28 60,22 62,52 44,52',
       color:'#C57238', tag:'Lighting · Climate · Scenes',
       features:[
         {title:'Tunable White',       body:'Under-cabinet lighting follows your circadian rhythm — warm morning, crisp afternoon.'},
@@ -3611,9 +3655,15 @@ function SmartHomeDemoPage({navigate}) {
         {title:'Entertain Scene',     body:'Dims pendants, activates under-cabinet fill, sets music to 30% background level.'},
         {title:'Exhaust Automation',  body:'Range hood activates when cooking sensors detect heat — no manual switch needed.'},
       ],
+      packages:[
+        {name:'Kitchen Foundation', tier:'Essential',  price:'from $4,800', desc:'5 dimmed zones, under-cabinet LED, ceiling speakers tied to Living, single Pico scene.'},
+        {name:'Kitchen Signature',  tier:'Recommended', price:'from $11,500', desc:'Adds tunable white under-cabinet, dedicated HVAC zone, full keypad with Cook / Entertain / Dim scenes.'},
+        {name:'Kitchen Curated',    tier:'Concierge',   price:'from $24,000', desc:'Includes Ketra accent layer, hidden in-cabinet TV, motorized window treatment, and smart range hood automation.'},
+      ],
     },
     {
-      id:'master', name:'Master Suite', cx:21, cy:64,
+      id:'master', name:'Master Suite', cx:22, cy:65,
+      shape:'12,58 33,52 35,76 12,82',
       color:'#C57238', tag:'Shading · Climate · Audio',
       features:[
         {title:'Sunrise Wake Routine', body:'Shades rise slowly with dawn or a set schedule — no alarm sound required.'},
@@ -3621,9 +3671,15 @@ function SmartHomeDemoPage({navigate}) {
         {title:'Invisible Audio',     body:'Flush in-wall speakers disappear into millwork — audiophile-grade output.'},
         {title:'Sleep Zone Climate',  body:'Master kept 2–3° cooler than common areas for optimal rest.'},
       ],
+      packages:[
+        {name:'Master Foundation', tier:'Essential',  price:'from $4,200', desc:'4 dimmed zones, bedside Pico remote, single motorized roller shade, dedicated thermostat.'},
+        {name:'Master Signature',  tier:'Recommended', price:'from $9,800', desc:'Adds 5-button keypad both bedsides, dual motorized blackout + sheer, in-ceiling audio, Sleep / Wake routines.'},
+        {name:'Master Curated',    tier:'Concierge',   price:'from $22,000', desc:'Includes dawn-simulation lighting, in-wall LCR speakers, motorized drapery, en-suite scene control.'},
+      ],
     },
     {
       id:'theater', name:'Home Theater', cx:50, cy:73,
+      shape:'37,55 60,52 60,87 37,82',
       color:'#C57238', tag:'Theater · Atmos · Control',
       features:[
         {title:'4K Laser Projection',  body:'JVC or Sony 4K laser projector on a 120″ acoustically transparent screen.'},
@@ -3631,25 +3687,42 @@ function SmartHomeDemoPage({navigate}) {
         {title:'Motorized Blackout',  body:'Room-darkening shades drop and lights dim when Movie mode activates.'},
         {title:'Single Touch Panel',  body:'Crestron TSW controls projector, AVR, streaming, and lighting from one screen.'},
       ],
-    },
-    {
-      id:'lanai', name:'Covered Lanai', cx:72, cy:26,
-      color:'#2D5E5A', tag:'Outdoor AV · Lighting · Shade',
-      features:[
-        {title:'Weather-Rated Audio', body:'Sonance Marine in-ceiling speakers tuned for outdoor acoustics.'},
-        {title:'SunBrite Outdoor TV', body:'Outdoor-rated 4K display in a shaded niche — built for Florida heat and humidity.'},
-        {title:'Wind-Linked Screen',  body:'Motorized privacy screen drops automatically when Gulf gusts exceed 15 mph.'},
-        {title:'Landscape Lighting',  body:'Soffit and landscape on scene control — Entertain, Dine, or Party modes.'},
+      packages:[
+        {name:'Theater Foundation', tier:'Essential',  price:'from $14,000', desc:'4K HDR display, 5.1 in-wall speakers, AVR, single Harmony / Pico-style remote, basic dimming.'},
+        {name:'Theater Signature',  tier:'Recommended', price:'from $38,000', desc:'Adds 4K laser projector + 110″ screen, 7.1.4 Atmos, Crestron control, motorized masking, acoustic treatment.'},
+        {name:'Theater Curated',    tier:'Concierge',   price:'from $95,000', desc:'Includes reference 4K dual laser, calibrated 9.2.6 Atmos, riser seating, isolated breaker, professional acoustic design.'},
       ],
     },
     {
-      id:'pool', name:'Pool & Spa', cx:80, cy:68,
+      id:'lanai', name:'Covered Lanai', cx:72, cy:26,
+      shape:'62,5 88,7 88,42 62,42',
+      color:'#2D5E5A', tag:'Outdoor AV · Lighting · Shade',
+      features:[
+        {title:'Weather-Rated Audio', body:'Sonance Marine in-ceiling speakers tuned for outdoor acoustics.'},
+        {title:'SunBrite Outdoor TV', body:'Outdoor-rated 4K display — built for Florida heat and humidity.'},
+        {title:'Wind-Linked Screen',  body:'Motorized privacy screen drops automatically when Gulf gusts exceed 15 mph.'},
+        {title:'Landscape Lighting',  body:'Soffit and landscape on scene control — Entertain, Dine, or Party modes.'},
+      ],
+      packages:[
+        {name:'Lanai Foundation', tier:'Essential',  price:'from $5,800', desc:'2 weather-rated speakers on Sonos Amp, soffit lighting on dusk-to-dawn, ceiling fan automation.'},
+        {name:'Lanai Signature',  tier:'Recommended', price:'from $13,500', desc:'Adds SunBrite outdoor 4K TV, 4-speaker setup with sub, motorized roll-down screens.'},
+        {name:'Lanai Curated',    tier:'Concierge',   price:'from $28,000', desc:'Includes outdoor cinema, landscape lighting on Ketra, automated drop-screens, outdoor-rated keypads & Wi-Fi mesh.'},
+      ],
+    },
+    {
+      id:'pool', name:'Pool & Spa', cx:80, cy:70,
+      shape:'62,55 92,55 92,90 62,90',
       color:'#2D5E5A', tag:'Pool Control · LED · Heat',
       features:[
-        {title:'Pool Automation',     body:'Pentair or Jandy integration — temp, jets, and filtration from any device.'},
+        {title:'Pool Automation',     body:'Pentair or Jandy integration — temperature, jets, and filtration from any device.'},
         {title:'LED Color Sync',      body:'Pool and spa lighting changes with scenes — teal for Entertain, warm for Relax.'},
         {title:'Spa Pre-Heat',        body:'Schedule the spa to heat by 6 PM Friday — automated, no manual switches.'},
         {title:'Safety Sensors',      body:'Water level and temperature alerts pushed to your phone instantly.'},
+      ],
+      packages:[
+        {name:'Pool Foundation', tier:'Essential',  price:'from $3,200', desc:'Pool automation gateway (Pentair / Jandy), app control of pump, heater, single LED color light.'},
+        {name:'Pool Signature',  tier:'Recommended', price:'from $7,800', desc:'Adds Control4-integrated keypad for pool / spa scenes, multicolor LED, scheduled spa heat-up.'},
+        {name:'Pool Curated',    tier:'Concierge',   price:'from $16,000', desc:'Includes water-feature automation, underwater speakers, water-level sensors, full landscape scene tie-in.'},
       ],
     },
   ];
@@ -3696,28 +3769,45 @@ function SmartHomeDemoPage({navigate}) {
                   const isHover  = room.id === hoverId;
                   const lit      = isActive || isHover;
                   return (
-                    <g key={room.id} className="demo-room"
+                    <g key={room.id} style={{cursor:'pointer'}}
                       onClick={()=>setActiveRoom(room.id)}
                       onMouseEnter={()=>setHoverId(room.id)}
                       onMouseLeave={()=>setHoverId(null)}
                     >
-                      {/* invisible larger click target */}
-                      <circle cx={room.cx} cy={room.cy} r="4" fill="rgba(255,255,255,0.001)"/>
+                      {/* idle very-subtle outline so user sees a zone is here */}
+                      <polygon
+                        points={room.shape}
+                        fill={room.color}
+                        opacity={isActive ? 0.32 : (isHover ? 0.28 : 0)}
+                        style={{transition:'opacity .25s'}}
+                      />
+                      <polygon
+                        points={room.shape}
+                        fill="none"
+                        stroke={room.color}
+                        strokeWidth={lit ? 0.45 : 0.25}
+                        opacity={lit ? 1 : 0.35}
+                        strokeDasharray={lit ? '0' : '0.8 0.8'}
+                        vectorEffect="non-scaling-stroke"
+                        style={{transition:'all .25s'}}
+                      />
+                      {/* transparent hit polygon for full-zone click */}
+                      <polygon points={room.shape} fill="rgba(255,255,255,0.001)"/>
 
-                      {/* pulse ring (only when not active/hovered) */}
+                      {/* pulse ring (idle only) */}
                       {!lit && (
-                        <circle cx={room.cx} cy={room.cy} r="1.4" fill="none" stroke={room.color} strokeWidth="0.25" opacity="0.85" vectorEffect="non-scaling-stroke">
-                          <animate attributeName="r"       from="1.4"  to="3.6" dur="2.2s" repeatCount="indefinite"/>
-                          <animate attributeName="opacity" from="0.85" to="0"   dur="2.2s" repeatCount="indefinite"/>
+                        <circle cx={room.cx} cy={room.cy} r="1.4" fill="none" stroke={room.color} strokeWidth="0.3" opacity="0.8" vectorEffect="non-scaling-stroke" pointerEvents="none">
+                          <animate attributeName="r"       from="1.4" to="3.6" dur="2.2s" repeatCount="indefinite"/>
+                          <animate attributeName="opacity" from="0.8" to="0"   dur="2.2s" repeatCount="indefinite"/>
                         </circle>
                       )}
 
-                      {/* outer halo on active */}
+                      {/* halo on active */}
                       {lit && (
-                        <circle cx={room.cx} cy={room.cy} r="2.4" fill={room.color} opacity="0.22"/>
+                        <circle cx={room.cx} cy={room.cy} r="2.6" fill={room.color} opacity="0.22" pointerEvents="none"/>
                       )}
 
-                      {/* main dot — white outer ring + colored center */}
+                      {/* main dot */}
                       <circle
                         cx={room.cx} cy={room.cy}
                         r={lit ? 1.5 : 1.1}
@@ -3727,37 +3817,47 @@ function SmartHomeDemoPage({navigate}) {
                         vectorEffect="non-scaling-stroke"
                         filter="url(#glow-hot)"
                         style={{transition:'all .2s'}}
+                        pointerEvents="none"
                       />
                       <circle
                         cx={room.cx} cy={room.cy}
-                        r={lit ? 0.75 : 0.5}
+                        r={lit ? 0.7 : 0.5}
                         fill={room.color}
                         style={{transition:'all .2s'}}
+                        pointerEvents="none"
                       />
-                      {/* active inner dot */}
-                      {isActive && (
-                        <circle cx={room.cx} cy={room.cy} r="0.25" fill="#FCFAF6"/>
-                      )}
                     </g>
                   );
                 })}
               </svg>
 
-              {/* Tooltip on hover */}
-              {hovered && (
-                <div className="demo-tooltip" style={{left:`${hovered.cx}%`,top:`${hovered.cy}%`}}>
-                  {hovered.name}
-                </div>
-              )}
+              {/* HTML badge on hover/active — appears at zone centroid */}
+              {ROOMS.map(room => {
+                const isActive = room.id === activeRoom;
+                const isHover  = room.id === hoverId;
+                const lit      = isActive || isHover;
+                return (
+                  <div
+                    key={room.id+'_badge'}
+                    className={`demo-zone-badge ${lit ? 'show' : ''}`}
+                    style={{left:`${room.cx}%`,top:`${room.cy}%`}}
+                  >
+                    <span className="demo-zone-badge-dot" style={{background:room.color,boxShadow:`0 0 8px ${room.color}`}}/>
+                    {room.name}
+                    <span className="demo-zone-badge-arrow" style={{color:room.color}}>→</span>
+                  </div>
+                );
+              })}
             </div>
-            <div className="demo-plan-hint">Click any glowing point to reveal the system →</div>
+            <div className="demo-plan-hint">Hover or tap any zone to open it →</div>
           </div>
 
-          {/* Feature Panel */}
+          {/* Feature & Package Panel */}
           <div className="demo-panel" style={{borderLeft:`2px solid ${active.color}40`}}>
             <div className="demo-panel-eyebrow" style={{color:active.color}}>{active.tag}</div>
             <h3 className="demo-panel-title">{active.name}</h3>
-            <p className="demo-panel-sub">Smart systems installed in this space</p>
+            <p className="demo-panel-sub">What's wired into this space — and at what level.</p>
+
             <div className="demo-feats">
               {active.features.map((f,i)=>(
                 <div key={f.title} className="demo-feat">
@@ -3769,9 +3869,35 @@ function SmartHomeDemoPage({navigate}) {
                 </div>
               ))}
             </div>
+
+            {/* Package tiers */}
+            {active.packages && (
+              <div className="demo-packages">
+                <div className="demo-packages-label">Choose a package</div>
+                <div className="demo-package-list">
+                  {active.packages.map((p,i)=>(
+                    <div
+                      key={p.name}
+                      className={`demo-package ${i===1 ? 'demo-package--accent' : ''}`}
+                      onClick={()=>navigate('contact')}
+                    >
+                      <div className="demo-package-head">
+                        <div>
+                          <div className="demo-package-name">{p.name}</div>
+                          <div className="demo-package-tier" style={{color: i===1 ? active.color : undefined}}>{p.tier}</div>
+                        </div>
+                        <div className="demo-package-price">{p.price}</div>
+                      </div>
+                      <div className="demo-package-desc">{p.desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="demo-panel-cta">
               <button className="btn-solid" style={{fontSize:14,padding:'12px 22px'}} onClick={()=>navigate('contact')}>
-                Plan this system →
+                Plan this zone →
               </button>
             </div>
           </div>
