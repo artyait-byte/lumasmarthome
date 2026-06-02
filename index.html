@@ -3611,8 +3611,8 @@ function SmartHomeDemoPage({navigate}) {
      the image and never float over the wrong room. */
   const ROOMS = [
     {
-      id:'garage', name:'Garage', cx:20, cy:23,
-      shape:'9,16 28,9 31,33 13,40', cardPos:'B',
+      id:'garage', name:'Garage', cx:19, cy:22,
+      shape:'3,14 26,8 28,32 10,38', cardPos:'B',
       color:'#C57238', tag:'Security · Entry · EV',
       features:[
         {title:'Smart Door Entry',    body:'App or keypad unlock — arrival triggers a Welcome scene throughout the house.'},
@@ -3627,8 +3627,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'foyer', name:'Entry & Foyer', cx:36, cy:19,
-      shape:'28,9 40,6 42,30 31,33', cardPos:'B',
+      id:'foyer', name:'Entry & Foyer', cx:34, cy:18,
+      shape:'26,8 39,5 41,27 28,32', cardPos:'B',
       color:'#C57238', tag:'Keypad · Security · Lighting',
       features:[
         {title:'Welcome Scene',       body:'Arrival lights the foyer, disarms the alarm, and sets climate — all at once.'},
@@ -3643,8 +3643,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'office', name:'Home Office', cx:50, cy:19,
-      shape:'40,6 58,9 61,30 42,30', cardPos:'B',
+      id:'office', name:'Home Office', cx:50, cy:17,
+      shape:'39,5 58,8 60,28 41,27', cardPos:'B',
       color:'#C57238', tag:'Networking · Shading · Focus',
       features:[
         {title:'Dedicated Wi-Fi 6E',  body:'Separate access point — zero bandwidth contention with IoT or streaming.'},
@@ -3659,8 +3659,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'living', name:'Living Room', cx:28, cy:47,
-      shape:'17,39 39,33 41,55 19,62', cardPos:'T',
+      id:'living', name:'Living Room', cx:29, cy:47,
+      shape:'17,38 39,32 41,55 19,62', cardPos:'T',
       color:'#C57238', tag:'Lighting · Audio · Scenes',
       features:[
         {title:'Scene Control',       body:'Morning, Entertain, Movie, Goodnight — one keypad tap shifts every system at once.'},
@@ -3675,8 +3675,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'kitchen', name:'Kitchen & Dining', cx:50, cy:42,
-      shape:'39,33 58,30 61,52 41,55', cardPos:'T',
+      id:'kitchen', name:'Kitchen & Dining', cx:50, cy:43,
+      shape:'39,32 58,28 61,58 41,55', cardPos:'T',
       color:'#C57238', tag:'Lighting · Climate · Scenes',
       features:[
         {title:'Tunable White',       body:'Under-cabinet lighting follows your circadian rhythm — warm morning, crisp afternoon.'},
@@ -3691,8 +3691,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'master', name:'Master Suite + Bath', cx:22, cy:72,
-      shape:'6,51 35,49 38,88 9,96', cardPos:'T',
+      id:'master', name:'Master Suite + Bath', cx:20, cy:72,
+      shape:'3,50 33,48 37,86 6,97', cardPos:'T',
       color:'#C57238', tag:'Shading · Climate · Audio · Spa',
       features:[
         {title:'Sunrise Wake Routine', body:'Shades rise slowly with dawn or a set schedule — no alarm sound required.'},
@@ -3707,8 +3707,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'theater', name:'Home Theater', cx:49, cy:71,
-      shape:'37,52 61,52 63,87 38,88', cardPos:'T',
+      id:'theater', name:'Home Theater', cx:51, cy:69,
+      shape:'37,50 62,50 64,86 39,87', cardPos:'T',
       color:'#C57238', tag:'Theater · Atmos · Control',
       features:[
         {title:'4K Laser Projection',  body:'JVC or Sony 4K laser projector on a 120″ acoustically transparent screen.'},
@@ -3723,8 +3723,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'lanai', name:'Covered Lanai', cx:76, cy:26,
-      shape:'63,11 88,12 89,44 64,42', cardPos:'B',
+      id:'lanai', name:'Covered Lanai', cx:76, cy:27,
+      shape:'62,10 88,13 90,45 63,42', cardPos:'B',
       color:'#2D5E5A', tag:'Outdoor AV · Lighting · Shade',
       features:[
         {title:'Weather-Rated Audio', body:'Sonance Marine in-ceiling speakers tuned for outdoor acoustics.'},
@@ -3739,8 +3739,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'pool', name:'Pool & Spa', cx:78, cy:73,
-      shape:'64,51 92,53 91,93 66,93', cardPos:'T',
+      id:'pool', name:'Pool & Spa', cx:78, cy:72,
+      shape:'64,51 92,54 91,94 67,94', cardPos:'T',
       color:'#2D5E5A', tag:'Pool Control · LED · Heat',
       features:[
         {title:'Pool Automation',     body:'Pentair or Jandy integration — temperature, jets, and filtration from any device.'},
@@ -3831,13 +3831,26 @@ function SmartHomeDemoPage({navigate}) {
                         )}
                       </polygon>
 
-                      {/* OUTLINE — soft idle ring, bright + glowing on hover */}
+                      {/* OUTLINE — cream "halo" underneath for contrast on busy textures */}
+                      <polygon
+                        points={room.shape}
+                        fill="none"
+                        stroke="#FCFAF6"
+                        strokeWidth={isHover ? 2.2 : 1.1}
+                        opacity={isHover ? 0.8 : 0.35}
+                        strokeLinejoin="round"
+                        vectorEffect="non-scaling-stroke"
+                        style={{transition:'all .25s'}}
+                      />
+
+                      {/* OUTLINE — bright colored ring, glowing on hover */}
                       <polygon
                         points={room.shape}
                         fill="none"
                         stroke={room.color}
-                        strokeWidth={isHover ? 0.85 : 0.4}
-                        opacity={isHover ? 1 : 0.55}
+                        strokeWidth={isHover ? 1.2 : 0.55}
+                        opacity={isHover ? 1 : 0.7}
+                        strokeLinejoin="round"
                         vectorEffect="non-scaling-stroke"
                         filter={isHover ? 'url(#glow-hot)' : undefined}
                         style={{transition:'all .25s'}}
