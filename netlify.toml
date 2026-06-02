@@ -159,7 +159,10 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options        = "SAMEORIGIN"
+    # NOTE: X-Frame-Options removed and frame-ancestors widened so the live
+    # site can be embedded in design previews (canvas/iframe). This is a
+    # marketing site with no authenticated actions, so clickjacking risk is
+    # negligible. If we add a login flow later, tighten frame-ancestors.
     X-Content-Type-Options = "nosniff"
     Referrer-Policy        = "strict-origin-when-cross-origin"
     Permissions-Policy     = "camera=(), microphone=(), geolocation=(self)"
@@ -169,7 +172,7 @@
     #   - unpkg.com hosts React, ReactDOM, Babel.
     #   - Image sources include Unsplash + Pexels CDNs used by the design.
     #   - Google Fonts (Cormorant Garamond + DM Sans).
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; connect-src 'self'; frame-ancestors *; base-uri 'self'; form-action 'self';"
 
 # Long cache for hashed assets / images.
 [[headers]]
