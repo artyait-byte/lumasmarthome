@@ -861,18 +861,22 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .footer{flex-direction:column;text-align:center;gap:12px;padding:32px 22px;font-size:15px}
   .footer-logo{font-size:20px}
 
-  /* BENTO — collapses to single column on phone, taller cards for clearer photos */
+  /* BENTO — single column with taller landscape photos on phone */
   .cat-bento{
     grid-template-columns:1fr;
-    grid-template-rows:repeat(7,minmax(260px,auto));
+    grid-template-rows:auto;
     grid-template-areas:"lit" "win" "sec" "thr" "av" "auto" "net";
     gap:14px;margin-top:32px;
   }
-  .cat-bento .cat-tile{aspect-ratio:16/11}
-  .cat-bento .cat-text{padding:1.6rem 1.5rem 1.5rem}
-  .cat-bento .cat-text .eyebrow{font-size:.92rem;letter-spacing:.14em}
-  .cat-bento .cat-text h3{font-size:1.95rem;line-height:1.1}
-  .cat-bento .hex{top:1.2rem;left:1.2rem;width:44px;height:44px}
+  .cat-bento .cat-tile{aspect-ratio:4/3;min-height:280px}
+  /* Lighter overlay so the photo is actually visible behind the title */
+  .cat-bento .cat-overlay{
+    background:linear-gradient(180deg,rgba(15,74,66,0.05) 0%,rgba(15,74,66,0.35) 55%,rgba(15,74,66,0.78) 100%)!important;
+  }
+  .cat-bento .cat-text{padding:1.6rem 1.5rem 1.5rem;max-width:96%}
+  .cat-bento .cat-text .eyebrow{font-size:.95rem;letter-spacing:.14em}
+  .cat-bento .cat-text h3{font-size:2.1rem;line-height:1.08}
+  .cat-bento .hex{top:1.2rem;left:1.2rem;width:46px;height:46px}
 
   /* Section headers / generic page padding wrappers */
   .topbar{font-size:13px;padding:8px 16px}
