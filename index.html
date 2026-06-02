@@ -625,9 +625,13 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* ── Smart Home Demo Floor Plan ── */
 .demo-wrap{display:grid;grid-template-columns:1fr 400px;align-items:stretch;border:1px solid rgba(252,250,246,.07);border-radius:20px;overflow:hidden;max-width:1240px;margin:0 auto}
-.demo-plan-wrap{background:#0A0917;padding:20px 20px 36px;position:relative}
-.demo-plan-svg{width:100%;height:auto;display:block}
-.demo-plan-hint{text-align:center;margin-top:14px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.25);font-family:var(--sans)}
+.demo-plan-wrap{background:#13121F;padding:24px;position:relative}
+.demo-plan-stage{position:relative;width:100%;aspect-ratio:3/2;border-radius:12px;overflow:hidden;background:#F4EFE6;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.demo-plan-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none;pointer-events:none}
+.demo-plan-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.demo-plan-hint{text-align:center;margin-top:18px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.32);font-family:var(--sans)}
+.demo-tooltip{position:absolute;pointer-events:none;background:rgba(10,9,23,.94);color:#FCFAF6;font-family:var(--sans);font-size:11px;font-weight:500;padding:6px 10px;border-radius:6px;letter-spacing:.04em;white-space:nowrap;transform:translate(-50%,calc(-100% - 16px));border:1px solid rgba(197,114,56,.4);transition:opacity .15s}
+.demo-tooltip::after{content:'';position:absolute;left:50%;bottom:-4px;width:8px;height:8px;background:rgba(10,9,23,.94);border-right:1px solid rgba(197,114,56,.4);border-bottom:1px solid rgba(197,114,56,.4);transform:translateX(-50%) rotate(45deg)}
 .demo-panel{background:#13121F;padding:40px 36px;display:flex;flex-direction:column;gap:0;overflow-y:auto;max-height:660px;transition:border-left-color .3s}
 .demo-panel-eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:10px;font-family:var(--sans);transition:color .3s}
 .demo-panel-title{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);font-weight:600;color:#FCFAF6;line-height:1.12;margin:0 0 6px}
@@ -3555,10 +3559,12 @@ function SmartHomeDemoPage({navigate}) {
   const [activeRoom, setActiveRoom] = React.useState('living');
   const [hoverId, setHoverId] = React.useState(null);
 
+  /* Hotspot coordinates positioned on the 3D dollhouse render.
+     cx / cy are in percent (0-100) of the image width/height. */
   const ROOMS = [
     {
-      id:'garage', name:'Garage', x:4,   y:4,   w:199, h:151, cx:103, cy:79,
-      color:'#6B6876', tag:'Security · Entry · EV',
+      id:'garage', name:'Garage', cx:14.5, cy:21,
+      color:'#C57238', tag:'Security · Entry · EV',
       features:[
         {title:'Smart Door Entry',    body:'App or keypad unlock — arrival triggers a Welcome scene throughout the house.'},
         {title:'4K Security Cameras', body:'Cameras cover driveway and garage interior, stored on local NVR — no cloud subscription.'},
@@ -3567,7 +3573,7 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'foyer', name:'Entry & Foyer', x:208, y:4, w:169, h:151, cx:292, cy:79,
+      id:'foyer', name:'Entry & Foyer', cx:32, cy:14,
       color:'#C57238', tag:'Keypad · Security · Lighting',
       features:[
         {title:'Welcome Scene',       body:'Arrival lights the foyer, disarms the alarm, and sets climate — all at once.'},
@@ -3577,8 +3583,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'office', name:'Home Office', x:382, y:4, w:221, h:151, cx:492, cy:79,
-      color:'#2D5E5A', tag:'Networking · Shading · Focus',
+      id:'office', name:'Home Office', cx:47, cy:14,
+      color:'#C57238', tag:'Networking · Shading · Focus',
       features:[
         {title:'Dedicated Wi-Fi 6E',  body:'Separate access point for the office — zero bandwidth contention with IoT or streaming.'},
         {title:'Motorized Blackout',  body:'Shades scheduled down at 9 AM to cut glare, up at 5 PM automatically.'},
@@ -3587,7 +3593,7 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'living', name:'Living Room', x:4, y:160, w:319, h:215, cx:163, cy:267,
+      id:'living', name:'Living Room', cx:32, cy:43,
       color:'#C57238', tag:'Lighting · Audio · Scenes',
       features:[
         {title:'Scene Control',       body:'Morning, Entertain, Movie, Goodnight — one keypad tap shifts every system at once.'},
@@ -3597,8 +3603,8 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'kitchen', name:'Kitchen & Dining', x:328, y:160, w:275, h:215, cx:465, cy:267,
-      color:'#2D5E5A', tag:'Lighting · Climate · Scenes',
+      id:'kitchen', name:'Kitchen & Dining', cx:50, cy:35,
+      color:'#C57238', tag:'Lighting · Climate · Scenes',
       features:[
         {title:'Tunable White',       body:'Under-cabinet lighting follows your circadian rhythm — warm morning, crisp afternoon.'},
         {title:'Climate Zone',        body:'Kitchen on its own HVAC zone — pre-cool before guests arrive at 6 PM.'},
@@ -3607,7 +3613,7 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'master', name:'Master Suite', x:4, y:380, w:299, h:224, cx:153, cy:492,
+      id:'master', name:'Master Suite', cx:21, cy:64,
       color:'#C57238', tag:'Shading · Climate · Audio',
       features:[
         {title:'Sunrise Wake Routine', body:'Shades rise slowly with dawn or a set schedule — no alarm sound required.'},
@@ -3617,7 +3623,7 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'theater', name:'Home Theater', x:308, y:380, w:295, h:224, cx:455, cy:492,
+      id:'theater', name:'Home Theater', cx:50, cy:73,
       color:'#C57238', tag:'Theater · Atmos · Control',
       features:[
         {title:'4K Laser Projection',  body:'JVC or Sony 4K laser projector on a 120″ acoustically transparent screen.'},
@@ -3627,7 +3633,7 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'lanai', name:'Covered Lanai', x:608, y:4, w:236, h:371, cx:726, cy:189,
+      id:'lanai', name:'Covered Lanai', cx:72, cy:26,
       color:'#2D5E5A', tag:'Outdoor AV · Lighting · Shade',
       features:[
         {title:'Weather-Rated Audio', body:'Sonance Marine in-ceiling speakers tuned for outdoor acoustics.'},
@@ -3637,7 +3643,7 @@ function SmartHomeDemoPage({navigate}) {
       ],
     },
     {
-      id:'pool', name:'Pool & Spa', x:608, y:380, w:236, h:224, cx:726, cy:492,
+      id:'pool', name:'Pool & Spa', cx:80, cy:68,
       color:'#2D5E5A', tag:'Pool Control · LED · Heat',
       features:[
         {title:'Pool Automation',     body:'Pentair or Jandy integration — temp, jets, and filtration from any device.'},
@@ -3650,6 +3656,7 @@ function SmartHomeDemoPage({navigate}) {
 
   const displayId = hoverId || activeRoom;
   const active = ROOMS.find(r => r.id === displayId) || ROOMS[3];
+  const hovered = hoverId ? ROOMS.find(r => r.id === hoverId) : null;
 
   return (
     <div className="page">
@@ -3657,111 +3664,93 @@ function SmartHomeDemoPage({navigate}) {
       {/* ── Hero ── */}
       <section style={{
         background:'var(--dark)', color:'#FCFAF6',
-        padding:'80px 80px 64px', textAlign:'center',
+        padding:'80px 80px 56px', textAlign:'center',
       }}>
-        <div style={{fontSize:11,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:18,fontFamily:'var(--sans)'}}>Interactive Floor Plan</div>
+        <div style={{fontSize:11,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:18,fontFamily:'var(--sans)'}}>Interactive 3D Demo</div>
         <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(36px,4.5vw,58px)',fontWeight:600,lineHeight:1.1,maxWidth:680,margin:'0 auto 20px'}}>
           See every system <em style={{color:'#F4C9A8',fontStyle:'italic'}}>in place.</em>
         </h1>
         <p style={{fontSize:18,lineHeight:1.7,color:'rgba(252,250,246,.75)',maxWidth:540,margin:'0 auto'}}>
-          Click any room to explore what a fully automated LUMA home looks like — system by system, space by space.
+          Tap any glowing point on the home below to explore the smart systems behind a fully automated LUMA residence.
         </p>
       </section>
 
-      {/* ── Floor Plan ── */}
+      {/* ── 3D Dollhouse Plan ── */}
       <section style={{background:'var(--dark)',padding:'0 48px 80px'}}>
         <div className="demo-wrap">
 
-          {/* SVG Plan */}
           <div className="demo-plan-wrap">
-            <svg className="demo-plan-svg" viewBox="0 0 848 608" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="4" result="blur"/>
-                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
+            <div className="demo-plan-stage">
+              <img className="demo-plan-img" src="/assets/smart-home-demo/dollhouse.jpg" alt="3D cutaway view of a LUMA smart home — every system in place"/>
 
-              {/* Dark outer background = walls */}
-              <rect x="0" y="0" width="848" height="608" fill="#0A0917" rx="4"/>
+              <svg className="demo-plan-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                  <filter id="glow-hot" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="0.7" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
 
-              {/* Outdoor zone subtle tint */}
-              <rect x="604" y="0" width="244" height="608" fill="rgba(45,94,90,.06)" rx="0"/>
-
-              {/* Divider lines (very subtle) */}
-              <line x1="4"   y1="155" x2="603" y2="155" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
-              <line x1="4"   y1="376" x2="603" y2="376" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
-              <line x1="603" y1="4"   x2="603" y2="604" stroke="rgba(245,240,234,.1)"  strokeWidth="1"/>
-              <line x1="608" y1="375" x2="844" y2="375" stroke="rgba(45,94,90,.25)"    strokeWidth="1"/>
-              <line x1="203" y1="4"   x2="203" y2="155" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
-              <line x1="377" y1="4"   x2="377" y2="155" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
-              <line x1="323" y1="160" x2="323" y2="375" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
-              <line x1="303" y1="380" x2="303" y2="604" stroke="rgba(245,240,234,.07)" strokeWidth="1"/>
-
-              {/* Rooms */}
-              {ROOMS.map(room => {
-                const isActive = room.id === activeRoom;
-                const isHover  = room.id === hoverId;
-                const lit      = isActive || isHover;
-                return (
-                  <g key={room.id} className="demo-room"
-                    onClick={()=>setActiveRoom(room.id)}
-                    onMouseEnter={()=>setHoverId(room.id)}
-                    onMouseLeave={()=>setHoverId(null)}
-                  >
-                    {/* Room fill */}
-                    <rect
-                      x={room.x} y={room.y} width={room.w} height={room.h}
-                      fill={lit ? room.color+'22' : 'rgba(245,240,234,.04)'}
-                      stroke={lit ? room.color+'99' : 'rgba(245,240,234,.1)'}
-                      strokeWidth={lit ? 1 : 0.5}
-                      rx="2"
-                      style={{transition:'fill .25s,stroke .25s'}}
-                    />
-                    {/* Room name label */}
-                    <text
-                      x={room.cx} y={room.cy - 18}
-                      textAnchor="middle"
-                      fontSize="8.5"
-                      fill={lit ? room.color : 'rgba(245,240,234,.38)'}
-                      fontFamily="'DM Sans',system-ui,sans-serif"
-                      fontWeight="500"
-                      letterSpacing="0.13em"
-                      style={{textTransform:'uppercase',transition:'fill .25s',userSelect:'none'}}
+                {ROOMS.map(room => {
+                  const isActive = room.id === activeRoom;
+                  const isHover  = room.id === hoverId;
+                  const lit      = isActive || isHover;
+                  return (
+                    <g key={room.id} className="demo-room"
+                      onClick={()=>setActiveRoom(room.id)}
+                      onMouseEnter={()=>setHoverId(room.id)}
+                      onMouseLeave={()=>setHoverId(null)}
                     >
-                      {room.name.toUpperCase()}
-                    </text>
-                    {/* Pulse ring (SMIL animation) */}
-                    {!lit && (
-                      <circle cx={room.cx} cy={room.cy+5} r="5" fill="none" stroke={room.color} strokeWidth="1" opacity="0.5">
-                        <animate attributeName="r"       from="5"  to="16"  dur="2.4s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" from="0.5" to="0"  dur="2.4s" repeatCount="indefinite"/>
-                      </circle>
-                    )}
-                    {/* Hotspot dot */}
-                    <circle
-                      cx={room.cx} cy={room.cy+5} r={lit ? 5 : 3.5}
-                      fill={lit ? room.color : room.color+'99'}
-                      filter={lit ? 'url(#glow-sm)' : undefined}
-                      style={{transition:'all .25s'}}
-                    />
-                    {/* Active center dot */}
-                    {isActive && (
-                      <circle cx={room.cx} cy={room.cy+5} r="2" fill="#FCFAF6"/>
-                    )}
-                  </g>
-                );
-              })}
+                      {/* invisible larger click target */}
+                      <circle cx={room.cx} cy={room.cy} r="4" fill="rgba(255,255,255,0.001)"/>
 
-              {/* Outdoor label */}
-              <text x="726" y="590" textAnchor="middle" fontSize="8" fill="rgba(45,94,90,.6)" fontFamily="'DM Sans',system-ui,sans-serif" letterSpacing="0.14em" style={{userSelect:'none'}}>OUTDOOR</text>
+                      {/* pulse ring (only when not active/hovered) */}
+                      {!lit && (
+                        <circle cx={room.cx} cy={room.cy} r="1.4" fill="none" stroke={room.color} strokeWidth="0.25" opacity="0.85" vectorEffect="non-scaling-stroke">
+                          <animate attributeName="r"       from="1.4"  to="3.6" dur="2.2s" repeatCount="indefinite"/>
+                          <animate attributeName="opacity" from="0.85" to="0"   dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                      )}
 
-              {/* Compass */}
-              <text x="830" y="20" textAnchor="middle" fontSize="8" fill="rgba(245,240,234,.2)" fontFamily="'DM Sans',system-ui,sans-serif" letterSpacing="0.08em">N</text>
-              <line x1="830" y1="23" x2="830" y2="34" stroke="rgba(245,240,234,.15)" strokeWidth="0.8"/>
-              <polygon points="830,18 827.5,25 832.5,25" fill="rgba(245,240,234,.15)"/>
-            </svg>
-            <div className="demo-plan-hint">Click any room to explore its smart systems</div>
+                      {/* outer halo on active */}
+                      {lit && (
+                        <circle cx={room.cx} cy={room.cy} r="2.4" fill={room.color} opacity="0.22"/>
+                      )}
+
+                      {/* main dot — white outer ring + colored center */}
+                      <circle
+                        cx={room.cx} cy={room.cy}
+                        r={lit ? 1.5 : 1.1}
+                        fill="#FCFAF6"
+                        stroke={room.color}
+                        strokeWidth={lit ? 0.4 : 0.3}
+                        vectorEffect="non-scaling-stroke"
+                        filter="url(#glow-hot)"
+                        style={{transition:'all .2s'}}
+                      />
+                      <circle
+                        cx={room.cx} cy={room.cy}
+                        r={lit ? 0.75 : 0.5}
+                        fill={room.color}
+                        style={{transition:'all .2s'}}
+                      />
+                      {/* active inner dot */}
+                      {isActive && (
+                        <circle cx={room.cx} cy={room.cy} r="0.25" fill="#FCFAF6"/>
+                      )}
+                    </g>
+                  );
+                })}
+              </svg>
+
+              {/* Tooltip on hover */}
+              {hovered && (
+                <div className="demo-tooltip" style={{left:`${hovered.cx}%`,top:`${hovered.cy}%`}}>
+                  {hovered.name}
+                </div>
+              )}
+            </div>
+            <div className="demo-plan-hint">Click any glowing point to reveal the system →</div>
           </div>
 
           {/* Feature Panel */}
