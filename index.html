@@ -1051,6 +1051,13 @@ function Nav({navigate}) {
     document.body.style.overflow = mobOpen ? 'hidden' : '';
     return ()=>{ document.body.style.overflow=''; };
   },[mobOpen]);
+  /* Allow ?menu=1 / ?menu=open to auto-open the burger panel (used by previews). */
+  useEffect(()=>{
+    try {
+      const v = new URLSearchParams(window.location.search).get('menu');
+      if (v === '1' || v === 'open') setMobOpen(true);
+    } catch(_) {}
+  },[]);
   const goMobile = (page)=>{ setMobOpen(false); navigate(page); };
   const SECONDARY_LINKS = [
     {label:'Budget Calculator', page:'budget-calculator'},
