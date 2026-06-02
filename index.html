@@ -483,6 +483,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .th-project-overlay{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
 .th-project-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:6px}
 .th-project-name{color:#fff;font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.2}
+.th-project-meta{font-size:12px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5}
 
 .th-credentials{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:36px}
 
@@ -528,8 +529,58 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .th-cta-photo{min-height:280px}
 }
 @media (max-width:759px){
-  .th-grid-3,.th-projects{grid-template-columns:1fr}
+  .th-grid-3,.th-projects{grid-template-columns:1fr;gap:14px}
   .th-why-row{grid-template-columns:1fr;gap:8px}
+  .th-project{height:auto;aspect-ratio:16/11}
+  .th-project-overlay{padding:22px 22px 24px}
+  .th-project-tag{font-size:13px;margin-bottom:8px}
+  .th-project-name{font-size:26px;line-height:1.15}
+  .th-project-meta{font-size:14.5px;margin-top:10px;line-height:1.5;color:rgba(255,255,255,.82)}
+}
+
+/* ─── UNIVERSAL MOBILE READABILITY OVERRIDES (force-override inline grids) ─── */
+@media (max-width:759px){
+  /* Budget wizard option stacks (inline gridTemplateColumns:1fr 1fr) */
+  .bw-option-stack{grid-template-columns:1fr!important;gap:10px!important}
+  .bw-option-stack .bw-option{padding:16px 18px!important}
+  .bw-option-stack .bw-option strong{font-size:16px!important}
+  .bw-option-stack .bw-option span{font-size:14px!important;opacity:.85!important}
+
+  /* Automation page "See the whole home" teaser */
+  .auto-demo-teaser{padding:0 22px!important;grid-template-columns:1fr!important;gap:32px!important}
+  .auto-demo-tiles{grid-template-columns:1fr!important;gap:10px!important}
+  .auto-demo-tiles > div{font-size:15px!important;padding:18px 18px!important}
+  .auto-demo-tiles > div > div:first-child{width:10px!important;height:10px!important}
+
+  /* Case-Modern: 3-fold image strip → stacked, taller, readable captions */
+  .case-mr-photos{grid-template-columns:1fr!important;gap:12px!important}
+  .case-mr-photos > div{height:auto!important;aspect-ratio:16/10!important}
+
+  /* Networking hero 2×2 photo mosaic — bump corner labels for legibility */
+  .lit-hero-wrap > div:last-child > div[style*="grid"] > div > div:last-child{
+    font-size:13px!important;letter-spacing:.1em!important
+  }
+
+  /* Testimonials — readable type on phone */
+  .tm-card{padding:24px 22px;gap:14px}
+  .tm-quote{font-size:19px;line-height:1.45}
+  .tm-card--video .tm-quote{font-size:21px}
+  .tm-author-name{font-size:16px}
+  .tm-author-loc{font-size:14px}
+  .tm-avatar{width:46px;height:46px;font-size:16px}
+
+  /* Stat band — labels + numbers proportional on phone */
+  .stat-band{padding:28px 18px;gap:14px}
+  .stat-band .stat-num{font-size:38px}
+  .stat-band .stat-label{font-size:12.5px;line-height:1.3}
+
+  /* Field photo captions */
+  .fg-cap{font-size:14px;padding:16px 18px;line-height:1.45}
+  .fg-head{padding:0 22px}
+  .fg-note{font-size:13.5px;padding:0 22px;text-align:center;line-height:1.55}
+
+  /* Service-page link chips */
+  .au-chip{font-size:14.5px!important;padding:10px 16px!important}
 }
 
 /* ── AUTOMATION PAGE ── */
@@ -2140,14 +2191,14 @@ function AutomationPage({navigate}) {
 
       {/* 3.5 Interactive Demo teaser */}
       <section className="th-section" style={{background:'var(--dark)',maxWidth:'none',margin:0,padding:'72px 0'}}>
-        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 80px',display:'grid',gridTemplateColumns:'1fr 1fr',gap:64,alignItems:'center'}}>
+        <div className="auto-demo-teaser" style={{maxWidth:1280,margin:'0 auto',padding:'0 80px',display:'grid',gridTemplateColumns:'1fr 1fr',gap:64,alignItems:'center'}}>
           <div>
             <div className="sec-label" style={{color:'var(--accent)'}}>Room by room</div>
             <h2 className="sec-title" style={{color:'#FCFAF6',textAlign:'left'}}>See the whole home <em style={{color:'#F4C9A8'}}>in one view.</em></h2>
             <p style={{fontSize:16,lineHeight:1.7,color:'rgba(252,250,246,.72)',maxWidth:460,margin:'0 0 32px',fontFamily:'var(--sans)'}}>Explore an interactive floor plan — every smart system, every room, exactly how we'd build it for your Gulf Coast home.</p>
             <button className="btn-solid" style={{fontSize:15,padding:'13px 26px'}} onClick={()=>navigate('smart-home-demo')}>Explore the floor plan →</button>
           </div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
+          <div className="auto-demo-tiles" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
             {[
               {label:'Lighting & Scenes',  color:'#C57238'},
               {label:'Shading & Climate',  color:'#C57238'},
@@ -3520,15 +3571,15 @@ function CasesPage({navigate}) {
           ))}
         </div>
 
-        {/* ── Regular project cards (3-column) ── */}
-        <div className="th-projects" style={{gridTemplateColumns:'repeat(3,1fr)'}}>
+        {/* ── Regular project cards (3-column desktop → 1 column on phones via global media query) ── */}
+        <div className="th-projects">
           {PROJECTS.map(p => (
             <div key={p.name} className="th-project" onClick={()=>navigate('contact')} role="button" tabIndex={0}>
               <img src={p.img} alt={`${p.name} — ${p.loc}`}/>
               <div className="th-project-overlay">
                 <div className="th-project-tag">{p.loc} · {p.sqft}</div>
                 <div className="th-project-name">{p.name}</div>
-                <div style={{fontSize:12,color:'rgba(255,255,255,.7)',marginTop:6,lineHeight:1.5}}>{p.meta}</div>
+                <div className="th-project-meta">{p.meta}</div>
               </div>
             </div>
           ))}
@@ -3749,7 +3800,7 @@ function CaseModernPage({navigate}) {
             </div>
           </div>
 
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10,alignItems:'start'}}>
+          <div className="case-mr-photos" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10,alignItems:'start'}}>
             {/* projMrTv: 560×876 portrait → contain */}
             <div style={{height:280,overflow:'hidden',borderRadius:10,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
               <img src={PHOTOS.projMrTv} alt="Sony TV over fireplace" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
@@ -3872,6 +3923,22 @@ function CaseBigHousePage({navigate}) {
 function SmartHomeDemoPage({navigate}) {
   const [hoverId, setHoverId] = React.useState(null);
   const [modalRoomId, setModalRoomId] = React.useState(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(()=>{
+    const mq = window.matchMedia('(max-width: 759px)');
+    const sync = ()=>setIsMobile(mq.matches);
+    sync();
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    else mq.addListener(sync);
+    return ()=>{
+      if (mq.removeEventListener) mq.removeEventListener('change', sync);
+      else mq.removeListener(sync);
+    };
+  },[]);
+
+  /* SVG dots scale with viewport — bigger and easier to tap on phones (60+ users) */
+  const dotScale = isMobile ? 1.55 : 1.0;
 
   /* Each room: centroid (cx,cy) and a rough polygon (shape) tracing the room on
      the 3D dollhouse render. All coordinates are percent (0-100). The polygon
@@ -4112,23 +4179,23 @@ function SmartHomeDemoPage({navigate}) {
                       />
 
                       {/* Triple pulse rings — always running so zones never look dead */}
-                      <circle cx={room.cx} cy={room.cy} r="2.5" fill="none" stroke={room.color} strokeWidth="0.55" opacity="0.95" vectorEffect="non-scaling-stroke" pointerEvents="none">
-                        <animate attributeName="r"       from="2.5" to="8"   dur="2.4s" repeatCount="indefinite"/>
+                      <circle cx={room.cx} cy={room.cy} r={2.5*dotScale} fill="none" stroke={room.color} strokeWidth="0.55" opacity="0.95" vectorEffect="non-scaling-stroke" pointerEvents="none">
+                        <animate attributeName="r"       from={2.5*dotScale} to={8*dotScale} dur="2.4s" repeatCount="indefinite"/>
                         <animate attributeName="opacity" from="0.95" to="0" dur="2.4s" repeatCount="indefinite"/>
                       </circle>
-                      <circle cx={room.cx} cy={room.cy} r="2.5" fill="none" stroke={room.color} strokeWidth="0.55" opacity="0.95" vectorEffect="non-scaling-stroke" pointerEvents="none">
-                        <animate attributeName="r"       from="2.5" to="8"   dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+                      <circle cx={room.cx} cy={room.cy} r={2.5*dotScale} fill="none" stroke={room.color} strokeWidth="0.55" opacity="0.95" vectorEffect="non-scaling-stroke" pointerEvents="none">
+                        <animate attributeName="r"       from={2.5*dotScale} to={8*dotScale} dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
                         <animate attributeName="opacity" from="0.95" to="0" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
                       </circle>
-                      <circle cx={room.cx} cy={room.cy} r="2.5" fill="none" stroke={room.color} strokeWidth="0.55" opacity="0.95" vectorEffect="non-scaling-stroke" pointerEvents="none">
-                        <animate attributeName="r"       from="2.5" to="8"   dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
+                      <circle cx={room.cx} cy={room.cy} r={2.5*dotScale} fill="none" stroke={room.color} strokeWidth="0.55" opacity="0.95" vectorEffect="non-scaling-stroke" pointerEvents="none">
+                        <animate attributeName="r"       from={2.5*dotScale} to={8*dotScale} dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
                         <animate attributeName="opacity" from="0.95" to="0" dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
                       </circle>
 
                       {/* MAIN DOT — large white circle with colored stroke */}
                       <circle
                         cx={room.cx} cy={room.cy}
-                        r={isHover ? 3.0 : 2.4}
+                        r={(isHover ? 3.0 : 2.4) * dotScale}
                         fill="#FCFAF6"
                         stroke={room.color}
                         strokeWidth={isHover ? 0.8 : 0.55}
@@ -4139,14 +4206,14 @@ function SmartHomeDemoPage({navigate}) {
                       />
                       <circle
                         cx={room.cx} cy={room.cy}
-                        r={isHover ? 1.55 : 1.15}
+                        r={(isHover ? 1.55 : 1.15) * dotScale}
                         fill={room.color}
                         style={{transition:'all .2s'}}
                         pointerEvents="none"
                       />
                       <circle
                         cx={room.cx} cy={room.cy}
-                        r="0.45"
+                        r={0.45 * dotScale}
                         fill="#FCFAF6"
                         opacity={isHover ? 1 : 0.7}
                         pointerEvents="none"
