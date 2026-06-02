@@ -743,6 +743,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 @keyframes demo-modal-fade{from{opacity:0}to{opacity:1}}
 @keyframes demo-modal-zoom{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
+/* PORTFOLIO ROW (lighting page service blocks) */
+.portfolio-row{display:flex;gap:48px;align-items:center;flex-direction:row}
+.portfolio-row--flip{flex-direction:row-reverse}
+.portfolio-row-img{flex:0 0 56%;border-radius:14px;overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,.11)}
+.portfolio-row-img img{width:100%;height:420px;object-fit:cover;display:block}
+.portfolio-row-text{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.portfolio-row-eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.portfolio-row-title{margin:0;font-family:var(--serif);font-size:30px;font-weight:600;color:var(--dark);line-height:1.2}
+.portfolio-row-body{margin:0;font-size:16px;line-height:1.65;color:var(--mid)}
+
 /* DEMO HERO (3D demo page) — responsive sizing */
 .demo-hero{padding:80px 80px 56px}
 .demo-hero-title{font-size:clamp(36px,4.5vw,58px)}
@@ -797,8 +807,23 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
   /* Universal section padding overrides */
   .moments-section{padding:48px 22px 56px}
+  .moments-grid{grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+  .moment-card{height:240px}
+  .moment-name{font-size:22px}
+  .moment-desc{font-size:13.5px}
   .split-hero{grid-template-columns:1fr;gap:28px;padding:48px 22px}
   .contact-grid{grid-template-columns:1fr;gap:28px;padding:48px 22px}
+
+  /* Lighting page portfolio rows — stack image over text */
+  .portfolio-row,.portfolio-row--flip{flex-direction:column;gap:20px}
+  .portfolio-row-img{flex:none;width:100%}
+  .portfolio-row-img img{height:240px}
+  .portfolio-row-title{font-size:24px}
+  .portfolio-row-body{font-size:15px}
+
+  /* Case study body — stack 2-col layouts */
+  .case-2col{grid-template-columns:1fr!important;gap:32px!important}
+  .case-body{padding:40px 22px 56px!important}
 
   /* Interior page hero (Budget Calculator, Lighting, Audio, etc. — all use .lit-hero-wrap) */
   .lit-hero-wrap{grid-template-columns:1fr!important;min-height:auto!important}
@@ -1403,24 +1428,17 @@ const PORTFOLIO_ITEMS = [
 ];
 
 function PortfolioRow({item, navigate}) {
-  const imgEl = (
-    <div style={{flex:'0 0 56%', borderRadius:14, overflow:'hidden', boxShadow:'0 8px 48px rgba(0,0,0,0.11)'}}>
-      <img src={PHOTOS[item.img]} alt={item.headline}
-        style={{width:'100%', height:420, objectFit:'cover', display:'block'}}/>
-    </div>
-  );
-  const textEl = (
-    <div style={{flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:14, padding: item.flip ? '0 40px 0 0' : '0 0 0 40px'}}>
-      <span style={{fontFamily:'var(--font-body)', fontSize:12, letterSpacing:'0.12em', textTransform:'uppercase', color:'var(--accent)', fontWeight:600}}>{item.eyebrow}</span>
-      <h3 style={{margin:0, fontFamily:'var(--font-head)', fontSize:28, fontWeight:400, color:'var(--ink)', lineHeight:1.2}}>{item.headline}</h3>
-      <p style={{margin:0, fontFamily:'var(--font-body)', fontSize:16, lineHeight:1.65, color:'var(--ink-light)'}}>{item.desc}</p>
-      <button className="btn-solid" style={{alignSelf:'flex-start', marginTop:6}} onClick={()=>navigate('contact')}>{item.cta}</button>
-    </div>
-  );
   return (
-    <div style={{display:'flex', gap:0, alignItems:'center', flexDirection: item.flip ? 'row-reverse' : 'row'}}>
-      {imgEl}
-      {textEl}
+    <div className={`portfolio-row${item.flip ? ' portfolio-row--flip' : ''}`}>
+      <div className="portfolio-row-img">
+        <img src={PHOTOS[item.img]} alt={item.headline}/>
+      </div>
+      <div className="portfolio-row-text">
+        <span className="portfolio-row-eyebrow">{item.eyebrow}</span>
+        <h3 className="portfolio-row-title">{item.headline}</h3>
+        <p className="portfolio-row-body">{item.desc}</p>
+        <button className="btn-solid" style={{alignSelf:'flex-start',marginTop:6,fontSize:15,padding:'13px 22px'}} onClick={()=>navigate('contact')}>{item.cta}</button>
+      </div>
     </div>
   );
 }
@@ -1689,24 +1707,31 @@ function DesignersPage({navigate}) {
         <h2 className="sec-title" style={{marginBottom:36}}>A clear process, <em>start to finish.</em></h2>
 
         {/* Tab buttons */}
-        <div style={{display:'flex',gap:0,justifyContent:'center',marginBottom:52,border:'1px solid var(--cream3)',borderRadius:100,width:'fit-content',margin:'0 auto 52px',overflow:'hidden'}}>
+        <div className="dz-tabs">
           {[
-            {key:'designers', label:'For Interior Designers & Architects'},
-            {key:'builders',  label:'For Custom Builders & Developers'},
+            {key:'designers', label:'For Interior Designers & Architects', short:'Designers & Architects'},
+            {key:'builders',  label:'For Custom Builders & Developers', short:'Builders & Developers'},
           ].map(t=>(
             <button key={t.key} type="button"
               onClick={()=>setTab(t.key)}
-              style={{
-                padding:'12px 28px', fontSize:14, fontFamily:'var(--sans)', fontWeight:600,
-                border:'none', cursor:'pointer', whiteSpace:'nowrap', letterSpacing:'.02em',
-                background: tab===t.key ? 'var(--dark)' : 'transparent',
-                color: tab===t.key ? '#fff' : 'var(--mid)',
-                transition:'background .18s,color .18s',
-              }}>
-              {t.label}
+              className={`dz-tab${tab===t.key ? ' dz-tab--active' : ''}`}>
+              <span className="dz-tab-long">{t.label}</span>
+              <span className="dz-tab-short">{t.short}</span>
             </button>
           ))}
         </div>
+        <style>{`
+          .dz-tabs{display:flex;justify-content:center;border:1px solid var(--cream3);border-radius:100px;width:fit-content;margin:0 auto 52px;overflow:hidden}
+          .dz-tab{padding:12px 28px;font-size:14px;font-family:var(--sans);font-weight:600;border:none;cursor:pointer;white-space:nowrap;letter-spacing:.02em;background:transparent;color:var(--mid);transition:background .18s,color .18s}
+          .dz-tab--active{background:var(--dark);color:#fff}
+          .dz-tab-short{display:none}
+          @media(max-width:639px){
+            .dz-tabs{width:100%;border-radius:14px}
+            .dz-tab{flex:1;padding:14px 10px;font-size:13.5px;white-space:normal;line-height:1.25}
+            .dz-tab-long{display:none}
+            .dz-tab-short{display:inline}
+          }
+        `}</style>
 
         {/* Steps */}
         <div style={{maxWidth:800,margin:'0 auto',display:'flex',flexDirection:'column',gap:0}}>
