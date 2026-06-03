@@ -191,7 +191,7 @@
         if (btn) { btn.disabled = false; btn.innerHTML = btn.dataset.orig || 'Send'; }
       }, function () {
         if (status) {
-          status.textContent = 'Something went wrong. Please call +1 (941) 555-1234 or email hello@lumasmarthome.com.';
+          status.textContent = 'Something went wrong. Please call +1 (941) 217-1616 or email hello@lumasmarthome.com.';
           status.style.color = '#B56B3A';
         }
         if (btn) { btn.disabled = false; btn.innerHTML = btn.dataset.orig || 'Send'; }

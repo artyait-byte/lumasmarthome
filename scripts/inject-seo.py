@@ -39,7 +39,7 @@ LOCAL_BUSINESS_LD = """
   \"url\": \"SITE_URL/\",
   \"logo\": \"SITE_URL/assets/logo.svg\",
   \"image\": \"SITE_URL/assets/og-cover.svg\",
-  \"telephone\": \"+1-941-555-1234\",
+  \"telephone\": \"+1-941-217-1616\",
   \"email\": \"hello@lumasmarthome.com\",
   \"priceRange\": \"$15,000 - $50,000+\",
   \"address\": {

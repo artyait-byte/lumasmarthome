@@ -22,33 +22,33 @@
   --sans:'DM Sans',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--dark);font-family:var(--sans);font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--cream);color:var(--dark);font-family:var(--sans);font-size:19px;line-height:1.72;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* ── TOP BAR ── */
-.topbar{background:var(--dark);color:rgba(255,255,255,.65);font-size:12px;letter-spacing:.02em;display:flex;justify-content:space-between;align-items:center;padding:7px 48px}
+.topbar{background:var(--dark);color:rgba(255,255,255,.78);font-size:14.5px;letter-spacing:.02em;display:flex;justify-content:space-between;align-items:center;padding:10px 48px;font-weight:500}
 
 /* ── NAV ── */
-.nav{display:flex;align-items:center;padding:0 48px;height:66px;border-bottom:1px solid var(--cream2);background:var(--cream);position:sticky;top:0;z-index:200}
-.nav-logo{display:flex;align-items:center;gap:6px;margin-right:36px;cursor:pointer}
-.logo-dot{width:11px;height:11px;background:var(--accent);border-radius:50%}
+.nav{display:flex;align-items:center;padding:0 48px;height:80px;border-bottom:1px solid var(--cream2);background:var(--cream);position:sticky;top:0;z-index:200}
+.nav-logo{display:flex;align-items:center;gap:7px;margin-right:36px;cursor:pointer}
+.logo-dot{width:12px;height:12px;background:var(--accent);border-radius:50%}
 .logo-text{display:flex;flex-direction:column;line-height:1}
-.logo-luma{font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:.08em}
-.logo-sub{font-size:8px;letter-spacing:.18em;text-transform:uppercase;opacity:.5;margin-top:1px}
-.nav-links{display:flex;align-items:center;gap:24px;flex:1;font-size:14px}
-.nav-link{color:var(--dark);opacity:.75;transition:opacity .18s;cursor:pointer;white-space:nowrap}
+.logo-luma{font-family:var(--serif);font-size:27px;font-weight:700;letter-spacing:.08em}
+.logo-sub{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.62;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:24px;flex:1;font-size:16.5px}
+.nav-link{color:var(--dark);opacity:.82;transition:opacity .18s;cursor:pointer;white-space:nowrap;font-weight:500}
 .nav-link:hover{opacity:1}
-.nav-link--feature{display:inline-flex;align-items:center;gap:7px;color:var(--accent);opacity:1;font-weight:500;padding:6px 12px;border-radius:100px;border:1px solid rgba(197,114,56,.35);background:rgba(197,114,56,.06);transition:background .18s,border-color .18s,transform .18s}
+.nav-link--feature{display:inline-flex;align-items:center;gap:8px;color:var(--accent);opacity:1;font-weight:600;padding:8px 16px;border-radius:100px;border:1px solid rgba(197,114,56,.35);background:rgba(197,114,56,.06);transition:background .18s,border-color .18s,transform .18s;font-size:16px}
 .nav-link--feature:hover{background:rgba(197,114,56,.13);border-color:var(--accent);transform:translateY(-1px)}
-.nav-link-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(197,114,56,.6);animation:nav-pulse 2s ease-out infinite}
+.nav-link-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(197,114,56,.6);animation:nav-pulse 2s ease-out infinite}
 @keyframes nav-pulse{0%{box-shadow:0 0 0 0 rgba(197,114,56,.6)}70%{box-shadow:0 0 0 8px rgba(197,114,56,0)}100%{box-shadow:0 0 0 0 rgba(197,114,56,0)}}
 .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
-.btn-ghost{border:1.5px solid var(--dark);border-radius:100px;padding:7px 18px;font-size:13px;font-family:var(--sans);background:transparent;white-space:nowrap;transition:border-color .18s,color .18s}
+.btn-ghost{border:1.5px solid var(--dark);border-radius:100px;padding:11px 22px;font-size:15.5px;font-family:var(--sans);background:transparent;white-space:nowrap;transition:border-color .18s,color .18s;font-weight:500}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
-.btn-solid{background:var(--accent);color:#fff;border-radius:100px;padding:8px 20px;font-size:13px;font-family:var(--sans);display:flex;align-items:center;gap:5px;white-space:nowrap;transition:background .18s;border:none}
+.btn-solid{background:var(--accent);color:#fff;border-radius:100px;padding:12px 24px;font-size:15.5px;font-family:var(--sans);display:flex;align-items:center;gap:7px;white-space:nowrap;transition:background .18s;border:none;font-weight:600}
 .btn-solid:hover{background:var(--accent2)}
-.dropdown-trigger{display:flex;align-items:center;gap:5px;border:1.5px solid var(--accent);border-radius:100px;padding:6px 14px;font-size:14px;cursor:pointer;transition:background .18s;white-space:nowrap;font-family:var(--sans)}
+.dropdown-trigger{display:flex;align-items:center;gap:7px;border:1.5px solid var(--accent);border-radius:100px;padding:9px 18px;font-size:16.5px;cursor:pointer;transition:background .18s;white-space:nowrap;font-family:var(--sans);font-weight:500}
 .dropdown-trigger:hover,.dropdown-trigger.open{background:rgba(197,114,56,.07)}
 .chevron{transition:transform .25s}
 .chevron.open{transform:rotate(180deg)}
@@ -85,22 +85,42 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .nav-mobile-contact strong{color:var(--dark);font-weight:600;font-size:14px}
 @keyframes mob-fade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
+/* Intermediate desktop — keep nav from wrapping between 960–1240px while still readable */
+@media (min-width:960px) and (max-width:1240px){
+  .nav{padding:0 28px;height:74px}
+  .nav-logo{margin-right:24px}
+  .logo-luma{font-size:24px}
+  .logo-sub{font-size:9.5px}
+  .nav-links{gap:18px;font-size:15.5px}
+  .nav-link--feature{padding:7px 13px;font-size:14.5px;gap:7px}
+  .dropdown-trigger{padding:8px 14px;font-size:15.5px}
+  .btn-ghost{padding:9px 16px;font-size:14.5px}
+  .btn-solid{padding:10px 18px;font-size:14.5px}
+  .nav-actions{gap:8px}
+}
+@media (min-width:960px) and (max-width:1100px){
+  /* At very narrow desktop, drop the secondary "Customer Support" pill so the
+     primary CTA + main nav can breathe — the link is still in the footer / hamburger. */
+  .nav-actions .btn-ghost{display:none}
+  .nav-links{gap:14px;font-size:15px}
+}
 @media (max-width:959px){
-  .nav{padding:0 22px;height:62px}
+  .nav{padding:0 22px;height:68px}
   .nav-logo{margin-right:0}
   .nav-links,.nav-actions{display:none}
   .nav-burger{display:flex}
-  .topbar{padding:6px 22px;font-size:11px;letter-spacing:.01em;gap:8px;flex-wrap:wrap;justify-content:center;text-align:center}
+  .topbar{padding:8px 22px;font-size:12.5px;letter-spacing:.01em;gap:8px;flex-wrap:wrap;justify-content:center;text-align:center}
   .topbar span:first-child{display:none}
 }
 @media (max-width:599px){
-  .topbar{font-size:10.5px;padding:5px 16px}
-  .logo-luma{font-size:20px}
+  .topbar{font-size:12px;padding:7px 16px}
+  .logo-luma{font-size:22px}
+  .logo-sub{font-size:9.5px}
   .nav{padding:0 16px}
 }
 
 /* ── MEGA DROPDOWN ── */
-.dropdown-wrap{position:absolute;top:66px;left:0;right:0;background:#fff;border-bottom:1px solid var(--cream2);box-shadow:0 12px 48px rgba(0,0,0,.1);z-index:190;display:none}
+.dropdown-wrap{position:absolute;top:74px;left:0;right:0;background:#fff;border-bottom:1px solid var(--cream2);box-shadow:0 12px 48px rgba(0,0,0,.1);z-index:190;display:none}
 .dropdown-wrap.open{display:block}
 .dropdown-inner{display:grid;grid-template-columns:1fr 1fr 300px;padding:28px 48px;gap:0}
 .dropdown-col{display:flex;flex-direction:column;gap:2px}
@@ -108,24 +128,24 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .dropdown-col:last-child{border:none;margin-left:20px;padding-left:0}
 .dd-item{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border-radius:10px;cursor:pointer;transition:background .15s}
 .dd-item:hover,.dd-item.active{background:var(--cream)}
-.dd-text h4{font-size:14px;font-weight:500;margin-bottom:1px}
-.dd-text p{font-size:12px;color:var(--mid);line-height:1.35}
+.dd-text h4{font-size:17px;font-weight:600;margin-bottom:3px;letter-spacing:-.005em}
+.dd-text p{font-size:14.5px;color:var(--mid);line-height:1.45}
 .dd-preview{border-radius:14px;overflow:hidden;position:relative;height:220px;width:100%}
 .dd-preview img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
 .dd-preview:hover img{transform:scale(1.04)}
 .dd-preview-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 14px 14px;background:linear-gradient(transparent,rgba(0,0,0,.7))}
-.dd-preview-tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:5px;margin-bottom:4px}
-.dd-preview-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.dd-preview-name{color:#fff;font-size:16px;font-weight:500}
+.dd-preview-tag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9);display:flex;align-items:center;gap:7px;margin-bottom:6px;font-weight:600}
+.dd-preview-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.dd-preview-name{color:#fff;font-size:19px;font-weight:500;letter-spacing:-.005em}
 
 /* ── PHOTO CARD (shared) ── */
 .photo-card{position:relative;border-radius:18px;overflow:hidden;cursor:pointer}
 .photo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
 .photo-card:hover img{transform:scale(1.04)}
-.photo-card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:linear-gradient(transparent 35%,rgba(0,0,0,.6))}
-.photo-card-icon{width:30px;height:30px;margin-bottom:10px}
-.photo-card-title{color:#fff;font-size:16px;font-weight:500;line-height:1.3}
-.photo-card-explore{color:var(--accent);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-top:5px;opacity:0;transition:opacity .2s}
+.photo-card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;background:linear-gradient(transparent 35%,rgba(0,0,0,.6))}
+.photo-card-icon{width:32px;height:32px;margin-bottom:11px}
+.photo-card-title{color:#fff;font-size:17.5px;font-weight:500;line-height:1.3}
+.photo-card-explore{color:var(--accent);font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-top:6px;opacity:0;transition:opacity .2s;font-weight:600}
 .photo-card:hover .photo-card-explore{opacity:1}
 
 /* ── PAGES ── */
@@ -133,11 +153,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* ── HERO (shared — used by interior pages: Shading, Designers, etc.) ── */
 .hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:72px 80px 80px;max-width:1280px;margin:0 auto}
-.hero-tag{display:inline-flex;border:1px solid var(--teal);color:var(--teal);border-radius:100px;padding:5px 14px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px}
-.hero-title{font-family:var(--serif);font-size:52px;line-height:1.08;font-weight:600;margin-bottom:22px;text-wrap:pretty}
+.hero-tag{display:inline-flex;border:1px solid var(--teal);color:var(--teal);border-radius:100px;padding:6px 16px;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px;font-weight:600}
+.hero-title{font-family:var(--serif);font-size:clamp(50px,4.9vw,70px);line-height:1.06;font-weight:600;margin-bottom:26px;text-wrap:pretty;letter-spacing:-.005em}
 .hero-title em{color:var(--accent);font-style:italic}
-.hero-body{color:var(--mid);line-height:1.72;margin-bottom:14px;font-size:15px}
-.hero-link{color:var(--accent);font-size:14px;border-bottom:1px solid var(--accent);display:inline-block;padding-bottom:1px;cursor:pointer}
+.hero-body{color:var(--mid);line-height:1.72;margin-bottom:18px;font-size:19px}
+.hero-link{color:var(--accent);font-size:17.5px;border-bottom:1px solid var(--accent);display:inline-block;padding-bottom:1px;cursor:pointer;font-weight:500}
 .hero-img{border-radius:20px;overflow:hidden;position:relative;background:#e8e2d5;aspect-ratio:1/1}
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center center}
 
@@ -192,65 +212,65 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   display:grid; grid-template-columns:minmax(0,700px);
 }
 .home-hero-eyebrow{
-  display:inline-flex; align-items:center; gap:12px;
-  font-size:clamp(13px,1.05vw,15px); letter-spacing:.08em; text-transform:none;
+  display:inline-flex; align-items:center; gap:14px;
+  font-size:clamp(15.5px,1.2vw,18px); letter-spacing:.08em; text-transform:none;
   font-weight:600;
-  color:rgba(252,250,246,.95); margin-bottom:22px;
+  color:rgba(252,250,246,.95); margin-bottom:26px;
 }
-.home-hero-eyebrow::before{ content:''; width:40px; height:2px; background:var(--accent); flex-shrink:0 }
+.home-hero-eyebrow::before{ content:''; width:48px; height:2px; background:var(--accent); flex-shrink:0 }
 .home-hero-title{
   font-family:var(--serif); font-weight:600;
-  font-size:clamp(44px,5.6vw,76px); line-height:1.08;
+  font-size:clamp(56px,6.6vw,96px); line-height:1.05;
   letter-spacing:-.008em; color:#FCFAF6;
-  margin:0 0 22px; text-wrap:balance;
+  margin:0 0 30px; text-wrap:balance;
   text-shadow:0 2px 28px rgba(0,0,0,.35), 0 1px 3px rgba(0,0,0,.45);
 }
 .home-hero-title em{ color:#F4C9A8; font-style:italic; font-weight:500 }
 .home-hero-sub{
-  font-size:clamp(17px,1.35vw,20px); line-height:1.72;
+  font-size:clamp(20.5px,1.7vw,25.5px); line-height:1.65;
   font-weight:500;
-  color:rgba(252,250,246,.95); max-width:620px; margin:0 0 18px;
+  color:rgba(252,250,246,.96); max-width:680px; margin:0 0 22px;
   text-shadow:0 1px 14px rgba(0,0,0,.35);
 }
 .home-hero-sub--soft{
-  font-size:clamp(16px,1.2vw,18px); line-height:1.7;
-  color:rgba(252,250,246,.88); max-width:620px; margin:0 0 14px;
+  font-size:clamp(19px,1.5vw,22.5px); line-height:1.65;
+  color:rgba(252,250,246,.9); max-width:680px; margin:0 0 18px;
 }
 .home-hero-place{
   display:flex; align-items:flex-start; gap:14px;
-  margin:26px 0 36px;
-  font-size:clamp(13px,1vw,14px); letter-spacing:.06em; text-transform:none;
+  margin:30px 0 40px;
+  font-size:clamp(16px,1.2vw,18.5px); letter-spacing:.04em; text-transform:none;
   font-weight:600;
-  color:rgba(252,250,246,.92);
-  line-height:1.45;
+  color:rgba(252,250,246,.95);
+  line-height:1.5;
 }
-.home-hero-place svg{ flex:0 0 auto; opacity:.95; width:18px; height:18px; margin-top:2px }
+.home-hero-place svg{ flex:0 0 auto; opacity:.95; width:22px; height:22px; margin-top:1px }
 .home-hero-cta{ display:flex; flex-wrap:wrap; gap:14px; align-items:center }
 .home-hero-cta-primary{
   background:var(--accent); color:#fff; border:none; border-radius:100px;
-  padding:16px 30px; font-size:clamp(15px,1.05vw,17px); letter-spacing:.03em; font-family:var(--sans); font-weight:600;
+  padding:18px 34px; font-size:clamp(17.5px,1.25vw,20px); letter-spacing:.03em; font-family:var(--sans); font-weight:600;
   cursor:pointer; display:inline-flex; align-items:center; gap:10px;
   transition:transform .2s, background .2s;
   box-shadow:0 14px 40px -12px rgba(197,114,56,.55);
-  min-height:48px;
+  min-height:56px;
 }
 .home-hero-cta-primary:hover{ background:var(--accent2); transform:translateY(-1px) }
 .home-hero-cta-ghost{
   background:rgba(252,250,246,.08); color:#FCFAF6; border:2px solid rgba(252,250,246,.55);
-  border-radius:100px; padding:14px 26px; font-size:clamp(15px,1.05vw,17px); letter-spacing:.03em; font-weight:600;
+  border-radius:100px; padding:16px 30px; font-size:clamp(17.5px,1.25vw,20px); letter-spacing:.03em; font-weight:600;
   font-family:var(--sans); cursor:pointer;
   transition:border-color .2s, background .2s;
-  min-height:48px;
+  min-height:56px;
 }
 .home-hero-cta-ghost:hover{ border-color:#FCFAF6; background:rgba(252,250,246,.14) }
 .home-hero-trust{
   position:absolute; left:0; right:0; bottom:0; z-index:3;
-  padding:20px 80px;
+  padding:22px 80px;
   display:flex; align-items:center; justify-content:space-between;
   gap:22px; flex-wrap:wrap;
   background:linear-gradient(180deg, transparent, rgba(13,29,44,.82) 58%);
-  font-size:clamp(11px,.95vw,13px); letter-spacing:.1em; text-transform:uppercase;
-  color:rgba(252,250,246,.82);
+  font-size:clamp(12.5px,1vw,14.5px); letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(252,250,246,.85);
 }
 .home-hero-brands{ display:flex; align-items:center; gap:26px; flex-wrap:wrap }
 .home-hero-brands span{ position:relative; padding-right:26px }
@@ -260,7 +280,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   background:rgba(249,245,239,.42); transform:translateY(-50%);
 }
 .home-hero-brands span:last-child{ padding-right:0 }
-.home-hero-license{ color:rgba(252,250,246,.68); font-size:clamp(11px,.9vw,12.5px); letter-spacing:.06em; text-transform:none; line-height:1.35; max-width:340px; text-align:right }
+.home-hero-license{ color:rgba(252,250,246,.74); font-size:clamp(12.5px,.95vw,14px); letter-spacing:.06em; text-transform:none; line-height:1.45; max-width:360px; text-align:right }
 .home-hero-scroll{
   position:absolute; left:50%; bottom:88px; transform:translateX(-50%);
   z-index:3; display:flex; flex-direction:column; align-items:center; gap:10px;
@@ -297,10 +317,10 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 }
 
 /* ── SECTION HEADER ── */
-.sec-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;text-align:center}
-.sec-title{font-family:var(--serif);font-size:48px;line-height:1.1;font-weight:600;text-align:center;text-wrap:pretty}
+.sec-label{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;text-align:center;font-weight:600}
+.sec-title{font-family:var(--serif);font-size:clamp(44px,4.4vw,64px);line-height:1.08;font-weight:600;text-align:center;text-wrap:pretty;letter-spacing:-.005em}
 .sec-title em{color:var(--accent);font-style:italic}
-.sec-body{max-width:520px;margin:14px auto 0;color:var(--mid);text-align:center;line-height:1.7}
+.sec-body{max-width:620px;margin:20px auto 0;color:var(--mid);text-align:center;line-height:1.7;font-size:19.5px}
 
 /* ── SERVICES GRID ── */
 .services-section{padding:0 48px 80px}
@@ -316,9 +336,9 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .moment-card:hover img{transform:scale(1.04)}
 .moment-grade{position:absolute;inset:0}
 .moment-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 20px;background:linear-gradient(transparent 20%,rgba(0,0,0,.65))}
-.moment-time{font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.7);margin-bottom:6px}
-.moment-name{font-family:var(--serif);font-size:26px;font-weight:600;color:#fff;margin-bottom:8px}
-.moment-desc{font-size:13px;color:rgba(255,255,255,.75);line-height:1.5;text-wrap:pretty}
+.moment-time{font-size:14.5px;letter-spacing:.1em;color:rgba(255,255,255,.8);margin-bottom:8px;font-weight:600}
+.moment-name{font-family:var(--serif);font-size:34px;font-weight:600;color:#fff;margin-bottom:10px;line-height:1.1;letter-spacing:-.005em}
+.moment-desc{font-size:16.5px;color:rgba(255,255,255,.86);line-height:1.55;text-wrap:pretty}
 
 /* ── PAGE HEROS (interior sections) ── */
 .split-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:72px 80px;max-width:1280px;margin:0 auto}
@@ -331,23 +351,23 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* ── CONTACT ── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:72px 80px;max-width:1280px;margin:0 auto}
-.contact-title{font-family:var(--serif);font-size:40px;font-weight:600;margin-bottom:28px}
-.form-group{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
-.form-input,.form-select,.form-textarea{width:100%;border:1.5px solid var(--cream3);border-radius:10px;padding:11px 14px;font-family:var(--sans);font-size:14px;background:#fff;color:var(--dark);outline:none;transition:border-color .18s}
+.contact-title{font-family:var(--serif);font-size:clamp(44px,3.9vw,58px);font-weight:600;margin-bottom:30px;line-height:1.08;letter-spacing:-.005em}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:18px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.form-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);font-weight:600}
+.form-input,.form-select,.form-textarea{width:100%;border:1.5px solid var(--cream3);border-radius:10px;padding:13px 15px;font-family:var(--sans);font-size:16px;background:#fff;color:var(--dark);outline:none;transition:border-color .18s}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent)}
 .form-textarea{resize:vertical;min-height:110px}
 .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6876' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
-.service-area{background:#fff;border-radius:16px;padding:24px 28px;margin-bottom:20px}
-.service-area h3{font-size:16px;font-weight:500;margin-bottom:16px}
-.service-area ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.service-area li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--mid)}
+.service-area{background:#fff;border-radius:16px;padding:26px 30px;margin-bottom:22px}
+.service-area h3{font-size:18px;font-weight:600;margin-bottom:16px;letter-spacing:-.005em}
+.service-area ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.service-area li{display:flex;align-items:flex-start;gap:10px;font-size:15.5px;color:var(--mid);line-height:1.55}
 .service-area li::before{content:'✓';color:var(--accent);font-weight:600;flex-shrink:0;margin-top:2px}
 
 /* ── FOOTER ── */
-.footer{background:var(--dark);color:rgba(255,255,255,.55);font-size:13px;padding:40px 48px;display:flex;justify-content:space-between;align-items:center}
-.footer-logo{color:#fff;font-family:var(--serif);font-size:18px;letter-spacing:.06em}
+.footer{background:var(--dark);color:rgba(255,255,255,.65);font-size:14.5px;padding:44px 48px;display:flex;justify-content:space-between;align-items:center;line-height:1.55}
+.footer-logo{color:#fff;font-family:var(--serif);font-size:20px;letter-spacing:.06em}
 
 /* ── BENTO (Smart Home Solutions) ── */
 .cat-bento{
@@ -412,14 +432,14 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;max-width:92%;
 }
 .cat-bento .cat-text .eyebrow{
-  font-family:var(--sans);font-size:.72rem;
-  letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(255,255,255,.7);
+  font-family:var(--sans);font-size:.82rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.78);font-weight:500;
 }
 .cat-bento .cat-text h3{
-  font-family:var(--serif);font-weight:400;color:#fff;
-  font-size:clamp(1.5rem,2.4vw,2.1rem);
-  line-height:1.05;margin:0;text-wrap:pretty;
+  font-family:var(--serif);font-weight:500;color:#fff;
+  font-size:clamp(1.7rem,2.6vw,2.4rem);
+  line-height:1.05;margin:0;text-wrap:pretty;letter-spacing:-.005em;
 }
 .cat-bento .luma-bg--audio{
   background-image:url('/assets/photos/mega-audio-video.jpg?v=6');
@@ -459,10 +479,10 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .th-section--cream-inner{max-width:1280px;margin:0 auto;padding:0 80px}
 
 .th-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
-.th-card{background:#fff;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--cream2)}
-.th-card-icon{width:42px;height:42px;border-radius:50%;background:rgba(197,114,56,.1);color:var(--accent);display:flex;align-items:center;justify-content:center}
-.th-card h3{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.2}
-.th-card p{color:var(--mid);font-size:14px;line-height:1.6}
+.th-card{background:#fff;border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:13px;border:1px solid var(--cream2)}
+.th-card-icon{width:46px;height:46px;border-radius:50%;background:rgba(197,114,56,.1);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:18px}
+.th-card h3{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.18}
+.th-card p{color:var(--mid);font-size:16px;line-height:1.65}
 
 .th-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .th-split-img{border-radius:20px;overflow:hidden;height:480px}
@@ -470,23 +490,23 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .th-rooms{display:flex;flex-direction:column;gap:18px;margin-top:32px}
 .th-room{padding:20px 0;border-top:1px solid var(--cream3)}
 .th-room:last-child{border-bottom:1px solid var(--cream3)}
-.th-room-name{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:6px}
-.th-room-desc{color:var(--mid);font-size:14px;line-height:1.6}
+.th-room-name{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:7px}
+.th-room-desc{color:var(--mid);font-size:16px;line-height:1.65}
 
 .th-why{display:flex;flex-direction:column;gap:0;margin-top:36px}
 .th-why-row{display:grid;grid-template-columns:120px 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--cream3);align-items:start}
 .th-why-row:last-child{border-bottom:1px solid var(--cream3)}
-.th-why-num{font-family:var(--serif);font-size:48px;font-weight:600;color:var(--accent);line-height:1}
-.th-why-text{font-size:16px;line-height:1.65;color:var(--dark);text-wrap:pretty}
+.th-why-num{font-family:var(--serif);font-size:52px;font-weight:600;color:var(--accent);line-height:1}
+.th-why-text{font-size:18px;line-height:1.65;color:var(--dark);text-wrap:pretty}
 
 .th-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
 .th-project{position:relative;border-radius:18px;overflow:hidden;height:340px;cursor:pointer}
 .th-project img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
 .th-project:hover img{transform:scale(1.05)}
 .th-project-overlay{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
-.th-project-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:6px}
-.th-project-name{color:#fff;font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.2}
-.th-project-meta{font-size:12px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5}
+.th-project-tag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:7px;font-weight:600}
+.th-project-name{color:#fff;font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.15;letter-spacing:-.005em}
+.th-project-meta{font-size:13.5px;color:rgba(255,255,255,.78);margin-top:7px;line-height:1.55}
 
 .th-credentials{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:36px}
 
@@ -591,11 +611,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 @media (max-width:1099px){.grid-4{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:559px){.grid-4{grid-template-columns:1fr}}
 .au-card{background:#fff;border:1px solid var(--cream2);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px}
-.au-card-clock{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent)}
-.au-card-time{font-family:var(--serif);font-size:14px;letter-spacing:.08em;color:var(--mid);text-transform:uppercase}
-.au-card-name{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.1;margin-top:-4px}
+.au-card-clock{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.au-card-time{font-family:var(--serif);font-size:15.5px;letter-spacing:.08em;color:var(--mid);text-transform:uppercase}
+.au-card-name{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.1;margin-top:-4px;letter-spacing:-.005em}
 .au-card-name em{color:var(--accent);font-style:italic}
-.au-card-desc{color:var(--mid);font-size:14px;line-height:1.6}
+.au-card-desc{color:var(--mid);font-size:16px;line-height:1.6}
 .au-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;justify-content:center}
 .au-chip{border:1px solid var(--cream3);background:#fff;border-radius:100px;padding:10px 22px;font-size:13px;letter-spacing:.04em;color:var(--dark);text-decoration:none;transition:border-color .18s,color .18s,background .18s}
 .au-chip:hover{border-color:var(--accent);color:var(--accent)}
@@ -606,9 +626,9 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .au-vendor span{color:var(--accent);font-style:italic;font-weight:400}
 
 /* ── STAT BAND (About / Cases) ── */
-.stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;background:var(--dark);border-radius:20px;padding:40px 36px;color:#fff}
-.stat-band .stat-num{font-family:var(--serif);font-size:48px;line-height:1;font-weight:600;color:var(--accent);margin-bottom:6px}
-.stat-band .stat-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;background:var(--dark);border-radius:20px;padding:44px 36px;color:#fff}
+.stat-band .stat-num{font-family:var(--serif);font-size:54px;line-height:1;font-weight:600;color:var(--accent);margin-bottom:8px;letter-spacing:-.01em}
+.stat-band .stat-label{font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:600}
 @media (max-width:759px){.stat-band{grid-template-columns:1fr 1fr;gap:18px;padding:32px 24px}.stat-band .stat-num{font-size:36px}}
 
 /* ── TESTIMONIAL GRID ── */
@@ -620,15 +640,15 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .tm-card.tm-card--video::before{content:'';position:absolute;inset:0;background:var(--bg-img);background-size:cover;background-position:center;opacity:.35;border-radius:18px}
 .tm-card.tm-card--video > *{position:relative;z-index:1}
 .tm-stars{display:flex;gap:3px;color:var(--accent)}
-.tm-stars svg{width:16px;height:16px;fill:currentColor}
-.tm-quote{font-family:var(--serif);font-size:18px;line-height:1.45;font-weight:500;color:var(--dark);text-wrap:pretty}
-.tm-card--video .tm-quote{color:#fff;font-size:20px}
-.tm-author{display:flex;align-items:center;gap:12px;margin-top:auto}
-.tm-avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;font-weight:600}
-.tm-author-name{font-size:14px;font-weight:500;color:var(--dark);line-height:1.2}
+.tm-stars svg{width:18px;height:18px;fill:currentColor}
+.tm-quote{font-family:var(--serif);font-size:20px;line-height:1.5;font-weight:500;color:var(--dark);text-wrap:pretty}
+.tm-card--video .tm-quote{color:#fff;font-size:22px}
+.tm-author{display:flex;align-items:center;gap:13px;margin-top:auto}
+.tm-avatar{width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:17px;font-weight:600}
+.tm-author-name{font-size:16px;font-weight:500;color:var(--dark);line-height:1.2}
 .tm-card--video .tm-author-name{color:#fff}
-.tm-author-loc{font-size:12px;color:var(--mid);letter-spacing:.04em}
-.tm-card--video .tm-author-loc{color:rgba(255,255,255,.7)}
+.tm-author-loc{font-size:13.5px;color:var(--mid);letter-spacing:.04em}
+.tm-card--video .tm-author-loc{color:rgba(255,255,255,.78)}
 .tm-play{position:absolute;top:24px;right:24px;width:48px;height:48px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);z-index:2}
 .tm-play::before{content:'';display:block;width:0;height:0;border-style:solid;border-width:8px 0 8px 12px;border-color:transparent transparent transparent #fff;margin-left:3px}
 
@@ -637,9 +657,9 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 @media (max-width:1099px){.prn-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:639px){.prn-grid{grid-template-columns:1fr}}
 .prn-card{background:#fff;border:1px solid var(--cream2);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:10px}
-.prn-num{font-family:var(--serif);font-size:14px;letter-spacing:.18em;color:var(--accent)}
-.prn-card h3{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.2;color:var(--dark);text-wrap:pretty}
-.prn-card p{color:var(--mid);font-size:14px;line-height:1.65}
+.prn-num{font-family:var(--serif);font-size:15.5px;letter-spacing:.18em;color:var(--accent)}
+.prn-card h3{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.18;color:var(--dark);text-wrap:pretty;letter-spacing:-.005em}
+.prn-card p{color:var(--mid);font-size:16px;line-height:1.65}
 
 /* ── PROCESS (About) ── */
 .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--cream3)}
@@ -649,9 +669,9 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .proc-step:last-child{border-right:none}
 @media (max-width:1099px){.proc-step:nth-child(2n){border-right:none}}
 @media (max-width:559px){.proc-step{border-right:none;border-bottom:1px solid var(--cream3)}}
-.proc-num{font-family:var(--serif);font-size:34px;color:var(--accent);font-weight:600;line-height:1;margin-bottom:14px}
-.proc-step h4{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:8px;color:var(--dark)}
-.proc-step p{color:var(--mid);font-size:14px;line-height:1.65}
+.proc-num{font-family:var(--serif);font-size:38px;color:var(--accent);font-weight:600;line-height:1;margin-bottom:14px}
+.proc-step h4{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:9px;color:var(--dark);letter-spacing:-.005em}
+.proc-step p{color:var(--mid);font-size:16px;line-height:1.65}
 
 /* ── BUDGET WIZARD ── */
 .bw-shell{background:#fff;border-radius:20px;border:1px solid var(--cream2);padding:36px 40px;max-width:920px;margin:44px auto 0}
@@ -696,13 +716,13 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 @media (max-width:1099px){.sp-plan-grid{grid-template-columns:1fr}}
 .sp-plan-card{background:#fff;border:1px solid var(--cream2);border-radius:18px;padding:30px 28px 28px;display:flex;flex-direction:column;text-align:center;height:100%}
 .sp-plan-card.sp-plan-card--featured{border-color:var(--accent);box-shadow:0 12px 40px rgba(197,114,56,.12)}
-.sp-plan-tier{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
-.sp-plan-name{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--dark);line-height:1.15}
-.sp-plan-price{font-family:var(--serif);font-size:44px;font-weight:600;color:var(--accent);line-height:1;margin:14px 0 2px}
-.sp-plan-period{font-size:14px;color:var(--mid);margin-bottom:18px}
-.sp-plan-tag{font-size:12px;color:var(--teal);font-weight:500;margin-bottom:14px}
+.sp-plan-tier{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:7px}
+.sp-plan-name{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--dark);line-height:1.12;letter-spacing:-.005em}
+.sp-plan-price{font-family:var(--serif);font-size:48px;font-weight:600;color:var(--accent);line-height:1;margin:14px 0 2px}
+.sp-plan-period{font-size:15px;color:var(--mid);margin-bottom:18px}
+.sp-plan-tag{font-size:13.5px;color:var(--teal);font-weight:500;margin-bottom:16px}
 .sp-plan-list{list-style:none;padding:0;margin:0 0 22px;text-align:left;flex:1}
-.sp-plan-list li{font-size:14px;color:var(--dark);padding:10px 0;border-top:1px solid var(--cream2);line-height:1.5;display:flex;gap:8px}
+.sp-plan-list li{font-size:15.5px;color:var(--dark);padding:11px 0;border-top:1px solid var(--cream2);line-height:1.55;display:flex;gap:9px}
 .sp-plan-list li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
 .sp-plan-list li:first-child{border-top:none;padding-top:0}
 .sp-process-3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
@@ -803,15 +823,24 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .portfolio-row-img{flex:0 0 56%;border-radius:14px;overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,.11)}
 .portfolio-row-img img{width:100%;height:420px;object-fit:cover;display:block}
 .portfolio-row-text{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px}
-.portfolio-row-eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.portfolio-row-title{margin:0;font-family:var(--serif);font-size:30px;font-weight:600;color:var(--dark);line-height:1.2}
-.portfolio-row-body{margin:0;font-size:16px;line-height:1.65;color:var(--mid)}
+.portfolio-row-eyebrow{font-size:15.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.portfolio-row-title{margin:0;font-family:var(--serif);font-size:clamp(34px,2.8vw,44px);font-weight:600;color:var(--dark);line-height:1.12;letter-spacing:-.005em}
+.portfolio-row-body{margin:0;font-size:19.5px;line-height:1.7;color:var(--mid)}
 
 /* DEMO HERO (3D demo page) — responsive sizing */
 .demo-hero{padding:80px 80px 56px}
-.demo-hero-title{font-size:clamp(36px,4.5vw,58px)}
-.demo-hero-body{font-size:18px}
+.demo-hero-title{font-size:clamp(38px,4.7vw,62px)}
+.demo-hero-body{font-size:19.5px;line-height:1.65}
 .demo-plan-section{padding:0 48px 80px}
+
+/* ─── 60+ READABILITY: desktop overrides for inline-styled hero blocks ─── */
+/* Many interior page heroes (Lighting, Audio, Networking, Security, Automation,
+   Theaters, Designers, Budget, etc.) share .lit-hero-text with inline styles.
+   Bumping here keeps all of them legible for the 60+ target audience. */
+.lit-hero-text h1{font-size:clamp(50px,5.5vw,84px)!important;line-height:1.05!important;letter-spacing:-.008em!important;margin-bottom:28px!important}
+.lit-hero-text p{font-size:21px!important;line-height:1.7!important}
+.lit-hero-text ul li{font-size:18.5px!important;line-height:1.6!important}
+.lit-hero-text .btn-solid,.lit-hero-text .btn-ghost{font-size:17.5px!important;padding:16px 30px!important;min-height:56px}
 
 @media(max-width:880px){
   .demo-plan-wrap{padding:18px}
@@ -847,11 +876,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
   /* HOME-HERO */
   .home-hero-cta{gap:12px}
-  .home-hero-cta-primary,.home-hero-cta-ghost{width:100%;justify-content:center;font-size:18px;min-height:58px;padding:18px 26px}
-  .home-hero-sub{font-size:18.5px;line-height:1.65}
-  .home-hero-sub--soft{font-size:17px;line-height:1.6}
-  .home-hero-place{font-size:15px}
-  .home-hero-eyebrow{font-size:15px;letter-spacing:.16em}
+  .home-hero-cta-primary,.home-hero-cta-ghost{width:100%;justify-content:center;font-size:19px;min-height:60px;padding:19px 26px}
+  .home-hero-sub{font-size:20px;line-height:1.65}
+  .home-hero-sub--soft{font-size:18px;line-height:1.6}
+  .home-hero-place{font-size:16px;line-height:1.5}
+  .home-hero-eyebrow{font-size:16px;letter-spacing:.14em}
 
   /* CTA buttons everywhere — bigger touch targets for 60+ */
   .btn-solid{font-size:17.5px;padding:16px 26px;min-height:56px}
@@ -883,9 +912,9 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .topbar span{font-size:13px}
 
   /* Section titles + body copy — global readability bump */
-  .sec-label{font-size:14px;letter-spacing:.18em}
-  .sec-title{font-size:38px;line-height:1.08;letter-spacing:-.01em}
-  .sec-body{font-size:18px;line-height:1.7;max-width:none;padding:0 6px}
+  .sec-label{font-size:15.5px;letter-spacing:.18em}
+  .sec-title{font-size:44px;line-height:1.06;letter-spacing:-.01em}
+  .sec-body{font-size:20px;line-height:1.7;max-width:none;padding:0 6px}
 
   /* Universal section padding overrides */
   .moments-section{padding:52px 22px 60px}
@@ -943,24 +972,29 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 }
 
 @media (max-width:599px){
-  body{font-size:18.5px;line-height:1.65}
+  body{font-size:19px;line-height:1.7}
   .hero{padding:44px 20px 52px;gap:26px}
-  .hero-title{font-size:40px;line-height:1.06}
-  .hero-body{font-size:18px}
-  .topbar{flex-direction:column;gap:3px;padding:8px 14px;line-height:1.35;font-size:13px}
-  .topbar span{font-size:13px}
-  .footer{padding:30px 18px;font-size:15px}
+  .hero-title{font-size:44px;line-height:1.06}
+  .hero-body{font-size:19px;line-height:1.65}
+  .topbar{flex-direction:column;gap:3px;padding:8px 14px;line-height:1.35;font-size:13.5px}
+  .topbar span{font-size:13.5px}
+  .footer{padding:30px 18px;font-size:15.5px}
   .demo-plan-stage{aspect-ratio:5/4}
-  .demo-modal-title{font-size:34px}
+  .demo-modal-title{font-size:36px}
   .demo-modal-body{padding:26px 20px 32px}
-  .lit-hero-text h1{font-size:40px!important;line-height:1.05!important}
-  .sec-title{font-size:34px;line-height:1.1}
-  .sec-body{font-size:17.5px}
+  .lit-hero-text h1{font-size:46px!important;line-height:1.04!important}
+  .lit-hero-text p{font-size:19.5px!important;line-height:1.7!important}
+  .sec-title{font-size:38px;line-height:1.08}
+  .sec-body{font-size:19.5px;line-height:1.7}
   .moment-card{aspect-ratio:16/10}
-  .moment-name{font-size:24px}
-  .cat-bento .cat-text h3{font-size:1.75rem}
-  .home-hero-cta-primary,.home-hero-cta-ghost{font-size:17.5px;padding:17px 24px}
-  .btn-solid,.btn-ghost{font-size:17px;padding:15px 22px}
+  .moment-name{font-size:28px}
+  .moment-desc{font-size:16px;line-height:1.55}
+  .cat-bento .cat-text h3{font-size:1.85rem}
+  .home-hero-title{font-size:50px;line-height:1.04}
+  .home-hero-sub{font-size:20px;line-height:1.65}
+  .home-hero-sub--soft{font-size:18.5px}
+  .home-hero-cta-primary,.home-hero-cta-ghost{font-size:18.5px;padding:18px 26px}
+  .btn-solid,.btn-ghost{font-size:18px;padding:15px 24px}
 }
 </style>
 </head>
@@ -1057,6 +1091,27 @@ const PHOTOS = {
   'lit-lanai-fl':     lu('/assets/photos/waterfront-lanai.jpg'),
   lightingDining:     lu('/assets/photos/interior-dining-warm.jpg'),
   heroModernHome:     lu('/assets/photos/hero-modern-home.jpg'),
+
+  /* ── Case study: Spacious Modern (Sonos · WattBox · UniFi) ── */
+  caseSpHero:         lu('/assets/photos/cases/spacious-modern/web-hero.jpg'),
+  caseSpVan:          lu('/assets/photos/cases/spacious-modern/web-van.jpg'),
+  caseSpCeiling:      lu('/assets/photos/cases/spacious-modern/web-ceiling-speakers.jpg'),
+  caseSpSceneA:       lu('/assets/photos/cases/spacious-modern/web-scene-a.jpg'),
+  caseSpSceneB:       lu('/assets/photos/cases/spacious-modern/web-scene-b.jpg'),
+
+  /* ── Case study: Urban Home (B&W · UniFi · 7.1.2) ── */
+  caseUrHero:         lu('/assets/photos/cases/urban-home/web-hero.jpg'),
+  caseUrPool:         lu('/assets/photos/cases/urban-home/web-pool-audio.jpg'),
+  caseUrRack:         lu('/assets/photos/cases/urban-home/web-rack.jpg'),
+  caseUrSpeakerDetail:lu('/assets/photos/cases/urban-home/web-speaker-detail.jpg'),
+  caseUrInWall:       lu('/assets/photos/cases/urban-home/web-in-wall-speaker.jpg'),
+
+  /* ── Case study: Huge Family House (architectural lighting) ── */
+  caseHfHero:         lu('/assets/photos/cases/huge-family/web-hero.jpg'),
+  caseHfGreatRoom:    lu('/assets/photos/cases/huge-family/web-great-room.jpg'),
+  caseHfLedCove:      lu('/assets/photos/cases/huge-family/web-led-cove.jpg'),
+  caseHfLedDetail:    lu('/assets/photos/cases/huge-family/web-led-detail.jpg'),
+  caseHfShower:       lu('/assets/photos/cases/huge-family/web-shower-niche.jpg'),
 };
 
 /* Field install gallery — same folder; swap files or edit captions here */
@@ -1177,7 +1232,7 @@ function Nav({navigate}) {
     <div ref={navRef} style={{position:'sticky',top:0,zIndex:200}}>
       <div className="topbar">
         <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
-        <span>Mon–Sat · 9am – 6pm &nbsp;·&nbsp; +1 (941) 555-1234</span>
+        <span>Mon–Sat · 9am – 6pm &nbsp;·&nbsp; +1 (941) 217-1616</span>
       </div>
       <nav className="nav">
         <div className="nav-logo" onClick={()=>navigate('home')}>
@@ -1257,7 +1312,7 @@ function Nav({navigate}) {
         </div>
 
         <div className="nav-mobile-contact">
-          <strong>+1 (941) 555-1234</strong>
+          <strong>+1 (941) 217-1616</strong>
           <span>Mon – Sat · 9am – 6pm</span>
           <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
         </div>
@@ -2733,7 +2788,7 @@ function ContactPage() {
           <div style={{background:'#fff',borderRadius:16,padding:24,marginBottom:20}}>
             <h3 style={{fontSize:16,fontWeight:500,marginBottom:16}}>Get in touch directly</h3>
             <div style={{display:'flex',flexDirection:'column',gap:12}}>
-              <div><div style={{fontWeight:500,marginBottom:2}}>Phone</div><div style={{color:'var(--mid)',fontSize:14}}>+1 (941) 555-1234</div></div>
+              <div><div style={{fontWeight:500,marginBottom:2}}>Phone</div><div style={{color:'var(--mid)',fontSize:14}}>+1 (941) 217-1616</div></div>
               <div><div style={{fontWeight:500,marginBottom:2}}>Email</div><div style={{color:'var(--mid)',fontSize:14}}>hello@lumasmarthome.com</div></div>
               <div><div style={{fontWeight:500,marginBottom:2}}>Hours</div><div style={{color:'var(--mid)',fontSize:14}}>Mon–Sat · 9am – 6pm</div></div>
             </div>
@@ -2849,7 +2904,7 @@ function Footer() {
     <footer className="footer">
       <span className="footer-logo">LUMA Smart Home</span>
       <span>© 2025 LUMA Smart Home · Sarasota, FL · hello@lumasmarthome.com</span>
-      <span>+1 (941) 555-1234</span>
+      <span>+1 (941) 217-1616</span>
     </footer>
   );
 }
@@ -3384,7 +3439,7 @@ function ServiceSupportPage({navigate}) {
           <p className="hero-body">Smart homes age like boats: sun, salt, and software updates never stop. LUMA Care is ongoing stewardship for the systems we designed — remote tuning, disciplined updates, and technicians who already know your rack, your scenes, and how your family uses the place.</p>
           <div className="sp-hero-tel">
             <span style={{fontSize:13,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--mid)'}}>Talk to service</span>
-            <a href="tel:+19415551234">+1 (941) 555-1234</a>
+            <a href="tel:+19412171616">+1 (941) 217-1616</a>
             <span style={{color:'var(--cream3)'}}>·</span>
             <a href="mailto:hello@lumasmarthome.com">hello@lumasmarthome.com</a>
           </div>
@@ -3554,7 +3609,7 @@ function CasesPage({navigate}) {
       {/* Stats */}
       <section className="th-section" style={{paddingTop:0}}>
         <div className="stat-band">
-          <div><div className="stat-num">9+</div><div className="stat-label">Featured projects</div></div>
+          <div><div className="stat-num">14+</div><div className="stat-label">Featured projects</div></div>
           <div><div className="stat-num">5★</div><div className="stat-label">Average rating</div></div>
           <div><div className="stat-num">5</div><div className="stat-label">Counties served</div></div>
           <div><div className="stat-num">2024+</div><div className="stat-label">On the Gulf Coast</div></div>
@@ -3566,23 +3621,26 @@ function CasesPage({navigate}) {
         <div className="sec-label">Our work</div>
         <h2 className="sec-title">Selected residences <em>across the coast.</em></h2>
 
-        {/* ── Featured case cards (2-column, taller) ── */}
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,marginBottom:16}} className="work-cases-row">
+        {/* ── Featured case cards (3-column grid, 5 cases) ── */}
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:16,marginBottom:16}} className="work-cases-row">
           {[
-            {page:'case-modern',   img:PHOTOS.projMrExterior,  label:'Case Study 01 · Tampa Bay Area',      title:'Modern Residence',   gear:'Sony · Denon AVR · Martin Logan · Sonos · Polk outdoor'},
-            {page:'case-bighouse', img:PHOTOS.projBmExterior,  label:'Case Study 02 · Texas Hill Country',  title:'Big Modern House',   gear:'URC · KEF · Epson 4K · Dolby Atmos 7.2.4 · 80+ speakers'},
+            {page:'case-spacious', img:PHOTOS.caseSpHero,      label:'Case Study 01 · Naples · Port Royal',       title:'Spacious Modern',     gear:'Sonos · WattBox · UniFi · whole-home audio + network'},
+            {page:'case-urban',    img:PHOTOS.caseUrHero,      label:'Case Study 02 · Sarasota · Bird Key',       title:'Urban Home',          gear:'B&W · 7.1.2 Atmos · UniFi · in-wall + landscape audio'},
+            {page:'case-family',   img:PHOTOS.caseHfHero,      label:'Case Study 03 · Bonita Bay',                title:'Huge Family House',   gear:'Architectural lighting · LED cove · Lutron scenes'},
+            {page:'case-modern',   img:PHOTOS.projMrExterior,  label:'Case Study 04 · Tampa Bay Area',            title:'Modern Residence',    gear:'Sony · Denon AVR · Martin Logan · Sonos · Polk outdoor'},
+            {page:'case-bighouse', img:PHOTOS.projBmExterior,  label:'Case Study 05 · Texas Hill Country',        title:'Big Modern House',    gear:'URC · KEF · Epson 4K · Dolby Atmos 7.2.4 · 80+ speakers'},
           ].map(c=>(
             <div key={c.page} className="th-project work-case-card" onClick={()=>navigate(c.page)} role="button" tabIndex={0}
-              style={{height:420,borderRadius:14,overflow:'hidden',cursor:'pointer',position:'relative'}}
+              style={{height:380,borderRadius:14,overflow:'hidden',cursor:'pointer',position:'relative'}}
               onKeyDown={e=>e.key==='Enter'&&navigate(c.page)}>
               <img src={c.img} alt={c.title} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',transition:'transform .4s ease'}}/>
-              <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(10,9,22,.88) 0%,rgba(10,9,22,.2) 55%,transparent 100%)'}}/>
-              <div style={{position:'absolute',top:20,left:20,background:'var(--accent)',color:'#fff',fontSize:11,letterSpacing:'.1em',textTransform:'uppercase',fontWeight:700,padding:'5px 12px',borderRadius:100}}>Case Study</div>
-              <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'28px 32px'}}>
-                <div style={{fontSize:11,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:8}}>{c.label}</div>
-                <h3 style={{fontFamily:'var(--serif)',fontSize:30,fontWeight:600,color:'#FCFAF6',margin:'0 0 8px',lineHeight:1.1}}>{c.title}</h3>
-                <p style={{fontSize:13,color:'rgba(252,250,246,.55)',margin:'0 0 16px',lineHeight:1.5}}>{c.gear}</p>
-                <span style={{display:'inline-flex',alignItems:'center',gap:6,fontSize:13,fontWeight:700,color:'var(--accent)'}}>View full case study →</span>
+              <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(10,9,22,.92) 0%,rgba(10,9,22,.25) 55%,transparent 100%)'}}/>
+              <div style={{position:'absolute',top:18,left:18,background:'var(--accent)',color:'#fff',fontSize:11,letterSpacing:'.1em',textTransform:'uppercase',fontWeight:700,padding:'5px 12px',borderRadius:100}}>Case Study</div>
+              <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'24px 26px'}}>
+                <div style={{fontSize:10.5,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:7}}>{c.label}</div>
+                <h3 style={{fontFamily:'var(--serif)',fontSize:26,fontWeight:600,color:'#FCFAF6',margin:'0 0 8px',lineHeight:1.1}}>{c.title}</h3>
+                <p style={{fontSize:12.5,color:'rgba(252,250,246,.6)',margin:'0 0 14px',lineHeight:1.5}}>{c.gear}</p>
+                <span style={{display:'inline-flex',alignItems:'center',gap:6,fontSize:12.5,fontWeight:700,color:'var(--accent)'}}>View full case study →</span>
               </div>
             </div>
           ))}
@@ -3603,7 +3661,8 @@ function CasesPage({navigate}) {
         </div>
         <style>{`
           .work-case-card:hover img{transform:scale(1.04)}
-          @media(max-width:767px){.work-cases-row{grid-template-columns:1fr!important}}
+          @media(max-width:1100px){.work-cases-row{grid-template-columns:1fr 1fr!important}}
+          @media(max-width:680px){.work-cases-row{grid-template-columns:1fr!important}}
           @media(max-width:899px){.lit-hero-wrap{grid-template-columns:1fr!important}.lit-hero-text{padding:56px 24px 44px!important}}
         `}</style>
       </section>
@@ -3772,6 +3831,220 @@ function BudgetCalculatorPage({navigate}) {
         <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
           <button className="btn-solid" onClick={()=>navigate('contact')}>Start a conversation →</button>
           <button className="btn-ghost" onClick={()=>navigate('home')}>Back to home</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── CASE STUDY: Spacious Modern (Naples · Port Royal) ─── */
+function CaseSpaciousPage({navigate}) {
+  return (
+    <div className="page">
+      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case Study 01 · Naples · Port Royal</div>
+          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Spacious <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Modern</em></h1>
+          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>A 7,400 sq ft modern home wired end-to-end for music, network, and effortless ownership — calm in the rooms, organized in the rack, easy on the family.</p>
+          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Sonos whole-home audio · WattBox managed power · UniFi network · Sonance in-ceiling architectural speakers · landscape audio</p>
+          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
+        </div>
+        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
+          <img src={PHOTOS.caseSpHero} alt="Spacious Modern home — Naples" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+        </div>
+      </section>
+
+      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
+        <div style={{maxWidth:1160,margin:'0 auto'}}>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
+            <div>
+              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
+              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>The brief was simple — music everywhere, no visible boxes, and a network the family could rely on year-round between Naples and the northeast. We delivered a single Sonos backbone covering every interior zone plus the lanai and pool deck.</p>
+              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>Behind the scenes: a documented UniFi network with full Wi-Fi 6 coverage, a managed WattBox so the rack reboots itself if anything hangs, and remote monitoring so we see issues before the homeowner does.</p>
+            </div>
+            <div style={{display:'grid',gap:16}}>
+              {[
+                {room:'Whole-home audio',  gear:'Sonos Amp · in-ceiling architectural speakers · 8 zones interior + lanai'},
+                {room:'Network & remote',  gear:'UniFi Dream Machine · Wi-Fi 6 mesh · WattBox managed power · 24/7 monitoring'},
+                {room:'Outdoor experience',gear:'Landscape audio along the pool deck · weatherproof keypads · seamless app control'},
+                {room:'Service-friendly',  gear:'Labelled rack · documented for any technician · open platform — no dealer lock-in'},
+              ].map(r=>(
+                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
+                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
+                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
+            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseSpSceneA} alt="Living room with hidden audio" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseSpSceneB} alt="Open-plan kitchen and dining" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseSpCeiling} alt="Architectural in-ceiling speakers" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseSpVan} alt="LUMA install team on site" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+        </div>
+      </section>
+      <style>{`.case-body{padding:64px 80px 72px!important} @media(max-width:899px){.case-2col{grid-template-columns:1fr!important}.case-2col-photos{grid-template-columns:1fr!important}.case-body{padding:40px 24px 56px!important}}`}</style>
+
+      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
+        <h2 className="sec-title">Want a similar setup?</h2>
+        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
+        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
+          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── CASE STUDY: Urban Home (Sarasota · Bird Key) ─── */
+function CaseUrbanPage({navigate}) {
+  return (
+    <div className="page">
+      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case Study 02 · Sarasota · Bird Key</div>
+          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Urban <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Home</em></h1>
+          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>A waterfront urban residence built around music. Bowers &amp; Wilkins from the media room to the pool deck, a 7.1.2 Atmos array tuned in-room, and a UniFi network that just works.</p>
+          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Bowers &amp; Wilkins · 7.1.2 Dolby Atmos · in-wall + landscape audio · UniFi network · WattBox managed power</p>
+          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
+        </div>
+        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
+          <img src={PHOTOS.caseUrHero} alt="Urban Home media room — Sarasota" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+        </div>
+      </section>
+
+      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
+        <div style={{maxWidth:1160,margin:'0 auto'}}>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
+            <div>
+              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
+              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>The owners are music people. The system was specified around Bowers &amp; Wilkins from day one — in-walls in the great room, a tuned 7.1.2 Atmos array in the media room, and a discreet landscape system that carries the sound out to the pool without disturbing the neighbors.</p>
+              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>The network and rack are equally serious — a UniFi backbone with hardwired drops to every TV, access points sized for guests, and a WattBox that keeps the rack online without a service call.</p>
+            </div>
+            <div style={{display:'grid',gap:16}}>
+              {[
+                {room:'Media room',        gear:'Bowers & Wilkins 7.1.2 Dolby Atmos · in-room calibration · acoustic treatment'},
+                {room:'Great room & home', gear:'B&W in-wall + in-ceiling speakers · multi-zone streaming · keypad scenes'},
+                {room:'Pool & landscape',  gear:'B&W weatherproof landscape audio · zoned for the pool, lanai, and lawn'},
+                {room:'Network & rack',    gear:'UniFi · Wi-Fi 6 · WattBox managed power · documented patch panel'},
+              ].map(r=>(
+                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
+                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
+                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
+            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseUrPool} alt="Pool with discrete landscape audio" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseUrInWall} alt="B&W in-wall speaker detail" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseUrSpeakerDetail} alt="B&W speaker close-up" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseUrRack} alt="UniFi network rack" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
+        <h2 className="sec-title">Want a similar setup?</h2>
+        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
+        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
+          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── CASE STUDY: Huge Family House (Bonita Bay · architectural lighting) ─── */
+function CaseFamilyPage({navigate}) {
+  return (
+    <div className="page">
+      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
+          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case Study 03 · Bonita Bay</div>
+          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Huge Family <em style={{color:'#F4C9A8',fontStyle:'italic'}}>House</em></h1>
+          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>A 9,000+ sq ft family residence where the architecture is the story — and the lighting was designed to disappear into it. Hidden cove LEDs, layered scenes, and one keypad in every room.</p>
+          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Architectural cove lighting · linear LED accents · Lutron RadioRA 3 scenes · designer keypads · landscape lighting</p>
+          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
+        </div>
+        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
+          <img src={PHOTOS.caseHfHero} alt="Huge Family House exterior" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+        </div>
+      </section>
+
+      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
+        <div style={{maxWidth:1160,margin:'0 auto'}}>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
+            <div>
+              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
+              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>This was a lighting-led project from the first walkthrough. We worked with the architect and designer to hide the fixtures inside the architecture itself — coves above the great room, linear runs under the wood paneling, and a layered scheme that lets a single keypad take the home from morning to evening to overnight.</p>
+              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>The result is a house that feels handcrafted in light. No lamp clutter. No glare. Each scene was tuned in person after dark, then handed over with a one-page guide the family actually uses.</p>
+            </div>
+            <div style={{display:'grid',gap:16}}>
+              {[
+                {room:'Great room',         gear:'Hidden cove LEDs above the vault · downlight wash · dim-to-warm scenes'},
+                {room:'Architectural accents',gear:'Linear LED runs under wood paneling · niche accent light · staircase grazing'},
+                {room:'Bath & spa',         gear:'Backlit shower niche · vanity scenes · privacy-aware after-hours mode'},
+                {room:'Control & exterior', gear:'Lutron RadioRA 3 · designer keypads in every room · landscape & uplight scenes'},
+              ].map(r=>(
+                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
+                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
+                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
+            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseHfGreatRoom} alt="Great room with hidden cove lighting" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseHfLedCove} alt="Architectural cove LEDs" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseHfLedDetail} alt="Linear LED detail under wood" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
+              <img src={PHOTOS.caseHfShower} alt="Backlit shower niche" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
+        <h2 className="sec-title">Want a similar setup?</h2>
+        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
+        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
+          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
+          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
         </div>
       </section>
     </div>
@@ -4370,7 +4643,7 @@ function SmartHomeDemoPage({navigate}) {
 }
 
 /* ─── APP ─── */
-const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','smart-home-demo']);
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','smart-home-demo']);
 
 function readPageFromUrl(){
   try {
@@ -4426,6 +4699,9 @@ function App() {
     contact:   <ContactPage/>,
     'budget-calculator': <BudgetCalculatorPage navigate={navigate}/>,
     work:      <CasesPage navigate={navigate}/>,
+    'case-spacious': <CaseSpaciousPage navigate={navigate}/>,
+    'case-urban':    <CaseUrbanPage navigate={navigate}/>,
+    'case-family':   <CaseFamilyPage navigate={navigate}/>,
     'case-modern':   <CaseModernPage navigate={navigate}/>,
     'case-bighouse': <CaseBigHousePage navigate={navigate}/>,
     about:     <AboutPage navigate={navigate}/>,

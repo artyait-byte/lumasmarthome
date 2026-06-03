@@ -123,7 +123,7 @@ python3 scripts/inject-seo.py
 ## Что настроить перед продакшеном
 
 1. **Домен.** В `scripts/inject-seo.py`, `sitemap.xml`, `robots.txt`, `netlify.toml` использован `https://www.lumasmarthome.com`. Замените на реальный, если отличается, и перезапустите инъекцию.
-2. **Телефон и email.** В шапках/футерах и в JSON-LD сейчас плейсхолдеры `+1 (941) 555-1234` и `hello@lumasmarthome.com`.
+2. **Телефон и email.** В шапках/футерах и в JSON-LD сейчас плейсхолдеры `+1 (941) 217-1616` и `hello@lumasmarthome.com`.
 3. **OG-обложка.** `assets/og-cover.svg` — векторный плейсхолдер. Для лучшей совместимости с Facebook/LinkedIn экспортируйте в PNG/JPG 1200×630 и обновите путь в `inject-seo.py` (`OG_IMAGE`) + перезапустите скрипт.
 4. **`apple-touch-icon.png`.** Пока отсутствует — либо добавьте 180×180 PNG, либо уберите `<link rel="apple-touch-icon">` из `inject-seo.py`.
 5. **Фото проектов.** Unsplash-плейсхолдеры на продакшн не пойдут (лицензия + бренд). Замените на собственную съёмку и положите в `assets/projects/`.
