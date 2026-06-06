@@ -316,6 +316,93 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .home-hero-place{ margin:16px 0 24px }
 }
 
+/* ── SARASOTA AERIAL BANNER (Ken Burns drone-feel) ── */
+.sarasota-banner{
+  position:relative; width:100%;
+  height:clamp(420px, 64vh, 640px);
+  overflow:hidden; isolation:isolate;
+  background:#0a1822; color:#FCFAF6;
+}
+.sarasota-banner-photo{
+  position:absolute; inset:-6%;
+  background:url('/assets/photos/sarasota-turtle-aerial.jpg?v=2') no-repeat center 30% / cover;
+  transform-origin:62% 58%;
+  animation:saraDroneZoom 36s ease-in-out infinite;
+  will-change:transform;
+}
+.sarasota-banner-overlay{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(95deg, rgba(10,24,34,.82) 0%, rgba(10,24,34,.52) 38%, rgba(10,24,34,.18) 70%, rgba(10,24,34,.05) 100%),
+    linear-gradient(180deg, rgba(10,24,34,.18) 0%, transparent 22%, transparent 70%, rgba(10,24,34,.55) 100%);
+}
+.sarasota-banner-pin{
+  position:absolute; top:24px; right:28px; z-index:2;
+  display:inline-flex; align-items:center; gap:10px;
+  padding:9px 16px; border-radius:999px;
+  background:rgba(10,24,34,.45); backdrop-filter:blur(8px);
+  border:1px solid rgba(252,250,246,.22);
+  font-size:14.5px; letter-spacing:.06em; font-weight:600;
+  color:#FCFAF6;
+}
+.sarasota-banner-pin .dot{
+  width:8px; height:8px; border-radius:50%; background:#9BE0C8;
+  box-shadow:0 0 0 0 rgba(155,224,200,.7);
+  animation:saraPing 2.4s ease-out infinite;
+}
+.sarasota-banner-inner{
+  position:relative; z-index:1;
+  max-width:1280px; margin:0 auto; height:100%;
+  padding:64px 80px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.sarasota-banner-eyebrow{
+  display:inline-flex; align-items:center; gap:14px;
+  font-size:16.5px; letter-spacing:.16em; text-transform:uppercase;
+  font-weight:600; color:rgba(252,250,246,.92); margin-bottom:22px;
+}
+.sarasota-banner-eyebrow::before{ content:''; width:42px; height:2px; background:#F4C9A8 }
+.sarasota-banner-title{
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(40px, 4.6vw, 64px); line-height:1.06;
+  letter-spacing:-.005em; max-width:780px;
+  margin:0 0 22px; text-wrap:balance;
+  text-shadow:0 2px 24px rgba(0,0,0,.35);
+}
+.sarasota-banner-title em{ color:#F4C9A8; font-style:italic; font-weight:500 }
+.sarasota-banner-body{
+  font-size:clamp(18px, 1.45vw, 21px); line-height:1.6; font-weight:500;
+  max-width:620px; color:rgba(252,250,246,.92);
+  margin:0 0 28px; text-shadow:0 1px 10px rgba(0,0,0,.3);
+}
+.sarasota-banner-meta{
+  display:flex; flex-wrap:wrap; gap:28px 36px;
+  font-size:15px; letter-spacing:.04em;
+  color:rgba(252,250,246,.85); font-weight:600;
+}
+.sarasota-banner-meta span{ display:inline-flex; align-items:center; gap:8px }
+.sarasota-banner-meta b{ color:#F4C9A8; font-weight:700 }
+@keyframes saraDroneZoom{
+  0%   { transform:scale(1.00) translate(0,0) }
+  50%  { transform:scale(1.10) translate(-2.2%, -1.2%) }
+  100% { transform:scale(1.00) translate(0,0) }
+}
+@keyframes saraPing{
+  0%   { box-shadow:0 0 0 0 rgba(155,224,200,.7) }
+  70%  { box-shadow:0 0 0 14px rgba(155,224,200,0) }
+  100% { box-shadow:0 0 0 0 rgba(155,224,200,0) }
+}
+@media (max-width:899px){
+  .sarasota-banner{ height:clamp(380px, 70vh, 560px) }
+  .sarasota-banner-inner{ padding:40px 24px }
+  .sarasota-banner-pin{ top:16px; right:16px; font-size:13px; padding:7px 12px }
+  .sarasota-banner-meta{ gap:14px 22px; font-size:14px }
+}
+@media (prefers-reduced-motion: reduce){
+  .sarasota-banner-photo{ animation:none; transform:scale(1.05) }
+  .sarasota-banner-pin .dot{ animation:none }
+}
+
 /* ── SECTION HEADER ── */
 .sec-label{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;text-align:center;font-weight:600}
 .sec-title{font-family:var(--serif);font-size:clamp(44px,4.4vw,64px);line-height:1.08;font-weight:600;text-align:center;text-wrap:pretty;letter-spacing:-.005em}
@@ -1456,6 +1543,30 @@ function HomePage({navigate}) {
             <span>Sonance</span>
           </div>
           <div className="home-hero-license">Florida licensed low‑voltage contractor · insured · discreet residential work</div>
+        </div>
+      </section>
+
+      {/* Sarasota anchor — drone view of Siesta Key, our home base */}
+      <section className="sarasota-banner" aria-label="LUMA Sarasota studio · aerial view of Siesta Key">
+        <div className="sarasota-banner-photo" role="img" aria-label="Aerial drone view of Siesta Key, Sarasota — turquoise Gulf water and white sand"/>
+        <div className="sarasota-banner-overlay" aria-hidden="true"/>
+        <div className="sarasota-banner-pin" aria-label="LUMA studio location">
+          <span className="dot" aria-hidden="true"/>
+          LUMA · Sarasota, FL
+        </div>
+        <div className="sarasota-banner-inner">
+          <div className="sarasota-banner-eyebrow">From the Gulf Coast</div>
+          <h2 className="sarasota-banner-title">
+            Designed and installed <em>from Sarasota.</em>
+          </h2>
+          <p className="sarasota-banner-body">
+            Our studio sits a short drive from your project — Bradenton, Siesta Key, Lakewood Ranch, Venice, Boca Grande, Naples. Local crews, fast service visits, and a team that knows the Gulf Coast climate as well as your architect does.
+          </p>
+          <div className="sarasota-banner-meta" aria-label="Sarasota anchor facts">
+            <span><b>≤ 60 min</b> · drive to most homes we serve</span>
+            <span><b>5 counties</b> · Sarasota · Manatee · Charlotte · Lee · Collier</span>
+            <span><b>On‑site response</b> · same / next business day</span>
+          </div>
         </div>
       </section>
 
