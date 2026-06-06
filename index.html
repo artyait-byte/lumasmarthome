@@ -316,20 +316,22 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .home-hero-place{ margin:16px 0 24px }
 }
 
-/* ── SARASOTA AERIAL BANNER (Ken Burns drone-feel) ── */
+/* ── SARASOTA AERIAL BANNER (looped drone reel · 16:9 video) ── */
 .sarasota-banner{
   position:relative; width:100%;
   height:clamp(420px, 64vh, 640px);
   overflow:hidden; isolation:isolate;
-  background:#0a1822; color:#FCFAF6;
+  background:#0a1822 url('/assets/video/sarasota-reel-poster.jpg?v=13') center/cover no-repeat;
+  color:#FCFAF6;
 }
-.sarasota-banner-photo{
-  position:absolute; inset:-6%;
-  background:url('/assets/photos/sarasota-turtle-aerial.jpg?v=2') no-repeat center 30% / cover;
-  transform-origin:62% 58%;
-  animation:saraDroneZoom 36s ease-in-out infinite;
-  will-change:transform;
+.sarasota-banner-video{
+  position:absolute; inset:0; z-index:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 50%;
+  pointer-events:none;
+  opacity:0; transition:opacity .9s ease-out;
 }
+.sarasota-banner-video.is-ready{ opacity:1 }
 .sarasota-banner-overlay{
   position:absolute; inset:0;
   background:
@@ -382,11 +384,6 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 }
 .sarasota-banner-meta span{ display:inline-flex; align-items:center; gap:8px }
 .sarasota-banner-meta b{ color:#F4C9A8; font-weight:700 }
-@keyframes saraDroneZoom{
-  0%   { transform:scale(1.00) translate(0,0) }
-  50%  { transform:scale(1.10) translate(-2.2%, -1.2%) }
-  100% { transform:scale(1.00) translate(0,0) }
-}
 @keyframes saraPing{
   0%   { box-shadow:0 0 0 0 rgba(155,224,200,.7) }
   70%  { box-shadow:0 0 0 14px rgba(155,224,200,0) }
@@ -399,7 +396,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .sarasota-banner-meta{ gap:14px 22px; font-size:14px }
 }
 @media (prefers-reduced-motion: reduce){
-  .sarasota-banner-photo{ animation:none; transform:scale(1.05) }
+  .sarasota-banner-video{ display:none }
   .sarasota-banner-pin .dot{ animation:none }
 }
 
@@ -1546,9 +1543,22 @@ function HomePage({navigate}) {
         </div>
       </section>
 
-      {/* Sarasota anchor — drone view of Siesta Key, our home base */}
-      <section className="sarasota-banner" aria-label="LUMA Sarasota studio · aerial view of Siesta Key">
-        <div className="sarasota-banner-photo" role="img" aria-label="Aerial drone view of Siesta Key, Sarasota — turquoise Gulf water and white sand"/>
+      {/* Sarasota anchor — looped drone reel of our home base (Siesta Key, downtown, Ringling, marina) */}
+      <section className="sarasota-banner" aria-label="LUMA Sarasota studio · aerial drone reel">
+        <video
+          className="sarasota-banner-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/assets/video/sarasota-reel-poster.jpg?v=13"
+          aria-hidden="true"
+          onCanPlay={(e)=>e.currentTarget.classList.add('is-ready')}
+        >
+          <source src="/assets/video/sarasota-reel.webm?v=13" type="video/webm"/>
+          <source src="/assets/video/sarasota-reel.mp4?v=13"  type="video/mp4"/>
+        </video>
         <div className="sarasota-banner-overlay" aria-hidden="true"/>
         <div className="sarasota-banner-pin" aria-label="LUMA studio location">
           <span className="dot" aria-hidden="true"/>
