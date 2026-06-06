@@ -1186,7 +1186,7 @@ function MegaDropdown({active, hoverId, setHoverId, navigate}) {
         </div>
         <div className="dropdown-col">
           <div className="dd-preview">
-            <img src={PHOTOS[hovered.id]} alt={hovered.name}/>
+            <img loading="lazy" decoding="async" src={PHOTOS[hovered.id]} alt={hovered.name}/>
             <div className="dd-preview-overlay">
               <div className="dd-preview-tag">Live Preview</div>
               <div className="dd-preview-name">{hovered.name}</div>
@@ -1379,7 +1379,7 @@ function BentoTile({tile, navigate}) {
 function ServiceCard({id, name, height=240}) {
   return (
     <div className="photo-card" style={{height}}>
-      <img src={PHOTOS[id]} alt={name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block',transition:'transform .5s'}}/>
+      <img loading="lazy" decoding="async" src={PHOTOS[id]} alt={name} style={{width:'100%',height:'100%',objectFit:'cover',display:'block',transition:'transform .5s'}}/>
       <div className="photo-card-overlay">
         <div className="photo-card-icon"><HexIcon type={id} size={30}/></div>
         <div className="photo-card-title" dangerouslySetInnerHTML={{__html:name}}/>
@@ -1539,7 +1539,7 @@ function ShadingPage({navigate}) {
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img src={PHOTOS.heroShading} alt="Motorized blackout shades in luxury Gulf Coast home" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.heroShading} alt="Motorized blackout shades in luxury Gulf Coast home" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
           <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
         </div>
         <style>{`@media(max-width:899px){.lit-hero-wrap{grid-template-columns:1fr!important}.lit-hero-text{padding:60px 24px 48px!important}}`}</style>
@@ -1552,7 +1552,7 @@ function ShadingPage({navigate}) {
         <div className="moments-grid">
           {moments.map(m=>(
             <div key={m.key} className="moment-card">
-              <img src={m.photo} alt={m.name}/>
+              <img loading="lazy" decoding="async" src={m.photo} alt={m.name}/>
               {/* colour grade layer */}
               <div className="moment-grade" style={{background:m.grade, mixBlendMode:'multiply'}}/>
               <div className="moment-inner">
@@ -1600,7 +1600,7 @@ function PortfolioRow({item, navigate}) {
   return (
     <div className={`portfolio-row${item.flip ? ' portfolio-row--flip' : ''}`}>
       <div className="portfolio-row-img">
-        <img src={PHOTOS[item.img]} alt={item.headline}/>
+        <img loading="lazy" decoding="async" src={PHOTOS[item.img]} alt={item.headline}/>
       </div>
       <div className="portfolio-row-text">
         <span className="portfolio-row-eyebrow">{item.eyebrow}</span>
@@ -1751,7 +1751,7 @@ function LightingPage({navigate}) {
         </div>
         {/* right — photo */}
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img
+          <img loading="lazy" decoding="async"
             src={PHOTOS.lightingKetra}
             alt="Warm interior lighting in a luxury Gulf Coast living room"
             style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}
@@ -1847,7 +1847,7 @@ function DesignersPage({navigate}) {
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img src={PHOTOS.heroDesigners} alt="Luxury modern living room — smart home collaboration" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.heroDesigners} alt="Luxury modern living room — smart home collaboration" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
           <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.32) 0%,transparent 38%)'}}/>
         </div>
       </section>
@@ -2047,7 +2047,7 @@ function TheatersPage({navigate}) {
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img src={PHOTOS.theaterAnamorphic} alt="Luxury home theater with projection screen" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.theaterAnamorphic} alt="Luxury home theater with projection screen" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
           <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(10,8,20,.35) 0%,transparent 42%)'}}/>
         </div>
       </section>
@@ -2071,7 +2071,7 @@ function TheatersPage({navigate}) {
       <section className="th-section--cream">
         <div className="th-section--cream-inner">
           <div className="th-split">
-            <div className="th-split-img"><img src={PHOTOS.theaterRoom} alt="Dedicated theater room"/></div>
+            <div className="th-split-img"><img loading="lazy" decoding="async" src={PHOTOS.theaterRoom} alt="Dedicated theater room"/></div>
             <div>
               <div className="sec-label" style={{textAlign:'left'}}>Three room types</div>
               <h2 className="sec-title" style={{textAlign:'left'}}>From <em>media room</em> to <em>private cinema.</em></h2>
@@ -2110,7 +2110,7 @@ function TheatersPage({navigate}) {
           <div className="th-projects">
             {TH_PROJECTS.map(p=>(
               <div key={p.key} className="th-project" onClick={()=>navigate('work')}>
-                <img src={PHOTOS[p.key]} alt={p.name}/>
+                <img loading="lazy" decoding="async" src={PHOTOS[p.key]} alt={p.name}/>
                 <div className="th-project-overlay">
                   <div className="th-project-tag">{p.tag}</div>
                   <div className="th-project-name">{p.name}</div>
@@ -2222,7 +2222,7 @@ function AutomationPage({navigate}) {
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img src={PHOTOS.automationHero} alt="Smart home control — iPhone at the door" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.automationHero} alt="Smart home control — iPhone at the door" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}}/>
           <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 42%)'}}/>
         </div>
       </section>
@@ -2298,7 +2298,7 @@ function AutomationPage({navigate}) {
       {/* 4. How we build it */}
       <section className="th-section">
         <div className="th-split">
-          <div className="th-split-img"><img src={PHOTOS.lighting} alt="Lutron keypad in luxury home" data-img="lighting-scene"/></div>
+          <div className="th-split-img"><img loading="lazy" decoding="async" src={PHOTOS.lighting} alt="Lutron keypad in luxury home" data-img="lighting-scene"/></div>
           <div>
             <div className="sec-label" style={{textAlign:'left'}}>The platform</div>
             <h2 className="sec-title" style={{textAlign:'left'}}>We build on <em>open, professional</em> platforms.</h2>
@@ -2336,7 +2336,7 @@ function AutomationPage({navigate}) {
         <div className="th-projects">
           {AU_PROJECTS.map(p=>(
             <div key={p.key} className="th-project" onClick={()=>navigate('work')}>
-              <img src={PHOTOS[p.key]} alt={p.name}/>
+              <img loading="lazy" decoding="async" src={PHOTOS[p.key]} alt={p.name}/>
               <div className="th-project-overlay">
                 <div className="th-project-tag">{p.tag}</div>
                 <div className="th-project-name">{p.name}</div>
@@ -2393,7 +2393,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
           {hero.rightPanel ? hero.rightPanel : (<>
-            <img src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+            <img loading="lazy" decoding="async" src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
             <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.32) 0%,transparent 38%)'}}/>
           </>)}
         </div>
@@ -2408,7 +2408,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           <div className="th-install-grid">
             {installGrid.items.map((it,i)=>(
               <div key={i} className={`th-install-cell${it.size?' '+it.size:''}`}>
-                <img src={PHOTOS[it.key]} alt={it.cap}/>
+                <img loading="lazy" decoding="async" src={PHOTOS[it.key]} alt={it.cap}/>
                 <div className="th-install-cap">{it.cap}</div>
               </div>
             ))}
@@ -2437,7 +2437,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
         <section className="th-section--cream">
           <div className="th-section--cream-inner">
             <div className="th-split">
-              <div className="th-split-img"><img src={valueProp.split.image} alt={valueProp.split.alt}/></div>
+              <div className="th-split-img"><img loading="lazy" decoding="async" src={valueProp.split.image} alt={valueProp.split.alt}/></div>
               <div>
                 <div className="sec-label" style={{textAlign:'left'}}>{valueProp.split.eyebrow}</div>
                 <h2 className="sec-title" style={{textAlign:'left'}} dangerouslySetInnerHTML={{__html: valueProp.split.h2}}/>
@@ -2477,7 +2477,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           <div className="th-projects">
             {projects.items.map(p=>(
               <div key={p.key} className="th-project">
-                <img src={PHOTOS[p.key]} alt={p.name}/>
+                <img loading="lazy" decoding="async" src={PHOTOS[p.key]} alt={p.name}/>
                 <div className="th-project-overlay">
                   <div className="th-project-tag">{p.tag}</div>
                   <div className="th-project-name">{p.name}</div>
@@ -2671,7 +2671,7 @@ function NetworkingPage({navigate}) {
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gridTemplateRows:'1fr 1fr',height:'100%',gap:3,background:'var(--dark)'}}>
           {netMosaic.map((cell,i)=>(
             <div key={i} style={{position:'relative',overflow:'hidden'}}>
-              <img src={cell.src} alt={cell.label} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:cell.pos,display:'block'}}/>
+              <img loading="lazy" decoding="async" src={cell.src} alt={cell.label} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:cell.pos,display:'block'}}/>
               <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(27,26,40,.75) 0%,transparent 55%)'}}/>
               <div style={{position:'absolute',bottom:10,left:12,fontSize:10,letterSpacing:'.14em',textTransform:'uppercase',color:'rgba(252,250,246,.9)',fontWeight:600,textShadow:'0 1px 4px rgba(0,0,0,.6)'}}>{cell.label}</div>
             </div>
@@ -3318,7 +3318,7 @@ function AboutPage({navigate}) {
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img src={PHOTOS.heroAbout} alt="Sarasota marina — Gulf Coast" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.heroAbout} alt="Sarasota marina — Gulf Coast" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
           <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
         </div>
       </section>
@@ -3332,7 +3332,7 @@ function AboutPage({navigate}) {
             <p className="hero-body" style={{marginTop:22}}>LUMA was founded on a simple observation: the Southwest Florida smart-home market is crowded with dealer-locked systems, opaque pricing, and integrators who vanish after turnover. High-end homeowners pay for premium gear and receive a black box they can't manage, can't modify, and can't get serviced without waiting weeks for a call back.</p>
             <p className="hero-body">We started LUMA to flip that model. Open platforms — Lutron, Ubiquiti, Somfy, Sonos, Crestron — so you own your system. Line-item proposals, so you know exactly what you're paying for. Two-hour response times. Twelve months of service bundled into every project. And a studio that stays with your home for years, not weeks.</p>
           </div>
-          <div className="th-split-img"><img src={PHOTOS.heroDesigners} alt="Architectural lighting in a Gulf Coast living room"/></div>
+          <div className="th-split-img"><img loading="lazy" decoding="async" src={PHOTOS.heroDesigners} alt="Architectural lighting in a Gulf Coast living room"/></div>
         </div>
       </section>
 
@@ -3448,7 +3448,7 @@ function ServiceSupportPage({navigate}) {
             <button type="button" className="btn-ghost" onClick={()=>navigate('contact')}>Open a ticket (email)</button>
           </div>
         </div>
-        <div className="th-hero-img"><img src={PHOTOS.networkingRack} alt="Network rack and smart home infrastructure"/></div>
+        <div className="th-hero-img"><img loading="lazy" decoding="async" src={PHOTOS.networkingRack} alt="Network rack and smart home infrastructure"/></div>
       </header>
 
       <section className="th-section">
@@ -3601,7 +3601,7 @@ function CasesPage({navigate}) {
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img src={PHOTOS.heroWork} alt="Gulf Coast sunset — Sarasota" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.heroWork} alt="Gulf Coast sunset — Sarasota" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
           <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
         </div>
       </section>
@@ -3633,7 +3633,7 @@ function CasesPage({navigate}) {
             <div key={c.page} className="th-project work-case-card" onClick={()=>navigate(c.page)} role="button" tabIndex={0}
               style={{height:380,borderRadius:14,overflow:'hidden',cursor:'pointer',position:'relative'}}
               onKeyDown={e=>e.key==='Enter'&&navigate(c.page)}>
-              <img src={c.img} alt={c.title} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',transition:'transform .4s ease'}}/>
+              <img loading="lazy" decoding="async" src={c.img} alt={c.title} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',transition:'transform .4s ease'}}/>
               <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(10,9,22,.92) 0%,rgba(10,9,22,.25) 55%,transparent 100%)'}}/>
               <div style={{position:'absolute',top:18,left:18,background:'var(--accent)',color:'#fff',fontSize:11,letterSpacing:'.1em',textTransform:'uppercase',fontWeight:700,padding:'5px 12px',borderRadius:100}}>Case Study</div>
               <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'24px 26px'}}>
@@ -3650,7 +3650,7 @@ function CasesPage({navigate}) {
         <div className="th-projects">
           {PROJECTS.map(p => (
             <div key={p.name} className="th-project" onClick={()=>navigate('contact')} role="button" tabIndex={0}>
-              <img src={p.img} alt={`${p.name} — ${p.loc}`}/>
+              <img loading="lazy" decoding="async" src={p.img} alt={`${p.name} — ${p.loc}`}/>
               <div className="th-project-overlay">
                 <div className="th-project-tag">{p.loc} · {p.sqft}</div>
                 <div className="th-project-name">{p.name}</div>
@@ -3776,7 +3776,7 @@ function BudgetCalculatorPage({navigate}) {
         </div>
         {/* right — modern FL home photo */}
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img src={PHOTOS.heroModernHome} alt="Modern luxury home Gulf Coast" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 40%',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.heroModernHome} alt="Modern luxury home Gulf Coast" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 40%',display:'block'}}/>
           <div style={{position:'absolute',inset:0,background:'linear-gradient(270deg,transparent 55%,rgba(248,244,237,.18) 100%)'}}/>
         </div>
       </section>
@@ -3850,7 +3850,7 @@ function CaseSpaciousPage({navigate}) {
           <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
-          <img src={PHOTOS.caseSpHero} alt="Spacious Modern home — Naples" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.caseSpHero} alt="Spacious Modern home — Naples" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
         </div>
       </section>
 
@@ -3879,18 +3879,18 @@ function CaseSpaciousPage({navigate}) {
 
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
             <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseSpSceneA} alt="Living room with hidden audio" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseSpSceneA} alt="Living room with hidden audio" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseSpSceneB} alt="Open-plan kitchen and dining" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseSpSceneB} alt="Open-plan kitchen and dining" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
           </div>
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
             <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseSpCeiling} alt="Architectural in-ceiling speakers" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseSpCeiling} alt="Architectural in-ceiling speakers" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseSpVan} alt="LUMA install team on site" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseSpVan} alt="LUMA install team on site" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
           </div>
         </div>
@@ -3922,7 +3922,7 @@ function CaseUrbanPage({navigate}) {
           <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
-          <img src={PHOTOS.caseUrHero} alt="Urban Home media room — Sarasota" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.caseUrHero} alt="Urban Home media room — Sarasota" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
         </div>
       </section>
 
@@ -3951,18 +3951,18 @@ function CaseUrbanPage({navigate}) {
 
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
             <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseUrPool} alt="Pool with discrete landscape audio" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseUrPool} alt="Pool with discrete landscape audio" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseUrInWall} alt="B&W in-wall speaker detail" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseUrInWall} alt="B&W in-wall speaker detail" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
           </div>
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
             <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseUrSpeakerDetail} alt="B&W speaker close-up" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseUrSpeakerDetail} alt="B&W speaker close-up" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseUrRack} alt="UniFi network rack" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseUrRack} alt="UniFi network rack" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
           </div>
         </div>
@@ -3993,7 +3993,7 @@ function CaseFamilyPage({navigate}) {
           <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
-          <img src={PHOTOS.caseHfHero} alt="Huge Family House exterior" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.caseHfHero} alt="Huge Family House exterior" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
         </div>
       </section>
 
@@ -4022,18 +4022,18 @@ function CaseFamilyPage({navigate}) {
 
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
             <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseHfGreatRoom} alt="Great room with hidden cove lighting" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseHfGreatRoom} alt="Great room with hidden cove lighting" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseHfLedCove} alt="Architectural cove LEDs" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseHfLedCove} alt="Architectural cove LEDs" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
           </div>
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
             <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseHfLedDetail} alt="Linear LED detail under wood" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseHfLedDetail} alt="Linear LED detail under wood" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.caseHfShower} alt="Backlit shower niche" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.caseHfShower} alt="Backlit shower niche" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
           </div>
         </div>
@@ -4064,7 +4064,7 @@ function CaseModernPage({navigate}) {
           <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-          <img src={PHOTOS.projMrExterior} alt="Modern Residence exterior" style={{width:'100%',height:'auto',maxHeight:'100%',objectFit:'contain',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.projMrExterior} alt="Modern Residence exterior" style={{width:'100%',height:'auto',maxHeight:'100%',objectFit:'contain',display:'block'}}/>
         </div>
       </section>
 
@@ -4093,15 +4093,15 @@ function CaseModernPage({navigate}) {
           <div className="case-mr-photos" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10,alignItems:'start'}}>
             {/* projMrTv: 560×876 portrait → contain */}
             <div style={{height:280,overflow:'hidden',borderRadius:10,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img src={PHOTOS.projMrTv} alt="Sony TV over fireplace" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projMrTv} alt="Sony TV over fireplace" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
             </div>
             {/* projMrLiving: 1024×531 landscape → cover fine */}
             <div style={{height:280,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.projMrLiving} alt="Living room with panoramic view" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projMrLiving} alt="Living room with panoramic view" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             {/* projMrAvRoom: 2400×1350 landscape → cover fine */}
             <div style={{height:280,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.projMrAvRoom} alt="AV entertainment room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projMrAvRoom} alt="AV entertainment room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
           </div>
         </div>
@@ -4133,7 +4133,7 @@ function CaseBigHousePage({navigate}) {
           <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-          <img src={PHOTOS.projBmExterior} alt="Big Modern House exterior" style={{width:'100%',height:'auto',maxHeight:'100%',objectFit:'contain',display:'block'}}/>
+          <img loading="lazy" decoding="async" src={PHOTOS.projBmExterior} alt="Big Modern House exterior" style={{width:'100%',height:'auto',maxHeight:'100%',objectFit:'contain',display:'block'}}/>
         </div>
       </section>
 
@@ -4164,34 +4164,34 @@ function CaseBigHousePage({navigate}) {
           <div style={{display:'grid',gridTemplateColumns:'1fr 1.6fr 1fr 1.6fr',gap:10,marginBottom:10,alignItems:'start'}}>
             {/* projBmTv: 462×1024 portrait → contain */}
             <div style={{height:280,overflow:'hidden',borderRadius:10,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img src={PHOTOS.projBmTv} alt="TV on dark marble" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projBmTv} alt="TV on dark marble" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
             </div>
             {/* projBmLiving: 1024×520 landscape → cover */}
             <div style={{height:280,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.projBmLiving} alt="Finished living room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projBmLiving} alt="Finished living room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             {/* projBmRack: 375×1024 portrait → contain */}
             <div style={{height:280,overflow:'hidden',borderRadius:10,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img src={PHOTOS.projBmRack} alt="URC equipment rack" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projBmRack} alt="URC equipment rack" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
             </div>
             {/* projBmPatio: 1024×456 landscape → cover */}
             <div style={{height:280,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.projBmPatio} alt="Covered patio with pool" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projBmPatio} alt="Covered patio with pool" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
           </div>
           {/* Row 2: 1 portrait + 1 landscape + 1 near-square */}
           <div style={{display:'grid',gridTemplateColumns:'1fr 1.6fr 1fr',gap:10,alignItems:'start'}}>
             {/* projBmGameroom: 547×1024 portrait → contain */}
             <div style={{height:240,overflow:'hidden',borderRadius:10,background:'#0e0d1b',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img src={PHOTOS.projBmGameroom} alt="Game room with ceiling speakers" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projBmGameroom} alt="Game room with ceiling speakers" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
             </div>
             {/* projBmKef: 1024×596 landscape → cover */}
             <div style={{height:240,overflow:'hidden',borderRadius:10}}>
-              <img src={PHOTOS.projBmKef} alt="KEF speaker delivery" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projBmKef} alt="KEF speaker delivery" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
             </div>
             {/* projBmControl: 508×578 near-square → contain */}
             <div style={{height:240,overflow:'hidden',borderRadius:10,background:'#f5f3ef',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img src={PHOTOS.projBmControl} alt="Control panel" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
+              <img loading="lazy" decoding="async" src={PHOTOS.projBmControl} alt="Control panel" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
             </div>
           </div>
         </div>
@@ -4444,7 +4444,7 @@ function SmartHomeDemoPage({navigate}) {
         <div className="demo-wrap">
           <div className="demo-plan-wrap">
             <div className="demo-plan-stage">
-              <img className="demo-plan-img" src="/assets/smart-home-demo/dollhouse.jpg" alt="3D cutaway view of a LUMA smart home — every system in place"/>
+              <img loading="lazy" decoding="async" className="demo-plan-img" src="/assets/smart-home-demo/dollhouse.jpg" alt="3D cutaway view of a LUMA smart home — every system in place"/>
 
               <svg className="demo-plan-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <defs>
