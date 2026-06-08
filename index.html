@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+дв<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -176,6 +176,14 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   filter:saturate(1.05) contrast(1.03);
   transform:scale(1.04);
 }
+.home-hero-video{
+  position:absolute; inset:0; z-index:-2;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 45%;
+  filter:saturate(1.05) contrast(1.03);
+  transform:scale(1.04);
+  pointer-events:none;
+}
 .home-hero-photo::after{
   content:''; position:absolute; inset:0;
   background:
@@ -321,7 +329,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   position:relative; width:100%;
   height:clamp(420px, 64vh, 640px);
   overflow:hidden; isolation:isolate;
-  background:#0a1822 url('/assets/video/sarasota-reel-poster.jpg?v=13') center/cover no-repeat;
+  background:#0a1822 url('/assets/photos/sarasota-turtle-aerial.jpg') center/cover no-repeat;
   color:#FCFAF6;
 }
 .sarasota-banner-video{
@@ -332,6 +340,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   opacity:0; transition:opacity .9s ease-out;
 }
 .sarasota-banner-video.is-ready{ opacity:1 }
+.sarasota-banner-img{
+  position:absolute; inset:0; z-index:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 50%;
+  pointer-events:none;
+}
 .sarasota-banner-overlay{
   position:absolute; inset:0;
   background:
@@ -1479,7 +1493,11 @@ function HomePage({navigate}) {
     <div className="page">
       {/* Hero — cinematic Florida home */}
       <section className="home-hero" aria-label="LUMA Smart Home — Gulf Coast residences">
-        <div className="home-hero-photo" style={{backgroundImage:`url(${PHOTOS.heroSplash})`}} role="img" aria-label="Sarasota downtown skyline from Sarasota Bay"/>
+        <div className="home-hero-photo" style={{backgroundImage:`url('/assets/video/hero-villa-poster.jpg')`}} role="img" aria-label="Modern Gulf Coast villa at dusk"/>
+        <video className="home-hero-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/video/hero-villa-poster.jpg" aria-hidden="true">
+          <source src="/assets/video/hero-villa.webm" type="video/webm"/>
+          <source src="/assets/video/hero-villa.mp4" type="video/mp4"/>
+        </video>
         <div className="home-hero-overlay"/>
         <svg className="home-hero-frond" viewBox="0 0 600 600" fill="none" aria-hidden="true">
           <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity=".9">
@@ -1545,20 +1563,13 @@ function HomePage({navigate}) {
 
       {/* Sarasota anchor — looped drone reel of our home base (Siesta Key, downtown, Ringling, marina) */}
       <section className="sarasota-banner" aria-label="LUMA Sarasota studio · aerial drone reel">
-        <video
-          className="sarasota-banner-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/assets/video/sarasota-reel-poster.jpg?v=13"
-          aria-hidden="true"
-          onCanPlay={(e)=>e.currentTarget.classList.add('is-ready')}
-        >
-          <source src="/assets/video/sarasota-reel.webm?v=13" type="video/webm"/>
-          <source src="/assets/video/sarasota-reel.mp4?v=13"  type="video/mp4"/>
-        </video>
+        <img
+          className="sarasota-banner-img"
+          src="/assets/photos/sarasota-turtle-aerial.jpg"
+          alt="Aerial view of the Sarasota Gulf Coast — LUMA Smart Home studio"
+          loading="lazy"
+          decoding="async"
+        />
         <div className="sarasota-banner-overlay" aria-hidden="true"/>
         <div className="sarasota-banner-pin" aria-label="LUMA studio location">
           <span className="dot" aria-hidden="true"/>
