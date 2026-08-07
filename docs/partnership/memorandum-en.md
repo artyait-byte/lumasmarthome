@@ -17,13 +17,13 @@ Together the "Partners". Contact details are in Annex D.
 
 The Partners join efforts to launch and test a residential technology business (the "Project") under the **LUMA Smart Home** brand: design, supply, installation, programming, commissioning and service of lighting control, motorized shading, networking, surveillance, audio/video and home automation, plus recurring **LUMA Care** memberships.
 
-Primary territory: **Sarasota County, Florida**; adjacent: Manatee, Charlotte, DeSoto, Lee, Collier. Work outside this territory needs both Partners' agreement. Target client: owners of homes and condominiums from **$______** in value, and the builders, architects and designers serving them.
+Primary territory: **Sarasota County, Florida**; adjacent: Manatee, Charlotte, DeSoto, Lee, Collier; outside it, only by mutual agreement. Target client: owners of homes and condominiums from **$______** in value, and the builders, architects and designers serving them.
 
 ## 3. Trial period and reviews
 
 This Memorandum covers a deliberate trial from the effective date **through 31 December 2026**, to test demand, unit economics and the working relationship **at minimal cash risk** — the main contribution of both Partners is time.
 
-Rhythm: a weekly operating call of ______ minutes on ______ , a written monthly review by the ______ of each month, and a final review by **15 December 2026**. At that review the Partners choose one of three outcomes: (a) sign a definitive Operating Agreement of a Florida LLC; (b) extend the trial by written addendum; (c) end the cooperation under §17.
+Rhythm: a weekly operating call of ______ minutes on ______ , a written monthly review by the ______ of each month, and a final review by **15 December 2026**. Outcomes at that review: (a) sign a definitive Operating Agreement of a Florida LLC; (b) extend the trial by written addendum; (c) end the cooperation under §17.
 
 ## 4. Participation shares
 
@@ -33,11 +33,11 @@ Rhythm: a weekly operating call of ______ minutes on ______ , a written monthly 
 | Partner B | ______ % | Same |
 | Reserve pool — future partner or key hire | ______ % | Unissued; allocated only under §13 |
 
-During the trial these shares are **provisional**: at the final review they are confirmed, or adjusted by written agreement, against the contribution ledger in Annex B (hours, cash, results). If the Partners cannot agree on an adjustment, the shares above stand. Shares are not transferable during the trial without the other Partner's written consent.
+During the trial these shares are **provisional**: at the final review they are confirmed, or adjusted by written agreement, against the Annex B contribution ledger (hours, cash, results); failing agreement, the shares above stand. Shares are not transferable during the trial without the other Partner's written consent. A share is personal: a spouse, heir or creditor acquires only its economic value (Annex B.5), never participation or votes, and each Partner has first refusal on the other's share.
 
 ## 5. Areas of responsibility
 
-Each area has one accountable **Lead**, who decides day-to-day matters within budget and reports at the weekly call. Support assists but does not own the outcome. Task-level detail, escalation and internal rates are in Annex A.
+Each area has one accountable **Lead**, who decides day-to-day matters within budget and reports at the weekly call. Support assists but does not own the outcome. Detail, escalation and internal rates: Annex A.
 
 | # | Area | Lead | Support |
 |---|---|---|---|
@@ -50,6 +50,7 @@ Each area has one accountable **Lead**, who decides day-to-day matters within bu
 | 7 | Finance and admin — bookkeeping, invoicing, receivables, tax, insurance | ______ | ______ |
 | 8 | Licensing and compliance — licensing route, permits, subcontractor files | ______ | ______ |
 | 9 | Client care — support desk, service visits, LUMA Care renewals | ______ | ______ |
+| 10 | Strategy and capital — goals, budget, financing, PR, key relationships | ______ | ______ |
 
 ## 6. Time commitment
 
@@ -57,7 +58,7 @@ Partner A: **______ hours per week**. Partner B: **______ hours per week**. Core
 
 ## 7. Money at the start (deliberately minimal)
 
-Each Partner contributes up to **$______** to a common working fund ("Seed Cap"), in tranches as needed, and is not obliged to contribute more during the trial. Any single expense above **$______**, or a new recurring subscription above **$______ per month**, needs written approval of both (email or messenger suffices).
+Each Partner contributes up to **$______** to a common working fund ("Seed Cap"), in tranches as needed, and is not obliged to contribute more during the trial. Target operating budget: **$______ per month**. Any single expense above **$______**, or a new recurring subscription above **$______ per month**, needs written approval of both (email or messenger suffices).
 
 Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. Personal costs (vehicle, phone, home office, personal tools) are not reimbursable unless listed in Annex D.5.
 
@@ -77,7 +78,7 @@ During the trial the Partners intend to reinvest at least **______ %** of profit
 
 ## 10. Goals for the trial
 
-To 31 December 2026: revenue **$______**; signed projects **______**; average project value **$______**; realized gross margin **______ %**; LUMA Care memberships **______**; qualified leads per month **______**; year-end pipeline **$______**; signed trade partners **______**; photographed reference projects **______**.
+To 31 December 2026: revenue **$______**; signed projects **______**; average project value **$______**; realized gross margin **______ %**; LUMA Care memberships **______**; qualified leads per month **______**; year-end pipeline **$______**; signed trade partners **______**; photographed reference projects **______**. Long-term intent: ______ (grow and hold / build to sell / income business); the 1–5-year picture of each Partner is recorded in Annex D.7.
 
 Weighted equally in the go / no-go decision: commitments to each other are kept, communication holds under pressure, and both still want to sign. The 30/60/90-day plan is in Annex C.
 
@@ -89,7 +90,7 @@ Rules from day one: every lead is entered in the shared CRM within **______ hour
 
 ## 12. Decisions and reserved matters
 
-Day-to-day decisions belong to the area Lead (§5). **Written consent of both Partners** is required for: admitting a third partner, investor or equity hire; any borrowing, lease, personal guarantee or client financing; any expense above **$______** or contract with liability above **$______**; the first full-time hire; pricing below the §9 margin floor; changes to brand, entity name, domain or website ownership; any profit distribution; entering territory outside §2; manufacturer exclusivity.
+Day-to-day decisions belong to the area Lead (§5). **Written consent of both Partners** is required for: admitting a third partner, investor or equity hire; any borrowing, lease, personal guarantee or client financing; any expense above **$______** or contract with liability above **$______**; the first full-time hire, and any hire of a relative of either Partner; pricing below the §9 margin floor; changes to brand, entity name, domain or website ownership; any profit distribution; entering territory outside §2; manufacturer exclusivity.
 
 Deadlock: seven days' cool-off, then one further meeting with a written agenda, then a mutually chosen mediator in Sarasota County, then §17 — and no unilateral action on a reserved matter while a deadlock is open.
 
@@ -111,19 +112,19 @@ The **LUMA Smart Home** name and marks, the domain, the website with its code an
 
 ## 17. Ending the trial
 
-Either Partner may end the cooperation on **______ days' written notice**; it also ends on 31 December 2026 unless extended. Then: projects in progress are completed, or transferred with the client's written consent, at the client's least inconvenience; receivables are collected and payables settled; the working fund, tools and equipment are divided per §4 after all Project obligations; the departing Partner stays bound by §15 and §16; a buy-out of a share is valued per Annex B.5. Protecting the client takes precedence over the Partners' claims against each other.
+Either Partner may end the cooperation on **______ days' written notice**; it also ends on 31 December 2026 unless extended. If a Partner dies or is incapacitated beyond ______ days, the cooperation ends here too, with the share paid out to the Partner or their heirs per Annex B.5; a material breach of §11, §12, §15 or §16, uncured ______ days after written notice, lets the other Partner end it immediately. Then: projects in progress are completed, or transferred with the client's written consent; receivables are collected and payables settled; the working fund, tools and equipment are divided per §4 after all Project obligations; the departing Partner stays bound by §15 and §16; a buy-out of a share is valued per Annex B.5. Protecting the client takes precedence over the Partners' claims against each other.
 
 ## 18. Legal form, licensing and compliance
 
 The Partners intend to operate through a member-managed Florida LLC (working name **LUMA Home Systems LLC**) with a written Operating Agreement, EIN, business bank account, bookkeeping from day one, general liability insurance (plus workers' comp where required), sales-tax registration, and written subcontractor agreements with W-9s and insurance certificates.
 
-Until the entity, insurance and the applicable **Florida licensing route** are in place, no Partner signs client contracts in the Project's name, and any work requiring a low-voltage, alarm-system or electrical licence is performed only by a licensed contractor of record engaged in writing. Choosing that route — a licence in a Partner's name, or working through a licensed partner contractor — is an Annex C.1 milestone with an owner and a date. No Partner may hold themselves out as licensed before the Project is. Each Partner is responsible for their own taxes and work authorization.
+Until the entity, insurance and the applicable **Florida licensing route** are in place, no Partner signs client contracts in the Project's name, and any work requiring a low-voltage, alarm-system or electrical licence is performed only by a licensed contractor of record engaged in writing. Choosing that route — a licence in a Partner's name, or working through a licensed partner contractor — is an Annex C.1 milestone with an owner and a date. No Partner may hold themselves out as licensed before the Project is. Each Partner is responsible for their own taxes and work authorization, and each always has unrestricted access to the books, the bank account and all Project documents.
 
 ## 19. Status of this document; governing law; language
 
 Except for §15, §16 and this §19, this Memorandum is a **statement of intent**: it is not intended to create a binding contract, a general partnership, a joint venture, employment, or authority for either Partner to bind the other. It is not legal, tax, accounting or insurance advice; the definitive Operating Agreement will be reviewed by a Florida attorney and a CPA and will supersede this Memorandum.
 
-Governing law: the State of Florida; venue Sarasota County. Executed in English and Russian; both texts carry the same meaning and, if they differ, the **______________ text prevails**.
+Changes to this Memorandum are valid only in writing signed by both Partners. Governing law: the State of Florida; venue Sarasota County. Executed in English and Russian; both texts carry the same meaning and, if they differ, the **______________ text prevails**.
 
 ## 20. Signatures
 
@@ -219,11 +220,13 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 **D.3 Pre-existing intellectual property licensed to the Project** (owner keeps ownership; free licence while cooperating): ______________________ .
 
-**D.4 Asset register and custody.** For each asset — owner of record during the trial, and who keeps it if the trial ends: brand and marks ______ ; domain and DNS ______ ; website repository and hosting ______ ; Google Business Profile ______ ; CRM and client database ______ ; phone number ______ ; email domain ______ ; social accounts ______ ; price book and templates ______ ; photography and case-study material ______ ; demo kit and tools ______ ; vendor and dealer accounts ______ .
+**D.4 Asset register and custody.** For each asset — owner of record during the trial, and who keeps it if the trial ends: brand and marks ______ ; domain and DNS ______ ; website repository and hosting ______ ; Google Business Profile ______ ; CRM and client database ______ ; phone number ______ ; email domain ______ ; social accounts ______ ; price book and templates ______ ; photography and case-study material ______ ; demo kit and tools ______ ; vendor and dealer accounts ______ ; entity documents and tax filings ______ .
 
 **D.5 Reimbursable personal costs, if any** (§7): ______________________ , capped at $______ per month per Partner.
 
 **D.6 Open items to resolve before the definitive agreement.** ______________________ .
+
+**D.7 The 1–5-year picture, in each Partner's own words** (§10). Partner A: ______________________ . Partner B: ______________________ .
 
 ---
 

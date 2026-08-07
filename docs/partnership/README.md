@@ -11,6 +11,7 @@ Bilingual trial-period partnership memorandum for launching the LUMA Smart Home 
 | `memorandum.html` | Print-ready build of both versions: language switch (EN / RU / EN+RU), A4 print styling, "Save as PDF" button | Готовый к печати файл с обеими версиями: переключатель языка, вёрстка A4, кнопка сохранения в PDF |
 | `memorandum-en.pdf` / `memorandum-ru.pdf` | Ready-to-send PDF of the **blank** form, 6 A4 pages each: 2-page memorandum + 4 annex pages. Regenerate after filling anything in | PDF **незаполненной** формы, готовый к отправке: 6 страниц A4 — меморандум на 2 страницы + 4 страницы приложений. После заполнения пересоберите |
 | `open-questions.md` | 50 questions to settle before signing, grouped, each with a suggested default | 50 вопросов, которые нужно закрыть до подписания, по группам, с предлагаемым вариантом по умолчанию |
+| `questions-mapping-ru.md` | The partners' own 50-question checklist («Вопросы для партнеров»), mapped question-by-question to the section that answers it | Ваши «Вопросы для партнеров»: каждый из 50 вопросов сопоставлен с разделом меморандума, где он решается |
 
 The Markdown files are the source of truth. `memorandum.html` is generated — do not edit it by hand. Markdown — источник истины. `memorandum.html` генерируется, править его руками не нужно.
 

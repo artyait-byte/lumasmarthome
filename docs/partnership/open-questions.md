@@ -168,12 +168,8 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ---
 
-## When you send your own 50 questions / Когда пришлёте свои 50 вопросов
+## The partners' own 50 questions / Ваши 50 вопросов
 
-The memorandum is built so that additional questions land in an existing section rather than forcing a rewrite: shares and contributions → §4 and Annex B; money, losses and additional funding → §7, §8; profit, commission and pay → §9 and Annex A.3; roles, time and escalation → §5, §6, Annex A; goals, KPIs and channels → §10, §11, Annex C; decisions and reserved matters → §12; a third partner or investor → §13; operational improvements and future growth → §14; confidentiality, exclusivity, lead ownership → §11, §15; brand, IP and client data → §16, Annex D.4; separation → §17; Florida entity, licensing, insurance and tax → §18, Annex C.1.
+The partners' checklist («Вопросы для партнеров») has been received and folded in: every one of its 50 questions is answered by a specific memorandum section, and the few that were missing — long-term goal, right of first refusal, spouses and heirs, death or incapacity, exclusion for breach, hiring relatives, access to the books, amendment procedure — were added to §4, §5, §7, §10, §12, §17, §18, §19 and Annex D of both language versions. The question-by-question mapping is in `questions-mapping-ru.md`.
 
-Send the list as you have it, in Russian or English, and anything not already covered will be added as a new blank in the matching section of both language versions, with the annexes updated to match.
-
-Меморандум построен так, что дополнительные вопросы попадают в уже существующий раздел, а не требуют переписывания: доли и вклады → §4 и Приложение B; деньги, убытки, доп. финансирование → §7, §8; прибыль, комиссия, оплата → §9 и Приложение A.3; роли, время, эскалация → §5, §6, Приложение A; цели, KPI, каналы → §10, §11, Приложение C; решения и вопросы согласия обоих → §12; третий партнёр или инвестор → §13; операционные улучшения и рост → §14; конфиденциальность, эксклюзивность, владение лидами → §11, §15; бренд, ИС и данные клиентов → §16, Приложение D.4; расхождение → §17; компания, лицензии, страхование и налоги во Флориде → §18, Приложение C.1.
-
-Присылайте список в том виде, как он есть, по-русски или по-английски: всё, что ещё не покрыто, добавится новым пропуском в соответствующий раздел обеих языковых версий, с синхронным обновлением приложений.
+Файл «Вопросы для партнеров» получен и учтён: каждый из 50 вопросов закрывается конкретным разделом меморандума, а те немногие, которых не хватало — долгосрочная цель, преимущественное право выкупа, супруги и наследники, смерть или нетрудоспособность, исключение за нарушение, наём родственников, доступ к документам, порядок изменений — добавлены в §4, §5, §7, §10, §12, §17, §18, §19 и Приложение D обеих языковых версий. Повопросное сопоставление — в файле `questions-mapping-ru.md`.
