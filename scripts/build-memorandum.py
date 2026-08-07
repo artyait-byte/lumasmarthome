@@ -54,6 +54,12 @@ def split_row(line: str) -> list[str]:
     return [c.strip() for c in line.strip().strip("|").split("|")]
 
 
+def cell(text: str) -> str:
+    """A cell holding nothing but a blank gets a full-width line to write on."""
+    klass = ' class="blank"' if re.fullmatch(r"_{3,}", text) else ""
+    return f"<td{klass}>{inline(text)}</td>"
+
+
 def render(md: str) -> str:
     lines = md.replace(PAGEBREAK, "\n@@PAGEBREAK@@\n").split("\n")
     parts: list[str] = []
@@ -105,10 +111,7 @@ def render(md: str) -> str:
             head = split_row(block[0])
             body = [split_row(r) for r in block[2:]] if len(block) > 2 else []
             thead = "".join(f"<th>{inline(c)}</th>" for c in head)
-            rows = "".join(
-                "<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>"
-                for r in body
-            )
+            rows = "".join("<tr>" + "".join(cell(c) for c in r) + "</tr>" for r in body)
             parts.append(
                 f"<table><thead><tr>{thead}</tr></thead><tbody>{rows}</tbody></table>"
             )
@@ -183,8 +186,8 @@ th{background:#f2f5f6;font-weight:700;font-size:9px;letter-spacing:.02em}
 
 .fill{display:inline-block;border-bottom:1px solid var(--rule);
   height:.95em;vertical-align:baseline;min-width:2.2em}
-/* A blank alone in a table cell becomes a full-width line to write on. */
-td>.fill:only-child{width:100%!important}
+td .fill{min-width:3.4em}
+td.blank>.fill{width:100%!important}
 
 .pagebreak{height:0}
 

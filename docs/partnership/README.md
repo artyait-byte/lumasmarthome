@@ -23,8 +23,10 @@ The Markdown files are the source of truth. `memorandum.html` is generated — d
 python3 scripts/build-memorandum.py
 ```
 
-4. Open `docs/partnership/memorandum.html` in a browser, pick the language, press **Print / Save as PDF**. Use A4, default margins, background graphics off. Sections 1–20 print on two pages; each annex starts on its own page. Откройте файл в браузере, выберите язык, нажмите кнопку печати: A4, поля по умолчанию, фоновая графика выключена.
+4. Open `docs/partnership/memorandum.html` in a browser, pick the language, press **Print / Save as PDF**. Settings that matter: paper **A4**, margins **Default**, scale **100%**, and **“Headers and footers” off** — leaving them on steals a line and pushes the body onto a third page. Sections 1–20 print on two pages; each annex then starts on its own page. Откройте файл в браузере, выберите язык, нажмите кнопку печати. Важные настройки: **A4**, поля **по умолчанию**, масштаб **100%**, «колонтитулы» **выключены** — иначе тело меморандума уедет на третью страницу.
 5. Sign both language versions (§20), keep a scan each, and put the annexes into a shared drive as living working documents — the time log and KPI dashboard are meant to be updated weekly. Подпишите обе версии (§20), сохраните по сканy каждому, а приложения положите в общий диск как живые рабочие документы: журнал времени и панель KPI обновляются еженедельно.
+
+Two pages is a hard constraint, so the printed body is set at 7.25 pt — legible, but deliberately dense. If you would rather read it at a comfortable size and accept three pages, raise `font-size` in the `@media print` block of `scripts/build-memorandum.py` and rebuild. On screen the same text is shown at a normal size. Две страницы — жёсткое ограничение, поэтому в печати тело набрано 7.25 pt: читаемо, но плотно. Если хочется крупнее и не жаль третьей страницы — увеличьте `font-size` в блоке `@media print` в `scripts/build-memorandum.py` и пересоберите; на экране текст и так отображается обычным размером.
 
 ## Other output formats / Другие форматы
 
