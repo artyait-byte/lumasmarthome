@@ -27,11 +27,11 @@ LANGS = [
 UI = {
     "en": {
         "print": "Print / Save as PDF",
-        "hint": "Print at A4, margins “Default”, background graphics off. Sections 1–20 fit two pages; annexes follow.",
+        "hint": "Print at A4 · margins “Default” · scale 100% · headers and footers off. Sections 1–20 fit two pages; annexes follow.",
     },
     "ru": {
         "print": "Печать / Сохранить в PDF",
-        "hint": "Печать A4, поля «по умолчанию», фоновая графика выключена. Разделы 1–20 занимают две страницы, далее приложения.",
+        "hint": "Печать A4 · поля «по умолчанию» · масштаб 100% · колонтитулы выключены. Разделы 1–20 занимают две страницы, далее приложения.",
     },
 }
 
