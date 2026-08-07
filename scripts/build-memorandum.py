@@ -238,10 +238,36 @@ JS = """
 """
 
 
+def outline(md: str) -> list[tuple[str, int]]:
+    """Section headings with the number of fill-in blanks in each."""
+    sections = []
+    for chunk in re.split(r"\n(?=#{1,2} )", md):
+        head = chunk.split("\n", 1)[0].lstrip("# ").strip()
+        number = re.match(r"^(\d+)\.", head)
+        sections.append((number.group(1) if number else head[:14], len(re.findall(r"_{3,}", chunk))))
+    return sections
+
+
+def check_parity(sources: dict[str, str]) -> list[str]:
+    """The two language versions must stay section-for-section identical."""
+    en, ru = outline(sources["en"]), outline(sources["ru"])
+    if len(en) != len(ru):
+        return [f"section count differs: en={len(en)} ru={len(ru)}"]
+    return [
+        f"section {ke or kr}: {be} blanks in EN vs {br} in RU"
+        for (ke, be), (kr, br) in zip(en, ru)
+        if be != br
+    ]
+
+
 def main() -> None:
+    sources = {l["code"]: (SRC / l["file"]).read_text(encoding="utf-8") for l in LANGS}
+    for problem in check_parity(sources):
+        print(f"WARNING: {problem}")
+
     docs = []
     for lang in LANGS:
-        md = (SRC / lang["file"]).read_text(encoding="utf-8")
+        md = sources[lang["code"]]
         docs.append(
             f'<article class="doc" id="doc-{lang["code"]}" lang="{lang["html_lang"]}">\n'
             f'{render(md)}\n</article>'
