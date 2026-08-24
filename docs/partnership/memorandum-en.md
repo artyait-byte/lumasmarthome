@@ -8,10 +8,9 @@
 
 ## 1. Parties
 
-**Partner A (Managing Partner):** Artsiom Ishchuk, residing in ______________________, FL.
-**Partner B:** Anatoliy Shiva, residing in ______________________, ______ .
-
-Together the "Partners". Contact details are in Annex D.
+**Partner A — Artsiom Ishchuk** (Managing Partner), residing in ______________________, FL.
+**Partner B — Anatoliy Shiva**, residing in ______________________, ______ .
+Contact details are in Annex D.
 
 ## 2. Purpose and territory
 
@@ -29,15 +28,15 @@ Rhythm: Partner A **initiates** every operating discussion; Partner B joins. Wee
 
 | Participant | Share | Applies to |
 |---|---|---|
-| Partner A | ______ % | Profit, losses (§8), membership interest in the LLC |
-| Partner B | ______ % | Same |
+| Artsiom Ishchuk (A) | ______ % | Profit, losses (§8), membership interest in the LLC |
+| Anatoliy Shiva (B) | ______ % | Same |
 | Reserve pool — future partner or key hire | ______ % | Unissued; allocated only under §13 |
 
 **Work split** during the trial is **80 / 20** (A / B). The percentages above are equity and profit; the Partners fill them in, and they need not match the work split. They are **provisional** until the final review against Annex B; failing agreement, they stand. Not transferable without written consent. A share is personal: a spouse, heir or creditor gets only its economic value (Annex B.5), never votes, and each Partner has first refusal.
 
 ## 5. Areas of responsibility
 
-The model is **asymmetric**. Until other titles exist, two roles only: Partner A is **Managing Partner / CDO** (~80%) — commercial and delivery owner; he initiates processes, website and landings, funnels, packages, dealer statuses, engineers, events, visits, closing, delivery, bookkeeping, tax, databases, first team and strategy. Partner B is **business development / intermediary** (~20%) — a related role, not a silent financier: he may sell, introduce, advertise indirectly, direct a contact or make an offer, on a *sufficient* basis, not as an 8–10 hour daily job. He sits in strategic discussions on where the Project is going, helps form package solutions, licensing, the contact base and ties to the right specialists, funds the start, opens the Accent book and holds the low-voltage licence. Day-to-day is the Lead's; detail: Annex A.
+The model is **asymmetric**. Two roles: **Artsiom Ishchuk** is **Managing Partner / CDO** (~80%) — commercial and delivery owner; he initiates processes, website, funnels, packages, dealers, engineers, visits, closing, delivery, books, tax, databases, first team and strategy. **Anatoliy Shiva** (~20%) supports the Project; it is **not his main focus** — his primary business is **Accent Florida Home**, which he continues to develop. He may still sell, introduce, advertise indirectly, sit in strategy, fund the start and hold the low-voltage licence, on a *sufficient* basis, not an 8–10 hour daily job. Day-to-day is the Lead's; detail: Annex A.
 
 | # | Area | Lead | Support |
 |---|---|---|---|
@@ -60,7 +59,7 @@ Partner A: **______ hours per week**. Partner B: **5–6 hours per week**, on a 
 
 Each Partner contributes up to **$______** to a common working fund ("Seed Cap"), in tranches as needed, and is not obliged to contribute more during the trial. Target operating budget: **$______ per month**. Any single expense above **$______**, or a new recurring subscription above **$______ per month**, needs written approval of both (email or messenger suffices).
 
-Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. In the first one–two quarters Partner B funds the launch, up to **$______** on §8 terms (capital or partner loan). The envelope covers marketing and paid leads (Google Ads, Meta, Angi, Thumbtack and similar), business status, licences, certifications, dealer accounts, CPA set-up, and first buys under signed contracts. Partner A initiates each spend; Partner B releases funds inside the envelope. Personal costs are not reimbursable unless listed in Annex D.5.
+Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. In the first one–two quarters Partner B funds the launch, up to **$______** on §8 terms (capital or partner loan). The envelope covers marketing and paid leads (Google Ads, Meta, Angi, Thumbtack and similar), business status, licences, certifications, dealer accounts, CPA set-up, and first buys under signed contracts. Partner A initiates each spend; Partner B releases funds inside the envelope. Personal costs (vehicle, phone, home office, personal tools) are not reimbursable except the §9 personal-bill advance (max $7,000, repayable) and items listed in Annex D.5.
 
 ## 8. Losses and additional funding
 
@@ -72,9 +71,11 @@ Bad debt, warranty rework and re-doing defective work are **Project costs** shar
 
 ## 9. Revenue, profit and distributions
 
-Cash is applied in this order: (1) **direct project costs** — equipment, freight, subcontractors, permits, sales tax; (2) **sales commission** — ______ % of project gross profit to the Partner who sourced and closed the deal, paid before the profit split; (3) **operating expenses**; (4) **cash reserve**, until it reaches **$______** (about ______ months of operating expenses); (5) **profit**, distributed per §4, ______ (monthly / quarterly).
+Cash is applied in this order: (1) **direct project costs** — equipment, freight, subcontractors, permits, sales tax; (2) **Artsiom's living draw** from the first surplus after (1) — first fruits: he puts in the time now, cash may lag; each payment is an amount both agree in writing and log in B.2; (3) **sales commission** — ______ % of project gross profit to whoever sourced and closed the deal; (4) **operating expenses**; (5) **cash reserve**, until it reaches **$______** (about ______ months of operating expenses); (6) **profit**, distributed per §4, ______ (monthly / quarterly).
 
-During the trial the Partners intend to reinvest at least **______ %** of profit. No salaries or owner draws unless both agree in writing; a Partner doing billable field or programming work is paid **$______ per hour** as a direct project cost at the rates in Annex A.3, separately from profit share. Every project is quoted from the shared price book at a **minimum gross margin of ______ %**; going below that needs both Partners' consent.
+**Personal-bill advance.** On Artsiom's request, Anatoliy may pay Artsiom's personal bills **1–2 times**, **not more than $7,000 in total**. Repayable advance logged in B.2, not a gift. Repaid from later living draws or profit. If Artsiom cannot repay in cash, he **works the balance off at Accent Florida Home** in any other written format both agree (hours × rate, signed off) until zero.
+
+During the trial the Partners intend to reinvest at least **______ %** of profit after the living draw. A Partner doing billable field or programming work is paid **$______ per hour** as a direct project cost at the rates in Annex A.3, separately from profit share. Every project is quoted from the shared price book at a **minimum gross margin of ______ %**; going below that needs both Partners' consent.
 
 ## 10. Goals for the trial
 
@@ -128,7 +129,7 @@ Changes to this Memorandum are valid only in writing signed by both Partners. Go
 
 ## 20. Signatures
 
-| Partner A | Partner B |
+| Artsiom Ishchuk | Anatoliy Shiva |
 |---|---|
 | Name: Artsiom Ishchuk | Name: Anatoliy Shiva |
 | Signature: __________________________ | Signature: __________________________ |
@@ -176,9 +177,11 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 **B.2 Cash log** (every contribution and reimbursable expense, with receipt).
 
-| Date | Partner | Amount | Purpose | Type: capital / loan / reimbursable | Approved by |
+| Date | Partner | Amount | Purpose | Type: capital / loan / reimbursable / living draw / personal-bill advance | Approved by |
 |---|---|---|---|---|---|
 | ______ | ______ | $______ | ______ | ______ | ______ |
+
+**B.2a Personal-bill advance** (§9). Anatoliy may cover Artsiom's personal bills **1–2 times**, **not more than $7,000 in total**. Logged here as a repayable advance, not a gift. Repaid from later living draws or profit. If Artsiom cannot repay in cash, he works the balance off at **Accent Florida Home** in a written format both agree before the work starts (hours × rate, signed off by Anatoliy) until the balance is zero. A CPA classifies the advance as a loan or as compensation.
 
 **B.3 Share confirmation at the final review.** Inputs considered, in this order: (1) hours logged in B.1 against the commitment in §6; (2) cash in B.2 net of repayments; (3) delivered results against the KPIs in §10 and the milestones in Annex C; (4) ownership of a critical function that the Project cannot operate without. Any adjustment to §4 requires both signatures and is recorded as an addendum. Default if the Partners cannot agree on an adjustment: the shares in §4 stand unchanged.
 

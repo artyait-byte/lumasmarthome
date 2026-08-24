@@ -42,7 +42,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 21. Internal billable rates for design, programming, field labour, and service calls. *Default: design $95/h, programming and commissioning $110/h, field labour $65/h, member service $95/h, non-member $135/h.*
 22. Distribution cadence, and reserve target before any distribution. *Default: quarterly, after the reserve reaches $10,000 or two months of operating expenses.*
 23. Share of profit reinvested during the trial. *Default: 70%.*
-24. Any salary or owner draw during the trial? *Default: none — billable work is paid as a project cost instead.*
+24. Any salary or owner draw during the trial? *Default now: Artsiom takes a living draw from first surplus after direct project costs (first fruits — time now, cash may lag); each payment is an amount both agree in writing and log in B.2. Separately, Anatoliy may cover Artsiom's personal bills 1–2 times, max $7,000 total, as a repayable advance (not a gift). If Artsiom cannot repay in cash, he works the balance off at Accent Florida Home in a written format (hours × rate). A CPA classifies the advance as a loan vs compensation. This is a normal recoverable-draw pattern when the operating partner is putting in the hours before revenue arrives; $7,000 / 1–2 times is a conservative cap.*
 25. Minimum gross-margin floor in the price book. *Default: 35% blended, hardware not below 25%, labour not below 45%.*
 
 ### E. Roles and time — §5, §6, Annex A
@@ -123,7 +123,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 21. Внутренние ставки: проектирование, программирование, монтаж, сервисные выезды. *По умолчанию: проектирование $95/час, программирование и пусконаладка $110/час, монтаж $65/час, сервис для участника подписки $95/час, без подписки $135/час.*
 22. Периодичность распределения и целевой резерв до первых выплат. *По умолчанию: ежеквартально, после резерва $10,000 или двух месяцев операционных расходов.*
 23. Доля прибыли на реинвестирование в пробном периоде. *По умолчанию: 70%.*
-24. Зарплата или изъятия в пробном периоде? *По умолчанию: нет — вместо этого оплачиваются биллируемые работы как расход проекта.*
+24. Зарплата или изъятия в пробном периоде? *Сейчас: Artsiom берёт изъятие на жизнь из первого остатка после прямых расходов проекта (первые плоды — время сейчас, выручка может прийти позже); каждая выплата — сумма, которую оба согласовали письменно и внесли в B.2. Отдельно Anatoliy может закрыть личные счета Artsiom 1–2 раза, всего не более $7,000, как возвратный аванс (не подарок). Если деньгами вернуть нельзя — отработка остатка в Accent Florida Home в письменно согласованном формате (часы × ставка). Классификацию аванса как займа или компенсации даёт CPA. Это обычная схема возвратного изъятия, когда операционный партнёр вкладывает время раньше, чем приходит выручка; $7,000 / 1–2 раза — консервативный потолок.*
 25. Минимальная валовая маржа в прайс-буке. *По умолчанию: 35% смешанная, оборудование не ниже 25%, работы не ниже 45%.*
 
 ### E. Роли и время — §5, §6, Приложение A
