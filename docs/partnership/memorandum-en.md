@@ -23,7 +23,7 @@ Primary territory: **Sarasota County, Florida**; adjacent: Manatee, Charlotte, D
 
 This Memorandum covers a deliberate trial from the effective date **through 31 December 2026**, to test demand, unit economics and the working relationship **at limited cash risk**. Partner A contributes primarily time as Managing Partner; Partner B contributes limited time, contacts, client introductions and start-up finance.
 
-Rhythm: a weekly operating call of ______ minutes on ______ , a written monthly review by the ______ of each month, and a final review by **15 December 2026**. Outcomes at that review: (a) sign a definitive Operating Agreement of a Florida LLC; (b) extend the trial by written addendum; (c) end the cooperation under §17.
+Rhythm: Partner A **initiates** every operating discussion; Partner B joins. Weekly call of ______ minutes on ______ against the Annex C.5 scorecard. Partner A issues a written **monthly brochure** by the ______ of each month (same KPIs, plus narrative). Final review by **15 December 2026**: (a) sign a definitive Operating Agreement of a Florida LLC; (b) extend the trial by written addendum; (c) end the cooperation under §17.
 
 ## 4. Participation shares
 
@@ -37,16 +37,16 @@ Rhythm: a weekly operating call of ______ minutes on ______ , a written monthly 
 
 ## 5. Areas of responsibility
 
-The model is **asymmetric**. Partner A is **Managing Partner** (~80%): processes, website and landings, funnels and lead gen, solution packages, dealer statuses, engineers, events (incl. Angi), client visits, closing and delivery, bookkeeping via an accountant, tax filings, databases, first team, strategy — all initiation on his side. Partner B (~20%): start-up finance, contacts and client base (Accent end clients, designers, realtors, planners, builders), the low-voltage licence, key meetings — connecting when called on. Day-to-day is the Lead's; detail: Annex A.
+The model is **asymmetric**. Until other titles exist, two roles only: Partner A is **Managing Partner / CDO** (~80%) — commercial and delivery owner; he initiates processes, website and landings, funnels, packages, dealer statuses, engineers, events, visits, closing, delivery, bookkeeping, tax, databases, first team and strategy. Partner B is **business development / intermediary** (~20%) — a related role, not a silent financier: he may sell, introduce, advertise indirectly, direct a contact or make an offer, on a *sufficient* basis, not as an 8–10 hour daily job. He also funds the start, opens the Accent book (end clients, designers, realtors, planners, builders) and holds the low-voltage licence. Day-to-day is the Lead's; detail: Annex A.
 
 | # | Area | Lead | Support |
 |---|---|---|---|
-| 1 | Sales — direct clients, quoting, closing | A | B — key meetings |
-| 2 | Trade channel — builders, architects, designers, realtors | A | B — Accent introductions |
+| 1 | Sales — quoting, closing; B may originate his own deals | A | B — sufficient: connect, introduce, offer |
+| 2 | Trade channel — builders, architects, designers, realtors | A | B — Accent + his own intros |
 | 3 | Design and engineering — system design, price book, programming | A | — |
 | 4 | Field delivery — subcontractors, scheduling, QA, warranty | A | — |
 | 5 | Procurement — dealer accounts, purchase orders, stock | A | — |
-| 6 | Marketing — website, landings, SEO, Angi, content, events | A | — |
+| 6 | Marketing — website, landings, SEO, Angi, paid ads, events | A | B — indirect advertising |
 | 7 | Finance and admin — bookkeeping via accountant, invoicing, tax, insurance | A | B — start-up finance |
 | 8 | Licensing and compliance — low-voltage licence, permits, subcontractor files | B | A |
 | 9 | Client care — support desk, service visits, LUMA Care renewals | A | — |
@@ -54,7 +54,7 @@ The model is **asymmetric**. Partner A is **Managing Partner** (~80%): processes
 
 ## 6. Time commitment
 
-Partner A: **______ hours per week**. Partner B: **5–6 hours per week**; initiation comes from Partner A, and Partner B's commitment is to connect on time — reply within **______ business hours**, join a key meeting on **______ days'** notice. A new client enquiry is answered within **______ hours**. Absence over ______ days is announced ______ days ahead with handover. Hours are logged weekly per Annex B — that log is the evidence base for §4.
+Partner A: **______ hours per week**. Partner B: **5–6 hours per week**, on a sufficient basis — connect, introduce, direct, offer — **not** an 8–10 hour daily sales job. Partner A initiates every discussion that must be fixed in this interaction; Partner B replies within **______ business hours** and joins a key meeting on **______ days'** notice. A new client enquiry is answered within **______ hours**. Absence over ______ days is announced ______ days ahead with handover. Hours are logged weekly per Annex B.
 
 ## 7. Money at the start (deliberately minimal)
 
@@ -80,13 +80,13 @@ During the trial the Partners intend to reinvest at least **______ %** of profit
 
 To 31 December 2026: revenue **$______**; signed projects **______**; average project value **$______**; realized gross margin **______ %**; LUMA Care memberships **______**; qualified leads per month **______**; year-end pipeline **$______**; signed trade partners **______**; photographed reference projects **______**. Long-term intent: ______ (grow and hold / build to sell / income business); the 1–5-year picture of each Partner is recorded in Annex D.7.
 
-Weighted equally in the go / no-go decision: commitments to each other are kept, communication holds under pressure, and both still want to sign. The 30/60/90-day plan is in Annex C.
+Go / no-go also weighs: Partner A kept initiating, Partner B connected on a sufficient basis, and the weekly scorecard plus monthly brochure were kept current. Detail: Annex C.
 
 ## 11. Go-to-market and lead rules
 
 Channel priority (1 = first): Accent / Partner B client and trade introductions ______ ; builders and remodelers ______ ; designers and architects ______ ; realtors and property managers ______ ; inbound web, SEO, Google Business Profile ______ ; paid Google / Meta ______ ; Angi, Thumbtack and other paid-lead platforms ______ ; manufacturer lead programs ______ .
 
-Rules from day one: every lead is in the shared CRM within **______ hours** with its source; first to log it owns it unless reassigned; **no Project client, lead or vendor is worked outside the pipeline** (§15); one price book and one set of templates. Leads exchanged with a Partner's other business (including Accent) earn the referring side **______ %** of the deal's gross profit — under §9 when the deal comes into the Project, by separate written terms when it goes out.
+Rules from day one: Partner B may originate sales and advertise the Project indirectly; every such lead is in the shared CRM within **______ hours** with its source. First to log it owns it unless reassigned; **no Project client, lead or vendor is worked outside the pipeline** (§15); one price book. Leads exchanged with a Partner's other business (including Accent) earn the referring side **______ %** of the deal's gross profit — under §9 when the deal comes into the Project, by separate written terms when it goes out.
 
 ## 12. Decisions and reserved matters
 
@@ -198,18 +198,21 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 **C.3 Days 61–90 — proof and repeatability.** Pilot delivered, commissioned and photographed; client walkthrough and written testimonial; unit economics compared to plan (quoted vs realized gross margin, hours per project vs estimate); the delivery process written down as a checklist; ______ signed trade partners; pipeline of $______ ; decision documented on what to standardize, automate, outsource or hire next (§14).
 
-**C.4 KPI dashboard** — reviewed monthly, one number per cell, plan vs actual.
+**C.4 Monthly brochure** — Partner A writes it by the date in §3. One number per cell, plan vs actual. This is the document the Partners review together each month.
 
 | Metric | Plan | Aug | Sep | Oct | Nov | Dec |
 |---|---|---|---|---|---|---|
-| Qualified leads | ______ | | | | | |
+| Qualified leads (all / from B / from paid) | ______ | | | | | |
 | Proposals issued / $ value | ______ | | | | | |
 | Projects signed / $ value | ______ | | | | | |
 | Revenue recognized | ______ | | | | | |
 | Realized gross margin % | ______ | | | | | |
+| Intros / directs / offers by B | ______ | | | | | |
 | LUMA Care members / MRR | ______ | | | | | |
-| Cash in working fund | ______ | | | | | |
+| Cash in working fund / B envelope left | ______ | | | | | |
 | Partner A / B hours logged | ______ | | | | | |
+
+**C.5 Weekly scorecard** — Partner A sends it before the weekly call; the Partners check it on the call. Same eight numbers as C.4, plus: site visits this week ______ ; one blocker each (A / B); what Partner A will initiate next week; where Partner B will connect, introduce, direct or offer next week. Not a full-time sales report for B — only what was sufficient.
 
 <!-- pagebreak -->
 
