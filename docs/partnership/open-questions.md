@@ -38,7 +38,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### D. Profit and pay — §9, Annex A.3
 
-20. Sales commission off the top of project gross profit before the profit split? *Default: 10% to the Partner who sourced and closed it — this keeps selling worth doing for both.*
+20. Sales commission off the top of project gross profit before the profit split? *Now: if Partner B brings the client, the contract is signed, and B accompanies — B is paid 5% of the signed contract value from that project's margin, outside the §4 shares (example: $10,000 contract, $3,000 margin → $500). That bonus does not stack with the general commission on the same deal. Other deals: fill the general % of gross profit in §9. Partner B may write a counter-proposal on the same line in §9.*
 21. Internal billable rates for design, programming, field labour, and service calls. *Default: design $95/h, programming and commissioning $110/h, field labour $65/h, member service $95/h, non-member $135/h.*
 22. Distribution cadence, and reserve target before any distribution. *Default: quarterly, after the reserve reaches $10,000 or two months of operating expenses.*
 23. Share of profit reinvested during the trial. *Default: 70%.*
@@ -119,7 +119,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### D. Прибыль и оплата — §9, Приложение A.3
 
-20. Комиссия за продажу с валовой прибыли проекта до раздела прибыли? *По умолчанию: 10% тому, кто нашёл и закрыл сделку, — чтобы продавать было выгодно обоим.*
+20. Комиссия за продажу с валовой прибыли проекта до раздела прибыли? *Сейчас: если Партнёр Б приводит клиента, договор подписан и Б сопровождает — Б получает 5% от суммы контракта с маржи проекта, вне долей §4 (пример: контракт $10,000, маржа $3,000 → $500). С общей комиссией на той же сделке не складывается. По остальным сделкам — общий % валовой прибыли в §9. Встречное предложение Б — строка в §9.*
 21. Внутренние ставки: проектирование, программирование, монтаж, сервисные выезды. *По умолчанию: проектирование $95/час, программирование и пусконаладка $110/час, монтаж $65/час, сервис для участника подписки $95/час, без подписки $135/час.*
 22. Периодичность распределения и целевой резерв до первых выплат. *По умолчанию: ежеквартально, после резерва $10,000 или двух месяцев операционных расходов.*
 23. Доля прибыли на реинвестирование в пробном периоде. *По умолчанию: 70%.*
