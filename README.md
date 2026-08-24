@@ -51,9 +51,11 @@ npx serve .
 ├── robots.txt
 ├── scripts/
 │   ├── inject-seo.py     # Идемпотентная инъекция SEO/OG/JSON-LD в <head>
-│   └── migrate-images.py # Одноразово: inline background-image → data-img="key"
+│   ├── migrate-images.py # Одноразово: inline background-image → data-img="key"
+│   └── build-memorandum.py # Партнёрский меморандум (MD → готовый к печати HTML)
 └── docs/
-    └── IMAGE-GUIDE.md    # Как менять картинки, где брать vendor-фото
+    ├── IMAGE-GUIDE.md    # Как менять картинки, где брать vendor-фото
+    └── partnership/      # Партнёрский меморандум EN + RU и 50 вопросов к обсуждению
 ```
 
 ## Работа с картинками
