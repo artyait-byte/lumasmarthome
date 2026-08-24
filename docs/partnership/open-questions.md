@@ -28,7 +28,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### C. Money and losses — §7, §8
 
-13. Seed Cap / Partner B cash. *Now: Partner A pours in time, not cash. Partner B pours in a very small amount of cash — B Facility cap $10,000. Monthly spend is only regular costs (leads, marketing, AI tokens, GHL, subscriptions); September minimum $500. Anything else only after Artsiom's written request (purpose + amount) and both agree.*
+13. Seed Cap / Partner B cash. *Now: Partner A pours in time, not cash. Partner B pours in a very small amount of cash — B Facility cap $10,000. Monthly spend is only regular costs (leads, marketing, AI tokens, GHL, subscriptions); September minimum $500. Angi, Thumbtack and other lead platforms: not more than $1,500 per month. Anything else only after Artsiom's written request (purpose + amount) and both agree.*
 14. Approval thresholds: single expense, and new recurring subscription. *Default: $300 single, $50/month recurring.*
 15. Client payment schedule. *Default: 50% on signature (before ordering equipment), 40% at rough-in, 10% at commissioning.*
 16. Are losses shared strictly by share, or does the Partner who caused a loss carry it? *Default: shared by share, except gross negligence or unapproved scope changes, which go to that Partner's contribution account.*
@@ -109,7 +109,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### C. Деньги и убытки — §7, §8
 
-13. Стартовый лимит / деньги Партнёра Б. *Сейчас: Партнёр А вливает время, не деньги. Партнёр Б вливает очень мало денег — лимит Б $10,000. Месячные траты — только регулярные (лиды, маркетинг, токены AI, GHL, подписки); сентябрь минимум $500. Остальное — только после письменного запроса Artsiom (на что и сумма) и согласия обоих.*
+13. Стартовый лимит / деньги Партнёра Б. *Сейчас: Партнёр А вливает время, не деньги. Партнёр Б вливает очень мало денег — лимит Б $10,000. Месячные траты — только регулярные (лиды, маркетинг, токены AI, GHL, подписки); сентябрь минимум $500. Angi, Thumbtack и другие площадки — не более $1,500 в месяц. Остальное — только после письменного запроса Artsiom (на что и сумма) и согласия обоих.*
 14. Пороги согласования: единичный расход и новая регулярная подписка. *По умолчанию: $300 единично, $50/месяц регулярно.*
 15. График платежей клиента. *По умолчанию: 50% при подписании (до заказа оборудования), 40% на черновом этапе, 10% по пусконаладке.*
 16. Убытки делятся строго по долям или их несёт тот, кто их вызвал? *По умолчанию: по долям, кроме грубой небрежности и несогласованных изменений объёма — они идут на счёт вкладов этого Партнёра.*
