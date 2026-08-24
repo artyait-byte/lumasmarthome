@@ -8,14 +8,14 @@
 
 ## 1. Parties
 
-**Partner A (Managing Partner):** Artem Ishchuk, residing in ______________________, FL.
+**Partner A (Managing Partner):** Artsiom Ishchuk, residing in ______________________, FL.
 **Partner B:** Anatoliy Shiva, residing in ______________________, ______ .
 
 Together the "Partners". Contact details are in Annex D.
 
 ## 2. Purpose and territory
 
-The Partners join efforts to launch and test a residential technology business (the "Project") under the **LUMA Smart Home** brand: design, supply, installation, programming, commissioning and service of lighting control, motorized shading, networking, surveillance, audio/video and home automation, plus recurring **LUMA Care** memberships.
+The Partners join efforts to launch and test a residential technology business (the "Project") under the **LUMA Smart Home** brand, held for now by **Tegra-Media LLC**: design, supply, installation, programming, commissioning and service of lighting control, motorized shading, networking, surveillance, audio/video and home automation, plus recurring **LUMA Care** memberships.
 
 Primary territory: **Sarasota County, Florida**; adjacent: Manatee, Charlotte, DeSoto, Lee, Collier; outside it, only by mutual agreement. Target client: owners of homes and condominiums from **$______** in value, and the builders, architects and designers serving them.
 
@@ -108,7 +108,7 @@ During the trial and for **______ months** afterwards, each Partner agrees that 
 
 ## 16. Brand, intellectual property and data *(binding)*
 
-The **LUMA Smart Home** name and marks, the domain, the website with its code and content, photography, price book, templates, CRM records and client data are Project assets, held for the Project and assigned to the LLC on formation. Intellectual property owned by a Partner before the effective date stays theirs and is licensed to the Project free of charge while the cooperation lasts (Annex D.3). If the trial ends, Project assets stay with the Partner designated in Annex D.4 and the other is compensated for their §4 share of agreed value; client data is then used only as the client consents and the law allows.
+The **LUMA Smart Home** marks are held, **for residential work at least during the trial**, by **Tegra-Media LLC** and licensed to the Project (D.10). The domain, website, photography, price book, templates, CRM and client data are Project assets and do not move to a new LLC unless both agree in writing. Intellectual property owned by a Partner before the effective date stays theirs and is licensed to the Project free of charge while the cooperation lasts (Annex D.3). If the trial ends, Project assets stay with the Partner designated in Annex D.4 and the other is compensated for their §4 share of agreed value; client data is then used only as the client consents and the law allows.
 
 ## 17. Ending the trial
 
@@ -116,7 +116,7 @@ Either Partner may end the cooperation on **______ days' written notice**; it al
 
 ## 18. Legal form, licensing and compliance
 
-The Partners intend to operate through a member-managed Florida LLC (working name **LUMA Home Systems LLC**) with a written Operating Agreement, EIN, business bank account, bookkeeping from day one, general liability insurance (plus workers' comp where required), sales-tax registration, and written subcontractor agreements with W-9s and insurance certificates.
+For **residential** work during the trial the Partners operate through **Tegra-Media LLC** as the LUMA Smart Home brand holder (Annex D.10). A dedicated Florida LLC may be formed later if the trial converts. Bookkeeping from day one, general liability insurance (plus workers' comp where required), sales-tax registration, and written subcontractor agreements with W-9s and insurance certificates apply in either case.
 
 Until the entity, insurance and the applicable **Florida licensing route** are in place, no Partner signs client contracts in the Project's name, and any work requiring a low-voltage, alarm-system or electrical licence is performed only by a licensed contractor of record engaged in writing. The intended route is the **low-voltage licence through Partner B**; securing it — or engaging a licensed contractor of record until then — is an Annex C.1 milestone owned by Partner B, due ______ . For **state and other public work** the Partners may, if lawful, use **Accent Florida Home** as a vehicle: not only construction sites, but smart-home, smart-room and related work that its licences, vendor codes and state-work history can carry. It stays the D.9 entity and is not merged into the Project; use and any fee need both Partners' consent (§12). No Partner may hold themselves out as licensed before the Project or Accent Florida Home is. Each Partner is responsible for their own taxes and work authorization, and each always has unrestricted access to the books, the bank account and all Project documents.
 
@@ -130,7 +130,7 @@ Changes to this Memorandum are valid only in writing signed by both Partners. Go
 
 | Partner A | Partner B |
 |---|---|
-| Name: Artem Ishchuk | Name: Anatoliy Shiva |
+| Name: Artsiom Ishchuk | Name: Anatoliy Shiva |
 | Signature: __________________________ | Signature: __________________________ |
 | Date: ____________________ | Date: ____________________ |
 
@@ -192,7 +192,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 # Annex C — 90-day action plan and KPI dashboard
 
-**C.1 Days 1–30 — foundation.** Owner and due date for each: entity formed on Sunbiz and EIN obtained (A) ______ ; business bank account and bookkeeping / CPA opened (A) ______ ; general liability quoted and bound (A) ______ ; **low-voltage licence route started (B)** ______ ; Partner B start-up envelope agreed in writing (B) ______ ; sales-tax registration (A) ______ ; shared drive, CRM and calendar live (A) ______ ; price book v1 (A) ______ ; proposal and contract templates (A) ______ ; dealer / distributor applications (Lutron, Ubiquiti, Somfy, Sonos) (A) ______ ; website, landings and Google Business Profile live (A) ______ ; one written subcontractor agreement plus W-9 and COI (A) ______ .
+**C.1 Days 1–30 — foundation.** Owner and due date for each: Tegra-Media LLC confirmed as residential brand vehicle (A) ______ ; business bank account and bookkeeping / CPA opened (A) ______ ; general liability quoted and bound (A) ______ ; **low-voltage licence route started (B)** ______ ; Partner B start-up envelope agreed in writing (B) ______ ; sales-tax registration (A) ______ ; shared drive, CRM and calendar live (A) ______ ; price book v1 (A) ______ ; proposal and contract templates (A) ______ ; dealer / distributor applications (Lutron, Ubiquiti, Somfy, Sonos) (A) ______ ; website, landings and Google Business Profile live (A) ______ ; one written subcontractor agreement plus W-9 and COI (A) ______ .
 
 **C.2 Days 31–60 — first demand.** Accent / Partner B introductions started (B); paid channels live — Google, Meta, Angi, Thumbtack — within the §7 envelope (A, funded by B); target lists: ______ builders, ______ designers/architects, ______ realtors; first ______ proposals; one pilot signed; demo kit for $______ or less; LUMA Care offer priced.
 
@@ -220,7 +220,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 **D.1 Contacts.** Partner A: phone ______ · email ______ · messenger ______ . Partner B: phone ______ · email ______ · messenger ______ . Preferred channel for decisions that must be in writing: ______ . Shared inboxes and accounts, with who holds credentials: ______ .
 
-**D.2 Pre-existing activities and conflicts** (excluded from §15): Partner A ______________________ ; Partner B — **Accent Florida Home** (construction, remodeling, licences and state-work history, Florida), which remains his primary occupation. Each Partner confirms nothing here prevents them from participating in the Project, including any current employment, non-compete, visa or work-authorization limitation: Partner A ______ , Partner B ______ .
+**D.2 Pre-existing activities and conflicts** (excluded from §15): Partner A — **Tegra-Media LLC** (residential brand holder for LUMA Smart Home, Annex D.10) ______________________ ; Partner B — **Accent Florida Home** (construction, remodeling, licences and state-work history, Florida), which remains his primary occupation. Each Partner confirms nothing here prevents them from participating in the Project, including any current employment, non-compete, visa or work-authorization limitation: Partner A ______ , Partner B ______ .
 
 **D.3 Pre-existing intellectual property licensed to the Project** (owner keeps ownership; free licence while cooperating): ______________________ .
 
@@ -241,6 +241,8 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 | ______ | B | $______ | ______ |
 
 **D.9 Accent Florida Home** (§18). Legal owner / who controls it: ______ . Licences, contractor numbers and state / vendor codes on file: ______ . Intended use for the Project: Florida **state, county and other public** contracts — construction-related **and** smart-home / smart-room / related technology — where Accent Florida Home's history and codes help qualify. Accent Florida Home is not contributed as Project equity unless both agree in writing. Fee to Accent Florida Home on work run through it: ______ % of ______ (or $______ / job). Review with a Florida attorney before the first public bid.
+
+**D.10 Tegra-Media LLC** (§2, §16, §18). Brand holder for **LUMA Smart Home** on **residential** work, at least during the trial. Legal owner / who controls it: Artsiom Ishchuk / ______ . State of formation: ______ . The brand is licensed to the Project free of charge while this Memorandum lasts; Tegra-Media is not merged into a new LLC and is not Project equity unless both agree in writing. Public / state work stays under Accent Florida Home (D.9).
 
 ---
 
