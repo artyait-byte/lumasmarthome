@@ -9,7 +9,7 @@
 ## 1. Parties
 
 **Partner A (Managing Partner):** Artem Ishchuk, residing in ______________________, FL.
-**Partner B:** Anatoly Shilov, residing in ______________________, ______ .
+**Partner B:** Anatoliy Shiva, residing in ______________________, ______ .
 
 Together the "Partners". Contact details are in Annex D.
 
@@ -130,7 +130,7 @@ Changes to this Memorandum are valid only in writing signed by both Partners. Go
 
 | Partner A | Partner B |
 |---|---|
-| Name: Artem Ishchuk | Name: Anatoly Shilov |
+| Name: Artem Ishchuk | Name: Anatoliy Shiva |
 | Signature: __________________________ | Signature: __________________________ |
 | Date: ____________________ | Date: ____________________ |
 
