@@ -57,21 +57,23 @@ Partner A: **at least 25 hours per week** in the first 4 weeks, then a written r
 
 ## 7. Money at the start (deliberately minimal)
 
-Each Partner contributes up to **$______** to a common working fund ("Seed Cap"), in tranches as needed, and is not obliged to contribute more during the trial. Target operating budget: **$______ per month**. Any single expense above **$______**, or a new recurring subscription above **$______ per month**, needs written approval of both (email or messenger suffices).
+Partner A is **not obliged to put cash**. Partner B's cash into the Project is one **B Facility of not more than $10,000 outstanding**. Target operating budget: **$______ per month**. Any single expense above **$______**, or a new recurring subscription above **$______ per month**, needs written approval of both (email or messenger suffices).
 
-Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. In the first one–two quarters Partner B funds the launch, up to **$______**. The envelope is a **narrow start list**, not scaled ads: (1) AI tools — packages and tokens; (2) the website; (3) aggregator lead-gen — Angi, Thumbtack, Houzz, Yelp and similar; (4) **test** Meta ads, **only after** start packages are ready for a targeted result; (5) videographers and photographers at the start; (6) courses, training and certificates (e.g. SBDC forum, set-up for public-tender access). If the funnel is not converting, the Partners **do not scale paid marketing and do not burn the budget**. Partner A initiates each spend; Partner B releases funds inside the envelope. Personal costs are not reimbursable except the §9 personal-bill advance (max $7,000, repayable) and items in Annex D.5.
+Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. Partner B funds the launch from the B Facility, up to **$10,000**. The envelope is a **narrow start list**, not scaled ads: (1) AI tools — packages and tokens; (2) the website; (3) aggregator lead-gen — Angi, Thumbtack, Houzz, Yelp and similar; (4) **test** Meta ads, **only after** start packages are ready for a targeted result; (5) videographers and photographers at the start; (6) courses, training and certificates (e.g. SBDC forum, set-up for public-tender access). If the funnel is not converting, the Partners **do not scale paid marketing and do not burn the budget**.
+
+The B Facility may be used in either form, never more than **$10,000 outstanding** in total: (i) start-up investment, repaid from each new project's margin under §9; or (ii) a credit line the Project may draw as needed for bills, invoices and other services, at **6% simple per annum**. Partner A initiates each spend; Partner B releases funds inside the facility. Personal costs are not reimbursable except the §9 personal-bill advance (max $7,000, repayable, **not** a draw on this facility) and items in Annex D.5.
 
 ## 8. Losses and additional funding
 
-The Project **does not accumulate debt**. Losses are shared per §4, but each Partner's **cash obligation during the trial is capped at the Seed Cap**. Neither Partner guarantees the other's obligations or may create debt binding on the other (§12).
+The Project **does not accumulate debt beyond the B Facility**. Losses are shared per §4, but Partner B's **cash obligation during the trial is capped at $10,000 outstanding**, and Partner A has no cash obligation. Neither Partner guarantees the other's obligations or may create debt binding on the other (§12).
 
-The test is whether the Project has a right to live: Anatoliy helps with **licences and clients**, Artsiom finds **contractors**. If the sales funnel is not working and clients are not coming, the Partners **do not push main marketing and do not burn the budget**. If more cash is needed: (a) both contribute pro rata, only by written consent; or (b) one contributes alone only by written consent, recorded as a **partner loan** repaid before any distribution at ______ % simple interest, or — at the funding Partner's written election at the time — converted into share at **$______ per 1 %** (Annex B.4); **default (c)** neither contributes, the plan is scaled down, and no new debt is taken on.
+The test is whether the Project has a right to live: Anatoliy helps with **licences and clients**, Artsiom finds **contractors**. If the sales funnel is not working and clients are not coming, the Partners **do not push main marketing and do not burn the budget**. Cash above the $10,000 B Facility is **not** taken on: the plan is scaled down. Conversion of cash into share at **$______ per 1 %** (Annex B.4) is optional and only by written election; it is not the operating mode.
 
 Bad debt, warranty rework and re-doing defective work are **Project costs** shared per §4, except gross negligence or unapproved deviation from scope, which is charged to that Partner's contribution account.
 
 ## 9. Revenue, profit and distributions
 
-Cash is applied in this order: (1) **direct project costs** — equipment, freight, subcontractors, permits, sales tax; (2) **Artsiom's living draw** from the first surplus after (1) — first fruits: he puts in the time now, cash may lag; each payment is an amount both agree in writing and log in B.2; (3) **sales commission** — ______ % of project gross profit to whoever sourced and closed the deal; (4) **operating expenses**; (5) **cash reserve**, until it reaches **$______** (about ______ months of operating expenses); (6) **profit**, distributed per §4, ______ (monthly / quarterly).
+Cash is applied in this order: (1) **direct project costs** — equipment, freight, subcontractors, permits, sales tax; (2) **Artsiom's living draw** from the first surplus after (1) — first fruits: he puts in the time now, cash may lag; each payment is an amount both agree in writing and log in B.2; (3) **B Facility repayment** — from that project's remaining margin, **10% of the outstanding B Facility principal**, plus interest at **6% simple per annum**, until the facility is zero; if the remaining margin is short, take what there is; (4) **sales commission** — ______ % of project gross profit to whoever sourced and closed the deal; (5) **operating expenses**; (6) **cash reserve**, until it reaches **$______** (about ______ months of operating expenses); (7) **profit**, distributed per §4, ______ (monthly / quarterly).
 
 **Personal-bill advance.** On Artsiom's request, Anatoliy may pay Artsiom's personal bills **1–2 times**, **not more than $7,000 in total**. Repayable advance logged in B.2, not a gift. Repaid from later living draws or profit. If Artsiom cannot repay in cash, he **works the balance off at Accent Florida Home** in any other written format both agree (hours × rate, signed off) until zero.
 
@@ -155,7 +157,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 | 5 Procurement | Dealer accounts, POs, RMA, stock | A | weekly | ______ |
 | 6 Marketing | Website; Angi, Thumbtack, Houzz, Yelp; Meta test after packages | A | weekly | ______ |
 | 7 Finance | Invoicing, collections, bookkeeping, reporting | A | weekly / monthly | ______ |
-| 7 Finance | Start-up envelope: AI tools, website, aggregators, photo/video, training | B | first 1–2 qtrs | ______ |
+| 7 Finance | B Facility draws: AI tools, website, aggregators, photo/video, training | B | first 1–2 qtrs | ______ |
 | 8 Compliance | Low-voltage licence, permits, insurance, W-9 / COI | B | monthly | ______ |
 | 9 Client care | Support intake, service visits, LUMA Care renewals | A | ongoing | ______ |
 
@@ -177,15 +179,17 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 **B.2 Cash log** (every contribution and reimbursable expense, with receipt).
 
-| Date | Partner | Amount | Purpose | Type: capital / loan / reimbursable / living draw / personal-bill advance | Approved by |
+| Date | Partner | Amount | Purpose | Type: capital / B Facility draw / B Facility repayment / living draw / personal-bill advance | Approved by |
 |---|---|---|---|---|---|
 | ______ | ______ | $______ | ______ | ______ | ______ |
 
-**B.2a Personal-bill advance** (§9). Anatoliy may cover Artsiom's personal bills **1–2 times**, **not more than $7,000 in total**. Logged here as a repayable advance, not a gift. Repaid from later living draws or profit. If Artsiom cannot repay in cash, he works the balance off at **Accent Florida Home** in a written format both agree before the work starts (hours × rate, signed off by Anatoliy) until the balance is zero. A CPA classifies the advance as a loan or as compensation.
+**B.2a Personal-bill advance** (§9). Anatoliy may cover Artsiom's personal bills **1–2 times**, **not more than $7,000 in total**. Logged here as a repayable advance, not a gift. Repaid from later living draws or profit. If Artsiom cannot repay in cash, he works the balance off at **Accent Florida Home** in a written format both agree before the work starts (hours × rate, signed off by Anatoliy) until the balance is zero. A CPA classifies the advance as a loan or as compensation. This advance is **not** a draw on the B Facility.
+
+**B.2b B Facility** (§7–§9). Cap: **$10,000 outstanding**. Interest: **6% simple per annum** on the outstanding balance. Two uses, same cap: (i) start-up investment; (ii) revolving credit the Project may draw for bills, invoices and other services. From each new project's remaining margin after §9(1)–(2), repay **10% of the outstanding principal** plus accrued interest, until zero. If that project's remaining margin is short, take what there is. Logged here as draw / repayment.
 
 **B.3 Share confirmation at the final review.** Inputs considered, in this order: (1) hours logged in B.1 against the commitment in §6; (2) cash in B.2 net of repayments; (3) delivered results against the KPIs in §10 and the milestones in Annex C; (4) ownership of a critical function that the Project cannot operate without. Any adjustment to §4 requires both signatures and is recorded as an addendum. Default if the Partners cannot agree on an adjustment: the shares in §4 stand unchanged.
 
-**B.4 Conversion of cash into share** (per §8b): **$______ per 1 %**, valid until ______ , applying only to cash actually received in the working fund and only up to a maximum of ______ % transferred in total.
+**B.4 Conversion of cash into share** (optional, §8): **$______ per 1 %**, valid until ______ , applying only to cash actually received in the B Facility and only up to a maximum of ______ % transferred in total. Default during the trial is repayment at 6% simple, not conversion.
 
 **B.5 Valuation method for a buy-out or a third-party entry** (§13, §17). Agreed default: the greater of (a) **______ ×** trailing twelve-month revenue plus **______ ×** annualized LUMA Care recurring revenue, minus debt, plus working capital; or (b) **______ ×** trailing twelve-month owner earnings (profit before distributions, normalized for market-rate labour); or (c) net asset value. Payment terms for a buy-out: ______ % at closing, balance over ______ months at ______ % interest. If the Partners disagree, each names an appraiser and the two appraisers name a third, whose determination is used; cost shared per §4.
 
@@ -195,9 +199,9 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 # Annex C — 90-day action plan and KPI dashboard
 
-**C.1 Days 1–30 — foundation.** Owner and due date for each: Tegra-Media LLC confirmed as residential brand vehicle (A) ______ ; business bank account and bookkeeping / CPA opened (A) ______ ; general liability quoted and bound (A) ______ ; **low-voltage licence route started (B)** ______ ; Partner B start-up envelope agreed in writing (B) ______ ; sales-tax registration (A) ______ ; shared drive, CRM and calendar live (A) ______ ; price book v1 (A) ______ ; proposal and contract templates (A) ______ ; dealer / distributor applications (Lutron, Ubiquiti, Somfy, Sonos) (A) ______ ; website, landings and Google Business Profile live (A) ______ ; one written subcontractor agreement plus W-9 and COI (A) ______ .
+**C.1 Days 1–30 — foundation.** Owner and due date for each: Tegra-Media LLC confirmed as residential brand vehicle (A) ______ ; business bank account and bookkeeping / CPA opened (A) ______ ; general liability quoted and bound (A) ______ ; **low-voltage licence route started (B)** ______ ; B Facility of $10,000 agreed in writing (B) ______ ; sales-tax registration (A) ______ ; shared drive, CRM and calendar live (A) ______ ; price book v1 (A) ______ ; proposal and contract templates (A) ______ ; dealer / distributor applications (Lutron, Ubiquiti, Somfy, Sonos) (A) ______ ; website, landings and Google Business Profile live (A) ______ ; one written subcontractor agreement plus W-9 and COI (A) ______ .
 
-**C.2 Days 31–60 — first demand.** Accent / Partner B introductions started (B); aggregator lead-gen live — Angi, Thumbtack, Houzz, Yelp — within the §7 envelope (A, funded by B); **test** Meta ads only after start packages are ready; target lists: ______ builders, ______ designers/architects; first ______ proposals; one pilot signed; demo kit for $______ or less; LUMA Care offer priced; photo/video of the first reference shot.
+**C.2 Days 31–60 — first demand.** Accent / Partner B introductions started (B); aggregator lead-gen live — Angi, Thumbtack, Houzz, Yelp — from the B Facility (§7) (A, released by B); **test** Meta ads only after start packages are ready; target lists: ______ builders, ______ designers/architects; first ______ proposals; one pilot signed; demo kit for $______ or less; LUMA Care offer priced; photo/video of the first reference shot.
 
 **C.3 Days 61–90 — proof and repeatability.** Pilot delivered, commissioned and photographed; client walkthrough and written testimonial; unit economics compared to plan (quoted vs realized gross margin, hours per project vs estimate); the delivery process written down as a checklist; ______ signed trade partners; pipeline of $______ ; decision documented on what to standardize, automate, outsource or hire next (§14).
 
@@ -212,7 +216,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 | Realized gross margin % | ______ | | | | | |
 | Intros / directs / offers by B | ______ | | | | | |
 | LUMA Care members / MRR | ______ | | | | | |
-| Cash in working fund / B envelope left | ______ | | | | | |
+| Cash in working fund / B Facility left of $10,000 | ______ | | | | | |
 | Partner A / B hours logged | ______ | | | | | |
 
 **C.5 Weekly KPI scorecard** — Partner A sends it before the weekly call; the Partners check it on the call. In the first 14 days they write a short **weekly KPI list**. Each week they either **hit the list** or write **where they slipped and what to do next** to move the Project. Same numbers as C.4, plus: site visits this week ______ ; named prospects in D.8 (moved / stuck); one strategy item (direction, packages, licensing, contacts or specialists); one blocker each (A / B); hours vs §6 (A ≥25 h/week in weeks 1–4, then as agreed; B 6 h/week); what Partner A will initiate next week; where Partner B will connect, introduce, direct or offer.

@@ -28,11 +28,11 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### C. Money and losses — §7, §8
 
-13. Seed Cap per Partner. *Default: $2,500 each, called in tranches as needed.*
+13. Seed Cap / Partner B cash. *Now: Partner A is not obliged to put cash. Partner B's B Facility is capped at $10,000 outstanding — as start-up investment repaid from each new project's remaining margin (10% of outstanding principal + 6% simple per annum), or as a credit line the Project may draw for bills, invoices and other services at the same 6%. The $7,000 personal-bill advance is separate and is not a draw on this facility.*
 14. Approval thresholds: single expense, and new recurring subscription. *Default: $300 single, $50/month recurring.*
 15. Client payment schedule. *Default: 50% on signature (before ordering equipment), 40% at rough-in, 10% at commissioning.*
 16. Are losses shared strictly by share, or does the Partner who caused a loss carry it? *Default: shared by share, except gross negligence or unapproved scope changes, which go to that Partner's contribution account.*
-17. Additional funding beyond the Seed Cap: partner loan or conversion to equity, and at what rate? *Default now: do not accumulate debt. If the funnel is not converting, do not scale paid marketing and do not burn the budget. Further cash only by written consent of both; otherwise scale the plan down. Partner loan / equity conversion stays as an optional written path in §8b / B.4, not the operating mode.*
+17. Additional funding beyond the B Facility: partner loan or conversion to equity, and at what rate? *Now: do not accumulate debt above $10,000 outstanding. If the funnel is not converting, do not scale paid marketing and do not burn the budget. Scale the plan down. Conversion into share (B.4) stays optional by written election, not the operating mode. The operating mode is the B Facility at 6% simple, repaid 10% of outstanding principal from each project's remaining margin.*
 18. If only one Partner can fund, do you cap how much share can shift? *Default: cap total shift at 10% during the trial.*
 19. Who keeps the books and on what tool? *Default: the Finance lead; QuickBooks or Wave from day one, dedicated business bank account, no personal cards for Project spend.*
 
@@ -109,11 +109,11 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### C. Деньги и убытки — §7, §8
 
-13. Стартовый лимит на Партнёра. *По умолчанию: по $2,500, траншами по мере необходимости.*
+13. Стартовый лимит / деньги Партнёра Б. *Сейчас: Партнёр А не обязан вносить деньги. Лимит Б — не более $10,000 остатка: вложение на старт с возвратом с маржи каждого нового проекта (10% остатка + 6% простых годовых) или кредитная линия на счета, платежи и услуги под те же 6%. Аванс на личные счета $7,000 — отдельно и не является выборкой этого лимита.*
 14. Пороги согласования: единичный расход и новая регулярная подписка. *По умолчанию: $300 единично, $50/месяц регулярно.*
 15. График платежей клиента. *По умолчанию: 50% при подписании (до заказа оборудования), 40% на черновом этапе, 10% по пусконаладке.*
 16. Убытки делятся строго по долям или их несёт тот, кто их вызвал? *По умолчанию: по долям, кроме грубой небрежности и несогласованных изменений объёма — они идут на счёт вкладов этого Партнёра.*
-17. Дополнительные деньги сверх Стартового лимита: заём Партнёра или конвертация в долю, и по какой ставке? *Сейчас: долги не копим. Если воронка не конвертирует — не двигаем основной маркетинг и не сливаем бюджет. Дальнейшие деньги только с письменного согласия обоих; иначе план сокращается. Заём / конвертация в долю остаются опциональным письменным путём в §8б / B.4, не рабочим режимом.*
+17. Дополнительные деньги сверх лимита Б: заём Партнёра или конвертация в долю, и по какой ставке? *Сейчас: сверх $10,000 остатка долги не копим. Если воронка не конвертирует — не двигаем основной маркетинг и не сливаем бюджет, план сокращается. Конвертация в долю (B.4) — только по письменному выбору, не рабочий режим. Рабочий режим — лимит Б под 6% простых, возврат 10% остатка с маржи каждого проекта.*
 18. Если вносить может только один — ограничиваем ли перераспределение доли? *По умолчанию: не более 10% за весь пробный период.*
 19. Кто ведёт учёт и в чём? *По умолчанию: Лидер зоны «Финансы»; QuickBooks или Wave с первого дня, отдельный бизнес-счёт, никаких личных карт для расходов Проекта.*
 
