@@ -201,13 +201,13 @@ td.blank>.fill{width:100%!important}
 
 @media print{
   @page{size:A4;margin:8mm 9mm}
-  body{background:#fff;font-size:7.25pt;line-height:1.24}
+  body{background:#fff;font-size:7.1pt;line-height:1.21}
   .bar{display:none}
   .doc{display:block!important;max-width:none;margin:0;padding:0;box-shadow:none}
   body[data-lang=en] #doc-ru,body[data-lang=ru] #doc-en{display:none!important}
   body[data-lang=both] #doc-ru{break-before:page}
   h1{font-size:11.5pt;margin:0 0 3.5pt;padding-bottom:2.5pt}
-  h2{font-size:7.5pt;margin:4.3pt 0 1.4pt;padding-bottom:1pt;break-after:avoid}
+  h2{font-size:7.4pt;margin:3.8pt 0 1.2pt;padding-bottom:1pt;break-after:avoid}
   h3{font-size:7.3pt;margin:4.2pt 0 1.3pt;break-after:avoid}
   p{margin:0 0 2pt;orphans:2;widows:2}
   ol,ul{margin:0 0 2pt;padding-left:11pt}
