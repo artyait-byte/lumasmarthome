@@ -28,7 +28,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### C. Money and losses — §7, §8
 
-13. Seed Cap / Partner B cash. *Now: Partner A is not obliged to put cash. Partner B's B Facility is capped at $10,000 outstanding — as start-up investment repaid from each new project's remaining margin (10% of outstanding principal + 6% simple per annum), or as a credit line the Project may draw for bills, invoices and other services at the same 6%. The $7,000 personal-bill advance is separate and is not a draw on this facility.*
+13. Seed Cap / Partner B cash. *Now: Partner A pours in time, not cash. Partner B pours in a very small amount of cash — B Facility cap $10,000. Monthly spend is only regular costs (leads, marketing, AI tokens, GHL, subscriptions); September minimum $500. Anything else only after Artsiom's written request (purpose + amount) and both agree.*
 14. Approval thresholds: single expense, and new recurring subscription. *Default: $300 single, $50/month recurring.*
 15. Client payment schedule. *Default: 50% on signature (before ordering equipment), 40% at rough-in, 10% at commissioning.*
 16. Are losses shared strictly by share, or does the Partner who caused a loss carry it? *Default: shared by share, except gross negligence or unapproved scope changes, which go to that Partner's contribution account.*
@@ -74,7 +74,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### H. Exit, brand, data — §15, §16, §17
 
-44. Notice period to end the trial. *Default: 30 days, with projects in progress finished or transferred with the client's written consent.*
+44. Notice period to end the trial. *Now: 1 month, including at the start. The trial extends automatically unless either Partner gives written notice of exit.*
 45. If it ends, who keeps the brand, domain, website, Google Business Profile and client data? Decide this before signing, not after. *Default: they stay with the Partner who created and holds them, and the other is compensated for their §4 share of agreed value.*
 46. Non-circumvention and exclusivity tail after the trial. *Default: 12 months, limited to the counties in §2 and to Project clients, leads, vendors and subcontractors.*
 47. Which language governs on conflict? *Default: English — the business, the clients and the courts are in Florida.*
@@ -109,7 +109,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### C. Деньги и убытки — §7, §8
 
-13. Стартовый лимит / деньги Партнёра Б. *Сейчас: Партнёр А не обязан вносить деньги. Лимит Б — не более $10,000 остатка: вложение на старт с возвратом с маржи каждого нового проекта (10% остатка + 6% простых годовых) или кредитная линия на счета, платежи и услуги под те же 6%. Аванс на личные счета $7,000 — отдельно и не является выборкой этого лимита.*
+13. Стартовый лимит / деньги Партнёра Б. *Сейчас: Партнёр А вливает время, не деньги. Партнёр Б вливает очень мало денег — лимит Б $10,000. Месячные траты — только регулярные (лиды, маркетинг, токены AI, GHL, подписки); сентябрь минимум $500. Остальное — только после письменного запроса Artsiom (на что и сумма) и согласия обоих.*
 14. Пороги согласования: единичный расход и новая регулярная подписка. *По умолчанию: $300 единично, $50/месяц регулярно.*
 15. График платежей клиента. *По умолчанию: 50% при подписании (до заказа оборудования), 40% на черновом этапе, 10% по пусконаладке.*
 16. Убытки делятся строго по долям или их несёт тот, кто их вызвал? *По умолчанию: по долям, кроме грубой небрежности и несогласованных изменений объёма — они идут на счёт вкладов этого Партнёра.*
@@ -155,7 +155,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 ### H. Выход, бренд, данные — §15, §16, §17
 
-44. Срок предупреждения о прекращении. *По умолчанию: 30 дней, с завершением текущих проектов или их передачей по письменному согласию клиента.*
+44. Срок предупреждения о прекращении. *Сейчас: 1 месяц, в том числе на старте. Срок продлевается автоматически, если ни одна сторона письменно не сообщила о выходе.*
 45. Если расходимся — у кого остаются бренд, домен, сайт, Google Business Profile и данные клиентов? Это решается до подписания, а не после. *По умолчанию: остаются у того, кто их создал и держит, второму — компенсация его доли по §4 от согласованной стоимости.*
 46. Срок действия запрета обхода и эксклюзивности после пробного периода. *По умолчанию: 12 месяцев, только по округам §2 и только по клиентам, лидам, поставщикам и субподрядчикам Проекта.*
 47. Какой язык имеет преимущество при расхождении? *По умолчанию: английский — бизнес, клиенты и суды во Флориде.*

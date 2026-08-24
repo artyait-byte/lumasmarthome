@@ -20,9 +20,11 @@ Primary territory: **Sarasota County, Florida**; adjacent: Manatee, Charlotte, D
 
 ## 3. Trial period and reviews
 
-This Memorandum covers a deliberate trial from the effective date **through 31 December 2026**, to test demand, unit economics and the working relationship **at limited cash risk**. Partner A contributes primarily time as Managing Partner; Partner B contributes limited time, contacts, client introductions and start-up finance.
+This Memorandum covers a trial from the effective date **through 31 December 2026**. **Partner A pours in time and experience — the most expensive thing he has.** If there is no income, he will be **empty of cash**. **Partner B pours in a very small amount of cash**, plus limited time and contacts.
 
-Rhythm: Partner A **initiates** every operating discussion; Partner B joins. Weekly call of ______ minutes on ______ against the Annex C.5 scorecard and the **weekly KPI list**: hit the week's targets, or write where they slipped and what to do next to move the Project. Partner A issues a written **monthly brochure** by the ______ of each month. Final review by **15 December 2026**: (a) sign a definitive Operating Agreement of a Florida LLC; (b) extend the trial by written addendum; (c) end the cooperation under §17.
+Rhythm: Partner A **initiates** every operating discussion; Partner B joins. Weekly call of ______ minutes on ______ against the Annex C.5 scorecard and the **weekly KPI list**: hit the week's targets, or write where they slipped and what to do next. Partner A issues a written **monthly brochure** by the ______ of each month.
+
+The trial **extends automatically** unless either Partner gives written notice of exit. At the start, either may **end it on 1 month's notice** (§17). Final review by **15 December 2026**: if the Project is moving and making profit, this Memorandum is the **basis for a full partnership agreement** with extra terms, expectations and **3-year vesting** (B.3a); otherwise §17.
 
 ## 4. Participation shares
 
@@ -32,11 +34,11 @@ Rhythm: Partner A **initiates** every operating discussion; Partner B joins. Wee
 | Anatoliy Shiva (B) | ______ % | Same |
 | Reserve pool — future partner or key hire | ______ % | Unissued; allocated only under §13 |
 
-**Work split** during the trial is **80 / 20** (A / B). The percentages above are equity and profit; the Partners fill them in, and they need not match the work split. They are **provisional** until the final review against Annex B; failing agreement, they stand. Not transferable without written consent. A share is personal: a spouse, heir or creditor gets only its economic value (Annex B.5), never votes, and each Partner has first refusal.
+**Work split** during the trial is **80 / 20** (A / B). The percentages above are equity and profit; the Partners fill them in. They are **provisional** until the final review (Annex B). After the trial, **by mutual written consent**, terms and shares may be revised based on hours per week / month / quarter or other involvement — including if Anatoliy later goes fully deeper into Smart Home. If the trial converts: **3-year vesting** in equal annual parts (example: 20% → **6.66% per year**), both sign each tranche (B.3a). Not transferable without written consent. A share is personal: a spouse, heir or creditor gets only its economic value (B.5), never votes; each has first refusal.
 
 ## 5. Areas of responsibility
 
-The model is **asymmetric**. Two roles: **Artsiom Ishchuk** is **Managing Partner / CDO** (~80%) — commercial and delivery owner; he initiates processes, website, funnels, packages, dealers, engineers, visits, closing, delivery, books, tax, databases, first team and strategy. **Anatoliy Shiva** (~20%) supports the Project; it is **not his main focus** — his primary business is **Accent Florida Home**, which he continues to develop. He may still sell, introduce, advertise indirectly, sit in strategy, fund the start and hold the low-voltage licence, on a *sufficient* basis, not an 8–10 hour daily job. Day-to-day is the Lead's; detail: Annex A.
+The model is **asymmetric**. **Artsiom Ishchuk** — Managing Partner / CDO (~80%) — initiates commercial and delivery. **Anatoliy Shiva** (~20%) supports; LUMA is **not his main focus** — he continues **Accent Florida Home**. Sufficient basis, not 8–10 hours a day. Detail: Annex A.
 
 | # | Area | Lead | Support |
 |---|---|---|---|
@@ -57,11 +59,9 @@ Partner A: **at least 25 hours per week** in the first 4 weeks, then a written r
 
 ## 7. Money at the start (deliberately minimal)
 
-Partner A is **not obliged to put cash**. Partner B's cash into the Project is one **B Facility of not more than $10,000 outstanding**. Target operating budget: **$______ per month**. Any single expense above **$______**, or a new recurring subscription above **$______ per month**, needs written approval of both (email or messenger suffices).
+Partner A is **not obliged to put cash** — he pours in time. Partner B's cash is one **B Facility of not more than $10,000 outstanding**. Monthly cash is **only regular spend**: leads, marketing, AI tokens, GHL and other subscriptions — the minimum. **September: $500**. Anything else only after Partner A's written request (what it is for and the amount) and both agree. Any single expense above **$______**, or a new recurring subscription above **$______ per month**, needs written approval of both (email or messenger suffices).
 
-Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. Partner B funds the launch from the B Facility, up to **$10,000**. The envelope is a **narrow start list**, not scaled ads: (1) AI tools — packages and tokens; (2) the website; (3) aggregator lead-gen — Angi, Thumbtack, Houzz, Yelp and similar; (4) **test** Meta ads, **only after** start packages are ready for a targeted result; (5) videographers and photographers at the start; (6) courses, training and certificates (e.g. SBDC forum, set-up for public-tender access). If the funnel is not converting, the Partners **do not scale paid marketing and do not burn the budget**.
-
-The B Facility may be used as start-up investment or as a credit line for bills, invoices and services, never more than **$10,000 outstanding**, at **6% simple per annum**, repaid under §9. Partner A initiates each spend; Partner B releases funds. Personal costs are not reimbursable except the §9 personal-bill advance (max $7,000, **not** a draw on this facility) and items in Annex D.5.
+Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. The B Facility may be used as start-up investment or as a credit line for bills, invoices and services, never more than **$10,000 outstanding**, at **6% simple per annum**, repaid under §9. Partner A initiates each spend; Partner B releases funds. If the funnel is not converting, the Partners **do not scale paid marketing and do not burn the budget**. Personal costs are not reimbursable except the §9 personal-bill advance (max $7,000, **not** a draw on this facility) and items in Annex D.5.
 
 ## 8. Losses and additional funding
 
@@ -79,7 +79,7 @@ Cash is applied in this order: (1) **direct project costs** — equipment, freig
 
 **Personal-bill advance.** On Artsiom's request, Anatoliy may cover Artsiom's personal bills **1–2 times**, **max $7,000**. Repayable (B.2), not a gift. If unpaid in cash, Artsiom **works it off at Accent Florida Home** in a written format until zero.
 
-During the trial the Partners intend to reinvest at least **______ %** of profit after the living draw. A Partner doing billable field or programming work is paid **$______ per hour** as a direct project cost at the rates in Annex A.3, separately from profit share. Every project is quoted from the shared price book at a **minimum gross margin of ______ %**; going below that needs both Partners' consent.
+During the trial the Partners intend to reinvest at least **______ %** of profit after the living draw. Billable field or programming work is paid **$______ per hour** as a direct project cost (A.3). Price book: **minimum gross margin ______ %**; going below needs both Partners' consent.
 
 ## 10. Goals for the trial
 
@@ -93,7 +93,7 @@ Channel priority (1 = first): Accent / Partner B client and trade introductions 
 
 Rules from day one: Partner B may originate sales; every lead is in the shared CRM within **______ hours** with its source. First to log it owns it unless reassigned; **no Project client, lead or vendor is worked outside the pipeline** (§15); one price book. If B originated the client, the contract is signed and B accompanies — the §9 B origination bonus. Passive referrals from a Partner's other business without B accompanying earn **______ %** of the deal's gross profit.
 
-**Accent Smart Home.** Joint Accent Florida Home department — on Accent's website, services, handouts, brochures and all client- and team-facing materials. **LUMA** is contractor to Accent's direct client, keeps its margin (including with subcontractors), shows Accent inbound costs and the invoice to Accent; Accent's team does not shop the same services elsewhere (D.9, §15).
+**Accent Smart Home.** Joint Accent department: site, services, handouts, brochures, client and team materials. **LUMA** is contractor to Accent's client, keeps its margin (including with subcontractors), shows Accent inbound costs and the invoice to Accent; Accent's team does not shop the same services elsewhere (D.9, §15).
 
 ## 12. Decisions and reserved matters
 
@@ -119,13 +119,13 @@ The **LUMA Smart Home** marks are held, **for residential work at least during t
 
 ## 17. Ending the trial
 
-Either Partner may end the cooperation on **______ days' written notice**; it also ends on 31 December 2026 unless extended. If a Partner dies or is incapacitated beyond ______ days, the cooperation ends here too, with the share paid out to the Partner or their heirs per Annex B.5; a material breach of §11, §12, §15 or §16, uncured ______ days after written notice, lets the other Partner end it immediately. Then: projects in progress are completed, or transferred with the client's written consent; receivables are collected and payables settled; the working fund, tools and equipment are divided per §4 after all Project obligations; the departing Partner stays bound by §15 and §16; a buy-out of a share is valued per Annex B.5. Protecting the client takes precedence over the Partners' claims against each other.
+Either Partner may end the cooperation on **1 month's written notice**, including at the start. The trial **extends automatically** past 31 December 2026 unless that notice is given. If a Partner dies or is incapacitated beyond ______ days, the cooperation ends here too, with the share paid out per B.5; a material breach of §11, §12, §15 or §16, uncured ______ days after written notice, lets the other end it immediately. Then: projects in progress are completed or transferred with the client's written consent; receivables collected, payables settled; fund, tools and equipment divided per §4; the departing Partner stays bound by §15 and §16; a buy-out is valued per B.5 and, if converted, per **3-year vesting** in B.3a. The client comes first.
 
 ## 18. Legal form, licensing and compliance
 
-For **residential** work during the trial the Partners operate through **Tegra-Media LLC** as the LUMA Smart Home brand holder (Annex D.10). A dedicated Florida LLC may be formed later if the trial converts. Bookkeeping from day one, general liability insurance (plus workers' comp where required), sales-tax registration, and written subcontractor agreements with W-9s and insurance certificates apply in either case.
+For **residential** work during the trial the Partners operate through **Tegra-Media LLC** (D.10). A dedicated Florida LLC may be formed later if the trial converts. Bookkeeping, general liability (plus workers' comp where required), sales-tax registration, and written subcontractor agreements with W-9s and insurance certificates apply in either case.
 
-Until the entity, insurance and the applicable **Florida licensing route** are in place, no Partner signs client contracts in the Project's name, and any work requiring a low-voltage, alarm-system or electrical licence is performed only by a licensed contractor of record engaged in writing. The intended route is the **low-voltage licence through Partner B**; securing it — or engaging a licensed contractor of record until then — is an Annex C.1 milestone owned by Partner B, due ______ . **Accent Smart Home** jobs and, if lawful, **state and public work** may use **Accent Florida Home** as the face to the client, with **LUMA Smart Home** as contractor (D.9); use and any fee need both Partners' consent (§12). No Partner may hold themselves out as licensed before the Project or Accent Florida Home is. Each Partner is responsible for their own taxes and work authorization, and each always has unrestricted access to the books, the bank account and all Project documents.
+Until the entity, insurance and the **Florida licensing route** are in place, no Partner signs client contracts in the Project's name; licensed work is done only by a licensed contractor of record. Intended route: **low-voltage licence through Partner B**, C.1, due ______ . **Accent Smart Home** jobs and, if lawful, public work: Accent as the face, **LUMA** as contractor (D.9); use and fee need both consents (§12). Each Partner always has unrestricted access to the books, the bank account and all Project documents.
 
 ## 19. Status of this document; governing law; language
 
@@ -191,7 +191,9 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 **B.2b B Facility** (§7–§9). Cap: **$10,000 outstanding**. Interest: **6% simple per annum** on the outstanding balance. Two uses, same cap: (i) start-up investment; (ii) revolving credit the Project may draw for bills, invoices and other services. From each new project's remaining margin after §9(1)–(2), repay **10% of the outstanding principal** plus accrued interest, until zero. If that project's remaining margin is short, take what there is. Logged here as draw / repayment.
 
-**B.3 Share confirmation at the final review.** Inputs considered, in this order: (1) hours logged in B.1 against the commitment in §6; (2) cash in B.2 net of repayments; (3) delivered results against the KPIs in §10 and the milestones in Annex C; (4) ownership of a critical function that the Project cannot operate without. Any adjustment to §4 requires both signatures and is recorded as an addendum. Default if the Partners cannot agree on an adjustment: the shares in §4 stand unchanged.
+**B.3 Share confirmation at the final review.** Inputs considered, in this order: (1) hours logged in B.1 against the commitment in §6; (2) cash in B.2 net of repayments; (3) delivered results against the KPIs in §10 and the milestones in Annex C; (4) ownership of a critical function that the Project cannot operate without. Any adjustment to §4 requires both signatures and is recorded as an addendum. After the trial the Partners may, **by mutual written consent**, revise terms and reallocate shares based on hours per week / month / quarter or other involvement — including if Anatoliy Shiva later participates fully and more deeply in Smart Home. Default if the Partners cannot agree on an adjustment: the shares in §4 stand unchanged.
+
+**B.3a Three-year vesting** (if the trial converts, §3, §4, §17). Each Partner's §4 share vests over **3 years** in equal annual parts, each tranche signed by both. Example: if Anatoliy's share is **20%**, it vests **6.66% per year**. Artsiom's share vests the same way. If a Partner leaves, that Partner's share is redistributed to the remaining Partner in those same equal annual parts over 3 years, each transfer signed by both. **Artsiom's vesting and any exit transfer apply only if the B Facility is fully repaid, or the outstanding balance becomes Artsiom's personal responsibility.**
 
 **B.4 Conversion of cash into share** (optional, §8): **$______ per 1 %**, valid until ______ , applying only to cash actually received in the B Facility and only up to a maximum of ______ % transferred in total. Default during the trial is repayment at 6% simple, not conversion.
 
