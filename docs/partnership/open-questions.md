@@ -32,7 +32,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 14. Approval thresholds: single expense, and new recurring subscription. *Default: $300 single, $50/month recurring.*
 15. Client payment schedule. *Default: 50% on signature (before ordering equipment), 40% at rough-in, 10% at commissioning.*
 16. Are losses shared strictly by share, or does the Partner who caused a loss carry it? *Default: shared by share, except gross negligence or unapproved scope changes, which go to that Partner's contribution account.*
-17. Additional funding beyond the Seed Cap: partner loan or conversion to equity, and at what rate? *Default: partner loan at 8% simple interest repaid before distributions; equity conversion only by written election at the time of funding.*
+17. Additional funding beyond the Seed Cap: partner loan or conversion to equity, and at what rate? *Default now: do not accumulate debt. If the funnel is not converting, do not scale paid marketing and do not burn the budget. Further cash only by written consent of both; otherwise scale the plan down. Partner loan / equity conversion stays as an optional written path in §8b / B.4, not the operating mode.*
 18. If only one Partner can fund, do you cap how much share can shift? *Default: cap total shift at 10% during the trial.*
 19. Who keeps the books and on what tool? *Default: the Finance lead; QuickBooks or Wave from day one, dedicated business bank account, no personal cards for Project spend.*
 
@@ -48,7 +48,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 ### E. Roles and time — §5, §6, Annex A
 
 26. Who leads each of the nine areas in §5? This is the one table that must not be left blank at signature. If both of you want the same area, decide who is accountable and who is support.
-27. Weekly hours each. *Default: state real numbers you can hold, e.g. 15–20 h/week each; unequal hours are fine as long as §4 or the commission reflects it.*
+27. Weekly hours each. *Now: Artsiom at least 25 hours per week in the first 4 weeks, then a written review of whether that focus is producing results; Anatoliy 6 hours per week on a sufficient basis.*
 28. Who is the single point of contact for the client, and who signs proposals?
 29. Response-time commitments. *Default: 4 business hours to each other, 2 hours to a new lead, same business day for support requests.*
 30. Weekly call day and length, and the monthly written review date. *Default: Monday, 30 minutes; written review by the 5th.*
@@ -58,7 +58,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 32. Revenue and project-count targets to 31 December. *Default for a five-month trial: 3–5 signed projects, $120k–$180k revenue, 35% realized gross margin, 5 LUMA Care members.*
 33. Average project value you are aiming at. *Default: $30k–45k retrofit, $80k+ on new construction.*
-34. Which two channels get most of the trial's time? *Default: custom builders and remodelers first, interior designers second; inbound web and Google Business Profile as the slow compounding third.*
+34. Which two channels get most of the trial's time? *Now: Accent / Partner B introductions first; aggregator lead-gen (Angi, Thumbtack, Houzz, Yelp) as the paid start; test Meta ads only after start packages are ready. Do not scale paid marketing if the funnel is not converting.*
 35. Start with a narrow wedge offer or the full catalogue? *Default: wedge — lighting control + motorized shading + network as one packaged scope; theater, audio and full automation only on request.*
 36. Subcontract everything, or self-perform part of the install? *Default: subcontract cable pulls and rack build, self-perform design, programming and commissioning — best margin, and it is the capability worth owning.*
 37. Demo capability: client references, a showroom partner, or your own demo? *Default: a $1,500–3,000 portable demo case before any thought of a showroom.*
@@ -113,7 +113,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 14. Пороги согласования: единичный расход и новая регулярная подписка. *По умолчанию: $300 единично, $50/месяц регулярно.*
 15. График платежей клиента. *По умолчанию: 50% при подписании (до заказа оборудования), 40% на черновом этапе, 10% по пусконаладке.*
 16. Убытки делятся строго по долям или их несёт тот, кто их вызвал? *По умолчанию: по долям, кроме грубой небрежности и несогласованных изменений объёма — они идут на счёт вкладов этого Партнёра.*
-17. Дополнительные деньги сверх Стартового лимита: заём Партнёра или конвертация в долю, и по какой ставке? *По умолчанию: заём под 8% простых, возврат до распределения прибыли; конвертация только по письменному выбору в момент внесения.*
+17. Дополнительные деньги сверх Стартового лимита: заём Партнёра или конвертация в долю, и по какой ставке? *Сейчас: долги не копим. Если воронка не конвертирует — не двигаем основной маркетинг и не сливаем бюджет. Дальнейшие деньги только с письменного согласия обоих; иначе план сокращается. Заём / конвертация в долю остаются опциональным письменным путём в §8б / B.4, не рабочим режимом.*
 18. Если вносить может только один — ограничиваем ли перераспределение доли? *По умолчанию: не более 10% за весь пробный период.*
 19. Кто ведёт учёт и в чём? *По умолчанию: Лидер зоны «Финансы»; QuickBooks или Wave с первого дня, отдельный бизнес-счёт, никаких личных карт для расходов Проекта.*
 
@@ -129,7 +129,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 ### E. Роли и время — §5, §6, Приложение A
 
 26. Кто Лидер по каждой из девяти зон §5? Это единственная таблица, которую нельзя оставить пустой при подписании. Если оба хотят одну зону — решите, кто отвечает, а кто поддерживает.
-27. Часы в неделю у каждого. *По умолчанию: пишите реальные цифры, которые выдержите, например по 15–20 часов; неравные часы — нормально, если это отражено в §4 или в комиссии.*
+27. Часы в неделю у каждого. *Сейчас: Artsiom не менее 25 часов в неделю в первые 4 недели, затем письменный разбор — даёт ли этот фокус результат; Anatoliy 6 часов в неделю по достаточности.*
 28. Кто единая точка контакта для клиента и кто подписывает предложения?
 29. Обязательства по времени ответа. *По умолчанию: 4 рабочих часа друг другу, 2 часа новому лиду, тот же рабочий день по обращениям в поддержку.*
 30. День и длительность еженедельного созвона, дата письменного месячного обзора. *По умолчанию: понедельник, 30 минут; письменный обзор до 5 числа.*
@@ -139,7 +139,7 @@ Every question below maps to a specific blank in the memorandum. Answer with a n
 
 32. Цели по выручке и числу проектов до 31 декабря. *По умолчанию для пяти месяцев: 3–5 подписанных проектов, $120–180k выручки, 35% фактической маржи, 5 участников LUMA Care.*
 33. Целевой средний чек. *По умолчанию: $30–45k на ретрофите, от $80k на новом строительстве.*
-34. Какие два канала получают основное время в пробном периоде? *По умолчанию: застройщики и реконструкция — первый, дизайнеры интерьера — второй; сайт и Google Business Profile — третий, с отложенным эффектом.*
+34. Какие два канала получают основное время в пробном периоде? *Сейчас: сначала знакомства Accent / Партнёра Б; платный старт — агрегаторы (Angi, Thumbtack, Houzz, Yelp); тестовые Meta ads только после готовности стартовых пакетов. Если воронка не конвертирует — платный маркетинг не масштабируем.*
 35. Начинаем с узкого «клина» или со всего каталога? *По умолчанию: клин — свет + моторизованные шторы + сеть одним пакетом; кинозал, аудио и полная автоматизация — только по запросу.*
 36. Всё на субподряд или часть монтажа своими руками? *По умолчанию: кабель и сборку стойки — субподряд, проектирование, программирование и пусконаладку — сами: это и маржа, и та компетенция, которой стоит владеть.*
 37. Чем показывать: объекты клиентов, партнёрский шоурум или своё демо? *По умолчанию: переносной демо-кейс за $1,500–3,000 — до любых мыслей о шоуруме.*

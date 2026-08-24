@@ -22,7 +22,7 @@ Primary territory: **Sarasota County, Florida**; adjacent: Manatee, Charlotte, D
 
 This Memorandum covers a deliberate trial from the effective date **through 31 December 2026**, to test demand, unit economics and the working relationship **at limited cash risk**. Partner A contributes primarily time as Managing Partner; Partner B contributes limited time, contacts, client introductions and start-up finance.
 
-Rhythm: Partner A **initiates** every operating discussion; Partner B joins. Weekly call of ______ minutes on ______ against the Annex C.5 scorecard. Partner A issues a written **monthly brochure** by the ______ of each month (same KPIs, plus narrative). Final review by **15 December 2026**: (a) sign a definitive Operating Agreement of a Florida LLC; (b) extend the trial by written addendum; (c) end the cooperation under §17.
+Rhythm: Partner A **initiates** every operating discussion; Partner B joins. Weekly call of ______ minutes on ______ against the Annex C.5 scorecard and the **weekly KPI list**: hit the week's targets, or write where they slipped and what to do next to move the Project. Partner A issues a written **monthly brochure** by the ______ of each month. Final review by **15 December 2026**: (a) sign a definitive Operating Agreement of a Florida LLC; (b) extend the trial by written addendum; (c) end the cooperation under §17.
 
 ## 4. Participation shares
 
@@ -45,7 +45,7 @@ The model is **asymmetric**. Two roles: **Artsiom Ishchuk** is **Managing Partne
 | 3 | Design and packages — system design, price book, package solutions | A | B — strategy on packages |
 | 4 | Field delivery — subcontractors, scheduling, QA, warranty | A | — |
 | 5 | Procurement — dealer accounts, purchase orders, stock | A | — |
-| 6 | Marketing — website, landings, SEO, Angi, paid ads, events | A | B — indirect advertising |
+| 6 | Marketing — website, aggregators (Angi, Thumbtack, Houzz, Yelp), Meta test after packages | A | B — indirect advertising |
 | 7 | Finance and admin — bookkeeping via accountant, invoicing, tax, insurance | A | B — start-up finance |
 | 8 | Licensing and compliance — low-voltage licence, permits, subcontractor files | B | A |
 | 9 | Client care — support desk, service visits, LUMA Care renewals | A | — |
@@ -53,21 +53,21 @@ The model is **asymmetric**. Two roles: **Artsiom Ishchuk** is **Managing Partne
 
 ## 6. Time commitment
 
-Partner A: **______ hours per week**. Partner B: **5–6 hours per week**, on a sufficient basis — connect, introduce, direct, offer — **not** an 8–10 hour daily sales job. Partner A initiates every discussion that must be fixed in this interaction; Partner B replies within **______ business hours** and joins a key meeting on **______ days'** notice. A new client enquiry is answered within **______ hours**. Absence over ______ days is announced ______ days ahead with handover. Hours are logged weekly per Annex B.
+Partner A: **at least 25 hours per week** in the first 4 weeks, then a written review of whether this focus is producing results; thereafter **______ hours per week** as agreed at that review. Partner B: **6 hours per week**, on a sufficient basis — connect, introduce, direct, offer — **not** an 8–10 hour daily sales job. Partner A initiates every discussion that must be fixed in this interaction; Partner B replies within **______ business hours** and joins a key meeting on **______ days'** notice. A new client enquiry is answered within **______ hours**. Absence over ______ days is announced ______ days ahead with handover. Hours are logged weekly per Annex B.
 
 ## 7. Money at the start (deliberately minimal)
 
 Each Partner contributes up to **$______** to a common working fund ("Seed Cap"), in tranches as needed, and is not obliged to contribute more during the trial. Target operating budget: **$______ per month**. Any single expense above **$______**, or a new recurring subscription above **$______ per month**, needs written approval of both (email or messenger suffices).
 
-Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. In the first one–two quarters Partner B funds the launch, up to **$______** on §8 terms (capital or partner loan). The envelope covers marketing and paid leads (Google Ads, Meta, Angi, Thumbtack and similar), business status, licences, certifications, dealer accounts, CPA set-up, and first buys under signed contracts. Partner A initiates each spend; Partner B releases funds inside the envelope. Personal costs (vehicle, phone, home office, personal tools) are not reimbursable except the §9 personal-bill advance (max $7,000, repayable) and items listed in Annex D.5.
+Project hardware, freight and subcontract labour are funded from **client deposits, not partner capital**: standard terms are **______ %** on signature before equipment is ordered, **______ %** at rough-in, balance at commissioning. In the first one–two quarters Partner B funds the launch, up to **$______**. The envelope is a **narrow start list**, not scaled ads: (1) AI tools — packages and tokens; (2) the website; (3) aggregator lead-gen — Angi, Thumbtack, Houzz, Yelp and similar; (4) **test** Meta ads, **only after** start packages are ready for a targeted result; (5) videographers and photographers at the start; (6) courses, training and certificates (e.g. SBDC forum, set-up for public-tender access). If the funnel is not converting, the Partners **do not scale paid marketing and do not burn the budget**. Partner A initiates each spend; Partner B releases funds inside the envelope. Personal costs are not reimbursable except the §9 personal-bill advance (max $7,000, repayable) and items in Annex D.5.
 
 ## 8. Losses and additional funding
 
-Losses are shared per §4, but each Partner's **cash obligation during the trial is capped at the Seed Cap**. Neither Partner guarantees the other's obligations or may create debt binding on the other (§12).
+The Project **does not accumulate debt**. Losses are shared per §4, but each Partner's **cash obligation during the trial is capped at the Seed Cap**. Neither Partner guarantees the other's obligations or may create debt binding on the other (§12).
 
-If more cash is needed: (a) both contribute pro rata; or (b) one contributes alone and it is recorded as a **partner loan**, repaid before any distribution with ______ % simple interest per annum, or — at the funding Partner's written election at the time — converted into share at **$______ per 1 %** (Annex B.4); or (c) neither contributes and the plan is scaled down.
+The test is whether the Project has a right to live: Anatoliy helps with **licences and clients**, Artsiom finds **contractors**. If the sales funnel is not working and clients are not coming, the Partners **do not push main marketing and do not burn the budget**. If more cash is needed: (a) both contribute pro rata, only by written consent; or (b) one contributes alone only by written consent, recorded as a **partner loan** repaid before any distribution at ______ % simple interest, or — at the funding Partner's written election at the time — converted into share at **$______ per 1 %** (Annex B.4); **default (c)** neither contributes, the plan is scaled down, and no new debt is taken on.
 
-Bad debt, warranty rework and re-doing defective work are **Project costs** shared per §4, except where caused by a Partner's gross negligence or unapproved deviation from scope, which is charged to that Partner's contribution account.
+Bad debt, warranty rework and re-doing defective work are **Project costs** shared per §4, except gross negligence or unapproved deviation from scope, which is charged to that Partner's contribution account.
 
 ## 9. Revenue, profit and distributions
 
@@ -81,11 +81,11 @@ During the trial the Partners intend to reinvest at least **______ %** of profit
 
 To 31 December 2026: revenue **$______**; signed projects **______**; average project value **$______**; realized gross margin **______ %**; LUMA Care memberships **______**; qualified leads per month **______**; year-end pipeline **$______**; signed trade partners **______**; photographed reference projects **______**. Long-term intent: ______ (grow and hold / build to sell / income business); the 1–5-year picture of each Partner is recorded in Annex D.7.
 
-Each Partner keeps at least one **named potential client** at a stated check (working figure **$55,000** unless another is written in Annex D.8). **Accent Florida Home** is the related company for state and public work (Annex D.9), not a lead. Go / no-go also weighs: Partner A kept initiating, Partner B connected on a sufficient basis, and the weekly scorecard plus monthly brochure were kept current. Detail: Annex C.
+Each Partner keeps at least one **named potential client** at a stated check (working figure **$55,000** unless another is written in Annex D.8). **Accent Florida Home** is the related company for state and public work (Annex D.9), not a lead. Go / no-go also weighs: Partner A kept the §6 hours and initiation, Partner B connected 6 hours a week on a sufficient basis, and the weekly KPI list was either hit or the gap was written with a next action. Detail: Annex C.
 
 ## 11. Go-to-market and lead rules
 
-Channel priority (1 = first): Accent / Partner B client and trade introductions ______ ; builders and remodelers ______ ; designers and architects ______ ; realtors and property managers ______ ; inbound web, SEO, Google Business Profile ______ ; paid Google / Meta ______ ; Angi, Thumbtack and other paid-lead platforms ______ ; manufacturer lead programs ______ .
+Channel priority (1 = first): Accent / Partner B client and trade introductions ______ ; builders and remodelers ______ ; designers and architects ______ ; Angi, Thumbtack, Houzz, Yelp and similar aggregators ______ ; website and Google Business Profile ______ ; **test** Meta ads (only after start packages are ready) ______ ; manufacturer lead programs ______ .
 
 Rules from day one: Partner B may originate sales and advertise the Project indirectly; every such lead is in the shared CRM within **______ hours** with its source. First to log it owns it unless reassigned; **no Project client, lead or vendor is worked outside the pipeline** (§15); one price book. Leads exchanged with a Partner's other business (including Accent) earn the referring side **______ %** of the deal's gross profit — under §9 when the deal comes into the Project, by separate written terms when it goes out.
 
@@ -153,9 +153,9 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 | 4 Delivery | Subcontractor sourcing and scheduling | A | weekly | ______ |
 | 4 Delivery | Site QA, punch list, client walkthrough | A | per project | ______ |
 | 5 Procurement | Dealer accounts, POs, RMA, stock | A | weekly | ______ |
-| 6 Marketing | Website, landings, SEO, GBP, Angi, Thumbtack, Google / Meta | A | weekly | ______ |
+| 6 Marketing | Website; Angi, Thumbtack, Houzz, Yelp; Meta test after packages | A | weekly | ______ |
 | 7 Finance | Invoicing, collections, bookkeeping, reporting | A | weekly / monthly | ______ |
-| 7 Finance | Start-up envelope: ads, licences, CPA, first buys | B | first 1–2 qtrs | ______ |
+| 7 Finance | Start-up envelope: AI tools, website, aggregators, photo/video, training | B | first 1–2 qtrs | ______ |
 | 8 Compliance | Low-voltage licence, permits, insurance, W-9 / COI | B | monthly | ______ |
 | 9 Client care | Support intake, service visits, LUMA Care renewals | A | ongoing | ______ |
 
@@ -197,7 +197,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 **C.1 Days 1–30 — foundation.** Owner and due date for each: Tegra-Media LLC confirmed as residential brand vehicle (A) ______ ; business bank account and bookkeeping / CPA opened (A) ______ ; general liability quoted and bound (A) ______ ; **low-voltage licence route started (B)** ______ ; Partner B start-up envelope agreed in writing (B) ______ ; sales-tax registration (A) ______ ; shared drive, CRM and calendar live (A) ______ ; price book v1 (A) ______ ; proposal and contract templates (A) ______ ; dealer / distributor applications (Lutron, Ubiquiti, Somfy, Sonos) (A) ______ ; website, landings and Google Business Profile live (A) ______ ; one written subcontractor agreement plus W-9 and COI (A) ______ .
 
-**C.2 Days 31–60 — first demand.** Accent / Partner B introductions started (B); paid channels live — Google, Meta, Angi, Thumbtack — within the §7 envelope (A, funded by B); target lists: ______ builders, ______ designers/architects, ______ realtors; first ______ proposals; one pilot signed; demo kit for $______ or less; LUMA Care offer priced.
+**C.2 Days 31–60 — first demand.** Accent / Partner B introductions started (B); aggregator lead-gen live — Angi, Thumbtack, Houzz, Yelp — within the §7 envelope (A, funded by B); **test** Meta ads only after start packages are ready; target lists: ______ builders, ______ designers/architects; first ______ proposals; one pilot signed; demo kit for $______ or less; LUMA Care offer priced; photo/video of the first reference shot.
 
 **C.3 Days 61–90 — proof and repeatability.** Pilot delivered, commissioned and photographed; client walkthrough and written testimonial; unit economics compared to plan (quoted vs realized gross margin, hours per project vs estimate); the delivery process written down as a checklist; ______ signed trade partners; pipeline of $______ ; decision documented on what to standardize, automate, outsource or hire next (§14).
 
@@ -205,7 +205,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 | Metric | Plan | Aug | Sep | Oct | Nov | Dec |
 |---|---|---|---|---|---|---|
-| Qualified leads (all / from B / from paid) | ______ | | | | | |
+| Qualified leads (all / from B / aggregators / Meta test) | ______ | | | | | |
 | Proposals issued / $ value | ______ | | | | | |
 | Projects signed / $ value | ______ | | | | | |
 | Revenue recognized | ______ | | | | | |
@@ -215,7 +215,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 | Cash in working fund / B envelope left | ______ | | | | | |
 | Partner A / B hours logged | ______ | | | | | |
 
-**C.5 Weekly scorecard** — Partner A sends it before the weekly call; the Partners check it on the call. Same numbers as C.4, plus: site visits this week ______ ; named prospects in D.8 (moved / stuck); one strategy item (direction, packages, licensing, contacts or specialists); one blocker each (A / B); what Partner A will initiate next week; where Partner B will connect, introduce, direct or offer. Not a full-time sales report for B — only what was sufficient.
+**C.5 Weekly KPI scorecard** — Partner A sends it before the weekly call; the Partners check it on the call. In the first 14 days they write a short **weekly KPI list**. Each week they either **hit the list** or write **where they slipped and what to do next** to move the Project. Same numbers as C.4, plus: site visits this week ______ ; named prospects in D.8 (moved / stuck); one strategy item (direction, packages, licensing, contacts or specialists); one blocker each (A / B); hours vs §6 (A ≥25 h/week in weeks 1–4, then as agreed; B 6 h/week); what Partner A will initiate next week; where Partner B will connect, introduce, direct or offer.
 
 <!-- pagebreak -->
 
