@@ -15,10 +15,13 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from seo_content import NAP, extra_routes, geo_payload
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://lumasmarthome.com"
-PHONE = "+1-941-217-1616"
-EMAIL = "hello@lumasmarthome.com"
+PHONE = NAP["telephone"]
+EMAIL = NAP["email"]
+MAPS_URL = NAP["mapsUrl"]
 
 # id → public path, title, description, h1 (noscript), og image, sitemap priority
 ROUTES: list[dict] = [
@@ -291,6 +294,8 @@ ROUTES: list[dict] = [
     },
 ]
 
+ROUTES.extend(extra_routes())
+
 NAV_LINKS = [
     ("/", "Home"),
     ("/lighting", "Lighting"),
@@ -300,6 +305,9 @@ NAV_LINKS = [
     ("/security", "Security"),
     ("/networking", "Networking"),
     ("/automation", "Automation"),
+    ("/service-areas", "Service areas"),
+    ("/journal", "Journal"),
+    ("/luma-smart-home-sarasota", "LUMA Smart Home Sarasota"),
     ("/work", "Our work"),
     ("/budget", "Budget calculator"),
     ("/designers", "For designers & builders"),
@@ -315,6 +323,17 @@ AREA_SERVED = [
     "Charlotte County, FL",
     "Lee County, FL",
     "Collier County, FL",
+]
+
+AREA_CITIES = [
+    "Sarasota, FL",
+    "Bradenton, FL",
+    "Lakewood Ranch, FL",
+    "Venice, FL",
+    "Siesta Key, FL",
+    "Longboat Key, FL",
+    "Fort Myers, FL",
+    "Naples, FL",
 ]
 
 
@@ -347,13 +366,15 @@ def local_business_node() -> dict:
         "logo": abs_url("/assets/favicon.svg"),
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Sarasota",
-            "addressRegion": "FL",
-            "addressCountry": "US",
+            "addressLocality": NAP["locality"],
+            "addressRegion": NAP["region"],
+            "addressCountry": NAP["country"],
         },
+        "hasMap": MAPS_URL,
         "areaServed": [
             {"@type": "AdministrativeArea", "name": name} for name in AREA_SERVED
-        ],
+        ]
+        + [{"@type": "City", "name": name} for name in AREA_CITIES],
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
@@ -372,8 +393,24 @@ def local_business_node() -> dict:
     }
 
 
+def crumb_list(elements: list[tuple[str, str]]) -> dict:
+    return {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": i,
+                "name": name,
+                "item": abs_url(path),
+            }
+            for i, (name, path) in enumerate(elements, start=1)
+        ],
+    }
+
+
 def json_ld(route: dict) -> str:
     page_url = abs_url(route["path"])
+    kind = route.get("kind")
     graph: list[dict] = [local_business_node()]
     graph.append(
         {
@@ -385,8 +422,15 @@ def json_ld(route: dict) -> str:
             "inLanguage": "en-US",
         }
     )
+    webpage_type = "WebPage"
+    if kind == "article":
+        webpage_type = ["WebPage", "Article"]
+    elif kind == "contact":
+        webpage_type = "ContactPage"
+    elif kind == "brand":
+        webpage_type = "AboutPage"
     webpage: dict = {
-        "@type": "WebPage",
+        "@type": webpage_type,
         "@id": f"{page_url}#webpage",
         "url": page_url,
         "name": route["title"],
@@ -396,25 +440,28 @@ def json_ld(route: dict) -> str:
         "inLanguage": "en-US",
     }
     if route["path"] != "/":
-        webpage["breadcrumb"] = {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": f"{SITE}/",
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": route["h1"],
-                    "item": page_url,
-                },
-            ],
-        }
+        crumbs: list[tuple[str, str]] = [("Home", "/")]
+        if kind in ("areas-hub", "city", "city-service"):
+            crumbs.append(("Service Areas", "/service-areas"))
+            if kind == "city":
+                crumbs.append((route.get("city_name") or route["h1"], route["path"]))
+            elif kind == "city-service":
+                crumbs.append(
+                    (route.get("city_name") or "City", f"/service-areas/{route['city']}")
+                )
+                crumbs.append((route["h1"], route["path"]))
+        elif kind in ("journal-hub", "article"):
+            crumbs.append(("Journal", "/journal"))
+            if kind == "article":
+                crumbs.append((route["h1"], route["path"]))
+        elif kind == "brand":
+            crumbs.append((route["h1"], route["path"]))
+        else:
+            crumbs.append((route["h1"], route["path"]))
+        webpage["breadcrumb"] = crumb_list(crumbs)
     graph.append(webpage)
-    if route.get("kind") == "service":
+
+    if kind == "service":
         graph.append(
             {
                 "@type": "Service",
@@ -428,6 +475,67 @@ def json_ld(route: dict) -> str:
                 "url": page_url,
             }
         )
+    if kind == "city-service":
+        graph.append(
+            {
+                "@type": "Service",
+                "name": f"{route.get('service_name') or route['h1']} in {route.get('city_name')}",
+                "description": route["description"],
+                "provider": {"@id": f"{SITE}/#business"},
+                "areaServed": {
+                    "@type": "City",
+                    "name": f"{route.get('city_name')}, FL",
+                },
+                "url": page_url,
+            }
+        )
+    if kind == "article":
+        graph.append(
+            {
+                "@type": "Article",
+                "headline": route["h1"],
+                "description": route["description"],
+                "image": abs_url(route["og_image"]),
+                "datePublished": route.get("datePublished", "2026-08-24"),
+                "dateModified": route.get("datePublished", "2026-08-24"),
+                "author": {"@id": f"{SITE}/#business"},
+                "publisher": {"@id": f"{SITE}/#business"},
+                "mainEntityOfPage": {"@id": f"{page_url}#webpage"},
+                "inLanguage": "en-US",
+            }
+        )
+    if kind == "brand":
+        graph.append(
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Is LUMA Smart Home the same as luma.com?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No. luma.com is an events platform. LUMA Smart Home (lumasmarthome.com) is a Sarasota, Florida residential technology studio.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is this Luma AI or Luma Labs?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No. Luma AI (lumalabs.ai) builds generative video tools. LUMA Smart Home installs lighting, shades, audio, security, and Wi-Fi in Gulf Coast homes.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do you sell Snap One Luma cameras?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No. Snap One's Luma is a camera hardware line. When LUMA Smart Home specs cameras, we use on-premise UniFi Protect.",
+                        },
+                    },
+                ],
+            }
+        )
     payload = {"@context": "https://schema.org", "@graph": graph}
     return json.dumps(payload, ensure_ascii=False, indent=2)
 
@@ -437,12 +545,18 @@ def noscript_block(route: dict) -> str:
         f'      <li><a href="{esc(href)}">{esc(label)}</a></li>'
         for href, label in NAV_LINKS
     )
+    extra = ""
+    for para in route.get("paragraphs") or []:
+        extra += f"    <p>{esc(para)}</p>\n"
+    nap = (
+        f'    <p><a href="{esc(MAPS_URL)}" rel="noopener">{esc(NAP["mapsLabel"])}</a></p>\n'
+    )
     return f"""<noscript>
   <header class="seo-noscript">
-    <p><a href="/">LUMA Smart Home</a> · Sarasota, FL · {esc(PHONE)} · {esc(EMAIL)}</p>
+    <p><a href="/">LUMA Smart Home</a> · Sarasota, FL · {esc(NAP["telephoneDisplay"])} · {esc(EMAIL)}</p>
     <h1>{esc(route["h1"])}</h1>
     <p>{esc(route["description"])}</p>
-    <nav aria-label="Site">
+{extra}{nap}    <nav aria-label="Site">
       <ul>
 {links}
       </ul>
@@ -469,7 +583,7 @@ def head_for(route: dict) -> str:
 <meta name="geo.region" content="US-FL">
 <meta name="geo.placename" content="Sarasota">
 <meta property="og:site_name" content="LUMA Smart Home">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{'article' if route.get('kind') == 'article' else 'website'}">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="{esc(route["title"])}">
 <meta property="og:description" content="{esc(route["description"])}">
@@ -496,9 +610,7 @@ def head_for(route: dict) -> str:
 {noscript_block(route)}
 <div id="root"></div>
 <script>window.__LUMA_PAGE={json.dumps(route["id"])};</script>
-<script type="text/babel" data-presets="react">
-__LUMA_APP_JS__
-</script>
+<script type="text/babel" data-presets="react" src="/js/app.js"></script>
 </body>
 </html>
 """
@@ -513,6 +625,10 @@ def write_seo_data() -> None:
                 "path": r["path"],
                 "title": r["title"],
                 "description": r["description"],
+                "kind": r.get("kind"),
+                "city": r.get("city"),
+                "service": r.get("service"),
+                "h1": r.get("h1"),
             }
             for r in ROUTES
         },
@@ -535,6 +651,9 @@ def write_seo_data() -> None:
         + ";\n"
         "window.LUMA_SEO_ALIASES = "
         + json.dumps(aliases, ensure_ascii=False)
+        + ";\n"
+        "window.LUMA_GEO = "
+        + json.dumps(geo_payload(), ensure_ascii=False, indent=2)
         + ";\n"
     )
     (ROOT / "js" / "seo-data.js").write_text(text, encoding="utf-8")
@@ -575,11 +694,12 @@ def write_robots() -> None:
 
 
 def write_pages() -> None:
-    app_js = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+    # Shared SPA is loaded from /js/app.js so each HTML shell stays small.
+    # Babel standalone fetches that file (connect-src 'self' in netlify.toml).
     for r in ROUTES:
         dest = ROOT / r["file"]
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(head_for(r).replace("__LUMA_APP_JS__", app_js), encoding="utf-8")
+        dest.write_text(head_for(r), encoding="utf-8")
         print(f"[ok] {r['file']}  →  {r['path']}")
 
 

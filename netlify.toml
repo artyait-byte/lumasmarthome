@@ -3,7 +3,8 @@
 
 [build]
   publish = "."
-  # Rebuild crawlable HTML shells (unique title/canonical per URL) from js/app.js.
+  # Rebuild crawlable HTML shells (unique title/canonical per URL).
+  # Shared SPA is /js/app.js — do not inline it into every page.
   command = "python3 scripts/generate-seo-pages.py"
 
 # ----- Legacy URL → public path -------------------------------------------

@@ -73,6 +73,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* Intermediate desktop — keep nav from wrapping between 960–1240px while still readable */
 @media (min-width:960px) and (max-width:1240px){
+  .footer{grid-template-columns:1.3fr 1fr 1fr;padding:48px 28px 36px}
   .nav{padding:0 28px;height:74px}
   .nav-logo{margin-right:24px}
   .logo-luma{font-size:24px}
@@ -447,14 +448,78 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .service-area h3{font-size:18px;font-weight:600;margin-bottom:16px;letter-spacing:-.005em}
 .service-area ul{list-style:none;display:flex;flex-direction:column;gap:11px}
 .service-area li{display:flex;align-items:flex-start;gap:10px;font-size:15.5px;color:var(--mid);line-height:1.55}
-.service-area li::before{content:'✓';color:var(--accent);font-weight:600;flex-shrink:0;margin-top:2px}
+.service-area li a{color:var(--accent);font-weight:500}
+
+/* ── GEO / JOURNAL ── */
+.geo-hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(78vh,700px);background:var(--dark);overflow:hidden}
+.geo-hero-text{display:flex;flex-direction:column;justify-content:center;padding:72px 56px 72px 72px;background:var(--dark);color:#FCFAF6}
+.geo-eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:22px}
+.geo-hero-text h1{font-family:var(--serif);font-size:clamp(36px,4.4vw,60px);font-weight:600;line-height:1.06;color:#FCFAF6;margin:0 0 22px;text-wrap:balance}
+.geo-hero-text p{font-size:18px;line-height:1.72;color:rgba(252,250,246,.85);max-width:520px;margin:0 0 28px}
+.geo-hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.geo-hero .btn-ghost{color:#FCFAF6;border-color:rgba(252,250,246,.45)}
+.geo-hero-photo{position:relative;overflow:hidden;min-height:420px}
+.geo-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.geo-crumbs{font-size:13.5px;color:var(--mid);margin:0 0 28px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.geo-crumbs a{color:var(--accent)}
+.geo-crumbs-sep{opacity:.45;margin:0 4px}
+.geo-prose{max-width:720px;font-size:18.5px;line-height:1.78;color:var(--dark)}
+.geo-prose p{margin:0 0 18px;color:var(--mid)}
+.geo-prose h2{font-family:var(--serif);font-size:clamp(28px,3vw,38px);font-weight:600;margin:36px 0 12px;line-height:1.15}
+.geo-prose ul{margin:0 0 22px 18px;color:var(--mid)}
+.geo-prose li{margin:0 0 8px}
+.geo-subhead{font-family:var(--serif);font-size:clamp(32px,3.2vw,44px);font-weight:600;margin:48px 0 20px;text-align:left}
+.geo-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:28px}
+.geo-card{background:#fff;border:1px solid var(--cream2);border-radius:16px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:8px;transition:border-color .18s,transform .18s}
+.geo-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.geo-card h3{font-family:var(--serif);font-size:26px;font-weight:600;margin:0;line-height:1.15}
+.geo-card p{font-size:14.5px;color:var(--mid);line-height:1.5;margin:0}
+.geo-card-kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.geo-card-go{font-size:13.5px;color:var(--accent);margin-top:8px;font-weight:500}
+.geo-hoods{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 12px}
+.geo-hoods li{background:#fff;border:1px solid var(--cream2);border-radius:100px;padding:8px 14px;font-size:14px;color:var(--mid)}
+.geo-bullets{list-style:none;padding:0;margin:28px 0;display:grid;gap:10px;max-width:720px}
+.geo-bullets li{padding-left:22px;position:relative;color:var(--mid);font-size:17px}
+.geo-bullets li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:600}
+.geo-next{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.geo-strip{background:var(--cream2);padding:48px 0}
+.geo-strip-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.geo-strip-title{font-family:var(--serif);font-size:clamp(32px,3.4vw,46px);font-weight:600;text-align:left;margin:0 0 22px}
+.geo-strip-title em{color:var(--accent);font-style:italic}
+.geo-chip-row{display:flex;flex-wrap:wrap;gap:10px}
+.geo-chip{background:#fff;border:1px solid var(--cream3);border-radius:100px;padding:10px 16px;font-size:14.5px;font-weight:500}
+.geo-chip:hover{border-color:var(--accent);color:var(--accent)}
+.geo-chip--all{border-color:var(--accent);color:var(--accent)}
+.journal-list{display:flex;flex-direction:column;gap:14px;margin-top:12px}
+.journal-row{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:22px 24px;background:#fff;border:1px solid var(--cream2);border-radius:16px;align-items:start}
+.journal-row:hover{border-color:var(--accent)}
+.journal-row-date{font-size:13px;letter-spacing:.08em;color:var(--mid);padding-top:8px}
+.journal-row h2{font-family:var(--serif);font-size:28px;font-weight:600;margin:0 0 8px;line-height:1.2}
+.journal-row p{font-size:15.5px;color:var(--mid);margin:0;line-height:1.55}
+.geo-nap{display:flex;flex-direction:column;gap:6px;font-style:normal;background:#fff;border:1px solid var(--cream2);border-radius:16px;padding:22px 24px;max-width:420px;margin:28px 0}
+.geo-nap strong{font-family:var(--serif);font-size:24px}
+.geo-nap a{color:var(--accent)}
+.geo-faq{display:grid;gap:14px;max-width:760px}
+.geo-faq-item{background:#fff;border:1px solid var(--cream2);border-radius:16px;padding:20px 22px}
+.geo-faq-item h3{font-size:17px;font-weight:600;margin:0 0 8px}
+.geo-faq-item p{font-size:15.5px;color:var(--mid);margin:0;line-height:1.6}
+
+@media (max-width:959px){
+  .geo-hero{grid-template-columns:1fr;min-height:auto}
+  .geo-hero-text{padding:48px 22px}
+  .geo-hero-photo{min-height:0;aspect-ratio:16/10}
+  .geo-strip-inner{padding:0 22px}
+  .journal-row{grid-template-columns:1fr;gap:8px}
+}
 
 /* ── FOOTER ── */
-.footer{background:var(--dark);color:rgba(255,255,255,.65);font-size:14.5px;padding:56px 48px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px 48px;line-height:1.55;align-items:start}
+.footer{background:var(--dark);color:rgba(255,255,255,.65);font-size:14.5px;padding:56px 48px 40px;display:grid;grid-template-columns:1.5fr 1fr 1.1fr 1fr;gap:36px 40px;line-height:1.55;align-items:start}
 .footer-logo{color:#fff;font-family:var(--serif);font-size:22px;letter-spacing:.06em;display:inline-block;margin-bottom:12px}
 .footer-brand p{max-width:360px;margin:0 0 12px;font-size:14.5px}
 .footer-brand a{color:rgba(255,255,255,.82)}
 .footer-brand a:hover{color:#fff}
+.footer-nap{font-style:normal}
+.footer-nap-name{color:#fff;font-weight:600}
 .footer-col{display:flex;flex-direction:column;gap:8px}
 .footer-col strong{color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;font-weight:600}
 .footer-col a{color:rgba(255,255,255,.7);font-size:14.5px}

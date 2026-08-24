@@ -3,6 +3,29 @@ const {useState, useEffect, useRef} = React;
 /* ─── PATH ROUTING (crawlable URLs, not ?p=) ─── */
 const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','smart-home-demo']);
 
+function knownPages(){
+  const keys = new Set(ROUTE_KEYS);
+  try {
+    Object.keys((window.LUMA_SEO && window.LUMA_SEO.routes) || {}).forEach(k=>keys.add(k));
+  } catch(e) {}
+  return keys;
+}
+function isKnownPage(id){
+  return !!id && knownPages().has(id);
+}
+function geoData(){
+  return window.LUMA_GEO || {cities:{}, services:{}, cityServices:{}, articles:{}, articleOrder:[], nap:{}, hub:{}, journalHub:{}, brand:{}};
+}
+function cityPageId(city){ return 'sa-'+city; }
+function cityServicePageId(city, service){ return 'sa-'+city+'-'+service; }
+function hasCityService(city, service){
+  const g = geoData();
+  return !!(g.cityServices && g.cityServices[city+'/'+service]);
+}
+function servicePageForCity(city, service){
+  return hasCityService(city, service) ? cityServicePageId(city, service) : service;
+}
+
 function pathFor(page){
   const seo = window.LUMA_SEO;
   if (seo && seo.routes && seo.routes[page] && seo.routes[page].path) return seo.routes[page].path;
@@ -256,10 +279,12 @@ function Nav({navigate}) {
     } catch(_) {}
   },[]);
   const SECONDARY_LINKS = [
-    {label:'Budget Calculator', page:'budget-calculator'},
+    {label:'Service Areas', page:'service-areas'},
+    {label:'Journal', page:'journal'},
     {label:'Work & Testimonials', page:'work'},
-    {label:'For Designers & Builders', page:'designers'},
     {label:'About', page:'about'},
+    {label:'Budget Calculator', page:'budget-calculator'},
+    {label:'For Designers & Builders', page:'designers'},
     {label:'Customer Support', page:'support'},
   ];
   return (
@@ -468,7 +493,7 @@ function HomePage({navigate}) {
               <path d="M12 22s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/>
               <circle cx="12" cy="10" r="2.4"/>
             </svg>
-            <span>Serving Sarasota, Manatee, Charlotte, Lee & Collier Counties</span>
+            <NavLink page="service-areas" navigate={navigate}>Serving Sarasota, Manatee, Charlotte, Lee & Collier Counties</NavLink>
           </div>
 
           <div className="home-hero-cta">
@@ -1770,7 +1795,9 @@ function NetworkingPage({navigate}) {
 }
 
 /* ─── CONTACT PAGE ─── */
-function ContactPage() {
+function ContactPage({navigate}) {
+  const go = navigate || ((p)=>{ window.location.href = pathFor(p); });
+  const cities = geoData().cities || {};
   return (
     <div className="page">
       <div className="contact-grid">
@@ -1813,14 +1840,19 @@ function ContactPage() {
           <div className="service-area">
             <h3>Service Area</h3>
             <ul>
-              {[
-                'Sarasota County — Sarasota, Siesta Key, Bird Key, Casey Key, Venice',
-                'Manatee County — Bradenton, Anna Maria Island, Lakewood Ranch',
-                'Charlotte County — Port Charlotte, Punta Gorda, Boca Grande',
-                'Lee County — Fort Myers, Sanibel, Captiva, Estero, Bonita Springs',
-                'Collier County — Naples, Port Royal, Aqualane Shores, Marco Island',
-              ].map(item=><li key={item}>{item}</li>)}
+              {Object.keys(cities).map(id=>{
+                const c = cities[id];
+                return (
+                  <li key={id}>
+                    <NavLink page={cityPageId(id)} navigate={go}>{c.name}</NavLink>
+                    <span> — {c.county}</span>
+                  </li>
+                );
+              })}
             </ul>
+            <p style={{marginTop:14,fontSize:14.5}}>
+              <NavLink page="service-areas" navigate={go} style={{color:'var(--accent)'}}>All service areas →</NavLink>
+            </p>
           </div>
           <div style={{background:'#fff',borderRadius:16,padding:24,marginBottom:20}}>
             <h3 style={{fontSize:16,fontWeight:500,marginBottom:16}}>Get in touch directly</h3>
@@ -1937,23 +1969,41 @@ function ContactPage() {
 
 /* ─── FOOTER ─── */
 function Footer({navigate}) {
+  const nap = geoData().nap || {};
+  const cities = geoData().cities || {};
   const groups = [
     {label:'Solutions', links:[
       ['lighting','Lighting'],['shading','Shading'],['theaters','Home theaters'],
       ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],
     ]},
     {label:'Studio', links:[
-      ['work','Our work'],['about','About'],['designers','Designers & builders'],
+      ['work','Our work'],['about','About'],['journal','Journal'],
+      ['luma-smart-home-sarasota','This LUMA, not the others'],
+      ['designers','Designers & builders'],
       ['budget-calculator','Budget calculator'],['support','Customer support'],['smart-home-demo','3D demo'],['contact','Contact'],
+    ]},
+    {label:'Service areas', links:[
+      ['service-areas','All service areas'],
+      ...Object.keys(cities).map(id=>[cityPageId(id), cities[id].name]),
     ]},
   ];
   const go = navigate || ((p)=>{ window.location.href = pathFor(p); });
+  const maps = nap.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL';
   return (
     <footer className="footer">
       <div className="footer-brand">
         <NavLink page="home" navigate={go} className="footer-logo">LUMA Smart Home</NavLink>
-        <p>Residential technology studio in Sarasota, FL. Lighting, shades, audio, security, and Wi-Fi for Gulf Coast homes.</p>
-        <p><a href="tel:+19412171616">+1 (941) 217-1616</a><br/><a href="mailto:hello@lumasmarthome.com">hello@lumasmarthome.com</a></p>
+        <p className="footer-nap">
+          <span className="footer-nap-name">LUMA Smart Home</span><br/>
+          Sarasota, Florida<br/>
+          <a href={maps} target="_blank" rel="noopener noreferrer">{nap.mapsLabel || 'Find us on Google Maps'}</a>
+        </p>
+        <p>Residential technology studio. Lighting, shades, audio, security, and Wi-Fi for Gulf Coast homes.</p>
+        <p>
+          <a href="tel:+19412171616">{nap.telephoneDisplay || '+1 (941) 217-1616'}</a><br/>
+          <a href="mailto:hello@lumasmarthome.com">{nap.email || 'hello@lumasmarthome.com'}</a><br/>
+          <span>{nap.hours || 'Mon–Sat · 9am – 6pm'}</span>
+        </p>
       </div>
       {groups.map(g=>(
         <nav key={g.label} className="footer-col" aria-label={g.label}>
@@ -1965,7 +2015,7 @@ function Footer({navigate}) {
       ))}
       <div className="footer-meta">
         <span>© 2026 LUMA Smart Home · Sarasota, FL</span>
-        <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
+        <span>Serving {nap.area || 'Sarasota, Manatee, Charlotte, Lee & Collier Counties'}</span>
       </div>
     </footer>
   );
@@ -3662,6 +3712,343 @@ function SmartHomeDemoPage({navigate}) {
   );
 }
 
+/* ─── GEO / JOURNAL / BRAND ─── */
+function Crumbs({items, navigate}){
+  return (
+    <nav className="geo-crumbs" aria-label="Breadcrumb">
+      {items.map((it,i)=>(
+        <span key={it.page || it.label}>
+          {i>0 && <span className="geo-crumbs-sep">/</span>}
+          {it.page
+            ? <NavLink page={it.page} navigate={navigate}>{it.label}</NavLink>
+            : <span>{it.label}</span>}
+        </span>
+      ))}
+    </nav>
+  );
+}
+
+function GeoHero({eyebrow, h1, lede, image, alt, navigate, primary, secondary}){
+  return (
+    <section className="lit-hero-wrap geo-hero">
+      <div className="lit-hero-text geo-hero-text">
+        {eyebrow && <div className="geo-eyebrow">{eyebrow}</div>}
+        <h1>{h1}</h1>
+        <p>{lede}</p>
+        <div className="geo-hero-actions">
+          <NavLink page={(primary && primary.page) || 'contact'} navigate={navigate} className="btn-solid">{(primary && primary.label) || 'Book a consultation →'}</NavLink>
+          {secondary && <NavLink page={secondary.page} navigate={navigate} className="btn-ghost">{secondary.label}</NavLink>}
+        </div>
+      </div>
+      <div className="geo-hero-photo">
+        <img loading="lazy" decoding="async" src={image} alt={alt || h1}/>
+      </div>
+    </section>
+  );
+}
+
+function GeoStrip({serviceId, navigate}){
+  const g = geoData();
+  const cities = g.cities || {};
+  const svc = (g.services && g.services[serviceId]) || {};
+  const cityIds = Object.keys(cities);
+  if (!cityIds.length) return null;
+  return (
+    <section className="geo-strip">
+      <div className="geo-strip-inner">
+        <div className="sec-label" style={{textAlign:'left'}}>Where we install this</div>
+        <h2 className="geo-strip-title">{svc.nav || 'This system'} on the <em>Gulf Coast.</em></h2>
+        <div className="geo-chip-row">
+          {cityIds.map(id=>{
+            const page = servicePageForCity(id, serviceId);
+            return (
+              <NavLink key={id} page={page} navigate={navigate} className="geo-chip">
+                {cities[id].name}
+              </NavLink>
+            );
+          })}
+          <NavLink page="service-areas" navigate={navigate} className="geo-chip geo-chip--all">All service areas →</NavLink>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServiceAreasHub({navigate}){
+  const g = geoData();
+  const cities = g.cities || {};
+  const services = g.services || {};
+  return (
+    <div className="page">
+      <GeoHero
+        eyebrow="Five counties · one studio"
+        h1="Where we work on the Gulf Coast."
+        lede={g.hub && g.hub.lede}
+        image={PHOTOS.heroSplash}
+        alt="Sarasota bayfront"
+        navigate={navigate}
+        primary={{page:'contact', label:'Book a walkthrough →'}}
+        secondary={{page:'luma-smart-home-sarasota', label:'This LUMA, not the others'}}
+      />
+      <section className="th-section">
+        <Crumbs items={[{page:'home', label:'Home'},{label:'Service areas'}]} navigate={navigate}/>
+        <div className="sec-label" style={{textAlign:'left'}}>City silo</div>
+        <h2 className="sec-title" style={{textAlign:'left'}}>City pages live <em>here</em> — not under Solutions.</h2>
+        <p className="hero-body" style={{marginTop:18,maxWidth:640}}>Lighting, shades, and the rest of the trades stay in the Solutions menu. Geography sits in this silo so a search for smart home Sarasota is not competing with a generic “we serve Naples too” paragraph on every service page.</p>
+        <div className="geo-card-grid">
+          {Object.keys(cities).map(id=>{
+            const c = cities[id];
+            return (
+              <NavLink key={id} page={cityPageId(id)} navigate={navigate} className="geo-card">
+                <div className="geo-card-kicker">{c.county}</div>
+                <h3>{c.name}</h3>
+                <p>{c.tagline}</p>
+                <span className="geo-card-go">Open city page →</span>
+              </NavLink>
+            );
+          })}
+        </div>
+      </section>
+      <section className="th-section--cream">
+        <div className="th-section--cream-inner">
+          <div className="sec-label">Trades</div>
+          <h2 className="sec-title">The same seven systems, <em>specified locally.</em></h2>
+          <div className="geo-card-grid geo-card-grid--7">
+            {Object.keys(services).map(id=>{
+              const s = services[id];
+              return (
+                <NavLink key={id} page={id} navigate={navigate} className="geo-card">
+                  <h3>{s.nav}</h3>
+                  <p>{s.short}</p>
+                </NavLink>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function CityHubPage({cityId, navigate}){
+  const g = geoData();
+  const city = (g.cities && g.cities[cityId]) || null;
+  const services = g.services || {};
+  if (!city) return <ServiceAreasHub navigate={navigate}/>;
+  const photo = city.image ? (city.image.startsWith('/assets') ? city.image + '?v=13' : city.image) : PHOTOS.heroAbout;
+  return (
+    <div className="page">
+      <GeoHero
+        eyebrow={city.county}
+        h1={city.h1}
+        lede={city.lede}
+        image={photo}
+        alt={city.name}
+        navigate={navigate}
+        primary={{page:'contact', label:'Talk about a '+city.name+' house →'}}
+        secondary={{page:'work', label:'See our work'}}
+      />
+      <section className="th-section">
+        <Crumbs items={[{page:'home', label:'Home'},{page:'service-areas', label:'Service areas'},{label:city.name}]} navigate={navigate}/>
+        <div className="geo-prose">
+          {(city.paragraphs||[]).map((p,i)=><p key={i}>{p}</p>)}
+        </div>
+        <h2 className="geo-subhead">Systems we install in {city.name}</h2>
+        <div className="geo-card-grid">
+          {Object.keys(services).map(sid=>{
+            const s = services[sid];
+            const local = hasCityService(cityId, sid);
+            return (
+              <NavLink key={sid} page={servicePageForCity(cityId, sid)} navigate={navigate} className="geo-card">
+                <div className="geo-card-kicker">{local ? city.name : 'Gulf Coast'}</div>
+                <h3>{s.nav}</h3>
+                <p>{s.short}</p>
+                <span className="geo-card-go">{local ? city.name+' page →' : 'Service overview →'}</span>
+              </NavLink>
+            );
+          })}
+        </div>
+        {city.neighborhoods && city.neighborhoods.length>0 && (
+          <>
+            <h2 className="geo-subhead">Neighborhoods we know</h2>
+            <ul className="geo-hoods">
+              {city.neighborhoods.map(n=><li key={n}>{n}</li>)}
+            </ul>
+          </>
+        )}
+      </section>
+    </div>
+  );
+}
+
+function CityServicePage({cityId, serviceId, navigate}){
+  const g = geoData();
+  const city = (g.cities && g.cities[cityId]) || {};
+  const svc = (g.services && g.services[serviceId]) || {};
+  const row = (g.cityServices && g.cityServices[cityId+'/'+serviceId]) || null;
+  if (!row) return <CityHubPage cityId={cityId} navigate={navigate}/>;
+  const photo = (svc.og || '/assets/photos/waterfront-lanai.jpg') + '?v=13';
+  return (
+    <div className="page">
+      <GeoHero
+        eyebrow={city.name+' · '+svc.nav}
+        h1={row.h1}
+        lede={row.lede}
+        image={photo}
+        alt={row.h1}
+        navigate={navigate}
+        primary={{page:'contact', label:'Start a project →'}}
+        secondary={{page:serviceId, label:'Full '+svc.nav+' overview'}}
+      />
+      <section className="th-section">
+        <Crumbs items={[
+          {page:'home', label:'Home'},
+          {page:'service-areas', label:'Service areas'},
+          {page:cityPageId(cityId), label:city.name},
+          {label:svc.nav},
+        ]} navigate={navigate}/>
+        <div className="geo-prose">
+          {(row.paragraphs||[]).map((p,i)=><p key={i}>{p}</p>)}
+        </div>
+        {row.bullets && (
+          <ul className="geo-bullets">
+            {row.bullets.map(b=><li key={b}>{b}</li>)}
+          </ul>
+        )}
+        <div className="geo-next">
+          <NavLink page={cityPageId(cityId)} navigate={navigate} className="btn-ghost">All systems in {city.name}</NavLink>
+          <NavLink page="service-areas" navigate={navigate} className="btn-ghost">Other cities</NavLink>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function JournalIndex({navigate}){
+  const g = geoData();
+  const order = g.articleOrder || [];
+  const articles = g.articles || {};
+  return (
+    <div className="page">
+      <GeoHero
+        eyebrow="Journal"
+        h1="Notes from the studio."
+        lede={g.journalHub && g.journalHub.lede}
+        image={PHOTOS.moment3}
+        alt="Gulf sunset"
+        navigate={navigate}
+        primary={{page:'journal-smart-home-sarasota', label:'Start: smart home Sarasota →'}}
+        secondary={{page:'contact', label:'Book a walkthrough'}}
+      />
+      <section className="th-section">
+        <Crumbs items={[{page:'home', label:'Home'},{label:'Journal'}]} navigate={navigate}/>
+        <div className="journal-list">
+          {order.map(id=>{
+            const a = articles[id];
+            if (!a) return null;
+            return (
+              <NavLink key={id} page={id} navigate={navigate} className="journal-row">
+                <div className="journal-row-date">{a.date}</div>
+                <div>
+                  <h2>{a.h1}</h2>
+                  <p>{a.dek}</p>
+                </div>
+              </NavLink>
+            );
+          })}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function JournalArticle({articleId, navigate}){
+  const g = geoData();
+  const a = (g.articles && g.articles[articleId]) || null;
+  if (!a) return <JournalIndex navigate={navigate}/>;
+  const photo = (a.og || '/assets/photos/gulf-sunset.jpg') + '?v=13';
+  return (
+    <div className="page">
+      <GeoHero
+        eyebrow={'Journal · '+a.date}
+        h1={a.h1}
+        lede={a.dek}
+        image={photo}
+        alt={a.h1}
+        navigate={navigate}
+        primary={{page:'contact', label:'Talk to the studio →'}}
+        secondary={{page:'journal', label:'All notes'}}
+      />
+      <section className="th-section">
+        <Crumbs items={[{page:'home', label:'Home'},{page:'journal', label:'Journal'},{label:a.h1}]} navigate={navigate}/>
+        <article className="geo-prose journal-prose">
+          {(a.blocks||[]).map((b,i)=>{
+            if (b.type==='h2') return <h2 key={i}>{b.text}</h2>;
+            if (b.type==='ul') return <ul key={i}>{b.items.map(it=><li key={it}>{it}</li>)}</ul>;
+            return <p key={i}>{b.text}</p>;
+          })}
+        </article>
+        <div className="geo-next">
+          <NavLink page="service-areas" navigate={navigate} className="btn-solid">Service areas</NavLink>
+          <NavLink page="journal" navigate={navigate} className="btn-ghost">More notes</NavLink>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function BrandPage({navigate}){
+  const nap = geoData().nap || {};
+  const maps = nap.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL';
+  const faqs = [
+    {q:'Is LUMA Smart Home the same as luma.com?', a:'No. luma.com is an events and invitation platform. We do not run event software. We design lighting, shades, audio, security, and Wi-Fi for Gulf Coast homes.'},
+    {q:'Is this Luma AI or Luma Labs?', a:'No. Luma AI (lumalabs.ai) builds generative video and 3D tools. If you wanted Dream Machine, that is a different company.'},
+    {q:'Do you make Snap One Luma cameras?', a:'No. Snap One sells a camera line named Luma through security dealers. When this studio specs cameras, we use on-premise UniFi Protect — your footage on your property.'},
+  ];
+  return (
+    <div className="page">
+      <GeoHero
+        eyebrow="Entity · Sarasota, Florida"
+        h1="LUMA Smart Home — the Sarasota studio."
+        lede="Residential technology. Not the events app, not the video model, not the camera SKU that shares a word."
+        image={PHOTOS.heroAbout}
+        alt="Sarasota marina"
+        navigate={navigate}
+        primary={{page:'contact', label:'Start a project →'}}
+        secondary={{page:'journal-not-luma-com', label:'Read the explainer'}}
+      />
+      <section className="th-section">
+        <Crumbs items={[{page:'home', label:'Home'},{label:'LUMA Smart Home Sarasota'}]} navigate={navigate}/>
+        <div className="geo-prose">
+          <p>LUMA Smart Home (lumasmarthome.com) is a residential technology studio based in Sarasota, Florida. We specify and install Lutron lighting, motorized shades, whole-home audio, UniFi cameras and Wi-Fi, and automation for houses in Sarasota, Manatee, Charlotte, Lee, and Collier Counties.</p>
+          <p>Legal name: LUMA Home Systems LLC. The public name on this site and on Google should stay LUMA Smart Home — Sarasota, with the trades in the description so a search for lighting or smart home does not land you on an events platform.</p>
+        </div>
+        <address className="geo-nap">
+          <strong>LUMA Smart Home</strong>
+          <span>Sarasota, Florida</span>
+          <a href="tel:+19412171616">{nap.telephoneDisplay || '+1 (941) 217-1616'}</a>
+          <a href="mailto:hello@lumasmarthome.com">{nap.email || 'hello@lumasmarthome.com'}</a>
+          <span>{nap.hours || 'Mon–Sat · 9am – 6pm'}</span>
+          <a href={maps} target="_blank" rel="noopener noreferrer">{nap.mapsLabel || 'Open in Google Maps'}</a>
+        </address>
+        <h2 className="geo-subhead">If a search sent you to the wrong LUMA</h2>
+        <div className="geo-faq">
+          {faqs.map(f=>(
+            <div key={f.q} className="geo-faq-item">
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </div>
+          ))}
+        </div>
+        <div className="geo-next">
+          <NavLink page="service-areas" navigate={navigate} className="btn-solid">Where we work</NavLink>
+          <NavLink page="about" navigate={navigate} className="btn-ghost">About the studio</NavLink>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 /* ─── APP ─── */
 function readPageFromUrl(){
   const seo = window.LUMA_SEO || {routes:{}};
@@ -3672,17 +4059,17 @@ function readPageFromUrl(){
     if (normalizePath(routes[id].path) === path) return id;
   }
   const slug = path.replace(/^\//, '');
-  if (ROUTE_KEYS.has(slug)) return slug;
-  if (aliases[slug] && ROUTE_KEYS.has(aliases[slug])) return aliases[slug];
+  if (isKnownPage(slug)) return slug;
+  if (aliases[slug] && isKnownPage(aliases[slug])) return aliases[slug];
   try {
     const q = new URLSearchParams(window.location.search||'').get('p');
-    if (q && ROUTE_KEYS.has(q)) return q;
-    if (q && aliases[q] && ROUTE_KEYS.has(aliases[q])) return aliases[q];
+    if (q && isKnownPage(q)) return q;
+    if (q && aliases[q] && isKnownPage(aliases[q])) return aliases[q];
   } catch(e) {}
   const h = (window.location.hash||'').replace(/^#\/?/,'').split(/[?#]/)[0];
-  if (h && ROUTE_KEYS.has(h)) return h;
-  if (h && aliases[h] && ROUTE_KEYS.has(aliases[h])) return aliases[h];
-  if (window.__LUMA_PAGE && ROUTE_KEYS.has(window.__LUMA_PAGE)) return window.__LUMA_PAGE;
+  if (h && isKnownPage(h)) return h;
+  if (h && aliases[h] && isKnownPage(aliases[h])) return aliases[h];
+  if (window.__LUMA_PAGE && isKnownPage(window.__LUMA_PAGE)) return window.__LUMA_PAGE;
   return 'home';
 }
 
@@ -3726,7 +4113,7 @@ function App() {
     networking:<NetworkingPage navigate={navigate}/>,
     lighting:  <LightingPage navigate={navigate}/>,
     designers: <DesignersPage navigate={navigate}/>,
-    contact:   <ContactPage/>,
+    contact:   <ContactPage navigate={navigate}/>,
     'budget-calculator': <BudgetCalculatorPage navigate={navigate}/>,
     work:      <CasesPage navigate={navigate}/>,
     'case-spacious': <CaseSpaciousPage navigate={navigate}/>,
@@ -3738,7 +4125,27 @@ function App() {
     support:   <ServiceSupportPage navigate={navigate}/>,
     'smart-home-demo': <SmartHomeDemoPage navigate={navigate}/>,
   };
-  return <div><Nav navigate={navigate}/>{pages[page]||<HomePage navigate={navigate}/>}<Footer navigate={navigate}/></div>;
+  const route = (window.LUMA_SEO && window.LUMA_SEO.routes && window.LUMA_SEO.routes[page]) || {};
+  const kind = route.kind;
+  let view = pages[page];
+  if (!view) {
+    if (kind === 'areas-hub') view = <ServiceAreasHub navigate={navigate}/>;
+    else if (kind === 'city') view = <CityHubPage cityId={route.city} navigate={navigate}/>;
+    else if (kind === 'city-service') view = <CityServicePage cityId={route.city} serviceId={route.service} navigate={navigate}/>;
+    else if (kind === 'journal-hub') view = <JournalIndex navigate={navigate}/>;
+    else if (kind === 'article') view = <JournalArticle articleId={page} navigate={navigate}/>;
+    else if (kind === 'brand') view = <BrandPage navigate={navigate}/>;
+    else view = <HomePage navigate={navigate}/>;
+  }
+  const serviceIds = ['lighting','shading','theaters','audio','security','networking','automation'];
+  return (
+    <div>
+      <Nav navigate={navigate}/>
+      {view}
+      {serviceIds.includes(page) && <GeoStrip serviceId={page} navigate={navigate}/>}
+      <Footer navigate={navigate}/>
+    </div>
+  );
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
