@@ -80,7 +80,7 @@ During the trial the Partners intend to reinvest at least **______ %** of profit
 
 To 31 December 2026: revenue **$______**; signed projects **______**; average project value **$______**; realized gross margin **______ %**; LUMA Care memberships **______**; qualified leads per month **______**; year-end pipeline **$______**; signed trade partners **______**; photographed reference projects **______**. Long-term intent: ______ (grow and hold / build to sell / income business); the 1–5-year picture of each Partner is recorded in Annex D.7.
 
-Each Partner keeps at least one **named potential client** at a stated check (working figure **$55,000** unless another is written in Annex D.8). **Axiom for the Home** is already on that list — revisit it as a smart-home scope. Go / no-go also weighs: Partner A kept initiating, Partner B connected on a sufficient basis, and the weekly scorecard plus monthly brochure were kept current. Detail: Annex C.
+Each Partner keeps at least one **named potential client** at a stated check (working figure **$55,000** unless another is written in Annex D.8). **Accent Florida Home** is the related company for state and public work (Annex D.9), not a lead. Go / no-go also weighs: Partner A kept initiating, Partner B connected on a sufficient basis, and the weekly scorecard plus monthly brochure were kept current. Detail: Annex C.
 
 ## 11. Go-to-market and lead rules
 
@@ -90,7 +90,7 @@ Rules from day one: Partner B may originate sales and advertise the Project indi
 
 ## 12. Decisions and reserved matters
 
-Day-to-day decisions belong to the area Lead (§5). **Written consent of both Partners** is required for: admitting a third partner, investor or equity hire; any borrowing, lease, personal guarantee or client financing; any expense above **$______** or contract with liability above **$______**; the first full-time hire, and any hire of a relative of either Partner; pricing below the §9 margin floor; changes to brand, entity name, domain or website ownership; any profit distribution; entering territory outside §2; manufacturer exclusivity.
+Day-to-day decisions belong to the area Lead (§5). **Written consent of both Partners** is required for: admitting a third partner, investor or equity hire; any borrowing, lease, personal guarantee or client financing; any expense above **$______** or contract with liability above **$______**; the first full-time hire, and any hire of a relative of either Partner; pricing below the §9 margin floor; changes to brand, entity name, domain or website ownership; any profit distribution; entering territory outside §2; manufacturer exclusivity; bidding or signing **state, county or other public work** through **Accent Florida Home** or any other entity.
 
 Deadlock: seven days' cool-off, then one further meeting with a written agenda, then a mutually chosen mediator in Sarasota County, then §17 — and no unilateral action on a reserved matter while a deadlock is open.
 
@@ -118,7 +118,7 @@ Either Partner may end the cooperation on **______ days' written notice**; it al
 
 The Partners intend to operate through a member-managed Florida LLC (working name **LUMA Home Systems LLC**) with a written Operating Agreement, EIN, business bank account, bookkeeping from day one, general liability insurance (plus workers' comp where required), sales-tax registration, and written subcontractor agreements with W-9s and insurance certificates.
 
-Until the entity, insurance and the applicable **Florida licensing route** are in place, no Partner signs client contracts in the Project's name, and any work requiring a low-voltage, alarm-system or electrical licence is performed only by a licensed contractor of record engaged in writing. The intended route is the **low-voltage licence through Partner B**; securing it — or engaging a licensed contractor of record until then — is an Annex C.1 milestone owned by Partner B, due ______ . No Partner may hold themselves out as licensed before the Project is. Each Partner is responsible for their own taxes and work authorization, and each always has unrestricted access to the books, the bank account and all Project documents.
+Until the entity, insurance and the applicable **Florida licensing route** are in place, no Partner signs client contracts in the Project's name, and any work requiring a low-voltage, alarm-system or electrical licence is performed only by a licensed contractor of record engaged in writing. The intended route is the **low-voltage licence through Partner B**; securing it — or engaging a licensed contractor of record until then — is an Annex C.1 milestone owned by Partner B, due ______ . For **state and other public work** the Partners may, if lawful, use **Accent Florida Home** as a vehicle: not only construction sites, but smart-home, smart-room and related work that its licences, vendor codes and state-work history can carry. It stays the D.9 entity and is not merged into the Project; use and any fee need both Partners' consent (§12). No Partner may hold themselves out as licensed before the Project or Accent Florida Home is. Each Partner is responsible for their own taxes and work authorization, and each always has unrestricted access to the books, the bank account and all Project documents.
 
 ## 19. Status of this document; governing law; language
 
@@ -220,7 +220,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 **D.1 Contacts.** Partner A: phone ______ · email ______ · messenger ______ . Partner B: phone ______ · email ______ · messenger ______ . Preferred channel for decisions that must be in writing: ______ . Shared inboxes and accounts, with who holds credentials: ______ .
 
-**D.2 Pre-existing activities and conflicts** (excluded from §15): Partner A ______________________ ; Partner B — Accent (construction and remodeling, Florida) and related work, which remains his primary occupation. Each Partner confirms nothing here prevents them from participating in the Project, including any current employment, non-compete, visa or work-authorization limitation: Partner A ______ , Partner B ______ .
+**D.2 Pre-existing activities and conflicts** (excluded from §15): Partner A ______________________ ; Partner B — **Accent Florida Home** (construction, remodeling, licences and state-work history, Florida), which remains his primary occupation. Each Partner confirms nothing here prevents them from participating in the Project, including any current employment, non-compete, visa or work-authorization limitation: Partner A ______ , Partner B ______ .
 
 **D.3 Pre-existing intellectual property licensed to the Project** (owner keeps ownership; free licence while cooperating): ______________________ .
 
@@ -236,9 +236,11 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 
 | Named prospect | Owner | Target check | Status / next step |
 |---|---|---|---|
-| Axiom for the Home | ______ | $55,000 | Revisit as a smart-home scope |
+| First Accent Florida Home–channel / public job | ______ | $55,000 | Scope as smart home / smart rooms |
 | ______ | A | $______ | ______ |
 | ______ | B | $______ | ______ |
+
+**D.9 Accent Florida Home** (§18). Legal owner / who controls it: ______ . Licences, contractor numbers and state / vendor codes on file: ______ . Intended use for the Project: Florida **state, county and other public** contracts — construction-related **and** smart-home / smart-room / related technology — where Accent Florida Home's history and codes help qualify. Accent Florida Home is not contributed as Project equity unless both agree in writing. Fee to Accent Florida Home on work run through it: ______ % of ______ (or $______ / job). Review with a Florida attorney before the first public bid.
 
 ---
 
