@@ -17,7 +17,7 @@ import re
 from datetime import date
 from pathlib import Path
 
-from seo_content import NAP, extra_routes, geo_payload
+from seo_content import CITIES, NAP, extra_routes, geo_payload
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://lumasmarthome.com"
@@ -329,16 +329,7 @@ AREA_SERVED = [
     "Collier County, FL",
 ]
 
-AREA_CITIES = [
-    "Sarasota, FL",
-    "Bradenton, FL",
-    "Lakewood Ranch, FL",
-    "Venice, FL",
-    "Siesta Key, FL",
-    "Longboat Key, FL",
-    "Fort Myers, FL",
-    "Naples, FL",
-]
+AREA_CITIES = [f"{c['name']}, FL" for c in CITIES]
 
 
 def esc(value: str) -> str:
@@ -600,7 +591,7 @@ def noscript_block(route: dict) -> str:
     )
     return f"""<noscript>
   <header class="seo-noscript">
-    <p><a href="/">LUMA Smart Home</a> · Sarasota, FL · {esc(NAP["telephoneDisplay"])} · {esc(EMAIL)}</p>
+    <p><a href="/">LUMA Smart Home</a> · Sarasota, FL · <a href="{esc(NAP["telHref"])}">{esc(NAP["telephoneDisplay"])}</a> · <a href="mailto:{esc(EMAIL)}">{esc(EMAIL)}</a></p>
     <h1>{esc(route["h1"])}</h1>
     <p>{esc(route["description"])}</p>
 {extra}{nap}    <nav aria-label="All pages">

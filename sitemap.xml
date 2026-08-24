@@ -151,6 +151,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://lumasmarthome.com/service-areas/punta-gorda</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://lumasmarthome.com/service-areas/siesta-key</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -242,6 +248,12 @@
   </url>
   <url>
     <loc>https://lumasmarthome.com/service-areas/fort-myers/lighting</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lumasmarthome.com/service-areas/punta-gorda/lighting</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

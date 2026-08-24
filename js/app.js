@@ -16,6 +16,18 @@ function isKnownPage(id){
 function geoData(){
   return window.LUMA_GEO || {cities:{}, services:{}, cityServices:{}, articles:{}, articleOrder:[], nap:{}, hub:{}, journalHub:{}, brand:{}};
 }
+function napInfo(){
+  const nap = geoData().nap || {};
+  const telephoneDisplay = nap.telephoneDisplay || '+1 (941) 217-1616';
+  const email = nap.email || 'hello@lumasmarthome.com';
+  const hours = nap.hours || 'Mon–Sat · 9am – 6pm';
+  const area = nap.area || 'Sarasota, Manatee, Charlotte, Lee & Collier Counties';
+  const telHref = nap.telHref || ('tel:' + String(nap.telephone || '+19412171616').replace(/[^\d+]/g, ''));
+  const mailHref = 'mailto:' + email;
+  const mapsUrl = nap.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL';
+  const mapsLabel = nap.mapsLabel || 'Find us on Google Maps';
+  return Object.assign({}, nap, {telephoneDisplay, email, hours, area, telHref, mailHref, mapsUrl, mapsLabel});
+}
 function cityPageId(city){ return 'sa-'+city; }
 function cityServicePageId(city, service){ return 'sa-'+city+'-'+service; }
 function hasCityService(city, service){
@@ -364,6 +376,7 @@ function Nav({navigate}) {
       if (v === '1' || v === 'open') setMobOpen(true);
     } catch(_) {}
   },[]);
+  const nap = napInfo();
   const SECONDARY_LINKS = [
     {label:'Service Areas', page:'service-areas'},
     {label:'Journal', page:'journal'},
@@ -376,8 +389,8 @@ function Nav({navigate}) {
   return (
     <div ref={navRef} style={{position:'sticky',top:0,zIndex:200}}>
       <div className="topbar">
-        <NavLink page="service-areas" navigate={navigate}>Serving Sarasota · Manatee · Charlotte · Lee · Collier</NavLink>
-        <span>Mon–Sat · 9am – 6pm &nbsp;·&nbsp; <a href="tel:+19412171616">+1 (941) 217-1616</a></span>
+        <NavLink page="service-areas" navigate={navigate}>Serving {nap.area}</NavLink>
+        <span>{nap.hours} &nbsp;·&nbsp; <a href={nap.telHref}>{nap.telephoneDisplay}</a></span>
       </div>
       <nav className="nav">
         <NavLink page="home" navigate={navigate} className="nav-logo" aria-label="LUMA Smart Home home">
@@ -457,9 +470,9 @@ function Nav({navigate}) {
         </div>
 
         <div className="nav-mobile-contact">
-          <strong>+1 (941) 217-1616</strong>
-          <span>Mon – Sat · 9am – 6pm</span>
-          <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
+          <strong><a href={nap.telHref}>{nap.telephoneDisplay}</a></strong>
+          <span>{nap.hours}</span>
+          <span>Serving {nap.area}</span>
         </div>
       </div>
     </div>
@@ -1885,6 +1898,7 @@ function NetworkingPage({navigate}) {
 function ContactPage({navigate}) {
   const go = navigate || ((p)=>{ window.location.href = pathFor(p); });
   const cities = geoData().cities || {};
+  const nap = napInfo();
   return (
     <div className="page">
       <div className="contact-grid">
@@ -1944,9 +1958,18 @@ function ContactPage({navigate}) {
           <div style={{background:'#fff',borderRadius:16,padding:24,marginBottom:20}}>
             <h3 style={{fontSize:16,fontWeight:500,marginBottom:16}}>Get in touch directly</h3>
             <div style={{display:'flex',flexDirection:'column',gap:12}}>
-              <div><div style={{fontWeight:500,marginBottom:2}}>Phone</div><div style={{color:'var(--mid)',fontSize:14}}>+1 (941) 217-1616</div></div>
-              <div><div style={{fontWeight:500,marginBottom:2}}>Email</div><div style={{color:'var(--mid)',fontSize:14}}>hello@lumasmarthome.com</div></div>
-              <div><div style={{fontWeight:500,marginBottom:2}}>Hours</div><div style={{color:'var(--mid)',fontSize:14}}>Mon–Sat · 9am – 6pm</div></div>
+              <div>
+                <div style={{fontWeight:500,marginBottom:2}}>Phone</div>
+                <div style={{color:'var(--mid)',fontSize:14}}><a href={nap.telHref}>{nap.telephoneDisplay}</a></div>
+              </div>
+              <div>
+                <div style={{fontWeight:500,marginBottom:2}}>Email</div>
+                <div style={{color:'var(--mid)',fontSize:14}}><a href={nap.mailHref}>{nap.email}</a></div>
+              </div>
+              <div>
+                <div style={{fontWeight:500,marginBottom:2}}>Hours</div>
+                <div style={{color:'var(--mid)',fontSize:14}}>{nap.hours}</div>
+              </div>
             </div>
           </div>
           {/* Gulf Coast map */}
@@ -2056,7 +2079,7 @@ function ContactPage({navigate}) {
 
 /* ─── FOOTER ─── */
 function Footer({navigate}) {
-  const nap = geoData().nap || {};
+  const nap = napInfo();
   const cities = geoData().cities || {};
   const groups = [
     {label:'Solutions', links:[
@@ -2076,7 +2099,6 @@ function Footer({navigate}) {
     ]},
   ];
   const go = navigate || ((p)=>{ window.location.href = pathFor(p); });
-  const maps = nap.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL';
   return (
     <footer className="footer">
       <div className="footer-brand">
@@ -2084,13 +2106,13 @@ function Footer({navigate}) {
         <p className="footer-nap">
           <span className="footer-nap-name">LUMA Smart Home</span><br/>
           Sarasota, Florida<br/>
-          <a href={maps} target="_blank" rel="noopener noreferrer">{nap.mapsLabel || 'Find us on Google Maps'}</a>
+          <a href={nap.mapsUrl} target="_blank" rel="noopener noreferrer">{nap.mapsLabel}</a>
         </p>
         <p>Residential technology studio. Lighting, shades, audio, security, and Wi-Fi for Gulf Coast homes.</p>
         <p>
-          <a href="tel:+19412171616">{nap.telephoneDisplay || '+1 (941) 217-1616'}</a><br/>
-          <a href="mailto:hello@lumasmarthome.com">{nap.email || 'hello@lumasmarthome.com'}</a><br/>
-          <span>{nap.hours || 'Mon–Sat · 9am – 6pm'}</span>
+          <a href={nap.telHref}>{nap.telephoneDisplay}</a><br/>
+          <a href={nap.mailHref}>{nap.email}</a><br/>
+          <span>{nap.hours}</span>
         </p>
       </div>
       {groups.map(g=>(
@@ -2103,7 +2125,7 @@ function Footer({navigate}) {
       ))}
       <div className="footer-meta">
         <span>© 2026 LUMA Smart Home · Sarasota, FL</span>
-        <span>Serving {nap.area || 'Sarasota, Manatee, Charlotte, Lee & Collier Counties'}</span>
+        <span>Serving {nap.area}</span>
       </div>
     </footer>
   );
@@ -2605,6 +2627,7 @@ function AboutPage({navigate}) {
 
 /* ─── LUMA CARE (ongoing service — inspired layout, original copy) ─── */
 function ServiceSupportPage({navigate}) {
+  const nap = napInfo();
   const plans = [
     {tier:'Shoreline', subtitle:'LUMA Care', price:75, tag:'Ideal for seasonal residences & lock-and-leave homes',
      bullets:[
@@ -2640,9 +2663,9 @@ function ServiceSupportPage({navigate}) {
           <p className="hero-body">Smart homes age like boats: sun, salt, and software updates never stop. LUMA Care is ongoing stewardship for the systems we designed — remote tuning, disciplined updates, and technicians who already know your rack, your scenes, and how your family uses the place.</p>
           <div className="sp-hero-tel">
             <span style={{fontSize:13,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--mid)'}}>Talk to service</span>
-            <a href="tel:+19412171616">+1 (941) 217-1616</a>
+            <a href={nap.telHref}>{nap.telephoneDisplay}</a>
             <span style={{color:'var(--cream3)'}}>·</span>
-            <a href="mailto:hello@lumasmarthome.com">hello@lumasmarthome.com</a>
+            <a href={nap.mailHref}>{nap.email}</a>
           </div>
           <div className="th-cta-row" style={{marginTop:8}}>
             <button type="button" className="btn-solid" onClick={()=>navigate('contact')}>Request support →</button>
@@ -4091,8 +4114,7 @@ function JournalArticle({articleId, navigate}){
 }
 
 function BrandPage({navigate}){
-  const nap = geoData().nap || {};
-  const maps = nap.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL';
+  const nap = napInfo();
   const faqs = [
     {q:'Is LUMA Smart Home the same as luma.com?', a:'No. luma.com is an events and invitation platform. We do not run event software. We design lighting, shades, audio, security, and Wi-Fi for Gulf Coast homes.'},
     {q:'Is this Luma AI or Luma Labs?', a:'No. Luma AI (lumalabs.ai) builds generative video and 3D tools. If you wanted Dream Machine, that is a different company.'},
@@ -4119,10 +4141,10 @@ function BrandPage({navigate}){
         <address className="geo-nap">
           <strong>LUMA Smart Home</strong>
           <span>Sarasota, Florida</span>
-          <a href="tel:+19412171616">{nap.telephoneDisplay || '+1 (941) 217-1616'}</a>
-          <a href="mailto:hello@lumasmarthome.com">{nap.email || 'hello@lumasmarthome.com'}</a>
-          <span>{nap.hours || 'Mon–Sat · 9am – 6pm'}</span>
-          <a href={maps} target="_blank" rel="noopener noreferrer">{nap.mapsLabel || 'Open in Google Maps'}</a>
+          <a href={nap.telHref}>{nap.telephoneDisplay}</a>
+          <a href={nap.mailHref}>{nap.email}</a>
+          <span>{nap.hours}</span>
+          <a href={nap.mapsUrl} target="_blank" rel="noopener noreferrer">{nap.mapsLabel}</a>
         </address>
         <h2 className="geo-subhead">If a search sent you to the wrong LUMA</h2>
         <div className="geo-faq">

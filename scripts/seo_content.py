@@ -171,6 +171,29 @@ CITIES = [
         "services": [],
     },
     {
+        "id": "punta-gorda",
+        "name": "Punta Gorda",
+        "county": "Charlotte County",
+        "tagline": "Harbor, islands, and the missing county in a five-county map.",
+        "h1": "Smart home installation in Punta Gorda & Charlotte County",
+        "title": "Punta Gorda Smart Home Installer | Charlotte County | LUMA",
+        "description": "Lighting control, cameras, and Wi-Fi for Punta Gorda, Port Charlotte, and Boca Grande. LUMA Smart Home covers Charlotte County from the Sarasota studio.",
+        "lede": "Charlotte County is not an afterthought between Sarasota and Fort Myers. Harbor lots, Burnt Store, and Boca Grande each want a different shade and camera spec — and a network that survives lock-and-leave.",
+        "paragraphs": [
+            "Punta Gorda and Port Charlotte rebuilds and waterfront remodels are usually RadioRA 3 plus UniFi: scenes for the lanai and dock, cameras that stay on-prem so a summer away is not a camera-cloud bill. Boca Grande adds HOA and salt the way Siesta does — we bring cut sheets before we drill.",
+            "Travel from the Sarasota studio is in the proposal, same as Lee and Collier. If you searched smart home Punta Gorda or lighting installer Port Charlotte, this silo is the city page — not a paragraph buried under Lighting.",
+        ],
+        "neighborhoods": [
+            "Punta Gorda Isles",
+            "Burnt Store",
+            "Port Charlotte",
+            "Boca Grande",
+            "Englewood (Charlotte side)",
+        ],
+        "image": "/assets/photos/gulf-sunset.jpg",
+        "services": ["lighting"],
+    },
+    {
         "id": "siesta-key",
         "name": "Siesta Key",
         "county": "Sarasota County",
@@ -480,6 +503,24 @@ CITY_SERVICES = [
             "Lee County inside the five-county map",
         ],
     },
+    {
+        "city": "punta-gorda",
+        "service": "lighting",
+        "h1": "Lutron lighting control in Punta Gorda",
+        "title": "Lutron Lighting Installer Punta Gorda FL | Charlotte County | LUMA",
+        "description": "Lutron lighting control for Punta Gorda, Port Charlotte, and Boca Grande. RadioRA 3 scenes for canal-front and seasonal Charlotte County homes.",
+        "lede": "Canal-front and seasonal homes in Punta Gorda need lighting that still works when the owners are away. LUMA designs Lutron from Sarasota and commissions it on the Charlotte County job.",
+        "paragraphs": [
+            "Punta Gorda Isles and Burnt Store houses sit empty for weeks, then fill up for season. Lighting control has to survive that cycle: scenes for occupancy, a sensible off state, and a processor that is not depending on a consumer cloud. We specify Lutron with the builder or overlay RadioRA 3 when the house is already finished.",
+            "Port Charlotte, Boca Grande, and Englewood (Charlotte side) get the same documented stack — not a different product because the county line moved. If cameras and a network closet belong in the same phase, we design those too so the lighting job is not an island. Travel from the Sarasota studio is in the proposal.",
+        ],
+        "bullets": [
+            "RadioRA 3 for existing Punta Gorda and Port Charlotte homes",
+            "Away scenes that look occupied without looking theatrical",
+            "Lanai, dock, and path lighting on the same keypad",
+            "Charlotte County inside the five-county map",
+        ],
+    },
 ]
 
 ARTICLES = [
@@ -633,6 +674,7 @@ NAP = {
     "country": "US",
     "telephoneDisplay": "+1 (941) 217-1616",
     "telephone": "+1-941-217-1616",
+    "telHref": "tel:+19412171616",
     "email": "hello@lumasmarthome.com",
     "hours": "Mon–Sat · 9am – 6pm",
     "area": "Sarasota, Manatee, Charlotte, Lee & Collier Counties",
@@ -646,7 +688,7 @@ HUB = {
     "file": "service-areas.html",
     "title": "Service Areas | Sarasota to Naples | LUMA Smart Home",
     "h1": "Where we work on the Gulf Coast",
-    "description": "LUMA Smart Home serves Sarasota, Bradenton, Lakewood Ranch, Venice, Siesta Key, Longboat Key, Fort Myers, and Naples. City pages live here — not in the Solutions menu.",
+    "description": "LUMA Smart Home serves Sarasota, Bradenton, Lakewood Ranch, Venice, Punta Gorda, Siesta Key, Longboat Key, Fort Myers, and Naples. City pages live here — not in the Solutions menu.",
     "og": "/assets/photos/sarasota-downtown-bayfront.jpg",
     "lede": "Five counties, one studio. City pages sit in this silo so Sarasota still ranks as Sarasota — not as a diluted 'we serve everywhere' blob under Lighting.",
 }
@@ -904,6 +946,8 @@ def related_map() -> dict:
             extra = ["journal-shades-gulf", "work", "contact"]
         elif city["id"] == "siesta-key":
             extra = ["journal-shades-gulf", "sa-sarasota", "contact"]
+        elif city["id"] == "punta-gorda":
+            extra = ["sa-sarasota-lighting", "sa-fort-myers", "contact"]
         rel[f"sa-{city['id']}"] = _rel(*ids, *extra)
     for row in CITY_SERVICES:
         pid = f"sa-{row['city']}-{row['service']}"
