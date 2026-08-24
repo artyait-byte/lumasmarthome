@@ -79,7 +79,7 @@ CITIES = [
         "paragraphs": [
             "Sarasota is not a generic 'smart home market.' West-facing glass on the bay, lanais that become the living room eight months of the year, and HOA rules on Siesta and Lido all change how lighting, shades, and cameras should be drawn. We walk the property at the hour you actually use it — late afternoon glare, not a noon site visit.",
             "Most of our Sarasota work is existing homes and thoughtful remodels: RadioRA 3 where a full HomeWorks processor is overkill, Sivoia or Somfy on the elevations that cook, UniFi Protect with the NVR in a conditioned closet. New construction gets a wired spine first. Either way, proposals are line-item, and the same technicians who pull cable still answer the phone after turnover.",
-            "We are LUMA Smart Home of Sarasota — a local integrator. We are not luma.com (the events platform), not Luma AI / Luma Labs, and not Snap One's Luma camera line. If a search result sent you looking for lighting control or a Lutron installer in Sarasota, this is the studio.",
+            "We are LUMA Smart Home of Sarasota — a local integrator. We are not luma.com (the events platform), not Luma AI / Luma Labs, and not Snap One's Luma camera line. If a search result sent you looking for lighting control or a Lutron installer in Sarasota, start on [this LUMA, not the others](luma-smart-home-sarasota) or [Lutron lighting in Sarasota](sa-sarasota-lighting).",
         ],
         "neighborhoods": [
             "Downtown & Rosemary District",
@@ -273,7 +273,7 @@ CITY_SERVICES = [
         "lede": "Sarasota light changes fast: white-hot noon on the bay, then a long gold hour that makes cheap LEDs look sickly. We spec Lutron so the fixtures you already chose — or the ones your designer is drawing — dim, warm, and scene without a second app.",
         "paragraphs": [
             "Most Sarasota houses we see are not empty lots. They are finished electrical with a story of three remodel eras. RadioRA 3 is the honest overlay: designer keypads, occupancy where it belongs, and phone control without ripping every switch. New construction and deep remodels get HomeWorks or a Ketra conversation when the architecture is doing real color work.",
-            "We program to how you live here — Good morning on the kitchen and lanai, Away that looks occupied without looking theatrical, Evening that keeps the art lit and the TV wall calm. The same crew that lands the processors still does scene tweaks after you move in.",
+            "We program to how you live here — Good morning on the kitchen and lanai, Away that looks occupied without looking theatrical, Evening that keeps the art lit and the TV wall calm. The same crew that lands the processors still does scene tweaks after you move in. Next: [the lighting overview](lighting), [Our Work](work), or [a walkthrough](contact).",
         ],
         "bullets": [
             "RadioRA 3 for existing Sarasota homes and condos",
@@ -502,7 +502,7 @@ ARTICLES = [
             {"type": "p", "text": "Away should look lived-in, arm cameras, and close the elevations that take weather — without a monthly fee to rent your own driveway from a doorbell brand. On-premise UniFi Protect is how we do that. Lock-and-leave is normal on Siesta, Longboat, and Anna Maria; the system should assume you might be gone for months."},
             {"type": "h2", "text": "Open platforms, line-item paper"},
             {"type": "p", "text": "Dealer-locked processors are how Gulf Coast homeowners get stuck. We specify Lutron, UniFi, Somfy, Sonos, Control4, Josh.ai — professional gear with a service path if you ever leave us. Proposals list devices and labor. That is the opposite of a bundled mystery."},
-            {"type": "p", "text": "If this is the search you meant, start with the Sarasota service-area page, or book a walkthrough. We are not luma.com, not Luma AI, and not a camera brand that happens to share a word."},
+            {"type": "p", "text": "If this is the search you meant, start with the [Sarasota smart home page](sa-sarasota), the [Lutron lighting note](sa-sarasota-lighting), or [book a walkthrough](contact). We are not luma.com — read [this LUMA, not the others](luma-smart-home-sarasota)."},
         ],
     },
     {
@@ -527,7 +527,7 @@ ARTICLES = [
                 "How landscape and path lighting join interior scenes",
                 "Who programs Good morning / Away / Evening, and how you change it later",
             ]},
-            {"type": "p", "text": "LUMA is a Sarasota Lutron installer in that sense: we spec, program, and stay. Read the Sarasota lighting page or start a project if you want that walkthrough."},
+            {"type": "p", "text": "LUMA is a Sarasota Lutron installer in that sense: we spec, program, and stay. Read [Lutron lighting control in Sarasota](sa-sarasota-lighting) or [start a project](contact) if you want that walkthrough."},
         ],
     },
     {
@@ -547,7 +547,7 @@ ARTICLES = [
             {"type": "p", "text": "Wide lanai volumes, existing pockets, and outdoor rollers often land on Somfy. It is not a downgrade; it is the motor that fits. We still program astronomical clocks and Away. Salt-rated hardware is in the spec for barrier islands — indoor motors on a gulf lanai are how you buy the job twice."},
             {"type": "h2", "text": "HOA and glass"},
             {"type": "p", "text": "What the street is allowed to see matters on Siesta and in Naples design review. We bring fabric and exterior-roller cut sheets early. Measuring gulf-front openings twice is cheaper than a motor that racks in an out-of-square pocket."},
-            {"type": "p", "text": "More on the Sarasota shading page, or the Siesta Key service-area note if you are on the island."},
+            {"type": "p", "text": "More on [motorized shades in Sarasota](sa-sarasota-shading), or the [Siesta Key service-area note](sa-siesta-key) if you are on the island."},
         ],
     },
     {
@@ -565,7 +565,7 @@ ARTICLES = [
             {"type": "p", "text": "CBS, tile, and sliders are reflective. Dedicated rooms get absorption, bass management, and a door that closes. Media suites get honesty about what the sliders will do to dialogue. Either way, lighting and shades are part of Play — not a separate remote hunt when the movie starts."},
             {"type": "h2", "text": "Calibration is a file, not a vibe"},
             {"type": "p", "text": "We measure. You keep the file. If a prior installer 'set it by ear' with a demo disc, that is not a theater we will put our name on until we run the room again."},
-            {"type": "p", "text": "See the Sarasota theater page and Our Work for rooms that made it through first movie night."},
+            {"type": "p", "text": "See [home theater design in Sarasota](sa-sarasota-theaters) and [Our Work](work) for rooms that made it through first movie night."},
         ],
     },
     {
@@ -592,7 +592,7 @@ ARTICLES = [
                 "The work is lighting, shades, AV, cameras, Wi-Fi",
                 "The phone is (941) 217-1616",
             ]},
-            {"type": "p", "text": "The longer entity page is LUMA Smart Home Sarasota. If a national result sent you here by accident, we hope the next click is the one you meant."},
+            {"type": "p", "text": "The longer entity page is [LUMA Smart Home Sarasota](luma-smart-home-sarasota). If you actually wanted lighting or a walkthrough, go to [service areas](service-areas) or [contact](contact)."},
         ],
     },
     {
@@ -609,7 +609,7 @@ ARTICLES = [
             {"type": "h2", "text": "Placement is the product"},
             {"type": "p", "text": "Sunset glare on Bird Key and foliage on a Manatee lot will beat a camera that was drawn in plan view. We walk the property. We will also tell you where a camera is wasted because the HOA or the neighbor angle makes it pointless."},
             {"type": "h2", "text": "Not the other Luma"},
-            {"type": "p", "text": "If you searched Luma cameras, you may have meant Snap One's product line. Different company. Our camera page is the Sarasota security note; the brand explainer is the LUMA vs luma.com article."},
+            {"type": "p", "text": "If you searched Luma cameras, you may have meant Snap One's product line. Different company. Our camera page is [home cameras in Sarasota](sa-sarasota-security); the brand explainer is [LUMA vs luma.com](journal-not-luma-com)."},
         ],
     },
 ]
@@ -622,7 +622,7 @@ BRAND = {
     "h1": "LUMA Smart Home — Sarasota residential technology",
     "description": "LUMA Smart Home is a Sarasota, FL integrator for lighting, shades, AV, security, and Wi-Fi. Not luma.com, not Luma AI, not Snap One Luma cameras. (941) 217-1616.",
     "og": "/assets/photos/sarasota-marina.jpg",
-    "lede": "This is the local studio. If a search for LUMA sent you to an events app, a video model, or a camera brand, you can course-correct here.",
+    "lede": "This is the local studio. If a search for LUMA sent you to an events app, a video model, or a camera brand, read [the explainer](journal-not-luma-com) or [where we work](service-areas).",
 }
 
 NAP = {
@@ -784,6 +784,156 @@ def extra_routes() -> list[dict]:
     return routes
 
 
+def _page_label(page_id: str) -> str:
+    static = {
+        "home": "Home",
+        "service-areas": "All service areas",
+        "journal": "Journal",
+        "contact": "Start a project",
+        "work": "Our work",
+        "about": "About the studio",
+        "budget-calculator": "Budget calculator",
+        "luma-smart-home-sarasota": "This LUMA, not the others",
+        "journal-smart-home-sarasota": "What smart home Sarasota means",
+        "journal-lutron-sarasota": "Choosing Lutron in Sarasota",
+        "journal-shades-gulf": "Motorized shades for Gulf sun",
+        "journal-theater-sarasota": "Home theater in Sarasota",
+        "journal-not-luma-com": "Not luma.com / Luma AI / Luma cameras",
+        "journal-cameras-fees": "Cameras without a monthly cloud",
+    }
+    if page_id in static:
+        return static[page_id]
+    if page_id in SERVICES:
+        return SERVICES[page_id]["nav"]
+    for city in CITIES:
+        if page_id == f"sa-{city['id']}":
+            return f"{city['name']} smart home"
+    for row in CITY_SERVICES:
+        if page_id == f"sa-{row['city']}-{row['service']}":
+            return row["h1"]
+    for art in ARTICLES:
+        if page_id == art["id"]:
+            return art["h1"]
+    return page_id
+
+
+def _rel(*ids: str) -> list[dict]:
+    seen = set()
+    out = []
+    for i in ids:
+        if not i or i in seen:
+            continue
+        seen.add(i)
+        out.append({"id": i, "label": _page_label(i)})
+    return out
+
+
+def related_map() -> dict:
+    """In-content 'keep reading' links so every URL passes equity to neighbors."""
+    rel: dict[str, list[dict]] = {}
+    journal_for = {
+        "lighting": "journal-lutron-sarasota",
+        "shading": "journal-shades-gulf",
+        "theaters": "journal-theater-sarasota",
+        "security": "journal-cameras-fees",
+        "audio": "journal-smart-home-sarasota",
+        "networking": "journal-smart-home-sarasota",
+        "automation": "journal-smart-home-sarasota",
+    }
+    for sid in SERVICES:
+        combo = f"sa-sarasota-{sid}"
+        rel[sid] = _rel(
+            combo,
+            "sa-sarasota",
+            journal_for.get(sid, "journal-smart-home-sarasota"),
+            "service-areas",
+            "journal",
+            "contact",
+        )
+    rel["service-areas"] = _rel(
+        "sa-sarasota",
+        "sa-naples",
+        "sa-bradenton",
+        "journal-smart-home-sarasota",
+        "luma-smart-home-sarasota",
+        "journal",
+        "contact",
+    )
+    rel["journal"] = _rel(
+        "journal-smart-home-sarasota",
+        "journal-lutron-sarasota",
+        "journal-not-luma-com",
+        "sa-sarasota",
+        "luma-smart-home-sarasota",
+        "contact",
+    )
+    rel["luma-smart-home-sarasota"] = _rel(
+        "journal-not-luma-com",
+        "about",
+        "sa-sarasota",
+        "service-areas",
+        "contact",
+    )
+    rel["about"] = _rel("luma-smart-home-sarasota", "service-areas", "journal", "work", "contact")
+    rel["work"] = _rel("sa-naples", "sa-sarasota", "sa-fort-myers", "contact")
+    rel["contact"] = _rel("service-areas", "budget-calculator", "sa-sarasota", "journal")
+    rel["designers"] = _rel("contact", "work", "lighting", "service-areas")
+    rel["support"] = _rel("contact", "about")
+    rel["budget-calculator"] = _rel("contact", "lighting", "service-areas")
+    rel["smart-home-demo"] = _rel("contact", "lighting", "work")
+    for case, city in (
+        ("case-spacious", "sa-naples"),
+        ("case-urban", "sa-sarasota"),
+        ("case-family", "sa-fort-myers"),
+        ("case-modern", "work"),
+        ("case-bighouse", "work"),
+    ):
+        rel[case] = _rel(city, "work", "contact", "service-areas")
+    for city in CITIES:
+        ids = [f"sa-{city['id']}-{row['service']}" for row in CITY_SERVICES if row["city"] == city["id"]]
+        extra = ["lighting", "service-areas", "journal", "contact"]
+        if city["id"] == "sarasota":
+            extra = [
+                "journal-smart-home-sarasota",
+                "journal-lutron-sarasota",
+                "luma-smart-home-sarasota",
+                "work",
+                "contact",
+            ]
+        elif city["id"] == "naples":
+            extra = ["journal-shades-gulf", "work", "contact"]
+        elif city["id"] == "siesta-key":
+            extra = ["journal-shades-gulf", "sa-sarasota", "contact"]
+        rel[f"sa-{city['id']}"] = _rel(*ids, *extra)
+    for row in CITY_SERVICES:
+        pid = f"sa-{row['city']}-{row['service']}"
+        rel[pid] = _rel(
+            row["service"],
+            f"sa-{row['city']}",
+            journal_for.get(row["service"], "journal-smart-home-sarasota"),
+            "service-areas",
+            "work",
+            "contact",
+        )
+    rel["journal-smart-home-sarasota"] = _rel(
+        "sa-sarasota",
+        "sa-sarasota-lighting",
+        "luma-smart-home-sarasota",
+        "journal",
+        "contact",
+    )
+    rel["journal-lutron-sarasota"] = _rel("sa-sarasota-lighting", "lighting", "sa-sarasota", "contact")
+    rel["journal-shades-gulf"] = _rel("sa-sarasota-shading", "shading", "sa-siesta-key", "contact")
+    rel["journal-theater-sarasota"] = _rel("sa-sarasota-theaters", "theaters", "work", "contact")
+    rel["journal-not-luma-com"] = _rel(
+        "luma-smart-home-sarasota", "sa-sarasota", "journal-cameras-fees", "contact"
+    )
+    rel["journal-cameras-fees"] = _rel(
+        "sa-sarasota-security", "security", "journal-not-luma-com", "contact"
+    )
+    return rel
+
+
 def geo_payload() -> dict:
     return {
         "hub": HUB,
@@ -797,4 +947,5 @@ def geo_payload() -> dict:
         },
         "articles": {a["id"]: a for a in ARTICLES},
         "articleOrder": [a["id"] for a in ARTICLES],
+        "related": related_map(),
     }

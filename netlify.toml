@@ -11,6 +11,13 @@
 # Real HTML files now exist for /lighting, /about, /work, etc.
 # Do NOT 301 those paths back to /. Google was collapsing the site to one URL.
 
+# Apex host (www is a duplicate).
+[[redirects]]
+  from   = "https://www.lumasmarthome.com/*"
+  to     = "https://lumasmarthome.com/:splat"
+  status = 301
+  force  = true
+
 [[redirects]]
   from   = "/projects"
   to     = "/work"

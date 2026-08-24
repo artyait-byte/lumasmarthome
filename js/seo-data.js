@@ -524,7 +524,7 @@ window.LUMA_GEO = {
     "h1": "LUMA Smart Home — Sarasota residential technology",
     "description": "LUMA Smart Home is a Sarasota, FL integrator for lighting, shades, AV, security, and Wi-Fi. Not luma.com, not Luma AI, not Snap One Luma cameras. (941) 217-1616.",
     "og": "/assets/photos/sarasota-marina.jpg",
-    "lede": "This is the local studio. If a search for LUMA sent you to an events app, a video model, or a camera brand, you can course-correct here."
+    "lede": "This is the local studio. If a search for LUMA sent you to an events app, a video model, or a camera brand, read [the explainer](journal-not-luma-com) or [where we work](service-areas)."
   },
   "nap": {
     "name": "LUMA Smart Home",
@@ -611,7 +611,7 @@ window.LUMA_GEO = {
       "paragraphs": [
         "Sarasota is not a generic 'smart home market.' West-facing glass on the bay, lanais that become the living room eight months of the year, and HOA rules on Siesta and Lido all change how lighting, shades, and cameras should be drawn. We walk the property at the hour you actually use it — late afternoon glare, not a noon site visit.",
         "Most of our Sarasota work is existing homes and thoughtful remodels: RadioRA 3 where a full HomeWorks processor is overkill, Sivoia or Somfy on the elevations that cook, UniFi Protect with the NVR in a conditioned closet. New construction gets a wired spine first. Either way, proposals are line-item, and the same technicians who pull cable still answer the phone after turnover.",
-        "We are LUMA Smart Home of Sarasota — a local integrator. We are not luma.com (the events platform), not Luma AI / Luma Labs, and not Snap One's Luma camera line. If a search result sent you looking for lighting control or a Lutron installer in Sarasota, this is the studio."
+        "We are LUMA Smart Home of Sarasota — a local integrator. We are not luma.com (the events platform), not Luma AI / Luma Labs, and not Snap One's Luma camera line. If a search result sent you looking for lighting control or a Lutron installer in Sarasota, start on [this LUMA, not the others](luma-smart-home-sarasota) or [Lutron lighting in Sarasota](sa-sarasota-lighting)."
       ],
       "neighborhoods": [
         "Downtown & Rosemary District",
@@ -811,7 +811,7 @@ window.LUMA_GEO = {
       "lede": "Sarasota light changes fast: white-hot noon on the bay, then a long gold hour that makes cheap LEDs look sickly. We spec Lutron so the fixtures you already chose — or the ones your designer is drawing — dim, warm, and scene without a second app.",
       "paragraphs": [
         "Most Sarasota houses we see are not empty lots. They are finished electrical with a story of three remodel eras. RadioRA 3 is the honest overlay: designer keypads, occupancy where it belongs, and phone control without ripping every switch. New construction and deep remodels get HomeWorks or a Ketra conversation when the architecture is doing real color work.",
-        "We program to how you live here — Good morning on the kitchen and lanai, Away that looks occupied without looking theatrical, Evening that keeps the art lit and the TV wall calm. The same crew that lands the processors still does scene tweaks after you move in."
+        "We program to how you live here — Good morning on the kitchen and lanai, Away that looks occupied without looking theatrical, Evening that keeps the art lit and the TV wall calm. The same crew that lands the processors still does scene tweaks after you move in. Next: [the lighting overview](lighting), [Our Work](work), or [a walkthrough](contact)."
       ],
       "bullets": [
         "RadioRA 3 for existing Sarasota homes and condos",
@@ -1068,7 +1068,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "If this is the search you meant, start with the Sarasota service-area page, or book a walkthrough. We are not luma.com, not Luma AI, and not a camera brand that happens to share a word."
+          "text": "If this is the search you meant, start with the [Sarasota smart home page](sa-sarasota), the [Lutron lighting note](sa-sarasota-lighting), or [book a walkthrough](contact). We are not luma.com — read [this LUMA, not the others](luma-smart-home-sarasota)."
         }
       ]
     },
@@ -1117,7 +1117,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "LUMA is a Sarasota Lutron installer in that sense: we spec, program, and stay. Read the Sarasota lighting page or start a project if you want that walkthrough."
+          "text": "LUMA is a Sarasota Lutron installer in that sense: we spec, program, and stay. Read [Lutron lighting control in Sarasota](sa-sarasota-lighting) or [start a project](contact) if you want that walkthrough."
         }
       ]
     },
@@ -1161,7 +1161,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "More on the Sarasota shading page, or the Siesta Key service-area note if you are on the island."
+          "text": "More on [motorized shades in Sarasota](sa-sarasota-shading), or the [Siesta Key service-area note](sa-siesta-key) if you are on the island."
         }
       ]
     },
@@ -1197,7 +1197,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "See the Sarasota theater page and Our Work for rooms that made it through first movie night."
+          "text": "See [home theater design in Sarasota](sa-sarasota-theaters) and [Our Work](work) for rooms that made it through first movie night."
         }
       ]
     },
@@ -1254,7 +1254,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "The longer entity page is LUMA Smart Home Sarasota. If a national result sent you here by accident, we hope the next click is the one you meant."
+          "text": "The longer entity page is [LUMA Smart Home Sarasota](luma-smart-home-sarasota). If you actually wanted lighting or a walkthrough, go to [service areas](service-areas) or [contact](contact)."
         }
       ]
     },
@@ -1286,7 +1286,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "If you searched Luma cameras, you may have meant Snap One's product line. Different company. Our camera page is the Sarasota security note; the brand explainer is the LUMA vs luma.com article."
+          "text": "If you searched Luma cameras, you may have meant Snap One's product line. Different company. Our camera page is [home cameras in Sarasota](sa-sarasota-security); the brand explainer is [LUMA vs luma.com](journal-not-luma-com)."
         }
       ]
     }
@@ -1298,5 +1298,1075 @@ window.LUMA_GEO = {
     "journal-theater-sarasota",
     "journal-not-luma-com",
     "journal-cameras-fees"
-  ]
+  ],
+  "related": {
+    "lighting": [
+      {
+        "id": "sa-sarasota-lighting",
+        "label": "Lutron lighting control in Sarasota"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-lutron-sarasota",
+        "label": "Choosing Lutron in Sarasota"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "shading": [
+      {
+        "id": "sa-sarasota-shading",
+        "label": "Motorized shades in Sarasota"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-shades-gulf",
+        "label": "Motorized shades for Gulf sun"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "theaters": [
+      {
+        "id": "sa-sarasota-theaters",
+        "label": "Home theater design in Sarasota"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-theater-sarasota",
+        "label": "Home theater in Sarasota"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "audio": [
+      {
+        "id": "sa-sarasota-audio",
+        "label": "Whole-home audio in Sarasota"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "security": [
+      {
+        "id": "sa-sarasota-security",
+        "label": "Home cameras & security in Sarasota"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-cameras-fees",
+        "label": "Cameras without a monthly cloud"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "networking": [
+      {
+        "id": "sa-sarasota-networking",
+        "label": "Wi-Fi & structured cabling in Sarasota"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "automation": [
+      {
+        "id": "sa-sarasota-automation",
+        "label": "Home automation in Sarasota"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "service-areas": [
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "sa-naples",
+        "label": "Naples smart home"
+      },
+      {
+        "id": "sa-bradenton",
+        "label": "Bradenton smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "luma-smart-home-sarasota",
+        "label": "This LUMA, not the others"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal": [
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "journal-lutron-sarasota",
+        "label": "Choosing Lutron in Sarasota"
+      },
+      {
+        "id": "journal-not-luma-com",
+        "label": "Not luma.com / Luma AI / Luma cameras"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "luma-smart-home-sarasota",
+        "label": "This LUMA, not the others"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "luma-smart-home-sarasota": [
+      {
+        "id": "journal-not-luma-com",
+        "label": "Not luma.com / Luma AI / Luma cameras"
+      },
+      {
+        "id": "about",
+        "label": "About the studio"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "about": [
+      {
+        "id": "luma-smart-home-sarasota",
+        "label": "This LUMA, not the others"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "work": [
+      {
+        "id": "sa-naples",
+        "label": "Naples smart home"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "sa-fort-myers",
+        "label": "Fort Myers smart home"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "contact": [
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "budget-calculator",
+        "label": "Budget calculator"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      }
+    ],
+    "designers": [
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "support": [
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "about",
+        "label": "About the studio"
+      }
+    ],
+    "budget-calculator": [
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "smart-home-demo": [
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      }
+    ],
+    "case-spacious": [
+      {
+        "id": "sa-naples",
+        "label": "Naples smart home"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "case-urban": [
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "case-family": [
+      {
+        "id": "sa-fort-myers",
+        "label": "Fort Myers smart home"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "case-modern": [
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "case-bighouse": [
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "sa-sarasota": [
+      {
+        "id": "sa-sarasota-lighting",
+        "label": "Lutron lighting control in Sarasota"
+      },
+      {
+        "id": "sa-sarasota-shading",
+        "label": "Motorized shades in Sarasota"
+      },
+      {
+        "id": "sa-sarasota-theaters",
+        "label": "Home theater design in Sarasota"
+      },
+      {
+        "id": "sa-sarasota-audio",
+        "label": "Whole-home audio in Sarasota"
+      },
+      {
+        "id": "sa-sarasota-security",
+        "label": "Home cameras & security in Sarasota"
+      },
+      {
+        "id": "sa-sarasota-networking",
+        "label": "Wi-Fi & structured cabling in Sarasota"
+      },
+      {
+        "id": "sa-sarasota-automation",
+        "label": "Home automation in Sarasota"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "journal-lutron-sarasota",
+        "label": "Choosing Lutron in Sarasota"
+      },
+      {
+        "id": "luma-smart-home-sarasota",
+        "label": "This LUMA, not the others"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-bradenton": [
+      {
+        "id": "sa-bradenton-lighting",
+        "label": "Lighting control in Bradenton"
+      },
+      {
+        "id": "sa-bradenton-security",
+        "label": "Home cameras in Bradenton"
+      },
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-lakewood-ranch": [
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-venice": [
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-siesta-key": [
+      {
+        "id": "journal-shades-gulf",
+        "label": "Motorized shades for Gulf sun"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-longboat-key": [
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-naples": [
+      {
+        "id": "sa-naples-lighting",
+        "label": "Lighting control in Naples"
+      },
+      {
+        "id": "sa-naples-automation",
+        "label": "Home automation in Naples"
+      },
+      {
+        "id": "journal-shades-gulf",
+        "label": "Motorized shades for Gulf sun"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-fort-myers": [
+      {
+        "id": "sa-fort-myers-lighting",
+        "label": "Lighting control in Fort Myers"
+      },
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-sarasota-lighting": [
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-lutron-sarasota",
+        "label": "Choosing Lutron in Sarasota"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-sarasota-shading": [
+      {
+        "id": "shading",
+        "label": "Shading"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-shades-gulf",
+        "label": "Motorized shades for Gulf sun"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-sarasota-theaters": [
+      {
+        "id": "theaters",
+        "label": "Home theaters"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-theater-sarasota",
+        "label": "Home theater in Sarasota"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-sarasota-audio": [
+      {
+        "id": "audio",
+        "label": "Audio & video"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-sarasota-security": [
+      {
+        "id": "security",
+        "label": "Security"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-cameras-fees",
+        "label": "Cameras without a monthly cloud"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-sarasota-networking": [
+      {
+        "id": "networking",
+        "label": "Networking"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-sarasota-automation": [
+      {
+        "id": "automation",
+        "label": "Automation"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-naples-lighting": [
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "sa-naples",
+        "label": "Naples smart home"
+      },
+      {
+        "id": "journal-lutron-sarasota",
+        "label": "Choosing Lutron in Sarasota"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-naples-automation": [
+      {
+        "id": "automation",
+        "label": "Automation"
+      },
+      {
+        "id": "sa-naples",
+        "label": "Naples smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-bradenton-lighting": [
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "sa-bradenton",
+        "label": "Bradenton smart home"
+      },
+      {
+        "id": "journal-lutron-sarasota",
+        "label": "Choosing Lutron in Sarasota"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-bradenton-security": [
+      {
+        "id": "security",
+        "label": "Security"
+      },
+      {
+        "id": "sa-bradenton",
+        "label": "Bradenton smart home"
+      },
+      {
+        "id": "journal-cameras-fees",
+        "label": "Cameras without a monthly cloud"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-fort-myers-lighting": [
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "sa-fort-myers",
+        "label": "Fort Myers smart home"
+      },
+      {
+        "id": "journal-lutron-sarasota",
+        "label": "Choosing Lutron in Sarasota"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-smart-home-sarasota": [
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "sa-sarasota-lighting",
+        "label": "Lutron lighting control in Sarasota"
+      },
+      {
+        "id": "luma-smart-home-sarasota",
+        "label": "This LUMA, not the others"
+      },
+      {
+        "id": "journal",
+        "label": "Journal"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-lutron-sarasota": [
+      {
+        "id": "sa-sarasota-lighting",
+        "label": "Lutron lighting control in Sarasota"
+      },
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-shades-gulf": [
+      {
+        "id": "sa-sarasota-shading",
+        "label": "Motorized shades in Sarasota"
+      },
+      {
+        "id": "shading",
+        "label": "Shading"
+      },
+      {
+        "id": "sa-siesta-key",
+        "label": "Siesta Key smart home"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-theater-sarasota": [
+      {
+        "id": "sa-sarasota-theaters",
+        "label": "Home theater design in Sarasota"
+      },
+      {
+        "id": "theaters",
+        "label": "Home theaters"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-not-luma-com": [
+      {
+        "id": "luma-smart-home-sarasota",
+        "label": "This LUMA, not the others"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-cameras-fees",
+        "label": "Cameras without a monthly cloud"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-cameras-fees": [
+      {
+        "id": "sa-sarasota-security",
+        "label": "Home cameras & security in Sarasota"
+      },
+      {
+        "id": "security",
+        "label": "Security"
+      },
+      {
+        "id": "journal-not-luma-com",
+        "label": "Not luma.com / Luma AI / Luma cameras"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ]
+  }
 };

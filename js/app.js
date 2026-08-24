@@ -72,6 +72,88 @@ function NavLink({page, className, children, navigate, style, onNavigate, ...res
   );
 }
 
+const MD_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
+function LinkedText({text, navigate}){
+  if (!text) return null;
+  const parts = [];
+  let last = 0;
+  let m;
+  const re = new RegExp(MD_LINK.source, 'g');
+  let i = 0;
+  while ((m = re.exec(text))) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    parts.push(<NavLink key={'l'+i++} page={m[2]} navigate={navigate} className="inline-link">{m[1]}</NavLink>);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
+
+function RelatedLinks({page, navigate}){
+  const items = (geoData().related && geoData().related[page]) || [];
+  if (!items.length) return null;
+  return (
+    <section className="related-links" aria-label="Related pages">
+      <div className="related-links-inner">
+        <div className="sec-label" style={{textAlign:'left'}}>Keep reading</div>
+        <div className="geo-chip-row">
+          {items.map(it=>(
+            <NavLink key={it.id} page={it.id} navigate={navigate} className="geo-chip">{it.label}</NavLink>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeSeoCluster({navigate}){
+  const g = geoData();
+  const cities = g.cities || {};
+  const articles = g.articles || {};
+  const order = (g.articleOrder || []).slice(0,4);
+  return (
+    <section className="th-section home-seo-cluster">
+      <div className="sec-label">Gulf Coast</div>
+      <h2 className="sec-title">Where we work, and <em>what we write.</em></h2>
+      <p className="sec-body">City pages live in their own silo so Sarasota stays Sarasota. The journal is for the searches that are not a trade name yet — start with smart home Sarasota, then Lutron, shades, and cameras.</p>
+      <div className="geo-card-grid">
+        {Object.keys(cities).map(id=>{
+          const c = cities[id];
+          return (
+            <NavLink key={id} page={cityPageId(id)} navigate={navigate} className="geo-card">
+              <div className="geo-card-kicker">{c.county}</div>
+              <h3>{c.name}</h3>
+              <p>{c.tagline}</p>
+              <span className="geo-card-go">Open city page →</span>
+            </NavLink>
+          );
+        })}
+      </div>
+      <h3 className="geo-subhead">From the journal</h3>
+      <div className="journal-list">
+        {order.map(id=>{
+          const a = articles[id];
+          if (!a) return null;
+          return (
+            <NavLink key={id} page={id} navigate={navigate} className="journal-row">
+              <div className="journal-row-date">{a.date}</div>
+              <div>
+                <h2>{a.h1}</h2>
+                <p>{a.dek}</p>
+              </div>
+            </NavLink>
+          );
+        })}
+      </div>
+      <div className="geo-next" style={{justifyContent:'center'}}>
+        <NavLink page="service-areas" navigate={navigate} className="btn-solid">All service areas</NavLink>
+        <NavLink page="journal" navigate={navigate} className="btn-ghost">All notes</NavLink>
+        <NavLink page="luma-smart-home-sarasota" navigate={navigate} className="btn-ghost">This LUMA, not the others</NavLink>
+      </div>
+    </section>
+  );
+}
+
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
 const lu = (path) => path + '?v=13';
@@ -251,6 +333,10 @@ function MegaDropdown({active, hoverId, setHoverId, navigate}) {
             </div>
           </div>
         </div>
+        <div className="dd-foot">
+          <NavLink page="service-areas" navigate={navigate} className="dd-foot-link">Service areas by city →</NavLink>
+          <NavLink page="journal" navigate={navigate} className="dd-foot-link">Journal →</NavLink>
+        </div>
       </div>
     </div>
   );
@@ -290,8 +376,8 @@ function Nav({navigate}) {
   return (
     <div ref={navRef} style={{position:'sticky',top:0,zIndex:200}}>
       <div className="topbar">
-        <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
-        <span>Mon–Sat · 9am – 6pm &nbsp;·&nbsp; +1 (941) 217-1616</span>
+        <NavLink page="service-areas" navigate={navigate}>Serving Sarasota · Manatee · Charlotte · Lee · Collier</NavLink>
+        <span>Mon–Sat · 9am – 6pm &nbsp;·&nbsp; <a href="tel:+19412171616">+1 (941) 217-1616</a></span>
       </div>
       <nav className="nav">
         <NavLink page="home" navigate={navigate} className="nav-logo" aria-label="LUMA Smart Home home">
@@ -532,6 +618,7 @@ function HomePage({navigate}) {
           {BENTO_TILES.map(t => <BentoTile key={t.area} tile={t} navigate={navigate}/>)}
         </div>
       </section>
+      <HomeSeoCluster navigate={navigate}/>
     </div>
   );
 }
@@ -804,7 +891,7 @@ function LightingPage({navigate}) {
             ))}
           </ul>
           <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start your lighting project →</button>
+            <NavLink page="contact" navigate={navigate} className="btn-solid" style={{fontSize:16,padding:'14px 28px'}}>Start your lighting project →</NavLink>
             <button className="btn-ghost" style={{
               fontSize:16,padding:'13px 24px',
               color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',
@@ -1977,7 +2064,8 @@ function Footer({navigate}) {
       ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],
     ]},
     {label:'Studio', links:[
-      ['work','Our work'],['about','About'],['journal','Journal'],
+      ['work','Our work'],['about','About'],      ['journal','Journal'],
+      ['journal-smart-home-sarasota','Smart home Sarasota'],
       ['luma-smart-home-sarasota','This LUMA, not the others'],
       ['designers','Designers & builders'],
       ['budget-calculator','Budget calculator'],['support','Customer support'],['smart-home-demo','3D demo'],['contact','Contact'],
@@ -2425,8 +2513,8 @@ function AboutPage({navigate}) {
           }}>We build homes around the <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Gulf Coast hour.</em></h1>
           <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>LUMA is a residential technology studio based in Sarasota, FL. We integrate lighting, shading, security, audio, and networking into homes that feel effortless — and stay engaged long after turnover, because that's when most integrators disappear.</p>
           <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Book a consultation →</button>
-            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('work')}>See our work</button>
+            <NavLink page="contact" navigate={navigate} className="btn-solid" style={{fontSize:16,padding:'14px 28px'}}>Book a consultation →</NavLink>
+            <NavLink page="work" navigate={navigate} className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}}>See our work</NavLink>
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
@@ -2506,8 +2594,9 @@ function AboutPage({navigate}) {
         <h2 className="sec-title">Let's meet at <em>your property.</em></h2>
         <p className="sec-body">First visit is free. 60–90 minutes on site. No obligation. You'll walk away knowing what a LUMA-tuned home could look like — whether we build it together or not.</p>
         <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <button className="btn-solid" onClick={()=>navigate('contact')}>Book a consultation →</button>
-          <button className="btn-ghost" onClick={()=>navigate('budget-calculator')}>See budget ranges</button>
+          <NavLink page="contact" navigate={navigate} className="btn-solid">Book a consultation →</NavLink>
+          <NavLink page="service-areas" navigate={navigate} className="btn-ghost">Service areas</NavLink>
+          <NavLink page="luma-smart-home-sarasota" navigate={navigate} className="btn-ghost">This LUMA, not the others</NavLink>
         </div>
       </section>
     </div>
@@ -2696,7 +2785,7 @@ function CasesPage({navigate}) {
           }}>Homes where <em style={{color:'#F4C9A8',fontStyle:'italic'}}>the hour takes care of itself.</em></h1>
           <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>From 4,500 sq ft Bayfront residences to 9,000 sq ft Naples compounds — each project shows the layers we integrated, the partners we coordinated with, and the moment the home started working on its own.</p>
           <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start a project →</button>
+            <NavLink page="contact" navigate={navigate} className="btn-solid" style={{fontSize:16,padding:'14px 28px'}}>Start a project →</NavLink>
             <a className="btn-ghost" href="#testimonials-grid" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Testimonials ↓</a>
           </div>
         </div>
@@ -2746,6 +2835,10 @@ function CasesPage({navigate}) {
           ))}
         </div>
 
+        <p className="sec-body" style={{margin:'8px auto 0'}}>
+          Finished work in <NavLink page="sa-naples" navigate={navigate} className="inline-link">Naples</NavLink>, <NavLink page="sa-sarasota" navigate={navigate} className="inline-link">Sarasota</NavLink>, and <NavLink page="sa-fort-myers" navigate={navigate} className="inline-link">Lee County</NavLink> — see <NavLink page="service-areas" navigate={navigate} className="inline-link">all service areas</NavLink>.
+        </p>
+
         <style>{`
           .work-case-card:hover img{transform:scale(1.04)}
           @media(max-width:1100px){.work-cases-row{grid-template-columns:1fr 1fr!important}}
@@ -2789,8 +2882,8 @@ function CasesPage({navigate}) {
         <h2 className="sec-title">Your project could be <em>next.</em></h2>
         <p className="sec-body">Send us your plans or a walk-through video. First proposal in under two weeks.</p>
         <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
-          <button className="btn-ghost" onClick={()=>navigate('budget-calculator')}>See budget ranges</button>
+          <NavLink page="contact" navigate={navigate} className="btn-solid">Start a project →</NavLink>
+          <NavLink page="budget-calculator" navigate={navigate} className="btn-ghost">See budget ranges</NavLink>
         </div>
       </section>
     </div>
@@ -3734,7 +3827,7 @@ function GeoHero({eyebrow, h1, lede, image, alt, navigate, primary, secondary}){
       <div className="lit-hero-text geo-hero-text">
         {eyebrow && <div className="geo-eyebrow">{eyebrow}</div>}
         <h1>{h1}</h1>
-        <p>{lede}</p>
+        <p>{lede ? <LinkedText text={lede} navigate={navigate}/> : lede}</p>
         <div className="geo-hero-actions">
           <NavLink page={(primary && primary.page) || 'contact'} navigate={navigate} className="btn-solid">{(primary && primary.label) || 'Book a consultation →'}</NavLink>
           {secondary && <NavLink page={secondary.page} navigate={navigate} className="btn-ghost">{secondary.label}</NavLink>}
@@ -3851,7 +3944,7 @@ function CityHubPage({cityId, navigate}){
       <section className="th-section">
         <Crumbs items={[{page:'home', label:'Home'},{page:'service-areas', label:'Service areas'},{label:city.name}]} navigate={navigate}/>
         <div className="geo-prose">
-          {(city.paragraphs||[]).map((p,i)=><p key={i}>{p}</p>)}
+          {(city.paragraphs||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
         </div>
         <h2 className="geo-subhead">Systems we install in {city.name}</h2>
         <div className="geo-card-grid">
@@ -3908,7 +4001,7 @@ function CityServicePage({cityId, serviceId, navigate}){
           {label:svc.nav},
         ]} navigate={navigate}/>
         <div className="geo-prose">
-          {(row.paragraphs||[]).map((p,i)=><p key={i}>{p}</p>)}
+          {(row.paragraphs||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
         </div>
         {row.bullets && (
           <ul className="geo-bullets">
@@ -3984,8 +4077,8 @@ function JournalArticle({articleId, navigate}){
         <article className="geo-prose journal-prose">
           {(a.blocks||[]).map((b,i)=>{
             if (b.type==='h2') return <h2 key={i}>{b.text}</h2>;
-            if (b.type==='ul') return <ul key={i}>{b.items.map(it=><li key={it}>{it}</li>)}</ul>;
-            return <p key={i}>{b.text}</p>;
+            if (b.type==='ul') return <ul key={i}>{b.items.map(it=><li key={it}><LinkedText text={it} navigate={navigate}/></li>)}</ul>;
+            return <p key={i}><LinkedText text={b.text} navigate={navigate}/></p>;
           })}
         </article>
         <div className="geo-next">
@@ -4020,7 +4113,7 @@ function BrandPage({navigate}){
       <section className="th-section">
         <Crumbs items={[{page:'home', label:'Home'},{label:'LUMA Smart Home Sarasota'}]} navigate={navigate}/>
         <div className="geo-prose">
-          <p>LUMA Smart Home (lumasmarthome.com) is a residential technology studio based in Sarasota, Florida. We specify and install Lutron lighting, motorized shades, whole-home audio, UniFi cameras and Wi-Fi, and automation for houses in Sarasota, Manatee, Charlotte, Lee, and Collier Counties.</p>
+          <p>LUMA Smart Home (lumasmarthome.com) is a residential technology studio based in Sarasota, Florida. We specify and install Lutron lighting, motorized shades, whole-home audio, UniFi cameras and Wi-Fi, and automation for houses in Sarasota, Manatee, Charlotte, Lee, and Collier Counties. See <NavLink page="service-areas" navigate={navigate} className="inline-link">where we work</NavLink> and <NavLink page="about" navigate={navigate} className="inline-link">about the studio</NavLink>.</p>
           <p>Legal name: LUMA Home Systems LLC. The public name on this site and on Google should stay LUMA Smart Home — Sarasota, with the trades in the description so a search for lighting or smart home does not land you on an events platform.</p>
         </div>
         <address className="geo-nap">
@@ -4143,6 +4236,7 @@ function App() {
       <Nav navigate={navigate}/>
       {view}
       {serviceIds.includes(page) && <GeoStrip serviceId={page} navigate={navigate}/>}
+      {page !== 'home' && <RelatedLinks page={page} navigate={navigate}/>}
       <Footer navigate={navigate}/>
     </div>
   );

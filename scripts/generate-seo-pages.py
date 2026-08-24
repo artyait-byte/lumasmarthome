@@ -13,6 +13,8 @@ shared head chrome. The SPA itself lives in css/spa.css + js/app.js.
 from __future__ import annotations
 
 import json
+import re
+from datetime import date
 from pathlib import Path
 
 from seo_content import NAP, extra_routes, geo_payload
@@ -22,6 +24,8 @@ SITE = "https://lumasmarthome.com"
 PHONE = NAP["telephone"]
 EMAIL = NAP["email"]
 MAPS_URL = NAP["mapsUrl"]
+LASTMOD = date.today().isoformat()
+LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
 # id → public path, title, description, h1 (noscript), og image, sitemap priority
 ROUTES: list[dict] = [
@@ -352,6 +356,26 @@ def abs_url(path: str) -> str:
     return SITE + path
 
 
+def route_path(page_id: str) -> str:
+    for r in ROUTES:
+        if r["id"] == page_id:
+            return r["path"]
+    if page_id == "home":
+        return "/"
+    return "/" + page_id
+
+
+def md_to_html(text: str) -> str:
+    parts: list[str] = []
+    last = 0
+    for m in LINK_RE.finditer(text):
+        parts.append(esc(text[last : m.start()]))
+        parts.append(f'<a href="{esc(route_path(m.group(2)))}">{esc(m.group(1))}</a>')
+        last = m.end()
+    parts.append(esc(text[last:]))
+    return "".join(parts)
+
+
 def local_business_node() -> dict:
     return {
         "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
@@ -497,11 +521,12 @@ def json_ld(route: dict) -> str:
                 "description": route["description"],
                 "image": abs_url(route["og_image"]),
                 "datePublished": route.get("datePublished", "2026-08-24"),
-                "dateModified": route.get("datePublished", "2026-08-24"),
+                "dateModified": route.get("datePublished", LASTMOD),
                 "author": {"@id": f"{SITE}/#business"},
                 "publisher": {"@id": f"{SITE}/#business"},
                 "mainEntityOfPage": {"@id": f"{page_url}#webpage"},
                 "inLanguage": "en-US",
+                "articleBody": " ".join(LINK_RE.sub(r"\1", p) for p in (route.get("paragraphs") or [])),
             }
         )
     if kind == "brand":
@@ -541,13 +566,35 @@ def json_ld(route: dict) -> str:
 
 
 def noscript_block(route: dict) -> str:
-    links = "\n".join(
-        f'      <li><a href="{esc(href)}">{esc(label)}</a></li>'
-        for href, label in NAV_LINKS
-    )
     extra = ""
     for para in route.get("paragraphs") or []:
-        extra += f"    <p>{esc(para)}</p>\n"
+        extra += f"    <p>{md_to_html(para)}</p>\n"
+    grouped: dict[str, list[tuple[str, str]]] = {
+        "Studio": [],
+        "Solutions": [],
+        "Service areas": [],
+        "Journal": [],
+    }
+    for r in ROUTES:
+        if not r.get("index", True):
+            continue
+        kind = r.get("kind")
+        item = (r["path"], r.get("h1") or r["title"])
+        if kind in ("service",):
+            grouped["Solutions"].append(item)
+        elif kind in ("areas-hub", "city", "city-service"):
+            grouped["Service areas"].append(item)
+        elif kind in ("journal-hub", "article"):
+            grouped["Journal"].append(item)
+        else:
+            grouped["Studio"].append(item)
+    nav_chunks = []
+    for label, items in grouped.items():
+        lis = "\n".join(
+            f'        <li><a href="{esc(href)}">{esc(name)}</a></li>' for href, name in items
+        )
+        nav_chunks.append(f"      <p><strong>{esc(label)}</strong></p>\n      <ul>\n{lis}\n      </ul>")
+    nav = "\n".join(nav_chunks)
     nap = (
         f'    <p><a href="{esc(MAPS_URL)}" rel="noopener">{esc(NAP["mapsLabel"])}</a></p>\n'
     )
@@ -556,10 +603,8 @@ def noscript_block(route: dict) -> str:
     <p><a href="/">LUMA Smart Home</a> · Sarasota, FL · {esc(NAP["telephoneDisplay"])} · {esc(EMAIL)}</p>
     <h1>{esc(route["h1"])}</h1>
     <p>{esc(route["description"])}</p>
-{extra}{nap}    <nav aria-label="Site">
-      <ul>
-{links}
-      </ul>
+{extra}{nap}    <nav aria-label="All pages">
+{nav}
     </nav>
   </header>
 </noscript>"""
@@ -582,6 +627,9 @@ def head_for(route: dict) -> str:
 <meta name="author" content="LUMA Home Systems LLC">
 <meta name="geo.region" content="US-FL">
 <meta name="geo.placename" content="Sarasota">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
 <meta property="og:site_name" content="LUMA Smart Home">
 <meta property="og:type" content="{'article' if route.get('kind') == 'article' else 'website'}">
 <meta property="og:locale" content="en_US">
@@ -601,8 +649,8 @@ def head_for(route: dict) -> str:
 <script type="application/ld+json">
 {json_ld(route)}
 </script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script src="/js/seo-data.js"></script>
 </head>
@@ -667,6 +715,7 @@ def write_sitemap() -> None:
         urls.append(
             "  <url>\n"
             f"    <loc>{esc(abs_url(r['path']))}</loc>\n"
+            f"    <lastmod>{LASTMOD}</lastmod>\n"
             f"    <changefreq>{esc(r['changefreq'])}</changefreq>\n"
             f"    <priority>{r['priority']:.1f}</priority>\n"
             "  </url>"
@@ -693,6 +742,84 @@ def write_robots() -> None:
     )
 
 
+def write_redirects() -> None:
+    lines = [
+        "# Generated by scripts/generate-seo-pages.py — plus legacy aliases.",
+        "# Pretty HTML files exist for public paths; do not send them home.",
+        "/projects           /work        301",
+        "/projects.html      /work        301",
+        "/testimonials       /work        301",
+        "/our-work           /work        301",
+        "/serviceplans       /support     301",
+        "/service-plans      /support     301",
+        "/customer-support   /support     301",
+        "/builders           /designers   301",
+        "/builders.html      /designers   301",
+        "/budget-calculator  /budget      301",
+        "/smart-home-demo    /demo        301",
+        "/index.html         /            301",
+        "",
+        "# Duplicate .html URLs → canonical pretty paths",
+    ]
+    skip_files = {"brochure.html", "404.html", "thank-you.html"}
+    for r in ROUTES:
+        file = r["file"]
+        if file in skip_files:
+            continue
+        pretty = r["path"]
+        html_url = "/" + file if not file.startswith("/") else file
+        if pretty == "/":
+            continue
+        if html_url.rstrip("/") == pretty:
+            continue
+        lines.append(f"{html_url}  {pretty}  301")
+    (ROOT / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def write_404() -> None:
+    wanted = [
+        ("/", "Home"),
+        ("/lighting", "Lighting"),
+        ("/shading", "Shading"),
+        ("/theaters", "Home theaters"),
+        ("/audio", "Audio"),
+        ("/security", "Security"),
+        ("/networking", "Networking"),
+        ("/automation", "Automation"),
+        ("/service-areas", "Service areas"),
+        ("/journal", "Journal"),
+        ("/luma-smart-home-sarasota", "LUMA Smart Home Sarasota"),
+        ("/work", "Our work"),
+        ("/about", "About"),
+        ("/contact", "Contact"),
+    ]
+    lis = "\n".join(f'    <li><a href="{esc(h)}">{esc(l)}</a></li>' for h, l in wanted)
+    (ROOT / "404.html").write_text(
+        f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | LUMA Smart Home</title>
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/css/spa.css">
+</head>
+<body>
+<main class="seo-noscript">
+  <p><a href="/">LUMA Smart Home</a> · Sarasota, FL</p>
+  <h1>That page is not on this site.</h1>
+  <p>Try one of these — lighting, service areas, the journal, or contact.</p>
+  <nav aria-label="Useful pages"><ul>
+{lis}
+  </ul></nav>
+</main>
+</body>
+</html>
+""",
+        encoding="utf-8",
+    )
+
+
 def write_pages() -> None:
     # Shared SPA is loaded from /js/app.js so each HTML shell stays small.
     # Babel standalone fetches that file (connect-src 'self' in netlify.toml).
@@ -708,7 +835,9 @@ def main() -> None:
     write_pages()
     write_sitemap()
     write_robots()
-    print(f"[ok] wrote {len(ROUTES)} HTML shells, sitemap.xml, robots.txt, js/seo-data.js")
+    write_redirects()
+    write_404()
+    print(f"[ok] wrote {len(ROUTES)} HTML shells, sitemap.xml, robots.txt, _redirects, 404.html, js/seo-data.js")
 
 
 if __name__ == "__main__":

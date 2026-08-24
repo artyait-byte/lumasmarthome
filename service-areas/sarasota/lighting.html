@@ -11,6 +11,9 @@
 <meta name="author" content="LUMA Home Systems LLC">
 <meta name="geo.region" content="US-FL">
 <meta name="geo.placename" content="Sarasota">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
 <meta property="og:site_name" content="LUMA Smart Home">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
@@ -191,8 +194,8 @@
   ]
 }
 </script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script src="/js/seo-data.js"></script>
 </head>
@@ -204,28 +207,69 @@
     <p>Sarasota Lutron installer for RadioRA 3, HomeWorks, and Ketra. Decorative and architectural lighting under one spec — gulf-hour scenes, not a wall of dimmers.</p>
     <p>Sarasota light changes fast: white-hot noon on the bay, then a long gold hour that makes cheap LEDs look sickly. We spec Lutron so the fixtures you already chose — or the ones your designer is drawing — dim, warm, and scene without a second app.</p>
     <p>Most Sarasota houses we see are not empty lots. They are finished electrical with a story of three remodel eras. RadioRA 3 is the honest overlay: designer keypads, occupancy where it belongs, and phone control without ripping every switch. New construction and deep remodels get HomeWorks or a Ketra conversation when the architecture is doing real color work.</p>
-    <p>We program to how you live here — Good morning on the kitchen and lanai, Away that looks occupied without looking theatrical, Evening that keeps the art lit and the TV wall calm. The same crew that lands the processors still does scene tweaks after you move in.</p>
+    <p>We program to how you live here — Good morning on the kitchen and lanai, Away that looks occupied without looking theatrical, Evening that keeps the art lit and the TV wall calm. The same crew that lands the processors still does scene tweaks after you move in. Next: <a href="/lighting">the lighting overview</a>, <a href="/work">Our Work</a>, or <a href="/contact">a walkthrough</a>.</p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=LUMA+Smart+Home+Sarasota+FL" rel="noopener">LUMA Smart Home — Sarasota, Florida (Google Maps)</a></p>
-    <nav aria-label="Site">
+    <nav aria-label="All pages">
+      <p><strong>Studio</strong></p>
       <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/lighting">Lighting</a></li>
-      <li><a href="/shading">Shading</a></li>
-      <li><a href="/theaters">Home theaters</a></li>
-      <li><a href="/audio">Audio &amp; video</a></li>
-      <li><a href="/security">Security</a></li>
-      <li><a href="/networking">Networking</a></li>
-      <li><a href="/automation">Automation</a></li>
-      <li><a href="/service-areas">Service areas</a></li>
-      <li><a href="/journal">Journal</a></li>
-      <li><a href="/luma-smart-home-sarasota">LUMA Smart Home Sarasota</a></li>
-      <li><a href="/work">Our work</a></li>
-      <li><a href="/budget">Budget calculator</a></li>
-      <li><a href="/designers">For designers &amp; builders</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/support">Customer support</a></li>
-      <li><a href="/demo">3D demo</a></li>
-      <li><a href="/contact">Contact</a></li>
+        <li><a href="/">A home that suits the way you live.</a></li>
+        <li><a href="/designers">Built to fit your workflow.</a></li>
+        <li><a href="/work">Homes where the hour takes care of itself.</a></li>
+        <li><a href="/about">We build homes around the Gulf Coast hour.</a></li>
+        <li><a href="/contact">Start Your Project</a></li>
+        <li><a href="/budget">Three tiers. One honest range.</a></li>
+        <li><a href="/support">Keep the house effortless — long after install.</a></li>
+        <li><a href="/demo">See every system in place.</a></li>
+        <li><a href="/work/spacious-modern">Spacious Modern</a></li>
+        <li><a href="/work/urban-home">Urban Home</a></li>
+        <li><a href="/work/huge-family-house">Huge Family House</a></li>
+        <li><a href="/work/modern-residence">Modern Residence</a></li>
+        <li><a href="/work/big-modern-house">Big Modern House</a></li>
+        <li><a href="/luma-smart-home-sarasota">LUMA Smart Home — Sarasota residential technology</a></li>
+      </ul>
+      <p><strong>Solutions</strong></p>
+      <ul>
+        <li><a href="/lighting">Your fixtures. Our controls.</a></li>
+        <li><a href="/shading">Three layers of shade.</a></li>
+        <li><a href="/theaters">Designed for sound, not retrofitted.</a></li>
+        <li><a href="/automation">One press, the right state.</a></li>
+        <li><a href="/audio">Sound that fills the room, not the architecture.</a></li>
+        <li><a href="/security">Your footage. Your property.</a></li>
+        <li><a href="/networking">A network your home is built on, not bolted to.</a></li>
+      </ul>
+      <p><strong>Service areas</strong></p>
+      <ul>
+        <li><a href="/service-areas">Where we work on the Gulf Coast</a></li>
+        <li><a href="/service-areas/sarasota">Smart home systems in Sarasota, Florida</a></li>
+        <li><a href="/service-areas/bradenton">Smart home installation in Bradenton &amp; Manatee County</a></li>
+        <li><a href="/service-areas/lakewood-ranch">Smart home systems in Lakewood Ranch, Florida</a></li>
+        <li><a href="/service-areas/venice">Smart home installation in Venice, Florida</a></li>
+        <li><a href="/service-areas/siesta-key">Smart home &amp; motorized shades on Siesta Key</a></li>
+        <li><a href="/service-areas/longboat-key">Smart home systems on Longboat Key</a></li>
+        <li><a href="/service-areas/naples">Smart home installation in Naples, Florida</a></li>
+        <li><a href="/service-areas/fort-myers">Smart home installation in Fort Myers &amp; Lee County</a></li>
+        <li><a href="/service-areas/sarasota/lighting">Lutron lighting control in Sarasota</a></li>
+        <li><a href="/service-areas/sarasota/shading">Motorized shades in Sarasota</a></li>
+        <li><a href="/service-areas/sarasota/theaters">Home theater design in Sarasota</a></li>
+        <li><a href="/service-areas/sarasota/audio">Whole-home audio in Sarasota</a></li>
+        <li><a href="/service-areas/sarasota/security">Home cameras &amp; security in Sarasota</a></li>
+        <li><a href="/service-areas/sarasota/networking">Wi-Fi &amp; structured cabling in Sarasota</a></li>
+        <li><a href="/service-areas/sarasota/automation">Home automation in Sarasota</a></li>
+        <li><a href="/service-areas/naples/lighting">Lighting control in Naples</a></li>
+        <li><a href="/service-areas/naples/automation">Home automation in Naples</a></li>
+        <li><a href="/service-areas/bradenton/lighting">Lighting control in Bradenton</a></li>
+        <li><a href="/service-areas/bradenton/security">Home cameras in Bradenton</a></li>
+        <li><a href="/service-areas/fort-myers/lighting">Lighting control in Fort Myers</a></li>
+      </ul>
+      <p><strong>Journal</strong></p>
+      <ul>
+        <li><a href="/journal">Notes from the studio</a></li>
+        <li><a href="/journal/smart-home-sarasota">What “smart home Sarasota” should actually mean</a></li>
+        <li><a href="/journal/lutron-installer-sarasota">Choosing Lutron in a Sarasota house</a></li>
+        <li><a href="/journal/motorized-shades-gulf-coast">Motorized shades that respect Gulf Coast sun</a></li>
+        <li><a href="/journal/home-theater-sarasota">A home theater that survives Florida construction</a></li>
+        <li><a href="/journal/luma-smart-home-not-luma-com">If you searched LUMA and landed in the wrong place</a></li>
+        <li><a href="/journal/home-cameras-without-monthly-fees">Cameras you own, footage you keep</a></li>
       </ul>
     </nav>
   </header>
