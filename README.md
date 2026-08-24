@@ -26,34 +26,22 @@ npx serve .
 
 ```
 .
-├── index.html            # Home — hero-карусель, 7 категорий, ритуалы дня, отзывы, CTA-форма
-├── budget.html           # 8-шаговый калькулятор бюджета → email-captура
-├── lighting.html         # Lutron RadioRA 3
-├── shading.html          # Somfy + Lutron Sivoia
-├── security.html         # Ubiquiti UniFi Protect
-├── networking.html       # Wi-Fi 6/7 · UniFi
-├── audio.html            # Multi-room + home theater
-├── projects.html         # 9 кейсов
-├── about.html            # Studio story
-├── builders.html         # Партнёрка для застройщиков
-├── designers.html        # Партнёрка для дизайнеров (ASID FL)
-├── contact.html          # Контактная форма + зоны обслуживания
-├── thank-you.html        # Страница-благодарность после отправки формы
-│
-├── css/styles.css        # Design system (teal + copper + sunset, Cormorant + DM Sans)
-├── js/images.js          # ★ Центральный реестр всех картинок (key → URL)
-├── js/main.js            # Mega-menu, hero carousel, budget calc, Netlify Forms AJAX
-├── assets/               # favicon.svg, og-cover.svg (+ место под логотипы/фото)
-│
-├── netlify.toml          # publish dir, pretty-URL redirects, security/cache headers, CSP
-├── _redirects            # Fallback для pretty-URL (если toml будет проигнорирован)
-├── sitemap.xml           # Генерируется вручную — не забывать обновлять при добавлении страниц
+├── index.html            # Home shell (unique <head>) — SPA mounts into #root
+├── lighting.html         # and the other public URLs: about, work, contact, …
+├── css/spa.css           # SPA styles
+├── js/app.js             # React SPA (Babel standalone)
+├── js/seo-data.js        # Route map for title/canonical (generated)
+├── sitemap.xml           # Every public URL
 ├── robots.txt
-├── scripts/
-│   ├── inject-seo.py     # Идемпотентная инъекция SEO/OG/JSON-LD в <head>
-│   └── migrate-images.py # Одноразово: inline background-image → data-img="key"
-└── docs/
-    └── IMAGE-GUIDE.md    # Как менять картинки, где брать vendor-фото
+├── netlify.toml          # pretty URLs, legacy redirects, CSP
+├── scripts/generate-seo-pages.py  # HTML shells + sitemap + robots
+└── docs/IMAGE-GUIDE.md
+```
+
+After editing titles/descriptions in `scripts/generate-seo-pages.py` (`ROUTES`), run:
+
+```bash
+python3 scripts/generate-seo-pages.py
 ```
 
 ## Работа с картинками
@@ -102,27 +90,25 @@ JS-лоадер (`js/images.js`) на `DOMContentLoaded` пробегает по
 
 ## SEO
 
-В `<head>` каждой публичной страницы (кроме `thank-you.html`) внедрено:
+The site is a React SPA, but **each public view is a real HTML file** (`/lighting`, `/about`, `/work`, …) so Google can index more than the homepage.
 
-- `<link rel="canonical">` на абсолютный URL страницы
-- Open Graph (`og:title`, `og:description`, `og:url`, `og:image`, `og:type`)
-- Twitter Card (`summary_large_image`)
-- `<meta name="robots" content="index,follow,max-image-preview:large">`
-- На `index.html`, `about.html`, `contact.html` — JSON-LD `LocalBusiness` + `HomeAndConstructionBusiness` с областью обслуживания по 5 округам SWFL
+Every public `<head>` includes:
 
-Блок помечен маркером `<!-- SEO:injected ... -->` и обновляется идемпотентно:
+- unique `<title>` and `<meta name="description">`
+- `<link rel="canonical">` on the apex host `https://lumasmarthome.com/...`
+- Open Graph + Twitter Card (JPEG photos, not SVG)
+- JSON-LD `LocalBusiness` + `WebSite` + `WebPage` (service pages also get `Service`)
+- a `<noscript>` block with the page H1 and internal links
 
-```bash
-python3 scripts/inject-seo.py
-```
+Nav and footer use real `<a href="/lighting">` links, not buttons. `sitemap.xml` lists every URL. `brochure.html` and `/_archive/` are `noindex`.
 
-Запускайте после правки `<title>` / `<meta description>` в любой HTML-странице.
+After deploy: in Google Search Console submit the new sitemap and request indexing for the key URLs. The old 301s that sent `/lighting` (and similar) back to `/` are removed.
 
 ---
 
 ## Что настроить перед продакшеном
 
-1. **Домен.** В `scripts/inject-seo.py`, `sitemap.xml`, `robots.txt`, `netlify.toml` использован `https://www.lumasmarthome.com`. Замените на реальный, если отличается, и перезапустите инъекцию.
+1. **Домен.** Canonical host is the apex `https://lumasmarthome.com` (www already 301s there). URLs live in `scripts/generate-seo-pages.py`.
 2. **Телефон и email.** В шапках/футерах и в JSON-LD сейчас плейсхолдеры `+1 (941) 217-1616` и `hello@lumasmarthome.com`.
 3. **OG-обложка.** `assets/og-cover.svg` — векторный плейсхолдер. Для лучшей совместимости с Facebook/LinkedIn экспортируйте в PNG/JPG 1200×630 и обновите путь в `inject-seo.py` (`OG_IMAGE`) + перезапустите скрипт.
 4. **`apple-touch-icon.png`.** Пока отсутствует — либо добавьте 180×180 PNG, либо уберите `<link rel="apple-touch-icon">` из `inject-seo.py`.

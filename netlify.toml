@@ -3,157 +3,209 @@
 
 [build]
   publish = "."
-  # No build step: single-file React SPA (loaded via CDN React + Babel standalone).
-  command = "echo 'No build step — static SPA'"
+  # Rebuild crawlable HTML shells (unique title/canonical per URL) from js/app.js.
+  command = "python3 scripts/generate-seo-pages.py"
 
-# ----- Redirects ----------------------------------------------------------
-# All previous multi-page URLs now collapse onto the SPA root. The SPA
-# handles its own internal navigation; bookmarks fall back to the home view.
-[[redirects]]
-  from   = "/contact"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/contact.html"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/about"
-  to     = "/?p=about"
-  status = 302
-
-[[redirects]]
-  from   = "/about.html"
-  to     = "/?p=about"
-  status = 302
+# ----- Legacy URL → public path -------------------------------------------
+# Real HTML files now exist for /lighting, /about, /work, etc.
+# Do NOT 301 those paths back to /. Google was collapsing the site to one URL.
 
 [[redirects]]
   from   = "/projects"
-  to     = "/?p=work"
-  status = 302
+  to     = "/work"
+  status = 301
 
 [[redirects]]
   from   = "/projects.html"
-  to     = "/?p=work"
-  status = 302
-
-# Budget tool lives in the SPA — preserve deep link after static 301 to /
-[[redirects]]
-  from   = "/budget"
-  to     = "/?p=budget-calculator"
-  status = 302
-
-[[redirects]]
-  from   = "/budget.html"
-  to     = "/?p=budget-calculator"
-  status = 302
+  to     = "/work"
+  status = 301
 
 [[redirects]]
   from   = "/testimonials"
-  to     = "/?p=work"
-  status = 302
+  to     = "/work"
+  status = 301
 
 [[redirects]]
   from   = "/our-work"
-  to     = "/?p=work"
-  status = 302
+  to     = "/work"
+  status = 301
 
 [[redirects]]
   from   = "/serviceplans"
-  to     = "/?p=support"
-  status = 302
+  to     = "/support"
+  status = 301
 
 [[redirects]]
   from   = "/service-plans"
-  to     = "/?p=support"
-  status = 302
+  to     = "/support"
+  status = 301
 
 [[redirects]]
   from   = "/customer-support"
-  to     = "/?p=support"
-  status = 302
-
-[[redirects]]
-  from   = "/lighting"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/lighting.html"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/shading"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/shading.html"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/security"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/security.html"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/networking"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/networking.html"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/audio"
-  to     = "/"
-  status = 301
-
-[[redirects]]
-  from   = "/audio.html"
-  to     = "/"
+  to     = "/support"
   status = 301
 
 [[redirects]]
   from   = "/builders"
-  to     = "/"
+  to     = "/designers"
   status = 301
 
 [[redirects]]
   from   = "/builders.html"
-  to     = "/"
+  to     = "/designers"
   status = 301
 
 [[redirects]]
-  from   = "/designers"
-  to     = "/"
+  from   = "/budget-calculator"
+  to     = "/budget"
   status = 301
 
 [[redirects]]
-  from   = "/designers.html"
-  to     = "/"
+  from   = "/smart-home-demo"
+  to     = "/demo"
   status = 301
 
+# Old SPA query-string routes (?p=lighting) → pretty URLs.
+# `force` is required because `/` is also a real file (index.html).
 [[redirects]]
-  from   = "/theaters"
-  to     = "/"
+  from   = "/"
+  query  = { p = "lighting" }
+  to     = "/lighting"
   status = 301
+  force  = true
 
 [[redirects]]
-  from   = "/automation"
-  to     = "/"
+  from   = "/"
+  query  = { p = "shading" }
+  to     = "/shading"
   status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "theaters" }
+  to     = "/theaters"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "automation" }
+  to     = "/automation"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "audio" }
+  to     = "/audio"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "security" }
+  to     = "/security"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "networking" }
+  to     = "/networking"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "designers" }
+  to     = "/designers"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "builders" }
+  to     = "/designers"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "contact" }
+  to     = "/contact"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "about" }
+  to     = "/about"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "work" }
+  to     = "/work"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "budget-calculator" }
+  to     = "/budget"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "support" }
+  to     = "/support"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "smart-home-demo" }
+  to     = "/demo"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "case-spacious" }
+  to     = "/work/spacious-modern"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "case-urban" }
+  to     = "/work/urban-home"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "case-family" }
+  to     = "/work/huge-family-house"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "case-modern" }
+  to     = "/work/modern-residence"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/"
+  query  = { p = "case-bighouse" }
+  to     = "/work/big-modern-house"
+  status = 301
+  force  = true
 
 # ----- Security & performance headers --------------------------------------
 [[headers]]
@@ -166,15 +218,13 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy        = "strict-origin-when-cross-origin"
     Permissions-Policy     = "camera=(), microphone=(), geolocation=(self)"
-    # CSP for the Claude Design SPA prototype:
+    # CSP:
     #   - 'unsafe-eval' is required because Babel standalone transpiles JSX in-browser.
-    #   - 'unsafe-inline' allows the inline <style> and <script type="text/babel"> blocks.
+    #   - 'unsafe-inline' allows inline JSON-LD and window.__LUMA_PAGE.
     #   - unpkg.com hosts React, ReactDOM, Babel.
-    #   - Image sources include Unsplash + Pexels CDNs used by the design.
-    #   - Google Fonts (Cormorant Garamond + DM Sans).
+    #   - connect-src 'self' lets Babel fetch /js/app.js.
     Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; connect-src 'self'; frame-ancestors *; base-uri 'self'; form-action 'self';"
 
-# Long cache for hashed assets / images.
 [[headers]]
   for = "/images/*"
   [headers.values]
@@ -185,23 +235,37 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# HTML should revalidate.
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Root SPA — same no-cache so mobile browsers don't pin yesterday's HTML.
 [[headers]]
   for = "/"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
-    Pragma        = "no-cache"
-    Expires       = "0"
 
 [[headers]]
   for = "/index.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
-    Pragma        = "no-cache"
-    Expires       = "0"
+
+[[headers]]
+  for = "/brochure.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/_archive/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

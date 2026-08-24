@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /_archive/
 Disallow: /thank-you.html
+Disallow: /brochure.html
 
-Sitemap: https://www.lumasmarthome.com/sitemap.xml
+Sitemap: https://lumasmarthome.com/sitemap.xml

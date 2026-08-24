@@ -1,31 +1,13 @@
-# Netlify _redirects — fallback if netlify.toml is ignored by a plugin.
-# SPA routes use ?p= so the client can open the right view on first load.
-/contact          /  301
-/contact.html     /  301
-/about            /?p=about        302
-/about.html       /?p=about        302
-/projects         /?p=work         302
-/projects.html    /?p=work         302
-/budget           /?p=budget-calculator  302
-/budget.html      /?p=budget-calculator  302
-/lighting         /  301
-/lighting.html    /  301
-/shading          /  301
-/shading.html     /  301
-/security         /  301
-/security.html    /  301
-/networking       /  301
-/networking.html  /  301
-/audio            /  301
-/audio.html       /  301
-/builders         /  301
-/builders.html    /  301
-/designers        /  301
-/designers.html   /  301
-/theaters         /  301
-/automation       /  301
-/testimonials     /?p=work         302
-/our-work         /?p=work         302
-/serviceplans     /?p=support      302
-/service-plans    /?p=support      302
-/customer-support /?p=support      302
+# Netlify _redirects — fallback if netlify.toml is ignored.
+# Pretty HTML files exist for the public paths below; do not send them home.
+/projects           /work        301
+/projects.html      /work        301
+/testimonials       /work        301
+/our-work           /work        301
+/serviceplans       /support     301
+/service-plans      /support     301
+/customer-support   /support     301
+/builders           /designers   301
+/builders.html      /designers   301
+/budget-calculator  /budget      301
+/smart-home-demo    /demo        301
