@@ -281,7 +281,7 @@ function Nav({navigate}) {
   const SECONDARY_LINKS = [
     {label:'Service Areas', page:'service-areas'},
     {label:'Journal', page:'journal'},
-    {label:'Work & Testimonials', page:'work'},
+    {label:'Work', page:'work'},
     {label:'About', page:'about'},
     {label:'Budget Calculator', page:'budget-calculator'},
     {label:'For Designers & Builders', page:'designers'},
@@ -311,7 +311,7 @@ function Nav({navigate}) {
           <NavLink page="smart-home-demo" navigate={navigate} className="nav-link nav-link--feature">
             <span className="nav-link-dot"/>Live 3D Demo
           </NavLink>
-          {SECONDARY_LINKS.slice(0,4).map(({label,page})=>(
+          {SECONDARY_LINKS.slice(0,3).map(({label,page})=>(
             <NavLink key={page} page={page} navigate={navigate} className="nav-link">{label}</NavLink>
           ))}
         </div>

@@ -85,11 +85,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .btn-solid{padding:10px 18px;font-size:14.5px}
   .nav-actions{gap:8px}
 }
-@media (min-width:960px) and (max-width:1100px){
-  /* At very narrow desktop, drop the secondary "Customer Support" pill so the
-     primary CTA + main nav can breathe — the link is still in the footer / hamburger. */
+@media (min-width:960px) and (max-width:1400px){
+  /* Drop the secondary "Customer Support" pill so Service Areas + Journal
+     can sit next to the primary CTA without clipping. Link remains in footer / hamburger. */
   .nav-actions .btn-ghost{display:none}
-  .nav-links{gap:14px;font-size:15px}
+  .nav-links{gap:16px;font-size:15.5px}
 }
 @media (max-width:959px){
   .nav{padding:0 22px;height:68px}
