@@ -37,20 +37,20 @@ Rhythm: Partner A **initiates** every operating discussion; Partner B joins. Wee
 
 ## 5. Areas of responsibility
 
-The model is **asymmetric**. Until other titles exist, two roles only: Partner A is **Managing Partner / CDO** (~80%) — commercial and delivery owner; he initiates processes, website and landings, funnels, packages, dealer statuses, engineers, events, visits, closing, delivery, bookkeeping, tax, databases, first team and strategy. Partner B is **business development / intermediary** (~20%) — a related role, not a silent financier: he may sell, introduce, advertise indirectly, direct a contact or make an offer, on a *sufficient* basis, not as an 8–10 hour daily job. He also funds the start, opens the Accent book (end clients, designers, realtors, planners, builders) and holds the low-voltage licence. Day-to-day is the Lead's; detail: Annex A.
+The model is **asymmetric**. Until other titles exist, two roles only: Partner A is **Managing Partner / CDO** (~80%) — commercial and delivery owner; he initiates processes, website and landings, funnels, packages, dealer statuses, engineers, events, visits, closing, delivery, bookkeeping, tax, databases, first team and strategy. Partner B is **business development / intermediary** (~20%) — a related role, not a silent financier: he may sell, introduce, advertise indirectly, direct a contact or make an offer, on a *sufficient* basis, not as an 8–10 hour daily job. He sits in strategic discussions on where the Project is going, helps form package solutions, licensing, the contact base and ties to the right specialists, funds the start, opens the Accent book and holds the low-voltage licence. Day-to-day is the Lead's; detail: Annex A.
 
 | # | Area | Lead | Support |
 |---|---|---|---|
 | 1 | Sales — quoting, closing; B may originate his own deals | A | B — sufficient: connect, introduce, offer |
 | 2 | Trade channel — builders, architects, designers, realtors | A | B — Accent + his own intros |
-| 3 | Design and engineering — system design, price book, programming | A | — |
+| 3 | Design and packages — system design, price book, package solutions | A | B — strategy on packages |
 | 4 | Field delivery — subcontractors, scheduling, QA, warranty | A | — |
 | 5 | Procurement — dealer accounts, purchase orders, stock | A | — |
 | 6 | Marketing — website, landings, SEO, Angi, paid ads, events | A | B — indirect advertising |
 | 7 | Finance and admin — bookkeeping via accountant, invoicing, tax, insurance | A | B — start-up finance |
 | 8 | Licensing and compliance — low-voltage licence, permits, subcontractor files | B | A |
 | 9 | Client care — support desk, service visits, LUMA Care renewals | A | — |
-| 10 | Strategy and capital — goals, budget, financing, PR, key relationships | A | B |
+| 10 | Strategy — direction, packages, licensing, contacts, specialists | A | B — sits in, does not initiate |
 
 ## 6. Time commitment
 
@@ -80,7 +80,7 @@ During the trial the Partners intend to reinvest at least **______ %** of profit
 
 To 31 December 2026: revenue **$______**; signed projects **______**; average project value **$______**; realized gross margin **______ %**; LUMA Care memberships **______**; qualified leads per month **______**; year-end pipeline **$______**; signed trade partners **______**; photographed reference projects **______**. Long-term intent: ______ (grow and hold / build to sell / income business); the 1–5-year picture of each Partner is recorded in Annex D.7.
 
-Go / no-go also weighs: Partner A kept initiating, Partner B connected on a sufficient basis, and the weekly scorecard plus monthly brochure were kept current. Detail: Annex C.
+Each Partner keeps at least one **named potential client** at a stated check (working figure **$55,000** unless another is written in Annex D.8). **Axiom for the Home** is already on that list — revisit it as a smart-home scope. Go / no-go also weighs: Partner A kept initiating, Partner B connected on a sufficient basis, and the weekly scorecard plus monthly brochure were kept current. Detail: Annex C.
 
 ## 11. Go-to-market and lead rules
 
@@ -212,7 +212,7 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 | Cash in working fund / B envelope left | ______ | | | | | |
 | Partner A / B hours logged | ______ | | | | | |
 
-**C.5 Weekly scorecard** — Partner A sends it before the weekly call; the Partners check it on the call. Same eight numbers as C.4, plus: site visits this week ______ ; one blocker each (A / B); what Partner A will initiate next week; where Partner B will connect, introduce, direct or offer next week. Not a full-time sales report for B — only what was sufficient.
+**C.5 Weekly scorecard** — Partner A sends it before the weekly call; the Partners check it on the call. Same numbers as C.4, plus: site visits this week ______ ; named prospects in D.8 (moved / stuck); one strategy item (direction, packages, licensing, contacts or specialists); one blocker each (A / B); what Partner A will initiate next week; where Partner B will connect, introduce, direct or offer. Not a full-time sales report for B — only what was sufficient.
 
 <!-- pagebreak -->
 
@@ -231,6 +231,14 @@ Annexes forming part of this Memorandum: **A** responsibility matrix and rates �
 **D.6 Open items to resolve before the definitive agreement.** ______________________ .
 
 **D.7 The 1–5-year picture, in each Partner's own words** (§10). Partner A: ______________________ . Partner B: ______________________ .
+
+**D.8 Named potential clients** (§10). Each Partner holds at least one live name at a stated check. Working figure unless overwritten: **$55,000**.
+
+| Named prospect | Owner | Target check | Status / next step |
+|---|---|---|---|
+| Axiom for the Home | ______ | $55,000 | Revisit as a smart-home scope |
+| ______ | A | $______ | ______ |
+| ______ | B | $______ | ______ |
 
 ---
 
