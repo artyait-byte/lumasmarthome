@@ -547,80 +547,328 @@ function ServiceCard({id, name, height=240}) {
 }
 
 /* ─── HOME PAGE ─── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   FX SECTION KIT
+   Layout system modelled on the Fusion Audio + Video page architecture
+   (full-bleed video hero → asymmetric intro → two-card solutions →
+    media+text rows → 3-up work cards → quote carousel → colour panel → CTA),
+   rendered entirely in the LUMA palette and voice.
+   Deliberately form-free: every CTA is a button + a phone number.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const FX_SOLUTIONS = [
+  {page:'work',      photo:PHOTOS.heroHome,      title:'For your home',
+   body:'Lighting, shades, climate, music, cameras and Wi-Fi designed as one system for a Gulf Coast residence.',
+   cta:'Explore residential'},
+  {page:'designers', photo:PHOTOS.heroDesigners, title:'For your project',
+   body:'Drawings, submittals and a low-voltage contractor of record for interior designers, architects and custom builders.',
+   cta:'Explore trade'}
+];
+
+const FX_WORK = [
+  {page:'case-modern',  photo:PHOTOS.projMrExterior || PHOTOS.heroHome, county:'Sarasota County',  scope:'Lighting · Shades · Audio',
+   title:'A bayfront house that runs on one keypad',
+   body:'Lutron throughout, three layers of shade on the west glass, and audio that disappears into the architecture.'},
+  {page:'case-bighouse',photo:PHOTOS.projectLuxuryPool, county:'Manatee County', scope:'Automation · Theater',
+   title:'A family house where every room knows the hour',
+   body:'Morning, afternoon, evening and away — four states, one press, across eleven thousand square feet.'},
+  {page:'case-urban',   photo:PHOTOS.projectWarmInterior, county:'Lee County',    scope:'Networking · Security',
+   title:'A rebuild wired for the next twenty years',
+   body:'Structured cabling, enterprise Wi-Fi and on-premise camera storage — no monthly fee, no cloud lock-in.'}
+];
+
+const FX_QUOTES = [
+  {q:'They spent more time on the drawings than anyone else we interviewed, and it showed on install day. Nothing was improvised, nothing was patched in afterwards.',
+   n:'Michael R.', w:'Longboat Key, FL'},
+  {q:'The shades and the lighting finally behave like one thing instead of two. My wife has never touched an app — she just presses Evening and the house does the rest.',
+   n:'David & Anne P.', w:'Lakewood Ranch, FL'},
+  {q:'I specify LUMA on every project now. They send submittals in the format my GC actually uses, and they never make the interior look like a server room.',
+   n:'Carolyn M.', w:'Interior designer, Sarasota'},
+  {q:'A camera went offline on a Sunday. They had it back before I finished asking. That is the part you only find out about after the install is done.',
+   n:'Robert T.', w:'Siesta Key, FL'},
+  {q:'We came from a system that needed a reboot every other week. Two years in, this one has simply never asked us for anything.',
+   n:'James H.', w:'Naples, FL'}
+];
+
+function FxCall({tone}) {
+  const nap = napInfo();
+  return (
+    <a className="fx-call" href={nap.telHref}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+      </svg>
+      <span>
+        <small>Talk to the studio</small>
+        {nap.telephoneDisplay}
+      </span>
+    </a>
+  );
+}
+
+/* Action row — the replacement for the stock name/email/phone inline form. */
+function FxActions({navigate, label='Book a consultation', page='contact', align='center', tone='light'}) {
+  return (
+    <div className={'fx-actions'+(align==='left'?' fx-actions--left':'')+(tone==='dark'?' fx-actions--onDark':'')}>
+      <NavLink page={page} navigate={navigate} className="home-hero-cta-primary">
+        {label} <span aria-hidden="true">→</span>
+      </NavLink>
+      <FxCall tone={tone}/>
+    </div>
+  );
+}
+
+/* ── 1. HERO — full-bleed video, one centred headline ── */
+function FxHero({navigate}) {
+  return (
+    <section className="fx-hero" aria-label="LUMA Smart Home — Gulf Coast residences">
+      <div className="fx-hero-poster" style={{backgroundImage:"url('/assets/video/hero-luma-poster.jpg')"}} aria-hidden="true"/>
+      <video className="fx-hero-media" autoPlay muted loop playsInline preload="metadata"
+             poster="/assets/video/hero-luma-poster.jpg" aria-hidden="true">
+        <source src="/assets/video/hero-luma.webm" type="video/webm"/>
+        <source src="/assets/video/hero-luma.mp4" type="video/mp4"/>
+      </video>
+      <div className="fx-hero-scrim" aria-hidden="true"/>
+
+      <div className="fx-hero-inner">
+        <div className="fx-hero-eyebrow">Premium smart home · Sarasota studio</div>
+        <h1>Technology that suits <em>the way you live.</em></h1>
+        <p className="fx-hero-sub">
+          LUMA designs and installs lighting, motorized shades, climate, music, security and reliable Wi-Fi
+          for fine homes on Florida's Gulf Coast — one system, calm screens, nothing left in the foreground.
+        </p>
+        <div className="fx-hero-cta">
+          <NavLink page="contact" navigate={navigate} className="home-hero-cta-primary">
+            Book a consultation <span aria-hidden="true">→</span>
+          </NavLink>
+          <NavLink page="work" navigate={navigate} className="home-hero-cta-ghost">
+            See our work
+          </NavLink>
+        </div>
+      </div>
+
+      <div className="fx-hero-bar">
+        <div className="fx-hero-brands">
+          <span>Lutron</span><span>Crestron</span><span>Control4</span>
+          <span>KNX</span><span>Ketra</span><span>Sonance</span>
+        </div>
+        <div>Florida licensed low-voltage contractor · insured</div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 2. INTRO — headline left, prose right ── */
+function FxIntro({navigate}) {
+  return (
+    <section className="fx-sec fx-sec--cream">
+      <div className="fx-wrap fx-intro">
+        <h2>Designed once. <em>Lived in daily.</em></h2>
+        <div className="fx-intro-body">
+          <p>
+            LUMA builds residential technology that elevates comfort, respects the architecture,
+            and simplifies the hour you are actually in — morning, afternoon, evening, away.
+          </p>
+          <p>
+            We work with homeowners, architects, interior designers and custom builders across
+            Sarasota, Manatee, Charlotte, Lee and Collier Counties. From waterfront rebuilds to
+            new construction inland, we design intuitive, reliable systems that blend into every room
+            instead of announcing themselves.
+          </p>
+          <NavLink page="about" navigate={navigate} className="fx-arrow">
+            Learn more <span aria-hidden="true">→</span>
+          </NavLink>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 3. SOLUTIONS — two tall image cards ── */
+function FxSolutions({navigate}) {
+  return (
+    <section className="fx-sec fx-sec--cream">
+      <div className="fx-wrap">
+        <div className="fx-head">
+          <h2>Solutions for <em>every room</em></h2>
+          <p>From waterfront residences to the projects our trade partners are drawing right now,
+             LUMA designs systems that bring comfort, quiet and control to any Gulf Coast space.</p>
+        </div>
+        <div className="fx-cards2">
+          {FX_SOLUTIONS.map(s => (
+            <NavLink key={s.page} page={s.page} navigate={navigate} className="fx-card">
+              <img src={s.photo} alt={s.title} loading="lazy" decoding="async"/>
+              <div className="fx-card-scrim" aria-hidden="true"/>
+              <div className="fx-card-inner">
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+                <span className="fx-card-link">{s.cta} <span aria-hidden="true">→</span></span>
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 4. SUPPORT — media + text row, video on the right ── */
+function FxSupport({navigate}) {
+  return (
+    <section className="fx-sec fx-sec--cream">
+      <div className="fx-wrap">
+        <div className="fx-row">
+          <div className="fx-row-text">
+            <h2>Care that doesn't stop <em>at handover.</em></h2>
+            <p>
+              A system is only as good as the year after it is installed. Our team is based in Sarasota,
+              answers its own phone, and reaches every county we serve — Bradenton to Naples — without
+              routing you through a call centre.
+            </p>
+            <p>
+              Choose an ongoing care plan or call us on demand. Firmware, network health, camera storage
+              and scene tuning stay someone's job, and that someone is us.
+            </p>
+            <FxActions navigate={navigate} label="Book a consultation" align="left"/>
+          </div>
+          <div className="fx-row-media">
+            <video autoPlay muted loop playsInline preload="metadata"
+                   poster="/assets/video/luma-care-poster.jpg"
+                   aria-label="A LUMA technician walking a homeowner through the control app">
+              <source src="/assets/video/luma-care.webm" type="video/webm"/>
+              <source src="/assets/video/luma-care.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 5. WORK — 3-up tall cards ── */
+function FxWork({navigate}) {
+  return (
+    <section className="fx-sec fx-sec--cream">
+      <div className="fx-wrap">
+        <div className="fx-head">
+          <h2>Our work <em>in action</em></h2>
+          <p>A selection of Gulf Coast residences that show how LUMA folds lighting, shade,
+             sound and security into houses of very different style and scale.</p>
+        </div>
+        <div className="fx-work">
+          {FX_WORK.map(w => (
+            <NavLink key={w.page} page={w.page} navigate={navigate} className="fx-work-card">
+              <img src={w.photo} alt={w.title} loading="lazy" decoding="async"/>
+              <div className="fx-work-meta">{w.county} <i aria-hidden="true"/> {w.scope}</div>
+              <h3>{w.title}</h3>
+              <p>{w.body}</p>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 6. QUOTES — scroll-snap carousel ── */
+function FxQuotes() {
+  const track = React.useRef(null);
+  const step = (dir) => {
+    const el = track.current; if (!el) return;
+    const card = el.querySelector('.fx-quote');
+    const w = card ? card.offsetWidth + 24 : el.clientWidth * .8;
+    el.scrollBy({left: dir * w, behavior: 'smooth'});
+  };
+  return (
+    <section className="fx-sec fx-sec--cream">
+      <div className="fx-wrap">
+        <div className="fx-head">
+          <h2>Hear from <em>our clients</em></h2>
+          <p>Gulf Coast homeowners and trade partners on what the system is like to live with.</p>
+        </div>
+      </div>
+      <div className="fx-quotes-track" ref={track}>
+        {FX_QUOTES.map((t, i) => (
+          <figure className="fx-quote" key={i}>
+            <div className="fx-stars" aria-label="Five out of five">
+              {[0,1,2,3,4].map(s => (
+                <svg key={s} width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M10 1l2.5 6.5L19 8.5l-4.5 4.5L16 20l-6-3.5L4 20l1.5-7L1 8.5l6.5-1L10 1z"/>
+                </svg>
+              ))}
+            </div>
+            <blockquote>{t.q}</blockquote>
+            <figcaption className="fx-quote-by">
+              <span className="fx-quote-av" aria-hidden="true">{t.n.split(' ').map(x=>x[0]).join('').slice(0,2)}</span>
+              <span>
+                <span className="fx-quote-name">{t.n}</span><br/>
+                <span className="fx-quote-where">{t.w}</span>
+              </span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <div className="fx-quotes-nav">
+        <button className="fx-qbtn" onClick={()=>step(-1)} aria-label="Previous testimonial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button className="fx-qbtn" onClick={()=>step(1)} aria-label="Next testimonial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+  );
+}
+
+/* ── 7. REGION — colour panel, gulf teal ── */
+function FxRegion({navigate}) {
+  const nap = napInfo();
+  return (
+    <section className="fx-sec fx-sec--cream">
+      <div className="fx-wrap">
+        <div className="fx-panel">
+          <div className="fx-row fx-row--flip">
+            <div className="fx-row-media">
+              <img src={PHOTOS.heroSplash} alt="Sarasota bayfront at golden hour" loading="lazy" decoding="async"/>
+            </div>
+            <div className="fx-row-text">
+              <h2>Gulf Coast roots,<br/><em>five-county reach</em></h2>
+              <p>
+                One studio in Sarasota, serving {nap.area}. From the keys to the ranch country inland,
+                the same crew, the same drawings and the same aftercare go into every project.
+              </p>
+              <NavLink page="service-areas" navigate={navigate} className="fx-arrow" style={{color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}}>
+                Where we work <span aria-hidden="true">→</span>
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 8. CTA — no form, just an invitation and a phone number ── */
+function FxCta({navigate, title, body, label}) {
+  return (
+    <section className="fx-cta">
+      <div className="fx-cta-inner">
+        <h2 dangerouslySetInnerHTML={{__html: title || 'Ready to make the house <em>effortless?</em>'}}/>
+        <p>{body || "Tell us about the home and how you want to live in it. We'll come back with a plan, a realistic range, and no pressure to fill anything in."}</p>
+        <FxActions navigate={navigate} label={label || 'Book a consultation'}/>
+      </div>
+    </section>
+  );
+}
+
 function HomePage({navigate}) {
   return (
     <div className="page">
-      {/* Hero — cinematic Florida home */}
-      <section className="home-hero" aria-label="LUMA Smart Home — Gulf Coast residences">
-        <div className="home-hero-photo" style={{backgroundImage:`url('/assets/video/hero-villa-poster.jpg')`}} role="img" aria-label="Modern Gulf Coast villa at dusk"/>
-        <video className="home-hero-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/video/hero-villa-poster.jpg" aria-hidden="true">
-          <source src="/assets/video/hero-villa.webm" type="video/webm"/>
-          <source src="/assets/video/hero-villa.mp4" type="video/mp4"/>
-        </video>
-        <div className="home-hero-overlay"/>
-        <svg className="home-hero-frond" viewBox="0 0 600 600" fill="none" aria-hidden="true">
-          <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity=".9">
-            <path d="M520 60 C 380 160, 260 280, 130 520"/>
-            <path d="M515 95 C 470 110, 430 140, 405 175"/>
-            <path d="M495 130 C 445 150, 410 185, 388 220"/>
-            <path d="M470 170 C 420 195, 388 230, 368 268"/>
-            <path d="M442 215 C 392 245, 362 285, 345 322"/>
-            <path d="M412 260 C 362 295, 332 335, 318 372"/>
-            <path d="M380 308 C 332 345, 302 388, 290 422"/>
-            <path d="M346 358 C 300 398, 272 438, 262 472"/>
-            <path d="M310 410 C 268 450, 242 488, 232 518"/>
-            <path d="M515 95 C 540 80, 565 78, 585 88"/>
-            <path d="M495 130 C 525 118, 555 118, 575 130"/>
-            <path d="M470 170 C 502 162, 532 164, 552 178"/>
-            <path d="M442 215 C 478 210, 508 214, 528 230"/>
-            <path d="M412 260 C 450 258, 480 264, 500 282"/>
-            <path d="M380 308 C 420 308, 450 318, 470 338"/>
-            <path d="M346 358 C 388 360, 418 372, 438 392"/>
-            <path d="M310 410 C 352 412, 380 426, 400 448"/>
-          </g>
-        </svg>
-        <div className="home-hero-grain" aria-hidden="true"/>
+      <FxHero navigate={navigate}/>
+      <FxIntro navigate={navigate}/>
+      <FxSolutions navigate={navigate}/>
+      <FxSupport navigate={navigate}/>
 
-        <div className="home-hero-inner">
-          <div className="home-hero-eyebrow">Premium smart home · Sarasota studio</div>
-          <h1 className="home-hero-title">A home that suits <em>the way you live.</em></h1>
-          <p className="home-hero-sub">LUMA designs and installs lighting, motorized shades, climate, music, security, and reliable Wi‑Fi for fine homes on the Gulf Coast. One thoughtful system — calm screens, gentle scenes, and technology that stays in the background.</p>
-          <p className="home-hero-sub home-hero-sub--soft">Licensed Florida low‑voltage contractor. You work directly with our team in Sarasota — clear answers, careful workmanship, and ongoing care from Bradenton to Naples.</p>
-
-          <div className="home-hero-place" aria-label="Service area">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M12 22s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/>
-              <circle cx="12" cy="10" r="2.4"/>
-            </svg>
-            <NavLink page="service-areas" navigate={navigate}>Serving Sarasota, Manatee, Charlotte, Lee & Collier Counties</NavLink>
-          </div>
-
-          <div className="home-hero-cta">
-            <NavLink page="contact" navigate={navigate} className="home-hero-cta-primary">
-              Schedule a consultation <span aria-hidden="true">→</span>
-            </NavLink>
-            <NavLink page="work" navigate={navigate} className="home-hero-cta-ghost">
-              View completed projects
-            </NavLink>
-          </div>
-        </div>
-
-        <div className="home-hero-scroll" aria-hidden="true"><span>Scroll</span></div>
-
-        <div className="home-hero-trust" aria-label="Partners & licensing">
-          <div className="home-hero-brands">
-            <span>Lutron</span>
-            <span>Crestron</span>
-            <span>Control4</span>
-            <span>KNX</span>
-            <span>Ketra</span>
-            <span>Sonance</span>
-          </div>
-          <div className="home-hero-license">Florida licensed low‑voltage contractor · insured · discreet residential work</div>
-        </div>
-      </section>
-
-      {/* Smart Home Solutions — bento */}
+      {/* Seven disciplines — bento of the service pages */}
       <section className="services-section">
         <div className="services-intro">
           <div className="sec-label">Smart Home Solutions</div>
@@ -631,7 +879,12 @@ function HomePage({navigate}) {
           {BENTO_TILES.map(t => <BentoTile key={t.area} tile={t} navigate={navigate}/>)}
         </div>
       </section>
+
+      <FxWork navigate={navigate}/>
+      <FxQuotes/>
+      <FxRegion navigate={navigate}/>
       <HomeSeoCluster navigate={navigate}/>
+      <FxCta navigate={navigate}/>
     </div>
   );
 }
@@ -1294,16 +1547,11 @@ function TheatersPage({navigate}) {
       {/* 7. CTA combo */}
       <div className="th-cta-combo">
         <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
-        <form className="th-cta-form" name="theater-inquiry" onSubmit={e=>{e.preventDefault();navigate('contact');}}>
+        <div className="th-cta-form">
           <h2>Start a <em>theater conversation.</em></h2>
-          <p>Tell us about the room. We'll send a calibration plan within 48 hours.</p>
-          <input type="hidden" name="page" value="home-theaters"/>
-          <input name="name" placeholder="Name"/>
-          <input name="email" type="email" placeholder="Email"/>
-          <input name="phone" placeholder="Phone"/>
-          <textarea name="message" placeholder="Square footage, ceiling height, intended use…"/>
-          <button type="submit" className="btn-solid">Send inquiry →</button>
-        </form>
+          <p>Tell us about the room — square footage, ceiling height, how you'll use it. We answer with a calibration plan, not a quote form.</p>
+          <FxActions navigate={navigate} label="Plan my theater" align="left" tone="dark"/>
+        </div>
       </div>
     </div>
   );
@@ -1511,23 +1759,18 @@ function AutomationPage({navigate}) {
       {/* 7. CTA combo */}
       <div className="th-cta-combo">
         <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
-        <form className="th-cta-form" name="automation-inquiry" onSubmit={e=>{e.preventDefault();navigate('contact');}}>
-          <h2>Start a <em>conversation.</em></h2>
-          <p>Tell us about the home. We'll map a routine plan within 48 hours.</p>
-          <input type="hidden" name="page" value="home-automation"/>
-          <input name="name" placeholder="Name"/>
-          <input name="email" type="email" placeholder="Email"/>
-          <input name="phone" placeholder="Phone"/>
-          <textarea name="message" placeholder="What does a typical day look like? Who lives in the home?"/>
-          <button type="submit" className="btn-solid">Send inquiry →</button>
-        </form>
+        <div className="th-cta-form">
+          <h2>Start an <em>automation conversation.</em></h2>
+          <p>Tell us how the house is used through the day. We map it to scenes, then show you the plan before anything is ordered.</p>
+          <FxActions navigate={navigate} label="Plan my system" align="left" tone="dark"/>
+        </div>
       </div>
     </div>
   );
 }
 
 /* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
-function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid}) {
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate}) {
   return (
     <div className="page">
       {/* 1. Hero — dark full-bleed split */}
@@ -1661,16 +1904,11 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
       {/* 7. CTA combo */}
       <div className="th-cta-combo">
         <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
-        <form className="th-cta-form" name={formName} onSubmit={e=>{e.preventDefault();ctaCopy.onSubmit();}}>
+        <div className="th-cta-form">
           <h2 dangerouslySetInnerHTML={{__html: ctaCopy.h2}}/>
           <p>{ctaCopy.lead}</p>
-          <input type="hidden" name="page" value={formName}/>
-          <input name="name" placeholder="Name"/>
-          <input name="email" type="email" placeholder="Email"/>
-          <input name="phone" placeholder="Phone"/>
-          <textarea name="message" placeholder={ctaCopy.placeholder}/>
-          <button type="submit" className="btn-solid">Send inquiry →</button>
-        </form>
+          <FxActions navigate={navigate} label="Book a consultation" align="left" tone="dark"/>
+        </div>
       </div>
     </div>
   );
@@ -1679,6 +1917,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
 /* ─── AUDIO PAGE ─── */
 function AudioPage({navigate}) {
   return <ServicePageShell
+    navigate={navigate}
     formName="audio-inquiry"
     hero={{
       eyebrow:'Audio & video',
@@ -1741,6 +1980,7 @@ function AudioPage({navigate}) {
 /* ─── SECURITY PAGE ─── */
 function SecurityPage({navigate}) {
   return <ServicePageShell
+    navigate={navigate}
     formName="security-inquiry"
     hero={{
       eyebrow:'Security & surveillance',
@@ -1824,6 +2064,7 @@ function NetworkingPage({navigate}) {
     {src: PHOTOS.netTech,   label:'Clean rack',          pos:'center center'},
   ];
   return <ServicePageShell
+    navigate={navigate}
     formName="networking-inquiry"
     hero={{
       eyebrow:'Networking',

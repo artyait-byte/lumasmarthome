@@ -1151,3 +1151,183 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .home-hero-cta-primary,.home-hero-cta-ghost{font-size:18.5px;padding:18px 26px}
   .btn-solid,.btn-ghost{font-size:18px;padding:15px 24px}
 }
+
+/* ==========================================================================
+   FX — section architecture modelled on the Fusion A+V layout system,
+   rendered in the LUMA palette (cream / ink / terracotta / gulf teal).
+   Structural DNA borrowed: full-bleed video hero, asymmetric intro split,
+   two-card solutions grid, media+text rows, 3-up tall work cards,
+   drag carousel of quotes, colour-panel region block, form-free CTA.
+   ========================================================================== */
+
+/* ── shared rhythm ── */
+.fx-wrap{max-width:1280px;margin:0 auto;padding:0 48px}
+.fx-sec{padding:96px 0}
+.fx-sec--cream{background:var(--cream)}
+.fx-sec--tight{padding:64px 0}
+.fx-head{text-align:center;max-width:720px;margin:0 auto 60px}
+.fx-head h2{font-family:var(--serif);font-size:clamp(40px,4vw,56px);line-height:1.08;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+.fx-head h2 em{color:var(--accent);font-style:italic}
+.fx-head p{margin-top:20px;color:var(--mid);font-size:19px;line-height:1.7;text-wrap:pretty}
+.fx-eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
+
+/* ── arrow link ("Learn More →") ── */
+.fx-arrow{display:inline-flex;align-items:center;gap:9px;font-weight:600;color:var(--dark);border-bottom:1.5px solid rgba(197,114,56,.4);padding-bottom:3px;transition:color .2s,border-color .2s}
+.fx-arrow span{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.fx-arrow:hover{color:var(--accent);border-color:var(--accent)}
+.fx-arrow:hover span{transform:translateX(5px)}
+
+/* ── 1. HERO — full-bleed video, single centred headline ── */
+.fx-hero{position:relative;isolation:isolate;overflow:hidden;min-height:min(86vh,760px);display:flex;align-items:center;justify-content:center;text-align:center;background:#14131E}
+.fx-hero-media,.fx-hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none}
+.fx-hero-poster{background-size:cover;background-position:center}
+.fx-hero-scrim{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(20,19,30,.62) 0%,rgba(20,19,30,.34) 38%,rgba(20,19,30,.78) 100%),
+  radial-gradient(90% 70% at 50% 45%,transparent 0%,rgba(20,19,30,.45) 100%)}
+.fx-hero-inner{position:relative;z-index:1;padding:140px 48px 120px;max-width:1000px;display:flex;flex-direction:column;align-items:center;gap:26px}
+.fx-hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(252,250,246,.82);font-weight:600}
+.fx-hero-eyebrow::before,.fx-hero-eyebrow::after{content:'';width:34px;height:1.5px;background:var(--accent)}
+.fx-hero h1{font-family:var(--serif);color:#FCFAF6;font-size:clamp(46px,6.2vw,84px);line-height:1.03;font-weight:500;letter-spacing:-.018em;text-wrap:balance;margin:0}
+.fx-hero h1 em{color:#F0C39B;font-style:italic;font-weight:500}
+.fx-hero-sub{color:rgba(252,250,246,.86);font-size:clamp(17px,1.5vw,21px);line-height:1.62;max-width:640px;text-wrap:pretty}
+.fx-hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px}
+.fx-hero-bar{position:absolute;left:0;right:0;bottom:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:18px 48px;background:linear-gradient(transparent,rgba(20,19,30,.72));border-top:1px solid rgba(252,250,246,.14);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,246,.78);font-weight:500}
+.fx-hero-brands{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.fx-hero-brands span{position:relative}
+.fx-hero-brands span+span::before{content:'';position:absolute;left:-13px;top:50%;width:3px;height:3px;border-radius:50%;background:rgba(252,250,246,.45);transform:translateY(-50%)}
+
+/* ── 2. INTRO — asymmetric split, headline left / prose right ── */
+.fx-intro{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start}
+.fx-intro h2{font-family:var(--serif);font-size:clamp(38px,4.6vw,60px);line-height:1.06;font-weight:600;letter-spacing:-.015em;max-width:11ch;text-wrap:balance}
+.fx-intro h2 em{color:var(--accent);font-style:italic}
+.fx-intro-body{max-width:560px}
+.fx-intro-body p{color:var(--mid);font-size:19px;line-height:1.75;margin-bottom:20px;text-wrap:pretty}
+.fx-intro-body p:last-of-type{margin-bottom:26px}
+
+/* ── 3. SOLUTIONS — two tall image cards ── */
+.fx-cards2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.fx-card{position:relative;display:block;min-height:520px;border-radius:22px;overflow:hidden;isolation:isolate;color:#fff}
+.fx-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.fx-card:hover img{transform:scale(1.07)}
+.fx-card-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,19,30,.12) 40%,rgba(20,19,30,.82) 100%);transition:background .35s}
+.fx-card:hover .fx-card-scrim{background:linear-gradient(180deg,rgba(20,19,30,.42) 0%,rgba(20,19,30,.9) 100%)}
+.fx-card-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:40px 32px;gap:10px}
+.fx-card-inner h3{font-family:var(--serif);font-size:38px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+.fx-card-inner p{font-size:16.5px;line-height:1.6;color:rgba(252,250,246,.84);max-width:38ch;text-wrap:pretty}
+.fx-card-link{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-weight:600;font-size:15.5px;color:#F0C39B}
+.fx-card-link span{transition:transform .25s}
+.fx-card:hover .fx-card-link span{transform:translateX(5px)}
+
+/* ── 4/7. MEDIA + TEXT ROW (support video, region panel) ── */
+.fx-row{display:grid;grid-template-columns:repeat(12,1fr);gap:0;align-items:center}
+.fx-row-media{grid-column:span 6}
+.fx-row-media img,.fx-row-media video{width:100%;height:clamp(340px,42vw,520px);object-fit:cover;border-radius:20px;box-shadow:0 18px 48px rgba(27,26,40,.16);display:block}
+.fx-row-text{grid-column:span 6;padding-right:64px}
+.fx-row--flip .fx-row-media{order:2}
+.fx-row--flip .fx-row-text{order:1;padding-right:0;padding-left:64px}
+.fx-row-text h2{font-family:var(--serif);font-size:clamp(36px,3.8vw,52px);line-height:1.08;font-weight:600;letter-spacing:-.012em;margin-bottom:18px;text-wrap:balance}
+.fx-row-text h2 em{color:var(--accent);font-style:italic}
+.fx-row-text p{color:var(--mid);font-size:18.5px;line-height:1.72;margin-bottom:18px;text-wrap:pretty}
+
+/* colour panel variant — gulf teal instead of Fusion's navy */
+.fx-panel{background:var(--teal);border-radius:24px;padding:32px;color:#FCFAF6}
+.fx-panel .fx-row-media{grid-column:span 7}
+.fx-panel .fx-row-text{grid-column:span 5;padding:24px 0 24px 52px}
+.fx-panel .fx-row-text h2{font-size:clamp(32px,2.9vw,42px)}
+.fx-panel .fx-row-text h2{color:#FCFAF6}
+.fx-panel .fx-row-text h2 em{color:#F0C39B;font-style:italic}
+.fx-panel .fx-row-text p{color:rgba(252,250,246,.84)}
+.fx-panel .fx-row-media img{box-shadow:0 18px 48px rgba(0,0,0,.24)}
+
+/* ── 5. WORK — 3-up tall cards ── */
+.fx-work{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.fx-work-card{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border-radius:22px;background:var(--dark);padding:280px 30px 30px;color:#fff;min-height:440px}
+.fx-work-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.fx-work-card:hover img{transform:scale(1.06)}
+.fx-work-card::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(20,19,30,.92) 8%,rgba(20,19,30,.35) 52%,transparent 80%)}
+.fx-work-meta{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(252,250,246,.72);font-weight:600;margin-bottom:12px}
+.fx-work-meta i{width:3px;height:3px;border-radius:50%;background:var(--accent);font-style:normal}
+.fx-work-card h3{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.16;letter-spacing:-.005em}
+.fx-work-card p{margin-top:10px;font-size:15.5px;line-height:1.6;color:rgba(252,250,246,.8);text-wrap:pretty}
+
+/* ── 6. QUOTES — scroll-snap carousel ── */
+.fx-quotes-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 48px 8px;scroll-padding-left:48px}
+.fx-quotes-track::-webkit-scrollbar{display:none}
+.fx-quote{flex:0 0 min(60%,720px);scroll-snap-align:center;background:#fff;border:1px solid var(--cream2);border-radius:22px;padding:44px 48px;display:flex;flex-direction:column;gap:22px}
+.fx-stars{display:flex;gap:5px;color:var(--accent)}
+.fx-quote blockquote{font-family:var(--serif);font-size:25px;line-height:1.45;font-weight:500;letter-spacing:-.005em;text-wrap:pretty}
+.fx-quote-by{display:flex;align-items:center;gap:14px;margin-top:auto}
+.fx-quote-av{width:46px;height:46px;border-radius:50%;background:rgba(197,114,56,.12);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;letter-spacing:.04em;flex:0 0 auto}
+.fx-quote-name{font-weight:600;font-size:16.5px}
+.fx-quote-where{font-size:14.5px;color:var(--mid)}
+.fx-quotes-nav{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:34px}
+.fx-qbtn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--cream3);display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,background .2s;color:var(--dark)}
+.fx-qbtn:hover{border-color:var(--accent);color:var(--accent);background:rgba(197,114,56,.06)}
+
+/* ── 8. CTA — headline + actions, deliberately form-free ── */
+.fx-cta{position:relative;overflow:hidden;background:var(--cream2);text-align:center;padding:104px 48px}
+.fx-cta::before{content:'';position:absolute;left:50%;top:-40%;width:min(900px,120%);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(197,114,56,.13),transparent 62%);pointer-events:none}
+.fx-cta-inner{position:relative;max-width:720px;margin:0 auto}
+.fx-cta h2{font-family:var(--serif);font-size:clamp(38px,4.2vw,58px);line-height:1.08;font-weight:600;letter-spacing:-.012em;text-wrap:balance}
+.fx-cta h2 em{color:var(--accent);font-style:italic}
+.fx-cta p{margin-top:22px;color:var(--mid);font-size:19.5px;line-height:1.72;text-wrap:pretty}
+
+/* ── ACTION ROW — replaces the stock name/email/phone inline form ── */
+.fx-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 26px;margin-top:34px}
+.fx-actions--left{justify-content:flex-start}
+.fx-call{display:inline-flex;align-items:center;gap:11px;font-size:19px;font-weight:600;letter-spacing:-.005em;transition:color .2s}
+.fx-call:hover{color:var(--accent)}
+.fx-call svg{color:var(--accent);flex:0 0 auto}
+.fx-call small{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);font-weight:600;margin-bottom:2px}
+.fx-actions--onDark .fx-call{color:#FCFAF6}
+.fx-actions--onDark .fx-call small{color:rgba(252,250,246,.6)}
+.fx-actions--onDark .fx-call:hover{color:#F0C39B}
+
+/* ── responsive ── */
+@media (max-width:1100px){
+  .fx-intro{gap:56px}
+  .fx-row-text{padding-right:40px}
+  .fx-row--flip .fx-row-text{padding-left:40px}
+  .fx-panel .fx-row-text{padding-left:36px}
+  .fx-work{grid-template-columns:1fr 1fr}
+  .fx-work-card:last-child{grid-column:span 2;padding-top:200px;min-height:380px}
+}
+@media (max-width:899px){
+  .fx-wrap{padding:0 28px}
+  .fx-sec{padding:72px 0}
+  .fx-hero{min-height:min(78vh,620px)}
+  .fx-hero-inner{padding:110px 28px 130px;gap:20px}
+  .fx-hero-bar{padding:14px 28px;font-size:11.5px;letter-spacing:.12em;justify-content:center;text-align:center}
+  .fx-hero-brands{gap:18px;justify-content:center}
+  .fx-intro{grid-template-columns:1fr;gap:28px}
+  .fx-intro h2{max-width:none}
+  .fx-cards2{grid-template-columns:1fr;gap:20px}
+  .fx-card{min-height:400px}
+  .fx-card-inner h3{font-size:32px}
+  .fx-row{grid-template-columns:1fr;gap:32px}
+  .fx-row-media,.fx-row-text,.fx-panel .fx-row-media,.fx-panel .fx-row-text{grid-column:span 1;padding:0}
+  .fx-row--flip .fx-row-media{order:0}
+  .fx-row--flip .fx-row-text{order:0;padding:0}
+  .fx-panel{padding:22px;border-radius:20px}
+  .fx-panel .fx-row-text{padding:4px 4px 12px}
+  .fx-work{grid-template-columns:1fr}
+  .fx-work-card,.fx-work-card:last-child{grid-column:span 1;padding-top:220px;min-height:380px}
+  .fx-quotes-track{padding:4px 28px 8px;scroll-padding-left:28px}
+  .fx-quote{flex:0 0 88%;padding:32px 28px}
+  .fx-quote blockquote{font-size:21px}
+  .fx-cta{padding:78px 28px}
+}
+@media (max-width:599px){
+  .fx-head{margin-bottom:40px}
+  .fx-hero h1{font-size:42px}
+  .fx-hero-sub{font-size:17.5px}
+  .fx-hero-cta{width:100%;flex-direction:column}
+  .fx-hero-cta>*{width:100%;justify-content:center}
+  .fx-actions{flex-direction:column;align-items:stretch;text-align:center}
+  .fx-actions .btn-solid,.fx-actions .home-hero-cta-primary{justify-content:center}
+  .fx-call{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .fx-hero-media{display:none}
+  .fx-card img,.fx-work-card img{transition:none}
+}
