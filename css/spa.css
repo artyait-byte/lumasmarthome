@@ -462,104 +462,6 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .btn-solid,.btn-ghost,.home-hero-cta-primary,.home-hero-cta-ghost{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
 
 /* ── BENTO (Smart Home Solutions) ── */
-.cat-bento{
-  display:grid;
-  grid-template-columns:1.45fr 1.1fr 0.95fr;
-  grid-template-rows:repeat(3,minmax(240px,1fr));
-  grid-template-areas:
-    "lit  win  sec"
-    "lit  thr  av"
-    "auto auto net";
-  gap:.65rem;
-  margin-top:44px;
-}
-.cat-bento .cat-tile{
-  position:relative;display:block;overflow:hidden;
-  border-radius:14px;background:#1B1A28;isolation:isolate;
-  outline:none;text-decoration:none;
-}
-.cat-bento .cat-tile:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
-.cat-bento .cat-tile[data-area="lit"] {grid-area:lit}
-.cat-bento .cat-tile[data-area="win"] {grid-area:win}
-.cat-bento .cat-tile[data-area="sec"] {grid-area:sec}
-.cat-bento .cat-tile[data-area="thr"] {grid-area:thr}
-.cat-bento .cat-tile[data-area="av"]  {grid-area:av}
-.cat-bento .cat-tile[data-area="auto"]{grid-area:auto}
-.cat-bento .cat-tile[data-area="net"] {grid-area:net}
-.cat-bento .cat-bg{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;
-  transform:scale(1);
-  transition:transform 600ms cubic-bezier(.2,.7,.2,1);
-  z-index:0;
-}
-.cat-bento .cat-tile:hover .cat-bg{transform:scale(1.06)}
-.cat-bento .cat-overlay{
-  position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,transparent 0%,rgba(15,74,66,0.78) 100%);
-  transition:background 420ms ease;
-}
-.cat-bento .cat-tile:hover .cat-overlay{
-  background:linear-gradient(180deg,rgba(181,107,58,0.18) 0%,rgba(15,74,66,0.92) 100%);
-}
-.cat-bento .hex{
-  position:absolute;top:1.25rem;left:1.25rem;z-index:3;
-  width:38px;height:38px;background:var(--accent);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-}
-.cat-bento .cat-arrow{
-  position:absolute;top:1.25rem;right:1.25rem;z-index:3;
-  width:32px;height:32px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.6);
-  display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,.9);font-size:14px;line-height:1;
-  opacity:0;transform:translateX(-6px);
-  transition:opacity 280ms ease,transform 280ms ease;
-}
-.cat-bento .cat-tile:hover .cat-arrow{opacity:1;transform:translateX(0)}
-@media (max-width:1099px){.cat-bento .cat-arrow{display:none}}
-.cat-bento .cat-text{
-  position:absolute;left:0;bottom:0;z-index:2;
-  padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;max-width:92%;
-}
-.cat-bento .cat-text .eyebrow{
-  font-family:var(--sans);font-size:.82rem;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.78);font-weight:500;
-}
-.cat-bento .cat-text h3{
-  font-family:var(--serif);font-weight:500;color:#fff;
-  font-size:clamp(1.7rem,2.6vw,2.4rem);
-  line-height:1.05;margin:0;text-wrap:pretty;letter-spacing:-.005em;
-}
-.cat-bento .luma-bg--audio{
-  background-image:url('/assets/photos/mega-audio-video.jpg?v=6');
-}
-@media (max-width:1099px) and (min-width:760px){
-  .cat-bento{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:auto;
-    grid-template-areas:
-      "lit  lit"
-      "win  sec"
-      "thr  av"
-      "auto auto"
-      "net  net";
-  }
-  .cat-bento .cat-tile{min-height:240px}
-  .cat-bento .cat-tile[data-area="lit"]{min-height:320px}
-}
-@media (max-width:759px){
-  .cat-bento{
-    grid-template-columns:1fr;
-    grid-template-rows:auto;
-    grid-template-areas:"lit" "win" "sec" "thr" "av" "auto" "net";
-    gap:.5rem;
-  }
-  .cat-bento .cat-tile{aspect-ratio:4/3;width:100%;min-width:0}
-}
-
 /* ── THEATERS PAGE ── */
 .th-hero{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;padding:72px 80px 64px;max-width:1280px;margin:0 auto}
 .th-hero-img{border-radius:20px;overflow:hidden;height:520px;background:#1B1A28}
@@ -965,22 +867,13 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .footer-meta{flex-direction:column;text-align:left}
   .footer-logo{font-size:20px}
 
-  /* BENTO — single column with taller landscape photos on phone */
-  .cat-bento{
     grid-template-columns:1fr;
     grid-template-rows:auto;
     grid-template-areas:"lit" "win" "sec" "thr" "av" "auto" "net";
     gap:14px;margin-top:32px;
   }
-  .cat-bento .cat-tile{aspect-ratio:auto;min-height:0;height:clamp(240px,62vw,300px);width:100%}
-  /* Lighter overlay so the photo is actually visible behind the title */
-  .cat-bento .cat-overlay{
     background:linear-gradient(180deg,rgba(15,74,66,0.05) 0%,rgba(15,74,66,0.35) 55%,rgba(15,74,66,0.78) 100%)!important;
   }
-  .cat-bento .cat-text{padding:1.6rem 1.5rem 1.5rem;max-width:96%}
-  .cat-bento .cat-text .eyebrow{font-size:.95rem;letter-spacing:.14em}
-  .cat-bento .cat-text h3{font-size:2.1rem;line-height:1.08}
-  .cat-bento .hex{top:1.2rem;left:1.2rem;width:46px;height:46px}
 
   /* Section headers / generic page padding wrappers */
   .topbar{font-size:13px;padding:8px 16px}
@@ -1064,7 +957,6 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .moment-card{aspect-ratio:16/10}
   .moment-name{font-size:28px}
   .moment-desc{font-size:16px;line-height:1.55}
-  .cat-bento .cat-text h3{font-size:1.85rem}
   .home-hero-title{font-size:50px;line-height:1.04}
   .home-hero-sub{font-size:20px;line-height:1.65}
   .home-hero-sub--soft{font-size:18.5px}
@@ -1168,11 +1060,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .fx-card-foot .fx-more{margin-top:8px;color:#fff}
 
 /* ── 4/7. IMAGE + TEXT — 12-col, media and copy each take six ─────────── */
+/* the reference puts copy first and media second in every row, and hangs
+   the 64px gutter on the media side (their md:pl-16) */
 .fx-row{display:grid;grid-template-columns:repeat(12,1fr);align-items:center}
-.fx-row-media{grid-column:span 6}
-.fx-row-copy{grid-column:span 6;padding-left:64px}
-.fx-row--mediaLeft .fx-row-media{order:-1}
-.fx-row--mediaLeft .fx-row-copy{padding-left:0;padding-right:64px}
+.fx-row-copy{grid-column:span 6;order:1}
+.fx-row-media{grid-column:span 6;order:2;padding-left:64px}
 .fx-row-media img,.fx-row-media video{display:block;width:100%;height:clamp(320px,26vw,520px);
   object-fit:cover;border-radius:var(--fx-radius);
   box-shadow:0 10px 15px -3px rgba(20,19,30,.1),0 4px 6px -4px rgba(20,19,30,.1)}
@@ -1246,8 +1138,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 /* ── responsive: their breakpoints (md 768, lg 1024) ──────────────────── */
 @media (max-width:1023px){
   .fx-intro{gap:48px}
-  .fx-row-copy{padding-left:40px}
-  .fx-row--mediaLeft .fx-row-copy{padding-right:40px}
+  .fx-row-media{padding-left:40px}
   .fx-panel .fx-row-media,.fx-panel .fx-row-copy{grid-column:span 6}
   .fx-work{grid-template-columns:1fr 1fr}
   .fx-work-card:last-child{grid-column:span 2;padding-top:220px}
@@ -1268,9 +1159,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .fx-row{grid-template-columns:1fr}
   .fx-row-media,.fx-row-copy,
   .fx-panel .fx-row-media,.fx-panel .fx-row-copy{grid-column:span 1;padding:0}
-  .fx-row--mediaLeft .fx-row-media{order:0}
   .fx-row-copy{padding-bottom:24px}
-  .fx-row--mediaLeft .fx-row-copy{padding-right:0}
   .fx-work,.fx-work-card:last-child{grid-template-columns:1fr;grid-column:span 1}
   .fx-work-card{padding:192px 24px 24px}
   .fx-work-card h3{font-size:20px}
@@ -1392,4 +1281,105 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .th-projects > .th-project{
     width:100%;min-width:0;height:auto!important;
   }
+}
+
+/* ── DISCIPLINES ROW — the reference's sticky-panel card, seven across ── */
+.fx-panels{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.fx-panels::-webkit-scrollbar{display:none}
+.fx-panel-card{flex:0 0 calc(33.3333% - 11px);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;
+  background:var(--cream2);border-radius:var(--fx-radius);overflow:hidden;color:var(--dark)}
+.fx-panel-img{display:block;aspect-ratio:16/9;overflow:hidden}
+.fx-panel-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s ease-out}
+.fx-panel-card:hover .fx-panel-img img{transform:scale(1.04)}
+.fx-panel-body{display:flex;flex-direction:column;flex:1;padding:32px 16px}
+.fx-panel-body h3{font-family:var(--sans);font-size:24px;font-weight:400;line-height:1.2;margin:0 0 8px}
+.fx-panel-rule{display:block;width:100px;height:3px;background:var(--accent);margin-bottom:16px}
+.fx-panel-body p{font-size:16px;line-height:1.5;color:var(--mid);margin:0 0 16px}
+.fx-panel-more{margin-top:auto;display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:16px;line-height:1.5}
+.fx-panel-more i{font-style:normal;transition:transform .2s}
+.fx-panel-card:hover .fx-panel-more i{transform:translateX(4px)}
+@media (max-width:1023px){.fx-panel-card{flex-basis:calc(50% - 8px)}}
+@media (max-width:767px){.fx-panel-card{flex-basis:88%}}
+
+/* ==========================================================================
+   TYPE RAMP — one system across the whole site.
+   Display: Cormorant at 500, -0.02em, 1.2, on the 72 / 60 / 48 steps the
+   reference uses (their 7xl / 6xl / 5xl). Sub-heads at 500. Body on 18 / 16
+   / 14 (their prose-lg / base / sm). This pulls the legacy LUMA sections —
+   still on 600-weight serif and a spread of 13.5–19.5px bodies — onto the
+   same ramp as the rebuilt ones, so a page reads as one hand.
+   ========================================================================== */
+body{font-size:16px;line-height:1.5}
+.hero-title,.contact-title,.geo-hero-text h1,.lit-hero-text h1{
+  font-size:clamp(40px,5vw,72px)!important;line-height:1.2!important;font-weight:500!important;letter-spacing:-.02em!important}
+.sec-title,.geo-strip-title,.geo-subhead,.th-cta-form h2{
+  font-size:clamp(30px,3.4vw,48px)!important;line-height:1.2!important;font-weight:500!important;letter-spacing:-.02em!important}
+.moment-name,.th-card h3,.th-room-name,.th-project-name,.au-card-name,.prn-card h3,.geo-card h3,.journal-row h2,
+.sp-plan-name,.proc-step h4,.bw-q-label,.geo-prose h2,.demo-modal-title{font-weight:500!important;letter-spacing:-.01em}
+.th-why-num,.stat-band .stat-num,.proc-num,.sp-plan-price{font-weight:500!important}
+.sec-label{font-size:14px;letter-spacing:.05em;font-weight:400;color:var(--accent)}
+.sec-body,.hero-body,.geo-prose p,.moment-desc,.th-card p,.th-room-desc,.th-why-text,.prn-card p,.proc-step p,
+.geo-card p,.journal-row p,.contact-lede,.sp-plan p,.au-card p{font-size:18px!important;line-height:1.45!important}
+.th-project-meta,.th-project-tag,.geo-chip,.moment-time,.footer,.footer *,.topbar,.nav-links{font-size:14px}
+.th-project-tag,.moment-time,.sec-label{letter-spacing:.05em!important;text-transform:uppercase}
+.nav-links{font-size:16px}
+/* legacy grids ran 12–25px gaps; the reference runs 32 */
+.th-grid-3,.th-projects,.proc-grid,.prn-grid,.geo-grid,.sg-top,.sg-bot{gap:32px!important}
+@media (max-width:767px){
+  .sec-body,.hero-body,.geo-prose p,.moment-desc,.th-card p,.th-room-desc,.th-why-text,.prn-card p,.proc-step p,
+  .geo-card p,.journal-row p{font-size:16px!important}
+  .th-grid-3,.th-projects,.proc-grid,.prn-grid,.geo-grid{gap:16px!important}
+}
+
+/* inline fontWeight:600 on a handful of legacy headings — one rule catches them,
+   then the two sans card titles are pinned back to the reference's 400 */
+.page :is(h1,h2,h3,h4){font-weight:500!important}
+.fx-work-card h3,.fx-panel-body h3{font-weight:400!important}
+
+/* ── VALUES GRID — their navy panel in gulf teal: photo 5 / copy 7,
+   list in two columns, each item a 64px accent tile beside its text ── */
+.fx-values{background:var(--teal);color:#FCFAF6;padding:96px 0}
+.fx-values-grid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+/* nine cities run five rows; the photo stays a photo instead of stretching to match */
+.fx-values-photo{position:relative;height:clamp(420px,38vw,560px);position:sticky;top:112px}
+.fx-values-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--fx-radius)}
+.fx-values-copy{display:flex;flex-direction:column;gap:40px}
+.fx-values-copy .fx-d3{color:#FCFAF6;margin-bottom:8px}
+.fx-values-copy .fx-d3 em{color:#F0C39B}
+.fx-values-copy .fx-lede{color:rgba(252,250,246,.88)}
+.fx-values-copy .fx-more{color:#F0C39B}
+.fx-values-list{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.fx-value{display:flex;align-items:flex-start;gap:16px;color:#FCFAF6}
+.fx-tile{flex:0 0 48px;width:48px;height:48px;border-radius:var(--fx-radius);background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.fx-value:hover .fx-tile{background:var(--accent2)}
+.fx-value strong{display:block;font-size:20px;font-weight:500;line-height:1.3}
+.fx-value small{display:block;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:#F0C39B;margin:2px 0 6px}
+.fx-value p{font-size:18px;line-height:1.45;color:rgba(252,250,246,.82);margin:0}
+
+/* ── BRANDS — their logo row: bordered white cards, marks centred ── */
+.fx-brands{display:flex;gap:48px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;scroll-snap-type:x mandatory}
+.fx-brands::-webkit-scrollbar{display:none}
+.fx-brand{flex:0 0 326px;height:250px;border:1px solid var(--cream2);border-radius:var(--fx-radius);background:#fff;
+  display:flex;align-items:center;justify-content:center;scroll-snap-align:start;padding:40px}
+.fx-brand img{max-width:200px;max-height:80px;object-fit:contain;filter:grayscale(1);opacity:.85}
+.fx-brand-name{font-family:var(--sans);font-size:26px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dark)}
+
+/* journal cards carry no photo; the date sits where the image would */
+.fx-panel-card--text .fx-panel-body{padding-top:40px}
+.fx-panel-card--text small{display:block;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.fx-panel-card--text h3{font-size:22px}
+
+@media (max-width:1023px){
+  .fx-values{padding:64px 0}
+  .fx-values-grid{grid-template-columns:1fr;gap:40px}
+  .fx-values-photo{position:relative;top:auto;height:320px}
+  .fx-brand{flex-basis:260px;height:200px}
+}
+@media (max-width:767px){
+  .fx-values-list{grid-template-columns:1fr;gap:20px}
+  .fx-tile{flex-basis:52px;width:52px;height:52px}
+  .fx-brands{gap:16px}
+  .fx-brand{flex-basis:200px;height:150px;padding:24px}
+  .fx-brand-name{font-size:20px}
 }

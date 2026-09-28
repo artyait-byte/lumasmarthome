@@ -118,54 +118,6 @@ function RelatedLinks({page, navigate}){
   );
 }
 
-function HomeSeoCluster({navigate}){
-  const g = geoData();
-  const cities = g.cities || {};
-  const articles = g.articles || {};
-  const order = (g.articleOrder || []).slice(0,4);
-  return (
-    <section className="th-section home-seo-cluster">
-      <div className="sec-label">Gulf Coast</div>
-      <h2 className="sec-title">Where we work, and <em>what we write.</em></h2>
-      <p className="sec-body">City pages live in their own silo so Sarasota stays Sarasota. The journal is for the searches that are not a trade name yet — start with smart home Sarasota, then Lutron, shades, and cameras.</p>
-      <div className="geo-card-grid">
-        {Object.keys(cities).map(id=>{
-          const c = cities[id];
-          return (
-            <NavLink key={id} page={cityPageId(id)} navigate={navigate} className="geo-card">
-              <div className="geo-card-kicker">{c.county}</div>
-              <h3>{c.name}</h3>
-              <p>{c.tagline}</p>
-              <span className="geo-card-go">Open city page →</span>
-            </NavLink>
-          );
-        })}
-      </div>
-      <h3 className="geo-subhead">From the journal</h3>
-      <div className="journal-list">
-        {order.map(id=>{
-          const a = articles[id];
-          if (!a) return null;
-          return (
-            <NavLink key={id} page={id} navigate={navigate} className="journal-row">
-              <div className="journal-row-date">{a.date}</div>
-              <div>
-                <h2>{a.h1}</h2>
-                <p>{a.dek}</p>
-              </div>
-            </NavLink>
-          );
-        })}
-      </div>
-      <div className="geo-next" style={{justifyContent:'center'}}>
-        <NavLink page="service-areas" navigate={navigate} className="btn-solid">All service areas</NavLink>
-        <NavLink page="journal" navigate={navigate} className="btn-ghost">All notes</NavLink>
-        <NavLink page="luma-smart-home-sarasota" navigate={navigate} className="btn-ghost">This LUMA, not the others</NavLink>
-      </div>
-    </section>
-  );
-}
-
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
 const lu = (path) => path + '?v=15';
@@ -480,58 +432,7 @@ function Nav({navigate}) {
 }
 
 /* ─── BENTO IMAGE MAP (data-img keys) ─── */
-const BENTO_IMAGES = {
-  'lighting-scene':    PHOTOS.lighting,
-  'window-shades':     PHOTOS.window,
-  'security-camera':   PHOTOS.security,
-  'home-theater':      PHOTOS.theater,
-  'waterfront-lanai':  PHOTOS.heroHome,
-  'networking-rack':   PHOTOS.networking,
-};
-
 /* ─── BENTO ICONS (16px white SVG) ─── */
-const bentoIcons = {
-  lit: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M8 1.5a4 4 0 0 0-2.5 7.1V11h5V8.6A4 4 0 0 0 8 1.5z"/><path d="M6 12.5h4M6.6 14h2.8"/></svg>,
-  win: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round"><rect x="2.5" y="2" width="11" height="12" rx="0.6"/><line x1="2.5" y1="5.5" x2="13.5" y2="5.5"/><line x1="2.5" y1="8.5" x2="13.5" y2="8.5"/><line x1="2.5" y1="11.5" x2="13.5" y2="11.5"/></svg>,
-  sec: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M8 1.5L2.5 3.8v3.7c0 3.2 2.3 5.7 5.5 6.5 3.2-.8 5.5-3.3 5.5-6.5V3.8L8 1.5z"/><path d="M5.5 7.8l1.8 1.8L11 6"/></svg>,
-  thr: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinejoin="round"><rect x="1.5" y="3" width="13" height="9" rx="1.3"/><polygon points="6.5,5.8 6.5,9.7 10.3,7.75" fill="white"/></svg>,
-  av: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round"><path d="M3.5 6h1.7L8 3.5v9L5.2 10H3.5V6z"/><path d="M10 6.2a2.6 2.6 0 0 1 0 3.6"/><path d="M11.7 4.5a5 5 0 0 1 0 7"/></svg>,
-  auto: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="8" r="6"/><polyline points="8,4.5 8,8 5.5,6.2"/></svg>,
-  net: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round"><path d="M2.2 6.2A9 9 0 0 1 13.8 6.2" strokeOpacity=".5"/><path d="M3.8 8.4a7 7 0 0 1 8.4 0" strokeOpacity=".75"/><path d="M5.5 10.6a4.5 4.5 0 0 1 5 0"/><circle cx="8" cy="13" r="1.1" fill="white" stroke="none"/></svg>,
-};
-
-const BENTO_TILES = [
-  {area:'lit',  href:'lighting',   img:'lighting-scene',  eyebrow:'Premium lighting control', h3:'Indoor & outdoor lighting'},
-  {area:'win',  href:'shading',    img:'window-shades',   eyebrow:'Motorized shading systems', h3:'Window treatments'},
-  {area:'sec',  href:'security',   img:'security-camera', eyebrow:'On-prem · Encrypted',       h3:'Security & surveillance'},
-  {area:'thr',  href:'theaters',   img:'home-theater',    eyebrow:'Calibrated · Acoustic',     h3:'Home theaters'},
-  {area:'av',   href:'audio',      img:null, audioBg:true, eyebrow:'Whole-home audio · Indoor + lanai', h3:'Audio & video'},
-  {area:'auto', href:'automation', img:'waterfront-lanai',eyebrow:'One press · The right state',h3:'Home automation'},
-  {area:'net',  href:'networking', img:'networking-rack', eyebrow:'Wi-Fi 6/7 · Enterprise',     h3:'Networking'},
-];
-
-function BentoTile({tile, navigate}) {
-  const bgStyle = tile.img
-    ? {backgroundImage:`url(${BENTO_IMAGES[tile.img]})`}
-    : undefined;
-  return (
-    <a className="cat-tile" data-area={tile.area} href={pathFor(tile.href)}
-       onClick={e=>spaClick(e, tile.href, navigate)}
-       aria-label={`${tile.h3} service overview`}>
-      {tile.audioBg
-        ? <div className="cat-bg luma-bg--audio"/>
-        : <div className="cat-bg" data-img={tile.img} style={bgStyle}/>}
-      <div className="cat-overlay"/>
-      <span className="hex" aria-hidden="true">{bentoIcons[tile.area]}</span>
-      <span className="cat-arrow" aria-hidden="true">→</span>
-      <div className="cat-text">
-        <span className="eyebrow">{tile.eyebrow}</span>
-        <h3>{tile.h3}</h3>
-      </div>
-    </a>
-  );
-}
-
 /* ─── SERVICE PHOTO CARD ─── */
 function ServiceCard({id, name, height=240}) {
   return (
@@ -697,7 +598,7 @@ function FxSupport({navigate}) {
     <section className="fx-py-md">
       <div className="fx-wide">
         <div className="fx-row">
-          <div className="fx-row-copy" style={{paddingLeft:0, paddingRight:64}}>
+          <div className="fx-row-copy">
             <h2 className="fx-d3">The year after the install</h2>
             <div className="fx-lede">
               <p>Our service team sits in Sarasota and drives the whole coast, Bradenton to Naples. You get the technician who commissioned your house, not a queue.</p>
@@ -713,6 +614,67 @@ function FxSupport({navigate}) {
               <source src="/assets/video/luma-care.mp4" type="video/mp4"/>
             </video>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+/* ── DISCIPLINES — the reference's card row: cream card, 16:9 photo on top,
+   sans title, a 3px accent rule 100px wide, prose, "Learn more →". Seven
+   cards, three in view, the rest a swipe away. ── */
+const FX_DISCIPLINES = [
+  {page:'lighting',   photo:PHOTOS.lightingKetra, title:'Lighting control',
+   body:'Lutron and Ketra on every circuit, warm-dim tuned for evening, keypads matched to your plates.'},
+  {page:'shading',    photo:PHOTOS.window,        title:'Motorized shades',
+   body:'Three layers on the west glass, quiet drives, pockets drawn before the drywall goes up.'},
+  {page:'security',   photo:PHOTOS.securityHero,  title:'Cameras & security',
+   body:'Footage stored on the property, encrypted, no monthly fee and no cloud in the way.'},
+  {page:'theaters',   photo:PHOTOS.theater,       title:'Home theaters',
+   body:'Rooms designed for sound first, calibrated in place, with the gear out of sight.'},
+  {page:'audio',      photo:PHOTOS.audio,         title:'Audio & video',
+   body:'Speakers flush in the ceiling and out on the lanai, one source list across every zone.'},
+  {page:'automation', photo:PHOTOS.heroHome,      title:'Home automation',
+   body:'Morning, afternoon, evening, away. One press on a keypad and the house takes the state.'},
+  {page:'networking', photo:PHOTOS.networkingRack,title:'Networking',
+   body:'Wired wherever wire can land, Wi-Fi 6/7 where it cannot, and a rack somebody can read.'}
+];
+
+function FxDisciplines({navigate}) {
+  const track = React.useRef(null);
+  const step = (dir) => {
+    const el = track.current; if (!el) return;
+    const card = el.querySelector('.fx-panel-card');
+    el.scrollBy({left: dir * (card ? card.offsetWidth + 16 : el.clientWidth / 3), behavior:'smooth'});
+  };
+  return (
+    <section className="fx-band--plain fx-py-md">
+      <div className="fx-wide">
+        <div className="fx-heads" style={{maxWidth:768, marginBottom:48}}>
+          <p className="fx-lede"><strong style={{color:'var(--dark)'}}>Seven disciplines, one drawing set.</strong><br/>
+          Every layer of the house is designed together, so a keypad in the hall knows about the shades, the lights and the music behind it.</p>
+        </div>
+        <div className="fx-panels" ref={track}>
+          {FX_DISCIPLINES.map(d => (
+            <NavLink key={d.page} page={d.page} navigate={navigate} className="fx-panel-card">
+              <span className="fx-panel-img"><img src={d.photo} alt={d.title} loading="lazy" decoding="async"/></span>
+              <span className="fx-panel-body">
+                <h3>{d.title}</h3>
+                <i className="fx-panel-rule" aria-hidden="true"/>
+                <p>{d.body}</p>
+                <span className="fx-panel-more">Learn more <i aria-hidden="true">→</i></span>
+              </span>
+            </NavLink>
+          ))}
+        </div>
+        <div className="fx-quotes-nav">
+          <button className="fx-qbtn" onClick={()=>step(-1)} aria-label="Previous">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button className="fx-qbtn" onClick={()=>step(1)} aria-label="Next">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -794,28 +756,117 @@ function FxQuotes() {
   );
 }
 
-/* ── 7. REGION PANEL ──────────────────────────────────────────────────── */
+/* ── 7. REGION PANEL — the reference's "why homeowners choose" grid:
+   photo in five columns, copy and a two-column icon list in seven. Here the
+   list is the nine cities, so every city page keeps its link from home. ── */
 function FxRegion({navigate}) {
   const nap = napInfo();
+  const cities = geoData().cities || {};
   return (
-    <section className="fx-py-md">
+    <section className="fx-values">
       <div className="fx-wide">
-        <div className="fx-panel">
-          <div className="fx-row fx-row--mediaLeft">
-            <div className="fx-row-media">
-              <img src={PHOTOS.heroSplash} alt="Sarasota bayfront at golden hour" loading="lazy" decoding="async"/>
-            </div>
-            <div className="fx-row-copy">
-              <h2 className="fx-d3">One studio,<br/><em>five counties</em></h2>
+        <div className="fx-values-grid">
+          <div className="fx-values-photo">
+            <img src={PHOTOS.heroSplash} alt="Sarasota bayfront" loading="lazy" decoding="async"/>
+          </div>
+          <div className="fx-values-copy">
+            <div>
+              <h2 className="fx-d3">One studio, <em>five counties</em></h2>
               <div className="fx-lede">
                 <p>We cover {nap.area} out of Sarasota. Same crew, same drawing set and same aftercare whether the house is on Siesta Key or forty minutes inland.</p>
               </div>
-              <p style={{marginTop:16}}>
-                <NavLink page="service-areas" navigate={navigate} className="fx-more">Where we work <i aria-hidden="true">→</i></NavLink>
-              </p>
             </div>
+            <div className="fx-values-list">
+              {Object.keys(cities).map(id => {
+                const c = cities[id];
+                return (
+                  <NavLink key={id} page={cityPageId(id)} navigate={navigate} className="fx-value">
+                    <span className="fx-tile" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                    </span>
+                    <span>
+                      <strong>{c.name}</strong>
+                      <small>{c.county}</small>
+                      <p>{c.tagline}</p>
+                    </span>
+                  </NavLink>
+                );
+              })}
+            </div>
+            <p><NavLink page="service-areas" navigate={navigate} className="fx-more">All service areas <i aria-hidden="true">→</i></NavLink></p>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 7b. BRANDS — the reference's logo row. Each card shows the maker's
+   own mark when /assets/brands/<slug>.svg is present and falls back to a
+   typeset name until it is, so real logos drop in without a code change. ── */
+const FX_BRANDS = [
+  ['lutron','Lutron'], ['clare','Clare'], ['rti','RTI'], ['sonos','Sonos'], ['sonance','Sonance'],
+  ['control4','Control4'], ['ketra','Ketra'], ['somfy','Somfy'], ['ubiquiti','Ubiquiti'],
+  ['josh','Josh.ai'], ['crestron','Crestron']
+];
+/* Add a slug here once its SVG is in /assets/brands/ — the card then shows
+   the mark instead of the typeset name, and nothing is requested before that. */
+const FX_BRAND_LOGOS = new Set([]);
+function FxBrandCard({slug, name}) {
+  return (
+    <div className="fx-brand" title={name}>
+      {FX_BRAND_LOGOS.has(slug)
+        ? <img src={'/assets/brands/'+slug+'.svg'} alt={name} loading="lazy"/>
+        : <span className="fx-brand-name">{name}</span>}
+    </div>
+  );
+}
+function FxBrands() {
+  return (
+    <section className="fx-band--plain fx-py-md">
+      <div className="fx-wide">
+        <h2 className="fx-d3" style={{fontSize:36, marginBottom:32}}>What we install</h2>
+        <div className="fx-brands">
+          {FX_BRANDS.map(([slug,name]) => <FxBrandCard key={slug} slug={slug} name={name}/>)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 7c. JOURNAL — four notes in the reference's card row, no photo ── */
+function FxJournal({navigate}) {
+  const g = geoData();
+  const articles = g.articles || {};
+  const order = (g.articleOrder || []).slice(0,4);
+  return (
+    <section className="fx-band fx-py-lg">
+      <div className="fx-wide">
+        <div className="fx-heads" style={{marginBottom:48}}>
+          <h2 className="fx-d3">From the journal</h2>
+          <p className="fx-lede">Notes for the searches that are not a trade name yet: smart home Sarasota, then Lutron, shades and cameras.</p>
+        </div>
+        <div className="fx-panels">
+          {order.map(id => {
+            const a = articles[id]; if (!a) return null;
+            return (
+              <NavLink key={id} page={id} navigate={navigate} className="fx-panel-card fx-panel-card--text">
+                <span className="fx-panel-body">
+                  <small>{a.date}</small>
+                  <h3>{a.h1}</h3>
+                  <i className="fx-panel-rule" aria-hidden="true"/>
+                  <p>{a.dek}</p>
+                  <span className="fx-panel-more">Read the note <i aria-hidden="true">→</i></span>
+                </span>
+              </NavLink>
+            );
+          })}
+        </div>
+        <p style={{textAlign:'center', marginTop:32}}>
+          <NavLink page="journal" navigate={navigate} className="fx-more">All notes <i aria-hidden="true">→</i></NavLink>
+          <span style={{margin:'0 16px', color:'var(--cream3)'}}>·</span>
+          <NavLink page="luma-smart-home-sarasota" navigate={navigate} className="fx-more">This LUMA, not the others <i aria-hidden="true">→</i></NavLink>
+        </p>
       </div>
     </section>
   );
@@ -844,22 +895,13 @@ function HomePage({navigate}) {
       <FxSolutions navigate={navigate}/>
       <FxSupport navigate={navigate}/>
 
-      {/* LUMA's own: the seven disciplines, one tile per service page */}
-      <section className="services-section">
-        <div className="services-intro">
-          <div className="sec-label">Smart Home Solutions</div>
-          <h2 className="sec-title">Seven disciplines. <em>One home.</em></h2>
-          <p className="sec-body">We design, install, and maintain the layers that let a modern Gulf Coast residence feel effortless.</p>
-        </div>
-        <div className="cat-bento">
-          {BENTO_TILES.map(t => <BentoTile key={t.area} tile={t} navigate={navigate}/>)}
-        </div>
-      </section>
+      <FxDisciplines navigate={navigate}/>
 
       <FxWork navigate={navigate}/>
       <FxQuotes/>
       <FxRegion navigate={navigate}/>
-      <HomeSeoCluster navigate={navigate}/>
+      <FxBrands/>
+      <FxJournal navigate={navigate}/>
       <FxCta navigate={navigate}/>
     </div>
   );
