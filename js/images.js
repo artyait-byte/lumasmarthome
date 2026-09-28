@@ -14,28 +14,28 @@
 
 window.LUMA_IMAGES = {
   // ---------- Smart Home Solutions — 7 menu categories -------------------
-  'lighting-scene':   '/assets/photos/lighting-scene.jpg?v=7',
-  'window-shades':    '/assets/photos/window-shades.jpg?v=7',
-  'home-theater':     '/assets/photos/home-theater.jpg?v=7',
-  'security-camera':  '/assets/photos/security-camera.jpg?v=7',
-  'networking-rack':  '/assets/photos/networking-rack.jpg?v=7',
-  'gulf-sunset':      '/assets/photos/gulf-sunset.jpg?v=7',
+  'lighting-scene':   '/assets/photos/lighting-scene.jpg?v=8',
+  'window-shades':    '/assets/photos/window-shades.jpg?v=8',
+  'home-theater':     '/assets/photos/home-theater.jpg?v=8',
+  'security-camera':  '/assets/photos/security-camera.jpg?v=8',
+  'networking-rack':  '/assets/photos/networking-rack.jpg?v=8',
+  'gulf-sunset':      '/assets/photos/gulf-sunset.jpg?v=8',
 
   // ---------- Lighting page — feature rows (RadioRA 3, designers) ---------
-  'lighting-lutron-hero': '/assets/photos/lighting-lutron-hero.jpg?v=7',
+  'lighting-lutron-hero': '/assets/photos/lighting-lutron-hero.jpg?v=8',
 
   // ---------- Hero / lifestyle -------------------------------------------
-  'waterfront-lanai': '/assets/photos/waterfront-lanai.jpg?v=7',
+  'waterfront-lanai': '/assets/photos/waterfront-lanai.jpg?v=8',
 
   // ---------- Designers page (architectural lighting portrait) -----------
-  'designers-chandelier': '/assets/photos/designers-chandelier.jpg?v=7',
+  'designers-chandelier': '/assets/photos/designers-chandelier.jpg?v=8',
 
   // ---------- Projects page — local assets (same pool as SPA index.html) ---
-  'project-bayfront':      '/assets/photos/waterfront-lanai.jpg?v=7',
-  'project-luxury-pool':   '/assets/photos/gulf-sunset.jpg?v=7',
-  'project-modern-villa':  '/assets/photos/waterfront-lanai.jpg?v=7',
-  'project-warm-interior': '/assets/photos/lighting-scene.jpg?v=7',
-  'project-architectural': '/assets/photos/designers-chandelier.jpg?v=7'
+  'project-bayfront':      '/assets/photos/waterfront-lanai.jpg?v=8',
+  'project-luxury-pool':   '/assets/photos/gulf-sunset.jpg?v=8',
+  'project-modern-villa':  '/assets/photos/waterfront-lanai.jpg?v=8',
+  'project-warm-interior': '/assets/photos/lighting-scene.jpg?v=8',
+  'project-architectural': '/assets/photos/designers-chandelier.jpg?v=8'
 };
 
 // --------------------------------------------------------------------------

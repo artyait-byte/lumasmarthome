@@ -120,7 +120,7 @@ function RelatedLinks({page, navigate}){
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=16';
+const lu = (path) => path + '?v=17';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
