@@ -149,6 +149,9 @@ const PHOTOS = {
   heroLighting:    lu('/assets/photos/lighting-lutron-hero.jpg'),
   lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
   lightingRania:   lu('/assets/photos/interior-recessed-warm.jpg'),
+  lightingKeypad:  lu('/assets/photos/lighting-keypad.jpg'),
+  lightingDay:     lu('/assets/photos/lighting-day.jpg'),
+  shadeFascia:     lu('/assets/photos/shade-fascia.jpg'),
   lightingLumaris: lu('/assets/photos/interior-living-fl.jpg'),
   heroDesigners:   lu('/assets/photos/hero-designers-new.jpg'),
 
@@ -923,7 +926,7 @@ function ShadingPage({navigate}) {
       ]}}
     panels={{h2:'Three layers, <em>one pocket</em>',
       items:[
-        {photo: PHOTOS.heroShading, title:'Solar shades', body:'Openness-weave fabric that tames glare and heat on the water side while keeping the view. The everyday layer on every gulf-facing pane.'},
+        {photo: PHOTOS.shadeFascia, title:'Solar shades', body:'Openness-weave fabric that tames glare and heat on the water side while keeping the view. The everyday layer on every gulf-facing pane.'},
         {photo: PHOTOS.moment1,     title:'Drapery', body:'Motorized tracks for the linen and sheers your designer chose, so the room still reads as a room and not as hardware.'},
         {photo: lu('/assets/photos/reel-bedroom.jpg'), title:'Blackout', body:'Side-channel blackout in bedrooms and the theater, quiet drives, and a keypad by the bed that closes the house for the night.'},
       ]}}
@@ -1077,11 +1080,19 @@ function LightingPage({navigate}) {
         {icon:I('M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8'), title:'Cove, soffit and accent', desc:'Hidden 2700K tape dimmable to 0.1%, art and niche accents on their own track, no visible hardware in the ceiling plane.'},
         {icon:I('M12 22s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12zM12 10h.01'), title:'Landscape and lanai', desc:'Sabal palms, oak canopies and the façade washed from the same keypad; warm path tape on the lanai with gulf-side glare kept off the glass.'},
       ]}}
+    pair={{
+      h2:'Same room, <em>eight in the morning and eight at night.</em>',
+      lead:'Nothing in the room changes but the light. The pendants, the cove and the lamp each hold their own level, and one keypad press moves all of them.',
+      items:[
+        {photo: PHOTOS.lightingDay,   label:'Day, no artificial light'},
+        {photo: PHOTOS.lightingKetra, label:'Evening scene, 2700K'},
+      ]
+    }}
     panels={{h2:'How we work <em>the light</em>',
       items:[
         {photo: PHOTOS.lightingKetra, title:'Scene design', body:'Morning coffee, focused work, candlelit dinner, movie night. Each scene pre-programmed to the exact colour temperature and level your life calls for, one press shifts the whole home.'},
         {photo: PHOTOS.lightingRania, title:'Fixture coordination', body:'We work downstream of your interior designer and lighting consultant. Visual Comfort chandeliers, RH pendants, custom cove in the millwork: every fixture tuned to dim smoothly and hold colour.'},
-        {photo: PHOTOS.heroLighting,  title:'Unified control', body:'Keypads, app and voice under a single control layer. We match keypad finishes to your hardware, commission every zone on site, and leave a system any family member can use.'},
+        {photo: PHOTOS.lightingKeypad, title:'Unified control', body:'Keypads, app and voice under a single control layer. We match keypad finishes to your hardware, commission every zone on site, and leave a system any family member can use.'},
       ]}}
     ctaTitle='Ready to light the house <em>properly?</em>'
     ctaBody='Send us the fixture schedule, or just the floor plan. We will come back with a control design that matches what your designer specified, and an honest range.'
@@ -1423,7 +1434,7 @@ function AutomationPage({navigate}) {
     panels={{h2:'Routines that <em>survive real life</em>',
       items:[
         {photo: PHOTOS.automationHero, title:'Tuned for ninety days', body:'We program the routines with you for three months, not once on day one. The first month is observation; the second and third are the real tuning.'},
-        {photo: lu('/assets/photos/wall-tablet.jpg'), title:'Buttons in your words', body:'Every keypad button documented and engraved the way you say it: Reading, Movie, Goodnight. Never LED1, Scene 4, Group 12.'},
+        {photo: PHOTOS.lightingKeypad, title:'Buttons in your words', body:'Every keypad button documented and engraved the way you say it: Reading, Movie, Goodnight. Never LED1, Scene 4, Group 12.'},
         {photo: PHOTOS.heroHome, title:'An annual visit, included', body:'We re-tune as your habits change. Kids grow up, work hours shift, the lanai becomes a gym. The routines move with you.'},
       ]}}
     ctaTitle='Start an <em>automation conversation</em>'
@@ -1466,7 +1477,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           <h1 style={{fontFamily:'var(--serif)',color:'#FCFAF6',margin:0}} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">')}}/>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img loading="lazy" decoding="async" src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
+          <img loading="eager" fetchpriority="high" decoding="async" src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
         </div>
       </section>
 
