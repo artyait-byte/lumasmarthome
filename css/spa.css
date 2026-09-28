@@ -13,8 +13,6 @@ a{color:inherit;text-decoration:none}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* ── TOP BAR ── */
-.topbar a{color:inherit}
-.topbar a:hover{color:#fff}
 
 /* ── NAV ── */
 .nav{display:flex;align-items:center;padding:0 48px;height:80px;border-bottom:1px solid var(--cream2);background:var(--cream);position:sticky;top:0;z-index:200}
@@ -97,11 +95,8 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .nav-logo{margin-right:0}
   .nav-links,.nav-actions{display:none}
   .nav-burger{display:flex}
-  .topbar{padding:8px 22px;font-size:12.5px;letter-spacing:.01em;gap:8px;flex-wrap:wrap;justify-content:center;text-align:center}
-  .topbar span:first-child{display:none}
 }
 @media (max-width:599px){
-  .topbar{font-size:12px;padding:7px 16px}
   .logo-luma{font-size:22px}
   .logo-sub{font-size:9.5px}
   .nav{padding:0 16px}
@@ -876,8 +871,6 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   }
 
   /* Section headers / generic page padding wrappers */
-  .topbar{font-size:13px;padding:8px 16px}
-  .topbar span{font-size:13px}
 
   /* Section titles + body copy — global readability bump */
   .sec-label{font-size:15.5px;letter-spacing:.18em}
@@ -944,8 +937,6 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .hero{padding:44px 20px 52px;gap:26px}
   .hero-title{font-size:44px;line-height:1.06}
   .hero-body{font-size:19px;line-height:1.65}
-  .topbar{flex-direction:column;gap:3px;padding:8px 14px;line-height:1.35;font-size:13.5px}
-  .topbar span{font-size:13.5px}
   .footer{padding:30px 18px;font-size:15.5px}
   .demo-plan-stage{aspect-ratio:5/4}
   .demo-modal-title{font-size:36px}
@@ -1007,6 +998,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* ── 1. HERO ──────────────────────────────────────────────────────────── */
 .fx-hero{position:relative;isolation:isolate;overflow:hidden;padding-top:56px;background:var(--cream)}
+.fx-hero-still{position:absolute;inset:0;z-index:-3;background-size:cover;background-position:center;pointer-events:none}
 .fx-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none}
 .fx-hero-scrim{position:absolute;inset:0;z-index:-1;
   background:linear-gradient(132deg,rgba(20,19,30,.8),rgba(20,19,30,.3))}
@@ -1320,7 +1312,6 @@ body{font-size:16px;line-height:1.5}
 .sec-label{font-size:14px;letter-spacing:.05em;font-weight:400;color:var(--accent)}
 .sec-body,.hero-body,.geo-prose p,.moment-desc,.th-card p,.th-room-desc,.th-why-text,.prn-card p,.proc-step p,
 .geo-card p,.journal-row p,.contact-lede,.sp-plan p,.au-card p{font-size:18px!important;line-height:1.45!important}
-.th-project-meta,.th-project-tag,.geo-chip,.moment-time,.footer,.footer *,.topbar,.nav-links{font-size:14px}
 .th-project-tag,.moment-time,.sec-label{letter-spacing:.05em!important;text-transform:uppercase}
 .nav-links{font-size:16px}
 /* legacy grids ran 12–25px gaps; the reference runs 32 */

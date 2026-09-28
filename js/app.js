@@ -354,10 +354,6 @@ function Nav({navigate}) {
   ];
   return (
     <div ref={navRef} style={{position:'sticky',top:0,zIndex:200}}>
-      <div className="topbar">
-        <NavLink page="service-areas" navigate={navigate}>Serving {nap.area}</NavLink>
-        <span>{nap.hours} &nbsp;·&nbsp; <a href={nap.telHref}>{nap.telephoneDisplay}</a></span>
-      </div>
       <nav className="nav">
         <NavLink page="home" navigate={navigate} className="nav-logo" aria-label="LUMA Smart Home home">
           <div className="logo-dot"/>
@@ -536,6 +532,9 @@ function FxActions({navigate, label='Book a consultation', page='contact', align
 function FxHero() {
   return (
     <section className="fx-hero" aria-label="LUMA Smart Home">
+      {/* the still sits under the clip, so the hero is a photograph whenever the
+          video is not playing: reduced-motion, blocked autoplay, slow network */}
+      <div className="fx-hero-still" style={{backgroundImage:"url('/assets/video/hero-sarasota-poster.jpg')"}} aria-hidden="true"/>
       <video className="fx-hero-media" autoPlay muted loop playsInline preload="metadata"
              poster="/assets/video/hero-sarasota-poster.jpg" aria-hidden="true">
         <source src="/assets/video/hero-sarasota.webm" type="video/webm"/>
