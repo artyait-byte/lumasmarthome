@@ -17,7 +17,7 @@ window.LUMA_IMAGES = {
   'lighting-scene':   '/assets/photos/lighting-scene.jpg?v=8',
   'window-shades':    '/assets/photos/window-shades.jpg?v=8',
   'home-theater':     '/assets/photos/home-theater.jpg?v=8',
-  'security-camera':  '/assets/photos/security-camera.jpg?v=8',
+  'security-camera':  '/assets/photos/cam-bullet.jpg?v=8',
   'networking-rack':  '/assets/photos/networking-rack.jpg?v=8',
   'gulf-sunset':      '/assets/photos/gulf-sunset.jpg?v=8',
 

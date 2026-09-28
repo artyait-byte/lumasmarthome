@@ -1383,3 +1383,32 @@ body{font-size:16px;line-height:1.5}
   .fx-brand{flex-basis:200px;height:150px;padding:24px}
   .fx-brand-name{font-size:20px}
 }
+
+/* ── INNER PAGE PIECES — the reference's service page ── */
+.fx-intro-prose{max-width:1152px;margin:0 auto;text-align:center;font-size:18px;line-height:1.45;color:var(--mid)}
+.fx-intro-prose strong{color:var(--dark);font-weight:600}
+.fx-values--plain{background:var(--cream);color:var(--dark);padding:48px 0 96px}
+.fx-values--plain .fx-values-copy .fx-d3{color:var(--dark)}
+.fx-values--plain .fx-values-copy .fx-d3 em{color:var(--accent)}
+.fx-values--plain .fx-values-copy .fx-lede,.fx-values--plain .fx-value p{color:var(--mid)}
+.fx-values--plain .fx-value{color:var(--dark)}
+.fx-values--plain .fx-value strong{font-family:var(--sans);font-size:22px;font-weight:600;line-height:1.25;margin-bottom:6px}
+.fx-values--plain .fx-values-grid{grid-template-columns:5fr 7fr;align-items:start}
+.fx-values--plain .fx-values-list{gap:40px}
+.fx-values--plain .fx-tile{color:#fff}
+.fx-values--plain .fx-tile svg{width:22px;height:22px}
+.fx-panels--static{overflow:visible;flex-wrap:wrap}
+.fx-panels--static .fx-panel-card{flex:1 1 calc(25% - 12px);min-width:260px}
+.fx-pair{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.fx-pair figure{margin:0}
+.fx-pair img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--fx-radius)}
+.fx-pair figcaption{margin-top:12px;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:var(--mid)}
+.fx-faq{border-top:1px solid var(--cream3)}
+.fx-faq-item{border-bottom:1px solid var(--cream3)}
+.fx-faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font-size:18px;font-weight:500;color:var(--dark)}
+.fx-faq-item summary::-webkit-details-marker{display:none}
+.fx-faq-item summary i{font-style:normal;color:var(--accent);font-size:24px;line-height:1;transition:transform .2s}
+.fx-faq-item[open] summary i{transform:rotate(45deg)}
+.fx-faq-item p{margin:0 0 22px;font-size:16px;line-height:1.5;color:var(--mid);max-width:800px}
+@media (max-width:1023px){.fx-values--plain .fx-values-grid{grid-template-columns:1fr;gap:32px}}
+@media (max-width:767px){.fx-pair{grid-template-columns:1fr}.fx-panels--static .fx-panel-card{flex-basis:100%}.fx-values--plain{padding:32px 0 64px}}

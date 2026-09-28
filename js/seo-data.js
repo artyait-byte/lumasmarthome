@@ -86,11 +86,11 @@ window.LUMA_SEO = {
       "id": "permanent-lighting",
       "path": "/permanent-lighting",
       "title": "Permanent Outdoor Lighting | Soffit LEDs | LUMA Smart Home",
-      "description": "Permanent colour-changing LED lighting under the eaves for Sarasota and Gulf Coast homes. Warm white year-round, holiday colours from your phone, no ladders.",
+      "description": "Permanent architectural roofline lighting for Sarasota and Gulf Coast residences: a colour-matched channel under the overhangs, warm white every night, security, game day and holiday presets from your phone.",
       "kind": "service",
       "city": null,
       "service": null,
-      "h1": "Holiday lights without the ladder."
+      "h1": "The roofline, drawn in light."
     },
     "designers": {
       "id": "designers",

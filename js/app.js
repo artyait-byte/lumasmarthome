@@ -131,8 +131,14 @@ const PHOTOS = {
   automation:  lu('/assets/photos/hero-automation.jpg'),
 
   heroHome:        lu('/assets/photos/sarasota-bay-house.jpg'),
-  permanentHero:   lu('/assets/photos/permanent-dusk.jpg'),
+  permanentHero:   lu('/assets/photos/permanent-warm.jpg'),
   permanentHoliday:lu('/assets/photos/permanent-holiday.jpg'),
+  permDay:         lu('/assets/photos/permanent-day.jpg'),
+  permWarm:        lu('/assets/photos/permanent-warm.jpg'),
+  permGameday:     lu('/assets/photos/permanent-gameday.jpg'),
+  permSecurity:    lu('/assets/photos/permanent-security.jpg'),
+  permEaveDay:     lu('/assets/photos/permanent-eave-day.jpg'),
+  permEaveNight:   lu('/assets/photos/permanent-eave-night.jpg'),
   tradeFlatlay:    lu('/assets/photos/trade-flatlay.jpg'),
   workBayfront:    lu('/assets/photos/work-bayfront.jpg'),
   workFamily:      lu('/assets/photos/work-family.jpg'),
@@ -167,15 +173,15 @@ const PHOTOS = {
   audioHero:      lu('/assets/photos/hero-audio-hifi.jpg'),
   audioInvisible: lu('/assets/photos/audio-system.jpg'),
   securityHero:   lu('/assets/photos/hero-security-v2.jpg'),
-  securityFootage:lu('/assets/photos/security-camera.jpg'),
+  securityFootage:lu('/assets/photos/cam-nvr.jpg'),
 
-  installDome:      lu('/assets/photos/security-camera.jpg'),
-  installDoorbell:  lu('/assets/photos/security-camera.jpg'),
-  installNvr:       lu('/assets/photos/networking-rack.jpg'),
-  installPanel:     lu('/assets/photos/lighting-lutron-hero.jpg'),
-  installDock:      lu('/assets/photos/waterfront-lanai.jpg'),
-  installPhone:     lu('/assets/photos/security-camera.jpg'),
-  installBullet:    lu('/assets/photos/security-camera.jpg'),
+  installDome:      lu('/assets/photos/cam-dome.jpg'),
+  installDoorbell:  lu('/assets/photos/cam-doorbell.jpg'),
+  installNvr:       lu('/assets/photos/cam-nvr.jpg'),
+  installPanel:     lu('/assets/photos/cam-panel.jpg'),
+  installDock:      lu('/assets/photos/cam-dock.jpg'),
+  installPhone:     lu('/assets/photos/cam-phone.jpg'),
+  installBullet:    lu('/assets/photos/cam-bullet.jpg'),
   installTablet:    lu('/assets/photos/wall-tablet.jpg'),
   networkingHero:   lu('/assets/photos/hero-networking.jpg'),
   networkingRack:   lu('/assets/photos/networking-rack.jpg'),
@@ -258,14 +264,14 @@ function HexIcon({type='lighting', size=30, color='#C57238'}) {
 
 /* ─── SERVICES DATA ─── */
 const services = [
-  {id:'lighting',   name:'Indoor & Outdoor Lighting', sub:'Scenes · cove · landscape',            page:'lighting'},
+  {id:'lighting',   name:'Lighting Control',          sub:'Lutron · Ketra · scenes in every room', page:'lighting'},
   {id:'window',     name:'Window Treatments',          sub:'Motorized shades & drapery',           page:'shading'},
   {id:'theater',    name:'Home Theaters',              sub:'Calibrated rooms · cinema seating',    page:'theaters'},
   {id:'security',   name:'Security & Surveillance',    sub:'On-prem cameras · no monthly fees',    page:'security'},
   {id:'audio',      name:'Audio & Video',              sub:'Whole-home audio · indoor + lanai',    page:'audio'},
   {id:'networking', name:'Networking',                  sub:'Wi-Fi 6 / 7 · enterprise-grade',       page:'networking'},
   {id:'automation', name:'Home Automation',             sub:'Daily routines · one tap',             page:'automation'},
-  {id:'permanent',  name:'Permanent Lighting',          sub:'Soffit LEDs · holidays without ladders', page:'permanent-lighting'},
+  {id:'permanent',  name:'Permanent Outdoor Lighting',  sub:'Roofline LEDs · warm white to holiday',  page:'permanent-lighting'},
 ];
 
 /* ─── MEGA DROPDOWN ─── */
@@ -499,7 +505,7 @@ const FX_QUOTES = [
 /* Reel tiles render at 259x270 and 319x388 — serve crops cut for that,
    not the full-size hero photos. Ten files, under half a megabyte total. */
 const FX_REEL = [
-  'sarasota-bay-house','lighting-scene','hero-theater','permanent-dusk','hero-designers-new',
+  'sarasota-bay-house','lighting-scene','hero-theater','permanent-warm','hero-designers-new',
   'hero-shading','reel-bedroom','work-bayfront','work-family','hero-automation'
 ].map(n => lu('/assets/photos/reel/' + n + '.jpg'));
 
@@ -647,8 +653,8 @@ const FX_DISCIPLINES = [
    body:'Morning, afternoon, evening, away. One press on a keypad and the house takes the state.'},
   {page:'networking', photo:PHOTOS.networkingRack,title:'Networking',
    body:'Wired wherever wire can land, Wi-Fi 6/7 where it cannot, and a rack somebody can read.'},
-  {page:'permanent-lighting', photo:PHOTOS.permanentHero, title:'Permanent lighting',
-   body:'LEDs tucked in the soffit, invisible by day. Warm white all year, any colour for the holidays, no ladders.'}
+  {page:'permanent-lighting', photo:PHOTOS.permWarm, title:'Permanent outdoor lighting',
+   body:'A colour-matched channel under the overhangs, invisible by day. A warm-white line every night; security, game day and December on a preset.'}
 ];
 
 function FxDisciplines({navigate}) {
@@ -919,103 +925,32 @@ function HomePage({navigate}) {
 
 /* ─── SHADING PAGE ─── */
 function ShadingPage({navigate}) {
-  const moments = [
-    {
-      key:'m1', time:'07:10', name:'Open East',
-      desc:'Morning-facing shades rise. West stays closed to preserve coolness until the sun swings.',
-      photo: PHOTOS.moment1,
-      // warm morning gold overlay
-      grade:'linear-gradient(rgba(255,180,60,.18),rgba(120,70,0,.0))',
-    },
-    {
-      key:'m2', time:'14:30', name:'Shield West',
-      desc:'Solar shades drop on west-facing glass. AC load drops. Finishes stay protected from UV.',
-      photo: PHOTOS.moment2,
-      // cool blue midday
-      grade:'linear-gradient(rgba(30,80,120,.25),rgba(0,0,0,.0))',
-    },
-    {
-      key:'m3', time:'19:40', name:'Open All',
-      desc:'Ten minutes before sunset, every shade lifts. The view comes back to the room.',
-      photo: PHOTOS.moment3,
-      // orange sunset
-      grade:'linear-gradient(rgba(200,90,20,.35),rgba(100,30,0,.1))',
-    },
-    {
-      key:'m4', time:'22:45', name:'Close Privacy',
-      desc:'Blackout in bedrooms, drapery closes in living areas. Night mode, one press.',
-      photo: PHOTOS.moment4,
-      // deep night blue
-      grade:'linear-gradient(rgba(10,20,60,.55),rgba(0,0,20,.3))',
-    },
-  ];
-  return (
-    <div className="page">
-      {/* Hero — dark full-bleed split */}
-      <section style={{
-        display:'grid', gridTemplateColumns:'1fr 1fr',
-        minHeight:'min(88vh,780px)', background:'var(--dark)',
-        overflow:'hidden',
-      }} className="lit-hero-wrap">
-        <div style={{
-          display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
-        }} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Motorized shades · Somfy · Lutron Sivoia QS</div>
-          <h1 style={{
-            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
-            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
-            margin:'0 0 24px', textWrap:'balance',
-            textShadow:'0 2px 20px rgba(0,0,0,.3)',
-          }}>Three layers <em style={{color:'#F4C9A8',fontStyle:'italic'}}>of shade.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 24px'}}>A Gulf Coast home needs solar shades for heat and glare, blackout for sleep and privacy, and drapery for warmth. LUMA specs all three into one motorized Lutron system — one app, one keypad, one schedule.</p>
-          <ul style={{listStyle:'none',padding:0,margin:'0 0 32px',display:'flex',flexDirection:'column',gap:10}}>
-            {['Lutron Sivoia QS — up to 1,000 shades, one app','Astro-clock schedule: open at first light, close at sunset','Integrated with Lutron lighting — one keypad controls the room'].map(t=>(
-              <li key={t} style={{display:'flex',alignItems:'flex-start',gap:10,fontSize:16,color:'rgba(252,250,246,.82)',lineHeight:1.5}}>
-                <span style={{color:'var(--accent)',flexShrink:0,marginTop:3}}>✓</span>{t}
-              </li>
-            ))}
-          </ul>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start Your Project →</button>
-            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('budget-calculator')}>See budgets</button>
-          </div>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.heroShading} alt="Motorized blackout shades in luxury Gulf Coast home" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
-        </div>
-        <style>{`@media(max-width:899px){.lit-hero-wrap{grid-template-columns:1fr!important}.lit-hero-text{padding:60px 24px 48px!important}}`}</style>
-      </section>
-
-      {/* Four moments */}
-      <section className="moments-section">
-        <div className="sec-label">Scenes built around the sun</div>
-        <h2 className="sec-title">Four moments <em>your shades<br/>already know.</em></h2>
-        <div className="moments-grid">
-          {moments.map(m=>(
-            <div key={m.key} className="moment-card">
-              <img loading="lazy" decoding="async" src={m.photo} alt={m.name}/>
-              {/* colour grade layer */}
-              <div className="moment-grade" style={{background:m.grade, mixBlendMode:'multiply'}}/>
-              <div className="moment-inner">
-                <div className="moment-time">{m.time}</div>
-                <div className="moment-name">{m.name}</div>
-                <p className="moment-desc">{m.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <FxCta navigate={navigate}
-        title="Ready to take the glare <em>out of the day?</em>"
-        body="Tell us which windows fight you and when. We'll come back with a shade plan — fabric, drive, and pockets — and an honest range before anything is ordered."
-        label="Plan my shading"/>
-    </div>
-  );
+  const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
+  return <ServicePageShell navigate={navigate}
+    hero={{eyebrow:'Motorized shades', h1:'Three layers <em>of shade.</em>',
+      lead:'A Gulf Coast home needs solar shades for heat and glare, blackout for sleep and privacy, and drapery for the room. We design all three as one system, on the drawings, before the pockets are framed.',
+      image: PHOTOS.heroShading, primaryLabel:'Plan my shading →', primaryAction:()=>navigate('contact'),
+      secondaryLabel:'See finished houses', secondaryAction:()=>navigate('work')}}
+    intro={{lead:'The sun moves; the shades already know.',
+      body:'Lutron Sivoia QS and Somfy drives, quiet enough for a bedroom, on a schedule built around the actual sun on your actual glass. West-facing solar shades drop before the afternoon heat, every shade lifts ten minutes before sunset so the view comes back, and blackout closes when the house goes to bed.'}}
+    values={{h2:'Four moments <em>your shades already know</em>',
+      lead:'Scenes built around the sun, not around a timer.',
+      items:[
+        {icon:I('M12 3v2M5.6 5.6l1.4 1.4M3 12h2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'), title:'07:10 · Open east', desc:'Morning-facing shades rise. West stays closed to hold the cool until the sun swings around.'},
+        {icon:I('M12 3v18M3 12h18M12 8l4 4-4 4-4-4z'), title:'14:30 · Shield west', desc:'Solar shades drop on west-facing glass. AC load drops with them, and the finishes stay out of the UV.'},
+        {icon:I('M3 17h18M6 17V9l6-5 6 5v8'), title:'19:40 · Open all', desc:'Ten minutes before sunset every shade lifts. The view comes back to the room for the best light of the day.'},
+        {icon:I('M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'), title:'22:45 · Close privacy', desc:'Blackout in the bedrooms, drapery across the living areas. Night mode, one press on the keypad by the bed.'},
+      ]}}
+    panels={{h2:'Three layers, <em>one pocket</em>',
+      items:[
+        {photo: PHOTOS.heroShading, title:'Solar shades', body:'Openness-weave fabric that tames glare and heat on the water side while keeping the view. The everyday layer on every gulf-facing pane.'},
+        {photo: PHOTOS.moment1,     title:'Drapery', body:'Motorized tracks for the linen and sheers your designer chose, so the room still reads as a room and not as hardware.'},
+        {photo: lu('/assets/photos/reel-bedroom.jpg'), title:'Blackout', body:'Side-channel blackout in bedrooms and the theater, quiet drives, and a keypad by the bed that closes the house for the night.'},
+      ]}}
+    ctaTitle='Ready to take the glare <em>out of the day?</em>'
+    ctaBody='Tell us which windows fight you and when. We will come back with a shade plan, fabric, drive and pockets, and an honest range before anything is ordered.'
+  />;
 }
-
 /* ─── LIGHTING PORTFOLIO ROW ─── */
 const PORTFOLIO_ITEMS = [
   {
@@ -1146,89 +1081,32 @@ function LightingMosaic() {
 
 /* ─── LIGHTING PAGE ─── */
 function LightingPage({navigate}) {
-  return (
-    <div className="page">
-      {/* hero — full-bleed split */}
-      <section style={{
-        display:'grid', gridTemplateColumns:'1fr 1fr',
-        minHeight:'min(88vh,780px)', background:'var(--dark)',
-        overflow:'hidden',
-      }} className="lit-hero-wrap">
-        {/* left — text panel */}
-        <div style={{
-          display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
-        }} className="lit-hero-text">
-          <div style={{
-            fontSize:12, letterSpacing:'.16em', textTransform:'uppercase',
-            color:'var(--accent)', fontWeight:600, marginBottom:22,
-          }}>Decorative &amp; Architectural, Coordinated</div>
-          <h1 style={{
-            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
-            fontWeight:600, lineHeight:1.06, letterSpacing:'-.01em',
-            color:'#FCFAF6', margin:'0 0 24px', textWrap:'balance',
-          }}>
-            Your fixtures.<br/><em style={{color:'#F4C9A8',fontStyle:'italic'}}>Our controls.</em>
-          </h1>
-          <p style={{fontSize:18, lineHeight:1.72, color:'rgba(252,250,246,.85)', maxWidth:480, margin:'0 0 10px'}}>
-            Lighting is the most personal layer of a home. LUMA coordinates your fixture specification with a control design that makes every room feel exactly as intended — at 8am and at 8pm.
-          </p>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <NavLink page="contact" navigate={navigate} className="btn-solid" style={{fontSize:16,padding:'14px 28px'}}>Start your lighting project →</NavLink>
-            <button className="btn-ghost" style={{
-              fontSize:16,padding:'13px 24px',
-              color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',
-            }} onClick={()=>navigate('designers')}>For designers &amp; builders</button>
-          </div>
-        </div>
-        {/* right — photo */}
-        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img loading="lazy" decoding="async"
-            src={PHOTOS.lightingKetra}
-            alt="Warm interior lighting in a luxury Gulf Coast living room"
-            style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}
-          />
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.38) 0%,transparent 40%)'}}/>
-        </div>
-        <style>{`
-          @media(max-width:959px){
-            .lit-hero-wrap{grid-template-columns:1fr!important;min-height:auto!important}
-            .lit-hero-text{padding:56px 32px!important}
-          }
-        `}</style>
-      </section>
-
-      <section className="fx-band fx-py-md">
-        <div className="fx-field">
-          <ul className="fx-points">
-            {[
-              'Decorative & architectural lighting under one control spec',
-              'Warm-dim tuned for evening colour temperature (2700 K → 1800 K)',
-              'Keypad finishes matched to switch plates, hardware, and wood tones',
-              'Trade pricing on Lutron, Ketra, Somfy, and audio partners',
-            ].map(t => <li key={t}>{t}</li>)}
-          </ul>
-        </div>
-      </section>
-
-      {/* three service blocks */}
-      <section style={{maxWidth:1120, margin:'0 auto', padding:'0 48px 96px', display:'flex', flexDirection:'column', gap:88}}>
-        {PORTFOLIO_ITEMS.map((item, i) => (
-          <PortfolioRow key={i} item={item} navigate={navigate}/>
-        ))}
-      </section>
-
-      {/* What we install — mosaic */}
-      <LightingMosaic/>
-
-      <FxCta navigate={navigate}
-        title="Ready to light the house <em>properly?</em>"
-        body="Send us the fixture schedule, or just the floor plan. We'll come back with a control design that matches what your designer specified — and an honest range."
-        label="Start your lighting project"/>
-    </div>
-  );
+  const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
+  return <ServicePageShell navigate={navigate}
+    hero={{eyebrow:'Lighting control', h1:'Your fixtures. <em>Our controls.</em>',
+      lead:'Lighting is the most personal layer of a home. LUMA coordinates your fixture specification with a control design that makes every room feel exactly as intended, at 8am and at 8pm.',
+      image: PHOTOS.lightingKetra, primaryLabel:'Start your lighting project →', primaryAction:()=>navigate('contact'),
+      secondaryLabel:'For designers & builders', secondaryAction:()=>navigate('designers')}}
+    intro={{lead:'Light is six layers, not one switch.',
+      body:'Recessed downs, cove, accent, decorative, task and exterior, each on its own dimming track and all on one keypad. We design it with the architect and the interior designer before the drywall, on Lutron RadioRA 3 and Ketra, so the decorative fixtures you chose dim the way they were meant to.'}}
+    values={{h2:'What the system <em>does for you</em>',
+      lead:'Four things you feel the first evening, none of which need a manual.',
+      items:[
+        {icon:I('M3 12h18M12 3v18'), title:'Warm-dim evenings', desc:'Ketra and warm-dim LEDs slide from 2700K to 1800K as they dim, so the house goes candle-warm at night instead of grey.'},
+        {icon:I('M4 6h16v12H4zM8 10h.01M12 10h.01M16 10h.01'), title:'Keypads in your words', desc:'Palladiom and Alisse keypads engraved "Dinner", "Reading", "Goodnight", finished to match your plates, hardware and wood tones.'},
+        {icon:I('M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8'), title:'Cove, soffit and accent', desc:'Hidden 2700K tape dimmable to 0.1%, art and niche accents on their own track, no visible hardware in the ceiling plane.'},
+        {icon:I('M12 22s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12zM12 10h.01'), title:'Landscape and lanai', desc:'Sabal palms, oak canopies and the façade washed from the same keypad; warm path tape on the lanai with gulf-side glare kept off the glass.'},
+      ]}}
+    panels={{h2:'How we work <em>the light</em>',
+      items:[
+        {photo: PHOTOS.lightingKetra, title:'Scene design', body:'Morning coffee, focused work, candlelit dinner, movie night. Each scene pre-programmed to the exact colour temperature and level your life calls for, one press shifts the whole home.'},
+        {photo: PHOTOS.lightingRania, title:'Fixture coordination', body:'We work downstream of your interior designer and lighting consultant. Visual Comfort chandeliers, RH pendants, custom cove in the millwork: every fixture tuned to dim smoothly and hold colour.'},
+        {photo: PHOTOS.heroLighting,  title:'Unified control', body:'Keypads, app and voice under a single control layer. We match keypad finishes to your hardware, commission every zone on site, and leave a system any family member can use.'},
+      ]}}
+    ctaTitle='Ready to light the house <em>properly?</em>'
+    ctaBody='Send us the fixture schedule, or just the floor plan. We will come back with a control design that matches what your designer specified, and an honest range.'
+  />;
 }
-
 /* ─── DESIGNERS PAGE ─── */
 /* ─── DESIGNERS & BUILDERS PAGE ─── */
 const DB_DESIGNER_STEPS = [
@@ -1471,127 +1349,32 @@ const TH_CREDS = [
 ];
 
 function TheatersPage({navigate}) {
-  return (
-    <div className="page">
-      {/* 1. Hero — dark full-bleed split */}
-      <section style={{
-        display:'grid', gridTemplateColumns:'1fr 1fr',
-        minHeight:'min(88vh,780px)', background:'var(--dark)',
-        overflow:'hidden',
-      }} className="lit-hero-wrap">
-        <div style={{
-          display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
-        }} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Dedicated cinema rooms</div>
-          <h1 style={{
-            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
-            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
-            margin:'0 0 24px', textWrap:'balance',
-            textShadow:'0 2px 20px rgba(0,0,0,.3)',
-          }}>Designed for <em style={{color:'#F4C9A8',fontStyle:'italic'}}>sound,</em><br/>not retrofitted.</h1>
-          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>The difference between a TV in a media room and a true home theater is acoustic intent — walls, sightlines, seats, and signal processing thought through before drywall. LUMA designs from the room out.</p>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('work')}>Tour a finished theater →</button>
-            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('contact')}>Talk to us</button>
-          </div>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.theaterAnamorphic} alt="Luxury home theater with projection screen" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(10,8,20,.35) 0%,transparent 42%)'}}/>
-        </div>
-      </section>
-
-      {/* 2. Anatomy */}
-      <section className="th-section">
-        <div className="sec-label">Anatomy</div>
-        <h2 className="sec-title">Six layers, <em>one room.</em></h2>
-        <div className="th-grid-3">
-          {TH_LAYERS.map(l=>(
-            <div key={l.k} className="th-card">
-              <div className="th-card-icon">{l.icon}</div>
-              <h3>{l.title}</h3>
-              <p>{l.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 3. Where it lives */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div className="th-split">
-            <div className="th-split-img"><img loading="lazy" decoding="async" src={PHOTOS.theaterRoom} alt="Dedicated theater room"/></div>
-            <div>
-              <div className="sec-label" style={{textAlign:'left'}}>Three room types</div>
-              <h2 className="sec-title" style={{textAlign:'left'}}>From <em>media room</em> to <em>private cinema.</em></h2>
-              <div className="th-rooms">
-                {TH_ROOMS.map(r=>(
-                  <div key={r.name} className="th-room">
-                    <div className="th-room-name">{r.name}</div>
-                    <div className="th-room-desc">{r.desc}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Why LUMA */}
-      <section className="th-section">
-        <div className="sec-label">Why LUMA</div>
-        <h2 className="sec-title">Theaters that <em>survive their first movie night.</em></h2>
-        <div className="th-why">
-          {TH_WHY.map(r=>(
-            <div key={r.n} className="th-why-row">
-              <div className="th-why-num">{r.n}</div>
-              <div className="th-why-text">{r.text}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. Recent rooms */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div className="sec-label">Recent rooms</div>
-          <h2 className="sec-title">A few we're <em>proud of.</em></h2>
-          <div className="th-projects">
-            {TH_PROJECTS.map(p=>(
-              <div key={p.key} className="th-project" onClick={()=>navigate('work')}>
-                <img loading="lazy" decoding="async" src={PHOTOS[p.key]} alt={p.name}/>
-                <div className="th-project-overlay">
-                  <div className="th-project-tag">{p.tag}</div>
-                  <div className="th-project-name">{p.name}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Credentials */}
-      <section className="th-section" style={{paddingTop:48,paddingBottom:48}}>
-        <div className="sec-label">Credentials</div>
-        <div className="th-credentials">
-          {TH_CREDS.map(c=><span key={c} className="th-chip">{c}</span>)}
-        </div>
-      </section>
-
-      {/* 7. CTA combo */}
-      <div className="th-cta-combo">
-        <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
-        <div className="th-cta-form">
-          <h2>Start a <em>theater conversation.</em></h2>
-          <p>Tell us about the room — square footage, ceiling height, how you'll use it. We answer with a calibration plan, not a quote form.</p>
-          <FxActions navigate={navigate} label="Plan my theater" align="left" tone="dark"/>
-        </div>
-      </div>
-    </div>
-  );
+  const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
+  return <ServicePageShell navigate={navigate}
+    hero={{eyebrow:'Home theaters', h1:'Designed for <em>sound,</em> not retrofitted.',
+      lead:'The difference between a TV in a media room and a true home theater is acoustic intent: walls, seating, screen and speakers designed together, then calibrated in the room they live in.',
+      image: PHOTOS.theater, primaryLabel:'Plan my theater →', primaryAction:()=>navigate('contact'),
+      secondaryLabel:'See recent rooms', secondaryAction:()=>navigate('work')}}
+    intro={{lead:'A room built for the first movie night, and the thousandth.',
+      body:'We start with the room, not the projector: dimensions, sightlines, where the sound will reflect and where it must not. Then the screen size follows the seating distance, the speakers follow the screen, and the acoustic treatment follows all three. The gear goes out of sight and the room gets calibrated in place before you see a frame.'}}
+    values={{h2:'Six layers, <em>one room</em>',
+      lead:'What actually makes a theater, in the order we design it.',
+      items:[
+        {icon:I('M3 5h18v14H3zM3 10h18M8 5v14'), title:'Acoustic treatment', desc:'Fabric-wrapped absorption and diffusion placed by measurement, so dialogue lands and bass does not boom. The walls look like walls.'},
+        {icon:I('M2 7h20v10H2zM6 21h12'), title:'Screen and projection', desc:'Screen size from the seating distance, not the wall. 4K laser projection or a direct-view LED wall, calibrated to reference.'},
+        {icon:I('M4 20V10l8-6 8 6v10M9 20v-6h6v6'), title:'Seating and sightlines', desc:'Rows, risers and aisle set so every seat sees the whole screen and sits in the sound, not behind it.'},
+        {icon:I('M12 3v18M6 8v8M18 8v8M3 11v2M21 11v2'), title:'Calibration', desc:'ISF-calibrated picture, speakers time-aligned and equalised in the finished room, with Atmos placed to the ceiling you actually have.'},
+      ]}}
+    panels={{h2:'From <em>media room</em> to private cinema',
+      items:[
+        {photo: PHOTOS.theater,     title:'Dedicated cinema', body:'A room with one job: fabric walls, tiered recliners, a star ceiling if you want one, and the projector and rack out of sight.'},
+        {photo: PHOTOS.workRebuild, title:'Living-room theater', body:'A great room that turns into a cinema at 8pm: hidden screen, in-ceiling surrounds, shades and lights on one press.'},
+        {photo: PHOTOS.lightingKetra, title:'Media room', body:'A family room with a large display, a proper soundbar-free system, and acoustics that keep game day from taking over the house.'},
+      ]}}
+    ctaTitle='Start a <em>theater conversation</em>'
+    ctaBody='Tell us about the room: square footage, ceiling height, how you will use it. We answer with a calibration plan, not a quote form.'
+  />;
 }
-
 /* ─── AUTOMATION PAGE ─── */
 const AU_STATES = [
   {time:'06:30', name:'Alba',   hour:6,  min:30, desc:'Shades east rise. Hallway keypads warm to 2700K. Coffee station wakes. Front cameras armed-stay clears.'},
@@ -1641,190 +1424,63 @@ const AU_PROJECTS = [
 ];
 
 function AutomationPage({navigate}) {
-  return (
-    <div className="page">
-      {/* 1. Hero — dark full-bleed split */}
-      <section style={{
-        display:'grid', gridTemplateColumns:'1fr 1fr',
-        minHeight:'min(88vh,780px)', background:'var(--dark)',
-        overflow:'hidden',
-      }} className="lit-hero-wrap">
-        <div style={{
-          display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
-        }} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Home automation · Control4 · Lutron · Josh.ai</div>
-          <h1 style={{
-            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
-            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
-            margin:'0 0 24px', textWrap:'balance',
-            textShadow:'0 2px 20px rgba(0,0,0,.3)',
-          }}>One press, <em style={{color:'#F4C9A8',fontStyle:'italic'}}>the right state.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>Automation is the quiet layer that lets lighting, shades, climate, audio, and security move together on cue — so the house responds to a moment, not a phone-tap rodeo.</p>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('budget-calculator')}>See sample budgets →</button>
-            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('contact')}>Start a project</button>
-          </div>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.automationHero} alt="Smart home control — iPhone at the door" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 42%)'}}/>
-        </div>
-      </section>
-
-      {/* 2. Four daily states */}
-      <section className="th-section">
-        <div className="sec-label">Daily routines</div>
-        <h2 className="sec-title"><em>Alba · Day · Sera · Notte.</em></h2>
-        <p className="sec-body">Four states the house already knows. You can override any of them, any time — but most days you won't need to.</p>
-        <div className="grid-4">
-          {AU_STATES.map(s=>(
-            <div key={s.name} className="au-card">
-              <div className="au-card-clock"><ClockIcon hour={s.hour} min={s.min}/></div>
-              <div>
-                <div className="au-card-time">{s.time}</div>
-                <div className="au-card-name">{s.name}</div>
-              </div>
-              <div className="au-card-desc">{s.desc}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 3. What it controls */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner" style={{textAlign:'center'}}>
-          <div className="sec-label">What it controls</div>
-          <h2 className="sec-title">Six layers, <em>one orchestration.</em></h2>
-          <div className="au-chips">
-            {AU_CONTROLS.map(c=>(
-              c.page
-                ? <a key={c.label} className="au-chip" href={pathFor(c.page)} onClick={e=>spaClick(e, c.page, navigate)}>{c.label} →</a>
-                : <span key={c.label} className="au-chip au-chip--inert">{c.label}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3.5 Interactive Demo teaser */}
-      <section className="th-section" style={{background:'var(--dark)',maxWidth:'none',margin:0,padding:'72px 0'}}>
-        <div className="auto-demo-teaser" style={{maxWidth:1280,margin:'0 auto',padding:'0 80px',display:'grid',gridTemplateColumns:'1fr 1fr',gap:64,alignItems:'center'}}>
-          <div>
-            <div className="sec-label" style={{color:'var(--accent)'}}>Room by room</div>
-            <h2 className="sec-title" style={{color:'#FCFAF6',textAlign:'left'}}>See the whole home <em style={{color:'#F4C9A8'}}>in one view.</em></h2>
-            <p style={{fontSize:16,lineHeight:1.7,color:'rgba(252,250,246,.72)',maxWidth:460,margin:'0 0 32px',fontFamily:'var(--sans)'}}>Explore an interactive floor plan — every smart system, every room, exactly how we'd build it for your Gulf Coast home.</p>
-            <button className="btn-solid" style={{fontSize:15,padding:'13px 26px'}} onClick={()=>navigate('smart-home-demo')}>Explore the floor plan →</button>
-          </div>
-          <div className="auto-demo-tiles" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
-            {[
-              {label:'Lighting & Scenes',  color:'#C57238'},
-              {label:'Shading & Climate',  color:'#C57238'},
-              {label:'Outdoor Lanai & Pool', color:'#2D5E5A'},
-              {label:'Home Theater',       color:'#C57238'},
-              {label:'Security & Entry',   color:'#6B6876'},
-              {label:'Networking',         color:'#2D5E5A'},
-            ].map(item=>(
-              <div key={item.label} style={{
-                padding:'14px 16px',borderRadius:10,
-                border:`1px solid ${item.color}44`,
-                background:`${item.color}10`,
-                fontSize:12,fontWeight:500,color:'rgba(252,250,246,.8)',
-                fontFamily:'var(--sans)',letterSpacing:'.01em',
-                display:'flex',alignItems:'center',gap:8,
-              }}>
-                <div style={{width:6,height:6,borderRadius:'50%',background:item.color,flexShrink:0}}/>
-                {item.label}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. How we build it */}
-      <section className="th-section">
-        <div className="th-split">
-          <div className="th-split-img"><img loading="lazy" decoding="async" src={PHOTOS.lighting} alt="Lutron keypad in luxury home" data-img="lighting-scene"/></div>
-          <div>
-            <div className="sec-label" style={{textAlign:'left'}}>The platform</div>
-            <h2 className="sec-title" style={{textAlign:'left'}}>We build on <em>open, professional</em> platforms.</h2>
-            <p className="hero-body" style={{marginTop:18}}>Lutron RadioRA 3 is the spine — every light, shade, and keypad lives on a single mesh that doesn't depend on anyone's cloud to dim a sconce. Above it, Josh.ai or a Crestron CP4 acts as the brain for voice, scenes, and the cross-system orchestration that makes "Goodnight" actually work.</p>
-            <p className="hero-body">We don't build on closed consumer ecosystems. No rented automations that disappear when a startup pivots. No servers in someone else's basement. Your house's logic lives in your house — fully owned, fully documented, fully serviceable five years from now.</p>
-            <div className="au-vendors">
-              <span className="au-vendor">Lutron <span>RadioRA 3</span></span>
-              <span className="au-vendor">Josh<span>.ai</span></span>
-              <span className="au-vendor">Crestron <span>Home</span></span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Why LUMA */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div className="sec-label">Why LUMA</div>
-          <h2 className="sec-title">Routines that <em>survive real life.</em></h2>
-          <div className="th-why">
-            {AU_WHY.map(r=>(
-              <div key={r.n} className="th-why-row">
-                <div className="th-why-num">{r.n}</div>
-                <div className="th-why-text">{r.text}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Recent projects */}
-      <section className="th-section">
-        <div className="sec-label">Recent work</div>
-        <h2 className="sec-title">A few homes <em>running quietly.</em></h2>
-        <div className="th-projects">
-          {AU_PROJECTS.map(p=>(
-            <div key={p.key} className="th-project" onClick={()=>navigate('work')}>
-              <img loading="lazy" decoding="async" src={PHOTOS[p.key]} alt={p.name}/>
-              <div className="th-project-overlay">
-                <div className="th-project-tag">{p.tag}</div>
-                <div className="th-project-name">{p.name}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 7. CTA combo */}
-      <div className="th-cta-combo">
-        <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
-        <div className="th-cta-form">
-          <h2>Start an <em>automation conversation.</em></h2>
-          <p>Tell us how the house is used through the day. We map it to scenes, then show you the plan before anything is ordered.</p>
-          <FxActions navigate={navigate} label="Plan my system" align="left" tone="dark"/>
-        </div>
-      </div>
-    </div>
-  );
+  const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
+  return <ServicePageShell navigate={navigate}
+    hero={{eyebrow:'Home automation', h1:'One press, <em>the right state.</em>',
+      lead:'Automation is the quiet layer that lets lighting, shades, climate, audio and security move together. Four states the house already knows; you can override any of them, but most days you will not need to.',
+      image: PHOTOS.automationHero, primaryLabel:'Plan my system →', primaryAction:()=>navigate('contact'),
+      secondaryLabel:'Try the 3D demo', secondaryAction:()=>navigate('smart-home-demo')}}
+    intro={{lead:'We build on open, professional platforms.',
+      body:'Lutron RadioRA 3 is the spine: every light, shade and keypad on a single mesh that does not depend on anyone\'s cloud to dim a sconce. Above it, Control4 or Josh.ai for the rest of the house. No closed consumer ecosystems, no rented automations that vanish when a startup pivots. Your house\'s logic lives in your house.'}}
+    values={{h2:'Four states <em>the house already knows</em>',
+      lead:'Alba, Day, Sera, Notte. Named in your words, tuned with you for ninety days.',
+      items:[
+        {icon:I('M12 3v2M5.6 5.6l1.4 1.4M3 12h2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'), title:'06:30 · Alba', desc:'Shades east rise, hallway keypads warm to 2700K, the coffee station wakes, front cameras stand down.'},
+        {icon:I('M12 2v4M12 18v4M2 12h4M18 12h4M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'), title:'10:00 · Day', desc:'Glare-side shades drop on the sun, office overheads go to task, the alarm arms itself if everyone has left.'},
+        {icon:I('M3 17h18M6 17V9l6-5 6 5v8'), title:'Sunset − 30 · Sera', desc:'Lanai lights to 30%, kitchen pendants warm, music fades up in the rooms you are in.'},
+        {icon:I('M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'), title:'22:30 · Notte', desc:'Doors lock, the perimeter arms, hallways drop to 5% footlights, the bedroom shades close, the theater goes dark.'},
+      ]}}
+    panels={{h2:'Routines that <em>survive real life</em>',
+      items:[
+        {photo: PHOTOS.automationHero, title:'Tuned for ninety days', body:'We program the routines with you for three months, not once on day one. The first month is observation; the second and third are the real tuning.'},
+        {photo: lu('/assets/photos/wall-tablet.jpg'), title:'Buttons in your words', body:'Every keypad button documented and engraved the way you say it: Reading, Movie, Goodnight. Never LED1, Scene 4, Group 12.'},
+        {photo: PHOTOS.heroHome, title:'An annual visit, included', body:'We re-tune as your habits change. Kids grow up, work hours shift, the lanai becomes a gym. The routines move with you.'},
+      ]}}
+    ctaTitle='Start an <em>automation conversation</em>'
+    ctaBody='Tell us how the house is used through the day. We map it to scenes, then show you the plan before anything is ordered.'
+  />;
 }
-
 /* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
-function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate}) {
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody}) {
+  /* The reference's inner page, section for section: a short hero, one
+     centred paragraph with a bold lead, a "what it does for you" grid (copy
+     in five columns, four icon items in seven), a row of photo cards, and
+     the wave CTA. Pages that still pass the older hero/valueProp/why/projects
+     props are mapped onto those slots here; pages built for this shell pass
+     intro / values / panels / pair / faq directly. */
+  const stripEm = (h) => String(h||'').replace(/<\/?em>/g,'');
+  const introLead = intro ? intro.lead : hero.lead;
+  const introBody = intro ? intro.body : (valueProp && valueProp.lead);
+  const vals = values || (valueProp && {
+    h2: valueProp.h2,
+    lead: why ? stripEm(why.h2) : '',
+    items: [
+      ...valueProp.cards.map(c => ({icon:c.icon, title:c.title, desc:c.desc})),
+      ...(valueProp.split && valueProp.split.rows ? [{title:valueProp.split.rows[0].name, desc:valueProp.split.rows[0].desc}] : [])
+    ].slice(0,4)
+  });
+  const cards = panels || (projects && {
+    h2: projects.h2,
+    items: projects.items.map(p => ({photo: PHOTOS[p.key], title: p.name, body: p.tag}))
+  });
+  const pin = <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>;
   return (
     <div className="page">
-      {/* 1. Hero — dark full-bleed split */}
-      <section style={{
-        display:'grid', gridTemplateColumns:'1fr 1fr',
-        minHeight:'min(88vh,780px)', background:'var(--dark)',
-        overflow:'hidden',
-      }} className="lit-hero-wrap">
-        <div style={{
-          display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
-        }} className="lit-hero-text">
+      {/* 1. hero — the site's inner hero, kicker + headline + lead */}
+      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
           <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>{hero.eyebrow}</div>
-          <h1 style={{
-            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
-            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
-            margin:'0 0 24px', textWrap:'balance',
-            textShadow:'0 2px 20px rgba(0,0,0,.3)',
-          }} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">') }}/>
+          <h1 style={{fontFamily:'var(--serif)',color:'#FCFAF6',margin:'0 0 24px'}} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">')}}/>
           <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>{hero.lead}</p>
           <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
             <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={hero.primaryAction}>{hero.primaryLabel}</button>
@@ -1836,9 +1492,78 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
         </div>
       </section>
 
-      {/* 1b. Install grid (Security only) */}
+      {/* 2. intro — one centred paragraph, bold lead */}
+      <section className="fx-band--plain fx-py-md">
+        <div className="fx-field">
+          <div className="fx-intro-prose">
+            <p><strong>{introLead}</strong> {introBody}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. what it does for you — copy left, four icon items right */}
+      {vals && (
+        <section className="fx-values fx-values--plain">
+          <div className="fx-wide">
+            <div className="fx-values-grid">
+              <div className="fx-values-copy" style={{gap:16}}>
+                <h2 className="fx-d3" style={{fontSize:'clamp(28px,2.4vw,32px)'}} dangerouslySetInnerHTML={{__html: vals.h2}}/>
+                {vals.lead && <div className="fx-lede"><p>{vals.lead}</p></div>}
+              </div>
+              <div className="fx-values-list">
+                {vals.items.map((it,i) => (
+                  <div key={i} className="fx-value">
+                    <span className="fx-tile" aria-hidden="true">{it.icon || pin}</span>
+                    <span><strong>{it.title}</strong><p>{it.desc}</p></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 3b. day / night pair — only pages that have one */}
+      {pair && (
+        <section className="fx-band--plain fx-py-md">
+          <div className="fx-wide">
+            <div className="fx-heads" style={{marginBottom:40}}>
+              <h2 className="fx-d3" dangerouslySetInnerHTML={{__html: pair.h2}}/>
+              {pair.lead && <p className="fx-lede">{pair.lead}</p>}
+            </div>
+            <div className="fx-pair">
+              {pair.items.map((p,i) => (
+                <figure key={i}><img src={p.photo} alt={p.label} loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 4. photo cards */}
+      {cards && (
+        <section className="fx-band--plain fx-py-lg">
+          <div className="fx-wide">
+            {cards.h2 && <div className="fx-heads" style={{marginBottom:40}}><h2 className="fx-d3" dangerouslySetInnerHTML={{__html: cards.h2}}/>{cards.lead && <p className="fx-lede">{cards.lead}</p>}</div>}
+            <div className="fx-panels fx-panels--static">
+              {cards.items.map((c,i) => (
+                <div key={i} className="fx-panel-card">
+                  <span className="fx-panel-img"><img src={c.photo} alt={c.title} loading="lazy" decoding="async"/></span>
+                  <span className="fx-panel-body">
+                    <h3>{c.title}</h3>
+                    <i className="fx-panel-rule" aria-hidden="true"/>
+                    <p>{c.body}</p>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 4b. install strip — pages with a parts list */}
       {installGrid && (
-        <section className="th-section" style={{paddingTop:64,paddingBottom:24}}>
+        <section className="th-section" style={{paddingTop:0,paddingBottom:64}}>
           <div className="sec-label">{installGrid.eyebrow || 'On the property'}</div>
           <h2 className="sec-title" dangerouslySetInnerHTML={{__html: installGrid.h2}}/>
           {installGrid.lead && <p className="sec-body">{installGrid.lead}</p>}
@@ -1853,95 +1578,28 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
         </section>
       )}
 
-      {/* 2. Value prop */}
-      <section className="th-section">
-        <div className="sec-label">{valueProp.eyebrow}</div>
-        <h2 className="sec-title" dangerouslySetInnerHTML={{__html: valueProp.h2}}/>
-        <p className="sec-body">{valueProp.lead}</p>
-        <div className="th-grid-3">
-          {valueProp.cards.map(c=>(
-            <div key={c.title} className="th-card">
-              <div className="th-card-icon">{c.icon}</div>
-              <h3>{c.title}</h3>
-              <p>{c.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 3. Unique split section */}
-      {valueProp.split && (
-        <section className="th-section--cream">
-          <div className="th-section--cream-inner">
-            <div className="th-split">
-              <div className="th-split-img"><img loading="lazy" decoding="async" src={valueProp.split.image} alt={valueProp.split.alt}/></div>
-              <div>
-                <div className="sec-label" style={{textAlign:'left'}}>{valueProp.split.eyebrow}</div>
-                <h2 className="sec-title" style={{textAlign:'left'}} dangerouslySetInnerHTML={{__html: valueProp.split.h2}}/>
-                <div className="th-rooms">
-                  {valueProp.split.rows.map(r=>(
-                    <div key={r.name} className="th-room">
-                      <div className="th-room-name">{r.name}</div>
-                      <div className="th-room-desc">{r.desc}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+      {/* 5. FAQ — the reference's accordion, only where a page has questions */}
+      {faq && (
+        <section className="fx-band fx-py-lg">
+          <div className="fx-field">
+            <div className="fx-heads" style={{marginBottom:32}}><h2 className="fx-d3">Questions we get asked</h2></div>
+            <div className="fx-faq">
+              {faq.map((q,i) => (
+                <details key={i} className="fx-faq-item" open={i===0}>
+                  <summary>{q.q}<i aria-hidden="true">+</i></summary>
+                  <p>{q.a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* 4. Why LUMA */}
-      <section className="th-section">
-        <div className="sec-label">Why LUMA</div>
-        <h2 className="sec-title" dangerouslySetInnerHTML={{__html: why.h2}}/>
-        <div className="th-why">
-          {why.rows.map(r=>(
-            <div key={r.n} className="th-why-row">
-              <div className="th-why-num">{r.n}</div>
-              <div className="th-why-text">{r.text}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. Recent work */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div className="sec-label">Recent work</div>
-          <h2 className="sec-title">{projects.h2}</h2>
-          <div className="th-projects">
-            {projects.items.map(p=>(
-              <div key={p.key} className="th-project">
-                <img loading="lazy" decoding="async" src={PHOTOS[p.key]} alt={p.name}/>
-                <div className="th-project-overlay">
-                  <div className="th-project-tag">{p.tag}</div>
-                  <div className="th-project-name">{p.name}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Credentials */}
-      <section className="th-section" style={{paddingTop:48,paddingBottom:48}}>
-        <div className="sec-label">Credentials</div>
-        <div className="th-credentials">
-          {credentials.map(c=><span key={c} className="th-chip">{c}</span>)}
-        </div>
-      </section>
-
-      {/* 7. CTA combo */}
-      <div className="th-cta-combo">
-        <div className="th-cta-photo" style={{backgroundImage:`url(${PHOTOS.gulfSunset})`}}/>
-        <div className="th-cta-form">
-          <h2 dangerouslySetInnerHTML={{__html: ctaCopy.h2}}/>
-          <p>{ctaCopy.lead}</p>
-          <FxActions navigate={navigate} label="Book a consultation" align="left" tone="dark"/>
-        </div>
-      </div>
+      {/* 6. CTA — the wave field, form-free */}
+      <FxCta navigate={navigate}
+        title={ctaTitle || (ctaCopy && ctaCopy.h2)}
+        body={ctaBody || (ctaCopy && ctaCopy.lead)}
+        label="Book a consultation"/>
     </div>
   );
 }
@@ -1994,8 +1652,8 @@ function AudioPage({navigate}) {
     projects={{
       h2:'Three rooms we like talking about.',
       items:[
-        {key:'projectWarmInterior', tag:'Naples · Port Royal',     name:'14-zone whole-home · Sonance Reference'},
-        {key:'projectBayfront',     tag:'Sarasota · Bayfront',     name:'Lanai + pool · James Loudspeaker'},
+        {key:'workRebuild',  tag:'Fort Myers · Canal',      name:'14-zone whole-home · Sonance Reference'},
+        {key:'workBayfront', tag:'Sarasota · Bayfront',     name:'Lanai + pool · James Loudspeaker'},
         {key:'projectModernVilla',  tag:'Sanibel · Modern villa',  name:'Two-channel listening room · Trinnov'},
       ],
     }}
@@ -2027,14 +1685,13 @@ function SecurityPage({navigate}) {
       h2:'What a LUMA install <em>looks like.</em>',
       lead:'Cameras, recorder, panels, and the app — what actually goes on the wall, in the closet, and in your hand.',
       items:[
-        {key:'installDome',     cap:'Outdoor dome camera',      size:'tall'},
-        {key:'installDoorbell', cap:'Doorbell camera'},
-        {key:'installNvr',      cap:'On-prem NVR'},
-        {key:'installPanel',    cap:'In-wall touch panel'},
-        {key:'installBullet',   cap:'Soffit bullet camera'},
-        {key:'installDock',     cap:'Dock-side weatherproof'},
-        {key:'installPhone',    cap:'Live cameras on phone'},
-        {key:'installTablet',   cap:'Tablet wall mount'},
+        {key:'installBullet',   cap:'G6 Pro Bullet under the soffit', size:'tall'},
+        {key:'installDome',     cap:'G6 Dome at the entry'},
+        {key:'installDoorbell', cap:'UniFi doorbell'},
+        {key:'installNvr',      cap:'UNVR in the rack'},
+        {key:'installPanel',    cap:'Control4 in-wall touchscreen'},
+        {key:'installDock',     cap:'Dock camera on Sarasota Bay'},
+        {key:'installPhone',    cap:'Protect app on your phone'},
       ],
     }}
     valueProp={{
@@ -2043,7 +1700,7 @@ function SecurityPage({navigate}) {
       lead:'Three layers — the cameras at the perimeter, the recorder in your network closet, and the alarm system that ties everything to your phone and your local responders.',
       cards:[
         {title:'Cameras', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="2.5"/><circle cx="14.5" cy="6" r="0.7" fill="currentColor"/></svg>,
-         desc:'Ubiquiti UniFi Protect G5 series. 4K, dual-lens, AI detection on-camera. PoE+ powered, no batteries to replace.'},
+         desc:'Ubiquiti UniFi Protect G6 series: G6 Pro Bullet at the perimeter, G6 Dome at the doors, AI Theta indoors where a camera should not look like one. 4K, on-camera AI detection, PoE, no batteries.'},
         {title:'NVR & storage', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="2.5" y="5" width="15" height="3.5" rx="0.6"/><rect x="2.5" y="11.5" width="15" height="3.5" rx="0.6"/><circle cx="14.5" cy="6.75" r="0.6" fill="currentColor"/><circle cx="14.5" cy="13.25" r="0.6" fill="currentColor"/></svg>,
          desc:'UniFi Protect on-prem NVR. RAID storage, 30+ days retention, encrypted at rest. Your footage stays on your property.'},
         {title:'Alarm & monitoring', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2.5l-7 3v5c0 4 3 7 7 8 4-1 7-4 7-8v-5l-7-3z"/></svg>,
@@ -2072,9 +1729,9 @@ function SecurityPage({navigate}) {
     projects={{
       h2:'Three properties, fully covered.',
       items:[
-        {key:'projectArchitectural', tag:'Sarasota · Bird Key',   name:'24 cameras · 8-acre estate'},
-        {key:'projectLuxuryPool',    tag:'Naples · Aqualane',     name:'Pool + dock · weatherized PTZ'},
-        {key:'projectBayfront',      tag:'Sarasota · Bayfront',   name:'Glass-break + perimeter · invisible alarm'},
+        {key:'workFamily',   tag:'Lakewood Ranch',        name:'24 cameras · 8-acre estate'},
+        {key:'workBayfront', tag:'Sarasota · Bayfront',   name:'Pool + dock · weatherized PTZ'},
+        {key:'securityHero', tag:'Siesta Key',            name:'Glass-break + perimeter · invisible alarm'},
       ],
     }}
     credentials={['Ubiquiti UVP Partner','UniFi Protect Certified','CEDIA Member','Insured & bonded']}
@@ -2090,64 +1747,64 @@ function SecurityPage({navigate}) {
 
 /* ─── PERMANENT LIGHTING PAGE ─── */
 function PermanentLightingPage({navigate}) {
+  const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell
     navigate={navigate}
-    formName="permanent-lighting-inquiry"
     hero={{
-      eyebrow:'Permanent lighting',
-      h1:'Holiday lights <em>without the ladder.</em>',
-      lead:'Colour-changing LEDs set into a track under the eaves, invisible in daylight. Warm white for the house all year, any colour for December, game day or a birthday, from your phone.',
-      image: PHOTOS.permanentHero,
+      eyebrow:'Permanent outdoor lighting',
+      h1:'The roofline, <em>drawn in light.</em>',
+      lead:'A slim channel under the overhangs, colour-matched to the fascia and invisible by day. At night it traces the architecture in warm white, and the same line does security, game day and the holidays from a preset.',
+      image: PHOTOS.permWarm,
       primaryLabel:'See a lit house →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
-    valueProp={{
-      eyebrow:'What goes up',
-      h2:'A track you never see, <em>lights you never take down.</em>',
-      lead:'Three parts: the aluminium track colour-matched to your soffit, the individually addressable LEDs inside it, and the controller that turns them into scenes.',
-      cards:[
-        {title:'Track', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M2.5 7h15"/><path d="M4 7v9M16 7v9"/></svg>,
-         desc:'Powder-coated aluminium channel matched to the fascia or soffit colour. Sits flush under the eave; from the street it reads as trim.'},
-        {title:'LEDs', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="5" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="15" cy="10" r="1.6"/></svg>,
-         desc:'Each diode addressed on its own. 2700K warm white for everyday accent lighting, sixteen million colours when you want them. Rated for salt air.'},
-        {title:'Control', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="5" y="2.5" width="10" height="15" rx="1.6"/><circle cx="10" cy="14" r="0.9" fill="currentColor"/></svg>,
-         desc:'Scenes from the app or a Lutron keypad. Sunset-on, midnight-off, a Christmas preset, a Buccaneers preset. Tied into the rest of the house where we did the rest.'},
-      ],
-      split:{
-        eyebrow:'Why permanent',
-        h2:'Up once, <em>on for a decade.</em>',
-        image: PHOTOS.permanentHoliday,
-        alt:'Permanent LED lighting under the eaves at night',
-        rows:[
-          {name:'No seasonal install',  desc:'No crew on your roof in December, no bins of strings in the garage in January. The lights are part of the house.'},
-          {name:'Everyday accent lighting', desc:'Most nights it is a soft warm line under the roof edge, the same job landscape lighting does for the ground floor.'},
-          {name:'Built for the Gulf',    desc:'Salt-rated diodes and sealed channel. Hurricane-season winds do not carry off a track screwed to the fascia.'},
-        ],
-      },
+    intro={{
+      lead:'Architectural lighting for the part of the house landscape lights never reach.',
+      body:'LUMA installs permanent roofline lighting on Gulf Coast residences from Bradenton to Naples: a channel matched to the fascia, individually addressed diodes inside it, and a controller in the rack with the rest of the house. Most nights it is a quiet warm-white line that finishes the elevation. When you want the house bright for security, in your team\'s colours, or dressed for December, it is one preset, and nothing goes up or comes down.'
     }}
-    why={{
-      h2:'The details <em>the street never sees.</em>',
-      rows:[
-        {n:'01', text:'Track colour is matched to your soffit and fascia before ordering, so in daylight there is nothing to notice. White track on a bronze fascia is the giveaway we avoid.'},
-        {n:'02', text:'Diode spacing follows the roofline, with corners and peaks planned on the drawings, not improvised on the ladder. Runs end where the architecture ends.'},
-        {n:'03', text:'Controller lives in the rack with the rest of the house and joins the same scenes. Evening turns on the eave line with the lanai; Away turns it off with everything else.'},
-      ],
-    }}
-    projects={{
-      h2:'Three roofs, three routines.',
+    values={{
+      h2:'What the system <em>does for you</em>',
+      lead:'Four things owners tell us they use every week, none of which need a ladder, a timer plug or a bin of tangled strings.',
       items:[
-        {key:'projectBayfront',      tag:'Sarasota · Bayfront',   name:'Warm white nightly · red and green in December'},
-        {key:'projectLuxuryPool',    tag:'Lakewood Ranch',        name:'Full perimeter · HOA-approved track colour'},
-        {key:'projectArchitectural', tag:'Longboat Key',          name:'Roofline + dock · one sunset schedule'},
-      ],
+        {icon:I('M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z'), title:'Set it and forget it',
+         desc:'Sunset-on, midnight-off, a schedule for the season and a preset for the date. The lights remember the plan; you stop thinking about them.'},
+        {icon:I('M3 9h18M3 15h18M9 3v18M15 3v18'), title:'Zone by zone',
+         desc:'Front roofline, lanai, dock and the garage side each on their own run, so the pool cage can glow while the street side stays warm white.'},
+        {icon:I('M12 3a9 9 0 1 0 9 9c0-1.5-1-2-2-2h-2a2 2 0 0 1-2-2V6c0-1.5-1-3-3-3zM7 10h.01M10 7h.01M15 8h.01'), title:'Sixteen million colours',
+         desc:'A 2700K warm white that reads like landscape lighting, and every team, flag and holiday colour on top. Patterns and animations for the nights you want them.'},
+        {icon:I('M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z'), title:'Built for salt and storms',
+         desc:'Salt-rated diodes, a sealed channel and fasteners into the fascia. Hurricane-season wind does not carry off a track that is part of the house.'},
+      ]
     }}
-    credentials={['Licensed low-voltage contractor','Salt-rated LED systems','Lutron integration','Insured & bonded']}
-    ctaCopy={{
-      h2:'Start a <em>permanent lighting conversation.</em>',
-      lead:'Send a photo of the front of the house. We will come back with a run plan, a track colour and an honest range.',
-      placeholder:'Roofline, one or two storeys, HOA, existing landscape lighting…',
-      onSubmit:()=>navigate('contact'),
+    pair={{
+      h2:'Invisible by day, <em>bright by night.</em>',
+      lead:'The channel is colour-matched to your fascia or soffit before it is ordered. From the street in daylight it reads as trim; from the street at night it reads as the house.',
+      items:[
+        {photo: PHOTOS.permEaveDay,   label:'The eave at noon'},
+        {photo: PHOTOS.permEaveNight, label:'The same eave at nine'},
+      ]
     }}
+    panels={{
+      h2:'One house, <em>four evenings.</em>',
+      lead:'The same Sarasota residence in the settings owners actually use. Switched from the app, a Lutron keypad by the door, or the evening scene.',
+      items:[
+        {photo: PHOTOS.permWarm,     title:'Architectural warm white',   body:'A quiet 2700K line under every overhang that finishes the elevation the way uplighting finishes the palms. This is the everyday setting.'},
+        {photo: PHOTOS.permSecurity, title:'Security',                   body:'Full-brightness cool white on demand or on a camera event, so the whole front of the house and the motor court are evenly lit.'},
+        {photo: PHOTOS.permGameday,  title:'Game day',                   body:'Pewter and red for the Bucs, blue and white for the Rays, kept restrained enough for this house. Scheduled to kick-off if you like.'},
+        {photo: PHOTOS.permanentHoliday, title:'December',               body:'Warm white and deep red for the holidays, a preset you set once. Nothing goes up in November and nothing comes down in January.'},
+      ]
+    }}
+    faq={[
+      {q:'How does it look during the day?', a:'Like trim. The channel is a slim extrusion powder-coated to match your fascia or soffit colour, and the diodes sit inside it. Most visitors do not notice it until you turn it on.'},
+      {q:'Do you have a warm white?', a:'Yes, and it is what most owners run most nights: a 2700K warm white close to what good landscape lighting produces. The colours are there for when you want them.'},
+      {q:'Will the channel fit my roofline?', a:'It is cut and fitted on site to your eaves, gables and returns, including barrel-tile rooflines and pool cages. Corners and peaks are planned on the drawing before the ladder goes up.'},
+      {q:'Does it survive hurricane season?', a:'The channel is fastened to the fascia, not clipped to a gutter, the diodes are salt-rated and the electronics are sealed. We have not had a system come down in a storm.'},
+      {q:'How much power does it use?', a:'A full roofline draws roughly what two or three incandescent porch lights did. On warm white at dimmed brightness it is less than that.'},
+      {q:'Can it join the rest of the house?', a:'If LUMA did the lighting or automation, the roofline joins the same scenes: Evening turns it on with the lanai, Away turns it off with everything else, and a keypad by the door has a button for it.'},
+      {q:'What is the warranty?', a:'Manufacturer parts warranty on the diodes and controller, and our own labour warranty on the install. If a diode fails, we replace the segment; you do not climb anything.'},
+    ]}
+    ctaTitle='Tell us what your roofline should do'
+    ctaBody='Send a photo of the front of the house. We will come back with a run plan, a channel colour, and an honest range before anything is ordered.'
   />;
 }
 
@@ -2212,8 +1869,8 @@ function NetworkingPage({navigate}) {
       h2:'Three networks running quietly.',
       items:[
         {key:'projectModernVilla',   tag:'Sanibel · Modern villa',  name:'Whole-home Cat6A · 8 APs · Wi-Fi 7'},
-        {key:'projectArchitectural', tag:'Sarasota · Bird Key',     name:'Two-building campus · fiber backbone'},
-        {key:'projectWarmInterior',  tag:'Naples · Port Royal',     name:'40+ IoT devices · VLAN-isolated'},
+        {key:'workFamily',   tag:'Lakewood Ranch',          name:'Two-building campus · fiber backbone'},
+        {key:'workRebuild',  tag:'Fort Myers · Canal',      name:'40+ IoT devices · VLAN-isolated'},
       ],
     }}
     credentials={['Ubiquiti UEWA','Ubiquiti UWA-Pro','Cat6A bonded subcontractor','Insured & bonded']}
@@ -2416,7 +2073,7 @@ function Footer({navigate}) {
   const groups = [
     {label:'Solutions', links:[
       ['lighting','Lighting'],['shading','Shading'],['theaters','Home theaters'],
-      ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],['permanent-lighting','Permanent lighting'],
+      ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],['permanent-lighting','Permanent outdoor lighting'],
     ]},
     {label:'Studio', links:[
       ['work','Our work'],['about','About'],      ['journal','Journal'],
