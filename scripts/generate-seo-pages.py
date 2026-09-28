@@ -147,7 +147,7 @@ ROUTES: list[dict] = [
         "title": "Permanent Outdoor Lighting | Soffit LEDs | LUMA Smart Home",
         "description": "Permanent colour-changing LED lighting under the eaves for Sarasota and Gulf Coast homes. Warm white year-round, holiday colours from your phone, no ladders.",
         "h1": "Holiday lights without the ladder.",
-        "og_image": "/assets/photos/sarasota-bay-house.jpg",
+        "og_image": "/assets/photos/permanent-dusk.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",

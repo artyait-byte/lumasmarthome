@@ -120,7 +120,7 @@ function RelatedLinks({page, navigate}){
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=15';
+const lu = (path) => path + '?v=16';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -131,8 +131,12 @@ const PHOTOS = {
   automation:  lu('/assets/photos/hero-automation.jpg'),
 
   heroHome:        lu('/assets/photos/sarasota-bay-house.jpg'),
-  permanentHero:   lu('/assets/photos/sarasota-bay-house.jpg'),   // TODO regen: soffit LEDs, dusk
-  permanentHoliday:lu('/assets/photos/scene-night.jpg'),          // TODO regen: holiday colours
+  permanentHero:   lu('/assets/photos/permanent-dusk.jpg'),
+  permanentHoliday:lu('/assets/photos/permanent-holiday.jpg'),
+  tradeFlatlay:    lu('/assets/photos/trade-flatlay.jpg'),
+  workBayfront:    lu('/assets/photos/work-bayfront.jpg'),
+  workFamily:      lu('/assets/photos/work-family.jpg'),
+  workRebuild:     lu('/assets/photos/work-rebuild.jpg'),
   heroSplash:      lu('/assets/photos/sarasota-downtown-bayfront.jpg'),
   heroAbout:       lu('/assets/photos/sarasota-marina.jpg'),
   heroShading:     lu('/assets/photos/hero-shading.jpg'),
@@ -464,17 +468,17 @@ function ServiceCard({id, name, height=240}) {
 
 const FX_SOLUTIONS = [
   {page:'work',      photo:PHOTOS.heroHome,      title:'For owners',  cta:'See finished houses'},
-  {page:'designers', photo:PHOTOS.heroDesigners, title:'For the trade', cta:'How we work with you'}
+  {page:'designers', photo:PHOTOS.tradeFlatlay,  title:'For the trade', cta:'How we work with you'}
 ];
 
 const FX_WORK = [
-  {page:'case-modern',   photo:PHOTOS.projMrExterior,     county:'Sarasota County', scope:'Lighting · Shades · Audio',
+  {page:'case-modern',   photo:PHOTOS.workBayfront,       county:'Sarasota County', scope:'Lighting · Shades · Audio',
    title:'A bayfront house that runs on one keypad',
    body:'Lutron throughout, three layers of shade on the west glass, and audio that disappears into the architecture.'},
-  {page:'case-bighouse', photo:PHOTOS.projectLuxuryPool,  county:'Manatee County',  scope:'Automation · Theater',
+  {page:'case-bighouse', photo:PHOTOS.workFamily,         county:'Manatee County',  scope:'Automation · Theater',
    title:'A family house where every room knows the hour',
    body:'Morning, afternoon, evening and away — four states, one press, across eleven thousand square feet.'},
-  {page:'case-urban',    photo:PHOTOS.projectWarmInterior,county:'Lee County',      scope:'Networking · Security',
+  {page:'case-urban',    photo:PHOTOS.workRebuild,        county:'Lee County',      scope:'Networking · Security',
    title:'A rebuild wired for the next twenty years',
    body:'Structured cabling, enterprise Wi-Fi and on-premise camera storage — no monthly fee, no cloud lock-in.'}
 ];
@@ -495,8 +499,8 @@ const FX_QUOTES = [
 /* Reel tiles render at 259x270 and 319x388 — serve crops cut for that,
    not the full-size hero photos. Ten files, under half a megabyte total. */
 const FX_REEL = [
-  'sarasota-bay-house','lighting-scene','hero-theater','gulf-sunset','designers-chandelier',
-  'window-shades','hero-audio-hifi','scene-night','net-tech','sarasota-downtown-bayfront'
+  'sarasota-bay-house','lighting-scene','hero-theater','permanent-dusk','hero-designers-new',
+  'hero-shading','reel-bedroom','work-bayfront','work-family','hero-automation'
 ].map(n => lu('/assets/photos/reel/' + n + '.jpg'));
 
 function FxCall() {
@@ -629,9 +633,9 @@ function FxSupport({navigate}) {
    sans title, a 3px accent rule 100px wide, prose, "Learn more →". Seven
    cards, three in view, the rest a swipe away. ── */
 const FX_DISCIPLINES = [
-  {page:'lighting',   photo:PHOTOS.lightingRania, title:'Lighting control',
+  {page:'lighting',   photo:PHOTOS.lightingKetra, title:'Lighting control',
    body:'Lutron and Ketra on every circuit, warm-dim tuned for evening, keypads matched to your plates.'},
-  {page:'shading',    photo:PHOTOS.moment1,       title:'Motorized shades',
+  {page:'shading',    photo:PHOTOS.window,        title:'Motorized shades',
    body:'Three layers on the west glass, quiet drives, pockets drawn before the drywall goes up.'},
   {page:'security',   photo:PHOTOS.securityHero,  title:'Cameras & security',
    body:'Footage stored on the property, encrypted, no monthly fee and no cloud in the way.'},
