@@ -314,6 +314,7 @@ function MegaDropdown({active, hoverId, setHoverId, navigate}) {
         <div className="dd-foot">
           <NavLink page="service-areas" navigate={navigate} className="dd-foot-link">Service areas by city →</NavLink>
           <NavLink page="journal" navigate={navigate} className="dd-foot-link">Journal →</NavLink>
+          <NavLink page="smart-home-demo" navigate={navigate} className="dd-foot-link">Interactive 3D demo →</NavLink>
         </div>
       </div>
     </div>
@@ -322,38 +323,40 @@ function MegaDropdown({active, hoverId, setHoverId, navigate}) {
 
 /* ─── NAV ─── */
 function Nav({navigate}) {
+  /* The reference's header: transparent over a dark hero with white type,
+     solid once you scroll or on a page with no hero; plain 18px links, one
+     dropdown, two pills on the right. The mobile panel is a flat list with
+     a single accordion for Solutions, the phone, and the same two pills. */
   const [ddOpen, setDdOpen] = useState(false);
   const [hoverId, setHoverId] = useState('lighting');
   const [mobOpen, setMobOpen] = useState(false);
+  const [solOpen, setSolOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef(null);
   useEffect(()=>{
     const h = e=>{if(navRef.current&&!navRef.current.contains(e.target))setDdOpen(false);};
     document.addEventListener('mousedown',h);
-    return()=>document.removeEventListener('mousedown',h);
+    const f = ()=>setScrolled(window.scrollY>40);
+    window.addEventListener('scroll',f,{passive:true}); f();
+    return()=>{document.removeEventListener('mousedown',h);window.removeEventListener('scroll',f);};
   },[]);
   useEffect(()=>{
     document.body.style.overflow = mobOpen ? 'hidden' : '';
     return ()=>{ document.body.style.overflow=''; };
   },[mobOpen]);
-  /* Allow ?menu=1 / ?menu=open to auto-open the burger panel (used by previews). */
   useEffect(()=>{
-    try {
-      const v = new URLSearchParams(window.location.search).get('menu');
-      if (v === '1' || v === 'open') setMobOpen(true);
-    } catch(_) {}
+    try { const v = new URLSearchParams(window.location.search).get('menu'); if (v === '1' || v === 'open') setMobOpen(true); } catch(_) {}
   },[]);
   const nap = napInfo();
-  const SECONDARY_LINKS = [
+  const close = ()=>{setMobOpen(false);setSolOpen(false);};
+  const LINKS = [
+    {label:'Work', page:'work'},
     {label:'Service Areas', page:'service-areas'},
     {label:'Journal', page:'journal'},
-    {label:'Work', page:'work'},
     {label:'About', page:'about'},
-    {label:'Budget Calculator', page:'budget-calculator'},
-    {label:'For Designers & Builders', page:'designers'},
-    {label:'Customer Support', page:'support'},
   ];
   return (
-    <div ref={navRef} style={{position:'sticky',top:0,zIndex:200}}>
+    <div ref={navRef} className={`nav-shell${scrolled?' nav--solid':''}`}>
       <nav className="nav">
         <NavLink page="home" navigate={navigate} className="nav-logo" aria-label="LUMA Smart Home home">
           <div className="logo-dot"/>
@@ -363,78 +366,56 @@ function Nav({navigate}) {
           </div>
         </NavLink>
         <div className="nav-links">
-          <button type="button" className={`dropdown-trigger${ddOpen?' open':''}`} onClick={()=>setDdOpen(v=>!v)} aria-expanded={ddOpen} aria-haspopup="true">
-            Smart Home Solutions
-            <svg className={`chevron${ddOpen?' open':''}`} width="12" height="8" viewBox="0 0 12 8" fill="none">
-              <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
+          <button type="button" className={`nav-link nav-link--dd${ddOpen?' open':''}`} onClick={()=>setDdOpen(v=>!v)} aria-expanded={ddOpen} aria-haspopup="true">
+            Solutions
+            <svg className={`chevron${ddOpen?' open':''}`} width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
           </button>
-          <NavLink page="smart-home-demo" navigate={navigate} className="nav-link nav-link--feature">
-            <span className="nav-link-dot"/>Live 3D Demo
-          </NavLink>
-          {SECONDARY_LINKS.slice(0,3).map(({label,page})=>(
+          {LINKS.map(({label,page})=>(
             <NavLink key={page} page={page} navigate={navigate} className="nav-link">{label}</NavLink>
           ))}
         </div>
         <div className="nav-actions">
-          <NavLink page="support" navigate={navigate} className="btn-ghost">Customer Support</NavLink>
-          <NavLink page="contact" navigate={navigate} className="btn-solid">Start Your Project →</NavLink>
+          <NavLink page="support" navigate={navigate} className="nav-pill nav-pill--ghost">Customer Support</NavLink>
+          <NavLink page="contact" navigate={navigate} className="nav-pill nav-pill--solid">Contact</NavLink>
         </div>
-        <button type="button" className={`nav-burger${mobOpen?' open':''}`}
-          onClick={()=>setMobOpen(v=>!v)} aria-label="Toggle menu" aria-expanded={mobOpen}>
+        <button type="button" className={`nav-burger${mobOpen?' open':''}`} onClick={()=>setMobOpen(v=>!v)} aria-label="Toggle menu" aria-expanded={mobOpen}>
           <span/><span/><span/>
         </button>
       </nav>
-      <MegaDropdown active={ddOpen} hoverId={hoverId} setHoverId={setHoverId}
-        navigate={p=>{navigate(p);setDdOpen(false)}}/>
+      <MegaDropdown active={ddOpen} hoverId={hoverId} setHoverId={setHoverId} navigate={p=>{navigate(p);setDdOpen(false)}}/>
 
       {/* MOBILE PANEL */}
       <div className={`nav-mobile-panel${mobOpen?' open':''}`}>
         <div className="nav-mobile-head">
-          <NavLink page="home" navigate={navigate} className="nav-logo" onNavigate={()=>setMobOpen(false)} aria-label="LUMA Smart Home home">
+          <NavLink page="home" navigate={navigate} className="nav-logo" onNavigate={close} aria-label="LUMA Smart Home home">
             <div className="logo-dot"/>
-            <div className="logo-text">
-              <span className="logo-luma">LUMA</span>
-              <span className="logo-sub">Smart Home</span>
-            </div>
+            <div className="logo-text"><span className="logo-luma">LUMA</span><span className="logo-sub">Smart Home</span></div>
           </NavLink>
-          <button className="nav-mobile-close" onClick={()=>setMobOpen(false)} aria-label="Close menu">×</button>
+          <button className="nav-mobile-close" onClick={close} aria-label="Close menu">×</button>
         </div>
-
-        <NavLink page="smart-home-demo" navigate={navigate} className="nav-mobile-link nav-mobile-link--feature" onNavigate={()=>setMobOpen(false)}>
-          <span style={{display:'inline-flex',alignItems:'center'}}>
-            <span className="nav-link-dot"/>Live 3D Demo
-          </span>
-          <span className="arr">→</span>
-        </NavLink>
-
-        <div className="nav-mobile-section-label">Smart Home Solutions</div>
-        <div className="nav-mobile-solutions">
-          {services.map(s=>(
-            <NavLink key={s.id} page={s.page} navigate={navigate} className="nav-mobile-sol-tile" onNavigate={()=>setMobOpen(false)}>
-              <h4>{s.name}</h4>
-              <p>{s.sub}</p>
-            </NavLink>
-          ))}
-        </div>
-
-        <div className="nav-mobile-section-label">Explore</div>
-        {SECONDARY_LINKS.map(({label,page})=>(
-          <NavLink key={page} page={page} navigate={navigate} className="nav-mobile-link" onNavigate={()=>setMobOpen(false)}>
-            <span>{label}</span>
-            <span className="arr">→</span>
-          </NavLink>
-        ))}
-
+        <ul className="nav-mobile-list">
+          <li>
+            <button type="button" className={`nav-mobile-row${solOpen?' open':''}`} onClick={()=>setSolOpen(v=>!v)} aria-expanded={solOpen}>
+              Solutions <svg width="10" height="16" viewBox="0 0 10 16" fill="none"><path d="M2 2l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            {solOpen && (
+              <ul className="nav-mobile-sub">
+                {services.map(s=>(<li key={s.id}><NavLink page={s.page} navigate={navigate} onNavigate={close}>{s.name}</NavLink></li>))}
+                <li><NavLink page="smart-home-demo" navigate={navigate} onNavigate={close}>3D demo</NavLink></li>
+              </ul>
+            )}
+          </li>
+          {LINKS.map(({label,page})=>(<li key={page}><NavLink page={page} navigate={navigate} className="nav-mobile-row" onNavigate={close}>{label}</NavLink></li>))}
+          <li><NavLink page="support" navigate={navigate} className="nav-mobile-row" onNavigate={close}>Support</NavLink></li>
+          <li><NavLink page="designers" navigate={navigate} className="nav-mobile-row" onNavigate={close}>For the trade</NavLink></li>
+        </ul>
+        <a className="nav-mobile-phone" href={nap.telHref}>
+          <span className="nav-mobile-phone-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+          {nap.telephoneDisplay}
+        </a>
         <div className="nav-mobile-cta">
-          <NavLink page="contact" navigate={navigate} className="btn-solid" onNavigate={()=>setMobOpen(false)}>Start Your Project →</NavLink>
-          <NavLink page="budget-calculator" navigate={navigate} className="btn-ghost" onNavigate={()=>setMobOpen(false)}>Get a Budget Estimate</NavLink>
-        </div>
-
-        <div className="nav-mobile-contact">
-          <strong><a href={nap.telHref}>{nap.telephoneDisplay}</a></strong>
-          <span>{nap.hours}</span>
-          <span>Serving {nap.area}</span>
+          <NavLink page="support" navigate={navigate} className="nav-pill nav-pill--outline" onNavigate={close}>Customer Support</NavLink>
+          <NavLink page="contact" navigate={navigate} className="nav-pill nav-pill--solid" onNavigate={close}>Contact</NavLink>
         </div>
       </div>
     </div>
