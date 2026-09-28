@@ -168,7 +168,7 @@ function HomeSeoCluster({navigate}){
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=14';
+const lu = (path) => path + '?v=15';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -218,7 +218,7 @@ const PHOTOS = {
   installDock:      lu('/assets/photos/waterfront-lanai.jpg'),
   installPhone:     lu('/assets/photos/security-camera.jpg'),
   installBullet:    lu('/assets/photos/security-camera.jpg'),
-  installTablet:    lu('/assets/photos/networking-rack.jpg'),
+  installTablet:    lu('/assets/photos/wall-tablet.jpg'),
   networkingHero:   lu('/assets/photos/hero-networking.jpg'),
   networkingRack:   lu('/assets/photos/networking-rack.jpg'),
   netAP:            lu('/assets/photos/net-wifi-ap.jpg'),
