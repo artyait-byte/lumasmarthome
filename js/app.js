@@ -168,7 +168,7 @@ function HomeSeoCluster({navigate}){
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=13';
+const lu = (path) => path + '?v=14';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -224,7 +224,7 @@ const PHOTOS = {
   netAP:            lu('/assets/photos/net-wifi-ap.jpg'),
   netSwitch:        lu('/assets/photos/net-switch.jpg'),
   netPatch:         lu('/assets/photos/net-patch.jpg'),
-  netTech:          lu('/assets/photos/net-tech.jpg'),
+  netRack:          lu('/assets/photos/net-tech.jpg'),
   projectModernVilla: lu('/assets/photos/waterfront-lanai.jpg'),
   projectLuxuryPool:  lu('/assets/photos/gulf-sunset.jpg'),
   heroWork:           lu('/assets/photos/sarasota-sunset.jpg'),
@@ -979,6 +979,11 @@ function ShadingPage({navigate}) {
           ))}
         </div>
       </section>
+
+      <FxCta navigate={navigate}
+        title="Ready to take the glare <em>out of the day?</em>"
+        body="Tell us which windows fight you and when. We'll come back with a shade plan — fabric, drive, and pockets — and an honest range before anything is ordered."
+        label="Plan my shading"/>
     </div>
   );
 }
@@ -1190,6 +1195,11 @@ function LightingPage({navigate}) {
 
       {/* What we install — mosaic */}
       <LightingMosaic/>
+
+      <FxCta navigate={navigate}
+        title="Ready to light the house <em>properly?</em>"
+        body="Send us the fixture schedule, or just the floor plan. We'll come back with a control design that matches what your designer specified — and an honest range."
+        label="Start your lighting project"/>
     </div>
   );
 }
@@ -1797,10 +1807,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           </div>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          {hero.rightPanel ? hero.rightPanel : (<>
-            <img loading="lazy" decoding="async" src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
-            <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.32) 0%,transparent 38%)'}}/>
-          </>)}
+          <img loading="lazy" decoding="async" src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
         </div>
       </section>
 
@@ -2057,30 +2064,25 @@ function SecurityPage({navigate}) {
 
 /* ─── NETWORKING PAGE ─── */
 function NetworkingPage({navigate}) {
-  const netMosaic = [
-    {src: PHOTOS.netAP,     label:'Wi-Fi 6 / 7',        pos:'center center'},
-    {src: PHOTOS.netSwitch, label:'Managed switching',   pos:'center center'},
-    {src: PHOTOS.netPatch,  label:'Structured cabling',  pos:'center center'},
-    {src: PHOTOS.netTech,   label:'Clean rack',          pos:'center center'},
-  ];
   return <ServicePageShell
     navigate={navigate}
     formName="networking-inquiry"
+    installGrid={{
+      eyebrow:'What goes in',
+      h2:'The parts you <em>never have to look at.</em>',
+      lead:'Access points that disappear into the ceiling, switching and patch panels dressed so the next person can read them, and a rack that stays tidy years later.',
+      items:[
+        {key:'netAP',     cap:'Wi-Fi 6 / 7 access point'},
+        {key:'netSwitch', cap:'Managed PoE switching'},
+        {key:'netPatch',  cap:'Structured cabling'},
+        {key:'netRack',   cap:'Clean rack'},
+      ],
+    }}
     hero={{
       eyebrow:'Networking',
       h1:'A network <em>your home is built on,</em> not bolted to.',
       lead:'Enterprise-grade Wi-Fi and structured cabling designed before drywall. Wired wherever wires can land, mesh only where it belongs — so every device works the day you move in.',
-      rightPanel:(
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gridTemplateRows:'1fr 1fr',height:'100%',gap:3,background:'var(--dark)'}}>
-          {netMosaic.map((cell,i)=>(
-            <div key={i} style={{position:'relative',overflow:'hidden'}}>
-              <img loading="lazy" decoding="async" src={cell.src} alt={cell.label} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:cell.pos,display:'block'}}/>
-              <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(27,26,40,.75) 0%,transparent 55%)'}}/>
-              <div style={{position:'absolute',bottom:10,left:12,fontSize:10,letterSpacing:'.14em',textTransform:'uppercase',color:'rgba(252,250,246,.9)',fontWeight:600,textShadow:'0 1px 4px rgba(0,0,0,.6)'}}>{cell.label}</div>
-            </div>
-          ))}
-        </div>
-      ),
+      image: PHOTOS.netRack,
       primaryLabel:'See a finished rack →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
@@ -2913,7 +2915,7 @@ function ServiceSupportPage({navigate}) {
             <button type="button" className="btn-ghost" onClick={()=>navigate('contact')}>Open a ticket (email)</button>
           </div>
         </div>
-        <div className="th-hero-img"><img loading="lazy" decoding="async" src={PHOTOS.networkingRack} alt="Network rack and smart home infrastructure"/></div>
+        <div className="th-hero-img"><img loading="lazy" decoding="async" src={lu('/assets/video/luma-care-poster.jpg')} alt="A LUMA technician walking a homeowner through the control app"/></div>
       </header>
 
       <section className="th-section">

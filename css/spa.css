@@ -315,94 +315,14 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .home-hero-place{ margin:16px 0 24px }
 }
 
-/* ── SARASOTA AERIAL BANNER (looped drone reel · 16:9 video) ── */
-.sarasota-banner{
-  position:relative; width:100%;
-  height:clamp(420px, 64vh, 640px);
-  overflow:hidden; isolation:isolate;
-  background:#0a1822 url('/assets/photos/sarasota-turtle-aerial.jpg') center/cover no-repeat;
-  color:#FCFAF6;
-}
-.sarasota-banner-video{
-  position:absolute; inset:0; z-index:0;
-  width:100%; height:100%;
-  object-fit:cover; object-position:center 50%;
-  pointer-events:none;
-  opacity:0; transition:opacity .9s ease-out;
-}
-.sarasota-banner-video.is-ready{ opacity:1 }
-.sarasota-banner-img{
-  position:absolute; inset:0; z-index:0;
-  width:100%; height:100%;
-  object-fit:cover; object-position:center 50%;
-  pointer-events:none;
-}
-.sarasota-banner-overlay{
-  position:absolute; inset:0;
-  background:
-    linear-gradient(95deg, rgba(10,24,34,.82) 0%, rgba(10,24,34,.52) 38%, rgba(10,24,34,.18) 70%, rgba(10,24,34,.05) 100%),
-    linear-gradient(180deg, rgba(10,24,34,.18) 0%, transparent 22%, transparent 70%, rgba(10,24,34,.55) 100%);
-}
-.sarasota-banner-pin{
-  position:absolute; top:24px; right:28px; z-index:2;
-  display:inline-flex; align-items:center; gap:10px;
-  padding:9px 16px; border-radius:999px;
-  background:rgba(10,24,34,.45); backdrop-filter:blur(8px);
-  border:1px solid rgba(252,250,246,.22);
-  font-size:14.5px; letter-spacing:.06em; font-weight:600;
-  color:#FCFAF6;
-}
-.sarasota-banner-pin .dot{
-  width:8px; height:8px; border-radius:50%; background:#9BE0C8;
-  box-shadow:0 0 0 0 rgba(155,224,200,.7);
-  animation:saraPing 2.4s ease-out infinite;
-}
-.sarasota-banner-inner{
-  position:relative; z-index:1;
-  max-width:1280px; margin:0 auto; height:100%;
-  padding:64px 80px;
-  display:flex; flex-direction:column; justify-content:center;
-}
-.sarasota-banner-eyebrow{
-  display:inline-flex; align-items:center; gap:14px;
-  font-size:16.5px; letter-spacing:.16em; text-transform:uppercase;
-  font-weight:600; color:rgba(252,250,246,.92); margin-bottom:22px;
-}
-.sarasota-banner-eyebrow::before{ content:''; width:42px; height:2px; background:#F4C9A8 }
-.sarasota-banner-title{
-  font-family:var(--serif); font-weight:600;
-  font-size:clamp(40px, 4.6vw, 64px); line-height:1.06;
-  letter-spacing:-.005em; max-width:780px;
-  margin:0 0 22px; text-wrap:balance;
-  text-shadow:0 2px 24px rgba(0,0,0,.35);
-}
-.sarasota-banner-title em{ color:#F4C9A8; font-style:italic; font-weight:500 }
-.sarasota-banner-body{
-  font-size:clamp(18px, 1.45vw, 21px); line-height:1.6; font-weight:500;
-  max-width:620px; color:rgba(252,250,246,.92);
-  margin:0 0 28px; text-shadow:0 1px 10px rgba(0,0,0,.3);
-}
-.sarasota-banner-meta{
-  display:flex; flex-wrap:wrap; gap:28px 36px;
-  font-size:15px; letter-spacing:.04em;
-  color:rgba(252,250,246,.85); font-weight:600;
-}
-.sarasota-banner-meta span{ display:inline-flex; align-items:center; gap:8px }
-.sarasota-banner-meta b{ color:#F4C9A8; font-weight:700 }
 @keyframes saraPing{
   0%   { box-shadow:0 0 0 0 rgba(155,224,200,.7) }
   70%  { box-shadow:0 0 0 14px rgba(155,224,200,0) }
   100% { box-shadow:0 0 0 0 rgba(155,224,200,0) }
 }
 @media (max-width:899px){
-  .sarasota-banner{ height:clamp(380px, 70vh, 560px) }
-  .sarasota-banner-inner{ padding:40px 24px }
-  .sarasota-banner-pin{ top:16px; right:16px; font-size:13px; padding:7px 12px }
-  .sarasota-banner-meta{ gap:14px 22px; font-size:14px }
 }
 @media (prefers-reduced-motion: reduce){
-  .sarasota-banner-video{ display:none }
-  .sarasota-banner-pin .dot{ animation:none }
 }
 
 /* ── SECTION HEADER ── */
@@ -637,7 +557,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     grid-template-areas:"lit" "win" "sec" "thr" "av" "auto" "net";
     gap:.5rem;
   }
-  .cat-bento .cat-tile{aspect-ratio:4/3}
+  .cat-bento .cat-tile{aspect-ratio:4/3;width:100%;min-width:0}
 }
 
 /* ── THEATERS PAGE ── */
@@ -1052,7 +972,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     grid-template-areas:"lit" "win" "sec" "thr" "av" "auto" "net";
     gap:14px;margin-top:32px;
   }
-  .cat-bento .cat-tile{aspect-ratio:4/3;min-height:280px}
+  .cat-bento .cat-tile{aspect-ratio:auto;min-height:0;height:clamp(240px,62vw,300px);width:100%}
   /* Lighter overlay so the photo is actually visible behind the title */
   .cat-bento .cat-overlay{
     background:linear-gradient(180deg,rgba(15,74,66,0.05) 0%,rgba(15,74,66,0.35) 55%,rgba(15,74,66,0.78) 100%)!important;
@@ -1321,6 +1241,8 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .fx-head{margin-bottom:40px}
   .fx-hero h1{font-size:42px}
   .fx-hero-sub{font-size:17.5px}
+  /* the stacked CTA is ~70px taller — keep it clear of the absolute brand bar */
+  .fx-hero-inner{padding-bottom:184px}
   .fx-hero-cta{width:100%;flex-direction:column}
   .fx-hero-cta>*{width:100%;justify-content:center}
   .fx-actions{flex-direction:column;align-items:stretch;text-align:center}
@@ -1330,4 +1252,118 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 @media (prefers-reduced-motion:reduce){
   .fx-hero-media{display:none}
   .fx-card img,.fx-work-card img{transition:none}
+}
+
+/* ==========================================================================
+   INNER-PAGE HERO
+   Fusion reuses one hero on every page and just makes it shorter on the
+   inner ones. LUMA's inner pages were a two-column split — dark type panel
+   beside a photo — so this restyles that split into the same shape as the
+   home hero: one full-bleed photo, one centred column of type over it.
+   Every one of those heroes has the same skeleton (type div, then photo div,
+   sometimes a trailing inline <style>), so nth-of-type is the safe hook.
+   ========================================================================== */
+.lit-hero-wrap{
+  position:relative;display:block!important;overflow:hidden;
+  min-height:min(58vh,480px)!important;
+  background:#14131E!important;
+}
+/* photo panel → full bleed behind the type */
+.lit-hero-wrap > div:nth-of-type(2){
+  position:absolute!important;inset:0!important;
+  min-height:0!important;z-index:0;
+}
+.lit-hero-wrap > div:nth-of-type(2) img{
+  width:100%!important;height:100%!important;object-fit:cover!important;display:block;
+}
+.lit-hero-wrap > div:nth-of-type(2)::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(20,19,30,.66) 0%,rgba(20,19,30,.36) 42%,rgba(20,19,30,.82) 100%),
+    radial-gradient(85% 70% at 50% 45%,transparent 0%,rgba(20,19,30,.42) 100%);
+}
+/* type panel → centred column on top */
+.lit-hero-wrap > div:nth-of-type(1){
+  position:relative;z-index:1;
+  background:transparent!important;
+  align-items:center!important;text-align:center;
+  padding:108px 48px 96px!important;
+  max-width:960px;margin:0 auto;
+}
+.lit-hero-wrap > div:nth-of-type(1) > *{max-width:100%}
+.lit-hero-wrap h1{margin-left:auto!important;margin-right:auto!important;text-wrap:balance}
+.lit-hero-wrap > div:nth-of-type(1) > p{margin-left:auto!important;margin-right:auto!important}
+.lit-hero-wrap ul{align-items:center;text-align:center}
+.lit-hero-wrap ul li{justify-content:center}
+/* the button row sits under the type, centred like the home hero */
+.lit-hero-wrap > div:nth-of-type(1) > div:last-of-type{justify-content:center}
+
+/* the eyebrow gets the home hero's rules on either side */
+.lit-hero-wrap > div:nth-of-type(1) > div:first-of-type{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  align-self:center;
+}
+.lit-hero-wrap > div:nth-of-type(1) > div:first-of-type::before,
+.lit-hero-wrap > div:nth-of-type(1) > div:first-of-type::after{
+  content:'';width:30px;height:1.5px;background:var(--accent);flex:0 0 auto;
+}
+
+@media (max-width:899px){
+  .lit-hero-wrap{min-height:min(56vh,420px)!important}
+  .lit-hero-wrap > div:nth-of-type(1){padding:84px 26px 72px!important}
+}
+@media (max-width:599px){
+  .lit-hero-wrap > div:nth-of-type(1){padding:72px 20px 64px!important}
+  .lit-hero-wrap > div:nth-of-type(1) > div:last-of-type{flex-direction:column;width:100%}
+  .lit-hero-wrap > div:nth-of-type(1) > div:last-of-type > *{width:100%;justify-content:center}
+}
+
+/* The support page's hero is the last split one — same treatment as the rest. */
+.th-hero.page-head{
+  position:relative;display:block;overflow:hidden;
+  max-width:none;padding:0;background:#14131E;
+  min-height:min(56vh,460px);
+}
+.th-hero.page-head > div:first-child{
+  position:relative;z-index:1;
+  max-width:900px;margin:0 auto;
+  padding:104px 48px 92px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+}
+.th-hero.page-head .hero-tag{border-color:#F0C39B!important;color:#F0C39B!important}
+.th-hero.page-head .hero-title{color:#FCFAF6}
+.th-hero.page-head .hero-title em{color:#F0C39B}
+.th-hero.page-head .hero-body{color:rgba(252,250,246,.86);max-width:640px}
+.th-hero.page-head .sp-hero-tel{justify-content:center;color:rgba(252,250,246,.86)}
+.th-hero.page-head .sp-hero-tel span{color:rgba(252,250,246,.6)!important}
+.th-hero.page-head .sp-hero-tel a{color:#F0C39B}
+.th-hero.page-head .th-cta-row{justify-content:center}
+.th-hero.page-head .btn-ghost{color:#FCFAF6;border-color:rgba(252,250,246,.45)}
+.th-hero.page-head .th-hero-img{
+  position:absolute;inset:0;z-index:0;
+  height:auto;border-radius:0;
+}
+.th-hero.page-head .th-hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(20,19,30,.7) 0%,rgba(20,19,30,.44) 42%,rgba(20,19,30,.84) 100%),
+    radial-gradient(85% 70% at 50% 45%,transparent 0%,rgba(20,19,30,.4) 100%);
+}
+@media (max-width:899px){
+  .th-hero.page-head > div:first-child{padding:82px 26px 70px}
+}
+@media (max-width:599px){
+  .th-hero.page-head > div:first-child{padding:68px 20px 60px}
+  .th-hero.page-head .th-cta-row{flex-direction:column;width:100%}
+  .th-hero.page-head .th-cta-row > *{width:100%;justify-content:center}
+}
+
+/* A card that carries an aspect-ratio AND an explicit height derives its
+   WIDTH from that height, which is how these pushed past the phone edge.
+   Let the grid track set the width and the ratio set the height. */
+@media (max-width:899px){
+  .work-cases-row > *,
+  .th-projects > .th-project{
+    width:100%;min-width:0;height:auto!important;
+  }
 }
