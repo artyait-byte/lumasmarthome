@@ -1460,12 +1460,10 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
       <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
           <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>{hero.eyebrow}</div>
-          <h1 style={{fontFamily:'var(--serif)',color:'#FCFAF6',margin:'0 0 24px'}} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">')}}/>
-          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>{hero.lead}</p>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={hero.primaryAction}>{hero.primaryLabel}</button>
-            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={hero.secondaryAction}>{hero.secondaryLabel}</button>
-          </div>
+          {/* the reference's inner hero carries the kicker and the headline, nothing
+              else; the lead opens the intro paragraph and the buttons live in the
+              header and the closing CTA */}
+          <h1 style={{fontFamily:'var(--serif)',color:'#FCFAF6',margin:0}} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">')}}/>
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
           <img loading="lazy" decoding="async" src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
