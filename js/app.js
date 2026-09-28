@@ -1,7 +1,7 @@
 const {useState, useEffect, useRef} = React;
 
 /* ─── PATH ROUTING (crawlable URLs, not ?p=) ─── */
-const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','smart-home-demo']);
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','permanent-lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','smart-home-demo']);
 
 function knownPages(){
   const keys = new Set(ROUTE_KEYS);
@@ -131,6 +131,8 @@ const PHOTOS = {
   automation:  lu('/assets/photos/hero-automation.jpg'),
 
   heroHome:        lu('/assets/photos/sarasota-bay-house.jpg'),
+  permanentHero:   lu('/assets/photos/sarasota-bay-house.jpg'),   // TODO regen: soffit LEDs, dusk
+  permanentHoliday:lu('/assets/photos/scene-night.jpg'),          // TODO regen: holiday colours
   heroSplash:      lu('/assets/photos/sarasota-downtown-bayfront.jpg'),
   heroAbout:       lu('/assets/photos/sarasota-marina.jpg'),
   heroShading:     lu('/assets/photos/hero-shading.jpg'),
@@ -237,6 +239,7 @@ const serviceIcons = {
   security: <g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M15 4.5L7 8v6c0 4.8 3.5 8.5 8 10 4.5-1.5 8-5.2 8-10V8L15 4.5z"/><path d="M11.5 13.5l2.5 2.5 4.5-5"/></g>,
   audio:    <g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><path d="M9 11.5h3l3.5-4.5v16.5L12 19H9V11.5z"/><path d="M18 11a5 5 0 010 8"/><path d="M20 8.5a8.5 8.5 0 010 13"/></g>,
   networking:<g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><path d="M5.5 11A12.8 12.8 0 0124.5 11" strokeOpacity=".4"/><path d="M8 14a10 10 0 0114 0" strokeOpacity=".65"/><path d="M10.5 17a6.5 6.5 0 019 0" strokeOpacity=".88"/><circle cx="15" cy="21" r="1.8" fill="white" stroke="none"/></g>,
+  permanent:<g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round"><path d="M4 10h22"/><circle cx="8" cy="14" r="1.6" fill="white" stroke="none"/><circle cx="15" cy="14" r="1.6" fill="white" stroke="none"/><circle cx="22" cy="14" r="1.6" fill="white" stroke="none"/><path d="M8 17v4M15 17v6M22 17v4" strokeOpacity=".6"/></g>,
   automation:<g fill="none" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="5,15 15,6 25,15"/><path d="M8.5 14.5v8.5h5.5v-5h2v5h5.5v-8.5"/><circle cx="22" cy="9" r="3" fill="rgba(197,114,56,.9)" stroke="white" strokeWidth="1.1"/><line x1="22" y1="7.4" x2="22" y2="10.6" strokeWidth=".9"/><line x1="20.4" y1="9" x2="23.6" y2="9" strokeWidth=".9"/></g>,
 };
 
@@ -258,6 +261,7 @@ const services = [
   {id:'audio',      name:'Audio & Video',              sub:'Whole-home audio · indoor + lanai',    page:'audio'},
   {id:'networking', name:'Networking',                  sub:'Wi-Fi 6 / 7 · enterprise-grade',       page:'networking'},
   {id:'automation', name:'Home Automation',             sub:'Daily routines · one tap',             page:'automation'},
+  {id:'permanent',  name:'Permanent Lighting',          sub:'Soffit LEDs · holidays without ladders', page:'permanent-lighting'},
 ];
 
 /* ─── MEGA DROPDOWN ─── */
@@ -625,9 +629,9 @@ function FxSupport({navigate}) {
    sans title, a 3px accent rule 100px wide, prose, "Learn more →". Seven
    cards, three in view, the rest a swipe away. ── */
 const FX_DISCIPLINES = [
-  {page:'lighting',   photo:PHOTOS.lightingKetra, title:'Lighting control',
+  {page:'lighting',   photo:PHOTOS.lightingRania, title:'Lighting control',
    body:'Lutron and Ketra on every circuit, warm-dim tuned for evening, keypads matched to your plates.'},
-  {page:'shading',    photo:PHOTOS.window,        title:'Motorized shades',
+  {page:'shading',    photo:PHOTOS.moment1,       title:'Motorized shades',
    body:'Three layers on the west glass, quiet drives, pockets drawn before the drywall goes up.'},
   {page:'security',   photo:PHOTOS.securityHero,  title:'Cameras & security',
    body:'Footage stored on the property, encrypted, no monthly fee and no cloud in the way.'},
@@ -638,7 +642,9 @@ const FX_DISCIPLINES = [
   {page:'automation', photo:PHOTOS.heroHome,      title:'Home automation',
    body:'Morning, afternoon, evening, away. One press on a keypad and the house takes the state.'},
   {page:'networking', photo:PHOTOS.networkingRack,title:'Networking',
-   body:'Wired wherever wire can land, Wi-Fi 6/7 where it cannot, and a rack somebody can read.'}
+   body:'Wired wherever wire can land, Wi-Fi 6/7 where it cannot, and a rack somebody can read.'},
+  {page:'permanent-lighting', photo:PHOTOS.permanentHero, title:'Permanent lighting',
+   body:'LEDs tucked in the soffit, invisible by day. Warm white all year, any colour for the holidays, no ladders.'}
 ];
 
 function FxDisciplines({navigate}) {
@@ -2077,6 +2083,70 @@ function SecurityPage({navigate}) {
   />;
 }
 
+
+/* ─── PERMANENT LIGHTING PAGE ─── */
+function PermanentLightingPage({navigate}) {
+  return <ServicePageShell
+    navigate={navigate}
+    formName="permanent-lighting-inquiry"
+    hero={{
+      eyebrow:'Permanent lighting',
+      h1:'Holiday lights <em>without the ladder.</em>',
+      lead:'Colour-changing LEDs set into a track under the eaves, invisible in daylight. Warm white for the house all year, any colour for December, game day or a birthday, from your phone.',
+      image: PHOTOS.permanentHero,
+      primaryLabel:'See a lit house →', primaryAction:()=>navigate('work'),
+      secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
+    }}
+    valueProp={{
+      eyebrow:'What goes up',
+      h2:'A track you never see, <em>lights you never take down.</em>',
+      lead:'Three parts: the aluminium track colour-matched to your soffit, the individually addressable LEDs inside it, and the controller that turns them into scenes.',
+      cards:[
+        {title:'Track', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M2.5 7h15"/><path d="M4 7v9M16 7v9"/></svg>,
+         desc:'Powder-coated aluminium channel matched to the fascia or soffit colour. Sits flush under the eave; from the street it reads as trim.'},
+        {title:'LEDs', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="5" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="15" cy="10" r="1.6"/></svg>,
+         desc:'Each diode addressed on its own. 2700K warm white for everyday accent lighting, sixteen million colours when you want them. Rated for salt air.'},
+        {title:'Control', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="5" y="2.5" width="10" height="15" rx="1.6"/><circle cx="10" cy="14" r="0.9" fill="currentColor"/></svg>,
+         desc:'Scenes from the app or a Lutron keypad. Sunset-on, midnight-off, a Christmas preset, a Buccaneers preset. Tied into the rest of the house where we did the rest.'},
+      ],
+      split:{
+        eyebrow:'Why permanent',
+        h2:'Up once, <em>on for a decade.</em>',
+        image: PHOTOS.permanentHoliday,
+        alt:'Permanent LED lighting under the eaves at night',
+        rows:[
+          {name:'No seasonal install',  desc:'No crew on your roof in December, no bins of strings in the garage in January. The lights are part of the house.'},
+          {name:'Everyday accent lighting', desc:'Most nights it is a soft warm line under the roof edge, the same job landscape lighting does for the ground floor.'},
+          {name:'Built for the Gulf',    desc:'Salt-rated diodes and sealed channel. Hurricane-season winds do not carry off a track screwed to the fascia.'},
+        ],
+      },
+    }}
+    why={{
+      h2:'The details <em>the street never sees.</em>',
+      rows:[
+        {n:'01', text:'Track colour is matched to your soffit and fascia before ordering, so in daylight there is nothing to notice. White track on a bronze fascia is the giveaway we avoid.'},
+        {n:'02', text:'Diode spacing follows the roofline, with corners and peaks planned on the drawings, not improvised on the ladder. Runs end where the architecture ends.'},
+        {n:'03', text:'Controller lives in the rack with the rest of the house and joins the same scenes. Evening turns on the eave line with the lanai; Away turns it off with everything else.'},
+      ],
+    }}
+    projects={{
+      h2:'Three roofs, three routines.',
+      items:[
+        {key:'projectBayfront',      tag:'Sarasota · Bayfront',   name:'Warm white nightly · red and green in December'},
+        {key:'projectLuxuryPool',    tag:'Lakewood Ranch',        name:'Full perimeter · HOA-approved track colour'},
+        {key:'projectArchitectural', tag:'Longboat Key',          name:'Roofline + dock · one sunset schedule'},
+      ],
+    }}
+    credentials={['Licensed low-voltage contractor','Salt-rated LED systems','Lutron integration','Insured & bonded']}
+    ctaCopy={{
+      h2:'Start a <em>permanent lighting conversation.</em>',
+      lead:'Send a photo of the front of the house. We will come back with a run plan, a track colour and an honest range.',
+      placeholder:'Roofline, one or two storeys, HOA, existing landscape lighting…',
+      onSubmit:()=>navigate('contact'),
+    }}
+  />;
+}
+
 /* ─── NETWORKING PAGE ─── */
 function NetworkingPage({navigate}) {
   return <ServicePageShell
@@ -2342,7 +2412,7 @@ function Footer({navigate}) {
   const groups = [
     {label:'Solutions', links:[
       ['lighting','Lighting'],['shading','Shading'],['theaters','Home theaters'],
-      ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],
+      ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],['permanent-lighting','Permanent lighting'],
     ]},
     {label:'Studio', links:[
       ['work','Our work'],['about','About'],      ['journal','Journal'],
@@ -4484,6 +4554,7 @@ function App() {
     audio:     <AudioPage navigate={navigate}/>,
     security:  <SecurityPage navigate={navigate}/>,
     networking:<NetworkingPage navigate={navigate}/>,
+    'permanent-lighting':<PermanentLightingPage navigate={navigate}/>,
     lighting:  <LightingPage navigate={navigate}/>,
     designers: <DesignersPage navigate={navigate}/>,
     contact:   <ContactPage navigate={navigate}/>,
