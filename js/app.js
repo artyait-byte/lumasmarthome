@@ -156,6 +156,10 @@ const PHOTOS = {
   shadeFascia:     lu('/assets/photos/shade-fascia.jpg'),
   lightingLumaris: lu('/assets/photos/interior-living-fl.jpg'),
   heroDesigners:   lu('/assets/photos/hero-designers-new.jpg'),
+  lumaVan:         lu('/assets/photos/luma-van.jpg'),
+  theaterCinema:   lu('/assets/photos/theater-cinema.jpg'),
+  theaterLiving:   lu('/assets/photos/theater-living.jpg'),
+  theaterMedia:    lu('/assets/photos/theater-media.jpg'),
 
   moment1: lu('/assets/photos/shade-open.jpg'),
   moment2: lu('/assets/photos/shade-closed.jpg'),
@@ -516,10 +520,10 @@ function FxCall() {
 
 /* Their pairing at every conversion point: one filled pill, one phone number.
    No inline name/email/phone block anywhere on the site but /contact. */
-function FxActions({navigate, label='Book a consultation', page='contact', align, tone}) {
+function FxActions({navigate, label='Book a consultation', page='contact', align, tone, onNavigate}) {
   return (
     <div className={'fx-actions'+(align==='start'?' fx-actions--start':'')+(tone==='dark'?' fx-actions--onDark':'')}>
-      <NavLink page={page} navigate={navigate} className="fx-btn">{label}</NavLink>
+      <NavLink page={page} navigate={navigate} onNavigate={onNavigate} className="fx-btn">{label}</NavLink>
       <FxCall/>
     </div>
   );
@@ -957,7 +961,7 @@ function FxJournal({navigate}) {
 }
 
 /* ── 8. CTA ───────────────────────────────────────────────────────────── */
-function FxCta({navigate, title, body, label}) {
+function FxCta({navigate, title, body, label, onNavigate}) {
   return (
     <section className="fx-cta">
       <div className="fx-cta-inner">
@@ -965,7 +969,7 @@ function FxCta({navigate, title, body, label}) {
         <div className="fx-lede">
           <p>{body || "New build, rebuild, or a system you inherited and have never liked. Send the plans or just describe the rooms, and we will come back with a scope and an honest range."}</p>
         </div>
-        <FxActions navigate={navigate} label={label || 'Book a consultation'}/>
+        <FxActions navigate={navigate} onNavigate={onNavigate} label={label || 'Book a consultation'}/>
       </div>
     </section>
   );
@@ -1187,26 +1191,28 @@ function LightingPage({navigate}) {
 }
 /* ─── DESIGNERS PAGE ─── */
 /* ─── DESIGNERS & BUILDERS PAGE ─── */
+/* ─── DESIGNERS & BUILDERS ───
+   Built from the reference's inner-page pieces: hero, one centred paragraph,
+   the values panel, the tabbed block from their About page, a two-column
+   list, the wave CTA. */
 const DB_DESIGNER_STEPS = [
   {n:'01', title:'You send us your FF&E schedule',
    body:'Share fixture specs, CAD drawings, or even a rough list. We review your decorative selections and flag anything that needs a dimmer, driver, or special wiring before walls close.'},
   {n:'02', title:'We write a single coordinated proposal',
-   body:'One line-item document covers all fixtures, LED drivers, Lutron or Ketra dimmers, wall plates, and commissioning — formatted for your client presentation and matched to your interior finishes.'},
-  {n:'03', title:'Trade pricing, no runaround',
-   body:'ASID and AIA members get trade pricing across our full network: Visual Comfort, RH, Circa, Arteriors, and the Lutron designer palette. No retail markups, no middle step.'},
-  {n:'04', title:'On-site coordination at your pace',
-   body:'We attend your site visits or schedule separately. If something changes after demolition — ceiling height, beam location, last-minute fixture swap — we adjust the spec the same day.'},
-  {n:'05', title:'Submittal packages your way',
-   body:'Cut sheets, dimmer curves, wiring diagrams. Formatted for your workflow: PDF, Revit, or email to the GC. The electrician gets exactly what they need — once.'},
+   body:'One line-item document covers all fixtures, LED drivers, Lutron or Ketra dimmers, wall plates, and commissioning, formatted for your client presentation and matched to your interior finishes.'},
+  {n:'03', title:'On-site coordination at your pace',
+   body:'We attend your site visits or schedule separately. If something changes after demolition (ceiling height, beam location, a last-minute fixture swap) we adjust the spec the same day.'},
+  {n:'04', title:'Submittal packages your way',
+   body:'Cut sheets, dimmer curves, wiring diagrams. Formatted for your workflow: PDF, Revit, or email to the GC. The electrician gets exactly what they need, once.'},
 ];
 
 const DB_BUILDER_STEPS = [
   {n:'01', title:'Pre-construction meeting',
    body:'We join your kickoff call or site walk. We review the architectural plans and mark up every conduit run, J-box location, and equipment room so nothing needs to be re-opened later.'},
   {n:'02', title:'Rough-in package for your electrician',
-   body:'A single PDF: conduit layout, home-run map, box heights, rack dimensions, and PoE drop locations. Your electrician installs in one pass. No callbacks, no guesswork.'},
+   body:'A single PDF: conduit layout, home-run map, box heights, rack dimensions, and PoE drop locations. Your electrician installs in one pass.'},
   {n:'03', title:'Milestone check-ins through framing and drywall',
-   body:'We walk the job before insulation and before drywall so the GC can catch issues at cost — not at trim-out. We document everything and update the package if the plan shifts.'},
+   body:'We walk the job before insulation and before drywall so the GC can catch issues at cost, not at trim-out. We document everything and update the package if the plan shifts.'},
   {n:'04', title:'Trim-out and commissioning',
    body:'We install all devices, pull and terminate every cable, and program the system while other trades finish. Our work does not hold up your certificate of occupancy.'},
   {n:'05', title:'Punch-list and client handoff',
@@ -1214,170 +1220,91 @@ const DB_BUILDER_STEPS = [
 ];
 
 const DB_WHY = [
-  {icon:'◇', title:'One trade, not four',
-   body:'Lighting control, shading, AV, security, and networking under one contractor. Your GC has one contact, one schedule, and one RFI queue for all of it.'},
-  {icon:'◇', title:'Florida licensed · insured',
-   body:'Low-voltage contractor of record. We carry general liability and workers\' comp. Certificate of insurance on request — standard format, same day.'},
-  {icon:'◇', title:'Referral program',
-   body:'For designers and builders who refer projects: a formal referral fee on signed contracts, paid at commissioning. Ask us for the one-page agreement.'},
+  {icon:'people', title:'One trade, not four',
+   desc:'Lighting control, shading, AV, security, and networking under one contractor. Your GC has one contact, one schedule, and one RFI queue for all of it.'},
+  {icon:'shield', title:'Florida licensed · insured',
+   desc:'Low-voltage contractor of record. We carry general liability and workers\' comp. Certificate of insurance on request.'},
+  {icon:'gift', title:'Referral program',
+   desc:'For designers and builders who refer projects: a referral fee on signed contracts, paid at commissioning. Ask us for the one-page agreement.'},
 ];
 
+const DB_LISTS = [
+  {kicker:'For designers & architects', title:'What you get', items:[
+    'A single coordinated proposal: fixtures, drivers, control, commissioning',
+    'Submittal packages in PDF or Revit format',
+    'Site visits on your schedule, spec changes the same day',
+    'Referral fee on signed contracts, paid at commissioning',
+  ]},
+  {kicker:'For builders', title:'What we deliver', items:[
+    'Pre-construction walk and marked-up plan set',
+    'Rough-in package for the electrician: conduit, J-box, home-run map',
+    'Milestone inspections before insulation and before drywall',
+    'Full trim-out and commissioning on your schedule',
+    'Client orientation and printed quick-reference guide',
+    'Referral fee on signed contracts, paid at commissioning',
+  ]},
+];
+
+function FxSteps({steps}){
+  return (
+    <div className="fx-steps">
+      {steps.map(s => (
+        <div key={s.n} className="fx-step">
+          <small>Step {s.n}</small>
+          <h3>{s.title}</h3>
+          <i className="fx-panel-rule" aria-hidden="true"/>
+          <p>{s.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function DesignersPage({navigate}) {
-  const [tab, setTab] = React.useState('designers');
-  const steps = tab === 'designers' ? DB_DESIGNER_STEPS : DB_BUILDER_STEPS;
+  const trade = () => { CONTACT_PRESET = 'Designer or builder'; };
   return (
     <div className="page">
+      <FxInnerHero kicker="Designers & builders" h1="Your vision. Our wiring." image={PHOTOS.heroDesigners} alt="Architectural lighting in a finished Gulf Coast living room"/>
 
-      {/* Hero */}
-      <section style={{
-        display:'grid', gridTemplateColumns:'1fr 1fr',
-        minHeight:'min(88vh,780px)', background:'var(--dark)',
-        overflow:'hidden',
-      }} className="lit-hero-wrap">
-        <div style={{
-          display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
-        }} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>For Interior Designers &amp; Custom Builders</div>
-          <h1 style={{
-            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
-            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
-            margin:'0 0 24px', textWrap:'balance',
-            textShadow:'0 2px 20px rgba(0,0,0,.3)',
-          }}>Your vision. <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Our wiring.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 16px'}}>LUMA works alongside interior designers, architects, and custom builders across the Gulf Coast. We fit our process to yours — FF&amp;E coordination, submittal packages, pre-wire rough-in, and final punch-list.</p>
-          <p style={{fontSize:15,lineHeight:1.68,color:'rgba(252,250,246,.55)',maxWidth:500,margin:'0 0 32px'}}>One contractor for lighting, shading, AV, security, and networking. One schedule. One proposal your client can actually read.</p>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start a trade inquiry →</button>
-            <button className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}} onClick={()=>navigate('work')}>View completed projects</button>
+      <section className="fx-band--plain fx-py-md">
+        <div className="fx-field">
+          <div className="fx-intro-prose">
+            <p><strong>LUMA works alongside interior designers, architects, and custom builders across Sarasota and Manatee.</strong> We fit our process to yours: FF&amp;E coordination, submittal packages, pre-wire rough-in, and final punch-list. One contractor for lighting, shading, AV, security, and networking. One schedule. One proposal your client can actually read.</p>
           </div>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.heroDesigners} alt="Luxury modern living room — smart home collaboration" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.32) 0%,transparent 38%)'}}/>
         </div>
       </section>
 
-      {/* Why work with LUMA */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div className="sec-label">Why LUMA</div>
-          <h2 className="sec-title" style={{marginBottom:40}}>Built to fit <em>your workflow.</em></h2>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20,maxWidth:960,margin:'0 auto'}} className="db-why-grid">
-            {DB_WHY.map(w=>(
-              <div key={w.title} className="th-card">
-                <div className="th-card-icon" aria-hidden="true">{w.icon}</div>
-                <h3 style={{fontFamily:'var(--serif)',fontSize:20,fontWeight:600,marginBottom:8}}>{w.title}</h3>
-                <p style={{fontSize:15,lineHeight:1.68,color:'var(--mid)',margin:0}}>{w.body}</p>
+      <FxValuesPanel h2="Built to fit your workflow." items={DB_WHY}/>
+
+      <section className="fx-band--plain fx-py-lg">
+        <div className="fx-wide">
+          <div className="fx-heads" style={{marginBottom:40}}><h2 className="fx-d3">A clear process, start to finish.</h2></div>
+          <FxTabs tabs={[
+            {label:'Designers & architects', body:<FxSteps steps={DB_DESIGNER_STEPS}/>},
+            {label:'Builders & developers', body:<FxSteps steps={DB_BUILDER_STEPS}/>},
+          ]}/>
+        </div>
+      </section>
+
+      <section className="fx-band fx-py-lg">
+        <div className="fx-wide">
+          <div className="fx-lists">
+            {DB_LISTS.map(l => (
+              <div key={l.kicker} className="fx-list">
+                <span className="fx-panel-kicker">{l.kicker}</span>
+                <h3 className="fx-d3">{l.title}</h3>
+                <ul className="fx-checks">{l.items.map(it => <li key={it}>{it}</li>)}</ul>
+                <NavLink page="contact" navigate={navigate} onNavigate={trade} className="fx-btn">Start a trade inquiry</NavLink>
               </div>
             ))}
           </div>
-          <style>{`@media(max-width:899px){.db-why-grid{grid-template-columns:1fr!important}}`}</style>
         </div>
       </section>
 
-      {/* Tab switcher: Designers vs Builders */}
-      <section className="th-section" style={{paddingTop:72}}>
-        <div className="sec-label">How we work together</div>
-        <h2 className="sec-title" style={{marginBottom:36}}>A clear process, <em>start to finish.</em></h2>
-
-        {/* Tab buttons */}
-        <div className="dz-tabs">
-          {[
-            {key:'designers', label:'For Interior Designers & Architects', short:'Designers & Architects'},
-            {key:'builders',  label:'For Custom Builders & Developers', short:'Builders & Developers'},
-          ].map(t=>(
-            <button key={t.key} type="button"
-              onClick={()=>setTab(t.key)}
-              className={`dz-tab${tab===t.key ? ' dz-tab--active' : ''}`}>
-              <span className="dz-tab-long">{t.label}</span>
-              <span className="dz-tab-short">{t.short}</span>
-            </button>
-          ))}
-        </div>
-        <style>{`
-          .dz-tabs{display:flex;justify-content:center;border:1px solid var(--cream3);border-radius:100px;width:fit-content;margin:0 auto 52px;overflow:hidden}
-          .dz-tab{padding:12px 28px;font-size:14px;font-family:var(--sans);font-weight:600;border:none;cursor:pointer;white-space:nowrap;letter-spacing:.02em;background:transparent;color:var(--mid);transition:background .18s,color .18s}
-          .dz-tab--active{background:var(--dark);color:#fff}
-          .dz-tab-short{display:none}
-          @media(max-width:639px){
-            .dz-tabs{width:100%;border-radius:14px}
-            .dz-tab{flex:1;padding:14px 10px;font-size:13.5px;white-space:normal;line-height:1.25}
-            .dz-tab-long{display:none}
-            .dz-tab-short{display:inline}
-          }
-        `}</style>
-
-        {/* Steps */}
-        <div style={{maxWidth:800,margin:'0 auto',display:'flex',flexDirection:'column',gap:0}}>
-          {steps.map((s,i)=>(
-            <div key={s.n} style={{
-              display:'grid', gridTemplateColumns:'56px 1fr', gap:'0 28px',
-              paddingBottom:36,
-              borderLeft: i < steps.length-1 ? '1px solid var(--cream3)' : 'none',
-              marginLeft:27,
-            }}>
-              <div style={{
-                width:54, height:54, borderRadius:'50%',
-                background:'var(--cream2)', border:'1px solid var(--cream3)',
-                display:'flex', alignItems:'center', justifyContent:'center',
-                fontFamily:'var(--serif)', fontSize:15, fontWeight:600,
-                color:'var(--accent)', flexShrink:0, marginLeft:-28,
-              }}>{s.n}</div>
-              <div style={{paddingTop:12}}>
-                <h3 style={{fontFamily:'var(--serif)',fontSize:22,fontWeight:600,marginBottom:8,color:'var(--dark)'}}>{s.title}</h3>
-                <p style={{fontSize:16,lineHeight:1.72,color:'var(--mid)',margin:0}}>{s.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Trade details & referral */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,maxWidth:960,margin:'0 auto',alignItems:'start'}} className="db-details-grid">
-            <div>
-              <div className="sec-label" style={{textAlign:'left'}}>For Designers</div>
-              <h3 style={{fontFamily:'var(--serif)',fontSize:28,fontWeight:600,lineHeight:1.2,marginBottom:16}}>Trade program details</h3>
-              <ul className="checklist" style={{gap:12}}>
-                <li style={{fontSize:16}}>Trade pricing on Lutron, Ketra, Sivoia QS Wireless, and partner fixtures</li>
-                <li style={{fontSize:16}}>Single coordinated proposal — fixtures, drivers, control, commissioning</li>
-                <li style={{fontSize:16}}>Submittal packages in PDF or Revit format</li>
-                <li style={{fontSize:16}}>On-site visits and lunch-and-learns for your team</li>
-                <li style={{fontSize:16}}>Dedicated project manager for your account</li>
-                <li style={{fontSize:16}}>ASID and AIA Florida network — we know your colleagues</li>
-              </ul>
-              <button className="btn-solid" style={{marginTop:28}} onClick={()=>navigate('contact')}>Apply for trade access →</button>
-            </div>
-            <div>
-              <div className="sec-label" style={{textAlign:'left'}}>For Builders</div>
-              <h3 style={{fontFamily:'var(--serif)',fontSize:28,fontWeight:600,lineHeight:1.2,marginBottom:16}}>What we deliver</h3>
-              <ul className="checklist" style={{gap:12}}>
-                <li style={{fontSize:16}}>Pre-construction walk and marked-up plan set</li>
-                <li style={{fontSize:16}}>Rough-in package for electrician: conduit, J-box, home-run map</li>
-                <li style={{fontSize:16}}>Milestone inspections before insulation and before drywall</li>
-                <li style={{fontSize:16}}>Full trim-out and commissioning on your schedule</li>
-                <li style={{fontSize:16}}>Client orientation and printed quick-reference guide</li>
-                <li style={{fontSize:16}}>Referral fee on signed contracts — paid at commissioning</li>
-              </ul>
-              <button className="btn-solid" style={{marginTop:28}} onClick={()=>navigate('contact')}>Discuss a new project →</button>
-            </div>
-          </div>
-          <style>{`@media(max-width:899px){.db-details-grid{grid-template-columns:1fr!important;gap:40px}}`}</style>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:96}}>
-        <h2 className="sec-title" style={{marginBottom:16}}>Ready to work together?</h2>
-        <p className="sec-body" style={{fontSize:17,marginBottom:32}}>Send us your plans or a quick note about the project. We'll respond the same business day.</p>
-        <div style={{display:'flex',gap:14,justifyContent:'center',flexWrap:'wrap'}}>
-          <button className="btn-solid" style={{fontSize:16,padding:'14px 28px'}} onClick={()=>navigate('contact')}>Start a trade inquiry →</button>
-          <button className="btn-ghost" style={{fontSize:16,padding:'14px 24px'}} onClick={()=>navigate('home')}>Back to home</button>
-        </div>
-      </section>
-
+      <FxCta navigate={navigate} onNavigate={trade}
+        title="Ready to work together?"
+        body="Send us your plans or a quick note about the project, and we will come back with a scope."
+        label="Start a trade inquiry"/>
     </div>
   );
 }
@@ -1440,9 +1367,9 @@ function TheatersPage({navigate}) {
       ]}}
     panels={{h2:'From <em>media room</em> to private cinema',
       items:[
-        {photo: PHOTOS.handTheater, title:'Dedicated cinema', body:'A room with one job: fabric walls, tiered recliners, a star ceiling if you want one, and the projector and rack out of sight.'},
-        {photo: PHOTOS.workRebuild, title:'Living-room theater', body:'A great room that turns into a cinema at 8pm: hidden screen, in-ceiling surrounds, shades and lights on one press.'},
-        {photo: PHOTOS.lightingKetra, title:'Media room', body:'A family room with a large display, a proper soundbar-free system, and acoustics that keep game day from taking over the house.'},
+        {photo: PHOTOS.theaterCinema, title:'Dedicated cinema', body:'A room with one job: fabric walls, tiered recliners, a star ceiling if you want one, and the projector and rack out of sight.'},
+        {photo: PHOTOS.theaterLiving, title:'Living-room theater', body:'A great room that turns into a cinema at 8pm: hidden screen, in-ceiling surrounds, shades and lights on one press.'},
+        {photo: PHOTOS.theaterMedia, title:'Media room', body:'A family room with a large display, a proper soundbar-free system, and acoustics that keep game day from taking over the house.'},
       ]}}
     cases={['case-bighouse', 'case-urban', 'case-modern']}
     ctaTitle='Start a <em>theater conversation</em>'
@@ -1942,168 +1869,154 @@ function NetworkingPage({navigate}) {
 }
 
 /* ─── CONTACT PAGE ─── */
-function ContactPage({navigate}) {
-  const go = navigate || ((p)=>{ window.location.href = pathFor(p); });
-  const cities = geoData().cities || {};
+/* ─── CONTACT ───
+   The reference's /contact: hero, one paragraph, a single-column form with
+   pill choices, then the location cards. The form posts to Netlify Forms;
+   its hidden twin lives in contact.html (scripts/generate-seo-pages.py). */
+let CONTACT_PRESET = null;  // a link that opens the form for a reason sets this first
+const CF_INQUIRY = ['New project','Service request','Designer or builder'];
+const CF_SYSTEMS = ['Lighting control','Shades','Home theater','Audio & video','Security cameras','Networking & Wi-Fi','Permanent lighting','Whole-home automation'];
+const CF_CONTACT = ['Phone','Email','Text','No preference'];
+const CF_HEARD = ['Google','Client referral','Builder referral','Designer or architect','Social media','Other'];
+
+function FxChoice({name, value, type='radio', checked, onChange}){
+  return (
+    <label className={'fx-chip'+(checked?' on':'')}>
+      <input type={type} name={name} value={value} checked={checked} onChange={onChange}/>
+      <span>{value}</span>
+    </label>
+  );
+}
+
+function FxContactForm(){
   const nap = napInfo();
+  const [inquiry, setInquiry] = useState(() => {
+    const preset = CONTACT_PRESET; CONTACT_PRESET = null;
+    if (preset) return preset;
+    const q = new URLSearchParams(window.location.search).get('type');
+    return q === 'service' ? 'Service request' : q === 'trade' ? 'Designer or builder' : 'New project';
+  });
+  const [systems, setSystems] = useState([]);
+  const [how, setHow] = useState('');
+  const [heard, setHeard] = useState('');
+  const [status, setStatus] = useState('idle');
+  const toggle = (s) => setSystems(xs => xs.includes(s) ? xs.filter(x => x !== s) : [...xs, s]);
+
+  async function submit(e){
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    data.set('systems', systems.join(', '));
+    data.set('source_page', window.location.pathname);
+    setStatus('sending');
+    try {
+      const res = await fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(data).toString()});
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      setStatus('sent');
+    } catch(err) { setStatus('error'); }
+  }
+
+  if (status === 'sent') return (
+    <div className="fx-form-done" role="status">
+      <h2 className="fx-d3">Thank you.</h2>
+      <p className="fx-lede">Your request is with us and we will come back with next steps. If it cannot wait, call <a href={nap.telHref}>{nap.telephoneDisplay}</a>.</p>
+    </div>
+  );
+
+  const field = (name, label, type='text', required=false, auto) => (
+    <label className="fx-input">
+      <span>{label}{required && <b aria-hidden="true"> *</b>}</span>
+      <input name={name} type={type} required={required} autoComplete={auto}/>
+    </label>
+  );
+  return (
+    <form className="fx-form" name="contact" method="POST" onSubmit={submit}>
+      <input type="hidden" name="form-name" value="contact"/>
+      <p hidden><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off"/></label></p>
+      {field('first_name','First name','text',true,'given-name')}
+      {field('last_name','Last name','text',true,'family-name')}
+      {field('email','Email','email',true,'email')}
+      {field('phone','Phone','tel',true,'tel')}
+      {field('address','Street address','text',false,'street-address')}
+      {field('city','City','text',false,'address-level2')}
+      {field('zip','ZIP code','text',false,'postal-code')}
+      <fieldset className="fx-chips">
+        <legend>What is this about?</legend>
+        {CF_INQUIRY.map(v => <FxChoice key={v} name="inquiry" value={v} checked={inquiry===v} onChange={()=>setInquiry(v)}/>)}
+      </fieldset>
+      <fieldset className="fx-chips">
+        <legend>Which systems? <small>Choose any</small></legend>
+        {CF_SYSTEMS.map(v => <FxChoice key={v} type="checkbox" value={v} checked={systems.includes(v)} onChange={()=>toggle(v)}/>)}
+      </fieldset>
+      <label className="fx-input">
+        <span>How can we help?</span>
+        <textarea name="message" rows={5} placeholder="Square footage, architect or builder, timeline, what you want the house to do"/>
+      </label>
+      <fieldset className="fx-chips">
+        <legend>Best way to reach you</legend>
+        {CF_CONTACT.map(v => <FxChoice key={v} name="preferred_contact" value={v} checked={how===v} onChange={()=>setHow(v)}/>)}
+      </fieldset>
+      <fieldset className="fx-chips">
+        <legend>How did you hear about us?</legend>
+        {CF_HEARD.map(v => <FxChoice key={v} name="heard_from" value={v} checked={heard===v} onChange={()=>setHeard(v)}/>)}
+      </fieldset>
+      <button type="submit" className="fx-btn" disabled={status==='sending'}>{status==='sending' ? 'Sending…' : 'Send request'}</button>
+      {status === 'error' && <p className="fx-form-err" role="alert">That did not go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a> or write to <a href={nap.mailHref}>{nap.email}</a>.</p>}
+    </form>
+  );
+}
+
+function ContactPage({navigate}) {
+  const nap = napInfo();
+  const cities = geoData().cities || {};
+  const byCounty = (county) => Object.keys(cities).filter(id => (cities[id].county || '').includes(county));
+  const countyCard = (county, photo) => (
+    <div className="fx-panel-card" key={county}>
+      <span className="fx-panel-img"><img src={photo} alt={county + ' County'} loading="lazy" decoding="async"/></span>
+      <span className="fx-panel-body">
+        <h3>{county} County</h3>
+        <i className="fx-panel-rule" aria-hidden="true"/>
+        <p>{byCounty(county).map((id,i,a) => (
+          <React.Fragment key={id}><NavLink page={cityPageId(id)} navigate={navigate} className="fx-inline">{cities[id].name}</NavLink>{i < a.length-1 ? ', ' : ''}</React.Fragment>
+        ))}</p>
+      </span>
+    </div>
+  );
   return (
     <div className="page">
-      <div className="contact-grid">
-        <div>
-          <h1 className="contact-title">Start Your Project</h1>
-          <div className="form-row">
-            <div className="form-group"><label className="form-label">First Name</label><input className="form-input" placeholder="Jane"/></div>
-            <div className="form-group"><label className="form-label">Last Name</label><input className="form-input" placeholder="Smith"/></div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label className="form-label">County</label>
-              <select className="form-select">
-                <option>Select...</option>
-                {['Sarasota County','Manatee County'].map(c=><option key={c}>{c}</option>)}
-              </select>
-            </div>
-            <div className="form-group">
-              <label className="form-label">I am a...</label>
-              <select className="form-select">
-                <option>Select...</option>
-                {['Homeowner','Interior Designer','Architect','Builder / GC'].map(c=><option key={c}>{c}</option>)}
-              </select>
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="form-label">What are you looking for?</label>
-            <select className="form-select">
-              <option>Select...</option>
-              {['Lighting Control','Window Treatments','Home Theater','Security & Surveillance','Audio & Video','Networking','Home Automation','Full System'].map(c=><option key={c}>{c}</option>)}
-            </select>
-          </div>
-          <div className="form-group">
-            <label className="form-label">Tell us more</label>
-            <textarea className="form-textarea" placeholder="Square footage, architect, timeline, what you're trying to achieve..."/>
-          </div>
-          <button className="btn-solid" style={{fontSize:15,padding:'12px 28px'}}>Send request →</button>
-        </div>
-        <div>
-          <div className="service-area">
-            <h3>Service Area</h3>
-            <ul>
-              {Object.keys(cities).map(id=>{
-                const c = cities[id];
-                return (
-                  <li key={id}>
-                    <NavLink page={cityPageId(id)} navigate={go}>{c.name}</NavLink>
-                    <span> — {c.county}</span>
-                  </li>
-                );
-              })}
-            </ul>
-            <p style={{marginTop:14,fontSize:14.5}}>
-              <NavLink page="service-areas" navigate={go} style={{color:'var(--accent)'}}>All service areas →</NavLink>
-            </p>
-          </div>
-          <div style={{background:'#fff',borderRadius:16,padding:24,marginBottom:20}}>
-            <h3 style={{fontSize:16,fontWeight:500,marginBottom:16}}>Get in touch directly</h3>
-            <div style={{display:'flex',flexDirection:'column',gap:12}}>
-              <div>
-                <div style={{fontWeight:500,marginBottom:2}}>Phone</div>
-                <div style={{color:'var(--mid)',fontSize:14}}><a href={nap.telHref}>{nap.telephoneDisplay}</a></div>
-              </div>
-              <div>
-                <div style={{fontWeight:500,marginBottom:2}}>Email</div>
-                <div style={{color:'var(--mid)',fontSize:14}}><a href={nap.mailHref}>{nap.email}</a></div>
-              </div>
-              <div>
-                <div style={{fontWeight:500,marginBottom:2}}>Hours</div>
-                <div style={{color:'var(--mid)',fontSize:14}}>{nap.hours}</div>
-              </div>
-            </div>
-          </div>
-          {/* Gulf Coast map */}
-          <div style={{borderRadius:14,overflow:'hidden',border:'1px solid var(--cream2)',background:'#c8dfe6'}}>
-            <svg viewBox="0 0 420 500" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',display:'block'}}>
-              {/* Ocean */}
-              <rect width="420" height="500" fill="#c8dfe6"/>
+      <FxInnerHero kicker="Contact us" h1="Start your project" image={PLACE_PHOTO('sarasota')} alt="Sarasota from the bay"/>
 
-              {/* Florida peninsula land */}
-              <path d="
-                M420,0 L200,0
-                C200,0 185,4 175,10
-                C165,16 158,24 152,36
-                C146,48 144,62 143,76
-                C142,90 143,104 141,116
-                C138,132 132,146 126,160
-                C120,174 114,186 110,196
-                C107,204 106,210 106,218
-                C107,228 110,238 116,250
-                C122,262 130,272 136,282
-                C140,290 142,296 142,304
-                C140,316 134,326 128,338
-                C122,350 116,362 114,376
-                C113,388 115,400 120,412
-                C126,424 136,436 148,448
-                C158,458 168,464 176,468
-                C184,472 190,474 194,478
-                L420,478
-                Z
-              " fill="#ddd8c0"/>
-
-              {/* Manatee County highlight */}
-              <path d="M152,36 C162,32 172,30 182,30 C200,30 216,34 228,40 C240,46 248,54 250,64 C252,74 248,84 240,92 C232,100 220,106 206,108 C192,110 178,108 166,102 C154,96 146,86 143,76 C141,66 143,54 152,36 Z" fill="#b5cba0" opacity="0.55"/>
-
-              {/* Sarasota County highlight */}
-              <path d="M143,76 C146,86 154,96 166,102 C178,108 192,110 206,108 C220,106 232,100 240,92 C244,98 246,106 246,116 C246,130 240,144 230,154 C220,164 206,170 192,172 C178,174 164,170 154,162 C144,154 138,142 138,130 C138,116 140,96 143,76 Z" fill="#b5cba0" opacity="0.55"/>
-
-                                                        {/* Gulf of Mexico label */}
-              <text x="68" y="280" textAnchor="middle" fontSize="11" fill="#4a8a96" letterSpacing="0.12em" fontFamily="DM Sans,sans-serif" fontStyle="italic" transform="rotate(-90,68,280)">GULF OF MEXICO</text>
-
-              {/* Coverage boundary glow */}
-              <path d="M152,36 C162,32 182,30 200,30 C240,30 260,56 250,110 C246,130 240,150 230,160" fill="none" stroke="#C57238" strokeWidth="2.5" strokeDasharray="6,4" opacity="0.7"/>
-
-              {/* County dividers (subtle) */}
-              <line x1="143" y1="76" x2="246" y2="76" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
-              <line x1="138" y1="130" x2="246" y2="130" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
-
-              {/* Barrier islands */}
-              <ellipse cx="108" cy="54" rx="5" ry="14" fill="#ddd8c0" opacity="0.9" transform="rotate(-10,108,54)"/>
-              <ellipse cx="104" cy="88" rx="4" ry="18" fill="#ddd8c0" opacity="0.9" transform="rotate(-8,104,88)"/>
-              <ellipse cx="102" cy="128" rx="4" ry="16" fill="#ddd8c0" opacity="0.9" transform="rotate(-6,102,128)"/>
-              <ellipse cx="100" cy="165" rx="4" ry="14" fill="#ddd8c0" opacity="0.9" transform="rotate(-5,100,165)"/>
-              <ellipse cx="100" cy="204" rx="3" ry="10" fill="#ddd8c0" opacity="0.9" transform="rotate(-4,100,204)"/>
-
-              {/* City dots + labels */}
-              {[
-                {label:'Bradenton',   sub:'Manatee Co.',  x:190, y:55,  anchor:'start'},
-                {label:'Sarasota',    sub:'Sarasota Co.', x:190, y:103, anchor:'start'},
-                {label:'Venice',      sub:'',             x:168, y:148, anchor:'start'},
-              ].map((c,i)=>(
-                <g key={i}>
-                  <circle cx={c.x-8} cy={c.y} r="4.5" fill="#C57238" opacity="0.92"/>
-                  <circle cx={c.x-8} cy={c.y} r="2.5" fill="#fff"/>
-                  <text x={c.x} y={c.y-4} fontSize="9.5" fill="#2a3a30" fontFamily="DM Sans,sans-serif" fontWeight="600">{c.label}</text>
-                  {c.sub && <text x={c.x} y={c.y+7} fontSize="7.5" fill="#5a7a6a" fontFamily="DM Sans,sans-serif">{c.sub}</text>}
-                </g>
-              ))}
-
-              {/* LUMA HQ pin – Sarasota */}
-              <g>
-                <circle cx="182" cy="103" r="9" fill="#C57238" opacity="0.25"/>
-                <circle cx="182" cy="103" r="5.5" fill="#C57238"/>
-                <circle cx="182" cy="103" r="2.5" fill="#fff"/>
-              </g>
-
-              {/* Coverage zone label */}
-              <rect x="244" y="170" width="160" height="24" rx="5" fill="#C57238" opacity="0.12"/>
-              <text x="324" y="186" textAnchor="middle" fontSize="9" fill="#C57238" fontFamily="DM Sans,sans-serif" letterSpacing="0.08em" fontWeight="700">LUMA SERVICE AREA</text>
-
-              {/* North indicator */}
-              <text x="390" y="20" fontSize="11" fill="#4a6a60" fontFamily="DM Sans,sans-serif" fontWeight="700" textAnchor="middle">N</text>
-              <line x1="390" y1="24" x2="390" y2="36" stroke="#4a6a60" strokeWidth="1.5"/>
-              <polygon points="390,24 387,32 393,32" fill="#4a6a60"/>
-            </svg>
+      <section className="fx-band--plain fx-py-md" style={{paddingBottom:32}}>
+        <div className="fx-field">
+          <div className="fx-intro-prose">
+            <p><strong>New build, renovation, or a system you already live with.</strong> Tell us about the house and what you want it to do. If you would rather talk, call <a href={nap.telHref} className="fx-inline">{nap.telephoneDisplay}</a>, {nap.hours}.</p>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="fx-band--plain" style={{paddingBottom:96}}>
+        <FxContactForm/>
+      </section>
+
+      <section className="fx-band fx-py-lg">
+        <div className="fx-wide">
+          <div className="fx-heads" style={{marginBottom:40}}>
+            <h2 className="fx-d3">Where we work</h2>
+            <p className="fx-lede">One studio in Sarasota, serving Sarasota and Manatee Counties.</p>
+          </div>
+          <div className="fx-panels fx-panels--static fx-panels--three">
+            {countyCard('Sarasota', PLACE_PHOTO('sarasota'))}
+            {countyCard('Manatee', PLACE_PHOTO('bradenton'))}
+            <div className="fx-panel-card">
+              <span className="fx-panel-img"><img src={PHOTOS.handPhone} alt="Calling the studio" loading="lazy" decoding="async"/></span>
+              <span className="fx-panel-body">
+                <h3>Talk to the studio</h3>
+                <i className="fx-panel-rule" aria-hidden="true"/>
+                <p><a href={nap.telHref} className="fx-inline">{nap.telephoneDisplay}</a><br/><a href={nap.mailHref} className="fx-inline">{nap.email}</a><br/>{nap.hours}</p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -2544,405 +2457,377 @@ function DetailedBudgetWizard(){
   );
 }
 
-/* ─── ABOUT PAGE ─── */
-function AboutPage({navigate}) {
+/* ==========================================================================
+   INNER PAGES — the reference's About, Support and Work, piece for piece.
+   The copy is the studio's own, carried over from the pages these replace;
+   nothing is added that the studio has not said before.
+   ========================================================================== */
+const FX_ICON_PATHS = {
+  ticket:  <><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4Z"/><path d="M14 6v12" strokeDasharray="2 2.5"/></>,
+  plan:    <><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3M8 17h6"/></>,
+  phone:   <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>,
+  open:    <><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.6-1.7"/></>,
+  network: <><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01M11 7h.01M11 17h.01"/></>,
+  lines:   <path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01"/>,
+  plans:   <><path d="M4 20l3.5-1 11-11-2.5-2.5-11 11L4 20Z"/><path d="M14.5 7.5l2.5 2.5M3 3h7v4"/></>,
+  clock:   <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,
+  sun:     <><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></>,
+  people:  <><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.7"/></>,
+  shield:  <><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Z"/><path d="M9 12l2 2 4-4"/></>,
+  gift:    <><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8H8.5a2.5 2.5 0 1 1 0-5C11 3 12 8 12 8Zm0 0h3.5a2.5 2.5 0 1 0 0-5C13 3 12 8 12 8Z"/></>,
+};
+function FxIcon({name}){
+  return <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{FX_ICON_PATHS[name]}</svg>;
+}
+
+/* their "elegant tabs": a centred row of plain labels over one panel */
+function FxTabs({tabs}){
+  const [on, setOn] = useState(0);
   return (
-    <div className="page">
-      <section style={{
-        display:'grid', gridTemplateColumns:'1fr 1fr',
-        minHeight:'min(88vh,780px)', background:'var(--dark)',
-        overflow:'hidden',
-      }} className="lit-hero-wrap">
-        <div style={{
-          display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
-        }} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Our studio</div>
-          <h1 style={{
-            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
-            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
-            margin:'0 0 24px', textWrap:'balance',
-            textShadow:'0 2px 20px rgba(0,0,0,.3)',
-          }}>We build homes around the <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Gulf Coast hour.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>LUMA is a residential technology studio based in Sarasota, FL. We integrate lighting, shading, security, audio, and networking into homes that feel effortless — and stay engaged long after turnover, because that's when most integrators disappear.</p>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <NavLink page="contact" navigate={navigate} className="btn-solid" style={{fontSize:16,padding:'14px 28px'}}>Book a consultation →</NavLink>
-            <NavLink page="work" navigate={navigate} className="btn-ghost" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)'}}>See our work</NavLink>
-          </div>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.heroAbout} alt="Sarasota marina — Gulf Coast" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
-        </div>
-      </section>
-
-      {/* Story */}
-      <section className="th-section">
-        <div className="th-split">
-          <div>
-            <div className="sec-label" style={{textAlign:'left'}}>Our story</div>
-            <h2 className="sec-title" style={{textAlign:'left'}}>A different kind of <em>integrator.</em></h2>
-            <p className="hero-body" style={{marginTop:22}}>LUMA was founded on a simple observation: the Southwest Florida smart-home market is crowded with dealer-locked systems, opaque pricing, and integrators who vanish after turnover. High-end homeowners pay for premium gear and receive a black box they can't manage, can't modify, and can't get serviced without waiting weeks for a call back.</p>
-            <p className="hero-body">We started LUMA to flip that model. Open platforms — Lutron, Ubiquiti, Somfy, Sonos, Crestron — so you own your system. Line-item proposals, so you know exactly what you're paying for. Two-hour response times. Twelve months of service bundled into every project. And a studio that stays with your home for years, not weeks.</p>
-          </div>
-          <div className="th-split-img"><img loading="lazy" decoding="async" src={PHOTOS.heroDesigners} alt="Architectural lighting in a Gulf Coast living room"/></div>
-        </div>
-      </section>
-
-      {/* Stat band */}
-      <section className="th-section" style={{paddingTop:0}}>
-        <div className="stat-band">
-          <div><div className="stat-num">5</div><div className="stat-label">Counties served</div></div>
-          <div><div className="stat-num">2 h</div><div className="stat-label">Urgent response</div></div>
-          <div><div className="stat-num">12 mo</div><div className="stat-label">Service included</div></div>
-          <div><div className="stat-num">100%</div><div className="stat-label">Line-item pricing</div></div>
-        </div>
-      </section>
-
-      {/* Six principles */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div className="sec-label">What we believe</div>
-          <h2 className="sec-title">Six principles, <em>non-negotiable.</em></h2>
-          <div className="prn-grid">
-            <div className="prn-card"><div className="prn-num">01</div><h3>Open over proprietary</h3><p>Lutron, Ubiquiti, Somfy, Crestron. Professional platforms with documented APIs. No dealer lock — your home stays yours if you ever leave us.</p></div>
-            <div className="prn-card"><div className="prn-num">02</div><h3>Network first</h3><p>Every project begins with the network. Wired backbone, segmented Wi-Fi, on-prem control. Everything else fails without it.</p></div>
-            <div className="prn-card"><div className="prn-num">03</div><h3>Pricing in lines</h3><p>Every device, every labor hour. No bundled mysteries, no surprise change orders. Our margin is clear and defensible.</p></div>
-            <div className="prn-card"><div className="prn-num">04</div><h3>Design with architects</h3><p>We show up early in the build, not after drywall. Integration happens in plans, not in patches.</p></div>
-            <div className="prn-card"><div className="prn-num">05</div><h3>Stay after turnover</h3><p>Twelve months of service bundled. Quarterly check-ins. Quiet system updates. Your home keeps getting better, not worse.</p></div>
-            <div className="prn-card"><div className="prn-num">06</div><h3>Respect the hour</h3><p>Technology should disappear into the day. The best system is the one you stop noticing.</p></div>
-          </div>
-        </div>
-      </section>
-
-      {/* How we work */}
-      <section className="th-section">
-        <div className="sec-label">How we work</div>
-        <h2 className="sec-title">Four phases, <em>one studio.</em></h2>
-        <div className="proc-grid">
-          <div className="proc-step"><div className="proc-num">01</div><h4>Walk-through</h4><p>60–90 minutes on site. We listen first, then sketch the system layers. Free, no obligation.</p></div>
-          <div className="proc-step"><div className="proc-num">02</div><h4>Proposal</h4><p>Line-item document within two business days. Every device priced, every hour counted, scope locked.</p></div>
-          <div className="proc-step"><div className="proc-num">03</div><h4>Install</h4><p>Coordinated with the builder, electrician, and AV trades. Daily clean-up, weekly progress photos.</p></div>
-          <div className="proc-step"><div className="proc-num">04</div><h4>Service</h4><p>Twelve months of priority service included. Same technicians, same phone number, same morning if needed.</p></div>
-        </div>
-      </section>
-
-      {/* Founder pull-quote */}
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner" style={{maxWidth:820,textAlign:'center'}}>
-          <div className="sec-label">Built by</div>
-          <blockquote style={{fontFamily:'var(--serif)',fontSize:32,lineHeight:1.3,fontWeight:500,color:'var(--dark)',margin:'18px auto 24px',textWrap:'pretty'}}>
-            "The best smart home is the one you stop noticing. The windows are already where they should be. The music is already at dinner volume. The sun is still doing the work."
-          </blockquote>
-          <div style={{fontSize:14,color:'var(--mid)',letterSpacing:'.04em'}}>
-            <strong style={{color:'var(--dark)',fontWeight:600,letterSpacing:'.06em'}}>LUMA Design Principles</strong>
-            <span style={{margin:'0 10px',color:'var(--cream3)'}}>·</span>
-            Sarasota · Lutron / Crestron / Ubiquiti certified · CEDIA member
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="th-section" style={{textAlign:'center',paddingTop:64,paddingBottom:88}}>
-        <h2 className="sec-title">Let's meet at <em>your property.</em></h2>
-        <p className="sec-body">First visit is free. 60–90 minutes on site. No obligation. You'll walk away knowing what a LUMA-tuned home could look like — whether we build it together or not.</p>
-        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <NavLink page="contact" navigate={navigate} className="btn-solid">Book a consultation →</NavLink>
-          <NavLink page="service-areas" navigate={navigate} className="btn-ghost">Service areas</NavLink>
-          <NavLink page="luma-smart-home-sarasota" navigate={navigate} className="btn-ghost">This LUMA, not the others</NavLink>
-        </div>
-      </section>
+    <div className="fx-tabs">
+      <div className="fx-tabs-bar" role="tablist">
+        {tabs.map((t,i) => (
+          <button key={t.label} type="button" role="tab" aria-selected={on===i}
+            className={'fx-tab'+(on===i?' on':'')} onClick={()=>setOn(i)}>{t.label}</button>
+        ))}
+      </div>
+      <div className="fx-tabs-panel" role="tabpanel">{tabs[on].body}</div>
     </div>
   );
 }
 
-/* ─── LUMA CARE (ongoing service — inspired layout, original copy) ─── */
-function ServiceSupportPage({navigate}) {
-  const nap = napInfo();
-  const plans = [
-    {tier:'Shoreline', subtitle:'LUMA Care', price:75, tag:'Ideal for seasonal residences & lock-and-leave homes',
-     bullets:[
-       'Weekday remote diagnostics (Mon–Sat)',
-       'Secure messaging + email within one business day',
-       'Firmware and patch guidance for gear we installed',
-       '10% off standard on-site service visits',
-     ]},
-    {tier:'Channel', subtitle:'LUMA Care', price:119, featured:true, tag:'Our most popular tier for full-time Gulf Coast homes',
-     bullets:[
-       'Everything in Shoreline',
-       'Priority queue (same team, faster call-backs)',
-       'Proactive log review when vendors ship updates',
-       'Remote scene & keypad tweaks after you move in',
-       '20% off standard on-site service visits',
-     ]},
-    {tier:'Open Gulf', subtitle:'LUMA Care', price:189, tag:'Estates, compounds, and homes where downtime is unacceptable',
-     bullets:[
-       'Everything in Channel',
-       'Extended-hours phone line to the service desk',
-       'Quarterly remote “vitals” check on network, storage & backups',
-       'One annual on-site wellness visit (up to 90 min) within Sarasota County',
-       'Same-day on-site dispatch when available in your county',
-       '30% off standard on-site service visits',
-     ]},
-  ];
+/* the values panel from the service shell, on its own */
+function FxValuesPanel({h2, lead, items}){
   return (
-    <div className="page">
-      <header className="th-hero page-head">
-        <div>
-          <div className="hero-tag" style={{borderColor:'var(--accent)',color:'var(--accent)'}}>Ongoing care</div>
-          <h1 className="hero-title">Keep the house <em>effortless</em> — long after install.</h1>
-          <p className="hero-body">Smart homes age like boats: sun, salt, and software updates never stop. LUMA Care is ongoing stewardship for the systems we designed — remote tuning, disciplined updates, and technicians who already know your rack, your scenes, and how your family uses the place.</p>
-          <div className="sp-hero-tel">
-            <span style={{fontSize:13,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--mid)'}}>Talk to service</span>
-            <a href={nap.telHref}>{nap.telephoneDisplay}</a>
-            <span style={{color:'var(--cream3)'}}>·</span>
-            <a href={nap.mailHref}>{nap.email}</a>
+    <section className="fx-values fx-values--plain">
+      <div className="fx-wide">
+        <div className="fx-values-grid">
+          <div className="fx-values-copy" style={{gap:16}}>
+            <h2 className="fx-d3" style={{fontSize:'clamp(28px,2.4vw,32px)'}}>{h2}</h2>
+            {lead && <div className="fx-lede"><p>{lead}</p></div>}
           </div>
-          <div className="th-cta-row" style={{marginTop:8}}>
-            <button type="button" className="btn-solid" onClick={()=>navigate('contact')}>Request support →</button>
-            <button type="button" className="btn-ghost" onClick={()=>navigate('contact')}>Open a ticket (email)</button>
-          </div>
-        </div>
-        <div className="th-hero-img"><img loading="lazy" decoding="async" src={lu('/assets/video/luma-care-poster.jpg')} alt="A LUMA technician walking a homeowner through the control app"/></div>
-      </header>
-
-      <section className="th-section">
-        <div className="sec-label">Support you can trust</div>
-        <h2 className="sec-title">When something drifts, <em>we realign it.</em></h2>
-        <p className="sec-body" style={{maxWidth:640}}>Even careful systems need tune-ups: Wi-Fi maps change, cameras need cleaning and re-aiming, shade limits shift, and vendors ship updates that deserve a measured rollout. LUMA Care keeps a single accountable studio on-call — not a generic help desk reading a script.</p>
-        <div className="sp-band-cards">
-          <div className="th-card">
-            <div className="th-card-icon" aria-hidden="true">◇</div>
-            <h3 style={{fontFamily:'var(--serif)',fontSize:20,marginBottom:8,fontWeight:600}}>Responsive team</h3>
-            <p style={{fontSize:14,color:'var(--mid)',margin:0,lineHeight:1.6}}>Urgent issues get triaged the same day. We route you to remote fix or a scheduled truck — not an endless ticket queue.</p>
-          </div>
-          <div className="th-card">
-            <div className="th-card-icon" aria-hidden="true">◇</div>
-            <h3 style={{fontFamily:'var(--serif)',fontSize:20,marginBottom:8,fontWeight:600}}>Technicians who know the job</h3>
-            <p style={{fontSize:14,color:'var(--mid)',margin:0,lineHeight:1.6}}>Same people who commissioned your scenes and labeled your rack. Continuity matters when a home is complex.</p>
-          </div>
-          <div className="th-card">
-            <div className="th-card-icon" aria-hidden="true">◇</div>
-            <h3 style={{fontFamily:'var(--serif)',fontSize:20,marginBottom:8,fontWeight:600}}>Forward-looking care</h3>
-            <p style={{fontSize:14,color:'var(--mid)',margin:0,lineHeight:1.6}}>We watch for heat, failed disks, and odd client drop-offs before they ruin Saturday dinner — Gulf Coast humidity is part of the math.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div className="sec-label">How it works</div>
-          <h2 className="sec-title">Fast answers, <em>clean handoffs.</em></h2>
-          <div className="sp-process-3">
-            <div><h4>01 · You signal us</h4><p>Call, email, or text the service line. Describe what feels wrong — a scene, a shade, a camera, Wi-Fi in the guest wing. Photos and quick videos welcome.</p></div>
-            <div><h4>02 · We diagnose</h4><p>Remote first: VPN into the network you own, pull logs with your consent, and reproduce the issue. If it’s hardware, we schedule a visit with parts on the truck.</p></div>
-            <div><h4>03 · We close the loop</h4><p>Fix, verify, and leave notes in your file so the next technician — five years from now — isn’t guessing.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="th-section">
-        <div className="sec-label">Choose a plan</div>
-        <h2 className="sec-title">LUMA Care <em>membership</em></h2>
-        <p className="sec-body">Month-to-month after the first 90 days. Cancels anytime. Prices shown for single-family homes within our five-county service area; estates over 12,000 sq ft quoted individually.</p>
-        <div className="sp-plan-grid">
-          {plans.map(p=>(
-            <div key={p.tier} className={'sp-plan-card'+(p.featured?' sp-plan-card--featured':'')}>
-              <div className="sp-plan-tier">{p.subtitle}</div>
-              <div className="sp-plan-name">{p.tier}</div>
-              <div className="sp-plan-price">${p.price}<span style={{fontSize:20,fontWeight:500}}>/mo</span></div>
-              <div className="sp-plan-period">billed monthly · plus tax</div>
-              <div className="sp-plan-tag">{p.tag}</div>
-              <ul className="sp-plan-list">
-                {p.bullets.map(b=><li key={b}>{b}</li>)}
-              </ul>
-              <button type="button" className={p.featured?'btn-solid':'btn-ghost'} style={{width:'100%',justifyContent:'center'}} onClick={()=>navigate('contact')}>Start {p.tier} →</button>
-            </div>
-          ))}
-        </div>
-        <p style={{textAlign:'center',fontSize:12,color:'var(--mid)',maxWidth:720,margin:'28px auto 0',lineHeight:1.65}}>Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. Not insurance — it’s professional stewardship.</p>
-      </section>
-
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner" style={{textAlign:'center'}}>
-          <div className="sec-label">Licensed & accountable</div>
-          <h2 className="sec-title">Florida low-voltage <em>contractor of record.</em></h2>
-          <div className="sp-license-strip">
-            <span><strong>LUMA Home Systems LLC</strong> · Sarasota, FL</span>
-            <span>Florida licensed low-voltage contractor · insured for residential & light commercial</span>
-            <span>Serving Sarasota &amp; Manatee Counties</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="th-section" style={{textAlign:'center',paddingTop:48,paddingBottom:88}}>
-        <h2 className="sec-title">Need help <em>today?</em></h2>
-        <p className="sec-body">Tell us what’s going wrong. If you’re not sure which tier fits, we’ll recommend one after a short call — no upsell script.</p>
-        <div style={{marginTop:26,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <button type="button" className="btn-solid" onClick={()=>navigate('contact')}>Request support →</button>
-          <button type="button" className="btn-ghost" onClick={()=>navigate('home')}>Back to home</button>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-/* ─── CASES PAGE (Testimonials + Our Work) ─── */
-const TESTIMONIALS = [
-  {kind:'quote', stars:5,
-   quote:"They understand the sunset. Our west elevation was unlivable from 4 to 7. Now it's the best room in the house. Line-item proposal, no upsell, clean install.",
-   name:'Daniel & Laura', loc:'Longboat Key · Bayfront Estate', avatar:'DL'},
-  {kind:'video',
-   quote:'"One press, the right state."', meta:'Naples · Port Royal · 2:14',
-   bg: PHOTOS.heroHome},
-  {kind:'quote', stars:5,
-   quote:"Responsiveness that doesn't exist in this industry. A technician arrived the same morning we reported a camera issue — not a ticket, a person.",
-   name:'Martina R.', loc:'Naples · Port Royal', avatar:'MR'},
-  {kind:'quote', stars:5,
-   quote:"LUMA is the rare integrator that respects the architect's spec. They didn't add a single keypad we didn't agree to — and the ones they placed are invisible.",
-   name:'Sarah W., AIA', loc:'Sarasota · residential architect', avatar:'SW'},
-  {kind:'video',
-   quote:'Behind Sera — the golden-hour scene', meta:'Siesta Key · 1:48',
-   bg: PHOTOS.heroShading},
-  {kind:'quote', stars:5,
-   quote:"Open platform, no dealer lockout. When our builder handed over the house we owned the system — not the installer. That's how it should work.",
-   name:'Jonathan K.', loc:'Boca Grande · Gulf-front residence', avatar:'JK'},
-];
-
-function Stars({n=5}){
-  return <div className="tm-stars" aria-label={`${n} stars`}>
-    {Array.from({length:n}).map((_,i)=>(
-      <svg key={i} viewBox="0 0 20 20"><polygon points="10,1 12.7,7.5 19.6,7.9 14.3,12.3 16,19 10,15.4 4,19 5.7,12.3 0.4,7.9 7.3,7.5"/></svg>
-    ))}
-  </div>;
-}
-
-function CasesPage({navigate}) {
-  return (
-    <div className="page">
-      {/* ── HERO ── */}
-      <section style={{
-        display:'grid', gridTemplateColumns:'1fr 1fr',
-        minHeight:'min(88vh,780px)', background:'var(--dark)',
-        overflow:'hidden',
-      }} className="lit-hero-wrap">
-        <div style={{
-          display:'flex', flexDirection:'column', justifyContent:'center',
-          padding:'88px 64px 88px 80px', background:'var(--dark)', color:'#FCFAF6',
-        }} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>Selected work · 2024–2026</div>
-          <h1 style={{
-            fontFamily:'var(--serif)', fontSize:'clamp(40px,4.8vw,68px)',
-            fontWeight:600, lineHeight:1.06, color:'#FCFAF6',
-            margin:'0 0 24px', textWrap:'balance',
-            textShadow:'0 2px 20px rgba(0,0,0,.3)',
-          }}>Homes where <em style={{color:'#F4C9A8',fontStyle:'italic'}}>the hour takes care of itself.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>Five finished projects, from a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed, the equipment list, and how the house works now.</p>
-          <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-            <NavLink page="contact" navigate={navigate} className="btn-solid" style={{fontSize:16,padding:'14px 28px'}}>Start a project →</NavLink>
-            <a className="btn-ghost" href="#testimonials-grid" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Testimonials ↓</a>
-          </div>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.heroWork} alt="Gulf Coast sunset — Sarasota" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(27,26,40,.28) 0%,transparent 40%)'}}/>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="th-section" style={{paddingTop:0}}>
-        <div className="stat-band">
-          <div><div className="stat-num">5</div><div className="stat-label">Featured case studies</div></div>
-          <div><div className="stat-num">5★</div><div className="stat-label">Average rating</div></div>
-          <div><div className="stat-num">5</div><div className="stat-label">Counties served</div></div>
-          <div><div className="stat-num">2024+</div><div className="stat-label">On the Gulf Coast</div></div>
-        </div>
-      </section>
-
-      {/* ── Our Work: Case Studies + Project cards ── */}
-      <section className="th-section">
-        <div className="sec-label">Our work</div>
-        <h2 className="sec-title">Selected residences <em>across the coast.</em></h2>
-
-        {/* ── Featured case cards (3-column grid, 5 cases) ── */}
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:16,marginBottom:16}} className="work-cases-row">
-          {[
-            {page:'case-spacious', img:PHOTOS.caseSpHero,      label:'Case Study 01 · Naples · Port Royal',       title:'Spacious Modern',     gear:'Sonos · WattBox · UniFi · whole-home audio + network'},
-            {page:'case-urban',    img:PHOTOS.caseUrHero,      label:'Case Study 02 · Sarasota · Bird Key',       title:'Urban Home',          gear:'B&W · 7.1.2 Atmos · UniFi · in-wall + landscape audio'},
-            {page:'case-family',   img:PHOTOS.caseHfHero,      label:'Case Study 03 · Bonita Bay',                title:'Huge Family House',   gear:'Architectural lighting · LED cove · Lutron scenes'},
-            {page:'case-modern',   img:PHOTOS.projMrExterior,  label:'Case Study 04 · Tampa Bay Area',            title:'Modern Residence',    gear:'Sony · Denon AVR · Martin Logan · Sonos · Polk outdoor'},
-            {page:'case-bighouse', img:PHOTOS.projBmExterior,  label:'Case Study 05 · Texas Hill Country',        title:'Big Modern House',    gear:'URC · KEF · Epson 4K · Dolby Atmos 7.2.4 · 80+ speakers'},
-          ].map(c=>(
-            <a key={c.page} className="th-project work-case-card" href={pathFor(c.page)}
-              onClick={e=>spaClick(e, c.page, navigate)}
-              style={{height:380,borderRadius:14,overflow:'hidden',cursor:'pointer',position:'relative',color:'inherit',textDecoration:'none',display:'block'}}>
-              <img loading="lazy" decoding="async" src={c.img} alt={c.title} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',transition:'transform .4s ease'}}/>
-              <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(10,9,22,.92) 0%,rgba(10,9,22,.25) 55%,transparent 100%)'}}/>
-              <div style={{position:'absolute',top:18,left:18,background:'var(--accent)',color:'#fff',fontSize:11,letterSpacing:'.1em',textTransform:'uppercase',fontWeight:700,padding:'5px 12px',borderRadius:100}}>Case Study</div>
-              <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'24px 26px'}}>
-                <div style={{fontSize:10.5,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--accent)',fontWeight:700,marginBottom:7}}>{c.label}</div>
-                <h3 style={{fontFamily:'var(--serif)',fontSize:26,fontWeight:600,color:'#FCFAF6',margin:'0 0 8px',lineHeight:1.1}}>{c.title}</h3>
-                <p style={{fontSize:12.5,color:'rgba(252,250,246,.6)',margin:'0 0 14px',lineHeight:1.5}}>{c.gear}</p>
-                <span style={{display:'inline-flex',alignItems:'center',gap:6,fontSize:12.5,fontWeight:700,color:'var(--accent)'}}>View full case study →</span>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <p className="sec-body" style={{margin:'8px auto 0'}}>
-          We work across <NavLink page="sa-sarasota" navigate={navigate} className="inline-link">Sarasota</NavLink> and <NavLink page="sa-bradenton" navigate={navigate} className="inline-link">Manatee</NavLink> Counties — see <NavLink page="service-areas" navigate={navigate} className="inline-link">all service areas</NavLink>.
-        </p>
-
-        <style>{`
-          .work-case-card:hover img{transform:scale(1.04)}
-          @media(max-width:1100px){.work-cases-row{grid-template-columns:1fr 1fr!important}}
-          @media(max-width:680px){.work-cases-row{grid-template-columns:1fr!important}}
-          @media(max-width:899px){.lit-hero-wrap{grid-template-columns:1fr!important}.lit-hero-text{padding:56px 24px 44px!important}}
-        `}</style>
-      </section>
-
-      {/* Testimonials */}
-      <section className="th-section--cream" id="testimonials-grid">
-        <div className="th-section--cream-inner">
-          <div className="sec-label">Testimonials</div>
-          <h2 className="sec-title">Homes where <em>the hour takes care of itself.</em></h2>
-          <p className="sec-body">Five-star reviews from the homeowners, architects, and builders we've worked with along the Gulf Coast.</p>
-          <div className="tm-grid">
-            {TESTIMONIALS.map((t,i) => t.kind==='quote' ? (
-              <div key={i} className="tm-card">
-                <Stars n={t.stars}/>
-                <blockquote className="tm-quote">"{t.quote}"</blockquote>
-                <div className="tm-author">
-                  <div className="tm-avatar">{t.avatar}</div>
-                  <div>
-                    <div className="tm-author-name">{t.name}</div>
-                    <div className="tm-author-loc">{t.loc}</div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div key={i} className="tm-card tm-card--video" style={{['--bg-img']:`url(${t.bg})`}} onClick={()=>navigate('contact')}>
-                <span className="tm-play" aria-hidden="true"/>
-                <div className="tm-quote">{t.quote}</div>
-                <div className="tm-author-loc">{t.meta}</div>
+          <div className="fx-values-list">
+            {items.map(it => (
+              <div key={it.title} className="fx-value">
+                <span className="fx-tile" aria-hidden="true"><FxIcon name={it.icon}/></span>
+                <span><strong>{it.title}</strong><p>{it.desc}</p></span>
               </div>
             ))}
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* photo cards, the reference's big-panels */
+function FxPhotoPanels({h2, lead, items, band}){
+  return (
+    <section className={(band ? 'fx-band' : 'fx-band--plain') + ' fx-py-lg'}>
+      <div className="fx-wide">
+        {h2 && <div className="fx-heads" style={{marginBottom:40}}><h2 className="fx-d3">{h2}</h2>{lead && <p className="fx-lede">{lead}</p>}</div>}
+        <div className={'fx-panels fx-panels--static' + (items.length === 3 ? ' fx-panels--three' : '')}>
+          {items.map(c => (
+            <div key={c.title} className="fx-panel-card">
+              <span className="fx-panel-img"><img src={c.photo} alt={c.alt || c.title} loading="lazy" decoding="async"/></span>
+              <span className="fx-panel-body">
+                {c.kicker && <span className="fx-panel-kicker">{c.kicker}</span>}
+                <h3>{c.title}</h3>
+                <i className="fx-panel-rule" aria-hidden="true"/>
+                <p>{c.body}</p>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* their image-and-text block: a rounded teal card, photo left */
+function FxImageText({photo, alt, h2, body, children}){
+  return (
+    <section className="fx-band--plain fx-py-lg">
+      <div className="fx-wide">
+        <div className="fx-imgtext">
+          <img src={photo} alt={alt} loading="lazy" decoding="async"/>
+          <div className="fx-imgtext-copy">
+            <h2 className="fx-d3">{h2}</h2>
+            <div className="fx-lede"><p>{body}</p></div>
+            {children}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FxFaqBlock({items, h2='Frequently asked questions'}){
+  return (
+    <section className="fx-band--plain fx-py-lg">
+      <div className="fx-field">
+        <div className="fx-heads" style={{marginBottom:32}}><h2 className="fx-d3">{h2}</h2></div>
+        <div className="fx-faq">
+          {items.map((q,i) => (
+            <details key={q.q} className="fx-faq-item" open={i===0}>
+              <summary>{q.q}<i aria-hidden="true">+</i></summary>
+              <p>{q.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── ABOUT ─── */
+const ABOUT_PRINCIPLES = [
+  {icon:'open',    title:'Open over proprietary',  desc:'Lutron, Ubiquiti, Somfy, Sonos. Professional platforms with documented APIs. No dealer lock: your home stays yours if you ever leave us.'},
+  {icon:'network', title:'Network first',          desc:'Every project begins with the network. Wired backbone, segmented Wi-Fi, on-prem control. Everything else fails without it.'},
+  {icon:'lines',   title:'Pricing in lines',       desc:'Every device, every labor hour. No bundled mysteries, no surprise change orders.'},
+  {icon:'plans',   title:'Design with architects', desc:'We show up early in the build, not after drywall. Integration happens in plans, not in patches.'},
+  {icon:'clock',   title:'Stay after turnover',    desc:'Twelve months of service bundled. Quarterly check-ins. Quiet system updates.'},
+  {icon:'sun',     title:'Respect the hour',       desc:'Technology should disappear into the day. The best system is the one you stop noticing.'},
+];
+
+const ABOUT_PHASES = [
+  {kicker:'Step 01', title:'Walk-through', photo:PHOTOS.heroDesigners, alt:'A finished living room',
+   body:'60–90 minutes on site. We listen first, then sketch the system layers. Free, no obligation.'},
+  {kicker:'Step 02', title:'Proposal', photo:PHOTOS.tradeFlatlay, alt:'Plans and finishes on a desk',
+   body:'A line-item document within two business days. Every device priced, every hour counted, scope locked.'},
+  {kicker:'Step 03', title:'Install', photo:PHOTOS.lumaVan, alt:'The LUMA van on a job site',
+   body:'Coordinated with the builder, electrician, and AV trades. Daily clean-up, weekly progress photos.'},
+  {kicker:'Step 04', title:'Service', photo:PHOTOS.handPhone, alt:'Adjusting the house from a phone',
+   body:'Twelve months of priority service included. Same technicians, same phone number.'},
+];
+
+const ABOUT_FAQ = [
+  {q:'What does LUMA Smart Home do?',
+   a:'We design, install and look after lighting control, motorized shades, audio and video, home theaters, security cameras and networks in private homes.'},
+  {q:'Where do you work?',
+   a:'Sarasota and Manatee Counties: Sarasota, Bradenton, Lakewood Ranch, Venice, Siesta Key, Longboat Key, Anna Maria Island and Palmetto.'},
+  {q:'When should we bring you in?',
+   a:'As early as the plans. We would rather mark up drawings than patch finished walls, so the wiring goes in at rough-in, not after drywall.'},
+  {q:'Who owns the system when it is done?',
+   a:'You do. We build on open, documented platforms, so there is no dealer lock and the house stays yours if you ever change installers.'},
+  {q:'What happens after the install?',
+   a:'Service is part of the job: remote tuning, measured updates, and a technician who already knows the house. LUMA Care plans are on the Customer Support page.'},
+];
+
+function AboutPage({navigate}) {
+  return (
+    <div className="page">
+      <FxInnerHero kicker="About us" h1="We build homes around the Gulf Coast hour." image={PHOTOS.heroAbout} alt="Sarasota marina"/>
+
+      <section className="fx-band--plain fx-py-md">
+        <div className="fx-field">
+          <div className="fx-intro-prose">
+            <p><strong>LUMA is a residential technology studio based in Sarasota, Florida.</strong> We integrate lighting, shading, security, audio, and networking into homes that feel effortless, and we stay engaged long after turnover, because that is when most integrators disappear.</p>
+          </div>
+        </div>
       </section>
 
-      {/* CTA */}
-      <section className="th-section" style={{textAlign:'center',paddingTop:64,paddingBottom:88}}>
-        <h2 className="sec-title">Your project could be <em>next.</em></h2>
-        <p className="sec-body">Send us your plans or a walk-through video. First proposal in under two weeks.</p>
-        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <NavLink page="contact" navigate={navigate} className="btn-solid">Start a project →</NavLink>
-          <NavLink page="budget-calculator" navigate={navigate} className="btn-ghost">See budget ranges</NavLink>
+      <section className="fx-band--plain" style={{paddingBottom:96}}>
+        <div className="fx-wide">
+          <FxTabs tabs={[
+            {label:'What we believe', body:(
+              <>
+                <p className="fx-tabs-lead">Six principles we do not bend on, from the first walk-through to the last service call.</p>
+                <div className="fx-iconrow">
+                  {ABOUT_PRINCIPLES.map(p => (
+                    <div key={p.title} className="fx-iconrow-item">
+                      <span className="fx-tile" aria-hidden="true"><FxIcon name={p.icon}/></span>
+                      <strong>{p.title}</strong>
+                      <p>{p.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )},
+            {label:'Our story', body:(
+              <div className="fx-tabs-prose">
+                <h3 className="fx-d3">A different kind of integrator</h3>
+                <p>LUMA was founded on a simple observation: the Gulf Coast smart-home market is crowded with dealer-locked systems, opaque pricing, and integrators who vanish after turnover. Homeowners pay for premium gear and receive a black box they can't manage, can't modify, and can't get serviced without waiting weeks for a call back.</p>
+                <p>We started LUMA to flip that model. Open platforms, so you own your system. Line-item proposals, so you know exactly what you're paying for. Service bundled into every project, and a studio that stays with your home for years, not weeks.</p>
+              </div>
+            )},
+          ]}/>
+        </div>
+      </section>
+
+      <FxCallout kicker="What we believe" h2="The best smart home is the one you stop noticing."
+        body="The windows are already where they should be. The music is already at dinner volume. The sun is still doing the work."
+        actions={false} navigate={navigate}/>
+
+      <FxPhotoPanels h2="Four phases, one studio." lead="How a project runs, from the first visit to the years after." items={ABOUT_PHASES}/>
+
+      <FxImageText photo={PHOTOS.tradeFlatlay} alt="Plans, finishes and a keypad on a designer's desk"
+        h2="Working on a new build?"
+        body="We work alongside interior designers, architects, and custom builders: marked-up plans, a rough-in package for the electrician, and one proposal your client can read.">
+        <NavLink page="designers" navigate={navigate} className="fx-btn">Designers &amp; builders</NavLink>
+      </FxImageText>
+
+      <FxFaqBlock items={ABOUT_FAQ}/>
+
+      <FxCta navigate={navigate}
+        title="Let's meet at your property."
+        body="First visit is free. 60–90 minutes on site, no obligation. You'll walk away knowing what a LUMA-tuned home could look like, whether we build it together or not."/>
+    </div>
+  );
+}
+
+/* ─── CUSTOMER SUPPORT (LUMA Care) ───
+   The reference's /support and /support/247-support on one page: three
+   ways in, how support works, the plans, a closing callout. */
+const CARE_PLANS = [
+  {tier:'Shoreline', price:75, tag:'For seasonal residences and lock-and-leave homes',
+   bullets:[
+     'Weekday remote diagnostics (Mon–Sat)',
+     'Secure messaging and email within one business day',
+     'Firmware and patch guidance for gear we installed',
+     '10% off standard on-site service visits',
+   ]},
+  {tier:'Channel', price:119, tag:'For full-time Gulf Coast homes',
+   bullets:[
+     'Everything in Shoreline',
+     'Priority queue: same team, faster call-backs',
+     'Proactive log review when vendors ship updates',
+     'Remote scene and keypad tweaks after you move in',
+     '20% off standard on-site service visits',
+   ]},
+  {tier:'Open Gulf', price:189, tag:'For estates and homes where downtime is not an option',
+   bullets:[
+     'Everything in Channel',
+     'Extended-hours phone line to the service desk',
+     'Quarterly remote check on network, storage and backups',
+     'One annual on-site visit (up to 90 min)',
+     'Same-day on-site dispatch when available',
+     '30% off standard on-site service visits',
+   ]},
+];
+
+function ServiceSupportPage({navigate}) {
+  const nap = napInfo();
+  const service = () => { CONTACT_PRESET = 'Service request'; };
+  const toPlans = (e) => { e.preventDefault(); const el = document.getElementById('plans'); if (el) el.scrollIntoView({behavior:'smooth'}); };
+  return (
+    <div className="page">
+      <FxInnerHero kicker="Customer support" h1="Keep the house effortless, long after install." image={lu('/assets/video/luma-care-poster.jpg')} alt="A LUMA technician walking a homeowner through the control app"/>
+
+      <section className="fx-band--plain fx-py-lg">
+        <div className="fx-wide">
+          <div className="fx-heads" style={{marginBottom:48}}>
+            <h2 className="fx-d3">Support you can count on</h2>
+            <p className="fx-lede">Smart homes age like boats: sun, salt, and software updates never stop. LUMA Care is ongoing stewardship for the systems we designed, by technicians who already know your rack, your scenes, and how your family uses the place.</p>
+          </div>
+          <div className="fx-icards">
+            <NavLink page="contact" navigate={navigate} onNavigate={service} className="fx-icard">
+              <span className="fx-icard-tile"><FxIcon name="ticket"/></span>
+              <small>Submit a request</small><h3>Request service</h3>
+              <p>Tell us what feels wrong: a scene, a shade, a camera, Wi-Fi in the guest wing. Photos and short videos help.</p>
+            </NavLink>
+            <a href="#plans" onClick={toPlans} className="fx-icard">
+              <span className="fx-icard-tile"><FxIcon name="plan"/></span>
+              <small>LUMA Care</small><h3>View service plans</h3>
+              <p>Three monthly plans, from ${CARE_PLANS[0].price} a month. Month-to-month after the first 90 days.</p>
+            </a>
+            <a href={nap.telHref} className="fx-icard">
+              <span className="fx-icard-tile"><FxIcon name="phone"/></span>
+              <small>Service line</small><h3>{nap.telephoneDisplay}</h3>
+              <p>{nap.hours}. Or write to {nap.email}.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <FxPhotoPanels band h2="How we support you"
+        lead="Wi-Fi maps change, cameras need cleaning and re-aiming, shade limits shift, and vendors ship updates that deserve a measured rollout. When something drifts, we realign it."
+        items={[
+          {kicker:'Step 01', title:'You signal us', photo:PHOTOS.handPhone, alt:'Reporting an issue from a phone',
+           body:'Call, email, or text the service line and describe what feels wrong. Photos and quick videos welcome.'},
+          {kicker:'Step 02', title:'We diagnose', photo:PHOTOS.networkingRack, alt:'A documented equipment rack',
+           body:'Remote first: we connect to the network you own, pull logs with your consent, and reproduce the issue. If it is hardware, we schedule a visit with parts on the truck.'},
+          {kicker:'Step 03', title:'We close the loop', photo:PHOTOS.lumaVan, alt:'The LUMA van on a job site',
+           body:'Fix, verify, and leave notes in your file so the next technician, five years from now, isn’t guessing.'},
+        ]}/>
+
+      <section className="fx-plans" id="plans">
+        <div className="fx-wide">
+          <div className="fx-heads" style={{marginBottom:48}}>
+            <h2 className="fx-d3">LUMA Care plans</h2>
+            <p className="fx-lede">Month-to-month after the first 90 days, cancel anytime. Prices are for single-family homes in Sarasota and Manatee Counties; estates over 12,000 sq ft are quoted individually.</p>
+          </div>
+          <div className="fx-plans-grid">
+            {CARE_PLANS.map(p => (
+              <div key={p.tier} className="fx-plan">
+                <h3>{p.tier}</h3>
+                <div className="fx-plan-price">${p.price}<span>/mo</span></div>
+                <p className="fx-plan-tag">{p.tag}</p>
+                <ul className="fx-checks">{p.bullets.map(b => <li key={b}>{b}</li>)}</ul>
+                <NavLink page="contact" navigate={navigate} onNavigate={service} className="fx-plan-link">Start {p.tier} <i aria-hidden="true">→</i></NavLink>
+              </div>
+            ))}
+          </div>
+          <p className="fx-plans-note">Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. LUMA Home Systems LLC, Sarasota: Florida licensed low-voltage contractor, insured for residential and light commercial work.</p>
+        </div>
+      </section>
+
+      <FxCallout kicker="LUMA Care" h2="Need help today?"
+        body="Tell us what's going wrong. If you're not sure which plan fits, we'll recommend one after a short call."
+        label="Request service" onNavigate={service} navigate={navigate}/>
+    </div>
+  );
+}
+
+/* ─── WORK ───
+   The reference's /work: a short navy band, the newest project as a raised
+   card, the rest in a grid. Only LUMA_CASES. */
+const WORK_ORDER = ['case-urban','case-family','case-spacious','case-modern','case-bighouse'];
+
+function CasesPage({navigate}) {
+  const [lead, ...rest] = WORK_ORDER;
+  const L = LUMA_CASES[lead];
+  return (
+    <div className="page">
+      <section className="fx-work-hero">
+        <div className="fx-work-hero-inner">
+          <h1 className="fx-d2">Our work</h1>
+          <p>Five finished projects, from a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed and the equipment list.</p>
+        </div>
+      </section>
+
+      <section className="fx-work-feature-wrap">
+        <div className="fx-work-feature">
+          <NavLink page={lead} navigate={navigate} className="fx-work-feature-img"><img src={L.photo} alt={L.title} loading="eager" decoding="async"/></NavLink>
+          <div className="fx-work-feature-copy">
+            <span className="fx-panel-kicker">{L.place}</span>
+            <h2 className="fx-d3">{L.title}</h2>
+            <p className="fx-lede">{L.lede}</p>
+            <NavLink page={lead} navigate={navigate} className="fx-more">View project <i aria-hidden="true">→</i></NavLink>
+          </div>
+        </div>
+      </section>
+
+      <section className="fx-work-list">
+        <div className="fx-wide">
+          <div className="fx-work-grid">
+            {rest.map(id => { const c = LUMA_CASES[id]; return (
+              <NavLink key={id} page={id} navigate={navigate} className="fx-work-item">
+                <span className="fx-work-item-img"><img src={c.photo} alt={c.title} loading="lazy" decoding="async"/></span>
+                <span className="fx-work-item-copy">
+                  <small>{c.place}</small>
+                  <h3>{c.title}</h3>
+                  <p>{c.scope}</p>
+                </span>
+              </NavLink>
+            );})}
+          </div>
         </div>
       </section>
     </div>
   );
 }
+
 function BudgetCalculatorPage({navigate}) {
   const [sqft, setSqft] = React.useState(5000);
   const [picks, setPicks] = React.useState({lighting:true, shading:true, audio:false, theater:false, security:true, network:true, automation:false});
@@ -3054,374 +2939,176 @@ function BudgetCalculatorPage({navigate}) {
   );
 }
 
-/* ─── CASE STUDY: Spacious Modern (Naples · Port Royal) ─── */
-function CaseSpaciousPage({navigate}) {
+/* ─── CASE STUDIES ───
+   The reference's single-project page: a tall photo hero with the place
+   above the name, a centred lede and the systems list, a gallery band, the
+   write-up, the wave CTA. Text and photos are the ones these pages always
+   had. Most are portrait phone shots, so the band is a filmstrip of one
+   height and each frame keeps its own shape instead of being cropped. */
+const CASE_DETAIL = {
+  'case-spacious': {
+    lede:'A 7,400 sq ft modern home wired end-to-end for music, network, and effortless ownership: calm in the rooms, organized in the rack, easy on the family.',
+    about:[
+      'The brief was simple: music everywhere, no visible boxes, and a network the family could rely on year-round between Naples and the northeast. We delivered a single Sonos backbone covering every interior zone plus the lanai and pool deck.',
+      'Behind the scenes: a documented UniFi network with full Wi-Fi 6 coverage, a managed WattBox so the rack reboots itself if anything hangs, and remote monitoring so we see issues before the homeowner does.',
+    ],
+    rooms:[
+      {room:'Whole-home audio',   gear:'Sonos Amp · in-ceiling architectural speakers · 8 zones interior + lanai'},
+      {room:'Network & remote',   gear:'UniFi Dream Machine · Wi-Fi 6 mesh · WattBox managed power · 24/7 monitoring'},
+      {room:'Outdoor experience', gear:'Landscape audio along the pool deck · weatherproof keypads · app control'},
+      {room:'Service-friendly',   gear:'Labelled rack · documented for any technician · open platform, no dealer lock-in'},
+    ],
+    photos:[
+      {src:PHOTOS.caseSpSceneA, alt:'Living room with hidden audio'},
+      {src:PHOTOS.caseSpSceneB, alt:'Open-plan kitchen and dining'},
+      {src:PHOTOS.caseSpCeiling, alt:'Architectural in-ceiling speakers'},
+    ],
+  },
+  'case-urban': {
+    lede:'A waterfront urban residence built around music. Bowers & Wilkins from the media room to the pool deck, a 7.1.2 Atmos array tuned in-room, and a UniFi network that just works.',
+    about:[
+      'The owners are music people. The system was specified around Bowers & Wilkins from day one: in-walls in the great room, a tuned 7.1.2 Atmos array in the media room, and a discreet landscape system that carries the sound out to the pool without disturbing the neighbors.',
+      'The network and rack are equally serious: a UniFi backbone with hardwired drops to every TV, access points sized for guests, and a WattBox that keeps the rack online without a service call.',
+    ],
+    rooms:[
+      {room:'Media room',        gear:'Bowers & Wilkins 7.1.2 Dolby Atmos · in-room calibration · acoustic treatment'},
+      {room:'Great room & home', gear:'B&W in-wall + in-ceiling speakers · multi-zone streaming · keypad scenes'},
+      {room:'Pool & landscape',  gear:'B&W weatherproof landscape audio · zoned for the pool, lanai, and lawn'},
+      {room:'Network & rack',    gear:'UniFi · Wi-Fi 6 · WattBox managed power · documented patch panel'},
+    ],
+    photos:[
+      {src:PHOTOS.caseUrPool, alt:'Pool with discreet landscape audio'},
+      {src:PHOTOS.caseUrInWall, alt:'B&W in-wall speaker'},
+      {src:PHOTOS.caseUrSpeakerDetail, alt:'B&W speaker close-up'},
+      {src:PHOTOS.caseUrRack, alt:'UniFi network rack'},
+    ],
+  },
+  'case-family': {
+    lede:'A 9,000+ sq ft family residence where the architecture is the story, and the lighting was designed to disappear into it. Hidden cove LEDs, layered scenes, and one keypad in every room.',
+    about:[
+      'This was a lighting-led project from the first walkthrough. We worked with the architect and designer to hide the fixtures inside the architecture itself: coves above the great room, linear runs under the wood paneling, and a layered scheme that lets a single keypad take the home from morning to evening to overnight.',
+      'The result is a house that feels handcrafted in light. No lamp clutter, no glare. Each scene was tuned in person after dark, then handed over with a one-page guide the family actually uses.',
+    ],
+    rooms:[
+      {room:'Great room',            gear:'Hidden cove LEDs above the vault · downlight wash · dim-to-warm scenes'},
+      {room:'Architectural accents', gear:'Linear LED runs under wood paneling · niche accent light · staircase grazing'},
+      {room:'Bath & spa',            gear:'Backlit shower niche · vanity scenes · after-hours mode'},
+      {room:'Control & exterior',    gear:'Lutron RadioRA 3 · designer keypads in every room · landscape & uplight scenes'},
+    ],
+    photos:[
+      {src:PHOTOS.caseHfGreatRoom, alt:'Great room with hidden cove lighting'},
+      {src:PHOTOS.caseHfLedCove, alt:'Architectural cove LEDs'},
+      {src:PHOTOS.caseHfLedDetail, alt:'Linear LED detail under wood'},
+      {src:PHOTOS.caseHfShower, alt:'Backlit shower niche'},
+    ],
+  },
+  'case-modern': {
+    lede:'Five independent AV zones in a single hillside home (entertainment room, main living room, and three outdoor patios), unified under one control layer.',
+    about:[
+      'A modern hillside home designed around five distinct entertainment zones. The client wanted each area to feel complete on its own, and seamlessly connected when the whole house is in use.',
+      'No exposed wiring, no visible hardware. Every zone was calibrated after install and fully documented for future expansion.',
+    ],
+    rooms:[
+      {room:'Entertainment room', gear:'Denon AVR · Martin Logan architectural ceiling speakers · Sony TV · 5.1 surround'},
+      {room:'Main living room',   gear:'Sony 85" display · Sonos Arc soundbar · flush-mount over linear fireplace'},
+      {room:'Patios × 3',         gear:'Polk Audio outdoor speakers · WiiM amplifier per zone · independent source & volume'},
+    ],
+    photos:[
+      {src:PHOTOS.projMrLiving, alt:'Living room with panoramic view'},
+      {src:PHOTOS.projMrTv, alt:'Sony TV over the fireplace'},
+      {src:PHOTOS.projMrAvRoom, alt:'AV entertainment room'},
+      {src:PHOTOS.projMrPatio, alt:'Patio zone'},
+    ],
+  },
+  'case-bighouse': {
+    lede:'16 audio zones, 6 video zones, a full Dolby Atmos theater, and 80+ speakers, all running from a single URC processor and built for long-term client ownership.',
+    about:[
+      'A full-home integration designed in close collaboration with the client, built around a URC processor managing 16 audio zones and 6 video zones. Planned for long-term ownership: open architecture, fully documented.',
+      'The dedicated theater has a 4K Epson laser projector, a 130" Severtson screen, and a 7.2.4 Dolby Atmos array powered by KEF speakers, calibrated to the room.',
+    ],
+    rooms:[
+      {room:'Control backbone', gear:'URC processor · 16 audio zones · 6 video zones · open architecture'},
+      {room:'Home theater',     gear:'Epson 4K laser · 130" Severtson screen · KEF 7.2.4 Dolby Atmos'},
+      {room:'Whole-home audio', gear:'80+ KEF architectural ceiling speakers across all zones'},
+      {room:'Security & automation', gear:'Perimeter cameras · motorized shades · whole-home automation'},
+    ],
+    photos:[
+      {src:PHOTOS.projBmLiving, alt:'Finished living room'},
+      {src:PHOTOS.projBmTv, alt:'TV on dark marble'},
+      {src:PHOTOS.projBmPatio, alt:'Covered patio with pool'},
+      {src:PHOTOS.projBmRack, alt:'URC equipment rack'},
+      {src:PHOTOS.projBmKef, alt:'KEF speaker delivery'},
+      {src:PHOTOS.projBmGameroom, alt:'Game room with ceiling speakers'},
+      {src:PHOTOS.projBmControl, alt:'Control panel'},
+    ],
+  },
+};
+
+function FxGallery({photos}){
+  const track = useRef(null);
+  const step = (dir) => {
+    const el = track.current; if (!el) return;
+    const slide = el.querySelector('figure');
+    el.scrollBy({left: dir * (slide ? slide.offsetWidth + 24 : el.clientWidth), behavior:'smooth'});
+  };
   return (
-    <div className="page">
-      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case Study 01 · Naples · Port Royal</div>
-          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Spacious <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Modern</em></h1>
-          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>A 7,400 sq ft modern home wired end-to-end for music, network, and effortless ownership — calm in the rooms, organized in the rack, easy on the family.</p>
-          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Sonos whole-home audio · WattBox managed power · UniFi network · Sonance in-ceiling architectural speakers · landscape audio</p>
-          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.caseSpHero} alt="Spacious Modern home — Naples" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-        </div>
-      </section>
-
-      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
-        <div style={{maxWidth:1160,margin:'0 auto'}}>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
-            <div>
-              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
-              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>The brief was simple — music everywhere, no visible boxes, and a network the family could rely on year-round between Naples and the northeast. We delivered a single Sonos backbone covering every interior zone plus the lanai and pool deck.</p>
-              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>Behind the scenes: a documented UniFi network with full Wi-Fi 6 coverage, a managed WattBox so the rack reboots itself if anything hangs, and remote monitoring so we see issues before the homeowner does.</p>
-            </div>
-            <div style={{display:'grid',gap:16}}>
-              {[
-                {room:'Whole-home audio',  gear:'Sonos Amp · in-ceiling architectural speakers · 8 zones interior + lanai'},
-                {room:'Network & remote',  gear:'UniFi Dream Machine · Wi-Fi 6 mesh · WattBox managed power · 24/7 monitoring'},
-                {room:'Outdoor experience',gear:'Landscape audio along the pool deck · weatherproof keypads · seamless app control'},
-                {room:'Service-friendly',  gear:'Labelled rack · documented for any technician · open platform — no dealer lock-in'},
-              ].map(r=>(
-                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
-                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
-                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
-            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseSpSceneA} alt="Living room with hidden audio" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseSpSceneB} alt="Open-plan kitchen and dining" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
-            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseSpCeiling} alt="Architectural in-ceiling speakers" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseSpVan} alt="LUMA install team on site" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-        </div>
-      </section>
-      <style>{`.case-body{padding:64px 80px 72px!important} @media(max-width:899px){.case-2col{grid-template-columns:1fr!important}.case-2col-photos{grid-template-columns:1fr!important}.case-body{padding:40px 24px 56px!important}}`}</style>
-
-      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
-        <h2 className="sec-title">Want a similar setup?</h2>
-        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
-        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
-          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
-        </div>
-      </section>
-    </div>
+    <section className="fx-gallery-band" aria-label="Project photos">
+      <div className="fx-slides" ref={track}>
+        {photos.map(p => (
+          <figure key={p.src} className="fx-slide">
+            <img src={p.src} alt={p.alt} loading="lazy" decoding="async"/>
+          </figure>
+        ))}
+      </div>
+      <div className="fx-slides-nav">
+        <button type="button" aria-label="Previous photo" onClick={()=>step(-1)}>←</button>
+        <button type="button" aria-label="Next photo" onClick={()=>step(1)}>→</button>
+      </div>
+    </section>
   );
 }
 
-/* ─── CASE STUDY: Urban Home (Sarasota · Bird Key) ─── */
-function CaseUrbanPage({navigate}) {
+function FxCasePage({id, navigate}){
+  const c = LUMA_CASES[id], d = CASE_DETAIL[id];
   return (
     <div className="page">
-      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case Study 02 · Sarasota · Bird Key</div>
-          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Urban <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Home</em></h1>
-          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>A waterfront urban residence built around music. Bowers &amp; Wilkins from the media room to the pool deck, a 7.1.2 Atmos array tuned in-room, and a UniFi network that just works.</p>
-          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Bowers &amp; Wilkins · 7.1.2 Dolby Atmos · in-wall + landscape audio · UniFi network · WattBox managed power</p>
-          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
+      <section className="lit-hero-wrap fx-hero--case">
+        <div>
+          <div>{c.place}</div>
+          <h1>{c.title}</h1>
         </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.caseUrHero} alt="Urban Home media room — Sarasota" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-        </div>
+        <div><img src={c.photo} alt={c.title} loading="eager" fetchpriority="high" decoding="async"/></div>
       </section>
 
-      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
-        <div style={{maxWidth:1160,margin:'0 auto'}}>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
-            <div>
-              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
-              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>The owners are music people. The system was specified around Bowers &amp; Wilkins from day one — in-walls in the great room, a tuned 7.1.2 Atmos array in the media room, and a discreet landscape system that carries the sound out to the pool without disturbing the neighbors.</p>
-              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>The network and rack are equally serious — a UniFi backbone with hardwired drops to every TV, access points sized for guests, and a WattBox that keeps the rack online without a service call.</p>
-            </div>
-            <div style={{display:'grid',gap:16}}>
-              {[
-                {room:'Media room',        gear:'Bowers & Wilkins 7.1.2 Dolby Atmos · in-room calibration · acoustic treatment'},
-                {room:'Great room & home', gear:'B&W in-wall + in-ceiling speakers · multi-zone streaming · keypad scenes'},
-                {room:'Pool & landscape',  gear:'B&W weatherproof landscape audio · zoned for the pool, lanai, and lawn'},
-                {room:'Network & rack',    gear:'UniFi · Wi-Fi 6 · WattBox managed power · documented patch panel'},
-              ].map(r=>(
-                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
-                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
-                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
-            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseUrPool} alt="Pool with discrete landscape audio" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseUrInWall} alt="B&W in-wall speaker detail" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
-            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseUrSpeakerDetail} alt="B&W speaker close-up" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseUrRack} alt="UniFi network rack" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
+      <article className="fx-case-intro">
+        <div className="fx-case-inner">
+          <NavLink page="work" navigate={navigate} className="fx-post-back">← All work</NavLink>
+          <p className="fx-case-lede">{d.lede}</p>
+          <h3>Systems</h3>
+          <div className="fx-case-systems">
+            {d.rooms.map(r => (
+              <div key={r.room}>
+                <small>{r.room}</small>
+                <ul className="fx-checks">{r.gear.split(' · ').map(g => <li key={g}>{g}</li>)}</ul>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </article>
 
-      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
-        <h2 className="sec-title">Want a similar setup?</h2>
-        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
-        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
-          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
-        </div>
-      </section>
-    </div>
-  );
-}
+      <FxGallery photos={d.photos}/>
 
-/* ─── CASE STUDY: Huge Family House (Bonita Bay · architectural lighting) ─── */
-function CaseFamilyPage({navigate}) {
-  return (
-    <div className="page">
-      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case Study 03 · Bonita Bay</div>
-          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Huge Family <em style={{color:'#F4C9A8',fontStyle:'italic'}}>House</em></h1>
-          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>A 9,000+ sq ft family residence where the architecture is the story — and the lighting was designed to disappear into it. Hidden cove LEDs, layered scenes, and one keypad in every room.</p>
-          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Architectural cove lighting · linear LED accents · Lutron RadioRA 3 scenes · designer keypads · landscape lighting</p>
-          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914'}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.caseHfHero} alt="Huge Family House exterior" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+      <section className="fx-case-prose">
+        <div className="fx-case-inner">
+          <h3>About this project</h3>
+          {d.about.map(p => <p key={p.slice(0,24)}>{p}</p>)}
         </div>
       </section>
 
-      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
-        <div style={{maxWidth:1160,margin:'0 auto'}}>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
-            <div>
-              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
-              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>This was a lighting-led project from the first walkthrough. We worked with the architect and designer to hide the fixtures inside the architecture itself — coves above the great room, linear runs under the wood paneling, and a layered scheme that lets a single keypad take the home from morning to evening to overnight.</p>
-              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>The result is a house that feels handcrafted in light. No lamp clutter. No glare. Each scene was tuned in person after dark, then handed over with a one-page guide the family actually uses.</p>
-            </div>
-            <div style={{display:'grid',gap:16}}>
-              {[
-                {room:'Great room',         gear:'Hidden cove LEDs above the vault · downlight wash · dim-to-warm scenes'},
-                {room:'Architectural accents',gear:'Linear LED runs under wood paneling · niche accent light · staircase grazing'},
-                {room:'Bath & spa',         gear:'Backlit shower niche · vanity scenes · privacy-aware after-hours mode'},
-                {room:'Control & exterior', gear:'Lutron RadioRA 3 · designer keypads in every room · landscape & uplight scenes'},
-              ].map(r=>(
-                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
-                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
-                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:10,alignItems:'start'}} className="case-2col-photos">
-            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseHfGreatRoom} alt="Great room with hidden cove lighting" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:340,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseHfLedCove} alt="Architectural cove LEDs" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,alignItems:'start'}} className="case-2col-photos">
-            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseHfLedDetail} alt="Linear LED detail under wood" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            <div style={{height:300,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.caseHfShower} alt="Backlit shower niche" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
-        <h2 className="sec-title">Want a similar setup?</h2>
-        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
-        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
-          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-/* ─── CASE STUDY: Modern Residence ─── */
-function CaseModernPage({navigate}) {
-  return (
-    <div className="page">
-      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case study 01 · Tampa Bay Area</div>
-          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Modern <em style={{color:'#F4C9A8',fontStyle:'italic'}}>Residence</em></h1>
-          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>Five independent AV zones in a single hillside home — entertainment room, main living room, and three outdoor patios — unified under one control layer.</p>
-          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>Sony · Denon AVR · Martin Logan ceiling speakers · Sonos Arc · Polk Audio outdoor · WiiM amplifiers</p>
-          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.projMrExterior} alt="Modern Residence exterior" style={{width:'100%',height:'auto',maxHeight:'100%',objectFit:'contain',display:'block'}}/>
-        </div>
-      </section>
-
-      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
-        <div style={{maxWidth:1160,margin:'0 auto'}}>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
-            <div>
-              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
-              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>A modern hillside home designed around five distinct entertainment zones. The client wanted each area to feel complete on its own — and seamlessly connected when the whole house is in use.</p>
-              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>No exposed wiring, no visible hardware. Every zone was calibrated post-install and fully documented for future expansion.</p>
-            </div>
-            <div style={{display:'grid',gap:16}}>
-              {[
-                {room:'Entertainment room', gear:'Denon AVR · Martin Logan architectural ceiling speakers · Sony TV · 5.1 surround'},
-                {room:'Main living room',   gear:'Sony 85" display · Sonos Arc soundbar · flush-mount over linear fireplace'},
-                {room:'Patios × 3',         gear:'Polk Audio outdoor speakers · WiiM amplifier per zone · independent source & volume'},
-              ].map(r=>(
-                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
-                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
-                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="case-mr-photos" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10,alignItems:'start'}}>
-            {/* projMrTv: 560×876 portrait → contain */}
-            <div style={{height:280,overflow:'hidden',borderRadius:10,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projMrTv} alt="Sony TV over fireplace" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
-            </div>
-            {/* projMrLiving: 1024×531 landscape → cover fine */}
-            <div style={{height:280,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projMrLiving} alt="Living room with panoramic view" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            {/* projMrAvRoom: 2400×1350 landscape → cover fine */}
-            <div style={{height:280,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projMrAvRoom} alt="AV entertainment room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-        </div>
-      </section>
-      <style>{`.case-body{padding:64px 80px 72px!important} @media(max-width:899px){.case-2col{grid-template-columns:1fr!important}.case-body{padding:40px 24px 56px!important}}`}</style>
-
-      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
-        <h2 className="sec-title">Want a similar setup?</h2>
-        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
-        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
-          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-/* ─── CASE STUDY: Big Modern House ─── */
-function CaseBigHousePage({navigate}) {
-  return (
-    <div className="page">
-      <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:10}}>Case study 02 · Texas Hill Country</div>
-          <h1 style={{fontFamily:'var(--serif)',fontSize:'clamp(38px,4.6vw,64px)',fontWeight:600,lineHeight:1.06,color:'#FCFAF6',margin:'0 0 24px',textWrap:'balance'}}>Big Modern <em style={{color:'#F4C9A8',fontStyle:'italic'}}>House</em></h1>
-          <p style={{fontSize:17,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:480,margin:'0 0 12px'}}>16 audio zones, 6 video zones, a full Dolby Atmos theater, and 80+ speakers — all running from a single URC processor, built for long-term client ownership.</p>
-          <p style={{fontSize:14,lineHeight:1.65,color:'rgba(252,250,246,.5)',maxWidth:480,margin:'0 0 32px'}}>URC · KEF · Epson 4K laser · 130" Severtson · Dolby Atmos 7.2.4 · perimeter cameras · whole-home automation</p>
-          <button className="btn-ghost" style={{width:'fit-content',fontSize:15,padding:'12px 22px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.4)'}} onClick={()=>navigate('work')}>← Back to Work</button>
-        </div>
-        <div style={{position:'relative',overflow:'hidden',minHeight:340,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-          <img loading="lazy" decoding="async" src={PHOTOS.projBmExterior} alt="Big Modern House exterior" style={{width:'100%',height:'auto',maxHeight:'100%',objectFit:'contain',display:'block'}}/>
-        </div>
-      </section>
-
-      <section style={{background:'var(--dark)',padding:'64px 80px 72px',maxWidth:'none'}} className="case-body">
-        <div style={{maxWidth:1160,margin:'0 auto'}}>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:48,marginBottom:52,alignItems:'start'}} className="case-2col">
-            <div>
-              <div className="sec-label" style={{textAlign:'left',color:'rgba(252,250,246,.5)'}}>About the project</div>
-              <p style={{fontSize:18,lineHeight:1.75,color:'rgba(252,250,246,.85)',margin:'16px 0 18px'}}>A full-home integration designed in close collaboration with the client, built around a URC processor managing 16 audio zones and 6 video zones. Planned for the client's long-term smart home ownership — open architecture, fully documented.</p>
-              <p style={{fontSize:15,lineHeight:1.7,color:'rgba(252,250,246,.55)',margin:0}}>The dedicated theater features a 4K Epson laser projector, a 130" Severtson screen, and a 7.2.4 Dolby Atmos array powered by KEF speakers — calibrated to the room dimensions.</p>
-            </div>
-            <div style={{display:'grid',gap:16}}>
-              {[
-                {room:'Control backbone', gear:'URC processor · 16 audio zones · 6 video zones · open architecture'},
-                {room:'Home Theater',     gear:'Epson 4K laser · 130" Severtson screen · KEF 7.2.4 Dolby Atmos'},
-                {room:'Whole-home audio', gear:'80+ KEF architectural ceiling speakers across all zones'},
-                {room:'Security & auto',  gear:'Perimeter cameras · motorized shades · whole-home automation'},
-              ].map(r=>(
-                <div key={r.room} style={{borderLeft:'2px solid var(--accent)',paddingLeft:18}}>
-                  <div style={{fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:5}}>{r.room}</div>
-                  <div style={{fontSize:14,color:'rgba(252,250,246,.7)',lineHeight:1.55}}>{r.gear}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Row 1: 2 portrait + 2 landscape — use mixed layout */}
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1.6fr 1fr 1.6fr',gap:10,marginBottom:10,alignItems:'start'}}>
-            {/* projBmTv: 462×1024 portrait → contain */}
-            <div style={{height:280,overflow:'hidden',borderRadius:10,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projBmTv} alt="TV on dark marble" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
-            </div>
-            {/* projBmLiving: 1024×520 landscape → cover */}
-            <div style={{height:280,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projBmLiving} alt="Finished living room" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            {/* projBmRack: 375×1024 portrait → contain */}
-            <div style={{height:280,overflow:'hidden',borderRadius:10,background:'#0a0914',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projBmRack} alt="URC equipment rack" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
-            </div>
-            {/* projBmPatio: 1024×456 landscape → cover */}
-            <div style={{height:280,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projBmPatio} alt="Covered patio with pool" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-          </div>
-          {/* Row 2: 1 portrait + 1 landscape + 1 near-square */}
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1.6fr 1fr',gap:10,alignItems:'start'}}>
-            {/* projBmGameroom: 547×1024 portrait → contain */}
-            <div style={{height:240,overflow:'hidden',borderRadius:10,background:'#0e0d1b',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projBmGameroom} alt="Game room with ceiling speakers" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
-            </div>
-            {/* projBmKef: 1024×596 landscape → cover */}
-            <div style={{height:240,overflow:'hidden',borderRadius:10}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projBmKef} alt="KEF speaker delivery" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            </div>
-            {/* projBmControl: 508×578 near-square → contain */}
-            <div style={{height:240,overflow:'hidden',borderRadius:10,background:'#f5f3ef',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <img loading="lazy" decoding="async" src={PHOTOS.projBmControl} alt="Control panel" style={{width:'100%',height:'100%',objectFit:'contain',display:'block'}}/>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="th-section" style={{textAlign:'center',paddingTop:56,paddingBottom:72}}>
-        <h2 className="sec-title">Want a similar setup?</h2>
-        <p className="sec-body">We'll scope your home in one visit and have a line-item proposal back within two business days.</p>
-        <div style={{marginTop:28,display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <button className="btn-solid" onClick={()=>navigate('contact')}>Start a project →</button>
-          <button className="btn-ghost" onClick={()=>navigate('work')}>Back to all work</button>
-        </div>
-      </section>
+      <FxCta navigate={navigate}
+        title="Want a similar setup?"
+        body="We'll scope your home in one visit and have a line-item proposal back within two business days."
+        label="Start a project"/>
     </div>
   );
 }
@@ -3918,14 +3605,14 @@ function FxInnerHero({kicker, h1, image, alt}){
   );
 }
 
-function FxCallout({kicker, h2, body, navigate}){
+function FxCallout({kicker, h2, body, navigate, actions=true, label, onNavigate}){
   return (
     <section className="fx-callout">
       <div className="fx-callout-inner">
         {kicker && <p className="fx-callout-kicker">{kicker}</p>}
         <h2 className="fx-d3">{h2}</h2>
         {body && <div className="fx-lede"><p>{body}</p></div>}
-        <FxActions navigate={navigate} tone="dark"/>
+        {actions && <FxActions navigate={navigate} tone="dark" label={label} onNavigate={onNavigate}/>}
       </div>
     </section>
   );
@@ -4321,11 +4008,11 @@ function App() {
     contact:   <ContactPage navigate={navigate}/>,
     'budget-calculator': <BudgetCalculatorPage navigate={navigate}/>,
     work:      <CasesPage navigate={navigate}/>,
-    'case-spacious': <CaseSpaciousPage navigate={navigate}/>,
-    'case-urban':    <CaseUrbanPage navigate={navigate}/>,
-    'case-family':   <CaseFamilyPage navigate={navigate}/>,
-    'case-modern':   <CaseModernPage navigate={navigate}/>,
-    'case-bighouse': <CaseBigHousePage navigate={navigate}/>,
+    'case-spacious': <FxCasePage id="case-spacious" navigate={navigate}/>,
+    'case-urban':    <FxCasePage id="case-urban" navigate={navigate}/>,
+    'case-family':   <FxCasePage id="case-family" navigate={navigate}/>,
+    'case-modern':   <FxCasePage id="case-modern" navigate={navigate}/>,
+    'case-bighouse': <FxCasePage id="case-bighouse" navigate={navigate}/>,
     about:     <AboutPage navigate={navigate}/>,
     support:   <ServiceSupportPage navigate={navigate}/>,
     'smart-home-demo': <SmartHomeDemoPage navigate={navigate}/>,

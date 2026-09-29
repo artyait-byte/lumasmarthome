@@ -171,9 +171,9 @@ ROUTES: list[dict] = [
         "id": "work",
         "path": "/work",
         "file": "work.html",
-        "title": "Our Work & Testimonials | Gulf Coast Homes | LUMA",
-        "description": "Selected residences and five-star reviews from homeowners, architects, and builders along Florida's Gulf Coast.",
-        "h1": "Homes where the hour takes care of itself.",
+        "title": "Our Work | Finished Smart Home Projects | LUMA",
+        "description": "Five finished LUMA projects, from a Bird Key waterfront home to a Bonita Bay residence: the systems installed and the equipment in each.",
+        "h1": "Our work",
         "og_image": "/assets/photos/gulf-sunset.jpg",
         "priority": 0.8,
         "changefreq": "monthly",
@@ -612,6 +612,26 @@ def noscript_block(route: dict) -> str:
 </noscript>"""
 
 
+# The contact form is rendered by React, which Netlify's deploy-time parser
+# never sees. This hidden twin registers the form and its fields; the SPA
+# posts to it with form-name=contact. A field missing here is dropped.
+CONTACT_FIELDS = [
+    "first_name", "last_name", "email", "phone", "address", "city", "zip",
+    "inquiry", "systems", "message", "preferred_contact", "heard_from",
+    "source_page",
+]
+
+
+def netlify_form(route: dict) -> str:
+    if route["id"] != "contact":
+        return ""
+    inputs = "".join(f'<input name="{f}">' for f in CONTACT_FIELDS)
+    return (
+        '<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>'
+        f'<input name="bot-field">{inputs}</form>\n'
+    )
+
+
 def head_for(route: dict) -> str:
     canonical = abs_url(route["path"])
     og_image = abs_url(route["og_image"])
@@ -659,7 +679,7 @@ def head_for(route: dict) -> str:
 <body>
 {noscript_block(route)}
 <div id="root"></div>
-<script>window.__LUMA_PAGE={json.dumps(route["id"])};</script>
+{netlify_form(route)}<script>window.__LUMA_PAGE={json.dumps(route["id"])};</script>
 <script type="text/babel" data-presets="react" src="/js/app.js"></script>
 </body>
 </html>

@@ -105,12 +105,12 @@ window.LUMA_SEO = {
     "work": {
       "id": "work",
       "path": "/work",
-      "title": "Our Work & Testimonials | Gulf Coast Homes | LUMA",
-      "description": "Selected residences and five-star reviews from homeowners, architects, and builders along Florida's Gulf Coast.",
+      "title": "Our Work | Finished Smart Home Projects | LUMA",
+      "description": "Five finished LUMA projects, from a Bird Key waterfront home to a Bonita Bay residence: the systems installed and the equipment in each.",
       "kind": "page",
       "city": null,
       "service": null,
-      "h1": "Homes where the hour takes care of itself."
+      "h1": "Our work"
     },
     "about": {
       "id": "about",
