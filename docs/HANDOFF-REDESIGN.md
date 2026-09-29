@@ -51,9 +51,14 @@ State as of 2026-09-29 (night). Branch `claude/sharp-shaw-baf08f`. Not deployed.
   December, daylight). States live in assets/photos/outdoor/ and assets/photos/live/.
 - Full mobile pass: 18 pages, no horizontal overflow. Contact form verified end to end.
 
-## Task plan (owner's queue, in order)
-1. Owner confirmation on kept claims: LUMA Care prices ($75/$119/$189), "12 months service
-   included", "proposal in two business days", referral fee, "Florida licensed, insured".
-2. Real Google reviews -> FX_QUOTES.
-3. Brand SVG logos into assets/brands/ (needs the owner's OK to download them).
-4. Deploy only on the owner's explicit "yes"; then turn on Netlify form notifications.
+## Status (2026-09-29, evening)
+LIVE on lumasmarthome.com — PR #3 merged by the owner; Netlify builds `main`.
+
+## Owner's decisions (2026-09-29)
+- Certifications: not on the site for now (shared on request).
+- Google reviews: Google Business Profile is being set up; no reviews on the site until real ones exist.
+- LUMA Care prices ($75/$119/$189), "12 months service included", "proposal in two business days": keep as is; the owner will say if they change.
+
+## Open
+- Owner to switch on Netlify form notifications (Forms -> Form notifications).
+- Add reviews to FX_QUOTES once the Google Business Profile has them.
