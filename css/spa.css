@@ -1801,3 +1801,34 @@ body{font-size:16px;line-height:1.5}
 .fx-brand img{object-fit:contain;max-width:100%;filter:brightness(0) saturate(100%);opacity:.82;transition:opacity .2s}
 .fx-brand:hover img{opacity:1}
 @media (max-width:767px){.fx-brand img{transform:scale(.72)}}
+
+/* ── LEAD CARD — a corner card that opens on its own, like the reference's ── */
+.fx-lead-launch{position:fixed;right:24px;bottom:24px;z-index:180;display:inline-flex;align-items:center;gap:10px;
+  padding:14px 20px;border:none;border-radius:999px;background:var(--dark);color:#FCFAF6;font:500 15px/1 var(--sans);
+  cursor:pointer;box-shadow:0 10px 25px -5px rgba(20,19,30,.35);transition:transform .2s,background .2s}
+.fx-lead-launch:hover{transform:translateY(-2px);background:#26243a}
+.fx-lead-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(197,114,56,.25)}
+.fx-lead{position:fixed;right:24px;bottom:24px;z-index:190;width:380px;max-width:calc(100vw - 32px);max-height:calc(100vh - 120px);overflow:auto;
+  background:#fff;border-radius:16px;box-shadow:0 25px 50px -12px rgba(20,19,30,.35);animation:fx-lead-in .35s ease both}
+.fx-lead-x{position:absolute;right:10px;top:8px;width:36px;height:36px;border:none;background:none;font-size:26px;line-height:1;color:var(--mid);cursor:pointer}
+.fx-lead-x:hover{color:var(--dark)}
+.fx-lead-body{display:grid;gap:14px;padding:28px 24px 20px}
+.fx-lead-kicker{margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+.fx-lead-back{border:none;background:none;color:var(--accent);font-size:16px;cursor:pointer;padding:0}
+.fx-lead-h{font-family:var(--serif);font-size:28px;font-weight:500;line-height:1.15;margin:0;color:var(--dark)}
+.fx-lead-p{margin:0;font-size:15px;line-height:1.5;color:var(--mid)}
+.fx-lead-p a{color:var(--accent)}
+.fx-lead-kinds{display:grid;gap:8px}
+.fx-lead-kinds .fx-chip{justify-content:flex-start;font:inherit;font-size:15px;padding:12px 16px;border-radius:10px;text-align:left}
+.fx-lead-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fx-lead .fx-input > span{font-size:14px;margin-bottom:4px}
+.fx-lead .fx-input input{height:44px;padding:10px 12px;font-size:15px}
+.fx-lead .fx-input textarea{min-height:56px;padding:10px 12px;font-size:15px}
+.fx-lead .fx-btn{justify-self:stretch;border:none;cursor:pointer;font:inherit;font-size:16px;justify-content:center}
+.fx-lead-step{margin:0;font-size:12px;color:var(--mid);text-align:center}
+@keyframes fx-lead-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (max-width:767px){
+  .fx-lead-launch{right:16px;bottom:16px;padding:12px 16px;font-size:14px}
+  .fx-lead{right:0;left:0;bottom:0;width:auto;max-width:none;max-height:88vh;border-radius:16px 16px 0 0}
+}
+@media (prefers-reduced-motion:reduce){.fx-lead{animation:none}}
