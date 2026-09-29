@@ -1009,7 +1009,10 @@ function ShadingPage({navigate}) {
     values={{h2:'Four moments <em>your shades already know</em>',
       lead:'Scenes built around the sun, not around a timer.',
       diagram:{image:lu('/assets/photos/layers-shading.jpg'), alt:'Cutaway of a living room and bedroom: east windows with shades raised, west glass with solar shades lowered, the lanai door open, blackout and drapery closed in the bedroom', pins:[[50,30],[17.8,33],[36.7,55],[75.6,33]], base:'base',
-        states:{base:lu('/assets/photos/live/shading-base.jpg'), morning:lu('/assets/photos/live/shade-morning.jpg'), afternoon:lu('/assets/photos/live/shade-afternoon.jpg'), sunset:lu('/assets/photos/live/shade-sunset.jpg'), night:lu('/assets/photos/live/shade-night.jpg')}},
+        states:{base:lu('/assets/photos/live/shading-base.jpg'), morning:lu('/assets/photos/live/shade-morning.jpg'), afternoon:lu('/assets/photos/live/shade-afternoon.jpg'), sunset:lu('/assets/photos/live/shade-sunset.jpg'), night:lu('/assets/photos/live/shade-night.jpg'),
+          movie:lu('/assets/photos/live/sc-s-movie.jpg'), away:lu('/assets/photos/live/sc-s-away.jpg'), wake:lu('/assets/photos/live/sc-s-wake.jpg'), storm:lu('/assets/photos/live/sc-s-storm.jpg')},
+        modesTitle:'Scenarios',
+        modes:[{key:'wake',label:'Sunrise wake-up'},{key:'movie',label:'Afternoon movie'},{key:'away',label:'Away'},{key:'storm',label:'Storm'}]},
       items:[
         {icon:I('M12 3v2M5.6 5.6l1.4 1.4M3 12h2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'), title:'07:10 · Open east', show:'morning', desc:'Morning-facing shades rise. West stays closed to hold the cool until the sun swings around.'},
         {icon:I('M12 3v18M3 12h18M12 8l4 4-4 4-4-4z'), title:'14:30 · Shield west', show:'afternoon', desc:'Solar shades drop on west-facing glass. AC load drops with them, and the finishes stay out of the UV.'},
@@ -1167,7 +1170,10 @@ function LightingPage({navigate}) {
     values={{h2:'What the system <em>does for you</em>',
       lead:'Four things you feel the first evening, none of which need a manual.',
       diagram:{image:lu('/assets/photos/layers-lighting.jpg'), alt:'Cutaway of a great room at evening: warm downlights, a glowing ceiling cove, a keypad and touch panel by the door, uplit palms on the lanai', pins:[[35,17],[14.2,43.7],[22,21],[84.4,52]], base:'base',
-        states:{base:lu('/assets/photos/live/lighting-base.jpg'), bright:lu('/assets/photos/live/light-bright.jpg'), warmdim:lu('/assets/photos/live/light-warmdim.jpg'), cove:lu('/assets/photos/live/light-cove.jpg'), landscape:lu('/assets/photos/live/light-landscape.jpg')},
+        states:{base:lu('/assets/photos/live/lighting-base.jpg'), bright:lu('/assets/photos/live/light-bright.jpg'), warmdim:lu('/assets/photos/live/light-warmdim.jpg'), cove:lu('/assets/photos/live/light-cove.jpg'), landscape:lu('/assets/photos/live/light-landscape.jpg'),
+          morning:lu('/assets/photos/live/sc-l-morning.jpg'), movie:lu('/assets/photos/live/sc-l-movie.jpg'), party:lu('/assets/photos/live/sc-l-party.jpg'), goodnight:lu('/assets/photos/live/sc-l-goodnight.jpg'), away:lu('/assets/photos/live/sc-l-away.jpg')},
+        modesTitle:'Scenarios',
+        modes:[{key:'morning',label:'Wake-up'},{key:'movie',label:'Movie night'},{key:'party',label:'Party'},{key:'goodnight',label:'Goodnight'},{key:'away',label:'Away'}],
         labels:{bright:'Day', warmdim:'Dinner', cove:'Evening', landscape:'Outside'}},
       items:[
         {icon:I('M3 12h18M12 3v18'), title:'Warm-dim evenings', show:'warmdim', desc:'Ketra and warm-dim LEDs slide from 2700K to 1800K as they dim, so the house goes candle-warm at night instead of grey.'},
@@ -1369,7 +1375,10 @@ function TheatersPage({navigate}) {
       lead:'What actually makes a theater, in the order we design it.',
       diagram:{image:lu('/assets/photos/live/theater-base.jpg'), alt:'Cutaway of a dedicated home theater: acoustic panels, screen and speakers, two rows of recliners on a riser, a measurement microphone at the main seat',
         pins:[[62.2,36.7],[24.4,40],[58,66],[44.4,48.3]], base:'base',
-        states:{base:lu('/assets/photos/live/theater-base.jpg'), movie:lu('/assets/photos/live/theater-movie.jpg'), lights:lu('/assets/photos/live/theater-lights.jpg')}},
+        states:{base:lu('/assets/photos/live/theater-base.jpg'), movie:lu('/assets/photos/live/theater-movie.jpg'), lights:lu('/assets/photos/live/theater-lights.jpg'),
+          game:lu('/assets/photos/live/sc-t-game.jpg'), clean:lu('/assets/photos/live/sc-t-clean.jpg'), music:lu('/assets/photos/live/sc-t-music.jpg')},
+        modesTitle:'Scenarios',
+        modes:[{key:'movie',label:'Movie'},{key:'game',label:'Game night'},{key:'music',label:'Music'},{key:'lights',label:'Intermission'},{key:'clean',label:'Cleaning'}]},
       items:[
         {icon:I('M3 5h18v14H3zM3 10h18M8 5v14'), title:'Acoustic treatment', show:'lights', fx:[{t:'spot',at:[60,38],r:15}], desc:'Fabric-wrapped absorption and diffusion placed by measurement, so dialogue lands and bass does not boom. The walls look like walls.'},
         {icon:I('M2 7h20v10H2zM6 21h12'), title:'Screen and projection', show:'movie', desc:'Screen size from the seating distance, not the wall. 4K laser projection or a direct-view LED wall, calibrated to reference.'},
@@ -1683,7 +1692,10 @@ function FxDiagram({vals}){
     const t = setInterval(() => setFrame(f => (f + 1) % seq.length), 1400);
     return () => clearInterval(t);
   }, [on]);
-  const current = d.states ? (seq ? seq[frame] : (show || mode)) : null;
+  const modeObj = d.modes && d.modes.find(m => m.key === mode);
+  const want = seq ? seq[frame] : (show || (modeObj ? (modeObj.state || modeObj.key) : d.base));
+  const current = d.states ? (d.states[want] ? want : d.base) : null;
+  const liveFx = on >= 0 ? (items[on].fx || (d.fx && d.fx[on])) : (modeObj && modeObj.fx);
   const pickMode = (k) => { setMode(k); setOn(-1); };
   return (
     <section className="fx-band fx-py-lg">
@@ -1706,14 +1718,15 @@ function FxDiagram({vals}){
                   aria-label={items[i].title} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}
                   onFocus={()=>setOn(i)} onBlur={()=>setOn(-1)} onClick={()=>setOn(on===i?-1:i)}>{i+1}</button>
               ))}
-              {on >= 0 && (items[on].fx || (d.fx && d.fx[on])) && <FxDiagramFx key={on} fx={items[on].fx || d.fx[on]}/>}
+              {liveFx && <FxDiagramFx key={on + ':' + mode} fx={liveFx}/>}
               {seq && seq[frame] && d.labels && <figcaption className="fx-diagram-tag">{d.labels[seq[frame]]}</figcaption>}
             </figure>
             {d.modes && (
-              <div className="fx-diagram-modes" role="group" aria-label="Modes">
+              <div className="fx-diagram-modes" role="group" aria-label={d.modesTitle || 'Modes'}>
+                {d.modesTitle && <span className="fx-diagram-modes-t">{d.modesTitle}</span>}
                 {d.modes.map(m => (
                   <button key={m.key} type="button" className={'fx-chip' + (on < 0 && mode === m.key ? ' on' : '')}
-                    onClick={() => pickMode(m.key)} onMouseEnter={() => pickMode(m.key)}>{m.label}</button>
+                    onClick={() => pickMode(mode === m.key && !d.base ? null : m.key)}>{m.label}</button>
                 ))}
               </div>
             )}
@@ -1754,6 +1767,14 @@ function AudioPage({navigate}) {
         [{t:'spot',at:[33.3,70],r:9},{t:'line',pts:[[33.3,70],[25.6,25]]},{t:'line',pts:[[33.3,70],[44.4,17.5]]},{t:'line',pts:[[33.3,70],[77.8,61.3]],tone:'teal'},{t:'line',pts:[[33.3,70],[91,50]],tone:'teal'}],
         [{t:'spot',at:[33.3,29.2],r:4},{t:'spot',at:[47.8,31.7],r:4},{t:'rings',at:[33.3,29.2],r:5}],
         [{t:'spot',at:[33.9,45],r:6},{t:'rings',at:[33.9,45],r:15,tone:'teal'}],
+      ],
+      modesTitle:'Scenarios',
+      modes:[
+        {key:'party', label:'Party', fx:[{t:'rings',at:[25.6,25],r:9},{t:'rings',at:[44.4,17.5],r:9},{t:'rings',at:[51.7,14.7],r:9},{t:'rings',at:[77.8,61.3],r:9},{t:'rings',at:[91,50],r:9},{t:'rings',at:[76.7,20],r:9}]},
+        {key:'dinner', label:'Dinner', fx:[{t:'rings',at:[44.4,17.5],r:7},{t:'rings',at:[51.7,14.7],r:7}]},
+        {key:'pool', label:'Pool', fx:[{t:'rings',at:[77.8,61.3],r:10,tone:'teal'},{t:'rings',at:[91,50],r:10,tone:'teal'}]},
+        {key:'morning', label:'Morning news', fx:[{t:'spot',at:[47.8,31.7],r:4},{t:'rings',at:[44.4,17.5],r:6}]},
+        {key:'doorbell', label:'Doorbell', fx:[{t:'rings',at:[25.6,25],r:6,tone:'teal'},{t:'rings',at:[44.4,17.5],r:6,tone:'teal'},{t:'rings',at:[51.7,14.7],r:6,tone:'teal'},{t:'rings',at:[77.8,61.3],r:6,tone:'teal'}]},
       ]}}
     valueProp={{
       eyebrow:'What we install',
@@ -1825,7 +1846,15 @@ function SecurityPage({navigate}) {
         {key:'installPhone',    cap:'Protect app on your phone'},
       ],
     }}
-    diagram={{image:lu('/assets/photos/layers-security.jpg'), alt:'Model of a home front: bullet cameras under the eaves, a dome over the door and a video doorbell, a recorder rack and alarm keypad in the garage', pins:[[41.3,33.7],[79.2,34.7],[88.3,40.5]],
+    diagram={{image:lu('/assets/photos/layers-security.jpg'), alt:'Model of a home front: bullet cameras under the eaves, a dome over the door and a video doorbell, a recorder rack and alarm keypad in the garage', pins:[[41.3,33.7],[79.2,34.7],[88.3,40.5]], base:'base',
+      states:{base:lu('/assets/photos/live/security-base.jpg'), night:lu('/assets/photos/live/sc-sec-night.jpg'), motion:lu('/assets/photos/live/sc-sec-motion.jpg'), package:lu('/assets/photos/live/sc-sec-package.jpg'), away:lu('/assets/photos/live/sc-sec-away.jpg')},
+      modesTitle:'Scenarios',
+      modes:[
+        {key:'night',label:'Night, armed',fx:[{t:'dot',at:[36.1,42]},{t:'dot',at:[22,38]},{t:'dot',at:[84,40]}]},
+        {key:'motion',label:'Car in the drive',fx:[{t:'cone',at:[66.3,38.7],to:[62,78],w:11},{t:'cone',at:[41.3,33.7],to:[46,70],w:10}]},
+        {key:'package',label:'Package at the door',fx:[{t:'cone',at:[38.9,40.8],to:[37,58],w:7}]},
+        {key:'away',label:'Away'},
+      ],
       fx:[
         [{t:'cone',at:[41.3,33.7],to:[44,72],w:10},{t:'cone',at:[66.3,38.7],to:[60,80],w:10},{t:'cone',at:[13.1,30.3],to:[12,62],w:9},{t:'cone',at:[34.4,27],to:[31,58],w:8}],
         [{t:'spot',at:[79.2,34.7],r:7},{t:'line',pts:[[41.3,33.7],[60,31],[79.2,34.7]]},{t:'line',pts:[[66.3,38.7],[79.2,34.7]]},{t:'line',pts:[[34.4,27],[55,24],[79.2,34.7]]}],
@@ -1989,6 +2018,13 @@ function NetworkingPage({navigate}) {
         [{t:'line',pts:[[76.7,71.7],[64,72],[60,48],[60,16],[48,15.5],[36.7,15.8]],tone:'teal'},{t:'line',pts:[[60,48],[40,48.5],[22,47]],tone:'teal'}],
         [{t:'spot',at:[71.7,21],r:3},{t:'spot',at:[37.8,18.8],r:3},{t:'spot',at:[33.3,49.5],r:3},{t:'rings',at:[71.7,21],r:20,tone:'teal'},{t:'rings',at:[37.8,18.8],r:20,tone:'teal'},{t:'rings',at:[33.3,49.5],r:20,tone:'teal'}],
         [{t:'spot',at:[76.7,71.7],r:9}],
+      ],
+      modesTitle:'Scenarios',
+      modes:[
+        {key:'call', label:'Work call', fx:[{t:'spot',at:[72.2,35.8],r:7},{t:'line',pts:[[76.7,71.7],[64,72],[60,48],[66,40],[72.2,35.8]],tone:'teal'}]},
+        {key:'stream', label:'4K streaming', fx:[{t:'spot',at:[23.3,55.8],r:7},{t:'line',pts:[[76.7,71.7],[64,72],[60,48],[40,48.5],[23.3,55.8]],tone:'teal'}]},
+        {key:'guest', label:'Guest Wi-Fi', fx:[{t:'rings',at:[33.3,49.5],r:20}]},
+        {key:'remote', label:'Remote support', fx:[{t:'spot',at:[76.7,71.7],r:9},{t:'rings',at:[76.7,71.7],r:12,tone:'teal'}]},
       ]}}
     valueProp={{
       eyebrow:'The wired backbone',
