@@ -1357,8 +1357,10 @@ function TheatersPage({navigate}) {
       secondaryLabel:'See recent rooms', secondaryAction:()=>navigate('work')}}
     intro={{lead:'A room built for the first movie night, and the thousandth.',
       body:'We start with the room, not the projector: dimensions, sightlines, where the sound will reflect and where it must not. Then the screen size follows the seating distance, the speakers follow the screen, and the acoustic treatment follows all three. The gear goes out of sight and the room gets calibrated in place before you see a frame.'}}
-    values={{h2:'Six layers, <em>one room</em>',
+    values={{h2:'Four layers, <em>one room</em>',
       lead:'What actually makes a theater, in the order we design it.',
+      diagram:{image:lu('/assets/photos/theater-layers.jpg'), alt:'Cutaway of a dedicated home theater: acoustic panels, screen and speakers, two rows of recliners on a riser, a measurement microphone at the main seat',
+        pins:[[73,40],[36,33],[40,67],[46,45]]},
       items:[
         {icon:I('M3 5h18v14H3zM3 10h18M8 5v14'), title:'Acoustic treatment', desc:'Fabric-wrapped absorption and diffusion placed by measurement, so dialogue lands and bass does not boom. The walls look like walls.'},
         {icon:I('M2 7h20v10H2zM6 21h12'), title:'Screen and projection', desc:'Screen size from the seating distance, not the wall. 4K laser projection or a direct-view LED wall, calibrated to reference.'},
@@ -1489,8 +1491,10 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
 
       {scenes && <FxScenes heading={scenes.h2} lede={scenes.lead} band={false}/>}
 
-      {/* 3. what it does for you — copy left, four icon items right */}
-      {vals && (
+      {/* 3. what it does for you — copy left, four icon items right; or, where a
+          page has one, a cutaway with numbered pins tied to the same items */}
+      {vals && vals.diagram && <FxDiagram vals={vals}/>}
+      {vals && !vals.diagram && (
         <section className="fx-values fx-values--plain">
           <div className="fx-wide">
             <div className="fx-values-grid">
@@ -1608,6 +1612,40 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
         body={ctaBody || (ctaCopy && ctaCopy.lead)}
         label="Book a consultation"/>
     </div>
+  );
+}
+
+/* A cutaway with numbered pins; hovering a pin or a list item lights both. */
+function FxDiagram({vals}){
+  const [on, setOn] = useState(-1);
+  const d = vals.diagram;
+  return (
+    <section className="fx-band fx-py-lg">
+      <div className="fx-wide">
+        <div className="fx-heads" style={{marginBottom:48}}>
+          <h2 className="fx-d3" dangerouslySetInnerHTML={{__html: vals.h2}}/>
+          {vals.lead && <p className="fx-lede">{vals.lead}</p>}
+        </div>
+        <div className="fx-diagram">
+          <figure className="fx-diagram-art">
+            <img src={d.image} alt={d.alt} loading="lazy" decoding="async"/>
+            {d.pins.map(([x,y],i) => (
+              <button key={i} type="button" className={'fx-pin'+(on===i?' on':'')} style={{left:x+'%',top:y+'%'}}
+                aria-label={vals.items[i].title} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}
+                onFocus={()=>setOn(i)} onBlur={()=>setOn(-1)} onClick={()=>setOn(on===i?-1:i)}>{i+1}</button>
+            ))}
+          </figure>
+          <ol className="fx-diagram-list">
+            {vals.items.map((it,i) => (
+              <li key={it.title} className={on===i?'on':''} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}>
+                <span className="fx-diagram-n" aria-hidden="true">{i+1}</span>
+                <span><strong>{it.title}</strong><p>{it.desc}</p></span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
   );
 }
 

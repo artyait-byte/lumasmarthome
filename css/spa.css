@@ -1726,3 +1726,21 @@ body{font-size:16px;line-height:1.5}
   .fx-panels--three .fx-panel-card{flex-basis:100%}
 }
 @media (max-width:959px){ .fx-work-hero{padding-top:72px} }
+
+/* ── DIAGRAM — a cutaway with numbered pins tied to a list ── */
+.fx-diagram{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center;max-width:1376px;margin:0 auto}
+.fx-diagram-art{position:relative;margin:0;border-radius:var(--fx-radius);overflow:hidden;background:#F3EEE6}
+.fx-diagram-art img{display:block;width:100%;height:auto}
+.fx-pin{position:absolute;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:2px solid #fff;
+  background:var(--accent);color:#fff;font:500 15px/1 var(--sans);cursor:pointer;
+  box-shadow:0 0 0 6px rgba(197,114,56,.22),0 4px 10px rgba(20,19,30,.2);transition:transform .2s,background .2s,box-shadow .2s}
+.fx-pin:hover,.fx-pin.on{transform:translate(-50%,-50%) scale(1.15);background:var(--dark);box-shadow:0 0 0 10px rgba(27,26,40,.14),0 4px 10px rgba(20,19,30,.25)}
+.fx-diagram-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fx-diagram-list li{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:var(--fx-radius);transition:background .2s;cursor:default}
+.fx-diagram-list li.on{background:#fff}
+.fx-diagram-n{flex:0 0 32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;transition:background .2s}
+.fx-diagram-list li.on .fx-diagram-n{background:var(--dark)}
+.fx-diagram-list strong{display:block;font-size:20px;font-weight:500;line-height:1.3;color:var(--dark);margin:3px 0 6px}
+.fx-diagram-list p{font-size:16px;line-height:1.5;color:var(--mid);margin:0}
+@media (max-width:1023px){.fx-diagram{grid-template-columns:1fr;gap:24px}}
+@media (max-width:767px){.fx-pin{width:28px;height:28px;font-size:13px}.fx-diagram-list li{padding:12px 4px}}
