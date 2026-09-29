@@ -17,6 +17,12 @@ class NoCache(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b'ok')
 
+class Server(ThreadingHTTPServer):
+    # the page asks for dozens of images at once; the default backlog of 5
+    # reset connections and left random images blank
+    request_queue_size = 128
+    daemon_threads = True
+
 if __name__ == '__main__':
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
-    ThreadingHTTPServer(('127.0.0.1', port), NoCache).serve_forever()
+    Server(('127.0.0.1', port), NoCache).serve_forever()

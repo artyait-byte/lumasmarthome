@@ -1448,8 +1448,13 @@ function AutomationPage({navigate}) {
       secondaryLabel:'Try the 3D demo', secondaryAction:()=>navigate('smart-home-demo')}}
     intro={{lead:'We build on open, professional platforms.',
       body:'Lutron RadioRA 3 is the spine: every light, shade and keypad on a single mesh that does not depend on anyone\'s cloud to dim a sconce. Above it, Control4 or Josh.ai for the rest of the house. No closed consumer ecosystems, no rented automations that vanish when a startup pivots. Your house\'s logic lives in your house.'}}
-    scenes={{h2:'Four states <em>the house already knows</em>',
-      lead:'Alba, Day, Sera, Notte: named in your words and tuned with you for ninety days. The same great room at four times of day, and what the system moved each time.'}}
+    values={{h2:'Four states <em>the house already knows</em>',
+      lead:'Alba, Day, Sera, Notte: named in your words and tuned with you for ninety days. Point at a state to see what the whole house does, or try leaving and coming home.',
+      diagram:{alt:'Cutaway of a whole Florida home: bedroom, office, living room and kitchen, garage and pool lanai', base:'base',
+        states:{base:lu('/assets/photos/live/auto-base.jpg'), alba:lu('/assets/photos/live/a-alba.jpg'), day:lu('/assets/photos/live/a-day.jpg'), sera:lu('/assets/photos/live/a-sera.jpg'), notte:lu('/assets/photos/live/a-notte.jpg'), away:lu('/assets/photos/live/a-away.jpg'), arrive:lu('/assets/photos/live/a-arrive.jpg')},
+        modesTitle:'Scenarios',
+        modes:[{key:'away',label:'Leaving home'},{key:'arrive',label:'Coming home'}]},
+      items:AU_STATES.map((st,i) => ({title:st.time + ' · ' + st.name, desc:st.desc, show:['alba','day','sera','notte'][i]}))}}
     panels={{h2:'Routines that <em>survive real life</em>',
       items:[
         {photo: PHOTOS.handPhone, title:'Tuned for ninety days', body:'We program the routines with you for three months, not once on day one. The first month is observation; the second and third are the real tuning.'},
