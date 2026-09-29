@@ -3589,6 +3589,9 @@ function GeoHero({eyebrow, h1, lede, image, alt, navigate, primary, secondary}){
          assets/photos/places/CREDITS.md. Nothing here describes a job that
          is not in LUMA_CASES. */
 const PLACE_PHOTO = (id) => lu('/assets/photos/places/' + id + '.jpg');
+/* the kind of house each place page describes (generated, graded); the
+   place itself stays a real geotagged photo in the hero */
+const PLACE_HOME = (id) => lu('/assets/photos/homes/' + id + '.jpg');
 const CITY_CASES = { sarasota: 'case-urban' };
 
 function FxInnerHero({kicker, h1, image, alt}){
@@ -3670,7 +3673,7 @@ function ServiceAreasHub({navigate}){
           <div className="fx-panels fx-panels--static fx-panels--places">
             {Object.keys(cities).map(id => { const c = cities[id]; return (
               <NavLink key={id} page={cityPageId(id)} navigate={navigate} className="fx-panel-card">
-                <span className="fx-panel-img"><img src={PLACE_PHOTO(id)} alt={c.name} loading="lazy" decoding="async"/></span>
+                <span className="fx-panel-img"><img src={PLACE_HOME(id)} alt={'A typical ' + c.name + ' house'} loading="lazy" decoding="async"/></span>
                 <span className="fx-panel-body">
                   <small className="fx-panel-kicker">{c.county}</small>
                   <h3>{c.name}</h3>
@@ -3711,7 +3714,7 @@ function CityHubPage({cityId, navigate}){
               </div>
             </div>
             <div className="fx-row-media">
-              <img src={PLACE_PHOTO(cityId)} alt={city.name} loading="lazy" decoding="async"/>
+              <img src={PLACE_HOME(cityId)} alt={'A typical ' + city.name + ' house'} loading="lazy" decoding="async"/>
             </div>
           </div>
         </div>

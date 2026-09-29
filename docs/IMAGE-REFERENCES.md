@@ -66,3 +66,12 @@ the act of control or its result, visible in the frame:
   lights. Hands show intent; faces are where generated people look fake.
 - Keep button labels and screen UI illegible in prompts; real words come out
   garbled.
+
+## Service areas — the house each page describes
+`assets/photos/homes/{city}.jpg` are generated (Seedream 5 Pro, graded with
+`scripts/photo_grade.sh`) from the page's own text: Bird Key glass and lanai,
+West Bradenton CBS ranch on the river, Lakewood Ranch new construction,
+Venice Island 1920s Italian Renaissance, Siesta gulf-front with solar screens,
+Longboat bay-side elevated modern, Anna Maria cottage on pilings, Palmetto
+river-front bungalow. The place heroes stay real geotagged photos
+(`assets/photos/places/CREDITS.md`).
