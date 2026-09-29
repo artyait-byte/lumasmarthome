@@ -13,6 +13,17 @@
 /smart-home-demo    /demo        301
 /index.html         /            301
 
+# Service area narrowed to Sarasota & Manatee Counties (2026-09)
+/service-areas/naples/*        /service-areas  301
+/service-areas/naples          /service-areas  301
+/service-areas/naples.html     /service-areas  301
+/service-areas/fort-myers/*    /service-areas  301
+/service-areas/fort-myers      /service-areas  301
+/service-areas/fort-myers.html /service-areas  301
+/service-areas/punta-gorda/*   /service-areas  301
+/service-areas/punta-gorda     /service-areas  301
+/service-areas/punta-gorda.html /service-areas 301
+
 # Duplicate .html URLs → canonical pretty paths
 /lighting.html  /lighting  301
 /shading.html  /shading  301
@@ -39,11 +50,10 @@
 /service-areas/bradenton.html  /service-areas/bradenton  301
 /service-areas/lakewood-ranch.html  /service-areas/lakewood-ranch  301
 /service-areas/venice.html  /service-areas/venice  301
-/service-areas/punta-gorda.html  /service-areas/punta-gorda  301
 /service-areas/siesta-key.html  /service-areas/siesta-key  301
 /service-areas/longboat-key.html  /service-areas/longboat-key  301
-/service-areas/naples.html  /service-areas/naples  301
-/service-areas/fort-myers.html  /service-areas/fort-myers  301
+/service-areas/anna-maria-island.html  /service-areas/anna-maria-island  301
+/service-areas/palmetto.html  /service-areas/palmetto  301
 /service-areas/sarasota/lighting.html  /service-areas/sarasota/lighting  301
 /service-areas/sarasota/shading.html  /service-areas/sarasota/shading  301
 /service-areas/sarasota/theaters.html  /service-areas/sarasota/theaters  301
@@ -51,12 +61,8 @@
 /service-areas/sarasota/security.html  /service-areas/sarasota/security  301
 /service-areas/sarasota/networking.html  /service-areas/sarasota/networking  301
 /service-areas/sarasota/automation.html  /service-areas/sarasota/automation  301
-/service-areas/naples/lighting.html  /service-areas/naples/lighting  301
-/service-areas/naples/automation.html  /service-areas/naples/automation  301
 /service-areas/bradenton/lighting.html  /service-areas/bradenton/lighting  301
 /service-areas/bradenton/security.html  /service-areas/bradenton/security  301
-/service-areas/fort-myers/lighting.html  /service-areas/fort-myers/lighting  301
-/service-areas/punta-gorda/lighting.html  /service-areas/punta-gorda/lighting  301
 /journal.html  /journal  301
 /journal/smart-home-sarasota.html  /journal/smart-home-sarasota  301
 /journal/lutron-installer-sarasota.html  /journal/lutron-installer-sarasota  301

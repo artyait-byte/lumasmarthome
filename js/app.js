@@ -21,7 +21,7 @@ function napInfo(){
   const telephoneDisplay = nap.telephoneDisplay || '+1 (941) 217-1616';
   const email = nap.email || 'hello@lumasmarthome.com';
   const hours = nap.hours || 'Mon–Sat · 9am – 6pm';
-  const area = nap.area || 'Sarasota, Manatee, Charlotte, Lee & Collier Counties';
+  const area = nap.area || 'Sarasota & Manatee Counties';
   const telHref = nap.telHref || ('tel:' + String(nap.telephone || '+19412171616').replace(/[^\d+]/g, ''));
   const mailHref = 'mailto:' + email;
   const mapsUrl = nap.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL';
@@ -1416,11 +1416,6 @@ const TH_WHY = [
   {n:'03', text:'Calibrated and recalibrated. Every theater includes a 12-month tune-up visit at no charge — speakers settle, rooms breathe, ears recalibrate.'},
 ];
 
-const TH_PROJECTS = [
-  {key:'projectBayfront',      tag:'Sarasota · Bayfront',     name:'9.2.6 Atmos · 144" anamorphic'},
-  {key:'projectWarmInterior',  tag:'Naples · Port Royal',     name:'Walnut-paneled cinema · 12 seats'},
-  {key:'projectArchitectural', tag:'Boca Grande · Beachside', name:'Hidden screen · living-room theater'},
-];
 
 const TH_CREDS = [
   'CEDIA Member','THX-Aligned Design','Trinnov Certified','ISF Calibrator','12-Month Tune-Up Included',
@@ -1496,11 +1491,6 @@ const AU_WHY = [
   {n:'03', text:'Annual visit included. We re-tune as your habits change — kids grow up, work hours shift, the lanai becomes a gym. The routines move with you.'},
 ];
 
-const AU_PROJECTS = [
-  {key:'projectAutomation1', tag:'Sarasota · Bird Key',   name:'68-keypad estate · 14 routines'},
-  {key:'projectAutomation2', tag:'Naples · Aqualane',     name:'Voice-first · Josh.ai whole home'},
-  {key:'projectAutomation3', tag:'Boca Grande · Beach',   name:'Two-house compound · one Crestron'},
-];
 
 function AutomationPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
@@ -1836,7 +1826,7 @@ function PermanentLightingPage({navigate}) {
     }}
     intro={{
       lead:'Architectural lighting for the part of the house landscape lights never reach.',
-      body:'LUMA installs permanent roofline lighting on Gulf Coast residences from Bradenton to Naples: a channel matched to the fascia, individually addressed diodes inside it, and a controller in the rack with the rest of the house. Most nights it is a quiet warm-white line that finishes the elevation. When you want the house bright for security, in your team\'s colours, or dressed for December, it is one preset, and nothing goes up or comes down.'
+      body:'LUMA installs permanent roofline lighting on Gulf Coast residences across Sarasota and Manatee Counties: a channel matched to the fascia, individually addressed diodes inside it, and a controller in the rack with the rest of the house. Most nights it is a quiet warm-white line that finishes the elevation. When you want the house bright for security, in your team\'s colours, or dressed for December, it is one preset, and nothing goes up or comes down.'
     }}
     values={{
       h2:'What the system <em>does for you</em>',
@@ -1970,7 +1960,7 @@ function ContactPage({navigate}) {
               <label className="form-label">County</label>
               <select className="form-select">
                 <option>Select...</option>
-                {['Sarasota County','Manatee County','Charlotte County','Lee County','Collier County'].map(c=><option key={c}>{c}</option>)}
+                {['Sarasota County','Manatee County'].map(c=><option key={c}>{c}</option>)}
               </select>
             </div>
             <div className="form-group">
@@ -2064,26 +2054,15 @@ function ContactPage({navigate}) {
               {/* Sarasota County highlight */}
               <path d="M143,76 C146,86 154,96 166,102 C178,108 192,110 206,108 C220,106 232,100 240,92 C244,98 246,106 246,116 C246,130 240,144 230,154 C220,164 206,170 192,172 C178,174 164,170 154,162 C144,154 138,142 138,130 C138,116 140,96 143,76 Z" fill="#b5cba0" opacity="0.55"/>
 
-              {/* Charlotte County highlight */}
-              <path d="M138,130 C138,142 144,154 154,162 C164,170 178,174 192,172 C206,170 220,164 230,154 C236,162 240,172 240,184 C240,198 234,212 224,222 C214,232 200,238 186,238 C172,238 158,232 148,222 C138,212 132,198 132,184 C132,168 134,150 138,130 Z" fill="#b5cba0" opacity="0.55"/>
-
-              {/* Lee County highlight */}
-              <path d="M132,184 C132,198 138,212 148,222 C158,232 172,238 186,238 C200,238 214,232 224,222 C230,232 234,244 234,258 C234,274 228,290 218,302 C208,314 194,322 180,324 C166,326 152,320 142,310 C132,300 126,286 126,272 C126,256 128,220 132,184 Z" fill="#b5cba0" opacity="0.55"/>
-
-              {/* Collier County highlight */}
-              <path d="M126,272 C126,286 132,300 142,310 C152,320 166,326 180,324 C194,322 208,314 218,302 C224,314 226,328 224,342 C222,358 214,372 202,382 C190,392 174,396 160,394 C146,392 132,384 122,372 C112,360 108,344 110,328 C112,312 118,292 126,272 Z" fill="#b5cba0" opacity="0.55"/>
-
-              {/* Gulf of Mexico label */}
+                                                        {/* Gulf of Mexico label */}
               <text x="68" y="280" textAnchor="middle" fontSize="11" fill="#4a8a96" letterSpacing="0.12em" fontFamily="DM Sans,sans-serif" fontStyle="italic" transform="rotate(-90,68,280)">GULF OF MEXICO</text>
 
               {/* Coverage boundary glow */}
-              <path d="M152,36 C162,32 182,30 200,30 C240,30 260,56 250,110 C244,140 232,168 224,222 C218,260 224,300 218,342 C212,372 196,398 172,408" fill="none" stroke="#C57238" strokeWidth="2.5" strokeDasharray="6,4" opacity="0.7"/>
+              <path d="M152,36 C162,32 182,30 200,30 C240,30 260,56 250,110 C246,130 240,150 230,160" fill="none" stroke="#C57238" strokeWidth="2.5" strokeDasharray="6,4" opacity="0.7"/>
 
               {/* County dividers (subtle) */}
               <line x1="143" y1="76" x2="246" y2="76" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
               <line x1="138" y1="130" x2="246" y2="130" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
-              <line x1="132" y1="184" x2="240" y2="184" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
-              <line x1="126" y1="238" x2="234" y2="238" stroke="#a0b898" strokeWidth="0.8" opacity="0.6"/>
 
               {/* Barrier islands */}
               <ellipse cx="108" cy="54" rx="5" ry="14" fill="#ddd8c0" opacity="0.9" transform="rotate(-10,108,54)"/>
@@ -2097,11 +2076,6 @@ function ContactPage({navigate}) {
                 {label:'Bradenton',   sub:'Manatee Co.',  x:190, y:55,  anchor:'start'},
                 {label:'Sarasota',    sub:'Sarasota Co.', x:190, y:103, anchor:'start'},
                 {label:'Venice',      sub:'',             x:168, y:148, anchor:'start'},
-                {label:'Punta Gorda', sub:'Charlotte Co.',x:188, y:158, anchor:'start'},
-                {label:'Fort Myers',  sub:'Lee Co.',      x:188, y:210, anchor:'start'},
-                {label:'Sanibel',     sub:'',             x:148, y:232, anchor:'start'},
-                {label:'Naples',      sub:'Collier Co.',  x:184, y:305, anchor:'start'},
-                {label:'Marco Island',sub:'',             x:172, y:360, anchor:'start'},
               ].map((c,i)=>(
                 <g key={i}>
                   <circle cx={c.x-8} cy={c.y} r="4.5" fill="#C57238" opacity="0.92"/>
@@ -2796,7 +2770,7 @@ function ServiceSupportPage({navigate}) {
           <div className="sp-license-strip">
             <span><strong>LUMA Home Systems LLC</strong> · Sarasota, FL</span>
             <span>Florida licensed low-voltage contractor · insured for residential & light commercial</span>
-            <span>Serving Sarasota · Manatee · Charlotte · Lee · Collier</span>
+            <span>Serving Sarasota &amp; Manatee Counties</span>
           </div>
         </div>
       </section>
@@ -2863,7 +2837,7 @@ function CasesPage({navigate}) {
             margin:'0 0 24px', textWrap:'balance',
             textShadow:'0 2px 20px rgba(0,0,0,.3)',
           }}>Homes where <em style={{color:'#F4C9A8',fontStyle:'italic'}}>the hour takes care of itself.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>From 4,500 sq ft Bayfront residences to 9,000 sq ft Naples compounds — each project shows the layers we integrated, the partners we coordinated with, and the moment the home started working on its own.</p>
+          <p style={{fontSize:18,lineHeight:1.72,color:'rgba(252,250,246,.85)',maxWidth:500,margin:'0 0 32px'}}>Five finished projects, from a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed, the equipment list, and how the house works now.</p>
           <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
             <NavLink page="contact" navigate={navigate} className="btn-solid" style={{fontSize:16,padding:'14px 28px'}}>Start a project →</NavLink>
             <a className="btn-ghost" href="#testimonials-grid" style={{fontSize:16,padding:'13px 24px',color:'#FCFAF6',borderColor:'rgba(252,250,246,.45)',textDecoration:'none',display:'inline-flex',alignItems:'center'}}>Testimonials ↓</a>
@@ -2916,7 +2890,7 @@ function CasesPage({navigate}) {
         </div>
 
         <p className="sec-body" style={{margin:'8px auto 0'}}>
-          Finished work in <NavLink page="sa-naples" navigate={navigate} className="inline-link">Naples</NavLink>, <NavLink page="sa-sarasota" navigate={navigate} className="inline-link">Sarasota</NavLink>, and <NavLink page="sa-fort-myers" navigate={navigate} className="inline-link">Lee County</NavLink> — see <NavLink page="service-areas" navigate={navigate} className="inline-link">all service areas</NavLink>.
+          We work across <NavLink page="sa-sarasota" navigate={navigate} className="inline-link">Sarasota</NavLink> and <NavLink page="sa-bradenton" navigate={navigate} className="inline-link">Manatee</NavLink> Counties — see <NavLink page="service-areas" navigate={navigate} className="inline-link">all service areas</NavLink>.
         </p>
 
         <style>{`
@@ -3920,28 +3894,71 @@ function GeoHero({eyebrow, h1, lede, image, alt, navigate, primary, secondary}){
   );
 }
 
+/* ── Location pages, on the reference's /locations pattern ──────────────
+   hub:  inner hero → centred paragraph → a card per place → map → callout
+   city: inner hero → copy + a real photo of the place → (a finished project
+         in that city, when there is one) → systems → areas we serve → map →
+         callout. Place photos are real and geotagged: see
+         assets/photos/places/CREDITS.md. Nothing here describes a job that
+         is not in LUMA_CASES. */
+const PLACE_PHOTO = (id) => lu('/assets/photos/places/' + id + '.jpg');
+const CITY_CASES = { sarasota: 'case-urban' };
+
+function FxInnerHero({kicker, h1, image, alt}){
+  return (
+    <section className="lit-hero-wrap">
+      <div className="lit-hero-text">
+        <div>{kicker}</div>
+        <h1 style={{fontFamily:'var(--serif)',color:'#FCFAF6',margin:0}}>{h1}</h1>
+      </div>
+      <div style={{position:'relative',overflow:'hidden'}}>
+        <img loading="eager" fetchpriority="high" decoding="async" src={image} alt={alt || ''} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+      </div>
+    </section>
+  );
+}
+
+function FxCallout({kicker, h2, body, navigate}){
+  return (
+    <section className="fx-callout">
+      <div className="fx-callout-inner">
+        {kicker && <p className="fx-callout-kicker">{kicker}</p>}
+        <h2 className="fx-d3">{h2}</h2>
+        {body && <div className="fx-lede"><p>{body}</p></div>}
+        <FxActions navigate={navigate} tone="dark"/>
+      </div>
+    </section>
+  );
+}
+
+function FxMap({query, title}){
+  return (
+    <section className="fx-map">
+      <iframe title={title || ('Map of ' + query)} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+        src={'https://www.google.com/maps?q=' + encodeURIComponent(query) + '&z=11&output=embed'}/>
+    </section>
+  );
+}
+
+/* Service pages: the reference's "Areas we serve" — one centred line of places */
 function GeoStrip({serviceId, navigate}){
   const g = geoData();
   const cities = g.cities || {};
   const svc = (g.services && g.services[serviceId]) || {};
-  const cityIds = Object.keys(cities);
-  if (!cityIds.length) return null;
+  const ids = Object.keys(cities);
+  if (!ids.length) return null;
   return (
-    <section className="geo-strip">
-      <div className="geo-strip-inner">
-        <div className="sec-label" style={{textAlign:'left'}}>Where we install this</div>
-        <h2 className="geo-strip-title">{svc.nav || 'This system'} on the <em>Gulf Coast.</em></h2>
-        <div className="geo-chip-row">
-          {cityIds.map(id=>{
-            const page = servicePageForCity(id, serviceId);
-            return (
-              <NavLink key={id} page={page} navigate={navigate} className="geo-chip">
-                {cities[id].name}
-              </NavLink>
-            );
-          })}
-          <NavLink page="service-areas" navigate={navigate} className="geo-chip geo-chip--all">All service areas →</NavLink>
-        </div>
+    <section className="fx-areas">
+      <div className="fx-field">
+        <h3 className="fx-d3">{(svc.nav || 'This system')} across Sarasota &amp; Manatee</h3>
+        <p className="fx-lede">
+          {ids.map((id,i)=>(
+            <React.Fragment key={id}>
+              <NavLink page={servicePageForCity(id, serviceId)} navigate={navigate} className="fx-inline">{cities[id].name}</NavLink>{i < ids.length-1 ? ', ' : '. '}
+            </React.Fragment>
+          ))}
+          <NavLink page="service-areas" navigate={navigate} className="fx-more">All service areas <i aria-hidden="true">→</i></NavLink>
+        </p>
       </div>
     </section>
   );
@@ -3950,55 +3967,38 @@ function GeoStrip({serviceId, navigate}){
 function ServiceAreasHub({navigate}){
   const g = geoData();
   const cities = g.cities || {};
-  const services = g.services || {};
+  const nap = napInfo();
   return (
     <div className="page">
-      <GeoHero
-        eyebrow="Five counties · one studio"
-        h1="Where we work on the Gulf Coast."
-        lede={g.hub && g.hub.lede}
-        image={PHOTOS.heroSplash}
-        alt="Sarasota bayfront"
-        navigate={navigate}
-        primary={{page:'contact', label:'Book a walkthrough →'}}
-        secondary={{page:'luma-smart-home-sarasota', label:'This LUMA, not the others'}}
-      />
-      <section className="th-section">
-        <Crumbs items={[{page:'home', label:'Home'},{label:'Service areas'}]} navigate={navigate}/>
-        <div className="sec-label" style={{textAlign:'left'}}>City silo</div>
-        <h2 className="sec-title" style={{textAlign:'left'}}>City pages live <em>here</em> — not under Solutions.</h2>
-        <p className="hero-body" style={{marginTop:18,maxWidth:640}}>Lighting, shades, and the rest of the trades stay in the Solutions menu. Geography sits in this silo so a search for smart home Sarasota is not competing with a generic “we serve Naples too” paragraph on every service page.</p>
-        <div className="geo-card-grid">
-          {Object.keys(cities).map(id=>{
-            const c = cities[id];
-            return (
-              <NavLink key={id} page={cityPageId(id)} navigate={navigate} className="geo-card">
-                <div className="geo-card-kicker">{c.county}</div>
-                <h3>{c.name}</h3>
-                <p>{c.tagline}</p>
-                <span className="geo-card-go">Open city page →</span>
-              </NavLink>
-            );
-          })}
-        </div>
-      </section>
-      <section className="th-section--cream">
-        <div className="th-section--cream-inner">
-          <div className="sec-label">Trades</div>
-          <h2 className="sec-title">The same seven systems, <em>specified locally.</em></h2>
-          <div className="geo-card-grid geo-card-grid--7">
-            {Object.keys(services).map(id=>{
-              const s = services[id];
-              return (
-                <NavLink key={id} page={id} navigate={navigate} className="geo-card">
-                  <h3>{s.nav}</h3>
-                  <p>{s.short}</p>
-                </NavLink>
-              );
-            })}
+      <FxInnerHero kicker="Service areas" h1="Serving Sarasota & Manatee Counties" image={PLACE_PHOTO('sarasota')} alt="Sarasota bayfront"/>
+      <section className="fx-band--plain fx-py-md">
+        <div className="fx-field">
+          <div className="fx-intro-prose">
+            <p>{(g.hub && g.hub.lede) || 'Two counties, one studio in Sarasota.'} Wherever the house is, it gets the same drawings, the same crew and the same aftercare, and you reach us on <a href={nap.telHref} className="fx-inline">{nap.telephoneDisplay}</a>.</p>
           </div>
         </div>
       </section>
+      <section className="fx-band--plain" style={{paddingBottom:96}}>
+        <div className="fx-wide">
+          <div className="fx-panels fx-panels--static fx-panels--places">
+            {Object.keys(cities).map(id => { const c = cities[id]; return (
+              <NavLink key={id} page={cityPageId(id)} navigate={navigate} className="fx-panel-card">
+                <span className="fx-panel-img"><img src={PLACE_PHOTO(id)} alt={c.name} loading="lazy" decoding="async"/></span>
+                <span className="fx-panel-body">
+                  <small className="fx-panel-kicker">{c.county}</small>
+                  <h3>{c.name}</h3>
+                  <i className="fx-panel-rule" aria-hidden="true"/>
+                  <p>{c.tagline}</p>
+                  <span className="fx-panel-more">Learn more <i aria-hidden="true">→</i></span>
+                </span>
+              </NavLink>
+            );})}
+          </div>
+        </div>
+      </section>
+      <FxMap query="Sarasota County and Manatee County, Florida" title="Sarasota and Manatee Counties"/>
+      <FxCallout navigate={navigate} kicker="Sarasota studio" h2="Ready for a walkthrough?"
+        body="Tell us where the house is and what it should do. We come out, walk it with you, and send a line-item proposal."/>
     </div>
   );
 }
@@ -4008,48 +4008,70 @@ function CityHubPage({cityId, navigate}){
   const city = (g.cities && g.cities[cityId]) || null;
   const services = g.services || {};
   if (!city) return <ServiceAreasHub navigate={navigate}/>;
-  const photo = city.image ? (city.image.startsWith('/assets') ? city.image + '?v=13' : city.image) : PHOTOS.heroAbout;
+  const caseId = CITY_CASES[cityId];
+  const kase = caseId && LUMA_CASES[caseId];
+  const gallery = cityId === 'sarasota' ? [PHOTOS.caseUrHero, PHOTOS.caseUrPool, PHOTOS.caseUrInWall, PHOTOS.caseUrRack] : null;
   return (
     <div className="page">
-      <GeoHero
-        eyebrow={city.county}
-        h1={city.h1}
-        lede={city.lede}
-        image={photo}
-        alt={city.name}
-        navigate={navigate}
-        primary={{page:'contact', label:'Talk about a '+city.name+' house →'}}
-        secondary={{page:'work', label:'See our work'}}
-      />
-      <section className="th-section">
-        <Crumbs items={[{page:'home', label:'Home'},{page:'service-areas', label:'Service areas'},{label:city.name}]} navigate={navigate}/>
-        <div className="geo-prose">
-          {(city.paragraphs||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+      <FxInnerHero kicker={city.county} h1={city.h1} image={PLACE_PHOTO(cityId)} alt={city.name}/>
+      <section className="fx-py-md">
+        <div className="fx-wide">
+          <div className="fx-row">
+            <div className="fx-row-copy">
+              <div className="fx-lede">
+                <p><strong style={{color:'var(--dark)'}}><LinkedText text={city.lede} navigate={navigate}/></strong></p>
+                {(city.paragraphs||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+              </div>
+            </div>
+            <div className="fx-row-media">
+              <img src={PLACE_PHOTO(cityId)} alt={city.name} loading="lazy" decoding="async"/>
+            </div>
+          </div>
         </div>
-        <h2 className="geo-subhead">Systems we install in {city.name}</h2>
-        <div className="geo-card-grid">
-          {Object.keys(services).map(sid=>{
-            const s = services[sid];
-            const local = hasCityService(cityId, sid);
-            return (
-              <NavLink key={sid} page={servicePageForCity(cityId, sid)} navigate={navigate} className="geo-card">
-                <div className="geo-card-kicker">{local ? city.name : 'Gulf Coast'}</div>
-                <h3>{s.nav}</h3>
-                <p>{s.short}</p>
-                <span className="geo-card-go">{local ? city.name+' page →' : 'Service overview →'}</span>
-              </NavLink>
-            );
-          })}
-        </div>
-        {city.neighborhoods && city.neighborhoods.length>0 && (
-          <>
-            <h2 className="geo-subhead">Neighborhoods we know</h2>
-            <ul className="geo-hoods">
-              {city.neighborhoods.map(n=><li key={n}>{n}</li>)}
-            </ul>
-          </>
-        )}
       </section>
+
+      {kase && (
+        <section className="fx-band fx-py-lg">
+          <div className="fx-wide">
+            <div className="fx-heads" style={{marginBottom:40}}>
+              <h2 className="fx-d3">Finished in {city.name}: {kase.title}</h2>
+              <p className="fx-lede">{kase.place}. {kase.lede}</p>
+            </div>
+            <div className="fx-gallery">
+              {gallery.map((src,i)=><img key={i} src={src} alt={kase.title} loading="lazy" decoding="async"/>)}
+            </div>
+            <p style={{textAlign:'center',marginTop:32}}>
+              <NavLink page={caseId} navigate={navigate} className="fx-more">Read the case study <i aria-hidden="true">→</i></NavLink>
+            </p>
+          </div>
+        </section>
+      )}
+
+      <section className="fx-areas">
+        <div className="fx-field">
+          <h3 className="fx-d3">What we install in {city.name}</h3>
+          <p className="fx-lede">
+            {Object.keys(services).map((sid,i,arr)=>(
+              <React.Fragment key={sid}>
+                <NavLink page={servicePageForCity(cityId, sid)} navigate={navigate} className="fx-inline">{services[sid].name}</NavLink>{i < arr.length-1 ? ', ' : '.'}
+              </React.Fragment>
+            ))}
+          </p>
+        </div>
+      </section>
+
+      {city.neighborhoods && city.neighborhoods.length > 0 && (
+        <section className="fx-areas fx-areas--tight">
+          <div className="fx-field">
+            <h3 className="fx-d3">Areas we serve</h3>
+            <p className="fx-lede">{city.neighborhoods.join(', ')}, and the rest of {city.county}.</p>
+          </div>
+        </section>
+      )}
+
+      <FxMap query={city.name + ', Florida'} title={'Map of ' + city.name}/>
+      <FxCallout navigate={navigate} kicker={'Serving ' + city.name} h2="Ready for a walkthrough?"
+        body={'Tell us about the ' + city.name + ' house. We come out, walk it with you, and send a line-item proposal.'}/>
     </div>
   );
 }
@@ -4060,39 +4082,32 @@ function CityServicePage({cityId, serviceId, navigate}){
   const svc = (g.services && g.services[serviceId]) || {};
   const row = (g.cityServices && g.cityServices[cityId+'/'+serviceId]) || null;
   if (!row) return <CityHubPage cityId={cityId} navigate={navigate}/>;
-  const photo = (svc.og || '/assets/photos/waterfront-lanai.jpg') + '?v=13';
+  const photo = lu(svc.og || '/assets/photos/lighting-scene.jpg');
   return (
     <div className="page">
-      <GeoHero
-        eyebrow={city.name+' · '+svc.nav}
-        h1={row.h1}
-        lede={row.lede}
-        image={photo}
-        alt={row.h1}
-        navigate={navigate}
-        primary={{page:'contact', label:'Start a project →'}}
-        secondary={{page:serviceId, label:'Full '+svc.nav+' overview'}}
-      />
-      <section className="th-section">
-        <Crumbs items={[
-          {page:'home', label:'Home'},
-          {page:'service-areas', label:'Service areas'},
-          {page:cityPageId(cityId), label:city.name},
-          {label:svc.nav},
-        ]} navigate={navigate}/>
-        <div className="geo-prose">
-          {(row.paragraphs||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
-        </div>
-        {row.bullets && (
-          <ul className="geo-bullets">
-            {row.bullets.map(b=><li key={b}>{b}</li>)}
-          </ul>
-        )}
-        <div className="geo-next">
-          <NavLink page={cityPageId(cityId)} navigate={navigate} className="btn-ghost">All systems in {city.name}</NavLink>
-          <NavLink page="service-areas" navigate={navigate} className="btn-ghost">Other cities</NavLink>
+      <FxInnerHero kicker={city.name + ' · ' + svc.nav} h1={row.h1} image={PLACE_PHOTO(cityId)} alt={city.name}/>
+      <section className="fx-py-md">
+        <div className="fx-wide">
+          <div className="fx-row">
+            <div className="fx-row-copy">
+              <div className="fx-lede">
+                <p><strong style={{color:'var(--dark)'}}><LinkedText text={row.lede} navigate={navigate}/></strong></p>
+                {(row.paragraphs||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+              </div>
+              {row.bullets && <ul className="fx-points fx-points--list">{row.bullets.map(b=><li key={b}>{b}</li>)}</ul>}
+              <p style={{marginTop:24}}>
+                <NavLink page={serviceId} navigate={navigate} className="fx-more">{svc.nav} overview <i aria-hidden="true">→</i></NavLink>
+                <span style={{margin:'0 14px',color:'var(--cream3)'}}>·</span>
+                <NavLink page={cityPageId(cityId)} navigate={navigate} className="fx-more">Everything in {city.name} <i aria-hidden="true">→</i></NavLink>
+              </p>
+            </div>
+            <div className="fx-row-media"><img src={photo} alt={svc.name} loading="lazy" decoding="async"/></div>
+          </div>
         </div>
       </section>
+      <FxMap query={city.name + ', Florida'} title={'Map of ' + city.name}/>
+      <FxCallout navigate={navigate} kicker={city.name + ' · ' + svc.nav} h2="Ready for a walkthrough?"
+        body={'Tell us about the house and what the ' + (svc.nav || 'system').toLowerCase() + ' should do. We come out, walk it with you, and send a line-item proposal.'}/>
     </div>
   );
 }
@@ -4192,7 +4207,7 @@ function BrandPage({navigate}){
       <section className="th-section">
         <Crumbs items={[{page:'home', label:'Home'},{label:'LUMA Smart Home Sarasota'}]} navigate={navigate}/>
         <div className="geo-prose">
-          <p>LUMA Smart Home (lumasmarthome.com) is a residential technology studio based in Sarasota, Florida. We specify and install Lutron lighting, motorized shades, whole-home audio, UniFi cameras and Wi-Fi, and automation for houses in Sarasota, Manatee, Charlotte, Lee, and Collier Counties. See <NavLink page="service-areas" navigate={navigate} className="inline-link">where we work</NavLink> and <NavLink page="about" navigate={navigate} className="inline-link">about the studio</NavLink>.</p>
+          <p>LUMA Smart Home (lumasmarthome.com) is a residential technology studio based in Sarasota, Florida. We specify and install Lutron lighting, motorized shades, whole-home audio, UniFi cameras and Wi-Fi, and automation for houses in Sarasota and Manatee Counties. See <NavLink page="service-areas" navigate={navigate} className="inline-link">where we work</NavLink> and <NavLink page="about" navigate={navigate} className="inline-link">about the studio</NavLink>.</p>
           <p>Legal name: LUMA Home Systems LLC. The public name on this site and on Google should stay LUMA Smart Home — Sarasota, with the trades in the description so a search for lighting or smart home does not land you on an events platform.</p>
         </div>
         <address className="geo-nap">

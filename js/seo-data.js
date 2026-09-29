@@ -6,7 +6,7 @@ window.LUMA_SEO = {
       "id": "home",
       "path": "/",
       "title": "LUMA Smart Home | Lighting, Shades & AV in Sarasota, FL",
-      "description": "LUMA designs and installs lighting control, motorized shades, security, audio, and Wi-Fi for fine homes on Florida's Gulf Coast. Serving Sarasota, Manatee, Charlotte, Lee & Collier Counties.",
+      "description": "LUMA designs and installs lighting control, motorized shades, security, audio, and Wi-Fi for fine homes on Florida's Gulf Coast. Serving Sarasota & Manatee Counties.",
       "kind": "home",
       "city": null,
       "service": null,
@@ -56,7 +56,7 @@ window.LUMA_SEO = {
       "id": "audio",
       "path": "/audio",
       "title": "Whole-Home Audio & Video | Sonos, Sonance | LUMA Smart Home",
-      "description": "Invisible in-ceiling, in-wall, and outdoor audio tuned to each room, with one app across every zone. Sarasota to Naples.",
+      "description": "Invisible in-ceiling, in-wall, and outdoor audio tuned to each room, with one app across every zone. Sarasota & Manatee Counties.",
       "kind": "service",
       "city": null,
       "service": null,
@@ -116,7 +116,7 @@ window.LUMA_SEO = {
       "id": "about",
       "path": "/about",
       "title": "About LUMA Smart Home | Sarasota Residential Technology Studio",
-      "description": "LUMA is a Sarasota residential technology studio. Open platforms, line-item proposals, and ongoing care from Bradenton to Naples.",
+      "description": "LUMA is a Sarasota residential technology studio. Open platforms, line-item proposals, and ongoing care across Sarasota and Manatee Counties.",
       "kind": "page",
       "city": null,
       "service": null,
@@ -126,7 +126,7 @@ window.LUMA_SEO = {
       "id": "contact",
       "path": "/contact",
       "title": "Start a Project | Contact LUMA Smart Home | Sarasota, FL",
-      "description": "Book a consultation with LUMA Smart Home. Serving Sarasota, Manatee, Charlotte, Lee, and Collier Counties. Call +1 (941) 217-1616.",
+      "description": "Book a consultation with LUMA Smart Home. Serving Sarasota and Manatee Counties. Call +1 (941) 217-1616.",
       "kind": "contact",
       "city": null,
       "service": null,
@@ -215,12 +215,12 @@ window.LUMA_SEO = {
     "service-areas": {
       "id": "service-areas",
       "path": "/service-areas",
-      "title": "Service Areas | Sarasota to Naples | LUMA Smart Home",
-      "description": "LUMA Smart Home serves Sarasota, Bradenton, Lakewood Ranch, Venice, Punta Gorda, Siesta Key, Longboat Key, Fort Myers, and Naples. City pages live here — not in the Solutions menu.",
+      "title": "Service Areas | Sarasota & Manatee Counties | LUMA Smart Home",
+      "description": "LUMA Smart Home serves Sarasota and Manatee Counties: Sarasota, Bradenton, Lakewood Ranch, Venice, Siesta Key, Longboat Key, Anna Maria Island and Palmetto.",
       "kind": "areas-hub",
       "city": null,
       "service": null,
-      "h1": "Where we work on the Gulf Coast"
+      "h1": "Where we work"
     },
     "sa-sarasota": {
       "id": "sa-sarasota",
@@ -262,16 +262,6 @@ window.LUMA_SEO = {
       "service": null,
       "h1": "Smart home installation in Venice, Florida"
     },
-    "sa-punta-gorda": {
-      "id": "sa-punta-gorda",
-      "path": "/service-areas/punta-gorda",
-      "title": "Punta Gorda Smart Home Installer | Charlotte County | LUMA",
-      "description": "Lighting control, cameras, and Wi-Fi for Punta Gorda, Port Charlotte, and Boca Grande. LUMA Smart Home covers Charlotte County from the Sarasota studio.",
-      "kind": "city",
-      "city": "punta-gorda",
-      "service": null,
-      "h1": "Smart home installation in Punta Gorda & Charlotte County"
-    },
     "sa-siesta-key": {
       "id": "sa-siesta-key",
       "path": "/service-areas/siesta-key",
@@ -292,25 +282,25 @@ window.LUMA_SEO = {
       "service": null,
       "h1": "Smart home systems on Longboat Key"
     },
-    "sa-naples": {
-      "id": "sa-naples",
-      "path": "/service-areas/naples",
-      "title": "Naples FL Smart Home Installer | Lighting & Automation | LUMA",
-      "description": "LUMA designs lighting control, home automation, and whole-home systems for Naples, Port Royal, Aqualane, and Marco Island. Collier County service.",
+    "sa-anna-maria-island": {
+      "id": "sa-anna-maria-island",
+      "path": "/service-areas/anna-maria-island",
+      "title": "Anna Maria Island Smart Home Installer | LUMA Smart Home",
+      "description": "Lighting control, motorized shades, cameras, and Wi-Fi for homes in Anna Maria, Holmes Beach, and Bradenton Beach. Designed for salt air, gulf glare, and owners who look after the house from away.",
       "kind": "city",
-      "city": "naples",
+      "city": "anna-maria-island",
       "service": null,
-      "h1": "Smart home installation in Naples, Florida"
+      "h1": "Smart home systems on Anna Maria Island"
     },
-    "sa-fort-myers": {
-      "id": "sa-fort-myers",
-      "path": "/service-areas/fort-myers",
-      "title": "Fort Myers Smart Home Installer | LUMA Smart Home",
-      "description": "Lighting control, networking, and whole-home systems for Fort Myers, Sanibel, Captiva, Estero, and Bonita Springs. LUMA serves Lee County from Sarasota.",
+    "sa-palmetto": {
+      "id": "sa-palmetto",
+      "path": "/service-areas/palmetto",
+      "title": "Palmetto FL Smart Home Installer | Manatee County | LUMA",
+      "description": "Lighting control, motorized shades, cameras, and Wi-Fi for Palmetto, Snead Island, and Terra Ceia homes, from the LUMA studio in Sarasota.",
       "kind": "city",
-      "city": "fort-myers",
+      "city": "palmetto",
       "service": null,
-      "h1": "Smart home installation in Fort Myers & Lee County"
+      "h1": "Smart home installation in Palmetto, Florida"
     },
     "sa-sarasota-lighting": {
       "id": "sa-sarasota-lighting",
@@ -382,26 +372,6 @@ window.LUMA_SEO = {
       "service": "automation",
       "h1": "Home automation in Sarasota"
     },
-    "sa-naples-lighting": {
-      "id": "sa-naples-lighting",
-      "path": "/service-areas/naples/lighting",
-      "title": "Lutron Lighting Installer Naples FL | LUMA Smart Home",
-      "description": "Naples Lutron and Ketra lighting control for Port Royal, Aqualane, and Collier County residences. Architectural lighting under one keypad spec.",
-      "kind": "city-service",
-      "city": "naples",
-      "service": "lighting",
-      "h1": "Lighting control in Naples"
-    },
-    "sa-naples-automation": {
-      "id": "sa-naples-automation",
-      "path": "/service-areas/naples/automation",
-      "title": "Home Automation Naples FL | LUMA Smart Home",
-      "description": "Unified lighting, shades, climate, and AV for Naples estates and condos. Open platforms — not a dealer-locked processor you cannot service.",
-      "kind": "city-service",
-      "city": "naples",
-      "service": "automation",
-      "h1": "Home automation in Naples"
-    },
     "sa-bradenton-lighting": {
       "id": "sa-bradenton-lighting",
       "path": "/service-areas/bradenton/lighting",
@@ -421,26 +391,6 @@ window.LUMA_SEO = {
       "city": "bradenton",
       "service": "security",
       "h1": "Home cameras in Bradenton"
-    },
-    "sa-fort-myers-lighting": {
-      "id": "sa-fort-myers-lighting",
-      "path": "/service-areas/fort-myers/lighting",
-      "title": "Lutron Lighting Installer Fort Myers FL | LUMA Smart Home",
-      "description": "Lutron lighting control for Fort Myers rebuilds and Lee County new construction. Load schedules while the walls are open — not surface dimmers later.",
-      "kind": "city-service",
-      "city": "fort-myers",
-      "service": "lighting",
-      "h1": "Lighting control in Fort Myers"
-    },
-    "sa-punta-gorda-lighting": {
-      "id": "sa-punta-gorda-lighting",
-      "path": "/service-areas/punta-gorda/lighting",
-      "title": "Lutron Lighting Installer Punta Gorda FL | Charlotte County | LUMA",
-      "description": "Lutron lighting control for Punta Gorda, Port Charlotte, and Boca Grande. RadioRA 3 scenes for canal-front and seasonal Charlotte County homes.",
-      "kind": "city-service",
-      "city": "punta-gorda",
-      "service": "lighting",
-      "h1": "Lutron lighting control in Punta Gorda"
     },
     "journal": {
       "id": "journal",
@@ -476,7 +426,7 @@ window.LUMA_SEO = {
       "id": "journal-shades-gulf",
       "path": "/journal/motorized-shades-gulf-coast",
       "title": "Motorized shades for Gulf Coast sun | LUMA Journal",
-      "description": "Why Sarasota and Naples west glass needs layered motorized shades — solar screen, blackout, Sivoia or Somfy — not one fabric and a remote in a drawer.",
+      "description": "Why Sarasota and Manatee west glass needs layered motorized shades — solar screen, blackout, Sivoia or Somfy — not one fabric and a remote in a drawer.",
       "kind": "article",
       "city": null,
       "service": null,
@@ -530,11 +480,11 @@ window.LUMA_GEO = {
     "id": "service-areas",
     "path": "/service-areas",
     "file": "service-areas.html",
-    "title": "Service Areas | Sarasota to Naples | LUMA Smart Home",
-    "h1": "Where we work on the Gulf Coast",
-    "description": "LUMA Smart Home serves Sarasota, Bradenton, Lakewood Ranch, Venice, Punta Gorda, Siesta Key, Longboat Key, Fort Myers, and Naples. City pages live here — not in the Solutions menu.",
+    "title": "Service Areas | Sarasota & Manatee Counties | LUMA Smart Home",
+    "h1": "Where we work",
+    "description": "LUMA Smart Home serves Sarasota and Manatee Counties: Sarasota, Bradenton, Lakewood Ranch, Venice, Siesta Key, Longboat Key, Anna Maria Island and Palmetto.",
     "og": "/assets/photos/sarasota-downtown-bayfront.jpg",
-    "lede": "Five counties, one studio. City pages sit in this silo so Sarasota still ranks as Sarasota — not as a diluted 'we serve everywhere' blob under Lighting."
+    "lede": "Two counties, one studio in Sarasota. Each place below has its own page: the kind of houses we find there and what they usually need."
   },
   "journalHub": {
     "id": "journal",
@@ -567,7 +517,7 @@ window.LUMA_GEO = {
     "telHref": "tel:+19412171616",
     "email": "hello@lumasmarthome.com",
     "hours": "Mon–Sat · 9am – 6pm",
-    "area": "Sarasota, Manatee, Charlotte, Lee & Collier Counties",
+    "area": "Sarasota & Manatee Counties",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL",
     "mapsLabel": "LUMA Smart Home — Sarasota, Florida (Google Maps)"
   },
@@ -736,31 +686,6 @@ window.LUMA_GEO = {
       "image": "/assets/photos/gulf-sunset.jpg",
       "services": []
     },
-    "punta-gorda": {
-      "id": "punta-gorda",
-      "name": "Punta Gorda",
-      "county": "Charlotte County",
-      "tagline": "Harbor, islands, and the missing county in a five-county map.",
-      "h1": "Smart home installation in Punta Gorda & Charlotte County",
-      "title": "Punta Gorda Smart Home Installer | Charlotte County | LUMA",
-      "description": "Lighting control, cameras, and Wi-Fi for Punta Gorda, Port Charlotte, and Boca Grande. LUMA Smart Home covers Charlotte County from the Sarasota studio.",
-      "lede": "Charlotte County is not an afterthought between Sarasota and Fort Myers. Harbor lots, Burnt Store, and Boca Grande each want a different shade and camera spec — and a network that survives lock-and-leave.",
-      "paragraphs": [
-        "Punta Gorda and Port Charlotte rebuilds and waterfront remodels are usually RadioRA 3 plus UniFi: scenes for the lanai and dock, cameras that stay on-prem so a summer away is not a camera-cloud bill. Boca Grande adds HOA and salt the way Siesta does — we bring cut sheets before we drill.",
-        "Travel from the Sarasota studio is in the proposal, same as Lee and Collier. If you searched smart home Punta Gorda or lighting installer Port Charlotte, this silo is the city page — not a paragraph buried under Lighting."
-      ],
-      "neighborhoods": [
-        "Punta Gorda Isles",
-        "Burnt Store",
-        "Port Charlotte",
-        "Boca Grande",
-        "Englewood (Charlotte side)"
-      ],
-      "image": "/assets/photos/gulf-sunset.jpg",
-      "services": [
-        "lighting"
-      ]
-    },
     "siesta-key": {
       "id": "siesta-key",
       "name": "Siesta Key",
@@ -805,56 +730,49 @@ window.LUMA_GEO = {
       "image": "/assets/photos/waterfront-lanai.jpg",
       "services": []
     },
-    "naples": {
-      "id": "naples",
-      "name": "Naples",
-      "county": "Collier County",
-      "tagline": "Estate scale, Port Royal glass, and a quieter control layer.",
-      "h1": "Smart home installation in Naples, Florida",
-      "title": "Naples FL Smart Home Installer | Lighting & Automation | LUMA",
-      "description": "LUMA designs lighting control, home automation, and whole-home systems for Naples, Port Royal, Aqualane, and Marco Island. Collier County service.",
-      "lede": "Naples projects are often larger envelopes, stricter design review, and homeowners who have already been burned by a dealer-locked system. We specify open platforms and a rack you can still service in ten years.",
+    "anna-maria-island": {
+      "id": "anna-maria-island",
+      "name": "Anna Maria Island",
+      "county": "Manatee County",
+      "tagline": "Island houses, salt air, and owners who are often somewhere else.",
+      "h1": "Smart home systems on Anna Maria Island",
+      "title": "Anna Maria Island Smart Home Installer | LUMA Smart Home",
+      "description": "Lighting control, motorized shades, cameras, and Wi-Fi for homes in Anna Maria, Holmes Beach, and Bradenton Beach. Designed for salt air, gulf glare, and owners who look after the house from away.",
+      "lede": "Anna Maria Island is three small cities on one barrier island: Anna Maria, Holmes Beach and Bradenton Beach. A lot of the houses are second homes or rentals, which changes what a system has to do. It has to be run and checked from somewhere else.",
       "paragraphs": [
-        "Port Royal, Aqualane, and the gulf-front condos have different constraints — acoustics, millwork, and what a design review board will allow on the elevation. Lighting is usually the first trade we join: Ketra or HomeWorks where the architecture deserves it, RadioRA 3 where it does not. Automation sits on top only after lighting, shades, climate, and the network are honest.",
-        "We already have finished work in Naples (including a Port Royal residence in Our Work). Travel from the Sarasota studio is planned into the proposal so you are not surprised by trip charges after the bid."
+        "That usually means a network that can be diagnosed remotely, cameras that record on the property rather than to a subscription, and lighting and shade schedules that keep an empty house looking lived in. On the gulf side, shades that cut the afternoon glare without taking the water away are normally the first conversation.",
+        "Many newer island houses are raised above the flood line, which puts the equipment closet and the cable runs in unusual places. We plan those on the drawings, before the walls close."
       ],
       "neighborhoods": [
-        "Port Royal",
-        "Aqualane Shores",
-        "Old Naples",
-        "Pelican Bay",
-        "Marco Island"
+        "Anna Maria",
+        "Holmes Beach",
+        "Bradenton Beach",
+        "Cortez"
       ],
-      "image": "/assets/photos/cases/spacious-modern/web-hero.jpg",
-      "services": [
-        "lighting",
-        "automation"
-      ]
+      "image": "/assets/photos/gulf-sunset.jpg",
+      "services": []
     },
-    "fort-myers": {
-      "id": "fort-myers",
-      "name": "Fort Myers",
-      "county": "Lee County",
-      "tagline": "Riverfront rebuilds, Sanibel-adjacent, and Lee County new work.",
-      "h1": "Smart home installation in Fort Myers & Lee County",
-      "title": "Fort Myers Smart Home Installer | LUMA Smart Home",
-      "description": "Lighting control, networking, and whole-home systems for Fort Myers, Sanibel, Captiva, Estero, and Bonita Springs. LUMA serves Lee County from Sarasota.",
-      "lede": "Lee County work since the storms is a mix of rebuilds and new construction. That is the moment to put Cat6A in the walls and Lutron on the lighting schedule — not a year after drywall, when every 'smart' decision is a surface mount.",
+    "palmetto": {
+      "id": "palmetto",
+      "name": "Palmetto",
+      "county": "Manatee County",
+      "tagline": "River-front lots, older blocks, and new building north of the river.",
+      "h1": "Smart home installation in Palmetto, Florida",
+      "title": "Palmetto FL Smart Home Installer | Manatee County | LUMA",
+      "description": "Lighting control, motorized shades, cameras, and Wi-Fi for Palmetto, Snead Island, and Terra Ceia homes, from the LUMA studio in Sarasota.",
+      "lede": "Palmetto sits on the north bank of the Manatee River, across from Bradenton. It has older neighborhoods near the river, waterfront lots out toward Snead Island and Terra Ceia, and a lot of newer construction farther north.",
       "paragraphs": [
-        "Fort Myers riverfront glass and Sanibel/Captiva salt are two different specs. We walk both. Lighting control is the usual first layer on a rebuild because the electrical is already open; shades and cameras follow once openings and millwork are known. UniFi stays on-prem so a lock-and-leave island house is not streaming your driveway to a vendor cloud.",
-        "Estero, Bonita, and the Sanibel causeway sit inside our five-county window. Same line-item proposal as Sarasota, with travel called out up front."
+        "In older houses the honest approach is usually an overlay: lighting control that works with the switch boxes already in the walls, a proper network closet instead of a modem in a hot garage, and cameras that record on the property. New construction is the moment to put structured cabling and shade pockets on the drawings, before drywall.",
+        "Waterfront lots on the river and the bays bring the same questions as the rest of the coast: afternoon glare on the water side, docks and seawalls that want lighting and a camera, and equipment that has to live with the humidity."
       ],
       "neighborhoods": [
-        "Downtown Fort Myers / riverfront",
-        "McGregor corridor",
-        "Sanibel & Captiva",
-        "Estero",
-        "Bonita Springs"
+        "Downtown Palmetto",
+        "Snead Island",
+        "Terra Ceia",
+        "Ellenton"
       ],
-      "image": "/assets/photos/hero-modern-home.jpg",
-      "services": [
-        "lighting"
-      ]
+      "image": "/assets/photos/fl-golden-hour.jpg",
+      "services": []
     }
   },
   "cityServices": {
@@ -984,42 +902,6 @@ window.LUMA_GEO = {
         "Twelve months of scene care included"
       ]
     },
-    "naples/lighting": {
-      "city": "naples",
-      "service": "lighting",
-      "h1": "Lighting control in Naples",
-      "title": "Lutron Lighting Installer Naples FL | LUMA Smart Home",
-      "description": "Naples Lutron and Ketra lighting control for Port Royal, Aqualane, and Collier County residences. Architectural lighting under one keypad spec.",
-      "lede": "Naples lighting is usually a design-review problem as much as an electrical one. Keypads have to match millwork, landscape lighting has to survive the board, and the gulf-west rooms need a color temperature that does not go grey at 5 p.m.",
-      "paragraphs": [
-        "We join the lighting designer early or we become one: load schedules, Ketra where the architecture is doing color, RadioRA 3 or HomeWorks depending on processor need. Estate scale in Port Royal is not a bigger RadioRA panel — it is a different conversation about processors, enclosures, and service access.",
-        "Our Work includes a Naples Port Royal residence. Travel from Sarasota is in the proposal, not a surprise change order."
-      ],
-      "bullets": [
-        "Design-review-friendly keypads and trims",
-        "Ketra / warm-dim for gulf-west glass",
-        "Landscape on the same scenes as interior",
-        "Estate and condo stacks, specified honestly"
-      ]
-    },
-    "naples/automation": {
-      "city": "naples",
-      "service": "automation",
-      "h1": "Home automation in Naples",
-      "title": "Home Automation Naples FL | LUMA Smart Home",
-      "description": "Unified lighting, shades, climate, and AV for Naples estates and condos. Open platforms — not a dealer-locked processor you cannot service.",
-      "lede": "Naples clients often arrive with a Crestron or Control4 system they cannot get serviced. We document what you have, keep what is honest, and only replace the control layer when the alternative is years of hostage-taking.",
-      "paragraphs": [
-        "New Naples work starts with network and lighting, then shades, then a UI. A processor that 'does everything' before those layers exist is how you get a $40k iPad that cannot open the shade in the guest room.",
-        "We stay after turnover. Collier County is inside the five-county service map; urgent calls are queued with the same studio that designed the rack."
-      ],
-      "bullets": [
-        "Audit of existing Crestron / Control4 / Savant",
-        "Open-platform replacements when lock-in is the problem",
-        "Scenes written for seasonal occupancy",
-        "Documented system you could hand to another firm"
-      ]
-    },
     "bradenton/lighting": {
       "city": "bradenton",
       "service": "lighting",
@@ -1054,42 +936,6 @@ window.LUMA_GEO = {
         "Dock, side-yard, and drive coverage",
         "HOA-aware mounts on the islands",
         "On-prem NVR, optional alarm"
-      ]
-    },
-    "fort-myers/lighting": {
-      "city": "fort-myers",
-      "service": "lighting",
-      "h1": "Lighting control in Fort Myers",
-      "title": "Lutron Lighting Installer Fort Myers FL | LUMA Smart Home",
-      "description": "Lutron lighting control for Fort Myers rebuilds and Lee County new construction. Load schedules while the walls are open — not surface dimmers later.",
-      "lede": "If you are rebuilding in Fort Myers or on Sanibel, lighting control is cheapest when the electrical is already exposed. That is the window. We write the Lutron load schedule with the electrician so you are not fishing travelers next year.",
-      "paragraphs": [
-        "Lee County west glass and riverfront reflections want warm-dim and scenes, not a wall of paddle switches that all read as 'on.' RadioRA 3 covers most rebuilds; larger envelopes get a processor conversation. Landscape and path lighting join the same keypad so the dock does not stay on until Tuesday.",
-        "Travel from Sarasota is priced in the proposal. Sanibel and Captiva staging is called out, not hidden."
-      ],
-      "bullets": [
-        "Load schedules during rebuild, not after drywall",
-        "RadioRA 3 or HomeWorks by envelope",
-        "Lanai, dock, and path on interior scenes",
-        "Lee County inside the five-county map"
-      ]
-    },
-    "punta-gorda/lighting": {
-      "city": "punta-gorda",
-      "service": "lighting",
-      "h1": "Lutron lighting control in Punta Gorda",
-      "title": "Lutron Lighting Installer Punta Gorda FL | Charlotte County | LUMA",
-      "description": "Lutron lighting control for Punta Gorda, Port Charlotte, and Boca Grande. RadioRA 3 scenes for canal-front and seasonal Charlotte County homes.",
-      "lede": "Canal-front and seasonal homes in Punta Gorda need lighting that still works when the owners are away. LUMA designs Lutron from Sarasota and commissions it on the Charlotte County job.",
-      "paragraphs": [
-        "Punta Gorda Isles and Burnt Store houses sit empty for weeks, then fill up for season. Lighting control has to survive that cycle: scenes for occupancy, a sensible off state, and a processor that is not depending on a consumer cloud. We specify Lutron with the builder or overlay RadioRA 3 when the house is already finished.",
-        "Port Charlotte, Boca Grande, and Englewood (Charlotte side) get the same documented stack — not a different product because the county line moved. If cameras and a network closet belong in the same phase, we design those too so the lighting job is not an island. Travel from the Sarasota studio is in the proposal."
-      ],
-      "bullets": [
-        "RadioRA 3 for existing Punta Gorda and Port Charlotte homes",
-        "Away scenes that look occupied without looking theatrical",
-        "Lanai, dock, and path lighting on the same keypad",
-        "Charlotte County inside the five-county map"
       ]
     }
   },
@@ -1200,14 +1046,14 @@ window.LUMA_GEO = {
       "slug": "motorized-shades-gulf-coast",
       "title": "Motorized shades for Gulf Coast sun | LUMA Journal",
       "h1": "Motorized shades that respect Gulf Coast sun",
-      "description": "Why Sarasota and Naples west glass needs layered motorized shades — solar screen, blackout, Sivoia or Somfy — not one fabric and a remote in a drawer.",
+      "description": "Why Sarasota and Manatee west glass needs layered motorized shades — solar screen, blackout, Sivoia or Somfy — not one fabric and a remote in a drawer.",
       "og": "/assets/photos/hero-shading.jpg",
       "date": "2026-08-24",
       "dek": "The view is why you bought the house. The infrared is why the sofa is fading. Both can be true.",
       "blocks": [
         {
           "type": "p",
-          "text": "Gulf-west elevations in Sarasota, Longboat, Siesta, and Naples do not need 'window treatments' as decoration first. They need a solar-screen layer that keeps the water visible and a blackout layer that lets someone sleep after a late dinner. One dual-purpose fabric usually fails both jobs."
+          "text": "Gulf-west elevations in Sarasota, Longboat, Siesta, and Anna Maria do not need 'window treatments' as decoration first. They need a solar-screen layer that keeps the water visible and a blackout layer that lets someone sleep after a late dinner. One dual-purpose fabric usually fails both jobs."
         },
         {
           "type": "h2",
@@ -1231,7 +1077,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "What the street is allowed to see matters on Siesta and in Naples design review. We bring fabric and exterior-roller cut sheets early. Measuring gulf-front openings twice is cheaper than a motor that racks in an out-of-square pocket."
+          "text": "What the street is allowed to see matters in Siesta Key and Longboat Key design review. We bring fabric and exterior-roller cut sheets early. Measuring gulf-front openings twice is cheaper than a motor that racks in an out-of-square pocket."
         },
         {
           "type": "p",
@@ -1287,7 +1133,7 @@ window.LUMA_GEO = {
       "blocks": [
         {
           "type": "p",
-          "text": "LUMA Smart Home (lumasmarthome.com) designs and installs lighting control, motorized shades, audio, security, and networking for homes in Sarasota, Manatee, Charlotte, Lee, and Collier Counties. Phone +1 (941) 217-1616. Email hello@lumasmarthome.com."
+          "text": "LUMA Smart Home (lumasmarthome.com) designs and installs lighting control, motorized shades, audio, security, and networking for homes in Sarasota and Manatee Counties. Phone +1 (941) 217-1616. Email hello@lumasmarthome.com."
         },
         {
           "type": "h2",
@@ -1562,12 +1408,12 @@ window.LUMA_GEO = {
         "label": "Sarasota smart home"
       },
       {
-        "id": "sa-naples",
-        "label": "Naples smart home"
-      },
-      {
         "id": "sa-bradenton",
         "label": "Bradenton smart home"
+      },
+      {
+        "id": "sa-lakewood-ranch",
+        "label": "Lakewood Ranch smart home"
       },
       {
         "id": "journal-smart-home-sarasota",
@@ -1658,16 +1504,16 @@ window.LUMA_GEO = {
     ],
     "work": [
       {
-        "id": "sa-naples",
-        "label": "Naples smart home"
-      },
-      {
         "id": "sa-sarasota",
         "label": "Sarasota smart home"
       },
       {
-        "id": "sa-fort-myers",
-        "label": "Fort Myers smart home"
+        "id": "sa-bradenton",
+        "label": "Bradenton smart home"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
       },
       {
         "id": "contact",
@@ -1750,10 +1596,6 @@ window.LUMA_GEO = {
     ],
     "case-spacious": [
       {
-        "id": "sa-naples",
-        "label": "Naples smart home"
-      },
-      {
         "id": "work",
         "label": "Our work"
       },
@@ -1785,10 +1627,6 @@ window.LUMA_GEO = {
       }
     ],
     "case-family": [
-      {
-        "id": "sa-fort-myers",
-        "label": "Fort Myers smart home"
-      },
       {
         "id": "work",
         "label": "Our work"
@@ -1942,24 +1780,6 @@ window.LUMA_GEO = {
         "label": "Start a project"
       }
     ],
-    "sa-punta-gorda": [
-      {
-        "id": "sa-punta-gorda-lighting",
-        "label": "Lutron lighting control in Punta Gorda"
-      },
-      {
-        "id": "sa-sarasota-lighting",
-        "label": "Lutron lighting control in Sarasota"
-      },
-      {
-        "id": "sa-fort-myers",
-        "label": "Fort Myers smart home"
-      },
-      {
-        "id": "contact",
-        "label": "Start a project"
-      }
-    ],
     "sa-siesta-key": [
       {
         "id": "journal-shades-gulf",
@@ -1992,33 +1812,25 @@ window.LUMA_GEO = {
         "label": "Start a project"
       }
     ],
-    "sa-naples": [
+    "sa-anna-maria-island": [
       {
-        "id": "sa-naples-lighting",
-        "label": "Lighting control in Naples"
+        "id": "lighting",
+        "label": "Lighting"
       },
       {
-        "id": "sa-naples-automation",
-        "label": "Home automation in Naples"
+        "id": "service-areas",
+        "label": "All service areas"
       },
       {
-        "id": "journal-shades-gulf",
-        "label": "Motorized shades for Gulf sun"
-      },
-      {
-        "id": "work",
-        "label": "Our work"
+        "id": "journal",
+        "label": "Journal"
       },
       {
         "id": "contact",
         "label": "Start a project"
       }
     ],
-    "sa-fort-myers": [
-      {
-        "id": "sa-fort-myers-lighting",
-        "label": "Lighting control in Fort Myers"
-      },
+    "sa-palmetto": [
       {
         "id": "lighting",
         "label": "Lighting"
@@ -2218,58 +2030,6 @@ window.LUMA_GEO = {
         "label": "Start a project"
       }
     ],
-    "sa-naples-lighting": [
-      {
-        "id": "lighting",
-        "label": "Lighting"
-      },
-      {
-        "id": "sa-naples",
-        "label": "Naples smart home"
-      },
-      {
-        "id": "journal-lutron-sarasota",
-        "label": "Choosing Lutron in Sarasota"
-      },
-      {
-        "id": "service-areas",
-        "label": "All service areas"
-      },
-      {
-        "id": "work",
-        "label": "Our work"
-      },
-      {
-        "id": "contact",
-        "label": "Start a project"
-      }
-    ],
-    "sa-naples-automation": [
-      {
-        "id": "automation",
-        "label": "Automation"
-      },
-      {
-        "id": "sa-naples",
-        "label": "Naples smart home"
-      },
-      {
-        "id": "journal-smart-home-sarasota",
-        "label": "What smart home Sarasota means"
-      },
-      {
-        "id": "service-areas",
-        "label": "All service areas"
-      },
-      {
-        "id": "work",
-        "label": "Our work"
-      },
-      {
-        "id": "contact",
-        "label": "Start a project"
-      }
-    ],
     "sa-bradenton-lighting": [
       {
         "id": "lighting",
@@ -2308,58 +2068,6 @@ window.LUMA_GEO = {
       {
         "id": "journal-cameras-fees",
         "label": "Cameras without a monthly cloud"
-      },
-      {
-        "id": "service-areas",
-        "label": "All service areas"
-      },
-      {
-        "id": "work",
-        "label": "Our work"
-      },
-      {
-        "id": "contact",
-        "label": "Start a project"
-      }
-    ],
-    "sa-fort-myers-lighting": [
-      {
-        "id": "lighting",
-        "label": "Lighting"
-      },
-      {
-        "id": "sa-fort-myers",
-        "label": "Fort Myers smart home"
-      },
-      {
-        "id": "journal-lutron-sarasota",
-        "label": "Choosing Lutron in Sarasota"
-      },
-      {
-        "id": "service-areas",
-        "label": "All service areas"
-      },
-      {
-        "id": "work",
-        "label": "Our work"
-      },
-      {
-        "id": "contact",
-        "label": "Start a project"
-      }
-    ],
-    "sa-punta-gorda-lighting": [
-      {
-        "id": "lighting",
-        "label": "Lighting"
-      },
-      {
-        "id": "sa-punta-gorda",
-        "label": "Punta Gorda smart home"
-      },
-      {
-        "id": "journal-lutron-sarasota",
-        "label": "Choosing Lutron in Sarasota"
       },
       {
         "id": "service-areas",
