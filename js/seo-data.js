@@ -405,12 +405,12 @@ window.LUMA_SEO = {
     "journal-smart-home-sarasota": {
       "id": "journal-smart-home-sarasota",
       "path": "/journal/smart-home-sarasota",
-      "title": "What “smart home Sarasota” should actually mean | LUMA Journal",
+      "title": "What a Smart Home on the Gulf Coast Actually Needs | LUMA Journal",
       "description": "A practical definition of a smart home on Florida’s Gulf Coast: sun, salt, seasonal occupancy, and systems you still own. Written by LUMA Smart Home in Sarasota.",
       "kind": "article",
       "city": null,
       "service": null,
-      "h1": "What “smart home Sarasota” should actually mean"
+      "h1": "What a smart home on the Gulf Coast actually needs"
     },
     "journal-lutron-sarasota": {
       "id": "journal-lutron-sarasota",
@@ -456,7 +456,7 @@ window.LUMA_SEO = {
       "id": "journal-cameras-fees",
       "path": "/journal/home-cameras-without-monthly-fees",
       "title": "Home cameras without a monthly cloud | LUMA Journal",
-      "description": "Why LUMA specs UniFi Protect in Sarasota instead of doorbell brands that charge rent for your own driveway. On-premise NVR, no required cloud.",
+      "description": "Why LUMA specs UniFi Protect instead of doorbell brands that charge a monthly fee for your own driveway. On-premise recorder, no required cloud.",
       "kind": "article",
       "city": null,
       "service": null,
@@ -494,7 +494,7 @@ window.LUMA_GEO = {
     "h1": "Notes from the studio",
     "description": "Practical writing from LUMA Smart Home: smart home Sarasota, Lutron, motorized shades, theaters, and how we differ from luma.com and other Lumas.",
     "og": "/assets/photos/gulf-sunset.jpg",
-    "lede": "Shorter than a spec book, longer than an ad. Start with the Sarasota definition if you are new."
+    "lede": "Notes from the studio on lighting, shades, theaters, cameras and networks in Gulf Coast houses."
   },
   "brand": {
     "id": "luma-smart-home-sarasota",
@@ -943,16 +943,17 @@ window.LUMA_GEO = {
     "journal-smart-home-sarasota": {
       "id": "journal-smart-home-sarasota",
       "slug": "smart-home-sarasota",
-      "title": "What “smart home Sarasota” should actually mean | LUMA Journal",
-      "h1": "What “smart home Sarasota” should actually mean",
+      "title": "What a Smart Home on the Gulf Coast Actually Needs | LUMA Journal",
+      "h1": "What a smart home on the Gulf Coast actually needs",
       "description": "A practical definition of a smart home on Florida’s Gulf Coast: sun, salt, seasonal occupancy, and systems you still own. Written by LUMA Smart Home in Sarasota.",
       "og": "/assets/photos/sarasota-downtown-bayfront.jpg",
-      "date": "2026-08-24",
-      "dek": "The phrase is searched more than it is specified. Here is the local version — lighting, shades, network, and cameras that survive gulf light and a summer away.",
+      "date": "2026-08-27",
+      "category": "Smart home",
+      "dek": "Lighting, shades, a network and cameras that cope with gulf light, humidity and a summer away. Here is where we start.",
       "blocks": [
         {
           "type": "p",
-          "text": "People type smart home Sarasota into Google and land on national blogs, big-box mesh kits, or a company named Luma that has nothing to do with a house on the bay. This studio is LUMA Smart Home in Sarasota. The rest of this note is what the phrase should mean if you actually live here."
+          "text": "Most of what is sold as a smart home is written for a house in a mild climate that is lived in all year. A house on the Gulf Coast is neither. The sun comes in low and hot across the water, the humidity gets into closets, and a lot of owners are away for months at a time. This is what we think a system here actually has to do."
         },
         {
           "type": "h2",
@@ -988,7 +989,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "If this is the search you meant, start with the [Sarasota smart home page](sa-sarasota), the [Lutron lighting note](sa-sarasota-lighting), or [book a walkthrough](contact). We are not luma.com — read [this LUMA, not the others](luma-smart-home-sarasota)."
+          "text": "If you want to see how that plays out in a real house, the [Sarasota page](sa-sarasota) and [our work](work) are the next step, or [book a walkthrough](contact)."
         }
       ]
     },
@@ -999,12 +1000,13 @@ window.LUMA_GEO = {
       "h1": "Choosing Lutron in a Sarasota house",
       "description": "When RadioRA 3 is enough, when Sarasota homes need HomeWorks or Ketra, and what a Lutron installer should put on the proposal. LUMA Smart Home.",
       "og": "/assets/photos/lighting-lutron-hero.jpg",
-      "date": "2026-08-24",
+      "date": "2026-09-03",
+      "category": "Lighting",
       "dek": "Most finished Sarasota houses need an overlay, not a processor palace. Here is how we decide.",
       "blocks": [
         {
           "type": "p",
-          "text": "Lutron is the lighting spine we trust on the Gulf Coast: keypads that still make sense if the phone is dead, dimming that does not buzz, and a dealer network that will still exist when the consumer hub of the year does not. 'Lutron installer Sarasota' should mean someone who will tell you which Lutron, not someone who only sells the SKU with the highest margin."
+          "text": "Lutron is the lighting spine we trust on the Gulf Coast: keypads that still make sense if the phone is dead, dimming that does not buzz, and a dealer network that will still exist when the consumer hub of the year does not. The useful question is not whether to use Lutron but which Lutron, and that depends on the house you already have."
         },
         {
           "type": "h2",
@@ -1037,7 +1039,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "LUMA is a Sarasota Lutron installer in that sense: we spec, program, and stay. Read [Lutron lighting control in Sarasota](sa-sarasota-lighting) or [start a project](contact) if you want that walkthrough."
+          "text": "We spec it, program it and stay after the install. More on [lighting control in Sarasota](sa-sarasota-lighting), or [start a project](contact)."
         }
       ]
     },
@@ -1048,7 +1050,8 @@ window.LUMA_GEO = {
       "h1": "Motorized shades that respect Gulf Coast sun",
       "description": "Why Sarasota and Manatee west glass needs layered motorized shades — solar screen, blackout, Sivoia or Somfy — not one fabric and a remote in a drawer.",
       "og": "/assets/photos/hero-shading.jpg",
-      "date": "2026-08-24",
+      "date": "2026-09-10",
+      "category": "Shading",
       "dek": "The view is why you bought the house. The infrared is why the sofa is fading. Both can be true.",
       "blocks": [
         {
@@ -1081,7 +1084,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "More on [motorized shades in Sarasota](sa-sarasota-shading), or the [Siesta Key service-area note](sa-siesta-key) if you are on the island."
+          "text": "More on [motorized shades in Sarasota](sa-sarasota-shading), or on [Siesta Key](sa-siesta-key) if you are on the island."
         }
       ]
     },
@@ -1092,7 +1095,8 @@ window.LUMA_GEO = {
       "h1": "A home theater that survives Florida construction",
       "description": "How to decide between a dedicated cinema and a media suite in a Sarasota house — acoustics, CBS, tile, and calibration. LUMA Smart Home.",
       "og": "/assets/photos/hero-theater.jpg",
-      "date": "2026-08-24",
+      "date": "2026-09-17",
+      "category": "Home theater",
       "dek": "A projector and a dark paint chip are not a theater. Tile and CBS will tell you that on night one.",
       "blocks": [
         {
@@ -1117,7 +1121,7 @@ window.LUMA_GEO = {
         },
         {
           "type": "p",
-          "text": "See [home theater design in Sarasota](sa-sarasota-theaters) and [Our Work](work) for rooms that made it through first movie night."
+          "text": "More on [home theater design in Sarasota](sa-sarasota-theaters), and the theaters in [our work](work)."
         }
       ]
     },
@@ -1129,6 +1133,7 @@ window.LUMA_GEO = {
       "description": "LUMA Smart Home is a Sarasota, Florida residential technology studio. We are not luma.com (events), not Luma AI / Luma Labs, and not Snap One Luma cameras.",
       "og": "/assets/photos/sarasota-marina.jpg",
       "date": "2026-08-24",
+      "category": "About LUMA",
       "dek": "Three other products share a word. This is the integrator on Florida’s Gulf Coast.",
       "blocks": [
         {
@@ -1183,9 +1188,10 @@ window.LUMA_GEO = {
       "slug": "home-cameras-without-monthly-fees",
       "title": "Home cameras without a monthly cloud | LUMA Journal",
       "h1": "Cameras you own, footage you keep",
-      "description": "Why LUMA specs UniFi Protect in Sarasota instead of doorbell brands that charge rent for your own driveway. On-premise NVR, no required cloud.",
+      "description": "Why LUMA specs UniFi Protect instead of doorbell brands that charge a monthly fee for your own driveway. On-premise recorder, no required cloud.",
       "og": "/assets/photos/hero-security-v2.jpg",
-      "date": "2026-08-24",
+      "date": "2026-09-24",
+      "category": "Security",
       "dek": "Seasonal Gulf Coast homes should not pay a subscription all summer to watch an empty lot.",
       "blocks": [
         {
@@ -1199,25 +1205,17 @@ window.LUMA_GEO = {
         {
           "type": "p",
           "text": "Sunset glare on Bird Key and foliage on a Manatee lot will beat a camera that was drawn in plan view. We walk the property. We will also tell you where a camera is wasted because the HOA or the neighbor angle makes it pointless."
-        },
-        {
-          "type": "h2",
-          "text": "Not the other Luma"
-        },
-        {
-          "type": "p",
-          "text": "If you searched Luma cameras, you may have meant Snap One's product line. Different company. Our camera page is [home cameras in Sarasota](sa-sarasota-security); the brand explainer is [LUMA vs luma.com](journal-not-luma-com)."
         }
       ]
     }
   },
   "articleOrder": [
-    "journal-smart-home-sarasota",
-    "journal-lutron-sarasota",
-    "journal-shades-gulf",
+    "journal-cameras-fees",
     "journal-theater-sarasota",
-    "journal-not-luma-com",
-    "journal-cameras-fees"
+    "journal-shades-gulf",
+    "journal-lutron-sarasota",
+    "journal-smart-home-sarasota",
+    "journal-not-luma-com"
   ],
   "related": {
     "lighting": [

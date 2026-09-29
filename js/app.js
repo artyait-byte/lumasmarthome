@@ -936,7 +936,7 @@ function FxJournal({navigate}) {
             return (
               <NavLink key={id} page={id} navigate={navigate} className="fx-panel-card fx-panel-card--text">
                 <span className="fx-panel-body">
-                  <small>{a.date}</small>
+                  <small>{a.category} · {fmtDate(a.date)}</small>
                   <h3>{a.h1}</h3>
                   <i className="fx-panel-rule" aria-hidden="true"/>
                   <p>{a.dek}</p>
@@ -4112,40 +4112,45 @@ function CityServicePage({cityId, serviceId, navigate}){
   );
 }
 
+/* ── Journal, on the reference's /blog pattern: a plain title block, then a
+   three-column grid of cards (photo, category, title, dek, "Read more").
+   The article page: category and date line, headline, dek, lead photo,
+   prose at 20px. Newest first. ── */
+const fmtDate = (iso) => { try { return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}); } catch(e) { return iso; } };
+
 function JournalIndex({navigate}){
   const g = geoData();
   const order = g.articleOrder || [];
   const articles = g.articles || {};
+  const hub = g.journalHub || {};
   return (
     <div className="page">
-      <GeoHero
-        eyebrow="Journal"
-        h1="Notes from the studio."
-        lede={g.journalHub && g.journalHub.lede}
-        image={PHOTOS.moment3}
-        alt="Gulf sunset"
-        navigate={navigate}
-        primary={{page:'journal-smart-home-sarasota', label:'Start: smart home Sarasota →'}}
-        secondary={{page:'contact', label:'Book a walkthrough'}}
-      />
-      <section className="th-section">
-        <Crumbs items={[{page:'home', label:'Home'},{label:'Journal'}]} navigate={navigate}/>
-        <div className="journal-list">
-          {order.map(id=>{
-            const a = articles[id];
-            if (!a) return null;
-            return (
-              <NavLink key={id} page={id} navigate={navigate} className="journal-row">
-                <div className="journal-row-date">{a.date}</div>
-                <div>
-                  <h2>{a.h1}</h2>
-                  <p>{a.dek}</p>
-                </div>
-              </NavLink>
-            );
-          })}
+      <section className="fx-blog-head">
+        <div className="fx-field">
+          <h1 className="fx-d2">{hub.h1 || 'Notes from the studio'}</h1>
+          <p className="fx-lede">{hub.lede}</p>
         </div>
       </section>
+      <section className="fx-blog-list">
+        <div className="fx-field">
+          <div className="fx-blog-grid">
+            {order.map(id => { const a = articles[id]; if (!a) return null; return (
+              <article key={id} className="fx-blog-card">
+                <NavLink page={id} navigate={navigate} className="fx-blog-img" tabIndex={-1} aria-hidden="true">
+                  <img src={lu(a.og || '/assets/photos/gulf-sunset.jpg')} alt="" loading="lazy" decoding="async"/>
+                </NavLink>
+                <div className="fx-blog-body">
+                  <div className="fx-blog-meta"><span>{a.category}</span><time dateTime={a.date}>{fmtDate(a.date)}</time></div>
+                  <h2><NavLink page={id} navigate={navigate}>{a.h1}</NavLink></h2>
+                  <p>{a.dek}</p>
+                  <NavLink page={id} navigate={navigate} className="fx-panel-more">Read more <i aria-hidden="true">→</i></NavLink>
+                </div>
+              </article>
+            );})}
+          </div>
+        </div>
+      </section>
+      <FxCta navigate={navigate}/>
     </div>
   );
 }
@@ -4154,33 +4159,45 @@ function JournalArticle({articleId, navigate}){
   const g = geoData();
   const a = (g.articles && g.articles[articleId]) || null;
   if (!a) return <JournalIndex navigate={navigate}/>;
-  const photo = (a.og || '/assets/photos/gulf-sunset.jpg') + '?v=13';
+  const order = (g.articleOrder || []).filter(id => id !== articleId).slice(0, 3);
   return (
     <div className="page">
-      <GeoHero
-        eyebrow={'Journal · '+a.date}
-        h1={a.h1}
-        lede={a.dek}
-        image={photo}
-        alt={a.h1}
-        navigate={navigate}
-        primary={{page:'contact', label:'Talk to the studio →'}}
-        secondary={{page:'journal', label:'All notes'}}
-      />
-      <section className="th-section">
-        <Crumbs items={[{page:'home', label:'Home'},{page:'journal', label:'Journal'},{label:a.h1}]} navigate={navigate}/>
-        <article className="geo-prose journal-prose">
+      <article className="fx-post">
+        <div className="fx-post-inner">
+          <NavLink page="journal" navigate={navigate} className="fx-more fx-post-back"><i aria-hidden="true" style={{transform:'none'}}>←</i> All notes</NavLink>
+          <div className="fx-blog-meta"><span>{a.category}</span><time dateTime={a.date}>{fmtDate(a.date)}</time></div>
+          <h1 className="fx-d2">{a.h1}</h1>
+          <p className="fx-post-dek">{a.dek}</p>
+        </div>
+        <div className="fx-post-photo"><img src={lu(a.og || '/assets/photos/gulf-sunset.jpg')} alt={a.h1} loading="eager" decoding="async"/></div>
+        <div className="fx-post-inner fx-post-prose">
           {(a.blocks||[]).map((b,i)=>{
             if (b.type==='h2') return <h2 key={i}>{b.text}</h2>;
             if (b.type==='ul') return <ul key={i}>{b.items.map(it=><li key={it}><LinkedText text={it} navigate={navigate}/></li>)}</ul>;
             return <p key={i}><LinkedText text={b.text} navigate={navigate}/></p>;
           })}
-        </article>
-        <div className="geo-next">
-          <NavLink page="service-areas" navigate={navigate} className="btn-solid">Service areas</NavLink>
-          <NavLink page="journal" navigate={navigate} className="btn-ghost">More notes</NavLink>
         </div>
-      </section>
+      </article>
+      {order.length > 0 && (
+        <section className="fx-band fx-py-lg">
+          <div className="fx-field">
+            <div className="fx-heads" style={{marginBottom:40}}><h2 className="fx-d3">More from the journal</h2></div>
+            <div className="fx-blog-grid">
+              {order.map(id => { const b = (g.articles||{})[id]; if (!b) return null; return (
+                <article key={id} className="fx-blog-card">
+                  <NavLink page={id} navigate={navigate} className="fx-blog-img" tabIndex={-1} aria-hidden="true"><img src={lu(b.og)} alt="" loading="lazy" decoding="async"/></NavLink>
+                  <div className="fx-blog-body">
+                    <div className="fx-blog-meta"><span>{b.category}</span><time dateTime={b.date}>{fmtDate(b.date)}</time></div>
+                    <h2><NavLink page={id} navigate={navigate}>{b.h1}</NavLink></h2>
+                    <NavLink page={id} navigate={navigate} className="fx-panel-more">Read more <i aria-hidden="true">→</i></NavLink>
+                  </div>
+                </article>
+              );})}
+            </div>
+          </div>
+        </section>
+      )}
+      <FxCta navigate={navigate}/>
     </div>
   );
 }
