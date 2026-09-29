@@ -34,9 +34,9 @@ ROUTES: list[dict] = [
         "path": "/",
         "file": "index.html",
         "title": "LUMA Smart Home | Lighting, Shades & AV in Sarasota, FL",
-        "description": "LUMA designs and installs lighting control, motorized shades, security, audio, and Wi-Fi for fine homes on Florida's Gulf Coast. Serving Sarasota, Manatee, Charlotte, Lee & Collier Counties.",
+        "description": "LUMA designs and installs lighting control, motorized shades, security, audio, and Wi-Fi for fine homes on Florida's Gulf Coast. Serving Sarasota & Manatee Counties.",
         "h1": "A home that suits the way you live.",
-        "og_image": "/assets/photos/waterfront-lanai.jpg",
+        "og_image": "/assets/photos/sarasota-bay-house.jpg",
         "priority": 1.0,
         "changefreq": "weekly",
         "kind": "home",
@@ -103,7 +103,7 @@ ROUTES: list[dict] = [
         "path": "/audio",
         "file": "audio.html",
         "title": "Whole-Home Audio & Video | Sonos, Sonance | LUMA Smart Home",
-        "description": "Invisible in-ceiling, in-wall, and outdoor audio tuned to each room, with one app across every zone. Sarasota to Naples.",
+        "description": "Invisible in-ceiling, in-wall, and outdoor audio tuned to each room, with one app across every zone. Sarasota & Manatee Counties.",
         "h1": "Sound that fills the room, not the architecture.",
         "og_image": "/assets/photos/hero-audio-hifi.jpg",
         "priority": 0.9,
@@ -141,6 +141,20 @@ ROUTES: list[dict] = [
         "index": True,
     },
     {
+        "id": "permanent-lighting",
+        "path": "/permanent-lighting",
+        "file": "permanent-lighting.html",
+        "title": "Permanent Outdoor Lighting | Soffit LEDs | LUMA Smart Home",
+        "description": "Permanent architectural roofline lighting for Sarasota and Gulf Coast residences: a colour-matched channel under the overhangs, warm white every night, security, game day and holiday presets from your phone.",
+        "h1": "The roofline, drawn in light.",
+        "og_image": "/assets/photos/permanent-warm.jpg",
+        "priority": 0.9,
+        "changefreq": "monthly",
+        "kind": "service",
+        "service_name": "Permanent outdoor LED lighting",
+        "index": True,
+    },
+    {
         "id": "designers",
         "path": "/designers",
         "file": "designers.html",
@@ -157,9 +171,9 @@ ROUTES: list[dict] = [
         "id": "work",
         "path": "/work",
         "file": "work.html",
-        "title": "Our Work & Testimonials | Gulf Coast Homes | LUMA",
-        "description": "Selected residences and five-star reviews from homeowners, architects, and builders along Florida's Gulf Coast.",
-        "h1": "Homes where the hour takes care of itself.",
+        "title": "Our Work | Finished Smart Home Projects | LUMA",
+        "description": "Five finished LUMA projects, from a Bird Key waterfront home to a Bonita Bay residence: the systems installed and the equipment in each.",
+        "h1": "Our work",
         "og_image": "/assets/photos/gulf-sunset.jpg",
         "priority": 0.8,
         "changefreq": "monthly",
@@ -171,7 +185,7 @@ ROUTES: list[dict] = [
         "path": "/about",
         "file": "about.html",
         "title": "About LUMA Smart Home | Sarasota Residential Technology Studio",
-        "description": "LUMA is a Sarasota residential technology studio. Open platforms, line-item proposals, and ongoing care from Bradenton to Naples.",
+        "description": "LUMA is a Sarasota residential technology studio. Open platforms, line-item proposals, and ongoing care across Sarasota and Manatee Counties.",
         "h1": "We build homes around the Gulf Coast hour.",
         "og_image": "/assets/photos/sarasota-marina.jpg",
         "priority": 0.8,
@@ -184,9 +198,9 @@ ROUTES: list[dict] = [
         "path": "/contact",
         "file": "contact.html",
         "title": "Start a Project | Contact LUMA Smart Home | Sarasota, FL",
-        "description": "Book a consultation with LUMA Smart Home. Serving Sarasota, Manatee, Charlotte, Lee, and Collier Counties. Call +1 (941) 217-1616.",
+        "description": "Book a consultation with LUMA Smart Home. Serving Sarasota and Manatee Counties. Call +1 (941) 217-1616.",
         "h1": "Start Your Project",
-        "og_image": "/assets/photos/waterfront-lanai.jpg",
+        "og_image": "/assets/photos/sarasota-bay-house.jpg",
         "priority": 0.8,
         "changefreq": "monthly",
         "kind": "contact",
@@ -213,19 +227,6 @@ ROUTES: list[dict] = [
         "description": "Ongoing stewardship for the systems we installed — remote diagnostics, scene tweaks, and technicians who already know your rack. LUMA Care memberships.",
         "h1": "Keep the house effortless — long after install.",
         "og_image": "/assets/photos/networking-rack.jpg",
-        "priority": 0.7,
-        "changefreq": "monthly",
-        "kind": "page",
-        "index": True,
-    },
-    {
-        "id": "smart-home-demo",
-        "path": "/demo",
-        "file": "demo.html",
-        "title": "Interactive 3D Smart Home Demo | LUMA Smart Home",
-        "description": "Explore a cutaway Gulf Coast home and see lighting, shades, audio, security, and networking in place — with packages and pricing.",
-        "h1": "See every system in place.",
-        "og_image": "/assets/smart-home-demo/dollhouse-premium.jpg",
         "priority": 0.7,
         "changefreq": "monthly",
         "kind": "page",
@@ -317,16 +318,12 @@ NAV_LINKS = [
     ("/designers", "For designers & builders"),
     ("/about", "About"),
     ("/support", "Customer support"),
-    ("/demo", "3D demo"),
     ("/contact", "Contact"),
 ]
 
 AREA_SERVED = [
     "Sarasota County, FL",
     "Manatee County, FL",
-    "Charlotte County, FL",
-    "Lee County, FL",
-    "Collier County, FL",
 ]
 
 AREA_CITIES = [f"{c['name']}, FL" for c in CITIES]
@@ -377,7 +374,7 @@ def local_business_node() -> dict:
         "telephone": PHONE,
         "email": EMAIL,
         "priceRange": "$$$",
-        "image": abs_url("/assets/photos/waterfront-lanai.jpg"),
+        "image": abs_url("/assets/photos/sarasota-bay-house.jpg"),
         "logo": abs_url("/assets/favicon.svg"),
         "address": {
             "@type": "PostalAddress",
@@ -601,6 +598,26 @@ def noscript_block(route: dict) -> str:
 </noscript>"""
 
 
+# The contact form is rendered by React, which Netlify's deploy-time parser
+# never sees. This hidden twin registers the form and its fields; the SPA
+# posts to it with form-name=contact. A field missing here is dropped.
+CONTACT_FIELDS = [
+    "first_name", "last_name", "email", "phone", "address", "city", "zip",
+    "inquiry", "systems", "message", "preferred_contact", "heard_from",
+    "source_page",
+]
+
+
+def netlify_form(route: dict) -> str:
+    if route["id"] != "contact":
+        return ""
+    inputs = "".join(f'<input name="{f}">' for f in CONTACT_FIELDS)
+    return (
+        '<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>'
+        f'<input name="bot-field">{inputs}</form>\n'
+    )
+
+
 def head_for(route: dict) -> str:
     canonical = abs_url(route["path"])
     og_image = abs_url(route["og_image"])
@@ -648,7 +665,7 @@ def head_for(route: dict) -> str:
 <body>
 {noscript_block(route)}
 <div id="root"></div>
-<script>window.__LUMA_PAGE={json.dumps(route["id"])};</script>
+{netlify_form(route)}<script>window.__LUMA_PAGE={json.dumps(route["id"])};</script>
 <script type="text/babel" data-presets="react" src="/js/app.js"></script>
 </body>
 </html>
@@ -680,7 +697,6 @@ def write_seo_data() -> None:
         "serviceplans": "support",
         "service-plans": "support",
         "customer-support": "support",
-        "smart-home-demo": "smart-home-demo",
         "builders": "designers",
     }
     text = (
@@ -747,8 +763,21 @@ def write_redirects() -> None:
         "/builders           /designers   301",
         "/builders.html      /designers   301",
         "/budget-calculator  /budget      301",
-        "/smart-home-demo    /demo        301",
+        "/smart-home-demo    /automation  301",
+        "/demo               /automation  301",
+        "/demo.html          /automation  301",
         "/index.html         /            301",
+        "",
+        "# Service area narrowed to Sarasota & Manatee Counties (2026-09)",
+        "/service-areas/naples/*        /service-areas  301",
+        "/service-areas/naples          /service-areas  301",
+        "/service-areas/naples.html     /service-areas  301",
+        "/service-areas/fort-myers/*    /service-areas  301",
+        "/service-areas/fort-myers      /service-areas  301",
+        "/service-areas/fort-myers.html /service-areas  301",
+        "/service-areas/punta-gorda/*   /service-areas  301",
+        "/service-areas/punta-gorda     /service-areas  301",
+        "/service-areas/punta-gorda.html /service-areas 301",
         "",
         "# Duplicate .html URLs → canonical pretty paths",
     ]
