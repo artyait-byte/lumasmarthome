@@ -120,7 +120,7 @@ function RelatedLinks({page, navigate}){
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=17';
+const lu = (path) => path + '?v=18';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -1008,7 +1008,7 @@ function ShadingPage({navigate}) {
       body:'Lutron Sivoia QS and Somfy drives, quiet enough for a bedroom, on a schedule built around the actual sun on your actual glass. West-facing solar shades drop before the afternoon heat, every shade lifts ten minutes before sunset so the view comes back, and blackout closes when the house goes to bed.'}}
     values={{h2:'Four moments <em>your shades already know</em>',
       lead:'Scenes built around the sun, not around a timer.',
-      diagram:{image:lu('/assets/photos/layers-shading.jpg'), alt:'Cutaway of a living room and bedroom: east windows with shades raised, west glass with solar shades lowered, the lanai door open, blackout and drapery closed in the bedroom', pins:[[27,28],[44,33],[64,42],[83,45]], base:'base',
+      diagram:{image:lu('/assets/photos/layers-shading.jpg'), alt:'Cutaway of a living room and bedroom: east windows with shades raised, west glass with solar shades lowered, the lanai door open, blackout and drapery closed in the bedroom', pins:[[50,30],[17.8,33],[36.7,55],[75.6,33]], base:'base',
         states:{base:lu('/assets/photos/live/shading-base.jpg'), morning:lu('/assets/photos/live/shade-morning.jpg'), afternoon:lu('/assets/photos/live/shade-afternoon.jpg'), sunset:lu('/assets/photos/live/shade-sunset.jpg'), night:lu('/assets/photos/live/shade-night.jpg')}},
       items:[
         {icon:I('M12 3v2M5.6 5.6l1.4 1.4M3 12h2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'), title:'07:10 · Open east', show:'morning', desc:'Morning-facing shades rise. West stays closed to hold the cool until the sun swings around.'},
@@ -1166,12 +1166,12 @@ function LightingPage({navigate}) {
       body:'Recessed downs, cove, accent, decorative, task and exterior, each on its own dimming track and all on one keypad. We design it with the architect and the interior designer before the drywall, on Lutron RadioRA 3 and Ketra, so the decorative fixtures you chose dim the way they were meant to.'}}
     values={{h2:'What the system <em>does for you</em>',
       lead:'Four things you feel the first evening, none of which need a manual.',
-      diagram:{image:lu('/assets/photos/layers-lighting.jpg'), alt:'Cutaway of a great room at evening: warm downlights, a glowing ceiling cove, a keypad and touch panel by the door, uplit palms on the lanai', pins:[[44,40],[45.5,55],[33,32],[74,55]], base:'base',
+      diagram:{image:lu('/assets/photos/layers-lighting.jpg'), alt:'Cutaway of a great room at evening: warm downlights, a glowing ceiling cove, a keypad and touch panel by the door, uplit palms on the lanai', pins:[[35,17],[14.2,43.7],[22,21],[84.4,52]], base:'base',
         states:{base:lu('/assets/photos/live/lighting-base.jpg'), bright:lu('/assets/photos/live/light-bright.jpg'), warmdim:lu('/assets/photos/live/light-warmdim.jpg'), cove:lu('/assets/photos/live/light-cove.jpg'), landscape:lu('/assets/photos/live/light-landscape.jpg')},
         labels:{bright:'Day', warmdim:'Dinner', cove:'Evening', landscape:'Outside'}},
       items:[
         {icon:I('M3 12h18M12 3v18'), title:'Warm-dim evenings', show:'warmdim', desc:'Ketra and warm-dim LEDs slide from 2700K to 1800K as they dim, so the house goes candle-warm at night instead of grey.'},
-        {icon:I('M4 6h16v12H4zM8 10h.01M12 10h.01M16 10h.01'), title:'Controls in your words', show:['bright','warmdim','cove','landscape'], fx:[{t:'spot',at:[43.5,59],r:5}], desc:'Touch panels and keypads with scenes named "Dinner", "Reading", "Goodnight", finished to match your plates, hardware and wood tones.'},
+        {icon:I('M4 6h16v12H4zM8 10h.01M12 10h.01M16 10h.01'), title:'Controls in your words', show:['bright','warmdim','cove','landscape'], fx:[{t:'spot',at:[14.2,43],r:5}], desc:'Touch panels and keypads with scenes named "Dinner", "Reading", "Goodnight", finished to match your plates, hardware and wood tones.'},
         {icon:I('M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8'), title:'Cove, soffit and accent', show:'cove', desc:'Hidden 2700K tape dimmable to 0.1%, art and niche accents on their own track, no visible hardware in the ceiling plane.'},
         {icon:I('M12 22s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12zM12 10h.01'), title:'Landscape and lanai', show:'landscape', desc:'Sabal palms, oak canopies and the façade washed from the same keypad; warm path tape on the lanai with gulf-side glare kept off the glass.'},
       ]}}
@@ -1225,12 +1225,12 @@ const DB_PROCESS = {
   lead:'Four stages, one low-voltage trade, from the drawings to the day the family moves in.',
   diagram:{image:lu('/assets/photos/layers-trade.jpg'),
     alt:'Cutaway of one house in four stages: drawings on the slab, open framing with network cable, a finished wall with keypad, rack and access point, a furnished living room',
-    pins:[[23,66],[36,41],[60,53],[71,68]],
+    pins:[[15.6,58],[33.3,46.7],[58,44],[77.8,52]],
     fx:[
-      [{t:'spot',at:[23,68],r:16}],
-      [{t:'spot',at:[34,50],r:19},{t:'line',pts:[[26,52],[30,48],[36,52],[44,58]],tone:'teal'}],
-      [{t:'spot',at:[57,54],r:12},{t:'rings',at:[57.5,39.5],r:10,tone:'teal'}],
-      [{t:'spot',at:[72,70],r:16}],
+      [{t:'spot',at:[15.6,58],r:14}],
+      [{t:'spot',at:[32,48],r:15},{t:'line',pts:[[29,70],[32,50],[31,30],[40,26]],tone:'teal'}],
+      [{t:'spot',at:[57,42],r:10},{t:'rings',at:[56,24.7],r:8,tone:'teal'}],
+      [{t:'spot',at:[76,50],r:15}],
     ]},
   items:[
     {title:'Plans and specs', desc:'We join the kickoff or site walk, review the plans and your FF&E schedule, and mark up every conduit run, box location and equipment room before anything is built.'},
@@ -1368,13 +1368,13 @@ function TheatersPage({navigate}) {
     values={{h2:'Four layers, <em>one room</em>',
       lead:'What actually makes a theater, in the order we design it.',
       diagram:{image:lu('/assets/photos/theater-layers.jpg'), alt:'Cutaway of a dedicated home theater: acoustic panels, screen and speakers, two rows of recliners on a riser, a measurement microphone at the main seat',
-        pins:[[73,40],[36,33],[40,67],[46,45]], base:'base',
+        pins:[[62.2,36.7],[24.4,40],[58,66],[44.4,48.3]], base:'base',
         states:{base:lu('/assets/photos/live/theater-base.jpg'), movie:lu('/assets/photos/live/theater-movie.jpg'), lights:lu('/assets/photos/live/theater-lights.jpg')}},
       items:[
-        {icon:I('M3 5h18v14H3zM3 10h18M8 5v14'), title:'Acoustic treatment', show:'lights', fx:[{t:'spot',at:[74,42],r:13},{t:'spot',at:[20,45],r:7}], desc:'Fabric-wrapped absorption and diffusion placed by measurement, so dialogue lands and bass does not boom. The walls look like walls.'},
+        {icon:I('M3 5h18v14H3zM3 10h18M8 5v14'), title:'Acoustic treatment', show:'lights', fx:[{t:'spot',at:[60,38],r:15}], desc:'Fabric-wrapped absorption and diffusion placed by measurement, so dialogue lands and bass does not boom. The walls look like walls.'},
         {icon:I('M2 7h20v10H2zM6 21h12'), title:'Screen and projection', show:'movie', desc:'Screen size from the seating distance, not the wall. 4K laser projection or a direct-view LED wall, calibrated to reference.'},
-        {icon:I('M4 20V10l8-6 8 6v10M9 20v-6h6v6'), title:'Seating and sightlines', fx:[{t:'line',pts:[[39.1,66.8],[34.4,36]]},{t:'line',pts:[[46.5,60.5],[34.4,36]]},{t:'line',pts:[[57.5,62],[34.4,36]]},{t:'line',pts:[[69.6,59.7],[34.4,36]]}], desc:'Rows, risers and aisle set so every seat sees the whole screen and sits in the sound, not behind it.'},
-        {icon:I('M12 3v18M6 8v8M18 8v8M3 11v2M21 11v2'), title:'Calibration', fx:[{t:'rings',at:[49.9,53],r:12,tone:'teal'},{t:'rings',at:[26.6,27],r:7},{t:'rings',at:[45.1,15.4],r:7},{t:'rings',at:[57,17.4],r:7},{t:'rings',at:[65.1,23.3],r:7},{t:'rings',at:[75.4,32],r:7}], desc:'ISF-calibrated picture, speakers time-aligned and equalised in the finished room, with Atmos placed to the ceiling you actually have.'},
+        {icon:I('M4 20V10l8-6 8 6v10M9 20v-6h6v6'), title:'Seating and sightlines', fx:[{t:'line',pts:[[47.8,60],[24.4,40]]},{t:'line',pts:[[62.2,61.7],[24.4,40]]},{t:'line',pts:[[73.3,55],[24.4,40]]}], desc:'Rows, risers and aisle set so every seat sees the whole screen and sits in the sound, not behind it.'},
+        {icon:I('M12 3v18M6 8v8M18 8v8M3 11v2M21 11v2'), title:'Calibration', fx:[{t:'rings',at:[44.4,48.3],r:12,tone:'teal'},{t:'rings',at:[30,12],r:6},{t:'rings',at:[41.7,13.8],r:6},{t:'rings',at:[58.3,18.7],r:6},{t:'rings',at:[72.2,22.2],r:6},{t:'rings',at:[47.2,24.2],r:6}], desc:'ISF-calibrated picture, speakers time-aligned and equalised in the finished room, with Atmos placed to the ceiling you actually have.'},
       ]}}
     panels={{h2:'From <em>media room</em> to private cinema',
       items:[
@@ -1748,12 +1748,12 @@ function AudioPage({navigate}) {
       primaryLabel:'Hear a finished system →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
-    diagram={{image:lu('/assets/photos/layers-audio.jpg'), alt:'Cutaway of a living room, kitchen and pool lanai: flush in-ceiling speakers, an equipment closet with the audio rack, a wall keypad, a measurement microphone in the room', pins:[[25.5,26],[37.5,40],[21,41],[48,60]],
+    diagram={{image:lu('/assets/photos/layers-audio.jpg'), alt:'Cutaway of a living room, kitchen and pool lanai: flush in-ceiling speakers, an equipment closet with the audio rack, a wall keypad, a measurement microphone in the room', pins:[[44.4,17.5],[33.3,70],[33.3,29.2],[33.9,45]],
       fx:[
-        [{t:'rings',at:[25.6,26.3],r:9},{t:'rings',at:[49.8,15.8],r:9},{t:'rings',at:[84,26],r:9},{t:'rings',at:[86,39],r:8,tone:'teal'}],
-        [{t:'spot',at:[37.5,40],r:9},{t:'line',pts:[[37.5,40],[25.6,26.3]]},{t:'line',pts:[[37.5,40],[49.8,15.8]]},{t:'line',pts:[[37.5,40],[84,26]]},{t:'line',pts:[[37.5,40],[86,39]],tone:'teal'}],
-        [{t:'spot',at:[29.8,38],r:5},{t:'spot',at:[21,41.7],r:5},{t:'rings',at:[29.8,38],r:5}],
-        [{t:'rings',at:[47.8,57],r:16,tone:'teal'},{t:'spot',at:[47.8,58],r:7}],
+        [{t:'rings',at:[25.6,25],r:8},{t:'rings',at:[44.4,17.5],r:8},{t:'rings',at:[51.7,14.7],r:8},{t:'rings',at:[77.8,61.3],r:8,tone:'teal'},{t:'rings',at:[91,50],r:8,tone:'teal'}],
+        [{t:'spot',at:[33.3,70],r:9},{t:'line',pts:[[33.3,70],[25.6,25]]},{t:'line',pts:[[33.3,70],[44.4,17.5]]},{t:'line',pts:[[33.3,70],[77.8,61.3]],tone:'teal'},{t:'line',pts:[[33.3,70],[91,50]],tone:'teal'}],
+        [{t:'spot',at:[33.3,29.2],r:4},{t:'spot',at:[47.8,31.7],r:4},{t:'rings',at:[33.3,29.2],r:5}],
+        [{t:'spot',at:[33.9,45],r:6},{t:'rings',at:[33.9,45],r:15,tone:'teal'}],
       ]}}
     valueProp={{
       eyebrow:'What we install',
@@ -1825,11 +1825,11 @@ function SecurityPage({navigate}) {
         {key:'installPhone',    cap:'Protect app on your phone'},
       ],
     }}
-    diagram={{image:lu('/assets/photos/layers-security.jpg'), alt:'Model of a home front: bullet cameras under the eaves, a dome over the door and a video doorbell, a recorder rack and alarm keypad in the garage', pins:[[37,34],[35,58],[49,55]],
+    diagram={{image:lu('/assets/photos/layers-security.jpg'), alt:'Model of a home front: bullet cameras under the eaves, a dome over the door and a video doorbell, a recorder rack and alarm keypad in the garage', pins:[[41.3,33.7],[79.2,34.7],[88.3,40.5]],
       fx:[
-        [{t:'cone',at:[32.8,37.5],to:[24,92],w:12},{t:'cone',at:[60.5,40],to:[58,86],w:9},{t:'cone',at:[85.6,35.5],to:[92,88],w:10}],
-        [{t:'spot',at:[35.3,62],r:9},{t:'line',pts:[[32.8,37.5],[35.3,62]]},{t:'line',pts:[[60.5,40],[46,40],[35.3,62]]},{t:'line',pts:[[85.6,35.5],[70,30],[46,40]]}],
-        [{t:'spot',at:[46.4,58.3],r:5},{t:'rings',at:[46.4,58.3],r:6},{t:'dot',at:[65.5,57.8]},{t:'dot',at:[56,62]},{t:'dot',at:[81,52]},{t:'dot',at:[20,50]}],
+        [{t:'cone',at:[41.3,33.7],to:[44,72],w:10},{t:'cone',at:[66.3,38.7],to:[60,80],w:10},{t:'cone',at:[13.1,30.3],to:[12,62],w:9},{t:'cone',at:[34.4,27],to:[31,58],w:8}],
+        [{t:'spot',at:[79.2,34.7],r:7},{t:'line',pts:[[41.3,33.7],[60,31],[79.2,34.7]]},{t:'line',pts:[[66.3,38.7],[79.2,34.7]]},{t:'line',pts:[[34.4,27],[55,24],[79.2,34.7]]}],
+        [{t:'spot',at:[88.3,40.5],r:4},{t:'rings',at:[88.3,40.5],r:5},{t:'dot',at:[38.9,40.8]},{t:'dot',at:[36.1,42]},{t:'dot',at:[22,38]},{t:'dot',at:[84,40]}],
       ]}}
     valueProp={{
       eyebrow:'How it works',
@@ -1899,7 +1899,7 @@ function PermanentLightingPage({navigate}) {
         alt:'Model of a Gulf Coast pool home at dusk showing each exterior lighting layer',
         base:'all',
         states:{
-          all:lu('/assets/photos/outdoor/all.jpg'), warm:lu('/assets/photos/outdoor/warm.jpg'), off:lu('/assets/photos/outdoor/off.jpg'),
+          all:lu('/assets/photos/outdoor/all.jpg'), off:lu('/assets/photos/outdoor/off.jpg'),
           day:lu('/assets/photos/outdoor/day.jpg'), roofline:lu('/assets/photos/outdoor/roofline.jpg'), facade:lu('/assets/photos/outdoor/facade.jpg'),
           landscape:lu('/assets/photos/outdoor/landscape.jpg'), pool:lu('/assets/photos/outdoor/pool.jpg'), dock:lu('/assets/photos/outdoor/dock.jpg'),
           zones:lu('/assets/photos/outdoor/zones.jpg'), security:lu('/assets/photos/outdoor/security.jpg'),
@@ -1907,7 +1907,7 @@ function PermanentLightingPage({navigate}) {
         },
         labels:{day:'Noon · off', off:'Sunset', all:'Sunset + 5 min · on'},
         modes:[
-          {key:'all', label:'Evening'}, {key:'warm', label:'Warm white'}, {key:'security', label:'Security'},
+          {key:'all', label:'Evening'}, {key:'roofline', label:'Warm white'}, {key:'security', label:'Security'},
           {key:'gameday', label:'Game day'}, {key:'december', label:'December'}, {key:'day', label:'Daylight'},
         ],
         modesNote:'A 2700K warm white that reads like landscape lighting, and every team, flag and holiday colour on top.',
@@ -1984,11 +1984,11 @@ function NetworkingPage({navigate}) {
       primaryLabel:'See a finished rack →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
-    diagram={{image:lu('/assets/photos/layers-networking.jpg'), alt:'Cutaway of a two-story home: network cable runs in the walls, ceiling Wi-Fi access points, a rack with gateway and switches under the stairs', pins:[[18,34],[50.5,26],[36.5,57]],
+    diagram={{image:lu('/assets/photos/layers-networking.jpg'), alt:'Cutaway of a two-story home: network cable runs in the walls, ceiling Wi-Fi access points, a rack with gateway and switches under the stairs', pins:[[60,40],[71.7,21],[76.7,71.7]],
       fx:[
-        [{t:'line',pts:[[36.7,56.7],[32.8,40.8],[29.4,38.7],[23.9,40.8],[17.8,34.2]],tone:'teal'},{t:'line',pts:[[36.7,56.7],[40.5,52],[46,40],[50.5,26.3]],tone:'teal'},{t:'line',pts:[[36.7,56.7],[48,58],[60,52],[73,55]],tone:'teal'},{t:'line',pts:[[36.7,56.7],[30,62],[22,66]],tone:'teal'}],
-        [{t:'spot',at:[50.5,26.3],r:4},{t:'rings',at:[50.5,26.3],r:28,tone:'teal'}],
-        [{t:'spot',at:[36.7,56.7],r:8}],
+        [{t:'line',pts:[[76.7,71.7],[64,72],[60,48],[60,16],[48,15.5],[36.7,15.8]],tone:'teal'},{t:'line',pts:[[60,48],[40,48.5],[22,47]],tone:'teal'}],
+        [{t:'spot',at:[71.7,21],r:3},{t:'spot',at:[37.8,18.8],r:3},{t:'spot',at:[33.3,49.5],r:3},{t:'rings',at:[71.7,21],r:20,tone:'teal'},{t:'rings',at:[37.8,18.8],r:20,tone:'teal'},{t:'rings',at:[33.3,49.5],r:20,tone:'teal'}],
+        [{t:'spot',at:[76.7,71.7],r:9}],
       ]}}
     valueProp={{
       eyebrow:'The wired backbone',
