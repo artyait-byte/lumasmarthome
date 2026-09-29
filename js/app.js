@@ -3740,6 +3740,113 @@ function readPageFromUrl(){
   return 'home';
 }
 
+/* ─── LEAD CARD ───
+   The reference collects leads with a card that opens on its own in the
+   corner (theirs is a pre-chat form). LUMA has no live chat, so the card is
+   the form itself, in two short steps, offering the free walk-through the
+   site already promises. It opens after 20s, at half the page, or on exit
+   intent; stays quiet for 7 days once closed and for good once sent; never
+   on /contact. Posts to the same Netlify form as the contact page. */
+const LEAD_KINDS = ['New build','Renovation','Upgrade my home','Service for my system'];
+const LEAD_KEY = 'luma_lead_v1';
+function leadState(){ try { return JSON.parse(localStorage.getItem(LEAD_KEY) || '{}'); } catch(e) { return {}; } }
+function leadSave(v){ try { localStorage.setItem(LEAD_KEY, JSON.stringify(Object.assign(leadState(), v))); } catch(e) {} }
+
+function FxLeadCard({page}){
+  const nap = napInfo();
+  const [open, setOpen] = useState(false);
+  const [step, setStep] = useState(1);
+  const [kind, setKind] = useState('');
+  const [status, setStatus] = useState('idle');
+  const blocked = page === 'contact';
+  useEffect(() => {
+    if (blocked) return;
+    const st = leadState();
+    if (st.sent || (st.closed && Date.now() - st.closed < 7*864e5)) return;
+    let done = false;
+    const fire = () => { if (!done) { done = true; setOpen(true); cleanup(); } };
+    const t = setTimeout(fire, 20000);
+    const onScroll = () => { const h = document.documentElement; if (h.scrollTop / Math.max(1, h.scrollHeight - innerHeight) > 0.5) fire(); };
+    const onOut = (e) => { if (!e.relatedTarget && e.clientY < 8) fire(); };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    document.addEventListener('mouseout', onOut);
+    function cleanup(){ clearTimeout(t); window.removeEventListener('scroll', onScroll); document.removeEventListener('mouseout', onOut); }
+    return cleanup;
+  }, [blocked]);
+  useEffect(() => {
+    if (!open) return;
+    const k = (e) => { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', k);
+    return () => document.removeEventListener('keydown', k);
+  }, [open]);
+  function close(){ setOpen(false); if (status !== 'sent') leadSave({closed: Date.now()}); }
+  async function submit(e){
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    data.set('inquiry', kind === 'Service for my system' ? 'Service request' : 'New project');
+    data.set('message', ('[' + kind + '] ' + (data.get('message') || '')).trim());
+    data.set('source_page', 'lead card · ' + window.location.pathname);
+    setStatus('sending');
+    try {
+      const res = await fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(data).toString()});
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      setStatus('sent'); leadSave({sent: Date.now()});
+    } catch(err) { setStatus('error'); }
+  }
+  if (blocked) return null;
+  return (
+    <>
+      {!open && status !== 'sent' && (
+        <button type="button" className="fx-lead-launch" onClick={() => { setOpen(true); setStep(1); }}>
+          <span className="fx-lead-dot" aria-hidden="true"/>Talk to LUMA
+        </button>
+      )}
+      {open && (
+        <div className="fx-lead" role="dialog" aria-label="Book a free walk-through">
+          <button type="button" className="fx-lead-x" aria-label="Close" onClick={close}>×</button>
+          {status === 'sent' ? (
+            <div className="fx-lead-body">
+              <p className="fx-lead-kicker">Thank you</p>
+              <h2 className="fx-lead-h">We have your request.</h2>
+              <p className="fx-lead-p">We will call you to set up the walk-through. If it cannot wait, call <a href={nap.telHref}>{nap.telephoneDisplay}</a>.</p>
+            </div>
+          ) : step === 1 ? (
+            <div className="fx-lead-body">
+              <p className="fx-lead-kicker">Free walk-through</p>
+              <h2 className="fx-lead-h">Have a project in mind?</h2>
+              <p className="fx-lead-p">Tell us about the house and we will come out, walk it with you, and sketch what it needs. No obligation.</p>
+              <div className="fx-lead-kinds">
+                {LEAD_KINDS.map(k => (
+                  <button key={k} type="button" className={'fx-chip' + (kind === k ? ' on' : '')} onClick={() => { setKind(k); setStep(2); }}>{k}</button>
+                ))}
+              </div>
+              <p className="fx-lead-step">Step 1 of 2</p>
+            </div>
+          ) : (
+            <form className="fx-lead-body" name="contact" method="POST" onSubmit={submit}>
+              <input type="hidden" name="form-name" value="contact"/>
+              <p hidden><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off"/></label></p>
+              <p className="fx-lead-kicker"><button type="button" className="fx-lead-back" onClick={() => setStep(1)}>←</button> {kind}</p>
+              <h2 className="fx-lead-h">Where should we reach you?</h2>
+              <div className="fx-lead-row">
+                <label className="fx-input"><span>First name</span><input name="first_name" required autoComplete="given-name"/></label>
+                <label className="fx-input"><span>Last name</span><input name="last_name" autoComplete="family-name"/></label>
+              </div>
+              <label className="fx-input"><span>Phone</span><input name="phone" type="tel" required autoComplete="tel"/></label>
+              <label className="fx-input"><span>Email</span><input name="email" type="email" required autoComplete="email"/></label>
+              <label className="fx-input"><span>ZIP code</span><input name="zip" inputMode="numeric" autoComplete="postal-code"/></label>
+              <label className="fx-input"><span>Anything we should know? <small>Optional</small></span><textarea name="message" rows={2}/></label>
+              <button type="submit" className="fx-btn" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Book my walk-through'}</button>
+              {status === 'error' && <p className="fx-form-err" role="alert">That did not go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a>.</p>}
+              <p className="fx-lead-step">Step 2 of 2 · Sarasota &amp; Manatee Counties</p>
+            </form>
+          )}
+        </div>
+      )}
+    </>
+  );
+}
+
 function App() {
   const [page, setPage] = useState(readPageFromUrl);
 
@@ -3812,6 +3919,7 @@ function App() {
       {serviceIds.includes(page) && <GeoStrip serviceId={page} navigate={navigate}/>}
       {page !== 'home' && <RelatedLinks page={page} navigate={navigate}/>}
       <Footer navigate={navigate}/>
+      <FxLeadCard key={page === 'contact' ? 'c' : 'x'} page={page}/>
     </div>
   );
 }
