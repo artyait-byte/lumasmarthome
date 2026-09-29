@@ -1466,3 +1466,9 @@ body{font-size:16px;line-height:1.5}
 @media (max-width:1023px){.fx-scenes{grid-template-columns:1fr;gap:28px}.fx-scenes-what{min-height:0}}
 @media (max-width:767px){.fx-scenes-tabs{grid-template-columns:repeat(4,1fr);gap:8px}.fx-scenes-tab{padding:10px 8px;align-items:center;text-align:center}.fx-scenes-name{font-size:18px}.fx-scenes-chip{left:12px;bottom:12px;padding:8px 12px;font-size:13px}}
 @media (prefers-reduced-motion:reduce){.fx-scenes-stage img{transition:none}.fx-scenes-bar{display:none}}
+
+/* real-case row on service pages: fixed three-up so one or two cards keep the reference proportions */
+.fx-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.fx-cases .fx-work-card{padding-top:240px}
+@media (max-width:1023px){.fx-cases{grid-template-columns:1fr 1fr}}
+@media (max-width:767px){.fx-cases{grid-template-columns:1fr}.fx-cases .fx-work-card{padding-top:180px}}

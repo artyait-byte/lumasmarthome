@@ -149,8 +149,6 @@ const PHOTOS = {
   heroLighting:    lu('/assets/photos/lighting-lutron-hero.jpg'),
   lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
   lightingRania:   lu('/assets/photos/interior-recessed-warm.jpg'),
-  lightingKeypad:  lu('/assets/photos/lighting-keypad.jpg'),
-  handKeypad:      lu('/assets/photos/hand-keypad.jpg'),
   handPhone:       lu('/assets/photos/hand-phone.jpg'),
   handPanel:       lu('/assets/photos/hand-panel.jpg'),
   handTheater:     lu('/assets/photos/hand-theater.jpg'),
@@ -343,10 +341,17 @@ function Nav({navigate}) {
   useEffect(()=>{
     const h = e=>{if(navRef.current&&!navRef.current.contains(e.target))setDdOpen(false);};
     document.addEventListener('mousedown',h);
-    const f = ()=>setScrolled(window.scrollY>40);
-    window.addEventListener('scroll',f,{passive:true}); f();
-    return()=>{document.removeEventListener('mousedown',h);window.removeEventListener('scroll',f);};
+    const f = ()=>{ setScrolled(window.scrollY>40); setDdOpen(false); };
+    const k = e=>{ if (e.key==='Escape') setDdOpen(false); };
+    window.addEventListener('scroll',f,{passive:true}); document.addEventListener('keydown',k);
+    setScrolled(window.scrollY>40);
+    return()=>{document.removeEventListener('mousedown',h);window.removeEventListener('scroll',f);document.removeEventListener('keydown',k);};
   },[]);
+  /* hover opens and closes the menu on a mouse; a tap still toggles it */
+  const hoverable = ()=> window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const closeTimer = useRef(null);
+  const openDd  = ()=>{ if (!hoverable()) return; clearTimeout(closeTimer.current); setDdOpen(true); };
+  const closeDd = ()=>{ if (!hoverable()) return; clearTimeout(closeTimer.current); closeTimer.current = setTimeout(()=>setDdOpen(false), 140); };
   useEffect(()=>{
     document.body.style.overflow = mobOpen ? 'hidden' : '';
     return ()=>{ document.body.style.overflow=''; };
@@ -363,7 +368,7 @@ function Nav({navigate}) {
     {label:'About', page:'about'},
   ];
   return (
-    <div ref={navRef} className={`nav-shell${scrolled?' nav--solid':''}`}>
+    <div ref={navRef} className={`nav-shell${scrolled?' nav--solid':''}`} onMouseLeave={closeDd}>
       <nav className="nav">
         <NavLink page="home" navigate={navigate} className="nav-logo" aria-label="LUMA Smart Home home">
           <div className="logo-dot"/>
@@ -373,12 +378,12 @@ function Nav({navigate}) {
           </div>
         </NavLink>
         <div className="nav-links">
-          <button type="button" className={`nav-link nav-link--dd${ddOpen?' open':''}`} onClick={()=>setDdOpen(v=>!v)} aria-expanded={ddOpen} aria-haspopup="true">
+          <button type="button" className={`nav-link nav-link--dd${ddOpen?' open':''}`} onClick={()=>setDdOpen(v=>!v)} onMouseEnter={openDd} aria-expanded={ddOpen} aria-haspopup="true">
             Solutions
             <svg className={`chevron${ddOpen?' open':''}`} width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
           </button>
           {LINKS.map(({label,page})=>(
-            <NavLink key={page} page={page} navigate={navigate} className="nav-link">{label}</NavLink>
+            <NavLink key={page} page={page} navigate={navigate} className="nav-link" onMouseEnter={closeDd}>{label}</NavLink>
           ))}
         </div>
         <div className="nav-actions">
@@ -389,7 +394,9 @@ function Nav({navigate}) {
           <span/><span/><span/>
         </button>
       </nav>
-      <MegaDropdown active={ddOpen} hoverId={hoverId} setHoverId={setHoverId} navigate={p=>{navigate(p);setDdOpen(false)}}/>
+      <div onMouseEnter={openDd}>
+        <MegaDropdown active={ddOpen} hoverId={hoverId} setHoverId={setHoverId} navigate={p=>{navigate(p);setDdOpen(false)}}/>
+      </div>
 
       {/* MOBILE PANEL */}
       <div className={`nav-mobile-panel${mobOpen?' open':''}`}>
@@ -414,7 +421,7 @@ function Nav({navigate}) {
           </li>
           {LINKS.map(({label,page})=>(<li key={page}><NavLink page={page} navigate={navigate} className="nav-mobile-row" onNavigate={close}>{label}</NavLink></li>))}
           <li><NavLink page="support" navigate={navigate} className="nav-mobile-row" onNavigate={close}>Support</NavLink></li>
-          <li><NavLink page="designers" navigate={navigate} className="nav-mobile-row" onNavigate={close}>For the trade</NavLink></li>
+          <li><NavLink page="designers" navigate={navigate} className="nav-mobile-row" onNavigate={close}>Designers &amp; builders</NavLink></li>
         </ul>
         <a className="nav-mobile-phone" href={nap.telHref}>
           <span className="nav-mobile-phone-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
@@ -456,35 +463,37 @@ function ServiceCard({id, name, height=240}) {
    four, and a closing invitation with no form in it.
    ═══════════════════════════════════════════════════════════════════════════ */
 
+
+/* The five real projects, taken verbatim from their case pages. Nothing on
+   the site may describe a project that is not in this list. */
+const LUMA_CASES = {
+  'case-urban':    {title:'Urban Home',        place:'Sarasota · Bird Key',  photo:PHOTOS.caseUrHero,
+    scope:'Bowers & Wilkins · 7.1.2 Dolby Atmos · UniFi network',
+    lede:'A waterfront urban residence built around music: Bowers & Wilkins from the media room to the pool deck, and a UniFi network that just works.'},
+  'case-family':   {title:'Huge Family House', place:'Bonita Bay',           photo:PHOTOS.caseHfHero,
+    scope:'Cove lighting · Lutron RadioRA 3 · landscape lighting',
+    lede:'A 9,000+ sq ft residence where the lighting was designed to disappear into the architecture. Hidden cove LEDs, layered scenes, one keypad in every room.'},
+  'case-spacious': {title:'Spacious Modern',   place:'Naples · Port Royal',  photo:PHOTOS.caseSpHero,
+    scope:'Sonos whole-home audio · UniFi network · Sonance in-ceiling',
+    lede:'A 7,400 sq ft modern home wired end-to-end for music, network and effortless ownership.'},
+  'case-modern':   {title:'Modern Residence',  place:'Tampa Bay Area',       photo:PHOTOS.projMrExterior,
+    scope:'Five AV zones · Denon · Martin Logan · Sonos Arc',
+    lede:'Five independent AV zones in a single hillside home, unified under one control layer.'},
+  'case-bighouse': {title:'Big Modern House',  place:'Texas Hill Country',   photo:PHOTOS.projBmExterior,
+    scope:'URC · 16 audio / 6 video zones · 7.2.4 Atmos theater · perimeter cameras',
+    lede:'16 audio zones, 6 video zones and a full Dolby Atmos theater, all running from a single URC processor.'},
+};
+
 const FX_SOLUTIONS = [
   {page:'work',      photo:PHOTOS.heroHome,      title:'For owners',  cta:'See finished houses'},
-  {page:'designers', photo:PHOTOS.tradeFlatlay,  title:'For the trade', cta:'How we work with you'}
+  {page:'designers', photo:PHOTOS.tradeFlatlay,  title:'Designers & builders', cta:'How we work with you'}
 ];
 
-const FX_WORK = [
-  {page:'case-modern',   photo:PHOTOS.workBayfront,       county:'Sarasota County', scope:'Lighting · Shades · Audio',
-   title:'A bayfront house that runs on one keypad',
-   body:'Lutron throughout, three layers of shade on the west glass, and audio that disappears into the architecture.'},
-  {page:'case-bighouse', photo:PHOTOS.workFamily,         county:'Manatee County',  scope:'Automation · Theater',
-   title:'A family house where every room knows the hour',
-   body:'Morning, afternoon, evening and away — four states, one press, across eleven thousand square feet.'},
-  {page:'case-urban',    photo:PHOTOS.workRebuild,        county:'Lee County',      scope:'Networking · Security',
-   title:'A rebuild wired for the next twenty years',
-   body:'Structured cabling, enterprise Wi-Fi and on-premise camera storage — no monthly fee, no cloud lock-in.'}
-];
+const FX_WORK = ['case-urban','case-family','case-spacious'];
 
-const FX_QUOTES = [
-  {q:'They spent more time on the drawings than anyone else we interviewed, and it showed on install day. Nothing was improvised, nothing was patched in afterwards.',
-   n:'Michael R.', w:'Longboat Key, FL'},
-  {q:'The shades and the lighting finally behave like one thing instead of two. My wife has never touched an app — she just presses Evening and the house does the rest.',
-   n:'David & Anne P.', w:'Lakewood Ranch, FL'},
-  {q:'I specify LUMA on every project now. They send submittals in the format my GC actually uses, and they never make the interior look like a server room.',
-   n:'Carolyn M.', w:'Interior designer, Sarasota'},
-  {q:'A camera went offline on a Sunday. They had it back before I finished asking. That is the part you only find out about after the install is done.',
-   n:'Robert T.', w:'Siesta Key, FL'},
-  {q:'We came from a system that needed a reboot every other week. Two years in, this one has simply never asked us for anything.',
-   n:'James H.', w:'Naples, FL'}
-];
+/* Real client reviews only (e.g. copied from the Google Business Profile, with
+   permission). The home-page carousel stays hidden until this has entries. */
+const FX_QUOTES = [];
 
 /* Reel tiles render at 259x270 and 319x388 — serve crops cut for that,
    not the full-size hero photos. Ten files, under half a megabyte total. */
@@ -549,7 +558,7 @@ function FxIntro({navigate}) {
           </div>
           <div className="fx-lede">
             <p>Lighting, shade, sound, cameras and the network are one drawing set, issued to your architect and your electrician before a single box is hung.</p>
-            <p>We work out of one studio in Sarasota, on waterfront rebuilds along the keys and new construction inland. Keypads get matched to your switch plates, speakers get flush-trimmed and painted, and the rack lives where nobody has to look at it.</p>
+            <p>We are based in Sarasota and work across Sarasota and Manatee Counties. Controls are matched to your switch plates, speakers are flush-trimmed and painted, and the rack lives where nobody has to look at it.</p>
             <p style={{marginTop:16}}>
               <NavLink page="about" navigate={navigate} className="fx-more">Learn more <i aria-hidden="true">→</i></NavLink>
             </p>
@@ -630,7 +639,7 @@ function FxScenes({heading, lede, band}) {
       <div className="fx-wide">
         <div className="fx-heads" style={{marginBottom:40}}>
           <h2 className="fx-d3" dangerouslySetInnerHTML={{__html: heading || 'One room, <em>four states</em>'}}/>
-          <p className="fx-lede">{lede || 'Same room, same camera. Nothing in it changes but the light and the shades, and nobody touched a switch. Tap a time to see what the house does on its own.'}</p>
+          <p className="fx-lede">{lede || 'An example programme for a Gulf Coast great room. Same room, same camera: only the light and the shades change, and nobody touched a switch. Tap a time to see what the house does on its own.'}</p>
         </div>
         <div className="fx-scenes">
           <div className="fx-scenes-stage" role="img" aria-label={`${s.name} scene at ${s.time}`}>
@@ -672,7 +681,7 @@ function FxSupport({navigate}) {
           <div className="fx-row-copy">
             <h2 className="fx-d3">The year after the install</h2>
             <div className="fx-lede">
-              <p>Our service team sits in Sarasota and drives the whole coast, Bradenton to Naples. You get the technician who commissioned your house, not a queue.</p>
+              <p>Our service team is based in Sarasota and works across Sarasota and Manatee Counties. As the systems evolve, we keep them current.</p>
               <p>Take a care plan or call us when something drifts. Either way firmware, network health, camera storage and scene tuning stay someone's job, and that someone is us.</p>
             </div>
             <FxActions navigate={navigate} align="start"/>
@@ -696,7 +705,7 @@ function FxSupport({navigate}) {
    sans title, a 3px accent rule 100px wide, prose, "Learn more →". Seven
    cards, three in view, the rest a swipe away. ── */
 const FX_DISCIPLINES = [
-  {page:'lighting',   photo:PHOTOS.handKeypad,    title:'Lighting control',
+  {page:'lighting',   photo:PHOTOS.lightingKetra, title:'Lighting control',
    body:'Lutron and Ketra on every circuit, warm-dim tuned for evening, keypads matched to your plates.'},
   {page:'shading',    photo:PHOTOS.window,        title:'Motorized shades',
    body:'Three layers on the west glass, quiet drives, pockets drawn before the drywall goes up.'},
@@ -760,19 +769,22 @@ function FxWork({navigate}) {
     <section className="fx-band fx-py-lg">
       <div className="fx-wide">
         <div className="fx-heads" style={{marginBottom:0}}>
-          <h2 className="fx-d3">Recent houses</h2>
-          <p className="fx-lede">Three Gulf Coast projects, from a 4,500 sq ft bayfront rebuild to an eleven-thousand-foot family house inland.</p>
+          <h2 className="fx-d3">Selected work</h2>
+          <p className="fx-lede">Finished projects, each with its own case study: the brief, the systems and the equipment list.</p>
         </div>
         <div className="fx-work">
-          {FX_WORK.map(w => (
-            <NavLink key={w.page} page={w.page} navigate={navigate} className="fx-work-card">
-              <img src={w.photo} alt={w.title} loading="lazy" decoding="async"/>
-              <div className="fx-work-meta"><span>{w.county}</span><span>{w.scope}</span></div>
-              <h3>{w.title}</h3>
-              <p>{w.body}</p>
+          {FX_WORK.map(id => { const c = LUMA_CASES[id]; return (
+            <NavLink key={id} page={id} navigate={navigate} className="fx-work-card">
+              <img src={c.photo} alt={c.title} loading="lazy" decoding="async"/>
+              <div className="fx-work-meta"><span>{c.place}</span><span>{c.scope}</span></div>
+              <h3>{c.title}</h3>
+              <p>{c.lede}</p>
             </NavLink>
-          ))}
+          );})}
         </div>
+        <p style={{textAlign:'center',marginTop:32}}>
+          <NavLink page="work" navigate={navigate} className="fx-more">All five projects <i aria-hidden="true">→</i></NavLink>
+        </p>
       </div>
     </section>
   );
@@ -879,8 +891,7 @@ function FxRegion({navigate}) {
    typeset name until it is, so real logos drop in without a code change. ── */
 const FX_BRANDS = [
   ['lutron','Lutron'], ['clare','Clare'], ['rti','RTI'], ['sonos','Sonos'], ['sonance','Sonance'],
-  ['control4','Control4'], ['ketra','Ketra'], ['somfy','Somfy'], ['ubiquiti','Ubiquiti'],
-  ['josh','Josh.ai'], ['crestron','Crestron']
+  ['ubiquiti','Ubiquiti'], ['bowers-wilkins','Bowers & Wilkins'], ['kef','KEF'], ['urc','URC'], ['wattbox','WattBox']
 ];
 /* Add a slug here once its SVG is in /assets/brands/ — the card then shows
    the mark instead of the typeset name, and nothing is requested before that. */
@@ -972,7 +983,7 @@ function HomePage({navigate}) {
       <FxDisciplines navigate={navigate}/>
 
       <FxWork navigate={navigate}/>
-      <FxQuotes/>
+      {FX_QUOTES.length > 0 && <FxQuotes/>}
       <FxRegion navigate={navigate}/>
       <FxBrands/>
       <FxJournal navigate={navigate}/>
@@ -1151,7 +1162,7 @@ function LightingPage({navigate}) {
       lead:'Four things you feel the first evening, none of which need a manual.',
       items:[
         {icon:I('M3 12h18M12 3v18'), title:'Warm-dim evenings', desc:'Ketra and warm-dim LEDs slide from 2700K to 1800K as they dim, so the house goes candle-warm at night instead of grey.'},
-        {icon:I('M4 6h16v12H4zM8 10h.01M12 10h.01M16 10h.01'), title:'Keypads in your words', desc:'Palladiom and Alisse keypads engraved "Dinner", "Reading", "Goodnight", finished to match your plates, hardware and wood tones.'},
+        {icon:I('M4 6h16v12H4zM8 10h.01M12 10h.01M16 10h.01'), title:'Controls in your words', desc:'Touch panels and keypads with scenes named "Dinner", "Reading", "Goodnight", finished to match your plates, hardware and wood tones.'},
         {icon:I('M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8'), title:'Cove, soffit and accent', desc:'Hidden 2700K tape dimmable to 0.1%, art and niche accents on their own track, no visible hardware in the ceiling plane.'},
         {icon:I('M12 22s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12zM12 10h.01'), title:'Landscape and lanai', desc:'Sabal palms, oak canopies and the façade washed from the same keypad; warm path tape on the lanai with gulf-side glare kept off the glass.'},
       ]}}
@@ -1169,6 +1180,7 @@ function LightingPage({navigate}) {
         {photo: PHOTOS.lightingRania, title:'Fixture coordination', body:'We work downstream of your interior designer and lighting consultant. Visual Comfort chandeliers, RH pendants, custom cove in the millwork: every fixture tuned to dim smoothly and hold colour.'},
         {photo: PHOTOS.handPanel, title:'Unified control', body:'Keypads, app and voice under a single control layer. We match keypad finishes to your hardware, commission every zone on site, and leave a system any family member can use.'},
       ]}}
+    cases={['case-family']}
     ctaTitle='Ready to light the house <em>properly?</em>'
     ctaBody='Send us the fixture schedule, or just the floor plan. We will come back with a control design that matches what your designer specified, and an honest range.'
   />;
@@ -1437,6 +1449,7 @@ function TheatersPage({navigate}) {
         {photo: PHOTOS.workRebuild, title:'Living-room theater', body:'A great room that turns into a cinema at 8pm: hidden screen, in-ceiling surrounds, shades and lights on one press.'},
         {photo: PHOTOS.lightingKetra, title:'Media room', body:'A family room with a large display, a proper soundbar-free system, and acoustics that keep game day from taking over the house.'},
       ]}}
+    cases={['case-bighouse', 'case-urban', 'case-modern']}
     ctaTitle='Start a <em>theater conversation</em>'
     ctaBody='Tell us about the room: square footage, ceiling height, how you will use it. We answer with a calibration plan, not a quote form.'
   />;
@@ -1503,15 +1516,16 @@ function AutomationPage({navigate}) {
     panels={{h2:'Routines that <em>survive real life</em>',
       items:[
         {photo: PHOTOS.handPhone, title:'Tuned for ninety days', body:'We program the routines with you for three months, not once on day one. The first month is observation; the second and third are the real tuning.'},
-        {photo: PHOTOS.handKeypad, title:'Buttons in your words', body:'Every keypad button documented and engraved the way you say it: Reading, Movie, Goodnight. Never LED1, Scene 4, Group 12.'},
+        {photo: PHOTOS.installPanel, title:'Scenes in your words', body:'Every scene named the way you say it, Reading, Movie, Goodnight, on the touch panel by the door and in the app. Never LED1, Scene 4, Group 12.'},
         {photo: PHOTOS.heroHome, title:'An annual visit, included', body:'We re-tune as your habits change. Kids grow up, work hours shift, the lanai becomes a gym. The routines move with you.'},
       ]}}
+    cases={['case-bighouse', 'case-family']}
     ctaTitle='Start an <em>automation conversation</em>'
     ctaBody='Tell us how the house is used through the day. We map it to scenes, then show you the plan before anything is ordered.'
   />;
 }
 /* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
-function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes}) {
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases}) {
   /* The reference's inner page, section for section: a short hero, one
      centred paragraph with a bold lead, a "what it does for you" grid (copy
      in five columns, four icon items in seven), a row of photo cards, and
@@ -1529,10 +1543,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
       ...(valueProp.split && valueProp.split.rows ? [{title:valueProp.split.rows[0].name, desc:valueProp.split.rows[0].desc}] : [])
     ].slice(0,4)
   });
-  const cards = panels || (projects && {
-    h2: projects.h2,
-    items: projects.items.map(p => ({photo: PHOTOS[p.key], title: p.name, body: p.tag}))
-  });
+  const cards = panels;
   const pin = <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>;
   return (
     <div className="page">
@@ -1638,6 +1649,25 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
         </section>
       )}
 
+      {/* 4c. real projects that used this system — linked to their case studies */}
+      {cases && cases.length > 0 && (
+        <section className="fx-band fx-py-lg">
+          <div className="fx-wide">
+            <div className="fx-heads" style={{marginBottom:40}}><h2 className="fx-d3">Where we have done this</h2></div>
+            <div className="fx-cases">
+              {cases.map(id => { const c = LUMA_CASES[id]; return (
+                <NavLink key={id} page={id} navigate={navigate} className="fx-work-card">
+                  <img src={c.photo} alt={c.title} loading="lazy" decoding="async"/>
+                  <div className="fx-work-meta"><span>{c.place}</span></div>
+                  <h3>{c.title}</h3>
+                  <p>{c.scope}</p>
+                </NavLink>
+              );})}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 5. FAQ — the reference's accordion, only where a page has questions */}
       {faq && (
         <section className="fx-band fx-py-lg">
@@ -1709,14 +1739,7 @@ function AudioPage({navigate}) {
         {n:'03', text:'One-year service visit included — drivers age, rooms change. We re-measure, re-tune, and replace anything that drifts.'},
       ],
     }}
-    projects={{
-      h2:'Three rooms we like talking about.',
-      items:[
-        {key:'workRebuild',  tag:'Fort Myers · Canal',      name:'14-zone whole-home · Sonance Reference'},
-        {key:'workBayfront', tag:'Sarasota · Bayfront',     name:'Lanai + pool · James Loudspeaker'},
-        {key:'projectModernVilla',  tag:'Sanibel · Modern villa',  name:'Two-channel listening room · Trinnov'},
-      ],
-    }}
+    cases={['case-urban', 'case-spacious', 'case-bighouse']}
     credentials={['CEDIA Member','THX-Aligned Design','Trinnov Certified','ISF Calibrator','Insured & bonded']}
     ctaCopy={{
       h2:'Start an <em>audio conversation.</em>',
@@ -1786,14 +1809,7 @@ function SecurityPage({navigate}) {
         {n:'03', text:'Two-year hardware warranty, parts and labor. Anything that fails in normal use, we replace — including the labor to swap it.'},
       ],
     }}
-    projects={{
-      h2:'Three properties, fully covered.',
-      items:[
-        {key:'workFamily',   tag:'Lakewood Ranch',        name:'24 cameras · 8-acre estate'},
-        {key:'workBayfront', tag:'Sarasota · Bayfront',   name:'Pool + dock · weatherized PTZ'},
-        {key:'securityHero', tag:'Siesta Key',            name:'Glass-break + perimeter · invisible alarm'},
-      ],
-    }}
+    cases={['case-bighouse']}
     credentials={['Ubiquiti UVP Partner','UniFi Protect Certified','CEDIA Member','Insured & bonded']}
     ctaCopy={{
       h2:'Start a <em>security conversation.</em>',
@@ -1832,8 +1848,8 @@ function PermanentLightingPage({navigate}) {
          desc:'Front roofline, lanai, dock and the garage side each on their own run, so the pool cage can glow while the street side stays warm white.'},
         {icon:I('M12 3a9 9 0 1 0 9 9c0-1.5-1-2-2-2h-2a2 2 0 0 1-2-2V6c0-1.5-1-3-3-3zM7 10h.01M10 7h.01M15 8h.01'), title:'Sixteen million colours',
          desc:'A 2700K warm white that reads like landscape lighting, and every team, flag and holiday colour on top. Patterns and animations for the nights you want them.'},
-        {icon:I('M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z'), title:'Built for salt and storms',
-         desc:'Salt-rated diodes, a sealed channel and fasteners into the fascia. Hurricane-season wind does not carry off a track that is part of the house.'},
+        {icon:I('M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z'), title:'Part of the house',
+         desc:'A sealed channel fastened into the fascia, not clipped to a gutter, so the line stays straight and nothing goes up or comes down with the seasons.'},
       ]
     }}
     pair={{
@@ -1858,10 +1874,9 @@ function PermanentLightingPage({navigate}) {
       {q:'How does it look during the day?', a:'Like trim. The channel is a slim extrusion powder-coated to match your fascia or soffit colour, and the diodes sit inside it. Most visitors do not notice it until you turn it on.'},
       {q:'Do you have a warm white?', a:'Yes, and it is what most owners run most nights: a 2700K warm white close to what good landscape lighting produces. The colours are there for when you want them.'},
       {q:'Will the channel fit my roofline?', a:'It is cut and fitted on site to your eaves, gables and returns, including barrel-tile rooflines and pool cages. Corners and peaks are planned on the drawing before the ladder goes up.'},
-      {q:'Does it survive hurricane season?', a:'The channel is fastened to the fascia, not clipped to a gutter, the diodes are salt-rated and the electronics are sealed. We have not had a system come down in a storm.'},
-      {q:'How much power does it use?', a:'A full roofline draws roughly what two or three incandescent porch lights did. On warm white at dimmed brightness it is less than that.'},
+      {q:'How is it fixed to the house?', a:'The channel is fastened to the fascia, not clipped to a gutter, so it stays put through summer storms and does not interfere with drainage.'},
       {q:'Can it join the rest of the house?', a:'If LUMA did the lighting or automation, the roofline joins the same scenes: Evening turns it on with the lanai, Away turns it off with everything else, and a keypad by the door has a button for it.'},
-      {q:'What is the warranty?', a:'Manufacturer parts warranty on the diodes and controller, and our own labour warranty on the install. If a diode fails, we replace the segment; you do not climb anything.'},
+      {q:'What is the warranty?', a:'Warranty terms depend on the product line you choose; we set them out in writing in the proposal, before anything is ordered.'},
     ]}
     ctaTitle='Tell us what your roofline should do'
     ctaBody='Send a photo of the front of the house. We will come back with a run plan, a channel colour, and an honest range before anything is ordered.'
@@ -1925,14 +1940,7 @@ function NetworkingPage({navigate}) {
         {n:'03', text:'We ship the network 30 days before move-in so you arrive online — gateway provisioned, APs surveyed, every device pre-onboarded.'},
       ],
     }}
-    projects={{
-      h2:'Three networks running quietly.',
-      items:[
-        {key:'projectModernVilla',   tag:'Sanibel · Modern villa',  name:'Whole-home Cat6A · 8 APs · Wi-Fi 7'},
-        {key:'workFamily',   tag:'Lakewood Ranch',          name:'Two-building campus · fiber backbone'},
-        {key:'workRebuild',  tag:'Fort Myers · Canal',      name:'40+ IoT devices · VLAN-isolated'},
-      ],
-    }}
+    cases={['case-spacious', 'case-urban']}
     credentials={['Ubiquiti UEWA','Ubiquiti UWA-Pro','Cat6A bonded subcontractor','Insured & bonded']}
     ctaCopy={{
       h2:'Start a <em>network conversation.</em>',
