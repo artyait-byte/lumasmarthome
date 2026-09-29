@@ -1749,3 +1749,12 @@ body{font-size:16px;line-height:1.5}
    the panel itself is white, so its type is pinned dark */
 .dropdown-wrap{color:var(--dark)}
 .dropdown-wrap .dd-text h4{color:var(--dark)}
+
+/* designers: the deliverables as a two-column checklist on the teal panel,
+   and the reference's two-column FAQ */
+.fx-checks--grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 32px}
+.fx-values .fx-checks li{color:rgba(252,250,246,.9);font-size:17px}
+.fx-values .fx-checks li::before{border-color:#F0C39B}
+.fx-faq--two{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;border-top:none}
+.fx-faq--two .fx-faq-item{border-top:1px solid var(--cream3);border-bottom:none}
+@media (max-width:767px){.fx-checks--grid,.fx-faq--two{grid-template-columns:1fr}}

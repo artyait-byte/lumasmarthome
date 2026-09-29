@@ -1192,75 +1192,55 @@ function LightingPage({navigate}) {
   />;
 }
 /* ─── DESIGNERS PAGE ─── */
-/* ─── DESIGNERS & BUILDERS PAGE ─── */
 /* ─── DESIGNERS & BUILDERS ───
-   Built from the reference's inner-page pieces: hero, one centred paragraph,
-   the values panel, the tabbed block from their About page, a two-column
-   list, the wave CTA. */
-const DB_DESIGNER_STEPS = [
-  {n:'01', title:'You send us your FF&E schedule',
-   body:'Share fixture specs, CAD drawings, or even a rough list. We review your decorative selections and flag anything that needs a dimmer, driver, or special wiring before walls close.'},
-  {n:'02', title:'We write a single coordinated proposal',
-   body:'One line-item document covers all fixtures, LED drivers, Lutron or Ketra dimmers, wall plates, and commissioning, formatted for your client presentation and matched to your interior finishes.'},
-  {n:'03', title:'On-site coordination at your pace',
-   body:'We attend your site visits or schedule separately. If something changes after demolition (ceiling height, beam location, a last-minute fixture swap) we adjust the spec the same day.'},
-  {n:'04', title:'Submittal packages your way',
-   body:'Cut sheets, dimmer curves, wiring diagrams. Formatted for your workflow: PDF, Revit, or email to the GC. The electrician gets exactly what they need, once.'},
+   The reference's audience page (their /commercial): hero, one paragraph
+   over a row of audience cards, the navy values panel with a photo, then a
+   cutaway of how a build runs, the brands, a two-column FAQ and the callout.
+   The copy is the page's own; nothing new is promised. */
+const DB_AUDIENCES = [
+  {title:'Interior designers', photo:PHOTOS.tradeFlatlay, alt:'Finishes, fabric and a keypad sample on a designer\'s desk',
+   body:'Send the FF&E schedule. We flag anything that needs a dimmer, driver or special wiring before walls close, and one proposal covers fixtures, drivers, dimmers, plates and commissioning.'},
+  {title:'Architects', photo:lu('/assets/photos/trade-plans.jpg'), alt:'A floor plan marked up with lighting and low-voltage locations',
+   body:'We mark up the plan set early: keypad, speaker and camera locations, shade pockets, the equipment room and every conduit run. Submittals in PDF or Revit.'},
+  {title:'Custom builders', photo:lu('/assets/photos/trade-roughin.jpg'), alt:'Labelled network and speaker cable run through the studs at rough-in',
+   body:'A rough-in package the electrician installs in one pass, walks before insulation and before drywall, and a trim-out that does not hold up the certificate of occupancy.'},
 ];
 
-const DB_BUILDER_STEPS = [
-  {n:'01', title:'Pre-construction meeting',
-   body:'We join your kickoff call or site walk. We review the architectural plans and mark up every conduit run, J-box location, and equipment room so nothing needs to be re-opened later.'},
-  {n:'02', title:'Rough-in package for your electrician',
-   body:'A single PDF: conduit layout, home-run map, box heights, rack dimensions, and PoE drop locations. Your electrician installs in one pass.'},
-  {n:'03', title:'Milestone check-ins through framing and drywall',
-   body:'We walk the job before insulation and before drywall so the GC can catch issues at cost, not at trim-out. We document everything and update the package if the plan shifts.'},
-  {n:'04', title:'Trim-out and commissioning',
-   body:'We install all devices, pull and terminate every cable, and program the system while other trades finish. Our work does not hold up your certificate of occupancy.'},
-  {n:'05', title:'Punch-list and client handoff',
-   body:'We attend the final walk with you. Every scene, shade, and camera is verified. The client gets a 60-minute orientation and a printed quick-reference card for the home.'},
+const DB_DELIVER = [
+  'Pre-construction walk and a marked-up plan set',
+  'One coordinated, line-item proposal',
+  'Submittal packages in PDF or Revit',
+  'Rough-in package: conduit, boxes, home-run map',
+  'Walks before insulation and before drywall',
+  'Trim-out and commissioning on your schedule',
+  'Client orientation and a printed quick-reference card',
+  'Referral fee on signed contracts, paid at commissioning',
 ];
 
-const DB_WHY = [
-  {icon:'people', title:'One trade, not four',
-   desc:'Lighting control, shading, AV, security, and networking under one contractor. Your GC has one contact, one schedule, and one RFI queue for all of it.'},
-  {icon:'shield', title:'Florida licensed · insured',
-   desc:'Low-voltage contractor of record. We carry general liability and workers\' comp. Certificate of insurance on request.'},
-  {icon:'gift', title:'Referral program',
-   desc:'For designers and builders who refer projects: a referral fee on signed contracts, paid at commissioning. Ask us for the one-page agreement.'},
-];
+const DB_PROCESS = {
+  h2:'How a build runs <em>with us</em>',
+  lead:'Four stages, one low-voltage trade, from the drawings to the day the family moves in.',
+  diagram:{image:lu('/assets/photos/layers-trade.jpg'),
+    alt:'Cutaway of one house in four stages: drawings on the slab, open framing with network cable, a finished wall with keypad, rack and access point, a furnished living room',
+    pins:[[23,66],[36,41],[60,53],[71,68]]},
+  items:[
+    {title:'Plans and specs', desc:'We join the kickoff or site walk, review the plans and your FF&E schedule, and mark up every conduit run, box location and equipment room before anything is built.'},
+    {title:'Rough-in', desc:'A single PDF for the electrician: conduit layout, home-run map, box heights, rack dimensions and PoE drops. We walk the job before insulation and before drywall.'},
+    {title:'Trim-out and commissioning', desc:'We install the devices, terminate every cable and program the system while other trades finish.'},
+    {title:'Handoff', desc:'We attend the final walk. Every scene, shade and camera is verified, and the client gets a 60-minute orientation and a printed quick-reference card.'},
+  ],
+};
 
-const DB_LISTS = [
-  {kicker:'For designers & architects', title:'What you get', items:[
-    'A single coordinated proposal: fixtures, drivers, control, commissioning',
-    'Submittal packages in PDF or Revit format',
-    'Site visits on your schedule, spec changes the same day',
-    'Referral fee on signed contracts, paid at commissioning',
-  ]},
-  {kicker:'For builders', title:'What we deliver', items:[
-    'Pre-construction walk and marked-up plan set',
-    'Rough-in package for the electrician: conduit, J-box, home-run map',
-    'Milestone inspections before insulation and before drywall',
-    'Full trim-out and commissioning on your schedule',
-    'Client orientation and printed quick-reference guide',
-    'Referral fee on signed contracts, paid at commissioning',
-  ]},
+const DB_FAQ = [
+  {q:'When should we bring you in?', a:'At the plans. If low-voltage is on the first-round electrical drawings, nothing has to be opened up later.'},
+  {q:'Do you work with our electrician?', a:'Yes. The electrician gets one rough-in package and installs in one pass; we walk the job with them before insulation and before drywall.'},
+  {q:'Can you work from our drawings?', a:'Yes. We mark up your plan set and return submittals, cut sheets and wiring diagrams as PDF or Revit.'},
+  {q:'What do you cover?', a:'Lighting control, shading, audio and video, security and networking, under one contractor, one schedule and one RFI queue.'},
+  {q:'Are you licensed and insured?', a:'LUMA is a Florida licensed low-voltage contractor carrying general liability and workers\' comp. A certificate of insurance is available on request.'},
+  {q:'Do you pay referral fees?', a:'Yes, on signed contracts, paid at commissioning. Ask us for the one-page agreement.'},
+  {q:'Where do you work?', a:'Sarasota and Manatee Counties: Sarasota, Bradenton, Lakewood Ranch, Venice, Siesta Key, Longboat Key, Anna Maria Island and Palmetto.'},
+  {q:'What does the client get at the end?', a:'A verified system, a 60-minute orientation, a printed quick-reference card, and a service team that already knows the house.'},
 ];
-
-function FxSteps({steps}){
-  return (
-    <div className="fx-steps">
-      {steps.map(s => (
-        <div key={s.n} className="fx-step">
-          <small>Step {s.n}</small>
-          <h3>{s.title}</h3>
-          <i className="fx-panel-rule" aria-hidden="true"/>
-          <p>{s.body}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 function DesignersPage({navigate}) {
   const trade = () => { CONTACT_PRESET = 'Designer or builder'; };
@@ -1268,45 +1248,62 @@ function DesignersPage({navigate}) {
     <div className="page">
       <FxInnerHero kicker="Designers & builders" h1="Your vision. Our wiring." image={PHOTOS.heroDesigners} alt="Architectural lighting in a finished Gulf Coast living room"/>
 
-      <section className="fx-band--plain fx-py-md">
-        <div className="fx-field">
-          <div className="fx-intro-prose">
-            <p><strong>LUMA works alongside interior designers, architects, and custom builders across Sarasota and Manatee.</strong> We fit our process to yours: FF&amp;E coordination, submittal packages, pre-wire rough-in, and final punch-list. One contractor for lighting, shading, AV, security, and networking. One schedule. One proposal your client can actually read.</p>
-          </div>
-        </div>
-      </section>
-
-      <FxValuesPanel h2="Built to fit your workflow." items={DB_WHY}/>
-
       <section className="fx-band--plain fx-py-lg">
         <div className="fx-wide">
-          <div className="fx-heads" style={{marginBottom:40}}><h2 className="fx-d3">A clear process, start to finish.</h2></div>
-          <FxTabs tabs={[
-            {label:'Designers & architects', body:<FxSteps steps={DB_DESIGNER_STEPS}/>},
-            {label:'Builders & developers', body:<FxSteps steps={DB_BUILDER_STEPS}/>},
-          ]}/>
-        </div>
-      </section>
-
-      <section className="fx-band fx-py-lg">
-        <div className="fx-wide">
-          <div className="fx-lists">
-            {DB_LISTS.map(l => (
-              <div key={l.kicker} className="fx-list">
-                <span className="fx-panel-kicker">{l.kicker}</span>
-                <h3 className="fx-d3">{l.title}</h3>
-                <ul className="fx-checks">{l.items.map(it => <li key={it}>{it}</li>)}</ul>
-                <NavLink page="contact" navigate={navigate} onNavigate={trade} className="fx-btn">Start a trade inquiry</NavLink>
+          <div className="fx-heads" style={{marginBottom:48}}>
+            <p className="fx-lede" style={{maxWidth:768,margin:'0 auto',color:'var(--dark)'}}>LUMA works alongside interior designers, architects, and custom builders across Sarasota and Manatee. One contractor for lighting, shading, AV, security, and networking. One schedule. One proposal your client can actually read.</p>
+          </div>
+          <div className="fx-panels fx-panels--static fx-panels--three">
+            {DB_AUDIENCES.map(a => (
+              <div key={a.title} className="fx-panel-card">
+                <span className="fx-panel-img"><img src={a.photo} alt={a.alt} loading="lazy" decoding="async"/></span>
+                <span className="fx-panel-body">
+                  <h3>{a.title}</h3>
+                  <i className="fx-panel-rule" aria-hidden="true"/>
+                  <p>{a.body}</p>
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <FxCta navigate={navigate} onNavigate={trade}
-        title="Ready to work together?"
-        body="Send us your plans or a quick note about the project, and we will come back with a scope."
-        label="Start a trade inquiry"/>
+      <section className="fx-values">
+        <div className="fx-wide">
+          <div className="fx-values-grid">
+            <div className="fx-values-photo"><img src={PHOTOS.caseHfGreatRoom} alt="Huge Family House, Bonita Bay: cove lighting designed with the architect" loading="lazy" decoding="async"/></div>
+            <div className="fx-values-copy">
+              <div>
+                <h2 className="fx-d3">What we deliver</h2>
+                <div className="fx-lede"><p>We fit our process to yours: FF&amp;E coordination, submittal packages, pre-wire rough-in, and the final punch-list.</p></div>
+              </div>
+              <ul className="fx-checks fx-checks--grid">{DB_DELIVER.map(d => <li key={d}>{d}</li>)}</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <FxDiagram vals={DB_PROCESS}/>
+
+      <FxBrands/>
+
+      <section className="fx-band fx-py-lg">
+        <div className="fx-wide">
+          <div className="fx-heads" style={{marginBottom:32}}><h2 className="fx-d3">Frequently asked questions</h2></div>
+          <div className="fx-faq fx-faq--two">
+            {DB_FAQ.map(q => (
+              <details key={q.q} className="fx-faq-item">
+                <summary>{q.q}<i aria-hidden="true">+</i></summary>
+                <p>{q.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <FxCallout kicker="Designers & builders" h2="Have a project coming up?"
+        body="Send the plans or a quick note about the project, and we will come back with a scope."
+        label="Start a trade inquiry" onNavigate={trade} navigate={navigate}/>
     </div>
   );
 }
