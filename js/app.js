@@ -1008,6 +1008,7 @@ function ShadingPage({navigate}) {
       body:'Lutron Sivoia QS and Somfy drives, quiet enough for a bedroom, on a schedule built around the actual sun on your actual glass. West-facing solar shades drop before the afternoon heat, every shade lifts ten minutes before sunset so the view comes back, and blackout closes when the house goes to bed.'}}
     values={{h2:'Four moments <em>your shades already know</em>',
       lead:'Scenes built around the sun, not around a timer.',
+      diagram:{image:lu('/assets/photos/layers-shading.jpg'), alt:'Cutaway of a living room and bedroom: east windows with shades raised, west glass with solar shades lowered, the lanai door open, blackout and drapery closed in the bedroom', pins:[[27,28],[44,33],[64,42],[83,45]]},
       items:[
         {icon:I('M12 3v2M5.6 5.6l1.4 1.4M3 12h2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'), title:'07:10 · Open east', desc:'Morning-facing shades rise. West stays closed to hold the cool until the sun swings around.'},
         {icon:I('M12 3v18M3 12h18M12 8l4 4-4 4-4-4z'), title:'14:30 · Shield west', desc:'Solar shades drop on west-facing glass. AC load drops with them, and the finishes stay out of the UV.'},
@@ -1164,6 +1165,7 @@ function LightingPage({navigate}) {
       body:'Recessed downs, cove, accent, decorative, task and exterior, each on its own dimming track and all on one keypad. We design it with the architect and the interior designer before the drywall, on Lutron RadioRA 3 and Ketra, so the decorative fixtures you chose dim the way they were meant to.'}}
     values={{h2:'What the system <em>does for you</em>',
       lead:'Four things you feel the first evening, none of which need a manual.',
+      diagram:{image:lu('/assets/photos/layers-lighting.jpg'), alt:'Cutaway of a great room at evening: warm downlights, a glowing ceiling cove, a keypad and touch panel by the door, uplit palms on the lanai', pins:[[44,40],[45.5,55],[33,32],[74,55]]},
       items:[
         {icon:I('M3 12h18M12 3v18'), title:'Warm-dim evenings', desc:'Ketra and warm-dim LEDs slide from 2700K to 1800K as they dim, so the house goes candle-warm at night instead of grey.'},
         {icon:I('M4 6h16v12H4zM8 10h.01M12 10h.01M16 10h.01'), title:'Controls in your words', desc:'Touch panels and keypads with scenes named "Dinner", "Reading", "Goodnight", finished to match your plates, hardware and wood tones.'},
@@ -1444,7 +1446,7 @@ function AutomationPage({navigate}) {
   />;
 }
 /* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
-function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases}) {
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases, diagram}) {
   /* The reference's inner page, section for section: a short hero, one
      centred paragraph with a bold lead, a "what it does for you" grid (copy
      in five columns, four icon items in seven), a row of photo cards, and
@@ -1463,6 +1465,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
     ].slice(0,4)
   });
   const cards = panels;
+  const valsD = vals && diagram ? {...vals, diagram} : vals;
   const pin = <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>;
   return (
     <div className="page">
@@ -1493,8 +1496,8 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
 
       {/* 3. what it does for you — copy left, four icon items right; or, where a
           page has one, a cutaway with numbered pins tied to the same items */}
-      {vals && vals.diagram && <FxDiagram vals={vals}/>}
-      {vals && !vals.diagram && (
+      {valsD && valsD.diagram && <FxDiagram vals={valsD}/>}
+      {vals && !(valsD && valsD.diagram) && (
         <section className="fx-values fx-values--plain">
           <div className="fx-wide">
             <div className="fx-values-grid">
@@ -1619,6 +1622,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
 function FxDiagram({vals}){
   const [on, setOn] = useState(-1);
   const d = vals.diagram;
+  const items = vals.items.slice(0, d.pins.length);
   return (
     <section className="fx-band fx-py-lg">
       <div className="fx-wide">
@@ -1631,12 +1635,12 @@ function FxDiagram({vals}){
             <img src={d.image} alt={d.alt} loading="lazy" decoding="async"/>
             {d.pins.map(([x,y],i) => (
               <button key={i} type="button" className={'fx-pin'+(on===i?' on':'')} style={{left:x+'%',top:y+'%'}}
-                aria-label={vals.items[i].title} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}
+                aria-label={items[i].title} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}
                 onFocus={()=>setOn(i)} onBlur={()=>setOn(-1)} onClick={()=>setOn(on===i?-1:i)}>{i+1}</button>
             ))}
           </figure>
           <ol className="fx-diagram-list">
-            {vals.items.map((it,i) => (
+            {items.map((it,i) => (
               <li key={it.title} className={on===i?'on':''} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}>
                 <span className="fx-diagram-n" aria-hidden="true">{i+1}</span>
                 <span><strong>{it.title}</strong><p>{it.desc}</p></span>
@@ -1662,6 +1666,7 @@ function AudioPage({navigate}) {
       primaryLabel:'Hear a finished system →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
+    diagram={{image:lu('/assets/photos/layers-audio.jpg'), alt:'Cutaway of a living room, kitchen and pool lanai: flush in-ceiling speakers, an equipment closet with the audio rack, a wall keypad, a measurement microphone in the room', pins:[[25.5,26],[37.5,40],[21,41],[48,60]]}}
     valueProp={{
       eyebrow:'What we install',
       h2:'Audio you <em>can\'t see,</em> control you <em>don\'t think about.</em>',
@@ -1732,6 +1737,7 @@ function SecurityPage({navigate}) {
         {key:'installPhone',    cap:'Protect app on your phone'},
       ],
     }}
+    diagram={{image:lu('/assets/photos/layers-security.jpg'), alt:'Model of a home front: bullet cameras under the eaves, a dome over the door and a video doorbell, a recorder rack and alarm keypad in the garage', pins:[[37,34],[35,58],[49,55]]}}
     valueProp={{
       eyebrow:'How it works',
       h2:'A system <em>you don\'t manage.</em>',
@@ -1796,6 +1802,7 @@ function PermanentLightingPage({navigate}) {
     values={{
       h2:'What the system <em>does for you</em>',
       lead:'Four things owners tell us they use every week, none of which need a ladder, a timer plug or a bin of tangled strings.',
+      diagram:{image:lu('/assets/photos/layers-permanent.jpg'), alt:'Model of a pool home at dusk with a continuous line of permanent lights along the eaves, the pool cage and the dock', pins:[[14.5,36],[68,74],[53,34],[78,40]]},
       items:[
         {icon:I('M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z'), title:'Set it and forget it',
          desc:'Sunset-on, midnight-off, a schedule for the season and a preset for the date. The lights remember the plan; you stop thinking about them.'},
@@ -1862,6 +1869,7 @@ function NetworkingPage({navigate}) {
       primaryLabel:'See a finished rack →', primaryAction:()=>navigate('work'),
       secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
     }}
+    diagram={{image:lu('/assets/photos/layers-networking.jpg'), alt:'Cutaway of a two-story home: network cable runs in the walls, ceiling Wi-Fi access points, a rack with gateway and switches under the stairs', pins:[[18,34],[50.5,26],[36.5,57]]}}
     valueProp={{
       eyebrow:'The wired backbone',
       h2:'Wires <em>where they should be,</em> wireless where they can\'t.',
