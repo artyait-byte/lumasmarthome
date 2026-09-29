@@ -1744,3 +1744,8 @@ body{font-size:16px;line-height:1.5}
 .fx-diagram-list p{font-size:16px;line-height:1.5;color:var(--mid);margin:0}
 @media (max-width:1023px){.fx-diagram{grid-template-columns:1fr;gap:24px}}
 @media (max-width:767px){.fx-pin{width:28px;height:28px;font-size:13px}.fx-diagram-list li{padding:12px 4px}}
+
+/* the panel sits inside the header shell, which turns white over a dark hero;
+   the panel itself is white, so its type is pinned dark */
+.dropdown-wrap{color:var(--dark)}
+.dropdown-wrap .dd-text h4{color:var(--dark)}

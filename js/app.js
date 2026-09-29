@@ -286,7 +286,7 @@ const services = [
 /* ─── MEGA DROPDOWN ─── */
 function MegaDropdown({active, hoverId, setHoverId, navigate}) {
   const left  = services.slice(0,4);
-  const right = services.slice(4,7);
+  const right = services.slice(4);
   const hovered = services.find(s=>s.id===hoverId)||services[0];
   return (
     <div className={`dropdown-wrap${active?' open':''}`}>
