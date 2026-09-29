@@ -1367,7 +1367,7 @@ function TheatersPage({navigate}) {
       body:'We start with the room, not the projector: dimensions, sightlines, where the sound will reflect and where it must not. Then the screen size follows the seating distance, the speakers follow the screen, and the acoustic treatment follows all three. The gear goes out of sight and the room gets calibrated in place before you see a frame.'}}
     values={{h2:'Four layers, <em>one room</em>',
       lead:'What actually makes a theater, in the order we design it.',
-      diagram:{image:lu('/assets/photos/theater-layers.jpg'), alt:'Cutaway of a dedicated home theater: acoustic panels, screen and speakers, two rows of recliners on a riser, a measurement microphone at the main seat',
+      diagram:{image:lu('/assets/photos/live/theater-base.jpg'), alt:'Cutaway of a dedicated home theater: acoustic panels, screen and speakers, two rows of recliners on a riser, a measurement microphone at the main seat',
         pins:[[62.2,36.7],[24.4,40],[58,66],[44.4,48.3]], base:'base',
         states:{base:lu('/assets/photos/live/theater-base.jpg'), movie:lu('/assets/photos/live/theater-movie.jpg'), lights:lu('/assets/photos/live/theater-lights.jpg')}},
       items:[
