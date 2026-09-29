@@ -150,6 +150,10 @@ const PHOTOS = {
   lightingKetra:   lu('/assets/photos/lighting-scene.jpg'),
   lightingRania:   lu('/assets/photos/interior-recessed-warm.jpg'),
   lightingKeypad:  lu('/assets/photos/lighting-keypad.jpg'),
+  handKeypad:      lu('/assets/photos/hand-keypad.jpg'),
+  handPhone:       lu('/assets/photos/hand-phone.jpg'),
+  handPanel:       lu('/assets/photos/hand-panel.jpg'),
+  handTheater:     lu('/assets/photos/hand-theater.jpg'),
   lightingDay:     lu('/assets/photos/lighting-day.jpg'),
   shadeFascia:     lu('/assets/photos/shade-fascia.jpg'),
   lightingLumaris: lu('/assets/photos/interior-living-fl.jpg'),
@@ -589,6 +593,76 @@ function FxSolutions({navigate}) {
   );
 }
 
+
+/* ── SCENES — one room, four states. The part a photograph of a nice room
+   cannot show: the house doing something. Same camera, same furniture, only
+   the light and the shades move; each state lists what the system changed.
+   Advances on its own until someone picks a state, then stays put. ── */
+const FX_SCENES = [
+  {id:'alba',  time:'07:00', name:'Alba',  img:lu('/assets/photos/scenes/scene-morning.jpg'),
+   what:'East shades rise, the west side stays down to hold the cool. Lights stay off; the coffee station wakes.',
+   moved:['3 shades up','3 shades held','Lights off','Coffee on']},
+  {id:'day',   time:'14:30', name:'Day',   img:lu('/assets/photos/scenes/scene-day.jpg'),
+   what:'Solar shades drop to 75% on the pool side. The glare goes, the view stays, the AC stops fighting the glass.',
+   moved:['6 shades to 75%','Lights off','Cooling eased']},
+  {id:'sera',  time:'19:30', name:'Sera',  img:lu('/assets/photos/scenes/scene-evening.jpg'),
+   what:'Every shade lifts for the sunset. Pendants and cove come up to 30%, the lamp by the sofa, the lanai and the pool.',
+   moved:['6 shades up','Pendants 30%','Cove 30%','Lanai + pool on']},
+  {id:'notte', time:'22:45', name:'Notte', img:lu('/assets/photos/scenes/scene-night.jpg'),
+   what:'Shades close, pendants and cove go dark, footlights along the hall hold at 5%. Doors lock and the cameras arm.',
+   moved:['6 shades down','Footlights 5%','Doors locked','Cameras armed']},
+];
+
+function FxScenes({heading, lede, band}) {
+  const [i, setI] = React.useState(2);
+  const [held, setHeld] = React.useState(false);
+  React.useEffect(()=>{
+    if (held) return;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const t = setInterval(()=>setI(v => (v+1) % FX_SCENES.length), 5200);
+    return ()=>clearInterval(t);
+  },[held]);
+  const pick = (k)=>{ setI(k); setHeld(true); };
+  const s = FX_SCENES[i];
+  return (
+    <section className={band===false ? 'fx-band--plain fx-py-lg' : 'fx-band fx-py-lg'}>
+      <div className="fx-wide">
+        <div className="fx-heads" style={{marginBottom:40}}>
+          <h2 className="fx-d3" dangerouslySetInnerHTML={{__html: heading || 'One room, <em>four states</em>'}}/>
+          <p className="fx-lede">{lede || 'Same room, same camera. Nothing in it changes but the light and the shades, and nobody touched a switch. Tap a time to see what the house does on its own.'}</p>
+        </div>
+        <div className="fx-scenes">
+          <div className="fx-scenes-stage" role="img" aria-label={`${s.name} scene at ${s.time}`}>
+            {FX_SCENES.map((x,k)=>(
+              <img key={x.id} src={x.img} alt="" loading={k===2?'eager':'lazy'} decoding="async" className={k===i?'on':''}/>
+            ))}
+            <div className="fx-scenes-chip" aria-live="polite">
+              <span className="fx-scenes-dot" aria-hidden="true"/>
+              <strong>{s.name}</strong><span>{s.time}</span>
+            </div>
+          </div>
+          <div className="fx-scenes-side">
+            <div className="fx-scenes-tabs" role="tablist" aria-label="Scenes">
+              {FX_SCENES.map((x,k)=>(
+                <button key={x.id} role="tab" aria-selected={k===i} className={`fx-scenes-tab${k===i?' on':''}`} onClick={()=>pick(k)}>
+                  <span className="fx-scenes-time">{x.time}</span>
+                  <span className="fx-scenes-name">{x.name}</span>
+                  {!held && k===i && <i className="fx-scenes-bar" aria-hidden="true"/>}
+                </button>
+              ))}
+            </div>
+            <p className="fx-scenes-what">{s.what}</p>
+            <ul className="fx-scenes-moved" aria-label="What the system changed">
+              {s.moved.map(m=><li key={m}>{m}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── 4. CARE — copy left, video right ─────────────────────────────────── */
 function FxSupport({navigate}) {
   return (
@@ -622,7 +696,7 @@ function FxSupport({navigate}) {
    sans title, a 3px accent rule 100px wide, prose, "Learn more →". Seven
    cards, three in view, the rest a swipe away. ── */
 const FX_DISCIPLINES = [
-  {page:'lighting',   photo:PHOTOS.lightingKetra, title:'Lighting control',
+  {page:'lighting',   photo:PHOTOS.handKeypad,    title:'Lighting control',
    body:'Lutron and Ketra on every circuit, warm-dim tuned for evening, keypads matched to your plates.'},
   {page:'shading',    photo:PHOTOS.window,        title:'Motorized shades',
    body:'Three layers on the west glass, quiet drives, pockets drawn before the drywall goes up.'},
@@ -632,7 +706,7 @@ const FX_DISCIPLINES = [
    body:'Rooms designed for sound first, calibrated in place, with the gear out of sight.'},
   {page:'audio',      photo:PHOTOS.audio,         title:'Audio & video',
    body:'Speakers flush in the ceiling and out on the lanai, one source list across every zone.'},
-  {page:'automation', photo:PHOTOS.heroHome,      title:'Home automation',
+  {page:'automation', photo:PHOTOS.handPanel,     title:'Home automation',
    body:'Morning, afternoon, evening, away. One press on a keypad and the house takes the state.'},
   {page:'networking', photo:PHOTOS.networkingRack,title:'Networking',
    body:'Wired wherever wire can land, Wi-Fi 6/7 where it cannot, and a rack somebody can read.'},
@@ -892,6 +966,7 @@ function HomePage({navigate}) {
       <FxHero/>
       <FxIntro navigate={navigate}/>
       <FxSolutions navigate={navigate}/>
+      <FxScenes/>
       <FxSupport navigate={navigate}/>
 
       <FxDisciplines navigate={navigate}/>
@@ -1092,7 +1167,7 @@ function LightingPage({navigate}) {
       items:[
         {photo: PHOTOS.lightingKetra, title:'Scene design', body:'Morning coffee, focused work, candlelit dinner, movie night. Each scene pre-programmed to the exact colour temperature and level your life calls for, one press shifts the whole home.'},
         {photo: PHOTOS.lightingRania, title:'Fixture coordination', body:'We work downstream of your interior designer and lighting consultant. Visual Comfort chandeliers, RH pendants, custom cove in the millwork: every fixture tuned to dim smoothly and hold colour.'},
-        {photo: PHOTOS.lightingKeypad, title:'Unified control', body:'Keypads, app and voice under a single control layer. We match keypad finishes to your hardware, commission every zone on site, and leave a system any family member can use.'},
+        {photo: PHOTOS.handPanel, title:'Unified control', body:'Keypads, app and voice under a single control layer. We match keypad finishes to your hardware, commission every zone on site, and leave a system any family member can use.'},
       ]}}
     ctaTitle='Ready to light the house <em>properly?</em>'
     ctaBody='Send us the fixture schedule, or just the floor plan. We will come back with a control design that matches what your designer specified, and an honest range.'
@@ -1358,7 +1433,7 @@ function TheatersPage({navigate}) {
       ]}}
     panels={{h2:'From <em>media room</em> to private cinema',
       items:[
-        {photo: PHOTOS.theater,     title:'Dedicated cinema', body:'A room with one job: fabric walls, tiered recliners, a star ceiling if you want one, and the projector and rack out of sight.'},
+        {photo: PHOTOS.handTheater, title:'Dedicated cinema', body:'A room with one job: fabric walls, tiered recliners, a star ceiling if you want one, and the projector and rack out of sight.'},
         {photo: PHOTOS.workRebuild, title:'Living-room theater', body:'A great room that turns into a cinema at 8pm: hidden screen, in-ceiling surrounds, shades and lights on one press.'},
         {photo: PHOTOS.lightingKetra, title:'Media room', body:'A family room with a large display, a proper soundbar-free system, and acoustics that keep game day from taking over the house.'},
       ]}}
@@ -1423,18 +1498,12 @@ function AutomationPage({navigate}) {
       secondaryLabel:'Try the 3D demo', secondaryAction:()=>navigate('smart-home-demo')}}
     intro={{lead:'We build on open, professional platforms.',
       body:'Lutron RadioRA 3 is the spine: every light, shade and keypad on a single mesh that does not depend on anyone\'s cloud to dim a sconce. Above it, Control4 or Josh.ai for the rest of the house. No closed consumer ecosystems, no rented automations that vanish when a startup pivots. Your house\'s logic lives in your house.'}}
-    values={{h2:'Four states <em>the house already knows</em>',
-      lead:'Alba, Day, Sera, Notte. Named in your words, tuned with you for ninety days.',
-      items:[
-        {icon:I('M12 3v2M5.6 5.6l1.4 1.4M3 12h2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'), title:'06:30 · Alba', desc:'Shades east rise, hallway keypads warm to 2700K, the coffee station wakes, front cameras stand down.'},
-        {icon:I('M12 2v4M12 18v4M2 12h4M18 12h4M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'), title:'10:00 · Day', desc:'Glare-side shades drop on the sun, office overheads go to task, the alarm arms itself if everyone has left.'},
-        {icon:I('M3 17h18M6 17V9l6-5 6 5v8'), title:'Sunset − 30 · Sera', desc:'Lanai lights to 30%, kitchen pendants warm, music fades up in the rooms you are in.'},
-        {icon:I('M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'), title:'22:30 · Notte', desc:'Doors lock, the perimeter arms, hallways drop to 5% footlights, the bedroom shades close, the theater goes dark.'},
-      ]}}
+    scenes={{h2:'Four states <em>the house already knows</em>',
+      lead:'Alba, Day, Sera, Notte: named in your words and tuned with you for ninety days. The same great room at four times of day, and what the system moved each time.'}}
     panels={{h2:'Routines that <em>survive real life</em>',
       items:[
-        {photo: PHOTOS.automationHero, title:'Tuned for ninety days', body:'We program the routines with you for three months, not once on day one. The first month is observation; the second and third are the real tuning.'},
-        {photo: PHOTOS.lightingKeypad, title:'Buttons in your words', body:'Every keypad button documented and engraved the way you say it: Reading, Movie, Goodnight. Never LED1, Scene 4, Group 12.'},
+        {photo: PHOTOS.handPhone, title:'Tuned for ninety days', body:'We program the routines with you for three months, not once on day one. The first month is observation; the second and third are the real tuning.'},
+        {photo: PHOTOS.handKeypad, title:'Buttons in your words', body:'Every keypad button documented and engraved the way you say it: Reading, Movie, Goodnight. Never LED1, Scene 4, Group 12.'},
         {photo: PHOTOS.heroHome, title:'An annual visit, included', body:'We re-tune as your habits change. Kids grow up, work hours shift, the lanai becomes a gym. The routines move with you.'},
       ]}}
     ctaTitle='Start an <em>automation conversation</em>'
@@ -1442,7 +1511,7 @@ function AutomationPage({navigate}) {
   />;
 }
 /* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
-function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody}) {
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes}) {
   /* The reference's inner page, section for section: a short hero, one
      centred paragraph with a bold lead, a "what it does for you" grid (copy
      in five columns, four icon items in seven), a row of photo cards, and
@@ -1489,6 +1558,8 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           </div>
         </div>
       </section>
+
+      {scenes && <FxScenes heading={scenes.h2} lede={scenes.lead} band={false}/>}
 
       {/* 3. what it does for you — copy left, four icon items right */}
       {vals && (

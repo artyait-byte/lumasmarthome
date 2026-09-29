@@ -54,3 +54,15 @@ never a data-centre aisle. Patch cables dressed, labels readable.
 ## Automation — Control4, Josh.ai
 A lived-in room at golden hour with one keypad in shot and shades mid-travel;
 the system is implied by the state of the room, not by a screen.
+
+## Show the house doing something
+A beautiful room reads as an interior-design site. What sells a smart home is
+the act of control or its result, visible in the frame:
+- **State pairs / sets from one camera** — the same room at 07:00, 14:30,
+  19:30, 22:45, generated from one base frame with `--image-references`, so
+  only light and shades change. Used by the scene switcher (`FxScenes`).
+- **Hands, not faces** — a fingertip on a keypad, a phone driving shades that
+  are visibly mid-travel, a tap on an in-wall panel, a remote as the screen
+  lights. Hands show intent; faces are where generated people look fake.
+- Keep button labels and screen UI illegible in prompts; real words come out
+  garbled.
