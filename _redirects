@@ -10,7 +10,9 @@
 /builders           /designers   301
 /builders.html      /designers   301
 /budget-calculator  /budget      301
-/smart-home-demo    /demo        301
+/smart-home-demo    /automation  301
+/demo               /automation  301
+/demo.html          /automation  301
 /index.html         /            301
 
 # Service area narrowed to Sarasota & Manatee Counties (2026-09)
@@ -39,7 +41,6 @@
 /contact.html  /contact  301
 /budget.html  /budget  301
 /support.html  /support  301
-/demo.html  /demo  301
 /work/spacious-modern.html  /work/spacious-modern  301
 /work/urban-home.html  /work/urban-home  301
 /work/huge-family-house.html  /work/huge-family-house  301

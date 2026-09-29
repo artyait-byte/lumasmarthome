@@ -152,16 +152,6 @@ window.LUMA_SEO = {
       "service": null,
       "h1": "Keep the house effortless — long after install."
     },
-    "smart-home-demo": {
-      "id": "smart-home-demo",
-      "path": "/demo",
-      "title": "Interactive 3D Smart Home Demo | LUMA Smart Home",
-      "description": "Explore a cutaway Gulf Coast home and see lighting, shades, audio, security, and networking in place — with packages and pricing.",
-      "kind": "page",
-      "city": null,
-      "service": null,
-      "h1": "See every system in place."
-    },
     "case-spacious": {
       "id": "case-spacious",
       "path": "/work/spacious-modern",
@@ -474,7 +464,7 @@ window.LUMA_SEO = {
     }
   }
 };
-window.LUMA_SEO_ALIASES = {"budget": "budget-calculator", "projects": "work", "our-work": "work", "serviceplans": "support", "service-plans": "support", "customer-support": "support", "smart-home-demo": "smart-home-demo", "builders": "designers"};
+window.LUMA_SEO_ALIASES = {"budget": "budget-calculator", "projects": "work", "our-work": "work", "serviceplans": "support", "service-plans": "support", "customer-support": "support", "builders": "designers"};
 window.LUMA_GEO = {
   "hub": {
     "id": "service-areas",
@@ -1576,20 +1566,6 @@ window.LUMA_GEO = {
       {
         "id": "service-areas",
         "label": "All service areas"
-      }
-    ],
-    "smart-home-demo": [
-      {
-        "id": "contact",
-        "label": "Start a project"
-      },
-      {
-        "id": "lighting",
-        "label": "Lighting"
-      },
-      {
-        "id": "work",
-        "label": "Our work"
       }
     ],
     "case-spacious": [

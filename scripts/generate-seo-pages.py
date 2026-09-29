@@ -233,19 +233,6 @@ ROUTES: list[dict] = [
         "index": True,
     },
     {
-        "id": "smart-home-demo",
-        "path": "/demo",
-        "file": "demo.html",
-        "title": "Interactive 3D Smart Home Demo | LUMA Smart Home",
-        "description": "Explore a cutaway Gulf Coast home and see lighting, shades, audio, security, and networking in place — with packages and pricing.",
-        "h1": "See every system in place.",
-        "og_image": "/assets/smart-home-demo/dollhouse-premium.jpg",
-        "priority": 0.7,
-        "changefreq": "monthly",
-        "kind": "page",
-        "index": True,
-    },
-    {
         "id": "case-spacious",
         "path": "/work/spacious-modern",
         "file": "work/spacious-modern.html",
@@ -331,7 +318,6 @@ NAV_LINKS = [
     ("/designers", "For designers & builders"),
     ("/about", "About"),
     ("/support", "Customer support"),
-    ("/demo", "3D demo"),
     ("/contact", "Contact"),
 ]
 
@@ -711,7 +697,6 @@ def write_seo_data() -> None:
         "serviceplans": "support",
         "service-plans": "support",
         "customer-support": "support",
-        "smart-home-demo": "smart-home-demo",
         "builders": "designers",
     }
     text = (
@@ -778,7 +763,9 @@ def write_redirects() -> None:
         "/builders           /designers   301",
         "/builders.html      /designers   301",
         "/budget-calculator  /budget      301",
-        "/smart-home-demo    /demo        301",
+        "/smart-home-demo    /automation  301",
+        "/demo               /automation  301",
+        "/demo.html          /automation  301",
         "/index.html         /            301",
         "",
         "# Service area narrowed to Sarasota & Manatee Counties (2026-09)",

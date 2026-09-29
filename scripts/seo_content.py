@@ -829,7 +829,6 @@ def related_map() -> dict:
     rel["designers"] = _rel("contact", "work", "lighting", "service-areas")
     rel["support"] = _rel("contact", "about")
     rel["budget-calculator"] = _rel("contact", "lighting", "service-areas")
-    rel["smart-home-demo"] = _rel("contact", "lighting", "work")
     for case, city in (
         ("case-spacious", "work"),
         ("case-urban", "sa-sarasota"),
