@@ -1615,11 +1615,28 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
   );
 }
 
-/* A cutaway with numbered pins; hovering a pin or a list item lights both. */
+/* A cutaway that works. Hovering a pin or a list item lights both, and when
+   the diagram carries `states` the picture itself changes: an item can show
+   one state or run a short sequence (`show: ['day','off','all']`), and a row
+   of `modes` under the picture switches the whole scene. Every state is the
+   same model from the same camera, so only the light moves. */
 function FxDiagram({vals}){
-  const [on, setOn] = useState(-1);
   const d = vals.diagram;
-  const items = vals.items.slice(0, d.pins.length);
+  const pins = d.pins || [];
+  const items = pins.length ? vals.items.slice(0, pins.length) : vals.items;
+  const [on, setOn] = useState(-1);
+  const [mode, setMode] = useState(d.base || null);
+  const [frame, setFrame] = useState(0);
+  const show = on >= 0 && items[on].show;
+  const seq = Array.isArray(show) ? show : null;
+  useEffect(() => {
+    setFrame(0);
+    if (!seq) return;
+    const t = setInterval(() => setFrame(f => (f + 1) % seq.length), 1400);
+    return () => clearInterval(t);
+  }, [on]);
+  const current = d.states ? (seq ? seq[frame] : (show || mode)) : null;
+  const pickMode = (k) => { setMode(k); setOn(-1); };
   return (
     <section className="fx-band fx-py-lg">
       <div className="fx-wide">
@@ -1628,17 +1645,36 @@ function FxDiagram({vals}){
           {vals.lead && <p className="fx-lede">{vals.lead}</p>}
         </div>
         <div className="fx-diagram">
-          <figure className="fx-diagram-art">
-            <img src={d.image} alt={d.alt} loading="lazy" decoding="async"/>
-            {d.pins.map(([x,y],i) => (
-              <button key={i} type="button" className={'fx-pin'+(on===i?' on':'')} style={{left:x+'%',top:y+'%'}}
-                aria-label={items[i].title} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}
-                onFocus={()=>setOn(i)} onBlur={()=>setOn(-1)} onClick={()=>setOn(on===i?-1:i)}>{i+1}</button>
-            ))}
-          </figure>
+          <div>
+            <figure className={'fx-diagram-art' + (d.states ? ' fx-diagram-art--states' : '')}>
+              {d.states
+                ? Object.keys(d.states).map(k => (
+                    <img key={k} src={d.states[k]} alt={k === current ? d.alt : ''} aria-hidden={k !== current}
+                      className={k === current ? 'on' : ''} loading={k === d.base ? 'eager' : 'lazy'} decoding="async"/>
+                  ))
+                : <img src={d.image} alt={d.alt} loading="lazy" decoding="async"/>}
+              {pins.map(([x,y],i) => (
+                <button key={i} type="button" className={'fx-pin'+(on===i?' on':'')} style={{left:x+'%',top:y+'%'}}
+                  aria-label={items[i].title} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}
+                  onFocus={()=>setOn(i)} onBlur={()=>setOn(-1)} onClick={()=>setOn(on===i?-1:i)}>{i+1}</button>
+              ))}
+              {seq && seq[frame] && d.labels && <figcaption className="fx-diagram-tag">{d.labels[seq[frame]]}</figcaption>}
+            </figure>
+            {d.modes && (
+              <div className="fx-diagram-modes" role="group" aria-label="Modes">
+                {d.modes.map(m => (
+                  <button key={m.key} type="button" className={'fx-chip' + (on < 0 && mode === m.key ? ' on' : '')}
+                    onClick={() => pickMode(m.key)} onMouseEnter={() => pickMode(m.key)}>{m.label}</button>
+                ))}
+              </div>
+            )}
+            {d.modesNote && <p className="fx-diagram-note">{d.modesNote}</p>}
+          </div>
           <ol className="fx-diagram-list">
             {items.map((it,i) => (
-              <li key={it.title} className={on===i?'on':''} onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)}>
+              <li key={it.title} className={on===i?'on':''} tabIndex={d.states ? 0 : undefined}
+                onMouseEnter={()=>setOn(i)} onMouseLeave={()=>setOn(-1)} onFocus={()=>setOn(i)} onBlur={()=>setOn(-1)}
+                onClick={()=>setOn(on===i?-1:i)}>
                 <span className="fx-diagram-n" aria-hidden="true">{i+1}</span>
                 <span><strong>{it.title}</strong><p>{it.desc}</p></span>
               </li>
@@ -1797,18 +1833,40 @@ function PermanentLightingPage({navigate}) {
       body:'LUMA installs permanent roofline lighting on Gulf Coast residences across Sarasota and Manatee Counties: a channel matched to the fascia, individually addressed diodes inside it, and a controller in the rack with the rest of the house. Most nights it is a quiet warm-white line that finishes the elevation. When you want the house bright for security, in your team\'s colours, or dressed for December, it is one preset, and nothing goes up or comes down.'
     }}
     values={{
-      h2:'What the system <em>does for you</em>',
-      lead:'Four things owners tell us they use every week, none of which need a ladder, a timer plug or a bin of tangled strings.',
-      diagram:{image:lu('/assets/photos/layers-permanent.jpg'), alt:'Model of a pool home at dusk with a continuous line of permanent lights along the eaves, the pool cage and the dock', pins:[[14.5,36],[68,74],[53,34],[78,40]]},
+      h2:'Every light outside, <em>one keypad</em>',
+      lead:'Point at a layer to light it on its own, or pick a mode under the picture. The roofline is the permanent line; the rest is the landscape and lanai lighting it runs with.',
+      diagram:{
+        alt:'Model of a Gulf Coast pool home at dusk showing each exterior lighting layer',
+        base:'all',
+        states:{
+          all:lu('/assets/photos/outdoor/all.jpg'), warm:lu('/assets/photos/outdoor/warm.jpg'), off:lu('/assets/photos/outdoor/off.jpg'),
+          day:lu('/assets/photos/outdoor/day.jpg'), roofline:lu('/assets/photos/outdoor/roofline.jpg'), facade:lu('/assets/photos/outdoor/facade.jpg'),
+          landscape:lu('/assets/photos/outdoor/landscape.jpg'), pool:lu('/assets/photos/outdoor/pool.jpg'), dock:lu('/assets/photos/outdoor/dock.jpg'),
+          zones:lu('/assets/photos/outdoor/zones.jpg'), security:lu('/assets/photos/outdoor/security.jpg'),
+          gameday:lu('/assets/photos/outdoor/gameday.jpg'), december:lu('/assets/photos/outdoor/december.jpg'),
+        },
+        labels:{day:'Noon · off', off:'Sunset', all:'Sunset + 5 min · on'},
+        modes:[
+          {key:'all', label:'Evening'}, {key:'warm', label:'Warm white'}, {key:'security', label:'Security'},
+          {key:'gameday', label:'Game day'}, {key:'december', label:'December'}, {key:'day', label:'Daylight'},
+        ],
+        modesNote:'A 2700K warm white that reads like landscape lighting, and every team, flag and holiday colour on top.',
+      },
       items:[
-        {icon:I('M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z'), title:'Set it and forget it',
-         desc:'Sunset-on, midnight-off, a schedule for the season and a preset for the date. The lights remember the plan; you stop thinking about them.'},
-        {icon:I('M3 9h18M3 15h18M9 3v18M15 3v18'), title:'Zone by zone',
-         desc:'Front roofline, lanai, dock and the garage side each on their own run, so the pool cage can glow while the street side stays warm white.'},
-        {icon:I('M12 3a9 9 0 1 0 9 9c0-1.5-1-2-2-2h-2a2 2 0 0 1-2-2V6c0-1.5-1-3-3-3zM7 10h.01M10 7h.01M15 8h.01'), title:'Sixteen million colours',
-         desc:'A 2700K warm white that reads like landscape lighting, and every team, flag and holiday colour on top. Patterns and animations for the nights you want them.'},
-        {icon:I('M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z'), title:'Part of the house',
+        {title:'Roofline', show:'roofline',
          desc:'A sealed channel fastened into the fascia, not clipped to a gutter, so the line stays straight and nothing goes up or comes down with the seasons.'},
+        {title:'Facade', show:'facade',
+         desc:'Uplights at the base of the walls and columns wash the stucco, so the house itself reads at night, not only its outline.'},
+        {title:'Landscape', show:'landscape',
+         desc:'Sabal palms and planting beds lit from the ground, path lights along the walk, on the same keypad as the house.'},
+        {title:'Pool and lanai', show:'pool',
+         desc:'Pool and spa lights and the lanai downlights as their own scene, for a swim without lighting the whole lot.'},
+        {title:'Dock', show:'dock',
+         desc:'Low lights along the dock edges, on the same schedule as the rest.'},
+        {title:'Zone by zone', show:'zones',
+         desc:'Front roofline, lanai, dock and the garage side each on their own run, so the pool cage can glow while the street side stays dark or warm white.'},
+        {title:'Set it and forget it', show:['day','off','all'],
+         desc:'Sunset-on, midnight-off, a schedule for the season and a preset for the date. The lights remember the plan; you stop thinking about them.'},
       ]
     }}
     pair={{
