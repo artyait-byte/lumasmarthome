@@ -1,6 +1,6 @@
 # Redesign handoff — lumasmarthome.com on the Fusion pattern
 
-State as of 2026-09-29 (night). Branch `claude/sharp-shaw-baf08f`. Not deployed. Higgsfield balance 823.5.
+State as of 2026-09-29 (night). Branch `claude/sharp-shaw-baf08f`. Not deployed. Higgsfield balance 756 credits.
 
 ## Brief (owner's words, condensed)
 - Copy https://fusionaudiovideo.com/ format, layout and section patterns literally; only colors and brand book are LUMA's.
@@ -39,12 +39,21 @@ State as of 2026-09-29 (night). Branch `claude/sharp-shaw-baf08f`. Not deployed.
 - Solutions menu: dark type, Permanent Lighting back in the list.
 - Fixed a stray `}` in spa.css that leaked mobile rules to desktop.
 
+## Done on 2026-09-29 (day)
+- Designers rebuilt on the reference's audience page (/commercial): audience cards, teal
+  "What we deliver" panel, a cutaway of how a build runs, brands, two-column FAQ, callout.
+- Diagrams that work (FxDiagram + FxDiagramFx): hover an item and the picture shows it.
+  Light states (generated from one base, aligned with OpenCV so only the light moves) on
+  lighting, shading, theater and permanent lighting; animated overlays (sound rings, camera
+  cones, cable runs, Wi-Fi, spotlight) on audio, security, networking, designers.
+- Permanent lighting: every exterior layer on its own (roofline, facade, landscape, pool and
+  lanai, dock), zones, a sunset sequence, and modes (evening, warm white, security, game day,
+  December, daylight). States live in assets/photos/outdoor/ and assets/photos/live/.
+- Full mobile pass: 18 pages, no horizontal overflow. Contact form verified end to end.
+
 ## Task plan (owner's queue, in order)
-1. **/designers still reads "old"** (owner, 2026-09-29). Rebuild it harder on the reference:
-   likely a hero + image-and-text rows + a cutaway diagram of the trade process (plans ->
-   rough-in -> trim-out -> handoff) instead of text cards and tabs. Ask for a screenshot if unclear.
-2. Owner confirmation on kept claims: LUMA Care prices ($75/$119/$189), "12 months service
+1. Owner confirmation on kept claims: LUMA Care prices ($75/$119/$189), "12 months service
    included", "proposal in two business days", referral fee, "Florida licensed, insured".
-3. Real Google reviews -> FX_QUOTES.
-4. Brand SVG logos into assets/brands/.
-5. Full desktop + mobile pass, then deploy only on the owner's explicit "yes".
+2. Real Google reviews -> FX_QUOTES.
+3. Brand SVG logos into assets/brands/ (needs the owner's OK to download them).
+4. Deploy only on the owner's explicit "yes"; then turn on Netlify form notifications.
