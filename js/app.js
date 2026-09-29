@@ -888,22 +888,24 @@ function FxRegion({navigate}) {
   );
 }
 
-/* ── 7b. BRANDS — the reference's logo row. Each card shows the maker's
-   own mark when /assets/brands/<slug>.svg is present and falls back to a
-   typeset name until it is, so real logos drop in without a code change. ── */
+/* ── 7b. BRANDS — the reference's logo row: each maker's own mark, taken
+   from the maker (site header, press kit, Snap One brand sheet, Wikimedia /
+   Simple Icons for Sonos and Ubiquiti, Wikimedia for B&W) and set in one ink so the
+   row reads as ours. Files and sources: assets/brands/README.md. ── */
 const FX_BRANDS = [
-  ['lutron','Lutron'], ['clare','Clare'], ['rti','RTI'], ['sonos','Sonos'], ['sonance','Sonance'],
-  ['ubiquiti','Ubiquiti'], ['bowers-wilkins','Bowers & Wilkins'], ['kef','KEF'], ['urc','URC'], ['wattbox','WattBox']
+  ['lutron','Lutron','svg',6.53], ['savant','Savant','svg',6.58], ['rti','RTI','png',3.19], ['clare','Clare','svg',2.53],
+  ['sonos','Sonos','svg',4.98], ['sonance','Sonance','svg',7.75], ['bowers-wilkins','Bowers & Wilkins','svg',12.42],
+  ['kef','KEF','svg',3.04], ['ubiquiti','Ubiquiti','svg',0.99], ['urc','URC','png',4.05], ['wattbox','WattBox','svg',4.89]
 ];
-/* Add a slug here once its SVG is in /assets/brands/ — the card then shows
-   the mark instead of the typeset name, and nothing is requested before that. */
-const FX_BRAND_LOGOS = new Set([]);
-function FxBrandCard({slug, name}) {
+/* every mark gets the same visual area, so a long wordmark and a square
+   badge weigh the same in the row; the longest are capped at 210px */
+function FxBrandCard({slug, name, ext, ratio}) {
+  let h = Math.min(56, Math.sqrt(5200 / ratio)), w = h * ratio;
+  if (w > 210) { w = 210; h = w / ratio; }
   return (
     <div className="fx-brand" title={name}>
-      {FX_BRAND_LOGOS.has(slug)
-        ? <img src={'/assets/brands/'+slug+'.svg'} alt={name} loading="lazy"/>
-        : <span className="fx-brand-name">{name}</span>}
+      <img src={lu('/assets/brands/'+slug+'.'+ext)} alt={name} loading="lazy" decoding="async"
+        style={{width:Math.round(w), height:Math.round(h)}}/>
     </div>
   );
 }
@@ -911,9 +913,9 @@ function FxBrands() {
   return (
     <section className="fx-band--plain fx-py-md">
       <div className="fx-wide">
-        <h2 className="fx-d3" style={{fontSize:36, marginBottom:32}}>What we install</h2>
+        <h2 className="fx-d3" style={{fontSize:36, marginBottom:32}}>Our brands</h2>
         <div className="fx-brands">
-          {FX_BRANDS.map(([slug,name]) => <FxBrandCard key={slug} slug={slug} name={name}/>)}
+          {FX_BRANDS.map(([slug,name,ext,ratio]) => <FxBrandCard key={slug} slug={slug} name={name} ext={ext} ratio={ratio}/>)}
         </div>
       </div>
     </section>
