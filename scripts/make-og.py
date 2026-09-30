@@ -18,7 +18,7 @@ PEACH = (240, 195, 155)
 
 CARDS = {
     # route id: (photo, headline, focus x 0..1)
-    "home": ("assets/photos/hero-automation.jpg", "Smart Home Installation", 0.55),
+    "home": ("assets/photos/work-bayfront.jpg", "Smart Home Installation", 0.6),
     "lighting": ("assets/photos/live/sc-l-party.jpg", "Your fixtures. Our controls.", 0.5),
     "shading": ("assets/photos/live/sc-s-wake.jpg", "Three layers of shade.", 0.5),
     "theaters": ("assets/photos/theater-cinema.jpg", "Designed for sound, not retrofitted.", 0.5),
