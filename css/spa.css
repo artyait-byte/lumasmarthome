@@ -971,6 +971,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .fx-hero-stage--short{min-height:360px}
 .fx-hero .fx-d1{color:#FCFAF6;max-width:768px;margin:0}
 .fx-hero .fx-d1 em{color:#F0C39B}
+.fx-hero-sub{margin:20px 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(20px,2vw,26px);color:rgba(252,250,246,.85);text-align:center}
 
 /* ── 2. INTRO — headline left, prose right, 96px apart ────────────────── */
 .fx-intro{display:flex;gap:96px;align-items:flex-start;margin-bottom:64px}

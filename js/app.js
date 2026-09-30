@@ -542,7 +542,8 @@ function FxHero() {
       <div className="fx-hero-scrim" aria-hidden="true"/>
       <div className="fx-field">
         <div className="fx-hero-stage">
-          <h1 className="fx-d1">A house that answers <em>to the light.</em></h1>
+          <h1 className="fx-d1">Smart Home Installation <em>in Sarasota.</em></h1>
+          <p className="fx-hero-sub">A house that answers to the light.</p>
         </div>
       </div>
     </section>

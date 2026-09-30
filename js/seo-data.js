@@ -10,7 +10,7 @@ window.LUMA_SEO = {
       "kind": "home",
       "city": null,
       "service": null,
-      "h1": "A house that answers to the light."
+      "h1": "Smart Home Installation in Sarasota."
     },
     "lighting": {
       "id": "lighting",
