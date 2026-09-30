@@ -35,7 +35,7 @@ ROUTES: list[dict] = [
         "file": "index.html",
         "title": "LUMA Smart Home | Lighting, Shades & AV in Sarasota, FL",
         "description": "LUMA designs and installs lighting control, motorized shades, security, audio, and Wi-Fi for fine homes on Florida's Gulf Coast. Serving Sarasota & Manatee Counties.",
-        "h1": "A house that answers to the light.",
+        "h1": "Smart Home Installation in Sarasota.",
         "og_title": "LUMA Smart Home Installation | Sarasota, FL",
         "og_description": "Smart home installation in Sarasota & Manatee: lighting control, motorized shades, audio, security and Wi-Fi.",
         "og_image": "/assets/og/home.jpg",
