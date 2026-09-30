@@ -120,7 +120,7 @@ function RelatedLinks({page, navigate}){
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=19';
+const lu = (path) => path + '?v=20';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -1207,7 +1207,7 @@ function LightingPage({navigate}) {
    cutaway of how a build runs, the brands, a two-column FAQ and the callout.
    The copy is the page's own; nothing new is promised. */
 const DB_AUDIENCES = [
-  {title:'Interior designers', photo:PHOTOS.tradeFlatlay, alt:'Finishes, fabric and a keypad sample on a designer\'s desk',
+  {title:'Interior designers', photo:PHOTOS.tradeFlatlay, alt:'Plans, finish samples and touch-panel samples on a designer\'s desk',
    body:'Send the FF&E schedule. We flag anything that needs a dimmer, driver or special wiring before walls close, and one proposal covers fixtures, drivers, dimmers, plates and commissioning.'},
   {title:'Architects', photo:lu('/assets/photos/trade-plans.jpg'), alt:'A floor plan marked up with lighting and low-voltage locations',
    body:'We mark up the plan set early: keypad, speaker and camera locations, shade pockets, the equipment room and every conduit run. Submittals in PDF or Revit.'},
@@ -2867,7 +2867,7 @@ function AboutPage({navigate}) {
 
       <FxPhotoPanels h2="Four phases, one studio." lead="How a project runs, from the first visit to the years after." items={ABOUT_PHASES}/>
 
-      <FxImageText photo={PHOTOS.tradeFlatlay} alt="Plans, finishes and a keypad on a designer's desk"
+      <FxImageText photo={PHOTOS.tradeFlatlay} alt="Plans, finish samples and touch panels on a designer's desk"
         h2="Working on a new build?"
         body="We work alongside interior designers, architects, and custom builders: marked-up plans, a rough-in package for the electrician, and one proposal your client can read.">
         <NavLink page="designers" navigate={navigate} className="fx-btn">Designers &amp; builders</NavLink>
