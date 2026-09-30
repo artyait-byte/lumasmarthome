@@ -433,7 +433,7 @@ ARTICLES = [
         "title": "What a Smart Home on the Gulf Coast Actually Needs | LUMA Journal",
         "h1": "What a smart home on the Gulf Coast actually needs",
         "description": "A practical definition of a smart home on Florida’s Gulf Coast: sun, salt, seasonal occupancy, and systems you still own. Written by LUMA Smart Home in Sarasota.",
-        "og": "/assets/photos/sarasota-downtown-bayfront.jpg",
+        "og": "/assets/og/service-areas.jpg",
         "date": "2026-08-27",
         "category": "Smart home",
         "dek": "Lighting, shades, a network and cameras that cope with gulf light, humidity and a summer away. Here is where we start.",

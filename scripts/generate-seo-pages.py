@@ -35,8 +35,10 @@ ROUTES: list[dict] = [
         "file": "index.html",
         "title": "LUMA Smart Home | Lighting, Shades & AV in Sarasota, FL",
         "description": "LUMA designs and installs lighting control, motorized shades, security, audio, and Wi-Fi for fine homes on Florida's Gulf Coast. Serving Sarasota & Manatee Counties.",
-        "h1": "A home that suits the way you live.",
-        "og_image": "/assets/photos/sarasota-bay-house.jpg",
+        "h1": "A house that answers to the light.",
+        "og_title": "LUMA Smart Home — Sarasota & Manatee",
+        "og_description": "Lighting, shades, audio, security and Wi-Fi, designed and installed for homes on Florida's Gulf Coast.",
+        "og_image": "/assets/og/home.jpg",
         "priority": 1.0,
         "changefreq": "weekly",
         "kind": "home",
@@ -49,7 +51,7 @@ ROUTES: list[dict] = [
         "title": "Smart Lighting Control | Lutron & Ketra | LUMA Smart Home",
         "description": "Decorative and architectural lighting under one control spec. Lutron RadioRA 3, Ketra, warm-dim scenes, and designer keypads for Gulf Coast homes.",
         "h1": "Your fixtures. Our controls.",
-        "og_image": "/assets/photos/lighting-scene.jpg",
+        "og_image": "/assets/og/lighting.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",
@@ -63,7 +65,7 @@ ROUTES: list[dict] = [
         "title": "Motorized Window Shades | Somfy & Lutron Sivoia | LUMA",
         "description": "Motorized shades and drapery for Gulf Coast sun: solar screens, blackout, and Lutron Sivoia QS / Somfy, programmed to the hour of the day.",
         "h1": "Three layers of shade.",
-        "og_image": "/assets/photos/hero-shading.jpg",
+        "og_image": "/assets/og/shading.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",
@@ -77,7 +79,7 @@ ROUTES: list[dict] = [
         "title": "Home Theater Design & Installation | Sarasota | LUMA",
         "description": "Dedicated cinema rooms designed from the walls out — acoustics, sightlines, calibration, and seating for Gulf Coast residences.",
         "h1": "Designed for sound, not retrofitted.",
-        "og_image": "/assets/photos/hero-theater.jpg",
+        "og_image": "/assets/og/theaters.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",
@@ -91,7 +93,7 @@ ROUTES: list[dict] = [
         "title": "Home Automation | Control4, Lutron, Josh.ai | LUMA Sarasota",
         "description": "One-press scenes that move lighting, shades, climate, audio, and security together. Open platforms — Control4, Lutron, Josh.ai — for Gulf Coast homes.",
         "h1": "One press, the right state.",
-        "og_image": "/assets/photos/hero-automation.jpg",
+        "og_image": "/assets/og/automation.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",
@@ -105,7 +107,7 @@ ROUTES: list[dict] = [
         "title": "Whole-Home Audio & Video | Sonos, Sonance | LUMA Smart Home",
         "description": "Invisible in-ceiling, in-wall, and outdoor audio tuned to each room, with one app across every zone. Sarasota & Manatee Counties.",
         "h1": "Sound that fills the room, not the architecture.",
-        "og_image": "/assets/photos/hero-audio-hifi.jpg",
+        "og_image": "/assets/og/audio.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",
@@ -119,7 +121,7 @@ ROUTES: list[dict] = [
         "title": "Home Security & Cameras | UniFi Protect | LUMA Sarasota",
         "description": "On-premise UniFi Protect cameras with no monthly cloud fees. Property-walked camera placement, NVR on site, optional alarm monitoring.",
         "h1": "Your footage. Your property.",
-        "og_image": "/assets/photos/hero-security-v2.jpg",
+        "og_image": "/assets/og/security.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",
@@ -133,7 +135,7 @@ ROUTES: list[dict] = [
         "title": "Wi-Fi 6/7 & Structured Cabling | UniFi | LUMA Smart Home",
         "description": "Enterprise-grade UniFi Wi-Fi and Cat6A structured cabling designed before drywall. Wired spine first, wireless where it belongs.",
         "h1": "A network your home is built on, not bolted to.",
-        "og_image": "/assets/photos/hero-networking.jpg",
+        "og_image": "/assets/og/networking.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",
@@ -147,7 +149,7 @@ ROUTES: list[dict] = [
         "title": "Permanent Outdoor Lighting | Soffit LEDs | LUMA Smart Home",
         "description": "Permanent architectural roofline lighting for Sarasota and Gulf Coast residences: a colour-matched channel under the overhangs, warm white every night, security, game day and holiday presets from your phone.",
         "h1": "The roofline, drawn in light.",
-        "og_image": "/assets/photos/permanent-warm.jpg",
+        "og_image": "/assets/og/permanent-lighting.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
         "kind": "service",
@@ -160,8 +162,8 @@ ROUTES: list[dict] = [
         "file": "designers.html",
         "title": "For Designers & Builders | Trade Partner | LUMA Smart Home",
         "description": "One low-voltage trade for lighting, shades, AV, security, and networking. Trade pricing, submittal packages, and site coordination for ASID, AIA, and GCs on the Gulf Coast.",
-        "h1": "Built to fit your workflow.",
-        "og_image": "/assets/photos/hero-designers-new.jpg",
+        "h1": "Your vision. Our wiring.",
+        "og_image": "/assets/og/designers.jpg",
         "priority": 0.8,
         "changefreq": "monthly",
         "kind": "page",
@@ -174,7 +176,7 @@ ROUTES: list[dict] = [
         "title": "Our Work | Finished Smart Home Projects | LUMA",
         "description": "Five finished LUMA projects, from a Bird Key waterfront home to a Bonita Bay residence: the systems installed and the equipment in each.",
         "h1": "Our work",
-        "og_image": "/assets/photos/gulf-sunset.jpg",
+        "og_image": "/assets/og/work.jpg",
         "priority": 0.8,
         "changefreq": "monthly",
         "kind": "page",
@@ -187,7 +189,7 @@ ROUTES: list[dict] = [
         "title": "About LUMA Smart Home | Sarasota Residential Technology Studio",
         "description": "LUMA is a Sarasota residential technology studio. Open platforms, line-item proposals, and ongoing care across Sarasota and Manatee Counties.",
         "h1": "We build homes around the Gulf Coast hour.",
-        "og_image": "/assets/photos/sarasota-marina.jpg",
+        "og_image": "/assets/og/about.jpg",
         "priority": 0.8,
         "changefreq": "monthly",
         "kind": "page",
@@ -200,7 +202,7 @@ ROUTES: list[dict] = [
         "title": "Start a Project | Contact LUMA Smart Home | Sarasota, FL",
         "description": "Book a consultation with LUMA Smart Home. Serving Sarasota and Manatee Counties. Call +1 (941) 217-1616.",
         "h1": "Start Your Project",
-        "og_image": "/assets/photos/sarasota-bay-house.jpg",
+        "og_image": "/assets/og/contact.jpg",
         "priority": 0.8,
         "changefreq": "monthly",
         "kind": "contact",
@@ -226,7 +228,7 @@ ROUTES: list[dict] = [
         "title": "LUMA Care | Smart Home Support Plans | Sarasota, FL",
         "description": "Ongoing stewardship for the systems we installed — remote diagnostics, scene tweaks, and technicians who already know your rack. LUMA Care memberships.",
         "h1": "Keep the house effortless — long after install.",
-        "og_image": "/assets/photos/networking-rack.jpg",
+        "og_image": "/assets/og/support.jpg",
         "priority": 0.7,
         "changefreq": "monthly",
         "kind": "page",
@@ -621,6 +623,8 @@ def netlify_form(route: dict) -> str:
 def head_for(route: dict) -> str:
     canonical = abs_url(route["path"])
     og_image = abs_url(route["og_image"])
+    og_dims = ('<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+               if route["og_image"].startswith("/assets/og/") else "")
     robots = "index,follow,max-image-preview:large" if route.get("index", True) else "noindex,follow"
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -641,14 +645,14 @@ def head_for(route: dict) -> str:
 <meta property="og:site_name" content="LUMA Smart Home">
 <meta property="og:type" content="{'article' if route.get('kind') == 'article' else 'website'}">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="{esc(route["title"])}">
-<meta property="og:description" content="{esc(route["description"])}">
+<meta property="og:title" content="{esc(route.get("og_title", route["title"]))}">
+<meta property="og:description" content="{esc(route.get("og_description", route["description"]))}">
 <meta property="og:url" content="{esc(canonical)}">
 <meta property="og:image" content="{esc(og_image)}">
-<meta property="og:image:alt" content="{esc(route["h1"])}">
+{og_dims}<meta property="og:image:alt" content="{esc(route["h1"])}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{esc(route["title"])}">
-<meta name="twitter:description" content="{esc(route["description"])}">
+<meta name="twitter:title" content="{esc(route.get("og_title", route["title"]))}">
+<meta name="twitter:description" content="{esc(route.get("og_description", route["description"]))}">
 <meta name="twitter:image" content="{esc(og_image)}">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
