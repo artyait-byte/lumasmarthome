@@ -34,7 +34,7 @@ CARDS = {
     "support": ("assets/video/luma-care-poster.jpg", "Keep the house effortless, long after install.", 0.5),
     "service-areas": ("assets/photos/places/sarasota.jpg", "Sarasota & Manatee Counties.", 0.5),
 }
-LINE = "Lighting · Shades · Audio & Video · Security · Networking"
+LINE = "Lighting · Shades · Audio & Video · Security · Wi-Fi"
 PLACE = "Sarasota & Manatee Counties, Florida"
 
 
@@ -74,10 +74,15 @@ def card(photo, headline, fx):
     lum = img.crop((0, H // 2, int(W * 0.75), H)).convert("L").resize((1, 1)).getpixel((0, 0)) / 255
     k = 1.0 + max(0.0, lum - 0.28) * 1.6
     # the reference's 132deg scrim: darker at the lower left where the type sits
-    size = 72 if len(headline) < 34 else 60
-    hf = font("Cormorant.ttf", size, [500])
-    lines = wrap(ImageDraw.Draw(img), headline, hf, 820)
-    y0 = H - 118 - len(lines) * size * 1.08
+    # the largest size that keeps the headline on one line, else two lines at 60
+    for size in (72, 66, 60):
+        hf = font("Cormorant.ttf", size, [500])
+        lines = wrap(ImageDraw.Draw(img), headline, hf, 1060)
+        if len(lines) == 1:
+            break
+    if len(lines) > 1:
+        lines = wrap(ImageDraw.Draw(img), headline, hf, 900)
+    y0 = H - 150 - len(lines) * size * 1.08
     start = max(0.0, (y0 - 130) / H)
     shade = Image.new("L", (W, H))
     px = shade.load()
@@ -85,17 +90,17 @@ def card(photo, headline, fx):
         for x in range(W):
             b = min(1.0, max(0.0, (y / H - start) / 0.22))        # full by the headline's first line
             l = max(0.0, 1 - x / (W * 0.75)) ** 1.6              # and toward the left edge
-            top = max(0.0, 1 - y / (H * 0.3)) * max(0.0, 1 - x / (W * 0.4))  # behind the mark
+            top = max(0.0, 1 - y / (H * 0.36)) * max(0.0, 1 - x / (W * 0.45))  # behind the mark
             t = min(1.0, (0.85 * b * (0.45 + 0.55 * l)) * k + 0.55 * top)
             px[x, y] = int(10 + 200 * t)
     img = Image.composite(Image.new("RGB", (W, H), DARK), img, shade)
     d = ImageDraw.Draw(img)
     # mark: dot + LUMA + SMART HOME, as in the site header
-    luma = font("Cormorant.ttf", 44, [700])
-    small = font("DMSans.ttf", 15, [14, 500])
-    d.ellipse((64, 72, 80, 88), fill=ACCENT)
-    d.text((92, 56), "LUMA", font=luma, fill=CREAM)
-    d.text((94, 106), "S M A R T   H O M E", font=small, fill=(220, 214, 204))
+    luma = font("Cormorant.ttf", 66, [700])
+    small = font("DMSans.ttf", 21, [14, 500])
+    d.ellipse((60, 70, 82, 92), fill=ACCENT)
+    d.text((96, 38), "LUMA", font=luma, fill=CREAM)
+    d.text((99, 112), "S M A R T   H O M E", font=small, fill=(232, 226, 216))
     # headline
     # a soft shadow under the headline, for photos with light behind it
     sh = Image.new("L", (W, H), 0)
@@ -106,15 +111,16 @@ def card(photo, headline, fx):
         y += size * 1.08
     img = Image.composite(Image.new("RGB", (W, H), DARK), img, sh.filter(ImageFilter.GaussianBlur(9)))
     d = ImageDraw.Draw(img)
-    d.ellipse((64, 72, 80, 88), fill=ACCENT)
-    d.text((92, 56), "LUMA", font=luma, fill=CREAM)
-    d.text((94, 106), "S M A R T   H O M E", font=small, fill=(220, 214, 204))
+    d.ellipse((60, 70, 82, 92), fill=ACCENT)
+    d.text((96, 38), "LUMA", font=luma, fill=CREAM)
+    d.text((99, 112), "S M A R T   H O M E", font=small, fill=(232, 226, 216))
     y = y0
     for ln in lines:
         d.text((64, y), ln, font=hf, fill=CREAM)
         y += size * 1.08
-    d.rectangle((64, H - 96, 164, H - 93), fill=ACCENT)
-    d.text((64, H - 76), "Sarasota & Manatee  ·  lumasmarthome.com", font=font("DMSans.ttf", 24, [14, 500]), fill=PEACH)
+    d.rectangle((64, H - 132, 164, H - 129), fill=ACCENT)
+    d.text((64, H - 114), LINE, font=font("DMSans.ttf", 31, [14, 500]), fill=CREAM)
+    d.text((64, H - 66), "Sarasota & Manatee, Florida  ·  lumasmarthome.com", font=font("DMSans.ttf", 22, [14, 400]), fill=PEACH)
     return img
 
 
