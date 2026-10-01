@@ -126,7 +126,7 @@ window.LUMA_SEO = {
       "id": "contact",
       "path": "/contact",
       "title": "Start a Project | Contact LUMA Smart Home | Sarasota, FL",
-      "description": "Book a consultation with LUMA Smart Home. Serving Sarasota and Manatee Counties. Call +1 (941) 217-1616.",
+      "description": "Book a consultation with LUMA Smart Home. Serving Sarasota and Manatee Counties. Call +1 (941) 431-4640.",
       "kind": "contact",
       "city": null,
       "service": null,
@@ -456,7 +456,7 @@ window.LUMA_SEO = {
       "id": "luma-smart-home-sarasota",
       "path": "/luma-smart-home-sarasota",
       "title": "LUMA Smart Home Sarasota | Not luma.com, Luma AI, or Luma cameras",
-      "description": "LUMA Smart Home is a Sarasota, FL integrator for lighting, shades, AV, security, and Wi-Fi. Not luma.com, not Luma AI, not Snap One Luma cameras. (941) 217-1616.",
+      "description": "LUMA Smart Home is a Sarasota, FL integrator for lighting, shades, AV, security, and Wi-Fi. Not luma.com, not Luma AI, not Snap One Luma cameras. (941) 431-4640.",
       "kind": "brand",
       "city": null,
       "service": null,
@@ -492,7 +492,7 @@ window.LUMA_GEO = {
     "file": "luma-smart-home-sarasota.html",
     "title": "LUMA Smart Home Sarasota | Not luma.com, Luma AI, or Luma cameras",
     "h1": "LUMA Smart Home — Sarasota residential technology",
-    "description": "LUMA Smart Home is a Sarasota, FL integrator for lighting, shades, AV, security, and Wi-Fi. Not luma.com, not Luma AI, not Snap One Luma cameras. (941) 217-1616.",
+    "description": "LUMA Smart Home is a Sarasota, FL integrator for lighting, shades, AV, security, and Wi-Fi. Not luma.com, not Luma AI, not Snap One Luma cameras. (941) 431-4640.",
     "og": "/assets/photos/sarasota-marina.jpg",
     "lede": "This is the local studio. If a search for LUMA sent you to an events app, a video model, or a camera brand, read [the explainer](journal-not-luma-com) or [where we work](service-areas)."
   },
@@ -502,9 +502,9 @@ window.LUMA_GEO = {
     "locality": "Sarasota",
     "region": "FL",
     "country": "US",
-    "telephoneDisplay": "+1 (941) 217-1616",
-    "telephone": "+1-941-217-1616",
-    "telHref": "tel:+19412171616",
+    "telephoneDisplay": "+1 (941) 431-4640",
+    "telephone": "+1-941-431-4640",
+    "telHref": "tel:+19414314640",
     "email": "hello@lumasmarthome.com",
     "hours": "Mon–Sat · 9am – 6pm",
     "area": "Sarasota & Manatee Counties",
@@ -1128,7 +1128,7 @@ window.LUMA_GEO = {
       "blocks": [
         {
           "type": "p",
-          "text": "LUMA Smart Home (lumasmarthome.com) designs and installs lighting control, motorized shades, audio, security, and networking for homes in Sarasota and Manatee Counties. Phone +1 (941) 217-1616. Email hello@lumasmarthome.com."
+          "text": "LUMA Smart Home (lumasmarthome.com) designs and installs lighting control, motorized shades, audio, security, and networking for homes in Sarasota and Manatee Counties. Phone +1 (941) 431-4640. Email hello@lumasmarthome.com."
         },
         {
           "type": "h2",
@@ -1164,7 +1164,7 @@ window.LUMA_GEO = {
             "The site is lumasmarthome.com",
             "The place is Sarasota, Florida",
             "The work is lighting, shades, AV, cameras, Wi-Fi",
-            "The phone is (941) 217-1616"
+            "The phone is (941) 431-4640"
           ]
         },
         {
