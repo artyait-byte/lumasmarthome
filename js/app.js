@@ -18,11 +18,11 @@ function geoData(){
 }
 function napInfo(){
   const nap = geoData().nap || {};
-  const telephoneDisplay = nap.telephoneDisplay || '+1 (941) 217-1616';
+  const telephoneDisplay = nap.telephoneDisplay || '+1 (941) 431-4640';
   const email = nap.email || 'hello@lumasmarthome.com';
   const hours = nap.hours || 'Mon–Sat · 9am – 6pm';
   const area = nap.area || 'Sarasota & Manatee Counties';
-  const telHref = nap.telHref || ('tel:' + String(nap.telephone || '+19412171616').replace(/[^\d+]/g, ''));
+  const telHref = nap.telHref || ('tel:' + String(nap.telephone || '+19414314640').replace(/[^\d+]/g, ''));
   const mailHref = 'mailto:' + email;
   const mapsUrl = nap.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL';
   const mapsLabel = nap.mapsLabel || 'Find us on Google Maps';

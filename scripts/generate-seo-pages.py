@@ -200,7 +200,7 @@ ROUTES: list[dict] = [
         "path": "/contact",
         "file": "contact.html",
         "title": "Start a Project | Contact LUMA Smart Home | Sarasota, FL",
-        "description": "Book a consultation with LUMA Smart Home. Serving Sarasota and Manatee Counties. Call +1 (941) 217-1616.",
+        "description": "Book a consultation with LUMA Smart Home. Serving Sarasota and Manatee Counties. Call +1 (941) 431-4640.",
         "h1": "Start Your Project",
         "og_image": "/assets/og/contact.jpg",
         "priority": 0.8,
