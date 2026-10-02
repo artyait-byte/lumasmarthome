@@ -527,6 +527,33 @@ function FxActions({navigate, label='Book a consultation', page='contact', align
   );
 }
 
+/* A background clip that never shows a play button. iOS refuses autoplay in
+   Low Power Mode (and sometimes on first load) and then draws its own play
+   glyph over the frame; when play() is refused the clip steps aside and the
+   poster underneath is what you see. */
+function FxBgVideo({className, poster, sources, label}){
+  const ref = useRef(null);
+  const [blocked, setBlocked] = useState(false);
+  useEffect(() => {
+    const v = ref.current; if (!v) return;
+    v.muted = true; v.defaultMuted = true; v.setAttribute('muted', '');
+    const tryPlay = () => { const p = v.play(); if (p && p.catch) p.catch(() => setBlocked(true)); };
+    tryPlay();
+    const onVis = () => { if (!document.hidden && v.paused && !blocked) tryPlay(); };
+    document.addEventListener('visibilitychange', onVis);
+    return () => document.removeEventListener('visibilitychange', onVis);
+  }, []);
+  if (blocked) return label
+    ? <img className={className} src={poster} alt={label} loading="lazy" decoding="async"/>
+    : null;
+  return (
+    <video ref={ref} className={className} autoPlay muted loop playsInline preload="metadata" poster={poster}
+      disablePictureInPicture controls={false} aria-hidden={label ? undefined : 'true'} aria-label={label}>
+      {sources.map(([src, type]) => <source key={src} src={src} type={type}/>)}
+    </video>
+  );
+}
+
 /* ── 1. HERO — the headline and nothing else ──────────────────────────── */
 function FxHero() {
   return (
@@ -534,11 +561,8 @@ function FxHero() {
       {/* the still sits under the clip, so the hero is a photograph whenever the
           video is not playing: reduced-motion, blocked autoplay, slow network */}
       <div className="fx-hero-still" style={{backgroundImage:"url('/assets/video/hero-sarasota-poster.jpg')"}} aria-hidden="true"/>
-      <video className="fx-hero-media" autoPlay muted loop playsInline preload="metadata"
-             poster="/assets/video/hero-sarasota-poster.jpg" aria-hidden="true">
-        <source src="/assets/video/hero-sarasota.webm" type="video/webm"/>
-        <source src="/assets/video/hero-sarasota.mp4" type="video/mp4"/>
-      </video>
+      <FxBgVideo className="fx-hero-media" poster="/assets/video/hero-sarasota-poster.jpg"
+        sources={[['/assets/video/hero-sarasota.webm','video/webm'],['/assets/video/hero-sarasota.mp4','video/mp4']]}/>
       <div className="fx-hero-scrim" aria-hidden="true"/>
       <div className="fx-field">
         <div className="fx-hero-stage">
@@ -690,12 +714,9 @@ function FxSupport({navigate}) {
             <FxActions navigate={navigate} align="start"/>
           </div>
           <div className="fx-row-media">
-            <video autoPlay muted loop playsInline preload="metadata"
-                   poster="/assets/video/luma-care-poster.jpg"
-                   aria-label="A LUMA technician walking a homeowner through the control app">
-              <source src="/assets/video/luma-care.webm" type="video/webm"/>
-              <source src="/assets/video/luma-care.mp4" type="video/mp4"/>
-            </video>
+            <FxBgVideo poster="/assets/video/luma-care-poster.jpg"
+              label="A LUMA technician walking a homeowner through the control app"
+              sources={[['/assets/video/luma-care.webm','video/webm'],['/assets/video/luma-care.mp4','video/mp4']]}/>
           </div>
         </div>
       </div>

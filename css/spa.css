@@ -1833,3 +1833,11 @@ body{font-size:16px;line-height:1.5}
   .fx-lead{right:0;left:0;bottom:0;width:auto;max-width:none;max-height:88vh;border-radius:16px 16px 0 0}
 }
 @media (prefers-reduced-motion:reduce){.fx-lead{animation:none}}
+
+/* background clips never show Safari's play glyph or controls */
+video::-webkit-media-controls,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none;opacity:0!important}
+.fx-hero-media,.fx-row-media video{pointer-events:none}
