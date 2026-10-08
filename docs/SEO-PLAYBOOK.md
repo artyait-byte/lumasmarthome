@@ -101,28 +101,28 @@ Also expand the six thin articles already published to 1,200+ words, one per mon
 
 `python3 scripts/seo-health-check.py` checks production against the "why Google doesn't see my site" list (source: ika.explains reel, 2026-10-08). Run it at the start of every routine and against the local build before the PR. Any FAIL is fixed first, before the article.
 
-| # | Item | How it is checked | Status 2026-10-08 |
+| # | Item | How it is checked | Status 2026-10-08 (after branch claude/seo-prerender) |
 |---|---|---|---|
 | 1 | sitemap.xml | generated, listed in robots.txt, every URL 200 | PASS, 46 URLs |
 | 2 | robots.txt | does not block `/`, lists sitemap | PASS |
 | 3 | noindex | meta robots + `X-Robots-Tag` on every page | PASS, none |
 | 4 | canonical | self-referencing, apex host, never localhost/preview | PASS |
-| 5 | meta title | ≤60 chars, unique | WARN: 9 pages 61–70 chars |
-| 6 | meta description | 110–155 chars, unique | WARN: 9 pages too long or short |
-| 7 | one H1 per page | exactly one `<h1>` | PASS (but H1 = slogan, backlog #1) |
-| 8 | header hierarchy H1→H2→H3 | in rendered page | check in rendered DOM when touching a page |
-| 9 | alt text | every `<img>` | backlog #7 (images exist only in JS render) |
-| 10 | schema markup | JSON-LD parses; LocalBusiness, Article, Breadcrumb, FAQPage | PASS parse; FAQPage = backlog #5 |
-| 11 | internal links | 2–4 out per article, ≥2 in, no orphans | per article standard |
-| 12 | broken links | HEAD every internal href | PASS, 0 of 49 |
-| 13 | compress images | WebP/AVIF, ≤400 KB | WARN: 265 jpg/png, 0 webp, 30 over 400 KB |
-| 14 | Core Web Vitals | PageSpeed Insights mobile: LCP ≤2.5 s, INP ≤200 ms, CLS ≤0.1 | measure (PSI quota was out on 10-08) |
-| 15 | mobile responsive | 375 px, no horizontal scroll | check in browser |
-| 16 | HTTPS forced | http→https, www→apex 301, HSTS | PASS |
+| 5 | meta title | ≤60 chars, unique | PASS (9 shortened) |
+| 6 | meta description | 110–155 chars, unique | PASS (9 rewritten) |
+| 7 | one H1 per page | exactly one `<h1>` in the rendered HTML | PASS (H1 is still a slogan on service pages: backlog #1) |
+| 8 | header hierarchy H1→H2→H3 | H1 first, no skipped level | PASS (nav h4s and h1→h3 jumps fixed) |
+| 9 | alt text | every visible `<img>`; aria-hidden state layers excluded | PASS |
+| 10 | schema markup | JSON-LD parses; LocalBusiness everywhere, Breadcrumb, Article, Service, FAQPage | PASS (FAQPage auto-built from visible FAQ) |
+| 11 | internal links | no orphans, ≥2 inbound per page | PASS |
+| 12 | broken links | internal hrefs, images on pages, external | PASS (2 dead image refs removed) |
+| 13 | compress images | WebP, ≤400 KB on pages | PASS, 159/159 WebP (`scripts/make-webp.py`) |
+| 14 | Core Web Vitals | Lighthouse mobile: LCP ≤2.5 s, TBT/INP, CLS ≤0.1 | Improved: perf 39–40 → 71–92, TBT 770 → 0–20 ms, CLS 0. LCP 3.2–5.0 s (lab), still over 2.5 s. Next: inline critical CSS |
+| 15 | mobile responsive | 375 px, no horizontal scroll | PASS, 46/46 |
+| 16 | HTTPS forced | http→https, www→apex 301, HSTS, no mixed content | PASS |
 | 17 | URL slugs | clean paths, no `?p=`, no `#/` | PASS |
-| 18 | og:image | on every page | PASS |
-| 19 | Search Console | verified, sitemap submitted, indexing requested | done 2026-09-30; request remaining URLs ~10/day |
-| 20 | backlinks | backlog #9–10 | owner + routine |
+| 18 | og:image | 1200×630 card on every page | PASS (19 pages got cards via `scripts/make-og.py`) |
+| 19 | Search Console | verified, sitemap submitted, indexing requested | owner: request reindexing after merge (~10 URLs/day) |
+| 20 | backlinks | backlog #9–10 | owner: directories, dealer locators, local partners |
 
 Edge cases from the same list, and where we stand:
 
