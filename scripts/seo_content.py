@@ -73,8 +73,8 @@ CITIES = [
         "county": "Sarasota County",
         "tagline": "Our home county — and the first place we spec a Gulf Coast hour.",
         "h1": "Smart home systems in Sarasota, Florida",
-        "title": "Smart Home Installer Sarasota FL | Lighting, Shades & AV | LUMA",
-        "description": "LUMA Smart Home designs and installs lighting control, motorized shades, audio, security, and Wi-Fi for Sarasota residences. Local studio — not luma.com, not Luma AI.",
+        "title": "Sarasota Smart Home Installer | Lighting, Shades & AV | LUMA",
+        "description": "LUMA Smart Home designs and installs lighting control, motorized shades, audio, security and Wi-Fi for Sarasota homes. Local studio, not luma.com.",
         "lede": "If you searched smart home Sarasota, you are in the right place: LUMA is a residential technology studio based here, specifying Lutron, UniFi, Somfy, and Sonos for houses that live with Gulf sun, salt air, and seasonal occupancy.",
         "paragraphs": [
             "Sarasota is not a generic 'smart home market.' West-facing glass on the bay, lanais that become the living room eight months of the year, and HOA rules on Siesta and Lido all change how lighting, shades, and cameras should be drawn. We walk the property at the hour you actually use it — late afternoon glare, not a noon site visit.",
@@ -131,7 +131,7 @@ CITIES = [
         "county": "Manatee & Sarasota Counties",
         "tagline": "New construction and finished houses in a master-planned community.",
         "h1": "Smart home systems in Lakewood Ranch, Florida",
-        "title": "Lakewood Ranch Smart Home Installer | Lighting & Wi-Fi | LUMA",
+        "title": "Lakewood Ranch Smart Home Installer | LUMA Smart Home",
         "description": "LUMA specs lighting control, structured cabling, and motorized shades for Lakewood Ranch new construction and remodels — Manatee and Sarasota sides.",
         "lede": "Lakewood Ranch is where a smart home either gets designed into the walls or bolted on after closing. We prefer the first. Cat6A, a real rack, and Lutron on the lighting schedule beat a bag of consumer hubs in a kitchen drawer.",
         "paragraphs": [
@@ -221,7 +221,7 @@ CITIES = [
         "tagline": "Island houses, salt air, and owners who are often somewhere else.",
         "h1": "Smart home systems on Anna Maria Island",
         "title": "Anna Maria Island Smart Home Installer | LUMA Smart Home",
-        "description": "Lighting control, motorized shades, cameras, and Wi-Fi for homes in Anna Maria, Holmes Beach, and Bradenton Beach. Designed for salt air, gulf glare, and owners who look after the house from away.",
+        "description": "Lighting control, motorized shades, cameras and Wi-Fi for Anna Maria, Holmes Beach and Bradenton Beach homes, built for salt air and owners away.",
         "lede": "Anna Maria Island is three small cities on one barrier island: Anna Maria, Holmes Beach and Bradenton Beach. A lot of the houses are second homes or rentals, which changes what a system has to do. It has to be run and checked from somewhere else.",
         "paragraphs": [
             "That usually means a network that can be diagnosed remotely, cameras that record on the property rather than to a subscription, and lighting and shade schedules that keep an empty house looking lived in. On the gulf side, shades that cut the afternoon glare without taking the water away are normally the first conversation.",
@@ -266,7 +266,7 @@ CITY_SERVICES = [
         "city": "sarasota",
         "service": "lighting",
         "h1": "Lutron lighting control in Sarasota",
-        "title": "Lutron Lighting Installer Sarasota FL | Ketra & RadioRA 3 | LUMA",
+        "title": "Lutron Installer Sarasota FL | Ketra & RadioRA 3 | LUMA",
         "description": "Sarasota Lutron installer for RadioRA 3, HomeWorks, and Ketra. Decorative and architectural lighting under one spec — gulf-hour scenes, not a wall of dimmers.",
         "lede": "Sarasota light changes fast: white-hot noon on the bay, then a long gold hour that makes cheap LEDs look sickly. We spec Lutron so the fixtures you already chose — or the ones your designer is drawing — dim, warm, and scene without a second app.",
         "paragraphs": [
@@ -374,7 +374,7 @@ CITY_SERVICES = [
         "city": "sarasota",
         "service": "automation",
         "h1": "Home automation in Sarasota",
-        "title": "Home Automation Sarasota FL | Control4, Lutron, Josh.ai | LUMA",
+        "title": "Home Automation Sarasota FL | Control4, Lutron | LUMA",
         "description": "Sarasota home automation that unifies lighting, shades, climate, audio, and security on open platforms — Control4, Lutron, Josh.ai — not a dealer lock.",
         "lede": "Automation is the last layer, not the first. In Sarasota we will not sell you a processor until lighting, shades, climate, and the network are systems you could still live with if the fancy UI disappeared.",
         "paragraphs": [
@@ -430,9 +430,9 @@ ARTICLES = [
     {
         "id": "journal-smart-home-sarasota",
         "slug": "smart-home-sarasota",
-        "title": "What a Smart Home on the Gulf Coast Actually Needs | LUMA Journal",
+        "title": "What a Gulf Coast Smart Home Actually Needs | LUMA Journal",
         "h1": "What a smart home on the Gulf Coast actually needs",
-        "description": "A practical definition of a smart home on Florida’s Gulf Coast: sun, salt, seasonal occupancy, and systems you still own. Written by LUMA Smart Home in Sarasota.",
+        "description": "A practical definition of a smart home on Florida’s Gulf Coast: sun, salt, seasonal occupancy, and systems you still own. From LUMA in Sarasota.",
         "og": "/assets/og/service-areas.jpg",
         "date": "2026-08-27",
         "category": "Smart home",
@@ -453,7 +453,7 @@ ARTICLES = [
     {
         "id": "journal-lutron-sarasota",
         "slug": "lutron-installer-sarasota",
-        "title": "A Lutron installer in Sarasota: RadioRA 3 vs HomeWorks | LUMA Journal",
+        "title": "Lutron in Sarasota: RadioRA 3 vs HomeWorks | LUMA Journal",
         "h1": "Choosing Lutron in a Sarasota house",
         "description": "When RadioRA 3 is enough, when Sarasota homes need HomeWorks or Ketra, and what a Lutron installer should put on the proposal. LUMA Smart Home.",
         "og": "/assets/photos/lighting-lutron-hero.jpg",
@@ -500,7 +500,7 @@ ARTICLES = [
     {
         "id": "journal-theater-sarasota",
         "slug": "home-theater-sarasota",
-        "title": "Home theater in Sarasota: dedicated room vs media suite | LUMA Journal",
+        "title": "Sarasota Home Theater: Cinema Room vs Media Suite | LUMA",
         "h1": "A home theater that survives Florida construction",
         "description": "How to decide between a dedicated cinema and a media suite in a Sarasota house — acoustics, CBS, tile, and calibration. LUMA Smart Home.",
         "og": "/assets/photos/hero-theater.jpg",
@@ -566,9 +566,9 @@ BRAND = {
     "id": "luma-smart-home-sarasota",
     "path": "/luma-smart-home-sarasota",
     "file": "luma-smart-home-sarasota.html",
-    "title": "LUMA Smart Home Sarasota | Not luma.com, Luma AI, or Luma cameras",
+    "title": "LUMA Smart Home Sarasota | Not luma.com or Luma AI",
     "h1": "LUMA Smart Home — Sarasota residential technology",
-    "description": "LUMA Smart Home is a Sarasota, FL integrator for lighting, shades, AV, security, and Wi-Fi. Not luma.com, not Luma AI, not Snap One Luma cameras. (941) 431-4640.",
+    "description": "LUMA Smart Home is a Sarasota, FL integrator for lighting, shades, AV, security and Wi-Fi. Not luma.com, Luma AI or Snap One Luma cameras.",
     "og": "/assets/photos/sarasota-marina.jpg",
     "lede": "This is the local studio. If a search for LUMA sent you to an events app, a video model, or a camera brand, read [the explainer](journal-not-luma-com) or [where we work](service-areas).",
 }
@@ -593,7 +593,7 @@ HUB = {
     "id": "service-areas",
     "path": "/service-areas",
     "file": "service-areas.html",
-    "title": "Service Areas | Sarasota & Manatee Counties | LUMA Smart Home",
+    "title": "Service Areas | Sarasota & Manatee | LUMA Smart Home",
     "h1": "Where we work",
     "description": "LUMA Smart Home serves Sarasota and Manatee Counties: Sarasota, Bradenton, Lakewood Ranch, Venice, Siesta Key, Longboat Key, Anna Maria Island and Palmetto.",
     "og": "/assets/photos/sarasota-downtown-bayfront.jpg",
