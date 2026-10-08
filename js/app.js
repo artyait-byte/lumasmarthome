@@ -540,9 +540,9 @@ function FxHero() {
     <section className="fx-hero" aria-label="LUMA Smart Home">
       {/* the still sits under the clip, so the hero is a photograph whenever the
           video is not playing: reduced-motion, blocked autoplay, slow network */}
-      <div className="fx-hero-still" style={{backgroundImage:"url('/assets/video/hero-sarasota-poster.jpg')"}} aria-hidden="true"/>
+      <div className="fx-hero-still" style={{backgroundImage:`url('${lu('/assets/video/hero-sarasota-poster.jpg')}')`}} aria-hidden="true"/>
       <video className="fx-hero-media" autoPlay muted loop playsInline preload="metadata"
-             poster="/assets/video/hero-sarasota-poster.jpg" aria-hidden="true">
+             poster={lu('/assets/video/hero-sarasota-poster.jpg')} aria-hidden="true">
         <source src="/assets/video/hero-sarasota.webm" type="video/webm"/>
         <source src="/assets/video/hero-sarasota.mp4" type="video/mp4"/>
       </video>

@@ -60,6 +60,17 @@ const ROOT_RE = /<div id="root">[\s\S]*?<\/div>\n?(?=<form |<script>window\.__LU
 const NOSCRIPT_RE = /<noscript>\s*<header class="seo-noscript">[\s\S]*?<\/noscript>\n?/;
 const BABEL_RE = /<script src="https:\/\/unpkg\.com\/@babel\/standalone[^>]*><\/script>\n?/;
 const APP_RE = /<script type="text\/babel" data-presets="react" src="\/js\/app\.js"><\/script>/;
+// Content is already in the HTML, so no script needs to block the first paint.
+// `defer` keeps their order: react, react-dom, seo-data, app.min.js.
+const HEAD_SCRIPT_RE = /<script src="(https:\/\/unpkg\.com\/react[^"]+|\/js\/seo-data\.js)"/g;
+
+// The largest image above the fold: the hero still, or the first eager <img>.
+function lcpImage(markup) {
+  const bg = markup.match(/class="(?:fx-hero-still|[^"]*hero[^"]*)"[^>]*style="[^"]*background-image:url\((?:'|&#x27;)?([^')&]+)/);
+  if (bg) return bg[1];
+  const img = markup.match(/<img[^>]*loading="eager"[^>]*>/);
+  return img ? (img[0].match(/src="([^"]+)"/) || [])[1] : null;
+}
 
 let count = 0;
 for (const file of shells(ROOT)) {
@@ -73,7 +84,10 @@ for (const file of shells(ROOT)) {
     .replace(ROOT_RE, () => `<div id="root">${markup}</div>\n`)
     .replace(NOSCRIPT_RE, '')
     .replace(BABEL_RE, '')
-    .replace(APP_RE, '<script src="/js/app.min.js"></script>');
+    .replace(APP_RE, '<script src="/js/app.min.js" defer></script>')
+    .replace(HEAD_SCRIPT_RE, '<script defer src="$1"');
+  const lcp = lcpImage(markup);
+  if (lcp) html = html.replace('</head>', `<link rel="preload" as="image" href="${lcp}" fetchpriority="high">\n</head>`);
   writeFileSync(file, html);
   const words = markup.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
   console.log(`[ok] ${relative(ROOT, file)}  →  ${id}  (${words} words)`);
