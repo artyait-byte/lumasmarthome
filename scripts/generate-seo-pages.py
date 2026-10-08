@@ -626,6 +626,9 @@ def netlify_form(route: dict) -> str:
 
 def head_for(route: dict) -> str:
     canonical = abs_url(route["path"])
+    # scripts/make-og.py writes a 1200x630 card per page; prefer it when present
+    if (ROOT / "assets/og" / f"{route['id']}.jpg").exists():
+        route = {**route, "og_image": f"/assets/og/{route['id']}.jpg"}
     og_image = abs_url(route["og_image"])
     og_dims = ('<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
                if route["og_image"].startswith("/assets/og/") else "")

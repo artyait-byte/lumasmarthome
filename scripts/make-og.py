@@ -124,9 +124,25 @@ def card(photo, headline, fx):
     return img
 
 
+def route_cards():
+    """Every other page (cases, cities, city services, articles) gets a card
+    from its own og photo and H1, so no page shares a raw, odd-sized photo."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("gen", ROOT / "scripts/generate-seo-pages.py")
+    gen = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gen)
+    cards = {}
+    for r in gen.ROUTES:
+        photo = r.get("og_image", "")
+        if r["id"] in CARDS or not photo or photo.startswith("/assets/og/") or not (ROOT / photo.lstrip("/")).exists():
+            continue
+        cards[r["id"]] = (photo.lstrip("/"), r.get("h1") or r["title"].split(" | ")[0], 0.5)
+    return cards
+
+
 if __name__ == "__main__":
     out = ROOT / "assets/og"
     out.mkdir(exist_ok=True)
-    for rid, (photo, headline, fx) in CARDS.items():
+    for rid, (photo, headline, fx) in {**CARDS, **route_cards()}.items():
         card(photo, headline, fx).save(out / f"{rid}.jpg", quality=86, optimize=True, progressive=True)
         print("og", rid)
