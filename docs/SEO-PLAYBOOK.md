@@ -84,7 +84,7 @@ Also expand the six thin articles already published to 1,200+ words, one per mon
 
 ## Site fix backlog (one-time, by priority)
 
-0. Static content in HTML: precompile `js/app.js` (no `@babel/standalone` in the browser) and render each page's H1, main copy, images with alt and FAQ into the generated HTML, so Google sees the content without running JS. Biggest technical lever (see Technical checklist).
+0. Static content in HTML: precompile `js/app.js` (no `@babel/standalone` in the browser) and render each page's H1, main copy, images with alt and FAQ into the generated HTML, so Google sees the content without running JS. Biggest technical lever (see Technical checklist). **Done 2026-10-08** (branch claude/seo-prerender): `npm run build` prerenders all pages via scripts/prerender.mjs; raw HTML now 360–1,180 words. Next lever is depth: most pages are still under 600 words.
 1. Keyword-first H1 on the 8 service pages and the home page.
 2. Google Business Profile: verify, set the CID in `NAP.mapsUrl` and schema `hasMap`, add `sameAs`.
 3. Search Console + GA4 (or Plausible): confirm verification, submit the sitemap, watch indexing.
@@ -126,7 +126,7 @@ Also expand the six thin articles already published to 1,200+ words, one per mon
 
 Edge cases from the same list, and where we stand:
 
-- **Client-side rendering (biggest risk for us).** The real page content (copy, images, cases) is rendered by React from `js/app.js`, compiled in the browser by `@babel/standalone`. Raw HTML has ~55 words per page outside the noscript nav. Google renders JS, but later and less reliably, and the in-browser Babel compile hurts LCP/INP. Fix (backlog #0): precompile JSX at build time and put each page's main copy, H1, images with alt and FAQ into the static HTML.
+- **Client-side rendering — fixed 2026-10-08 by prerendering, keep it that way.** Before the fix: The real page content (copy, images, cases) is rendered by React from `js/app.js`, compiled in the browser by `@babel/standalone`. Raw HTML has ~55 words per page outside the noscript nav. Google renders JS, but later and less reliably, and the in-browser Babel compile hurts LCP/INP. Fix (backlog #0): precompile JSX at build time and put each page's main copy, H1, images with alt and FAQ into the static HTML.
 - Cloudflare blocking Googlebot ("Under Attack" mode or an aggressive WAF): not used (Netlify). If a CDN/WAF is ever added, allow verified bots.
 - Hash routing `/#/about`: the SPA falls back to `location.hash` only if `pushState` throws; no `#/` links in HTML. OK.
 - Soft 404: unknown URLs return a real 404. OK.
