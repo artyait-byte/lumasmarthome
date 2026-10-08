@@ -1001,7 +1001,7 @@ function HomePage({navigate}) {
 function ShadingPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell navigate={navigate}
-    hero={{eyebrow:'Motorized shades', h1:'Three layers <em>of shade.</em>',
+    hero={{eyebrow:'Motorized shades', h1:'Motorized shades <em>in Sarasota, FL</em>', sub:'Three layers of shade.',
       lead:'A Gulf Coast home needs solar shades for heat and glare, blackout for sleep and privacy, and drapery for the room. We design all three as one system, on the drawings, before the pockets are framed.',
       image: PHOTOS.heroShading, primaryLabel:'Plan my shading →', primaryAction:()=>navigate('contact'),
       secondaryLabel:'See finished houses', secondaryAction:()=>navigate('work')}}
@@ -1162,7 +1162,7 @@ function LightingMosaic() {
 function LightingPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell navigate={navigate}
-    hero={{eyebrow:'Lighting control', h1:'Your fixtures. <em>Our controls.</em>',
+    hero={{eyebrow:'Lighting control', h1:'Lutron lighting control <em>in Sarasota, FL</em>', sub:'Your fixtures. Our controls.',
       lead:'Lighting is the most personal layer of a home. LUMA coordinates your fixture specification with a control design that makes every room feel exactly as intended, at 8am and at 8pm.',
       image: PHOTOS.lightingKetra, primaryLabel:'Start your lighting project →', primaryAction:()=>navigate('contact'),
       secondaryLabel:'For designers & builders', secondaryAction:()=>navigate('designers')}}
@@ -1366,7 +1366,7 @@ const TH_CREDS = [
 function TheatersPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell navigate={navigate}
-    hero={{eyebrow:'Home theaters', h1:'Designed for <em>sound,</em> not retrofitted.',
+    hero={{eyebrow:'Home theaters', h1:'Home theater installation <em>in Sarasota, FL</em>', sub:'Designed for sound, not retrofitted.',
       lead:'The difference between a TV in a media room and a true home theater is acoustic intent: walls, seating, screen and speakers designed together, then calibrated in the room they live in.',
       image: PHOTOS.theater, primaryLabel:'Plan my theater →', primaryAction:()=>navigate('contact'),
       secondaryLabel:'See recent rooms', secondaryAction:()=>navigate('work')}}
@@ -1443,7 +1443,7 @@ const AU_WHY = [
 function AutomationPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell navigate={navigate}
-    hero={{eyebrow:'Home automation', h1:'One press, <em>the right state.</em>',
+    hero={{eyebrow:'Home automation', h1:'Home automation <em>in Sarasota, FL</em>', sub:'One press, the right state.',
       lead:'Automation is the quiet layer that lets lighting, shades, climate, audio and security move together. Four states the house already knows; you can override any of them, but most days you will not need to.',
       image: PHOTOS.automationHero, primaryLabel:'Plan my system →', primaryAction:()=>navigate('contact')}}
     intro={{lead:'We build on open, professional platforms.',
@@ -1498,6 +1498,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
               else; the lead opens the intro paragraph and the buttons live in the
               header and the closing CTA */}
           <h1 style={{fontFamily:'var(--serif)',color:'#FCFAF6',margin:0}} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">')}}/>
+          {hero.sub && <p className="lit-hero-sub">{hero.sub}</p>}
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
           <img loading="eager" fetchpriority="high" decoding="async" src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
@@ -1760,7 +1761,7 @@ function AudioPage({navigate}) {
     formName="audio-inquiry"
     hero={{
       eyebrow:'Audio & video',
-      h1:'Sound that <em>fills the room,</em> not the architecture.',
+      h1:'Whole-home audio <em>in Sarasota, FL</em>', sub:'Sound that fills the room, not the architecture.',
       lead:'Whole-home audio that disappears into the architecture — invisible in-ceiling, in-wall, and outdoor speakers tuned to each room\'s geometry, with one app and one source list across every zone.',
       image: PHOTOS.audioHero,
       primaryLabel:'Hear a finished system →', primaryAction:()=>navigate('work'),
@@ -1831,7 +1832,7 @@ function SecurityPage({navigate}) {
     formName="security-inquiry"
     hero={{
       eyebrow:'Security & surveillance',
-      h1:'Your footage. <em>Your property.</em>',
+      h1:'Security camera installation <em>in Sarasota, FL</em>', sub:'Your footage. Your property.',
       lead:'On-premise camera systems with no monthly cloud fees and no third party with a copy of your driveway. Cameras placed by walking the property, not by floor plan.',
       image: PHOTOS.securityHero,
       primaryLabel:'See a finished install →', primaryAction:()=>navigate('work'),
@@ -1916,7 +1917,7 @@ function PermanentLightingPage({navigate}) {
     navigate={navigate}
     hero={{
       eyebrow:'Permanent outdoor lighting',
-      h1:'The roofline, <em>drawn in light.</em>',
+      h1:'Permanent outdoor lighting <em>in Sarasota, FL</em>', sub:'The roofline, drawn in light.',
       lead:'A slim channel under the overhangs, colour-matched to the fascia and invisible by day. At night it traces the architecture in warm white, and the same line does security, game day and the holidays from a preset.',
       image: PHOTOS.permWarm,
       primaryLabel:'See a lit house →', primaryAction:()=>navigate('work'),
@@ -2012,7 +2013,7 @@ function NetworkingPage({navigate}) {
     }}
     hero={{
       eyebrow:'Networking',
-      h1:'A network <em>your home is built on,</em> not bolted to.',
+      h1:'Home Wi-Fi & networking <em>in Sarasota, FL</em>', sub:'A network your home is built on, not bolted to.',
       lead:'Enterprise-grade Wi-Fi and structured cabling designed before drywall. Wired wherever wires can land, mesh only where it belongs — so every device works the day you move in.',
       image: PHOTOS.netRack,
       primaryLabel:'See a finished rack →', primaryAction:()=>navigate('work'),
@@ -3638,6 +3639,7 @@ function JournalArticle({articleId, navigate}){
           {(a.blocks||[]).map((b,i)=>{
             if (b.type==='h2') return <h2 key={i}>{b.text}</h2>;
             if (b.type==='ul') return <ul key={i}>{b.items.map(it=><li key={it}><LinkedText text={it} navigate={navigate}/></li>)}</ul>;
+            if (b.type==='faq') return <div key={i} className="fx-post-faq">{b.items.map(it=><div key={it.q}><h3>{it.q}</h3><p><LinkedText text={it.a} navigate={navigate}/></p></div>)}</div>;
             return <p key={i}><LinkedText text={b.text} navigate={navigate}/></p>;
           })}
         </div>

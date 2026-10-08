@@ -560,6 +560,56 @@ ARTICLES = [
             {"type": "p", "text": "Sunset glare on Bird Key and foliage on a Manatee lot will beat a camera that was drawn in plan view. We walk the property. We will also tell you where a camera is wasted because the HOA or the neighbor angle makes it pointless."},
         ],
     },
+    {
+        "id": "journal-hurricane-smart-home",
+        "slug": "smart-home-hurricane-preparation-florida",
+        "title": "Smart Home Hurricane Preparation in Florida | LUMA",
+        "h1": "Smart home hurricane preparation in Florida",
+        "description": "Getting a Florida smart home ready for hurricane season: backup power for the rack, shades and shutters, cameras and sensors you can check from away.",
+        "og": "/assets/photos/live/sc-s-storm.jpg",
+        "date": "2026-10-06",
+        "category": "Storm season",
+        "dek": "Power, shades and remote eyes. What a Gulf Coast system should do before, during and after a storm, and what it cannot do.",
+        "blocks": [
+            {"type": "p", "text": "Milton came ashore at Siesta Key in October 2024, two weeks after Helene pushed surge across Anna Maria and Longboat Key. Most Sarasota and Manatee owners now have a storm routine for the house: shutters, the generator, the patio furniture. Fewer have one for the systems inside it. Yet those systems decide whether you can see the house from Ohio, whether the rack survives the power coming back on twelve times, and whether a closed-up house sits at 80 percent humidity for a week without anyone knowing."},
+            {"type": "p", "text": "This is how we prepare a smart home for hurricane season on the Gulf Coast. Some of it is equipment. Most of it is decisions made before June 1."},
+            {"type": "h2", "text": "What a smart home can and cannot do in a hurricane"},
+            {"type": "p", "text": "Start with the honest limits. Interior motorized shades are not storm protection. A Lutron Sivoia QS roller or a Somfy drapery track will not stop debris or hold a pane together. Impact glass and rated shutters do that, and they belong to your builder and window contractor, not to us. Cameras do not prevent damage either. What a well-built system does is narrower and still valuable: it keeps the house observable, it protects its own electronics, it closes up the house in one press, and it tells you early when something is going wrong while you are not there."},
+            {"type": "p", "text": "That last point matters more here than almost anywhere else. Peak hurricane season, August through October, is exactly when many Sarasota, Siesta Key and Longboat Key houses are empty. The owner is up north, the house is on Away, and the first sign of trouble is often a neighbor's text."},
+            {"type": "h2", "text": "Power and connectivity: the rack has to ride through the outage"},
+            {"type": "p", "text": "A storm is rarely one outage. It is a dozen: flickers as the bands come through, a long drop when a feeder goes, then brownouts and surges while the utility restores the grid. That sequence is harder on electronics than a clean shutdown. A gateway or recorder that loses power mid-write can corrupt its storage, and a modem that comes back in the wrong order can leave the whole network unreachable until someone walks in and unplugs it."},
+            {"type": "p", "text": "So the network closet gets three things. First, a properly sized UPS on the rack, carrying the UniFi gateway, the PoE switch and the camera recorder. If the house has a standby generator, the job of the UPS is to bridge the seconds before the transfer switch picks up so nothing hard-reboots. If there is no generator, it buys time to see the house go dark and record what happens next. Second, managed power, such as a WattBox, so outlets can be power-cycled remotely and the rack restarts in the right order after an outage instead of all at once. Third, surge protection at the rack, in addition to the whole-house surge device your electrician installs at the panel."},
+            {"type": "p", "text": "Then there is the closet itself. In a raised house on Anna Maria Island or Longboat Key, the ground level is a flood zone by design. The rack does not go in the garage under the house, however convenient the cable runs look. It goes in conditioned space above the flood line, and we plan that on the drawings rather than after the drywall. More on how we build that layer on the [networking page](networking)."},
+            {"type": "p", "text": "In most neighborhoods the cable or fiber line goes down with the power, even if the house itself is on a generator. Without a second path, every camera and sensor in the house is recording to a box nobody can reach. A cellular backup, such as a UniFi LTE or 5G backup unit, gives the gateway a failover link that kicks in when the primary line drops. It will not carry a 4K camera wall, but it is enough for alerts, a few live views and remote diagnostics."},
+            {"type": "p", "text": "Be realistic about it. Cell towers lose power in a major storm too, and some carriers recover faster than others. Pick the carrier with the best signal at the house, not the one on your phone, and test the failover in May, not during the first tropical storm warning."},
+            {"type": "h2", "text": "Shades, shutters and a storm scene"},
+            {"type": "p", "text": "Where a house has motorized hurricane shutters or exterior rolling screens, they can sit on the same keypad and the same app as the interior shades. That turns closing the house from a forty-minute walk with a crank into one press, which matters when you are leaving early to beat the traffic on I-75. Somfy motors drive many of the exterior rolling products on the coast, and a Somfy wind sensor can retract exterior screens automatically when gusts build, before the fabric becomes a sail."},
+            {"type": "p", "text": "We program a Storm scene that does the boring things in the right order: exterior screens up and secured, interior shades down to keep sun off the floors once the power and AC are out, landscape and pool lights off, cameras armed, and a notification to you that the house is closed. A matching Return scene opens everything back up, checks the network, and puts the house back on its normal schedule. If you are on [Longboat Key](sa-longboat-key) or the other islands, check with the HOA before adding exterior hardware; boards there care about what the street can see."},
+            {"type": "h2", "text": "Remote eyes: cameras and sensors that report in"},
+            {"type": "p", "text": "Cameras are the obvious part. UniFi Protect cameras on PoE draw power from the switch, so when the switch is on the UPS, the cameras stay up too, and the recorder keeps writing locally even when the internet is out. You can scroll back through the storm once the connection returns. A camera on the dock, one on the seawall side and one inside the garage usually tell you more after a storm than a dozen pointed at the street."},
+            {"type": "p", "text": "Sensors tell you what cameras cannot. A leak sensor under the AC air handler, the water heater and the kitchen sink. A temperature and humidity sensor in the main living space and one in a closet. In a closed Florida house with the AC off after an outage, humidity climbs fast, and mold can take hold within days. An alert that the house has reached 70 percent humidity is your cue to call someone with a key, long before the drywall starts to smell."},
+            {"type": "h2", "text": "A pre-season checklist for owners"},
+            {"type": "ul", "items": [
+                "Test the UPS: pull the plug on the rack and time how long the network stays up",
+                "Test the cellular failover by unplugging the modem, then check the app from your phone on cellular data",
+                "Confirm every camera is recording locally and that you can scroll back 24 hours",
+                "Run the Storm and Return scenes once, with someone watching the shutters",
+                "Replace batteries in leak and humidity sensors and confirm alerts reach your phone",
+                "Write down who has a key and can walk in if an alert fires while you are away",
+                "Make sure firmware updates are done before August, not during a watch",
+            ]},
+            {"type": "h2", "text": "After the storm"},
+            {"type": "p", "text": "When power is restored, resist the urge to have someone flip everything on at once. Let the generator hand back to the utility, then let managed power bring the rack up in order. Check the recorder first, then the cameras, then the rest. If something did not come back, a remote diagnosis tells you whether it needs a technician or a reboot. That is the work our [LUMA Care plans](support) are built for. The Shoreline plan, at $75 a month, is designed for seasonal and lock-and-leave homes and includes weekday remote diagnostics on the gear we installed."},
+            {"type": "p", "text": "If you want a storm review of an existing system, or you are building and want the rack, power and connectivity drawn correctly from the start, [book a walkthrough](contact). We will tell you what is worth adding and what is not."},
+            {"type": "h2", "text": "Frequently asked questions"},
+            {"type": "faq", "items": [
+                {"q": "Will motorized shades protect my windows in a hurricane?", "a": "No. Interior motorized shades are for sun, glare and privacy. Impact-rated glass or rated hurricane shutters protect the openings. If you have motorized shutters, we can put them on the same keypad and app as the shades so the house closes in one press."},
+                {"q": "How long will my smart home keep running on a UPS?", "a": "It depends on the size of the UPS and what it carries. We size it for the gateway, the PoE switch and the camera recorder. With a standby generator, the UPS only needs to bridge the transfer. Without one, it buys hours rather than days, so the network can report the outage and the cameras can record it."},
+                {"q": "Can I see my cameras if the power and internet are out?", "a": "The recorder keeps writing locally as long as the rack has power, so the footage is there when you reconnect. Live viewing from away needs a path out of the house, which is what a cellular backup on the gateway provides, as long as the local towers are up."},
+                {"q": "What should I set before leaving for the summer?", "a": "Test the UPS and the cellular failover, confirm cameras are recording locally, check leak and humidity sensor batteries, run the Storm scene once, and make sure someone local has a key. Then put the house on Away and keep alerts switched on."},
+            ]},
+        ],
+    },
 ]
 
 BRAND = {
@@ -697,6 +747,8 @@ def extra_routes() -> list[dict]:
     )
     for art in ARTICLES:
         paras = [b["text"] for b in art["blocks"] if b["type"] == "p"]
+        faq = [it for b in art["blocks"] if b["type"] == "faq" for it in b["items"]]
+        paras += [f"{it['q']} {it['a']}" for it in faq]
         routes.append(
             {
                 "id": art["id"],
@@ -712,6 +764,7 @@ def extra_routes() -> list[dict]:
                 "datePublished": art["date"],
                 "index": True,
                 "paragraphs": [art["dek"], *paras],
+                "faq": faq,
             }
         )
     routes.append(
@@ -749,6 +802,7 @@ def _page_label(page_id: str) -> str:
         "journal-theater-sarasota": "Home theater in Sarasota",
         "journal-not-luma-com": "Not luma.com / Luma AI / Luma cameras",
         "journal-cameras-fees": "Cameras without a monthly cloud",
+        "journal-hurricane-smart-home": "Smart home hurricane preparation",
     }
     if page_id in static:
         return static[page_id]
@@ -786,8 +840,8 @@ def related_map() -> dict:
         "theaters": "journal-theater-sarasota",
         "security": "journal-cameras-fees",
         "audio": "journal-smart-home-sarasota",
-        "networking": "journal-smart-home-sarasota",
-        "automation": "journal-smart-home-sarasota",
+        "networking": "journal-hurricane-smart-home",
+        "automation": "journal-hurricane-smart-home",
     }
     for sid in SERVICES:
         combo = f"sa-sarasota-{sid}"
@@ -809,6 +863,7 @@ def related_map() -> dict:
         "contact",
     )
     rel["journal"] = _rel(
+        "journal-hurricane-smart-home",
         "journal-smart-home-sarasota",
         "journal-lutron-sarasota",
         "journal-not-luma-com",
@@ -849,7 +904,9 @@ def related_map() -> dict:
                 "contact",
             ]
         elif city["id"] == "siesta-key":
-            extra = ["journal-shades-gulf", "sa-sarasota", "contact"]
+            extra = ["journal-shades-gulf", "journal-hurricane-smart-home", "sa-sarasota", "contact"]
+        elif city["id"] in ("longboat-key", "anna-maria-island"):
+            extra = ["journal-hurricane-smart-home", "security", "service-areas", "contact"]
         rel[f"sa-{city['id']}"] = _rel(*ids, *extra)
     for row in CITY_SERVICES:
         pid = f"sa-{row['city']}-{row['service']}"
@@ -875,7 +932,10 @@ def related_map() -> dict:
         "luma-smart-home-sarasota", "sa-sarasota", "journal-cameras-fees", "contact"
     )
     rel["journal-cameras-fees"] = _rel(
-        "sa-sarasota-security", "security", "journal-not-luma-com", "contact"
+        "sa-sarasota-security", "security", "journal-hurricane-smart-home", "contact"
+    )
+    rel["journal-hurricane-smart-home"] = _rel(
+        "networking", "sa-sarasota-security", "sa-longboat-key", "support", "contact"
     )
     return rel
 

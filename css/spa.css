@@ -788,6 +788,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
    Bumping here keeps all of them legible for the 60+ target audience. */
 .lit-hero-text h1{font-size:clamp(50px,5.5vw,84px)!important;line-height:1.05!important;letter-spacing:-.008em!important;margin-bottom:28px!important}
 .lit-hero-text p{font-size:21px!important;line-height:1.7!important}
+.lit-hero-text .lit-hero-sub{font-family:var(--serif);font-style:italic;color:#F4C9A8;font-size:clamp(24px,2.4vw,34px)!important;line-height:1.25!important;margin:0}
 .lit-hero-text ul li{font-size:18.5px!important;line-height:1.6!important}
 .lit-hero-text .btn-solid,.lit-hero-text .btn-ghost{font-size:17.5px!important;padding:16px 30px!important;min-height:56px}
 
@@ -1528,6 +1529,7 @@ body{font-size:16px;line-height:1.5}
 .fx-post-prose h2{font-family:var(--serif);font-size:32px;font-weight:500!important;line-height:1.2;margin:48px 0 16px}
 .fx-post-prose ul{margin:0 0 24px;padding-left:24px}
 .fx-post-prose li{margin-bottom:8px}
+.fx-post-faq h3{font-family:var(--serif);font-size:24px;font-weight:500;line-height:1.25;margin:32px 0 10px}
 .fx-post-prose a{color:var(--dark);text-decoration:underline;text-decoration-color:rgba(197,114,56,.5);text-underline-offset:3px}
 .fx-post-prose a:hover{color:var(--accent)}
 @media (max-width:1023px){.fx-blog-grid{grid-template-columns:1fr 1fr}}

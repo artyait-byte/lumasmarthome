@@ -50,7 +50,7 @@ ROUTES: list[dict] = [
         "file": "lighting.html",
         "title": "Smart Lighting Control | Lutron & Ketra | LUMA Smart Home",
         "description": "Decorative and architectural lighting under one control spec. Lutron RadioRA 3, Ketra, warm-dim scenes, and designer keypads for Gulf Coast homes.",
-        "h1": "Your fixtures. Our controls.",
+        "h1": "Lutron lighting control in Sarasota, FL",
         "og_image": "/assets/og/lighting.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -64,7 +64,7 @@ ROUTES: list[dict] = [
         "file": "shading.html",
         "title": "Motorized Window Shades | Somfy & Lutron Sivoia | LUMA",
         "description": "Motorized shades and drapery for Gulf Coast sun: solar screens, blackout, and Lutron Sivoia QS / Somfy, programmed to the hour of the day.",
-        "h1": "Three layers of shade.",
+        "h1": "Motorized shades in Sarasota, FL",
         "og_image": "/assets/og/shading.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -78,7 +78,7 @@ ROUTES: list[dict] = [
         "file": "theaters.html",
         "title": "Home Theater Design & Installation | Sarasota | LUMA",
         "description": "Dedicated cinema rooms designed from the walls out — acoustics, sightlines, calibration, and seating for Gulf Coast residences.",
-        "h1": "Designed for sound, not retrofitted.",
+        "h1": "Home theater installation in Sarasota, FL",
         "og_image": "/assets/og/theaters.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -92,7 +92,7 @@ ROUTES: list[dict] = [
         "file": "automation.html",
         "title": "Home Automation | Control4, Lutron, Josh.ai | LUMA Sarasota",
         "description": "One-press scenes that move lighting, shades, climate, audio, and security together. Open platforms — Control4, Lutron, Josh.ai — for Gulf Coast homes.",
-        "h1": "One press, the right state.",
+        "h1": "Home automation in Sarasota, FL",
         "og_image": "/assets/og/automation.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -106,7 +106,7 @@ ROUTES: list[dict] = [
         "file": "audio.html",
         "title": "Whole-Home Audio & Video | Sonos, Sonance | LUMA Smart Home",
         "description": "Invisible in-ceiling, in-wall, and outdoor audio tuned to each room, with one app across every zone. Sarasota & Manatee Counties.",
-        "h1": "Sound that fills the room, not the architecture.",
+        "h1": "Whole-home audio in Sarasota, FL",
         "og_image": "/assets/og/audio.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -120,7 +120,7 @@ ROUTES: list[dict] = [
         "file": "security.html",
         "title": "Home Security & Cameras | UniFi Protect | LUMA Sarasota",
         "description": "On-premise UniFi Protect cameras with no monthly cloud fees. Property-walked camera placement, NVR on site, optional alarm monitoring.",
-        "h1": "Your footage. Your property.",
+        "h1": "Security camera installation in Sarasota, FL",
         "og_image": "/assets/og/security.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -134,7 +134,7 @@ ROUTES: list[dict] = [
         "file": "networking.html",
         "title": "Wi-Fi 6/7 & Structured Cabling | UniFi | LUMA Smart Home",
         "description": "Enterprise-grade UniFi Wi-Fi and Cat6A structured cabling designed before drywall. Wired spine first, wireless where it belongs.",
-        "h1": "A network your home is built on, not bolted to.",
+        "h1": "Home Wi-Fi & networking in Sarasota, FL",
         "og_image": "/assets/og/networking.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -148,7 +148,7 @@ ROUTES: list[dict] = [
         "file": "permanent-lighting.html",
         "title": "Permanent Outdoor Lighting | Soffit LEDs | LUMA Smart Home",
         "description": "Permanent architectural roofline lighting for Sarasota and Gulf Coast residences: a colour-matched channel under the overhangs, warm white every night, security, game day and holiday presets from your phone.",
-        "h1": "The roofline, drawn in light.",
+        "h1": "Permanent outdoor lighting in Sarasota, FL",
         "og_image": "/assets/og/permanent-lighting.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -519,6 +519,20 @@ def json_ld(route: dict) -> str:
                 "articleBody": " ".join(LINK_RE.sub(r"\1", p) for p in (route.get("paragraphs") or [])),
             }
         )
+    if kind == "article" and route.get("faq"):
+        graph.append(
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": it["q"],
+                        "acceptedAnswer": {"@type": "Answer", "text": LINK_RE.sub(r"\1", it["a"])},
+                    }
+                    for it in route["faq"]
+                ],
+            }
+        )
     if kind == "brand":
         graph.append(
             {
@@ -783,7 +797,8 @@ def write_redirects() -> None:
         "/service-areas/punta-gorda     /service-areas  301",
         "/service-areas/punta-gorda.html /service-areas 301",
         "",
-        "# Duplicate .html URLs → canonical pretty paths",
+        "# Duplicate .html URLs → canonical pretty paths. Forced (!): the .html file",
+        "# exists, so an unforced rule is shadowed and the duplicate answers 200.",
     ]
     skip_files = {"brochure.html", "404.html", "thank-you.html"}
     for r in ROUTES:
@@ -796,7 +811,7 @@ def write_redirects() -> None:
             continue
         if html_url.rstrip("/") == pretty:
             continue
-        lines.append(f"{html_url}  {pretty}  301")
+        lines.append(f"{html_url}  {pretty}  301!")
     (ROOT / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

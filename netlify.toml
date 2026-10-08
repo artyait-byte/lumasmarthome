@@ -70,7 +70,7 @@
 
 [[redirects]]
   from   = "/smart-home-demo"
-  to     = "/demo"
+  to     = "/automation"
   status = 301
 
 # Old SPA query-string routes (?p=lighting) → pretty URLs.
@@ -176,7 +176,7 @@
 [[redirects]]
   from   = "/"
   query  = { p = "smart-home-demo" }
-  to     = "/demo"
+  to     = "/automation"
   status = 301
   force  = true
 
