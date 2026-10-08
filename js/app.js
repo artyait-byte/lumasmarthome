@@ -2983,7 +2983,7 @@ function ServiceSupportPage({navigate}) {
               </div>
             ))}
           </div>
-          <p className="fx-plans-note">Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. LUMA Home Systems LLC, Sarasota: Florida licensed low-voltage contractor, insured for residential and light commercial work.</p>
+          <p className="fx-plans-note">Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. LUMA Smart Home (Tegra-Media LLC), Sarasota: Florida licensed low-voltage contractor, insured for residential and light commercial work.</p>
         </div>
       </section>
 
@@ -3698,7 +3698,7 @@ function BrandPage({navigate}){
         <Crumbs items={[{page:'home', label:'Home'},{label:'LUMA Smart Home Sarasota'}]} navigate={navigate}/>
         <div className="geo-prose">
           <p>LUMA Smart Home (lumasmarthome.com) is a residential technology studio based in Sarasota, Florida. We specify and install Lutron lighting, motorized shades, whole-home audio, UniFi cameras and Wi-Fi, and automation for houses in Sarasota and Manatee Counties. See <NavLink page="service-areas" navigate={navigate} className="inline-link">where we work</NavLink> and <NavLink page="about" navigate={navigate} className="inline-link">about the studio</NavLink>.</p>
-          <p>Legal name: LUMA Home Systems LLC. The public name on this site and on Google should stay LUMA Smart Home — Sarasota, with the trades in the description so a search for lighting or smart home does not land you on an events platform.</p>
+          <p>Legal name: Tegra-Media LLC, doing business as LUMA Smart Home. The public name on this site and on Google should stay LUMA Smart Home — Sarasota, with the trades in the description so a search for lighting or smart home does not land you on an events platform.</p>
         </div>
         <address className="geo-nap">
           <strong>LUMA Smart Home</strong>

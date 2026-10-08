@@ -575,7 +575,7 @@ BRAND = {
 
 NAP = {
     "name": "LUMA Smart Home",
-    "legalName": "LUMA Home Systems LLC",
+    "legalName": "Tegra-Media LLC",  # LUMA Smart Home is its DBA
     "locality": "Sarasota",
     "region": "FL",
     "country": "US",

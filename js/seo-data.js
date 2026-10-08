@@ -498,7 +498,7 @@ window.LUMA_GEO = {
   },
   "nap": {
     "name": "LUMA Smart Home",
-    "legalName": "LUMA Home Systems LLC",
+    "legalName": "Tegra-Media LLC",
     "locality": "Sarasota",
     "region": "FL",
     "country": "US",

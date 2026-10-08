@@ -375,7 +375,7 @@ def local_business_node() -> dict:
         "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
         "@id": f"{SITE}/#business",
         "name": "LUMA Smart Home",
-        "legalName": "LUMA Home Systems LLC",
+        "legalName": NAP["legalName"],
         "url": f"{SITE}/",
         "telephone": PHONE,
         "email": EMAIL,
@@ -644,7 +644,7 @@ def head_for(route: dict) -> str:
 <link rel="canonical" href="{esc(canonical)}">
 <meta name="robots" content="{robots}">
 <meta name="theme-color" content="#1B1A28">
-<meta name="author" content="LUMA Home Systems LLC">
+<meta name="author" content="LUMA Smart Home">
 <meta name="geo.region" content="US-FL">
 <meta name="geo.placename" content="Sarasota">
 <link rel="preconnect" href="https://fonts.googleapis.com">
