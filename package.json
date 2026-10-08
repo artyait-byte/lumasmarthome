@@ -1,0 +1,16 @@
+{
+  "name": "lumasmarthome",
+  "private": true,
+  "description": "Build step: compile js/app.js and prerender every page into its HTML shell.",
+  "scripts": {
+    "build": "python3 scripts/generate-seo-pages.py && node scripts/prerender.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}

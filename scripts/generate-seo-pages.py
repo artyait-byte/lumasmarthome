@@ -9,6 +9,10 @@ crawlers can discover and index each page even before JavaScript runs.
 
 Re-run after changing titles/descriptions in ROUTES, or after editing the
 shared head chrome. The SPA itself lives in css/spa.css + js/app.js.
+
+The shells still load Babel standalone + js/app.js so they work on their own
+(local preview). `npm run build` then runs scripts/prerender.mjs, which
+renders each page into #root, drops Babel and points at js/app.min.js.
 """
 from __future__ import annotations
 

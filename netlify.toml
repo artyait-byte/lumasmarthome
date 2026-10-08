@@ -3,9 +3,14 @@
 
 [build]
   publish = "."
-  # Rebuild crawlable HTML shells (unique title/canonical per URL).
-  # Shared SPA is /js/app.js — do not inline it into every page.
-  command = "python3 scripts/generate-seo-pages.py"
+  # 1. generate-seo-pages.py writes the HTML shells (title/canonical per URL).
+  # 2. prerender.mjs compiles js/app.js -> js/app.min.js and renders every
+  #    page into its shell, so the HTML carries the full content without JS.
+  # A failure in either step fails the build; Netlify keeps the last deploy.
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
 
 # ----- Legacy URL → public path -------------------------------------------
 # Real HTML files now exist for /lighting, /about, /work, etc.
@@ -227,11 +232,11 @@
     Referrer-Policy        = "strict-origin-when-cross-origin"
     Permissions-Policy     = "camera=(), microphone=(), geolocation=(self)"
     # CSP:
-    #   - 'unsafe-eval' is required because Babel standalone transpiles JSX in-browser.
+    #   - no 'unsafe-eval': JSX is precompiled at build time (js/app.min.js).
     #   - 'unsafe-inline' allows inline JSON-LD and window.__LUMA_PAGE.
-    #   - unpkg.com hosts React, ReactDOM, Babel.
-    #   - connect-src 'self' lets Babel fetch /js/app.js.
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; frame-ancestors *; base-uri 'self'; form-action 'self';"
+    #   - unpkg.com hosts React and ReactDOM.
+    #   - connect-src 'self' lets the contact form post to Netlify Forms.
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://unpkg.com; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; frame-ancestors *; base-uri 'self'; form-action 'self';"
 
 [[headers]]
   for = "/images/*"

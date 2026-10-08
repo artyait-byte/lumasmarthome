@@ -144,7 +144,7 @@ def page_checks() -> None:
                 links.add(a)
     if thin:
         report("WARN", f"{len(thin)}/{len(urls)} pages have < {MIN_RAW_WORDS} words in raw HTML "
-                       f"(content depends on JS rendering): " + ", ".join(f"{p}={w}" for p, w in thin[:8]) + " ...")
+                       f"(thin copy in the HTML Google receives): " + ", ".join(f"{p}={w}" for p, w in thin[:8]) + " ...")
     asset_ext = (".css", ".js", ".png", ".jpg", ".jpeg", ".webp", ".svg", ".ico", ".woff2", ".mp4", ".webm", ".pdf")
     broken = []
     for a in sorted(links):

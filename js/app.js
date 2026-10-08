@@ -3112,7 +3112,7 @@ function BudgetCalculatorPage({navigate}) {
           <div className="sec-label">Quick estimator</div>
           <h2 className="sec-title">Roughly, <em>where do you land?</em></h2>
           <div style={{maxWidth:760,margin:'40px auto 0',background:'#fff',borderRadius:18,padding:'32px 36px',border:'1px solid rgba(0,0,0,.06)'}}>
-            <label style={{display:'block',fontSize:13,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--mid)',marginBottom:10}}>Approx. square footage: <strong style={{color:'var(--accent)',fontSize:16,letterSpacing:0,textTransform:'none'}}>{sqft.toLocaleString()} sq ft</strong></label>
+            <label style={{display:'block',fontSize:13,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--mid)',marginBottom:10}}>Approx. square footage: <strong style={{color:'var(--accent)',fontSize:16,letterSpacing:0,textTransform:'none'}}>{sqft.toLocaleString('en-US')} sq ft</strong></label>
             <input type="range" min="2000" max="15000" step="250" value={sqft} onChange={e=>setSqft(+e.target.value)} style={{width:'100%',accentColor:'#C57238'}}/>
             <div style={{display:'flex',flexWrap:'wrap',gap:10,marginTop:24}}>
               {services.map(s=>(
@@ -3925,4 +3925,12 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+/* The build (scripts/prerender.mjs) renders every page into #root, so the
+   browser hydrates that markup instead of painting from scratch. In Node the
+   prerender picks App up from globalThis and nothing is mounted. */
+globalThis.__LUMA_APP = App;
+if (typeof document !== 'undefined' && document.getElementById('root')) {
+  const rootEl = document.getElementById('root');
+  if (rootEl.firstElementChild) ReactDOM.hydrateRoot(rootEl, <App/>);
+  else ReactDOM.createRoot(rootEl).render(<App/>);
+}
