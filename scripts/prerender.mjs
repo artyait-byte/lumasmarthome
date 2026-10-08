@@ -72,6 +72,19 @@ function lcpImage(markup) {
   return img ? (img[0].match(/src="([^"]+)"/) || [])[1] : null;
 }
 
+// Visible FAQ (<details class="fx-faq-item">) -> FAQPage JSON-LD built from the
+// same text, so the markup can never drift from what the page shows.
+const decode = (t) => t.replace(/<[^>]+>/g, '').replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"')
+  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+function faqJsonLd(markup) {
+  const items = [...markup.matchAll(/<details class="fx-faq-item"[^>]*><summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)]
+    .map(([, q, a]) => ({ '@type': 'Question', name: decode(q.replace(/<i[^>]*>[\s\S]*?<\/i>/, '')),
+      acceptedAnswer: { '@type': 'Answer', text: decode(a) } }))
+    .filter((x) => x.name && x.acceptedAnswer.text);
+  if (!items.length) return '';
+  return `<script type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items }, null, 2)}\n</script>\n`;
+}
+
 let count = 0;
 for (const file of shells(ROOT)) {
   let html = readFileSync(file, 'utf8');
@@ -86,6 +99,10 @@ for (const file of shells(ROOT)) {
     .replace(BABEL_RE, '')
     .replace(APP_RE, '<script src="/js/app.min.js" defer></script>')
     .replace(HEAD_SCRIPT_RE, '<script defer src="$1"');
+  if (!html.includes('"FAQPage"')) {
+    const faq = faqJsonLd(markup);
+    if (faq) html = html.replace('</head>', faq + '</head>');
+  }
   const lcp = lcpImage(markup);
   if (lcp) html = html.replace('</head>', `<link rel="preload" as="image" href="${lcp}" fetchpriority="high">\n</head>`);
   writeFileSync(file, html);
