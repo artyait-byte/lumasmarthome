@@ -84,13 +84,52 @@ Also expand the six thin articles already published to 1,200+ words, one per mon
 
 ## Site fix backlog (one-time, by priority)
 
+0. Static content in HTML: precompile `js/app.js` (no `@babel/standalone` in the browser) and render each page's H1, main copy, images with alt and FAQ into the generated HTML, so Google sees the content without running JS. Biggest technical lever (see Technical checklist). **Done 2026-10-08** (branch claude/seo-prerender): `npm run build` prerenders all pages via scripts/prerender.mjs; raw HTML now 360–1,180 words. Next lever is depth: most pages are still under 600 words.
 1. Keyword-first H1 on the 8 service pages and the home page.
 2. Google Business Profile: verify, set the CID in `NAP.mapsUrl` and schema `hasMap`, add `sameAs`.
 3. Search Console + GA4 (or Plausible): confirm verification, submit the sitemap, watch indexing.
 4. Depth on the service pages: 1,000+ words each, FAQ, process, price range, related cases.
 5. FAQPage schema in the generator.
 6. Brand pages: Lutron, Control4/Savant, Sonos, UniFi, Somfy.
-7. Alt text on every image (about half on /lighting are empty).
+7. Alt text on every image (about half on /lighting are empty). Convert assets to WebP, max 400 KB (30 files are over).
+7a. Titles ≤60 and descriptions 110–155 on the pages flagged by `seo-health-check.py`.
 8. New cities: Osprey, Nokomis, Parrish, North Port, Punta Gorda, Englewood.
 9. Profiles with identical NAP: Houzz, Yelp, Angi, Thumbtack, BBB, Nextdoor, Apple Maps, Bing Places.
 10. Links: Lutron / Somfy / Ubiquiti dealer locators, local designers and builders, Sarasota chamber, CEDIA.
+
+## Technical checklist (run every week)
+
+`python3 scripts/seo-health-check.py` checks production against the "why Google doesn't see my site" list (source: ika.explains reel, 2026-10-08). Run it at the start of every routine and against the local build before the PR. Any FAIL is fixed first, before the article.
+
+| # | Item | How it is checked | Status 2026-10-08 (after branch claude/seo-prerender) |
+|---|---|---|---|
+| 1 | sitemap.xml | generated, listed in robots.txt, every URL 200 | PASS, 46 URLs |
+| 2 | robots.txt | does not block `/`, lists sitemap | PASS |
+| 3 | noindex | meta robots + `X-Robots-Tag` on every page | PASS, none |
+| 4 | canonical | self-referencing, apex host, never localhost/preview | PASS |
+| 5 | meta title | ≤60 chars, unique | PASS (9 shortened) |
+| 6 | meta description | 110–155 chars, unique | PASS (9 rewritten) |
+| 7 | one H1 per page | exactly one `<h1>` in the rendered HTML | PASS (H1 is still a slogan on service pages: backlog #1) |
+| 8 | header hierarchy H1→H2→H3 | H1 first, no skipped level | PASS (nav h4s and h1→h3 jumps fixed) |
+| 9 | alt text | every visible `<img>`; aria-hidden state layers excluded | PASS |
+| 10 | schema markup | JSON-LD parses; LocalBusiness everywhere, Breadcrumb, Article, Service, FAQPage | PASS (FAQPage auto-built from visible FAQ) |
+| 11 | internal links | no orphans, ≥2 inbound per page | PASS |
+| 12 | broken links | internal hrefs, images on pages, external | PASS (2 dead image refs removed) |
+| 13 | compress images | WebP, ≤400 KB on pages | PASS, 159/159 WebP (`scripts/make-webp.py`) |
+| 14 | Core Web Vitals | Lighthouse mobile: LCP ≤2.5 s, TBT/INP, CLS ≤0.1 | Improved: perf 39–40 → 71–92, TBT 770 → 0–20 ms, CLS 0. LCP 3.2–5.0 s (lab), still over 2.5 s. Next: inline critical CSS |
+| 15 | mobile responsive | 375 px, no horizontal scroll | PASS, 46/46 |
+| 16 | HTTPS forced | http→https, www→apex 301, HSTS, no mixed content | PASS |
+| 17 | URL slugs | clean paths, no `?p=`, no `#/` | PASS |
+| 18 | og:image | 1200×630 card on every page | PASS (19 pages got cards via `scripts/make-og.py`) |
+| 19 | Search Console | verified, sitemap submitted, indexing requested | owner: request reindexing after merge (~10 URLs/day) |
+| 20 | backlinks | backlog #9–10 | owner: directories, dealer locators, local partners |
+
+Edge cases from the same list, and where we stand:
+
+- **Client-side rendering — fixed 2026-10-08 by prerendering, keep it that way.** Before the fix: The real page content (copy, images, cases) is rendered by React from `js/app.js`, compiled in the browser by `@babel/standalone`. Raw HTML has ~55 words per page outside the noscript nav. Google renders JS, but later and less reliably, and the in-browser Babel compile hurts LCP/INP. Fix (backlog #0): precompile JSX at build time and put each page's main copy, H1, images with alt and FAQ into the static HTML.
+- Cloudflare blocking Googlebot ("Under Attack" mode or an aggressive WAF): not used (Netlify). If a CDN/WAF is ever added, allow verified bots.
+- Hash routing `/#/about`: the SPA falls back to `location.hash` only if `pushState` throws; no `#/` links in HTML. OK.
+- Soft 404: unknown URLs return a real 404. OK.
+- Canonical pointing to localhost from a dev build: checked on every run.
+- noindex header on preview deploys: Netlify deploy previews (`--alias`) must never be linked publicly; production must never carry `X-Robots-Tag: noindex`.
+- Geo-blocking: Googlebot crawls from the US; never geo-restrict the site.

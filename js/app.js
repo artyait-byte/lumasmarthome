@@ -120,7 +120,8 @@ function RelatedLinks({page, navigate}){
 
 /* ─── PHOTO URLS ─── */
 // Local assets: /assets/photos/ — bump ?v= when you replace files (cache bust).
-const lu = (path) => path + '?v=20';
+// Every .jpg/.png under assets/ has a .webp twin (scripts/make-webp.py).
+const lu = (path) => path.replace(/\.(jpe?g|png)$/i, '.webp') + '?v=21';
 const PHOTOS = {
   lighting:    lu('/assets/photos/interior-dining-warm.jpg'),
   window:      lu('/assets/photos/hero-shading.jpg'),
@@ -217,11 +218,9 @@ const PHOTOS = {
   projectLido:        lu('/assets/photos/sarasota-lido-day.jpg'),
   projectBridge:      lu('/assets/photos/sarasota-ringling-bridge.jpg'),
   projectIsland:      lu('/assets/photos/sarasota-turtle-aerial.jpg'),
-  projectRetreat:     lu('/assets/photos/exterior-landscape-lighting.jpg'),
 
   'lit-cove':         lu('/assets/photos/fl-golden-hour.jpg'),
   'lit-keypad':       lu('/assets/photos/lighting-lutron-hero.jpg'),
-  'lit-landscape-fl': lu('/assets/photos/exterior-landscape-lighting.jpg'),
   'lit-pendants':     lu('/assets/photos/designers-chandelier.jpg'),
   'lit-app':          lu('/assets/photos/scene-midday.jpg'),
   'lit-lanai-fl':     lu('/assets/photos/waterfront-lanai.jpg'),
@@ -297,7 +296,7 @@ function MegaDropdown({active, hoverId, setHoverId, navigate}) {
               className={`dd-item${hoverId===s.id?' active':''}`}
               onMouseEnter={()=>setHoverId(s.id)}>
               <HexIcon type={s.id} size={30} color={hoverId===s.id?'#B5622A':'#C57238'}/>
-              <div className="dd-text"><h4>{s.name}</h4><p>{s.sub}</p></div>
+              <div className="dd-text"><strong className="dd-name">{s.name}</strong><p>{s.sub}</p></div>
             </NavLink>
           ))}
         </div>
@@ -307,7 +306,7 @@ function MegaDropdown({active, hoverId, setHoverId, navigate}) {
               className={`dd-item${hoverId===s.id?' active':''}`}
               onMouseEnter={()=>setHoverId(s.id)}>
               <HexIcon type={s.id} size={30} color={hoverId===s.id?'#B5622A':'#C57238'}/>
-              <div className="dd-text"><h4>{s.name}</h4><p>{s.sub}</p></div>
+              <div className="dd-text"><strong className="dd-name">{s.name}</strong><p>{s.sub}</p></div>
             </NavLink>
           ))}
         </div>
@@ -500,9 +499,17 @@ const FX_QUOTES = [];
 /* Reel tiles render at 259x270 and 319x388 — serve crops cut for that,
    not the full-size hero photos. Ten files, under half a megabyte total. */
 const FX_REEL = [
-  'sarasota-bay-house','lighting-scene','hero-theater','permanent-warm','hero-designers-new',
-  'hero-shading','reel-bedroom','work-bayfront','work-family','hero-automation'
-].map(n => lu('/assets/photos/reel/' + n + '.jpg'));
+  ['sarasota-bay-house', 'Waterfront house on Sarasota Bay at dusk, pool lit beside the lanai doors'],
+  ['lighting-scene', 'Dining room with warm-dimmed pendants and cove light, lanai and palms beyond the glass'],
+  ['hero-theater', 'Dedicated home theater with a projection screen and rows of white recliners'],
+  ['permanent-warm', 'Two-storey Florida home at twilight with warm permanent roofline and facade lighting'],
+  ['hero-designers-new', 'Interior designer finish samples: wood, fabric and drawings on a table by the window'],
+  ['hero-shading', 'Living room with motorized roller shades half down over a turquoise Gulf view'],
+  ['reel-bedroom', 'Bedroom at night with blackout shades closed and low bedside lighting'],
+  ['work-bayfront', 'Bayfront home at night with pool, landscape lighting and reflections on the canal'],
+  ['work-family', 'Mediterranean-style family home at sunset with lit windows and entry'],
+  ['hero-automation', 'Wall-mounted touch panel controlling lights and shades in a hallway'],
+].map(([n, alt]) => ({src: lu('/assets/photos/reel/' + n + '.jpg'), alt}));
 
 function FxCall() {
   const nap = napInfo();
@@ -533,9 +540,9 @@ function FxHero() {
     <section className="fx-hero" aria-label="LUMA Smart Home">
       {/* the still sits under the clip, so the hero is a photograph whenever the
           video is not playing: reduced-motion, blocked autoplay, slow network */}
-      <div className="fx-hero-still" style={{backgroundImage:"url('/assets/video/hero-sarasota-poster.jpg')"}} aria-hidden="true"/>
+      <div className="fx-hero-still" style={{backgroundImage:`url('${lu('/assets/video/hero-sarasota-poster.jpg')}')`}} aria-hidden="true"/>
       <video className="fx-hero-media" autoPlay muted loop playsInline preload="metadata"
-             poster="/assets/video/hero-sarasota-poster.jpg" aria-hidden="true">
+             poster={lu('/assets/video/hero-sarasota-poster.jpg')} aria-hidden="true">
         <source src="/assets/video/hero-sarasota.webm" type="video/webm"/>
         <source src="/assets/video/hero-sarasota.mp4" type="video/mp4"/>
       </video>
@@ -570,8 +577,8 @@ function FxIntro({navigate}) {
       </div>
       <div className="fx-reel" aria-hidden="true">
         <div className="fx-reel-track">
-          {FX_REEL.concat(FX_REEL).map((src,i) => (
-            <img key={i} src={src} alt="" decoding="async" loading={i < 6 ? 'eager' : 'lazy'}/>
+          {FX_REEL.concat(FX_REEL).map((r,i) => (
+            <img key={i} src={r.src} alt={i < FX_REEL.length ? r.alt : ''} decoding="async" loading={i < 6 ? 'eager' : 'lazy'}/>
           ))}
         </div>
       </div>
@@ -647,7 +654,7 @@ function FxScenes({heading, lede, band}) {
         <div className="fx-scenes">
           <div className="fx-scenes-stage" role="img" aria-label={`${s.name} scene at ${s.time}`}>
             {FX_SCENES.map((x,k)=>(
-              <img key={x.id} src={x.img} alt="" loading={k===2?'eager':'lazy'} decoding="async" className={k===i?'on':''}/>
+              <img key={x.id} src={x.img} alt={`Gulf Coast great room, ${x.name} scene at ${x.time}: ${x.what}`} loading={k===2?'eager':'lazy'} decoding="async" className={k===i?'on':''}/>
             ))}
             <div className="fx-scenes-chip" aria-live="polite">
               <span className="fx-scenes-dot" aria-hidden="true"/>
@@ -1267,6 +1274,7 @@ function DesignersPage({navigate}) {
       <section className="fx-band--plain fx-py-lg">
         <div className="fx-wide">
           <div className="fx-heads" style={{marginBottom:48}}>
+            <h2 className="sr-only">Who we work with</h2>
             <p className="fx-lede" style={{maxWidth:768,margin:'0 auto',color:'var(--dark)'}}>LUMA works alongside interior designers, architects, and custom builders across Sarasota and Manatee. One contractor for lighting, shading, AV, security, and networking. One schedule. One proposal your client can actually read.</p>
           </div>
           <div className="fx-panels fx-panels--static fx-panels--three">
@@ -3112,7 +3120,7 @@ function BudgetCalculatorPage({navigate}) {
           <div className="sec-label">Quick estimator</div>
           <h2 className="sec-title">Roughly, <em>where do you land?</em></h2>
           <div style={{maxWidth:760,margin:'40px auto 0',background:'#fff',borderRadius:18,padding:'32px 36px',border:'1px solid rgba(0,0,0,.06)'}}>
-            <label style={{display:'block',fontSize:13,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--mid)',marginBottom:10}}>Approx. square footage: <strong style={{color:'var(--accent)',fontSize:16,letterSpacing:0,textTransform:'none'}}>{sqft.toLocaleString()} sq ft</strong></label>
+            <label style={{display:'block',fontSize:13,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--mid)',marginBottom:10}}>Approx. square footage: <strong style={{color:'var(--accent)',fontSize:16,letterSpacing:0,textTransform:'none'}}>{sqft.toLocaleString('en-US')} sq ft</strong></label>
             <input type="range" min="2000" max="15000" step="250" value={sqft} onChange={e=>setSqft(+e.target.value)} style={{width:'100%',accentColor:'#C57238'}}/>
             <div style={{display:'flex',flexWrap:'wrap',gap:10,marginTop:24}}>
               {services.map(s=>(
@@ -3291,7 +3299,7 @@ function FxCasePage({id, navigate}){
         <div className="fx-case-inner">
           <NavLink page="work" navigate={navigate} className="fx-post-back">← All work</NavLink>
           <p className="fx-case-lede">{d.lede}</p>
-          <h3>Systems</h3>
+          <h2>Systems</h2>
           <div className="fx-case-systems">
             {d.rooms.map(r => (
               <div key={r.room}>
@@ -3307,7 +3315,7 @@ function FxCasePage({id, navigate}){
 
       <section className="fx-case-prose">
         <div className="fx-case-inner">
-          <h3>About this project</h3>
+          <h2>About this project</h2>
           {d.about.map(p => <p key={p.slice(0,24)}>{p}</p>)}
         </div>
       </section>
@@ -3444,6 +3452,7 @@ function ServiceAreasHub({navigate}){
       </section>
       <section className="fx-band--plain" style={{paddingBottom:96}}>
         <div className="fx-wide">
+          <h2 className="sr-only">Cities we serve</h2>
           <div className="fx-panels fx-panels--static fx-panels--places">
             {Object.keys(cities).map(id => { const c = cities[id]; return (
               <NavLink key={id} page={cityPageId(id)} navigate={navigate} className="fx-panel-card">
@@ -3513,7 +3522,7 @@ function CityHubPage({cityId, navigate}){
 
       <section className="fx-areas">
         <div className="fx-field">
-          <h3 className="fx-d3">What we install in {city.name}</h3>
+          <h2 className="fx-d3">What we install in {city.name}</h2>
           <p className="fx-lede">
             {Object.keys(services).map((sid,i,arr)=>(
               <React.Fragment key={sid}>
@@ -3527,7 +3536,7 @@ function CityHubPage({cityId, navigate}){
       {city.neighborhoods && city.neighborhoods.length > 0 && (
         <section className="fx-areas fx-areas--tight">
           <div className="fx-field">
-            <h3 className="fx-d3">Areas we serve</h3>
+            <h2 className="fx-d3">Areas we serve</h2>
             <p className="fx-lede">{city.neighborhoods.join(', ')}, and the rest of {city.county}.</p>
           </div>
         </section>
@@ -3601,7 +3610,7 @@ function JournalIndex({navigate}){
             {order.map(id => { const a = articles[id]; if (!a) return null; return (
               <article key={id} className="fx-blog-card">
                 <NavLink page={id} navigate={navigate} className="fx-blog-img" tabIndex={-1} aria-hidden="true">
-                  <img src={lu(a.og || '/assets/photos/gulf-sunset.jpg')} alt="" loading="lazy" decoding="async"/>
+                  <img src={lu(a.og || '/assets/photos/gulf-sunset.jpg')} alt={a.h1} loading="lazy" decoding="async"/>
                 </NavLink>
                 <div className="fx-blog-body">
                   <div className="fx-blog-meta"><span>{a.category}</span><time dateTime={a.date}>{fmtDate(a.date)}</time></div>
@@ -3649,7 +3658,7 @@ function JournalArticle({articleId, navigate}){
             <div className="fx-blog-grid">
               {order.map(id => { const b = (g.articles||{})[id]; if (!b) return null; return (
                 <article key={id} className="fx-blog-card">
-                  <NavLink page={id} navigate={navigate} className="fx-blog-img" tabIndex={-1} aria-hidden="true"><img src={lu(b.og)} alt="" loading="lazy" decoding="async"/></NavLink>
+                  <NavLink page={id} navigate={navigate} className="fx-blog-img" tabIndex={-1} aria-hidden="true"><img src={lu(b.og)} alt={b.h1} loading="lazy" decoding="async"/></NavLink>
                   <div className="fx-blog-body">
                     <div className="fx-blog-meta"><span>{b.category}</span><time dateTime={b.date}>{fmtDate(b.date)}</time></div>
                     <h2><NavLink page={id} navigate={navigate}>{b.h1}</NavLink></h2>
@@ -3925,4 +3934,12 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+/* The build (scripts/prerender.mjs) renders every page into #root, so the
+   browser hydrates that markup instead of painting from scratch. In Node the
+   prerender picks App up from globalThis and nothing is mounted. */
+globalThis.__LUMA_APP = App;
+if (typeof document !== 'undefined' && document.getElementById('root')) {
+  const rootEl = document.getElementById('root');
+  if (rootEl.firstElementChild) ReactDOM.hydrateRoot(rootEl, <App/>);
+  else ReactDOM.createRoot(rootEl).render(<App/>);
+}

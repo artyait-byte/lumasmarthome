@@ -9,6 +9,10 @@ crawlers can discover and index each page even before JavaScript runs.
 
 Re-run after changing titles/descriptions in ROUTES, or after editing the
 shared head chrome. The SPA itself lives in css/spa.css + js/app.js.
+
+The shells still load Babel standalone + js/app.js so they work on their own
+(local preview). `npm run build` then runs scripts/prerender.mjs, which
+renders each page into #root, drops Babel and points at js/app.min.js.
 """
 from __future__ import annotations
 
@@ -34,7 +38,7 @@ ROUTES: list[dict] = [
         "path": "/",
         "file": "index.html",
         "title": "LUMA Smart Home | Lighting, Shades & AV in Sarasota, FL",
-        "description": "LUMA designs and installs lighting control, motorized shades, security, audio, and Wi-Fi for fine homes on Florida's Gulf Coast. Serving Sarasota & Manatee Counties.",
+        "description": "LUMA designs and installs lighting control, motorized shades, security, audio and Wi-Fi for Gulf Coast homes in Sarasota & Manatee Counties.",
         "h1": "Smart Home Installation in Sarasota.",
         "og_title": "LUMA Smart Home Installation | Sarasota, FL",
         "og_description": "Smart home installation in Sarasota & Manatee: lighting control, motorized shades, audio, security and Wi-Fi.",
@@ -147,7 +151,7 @@ ROUTES: list[dict] = [
         "path": "/permanent-lighting",
         "file": "permanent-lighting.html",
         "title": "Permanent Outdoor Lighting | Soffit LEDs | LUMA Smart Home",
-        "description": "Permanent architectural roofline lighting for Sarasota and Gulf Coast residences: a colour-matched channel under the overhangs, warm white every night, security, game day and holiday presets from your phone.",
+        "description": "Permanent roofline lighting for Sarasota homes: a colour-matched channel under the overhangs, warm white nightly, game day and holiday presets.",
         "h1": "The roofline, drawn in light.",
         "og_image": "/assets/og/permanent-lighting.jpg",
         "priority": 0.9,
@@ -161,7 +165,7 @@ ROUTES: list[dict] = [
         "path": "/designers",
         "file": "designers.html",
         "title": "For Designers & Builders | Trade Partner | LUMA Smart Home",
-        "description": "One low-voltage trade for lighting, shades, AV, security, and networking. Trade pricing, submittal packages, and site coordination for ASID, AIA, and GCs on the Gulf Coast.",
+        "description": "One low-voltage trade for lighting, shades, AV, security and networking. Trade pricing, submittals and site coordination on the Gulf Coast.",
         "h1": "Your vision. Our wiring.",
         "og_image": "/assets/og/designers.jpg",
         "priority": 0.8,
@@ -186,7 +190,7 @@ ROUTES: list[dict] = [
         "id": "about",
         "path": "/about",
         "file": "about.html",
-        "title": "About LUMA Smart Home | Sarasota Residential Technology Studio",
+        "title": "About LUMA Smart Home | Sarasota Residential Technology",
         "description": "LUMA is a Sarasota residential technology studio. Open platforms, line-item proposals, and ongoing care across Sarasota and Manatee Counties.",
         "h1": "We build homes around the Gulf Coast hour.",
         "og_image": "/assets/og/about.jpg",
@@ -200,7 +204,7 @@ ROUTES: list[dict] = [
         "path": "/contact",
         "file": "contact.html",
         "title": "Start a Project | Contact LUMA Smart Home | Sarasota, FL",
-        "description": "Book a consultation with LUMA Smart Home. Serving Sarasota and Manatee Counties. Call +1 (941) 431-4640.",
+        "description": "Book a consultation with LUMA Smart Home for lighting, shades, AV, security or Wi-Fi in Sarasota and Manatee Counties. Call +1 (941) 431-4640.",
         "h1": "Start Your Project",
         "og_image": "/assets/og/contact.jpg",
         "priority": 0.8,
@@ -622,6 +626,9 @@ def netlify_form(route: dict) -> str:
 
 def head_for(route: dict) -> str:
     canonical = abs_url(route["path"])
+    # scripts/make-og.py writes a 1200x630 card per page; prefer it when present
+    if (ROOT / "assets/og" / f"{route['id']}.jpg").exists():
+        route = {**route, "og_image": f"/assets/og/{route['id']}.jpg"}
     og_image = abs_url(route["og_image"])
     og_dims = ('<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
                if route["og_image"].startswith("/assets/og/") else "")
@@ -656,7 +663,8 @@ def head_for(route: dict) -> str:
 <meta name="twitter:image" content="{esc(og_image)}">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"></noscript>
 <link rel="stylesheet" href="/css/spa.css">
 <script type="application/ld+json">
 {json_ld(route)}
