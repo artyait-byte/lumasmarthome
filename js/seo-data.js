@@ -509,7 +509,10 @@ window.LUMA_GEO = {
     "hours": "Mon–Sat · 9am – 6pm",
     "area": "Sarasota & Manatee Counties",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL",
-    "mapsLabel": "LUMA Smart Home — Sarasota, Florida (Google Maps)"
+    "mapsLabel": "LUMA Smart Home — Sarasota, Florida (Google Maps)",
+    "sameAs": [
+      "https://www.yelp.com/biz/luma-smart-home-sarasota"
+    ]
   },
   "services": {
     "lighting": {

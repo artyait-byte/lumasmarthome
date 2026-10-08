@@ -587,6 +587,11 @@ NAP = {
     "area": "Sarasota & Manatee Counties",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=LUMA+Smart+Home+Sarasota+FL",
     "mapsLabel": "LUMA Smart Home — Sarasota, Florida (Google Maps)",
+    # Profiles of this business elsewhere (schema sameAs). Same name/phone/site
+    # as above on every one of them.
+    "sameAs": [
+        "https://www.yelp.com/biz/luma-smart-home-sarasota",
+    ],
 }
 
 HUB = {

@@ -389,6 +389,7 @@ def local_business_node() -> dict:
             "addressCountry": NAP["country"],
         },
         "hasMap": MAPS_URL,
+        "sameAs": NAP.get("sameAs", []),
         "areaServed": [
             {"@type": "AdministrativeArea", "name": name} for name in AREA_SERVED
         ]
