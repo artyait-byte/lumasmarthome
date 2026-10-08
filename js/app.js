@@ -1259,7 +1259,7 @@ const DB_FAQ = [
   {q:'Do you work with our electrician?', a:'Yes. The electrician gets one rough-in package and installs in one pass; we walk the job with them before insulation and before drywall.'},
   {q:'Can you work from our drawings?', a:'Yes. We mark up your plan set and return submittals, cut sheets and wiring diagrams as PDF or Revit.'},
   {q:'What do you cover?', a:'Lighting control, shading, audio and video, security and networking, under one contractor, one schedule and one RFI queue.'},
-  {q:'Are you licensed and insured?', a:'LUMA is a Florida licensed low-voltage contractor carrying general liability and workers\' comp. A certificate of insurance is available on request.'},
+  {q:'Are you licensed and insured?', a:'Low-voltage work is carried out with our Florida-licensed low-voltage partner. LUMA carries general liability insurance, and a certificate of insurance is available on request.'},
   {q:'Do you pay referral fees?', a:'Yes, on signed contracts, paid at commissioning. Ask us for the one-page agreement.'},
   {q:'Where do you work?', a:'Sarasota and Manatee Counties: Sarasota, Bradenton, Lakewood Ranch, Venice, Siesta Key, Longboat Key, Anna Maria Island and Palmetto.'},
   {q:'What does the client get at the end?', a:'A verified system, a 60-minute orientation, a printed quick-reference card, and a service team that already knows the house.'},
@@ -2983,7 +2983,7 @@ function ServiceSupportPage({navigate}) {
               </div>
             ))}
           </div>
-          <p className="fx-plans-note">Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. LUMA Smart Home (Tegra-Media LLC), Sarasota: Florida licensed low-voltage contractor, insured for residential and light commercial work.</p>
+          <p className="fx-plans-note">Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. LUMA Smart Home (Tegra-Media LLC), Sarasota. Low-voltage work is carried out with our Florida-licensed low-voltage partner.</p>
         </div>
       </section>
 
