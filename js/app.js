@@ -1008,7 +1008,7 @@ function HomePage({navigate}) {
 function ShadingPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell navigate={navigate}
-    hero={{eyebrow:'Motorized shades', h1:'Three layers <em>of shade.</em>',
+    hero={{eyebrow:'Motorized shades', h1:'Three layers <em>of shade.</em>', kw:'Motorized Shades & Blinds · Sarasota & Manatee',
       lead:'A Gulf Coast home needs solar shades for heat and glare, blackout for sleep and privacy, and drapery for the room. We design all three as one system, on the drawings, before the pockets are framed.',
       image: PHOTOS.heroShading, primaryLabel:'Plan my shading →', primaryAction:()=>navigate('contact'),
       secondaryLabel:'See finished houses', secondaryAction:()=>navigate('work')}}
@@ -1169,7 +1169,7 @@ function LightingMosaic() {
 function LightingPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell navigate={navigate}
-    hero={{eyebrow:'Lighting control', h1:'Your fixtures. <em>Our controls.</em>',
+    hero={{eyebrow:'Lighting control', h1:'Your fixtures. <em>Our controls.</em>', kw:'Lutron Lighting Control · Sarasota & Manatee',
       lead:'Lighting is the most personal layer of a home. LUMA coordinates your fixture specification with a control design that makes every room feel exactly as intended, at 8am and at 8pm.',
       image: PHOTOS.lightingKetra, primaryLabel:'Start your lighting project →', primaryAction:()=>navigate('contact'),
       secondaryLabel:'For designers & builders', secondaryAction:()=>navigate('designers')}}
@@ -1374,7 +1374,7 @@ const TH_CREDS = [
 function TheatersPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell navigate={navigate}
-    hero={{eyebrow:'Home theaters', h1:'Designed for <em>sound,</em> not retrofitted.',
+    hero={{eyebrow:'Home theaters', h1:'Designed for <em>sound,</em> not retrofitted.', kw:'Home Theater Installation · Sarasota & Manatee',
       lead:'The difference between a TV in a media room and a true home theater is acoustic intent: walls, seating, screen and speakers designed together, then calibrated in the room they live in.',
       image: PHOTOS.theater, primaryLabel:'Plan my theater →', primaryAction:()=>navigate('contact'),
       secondaryLabel:'See recent rooms', secondaryAction:()=>navigate('work')}}
@@ -1451,7 +1451,7 @@ const AU_WHY = [
 function AutomationPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
   return <ServicePageShell navigate={navigate}
-    hero={{eyebrow:'Home automation', h1:'One press, <em>the right state.</em>',
+    hero={{eyebrow:'Home automation', h1:'One press, <em>the right state.</em>', kw:'Home Automation Systems · Sarasota & Manatee',
       lead:'Automation is the quiet layer that lets lighting, shades, climate, audio and security move together. Four states the house already knows; you can override any of them, but most days you will not need to.',
       image: PHOTOS.automationHero, primaryLabel:'Plan my system →', primaryAction:()=>navigate('contact')}}
     intro={{lead:'We build on open, professional platforms.',
@@ -1501,11 +1501,17 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
       {/* 1. hero — the site's inner hero, kicker + headline + lead */}
       <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',minHeight:'min(88vh,780px)',background:'var(--dark)',overflow:'hidden'}} className="lit-hero-wrap">
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center',padding:'88px 64px 88px 80px',background:'var(--dark)',color:'#FCFAF6'}} className="lit-hero-text">
-          <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>{hero.eyebrow}</div>
           {/* the reference's inner hero carries the kicker and the headline, nothing
               else; the lead opens the intro paragraph and the buttons live in the
-              header and the closing CTA */}
-          <h1 style={{fontFamily:'var(--serif)',color:'#FCFAF6',margin:0}} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">')}}/>
+              header and the closing CTA. With hero.kw the kicker is the H1 (the
+              search phrase) and the slogan keeps the headline's size as a <p>. */}
+          {hero.kw ? <>
+            <h1 className="fx-hero-kw">{hero.kw}</h1>
+            <p className="fx-hero-slogan" dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">')}}/>
+          </> : <>
+            <div style={{fontSize:12,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)',fontWeight:600,marginBottom:22}}>{hero.eyebrow}</div>
+            <h1 style={{fontFamily:'var(--serif)',color:'#FCFAF6',margin:0}} dangerouslySetInnerHTML={{__html: hero.h1.replace(/<em>/g,'<em style="color:#F4C9A8;font-style:italic">')}}/>
+          </>}
         </div>
         <div style={{position:'relative',overflow:'hidden',minHeight:480}}>
           <img loading="eager" fetchpriority="high" decoding="async" src={hero.image} alt={hero.eyebrow} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}/>
@@ -1768,7 +1774,7 @@ function AudioPage({navigate}) {
     formName="audio-inquiry"
     hero={{
       eyebrow:'Audio & video',
-      h1:'Sound that <em>fills the room,</em> not the architecture.',
+      h1:'Sound that <em>fills the room,</em> not the architecture.', kw:'Whole-Home Audio & Video · Sarasota & Manatee',
       lead:'Whole-home audio that disappears into the architecture — invisible in-ceiling, in-wall, and outdoor speakers tuned to each room\'s geometry, with one app and one source list across every zone.',
       image: PHOTOS.audioHero,
       primaryLabel:'Hear a finished system →', primaryAction:()=>navigate('work'),
@@ -1839,7 +1845,7 @@ function SecurityPage({navigate}) {
     formName="security-inquiry"
     hero={{
       eyebrow:'Security & surveillance',
-      h1:'Your footage. <em>Your property.</em>',
+      h1:'Your footage. <em>Your property.</em>', kw:'Security Camera Installation · Sarasota & Manatee',
       lead:'On-premise camera systems with no monthly cloud fees and no third party with a copy of your driveway. Cameras placed by walking the property, not by floor plan.',
       image: PHOTOS.securityHero,
       primaryLabel:'See a finished install →', primaryAction:()=>navigate('work'),
@@ -1924,7 +1930,7 @@ function PermanentLightingPage({navigate}) {
     navigate={navigate}
     hero={{
       eyebrow:'Permanent outdoor lighting',
-      h1:'The roofline, <em>drawn in light.</em>',
+      h1:'The roofline, <em>drawn in light.</em>', kw:'Permanent Outdoor Lighting · Sarasota & Manatee',
       lead:'A slim channel under the overhangs, colour-matched to the fascia and invisible by day. At night it traces the architecture in warm white, and the same line does security, game day and the holidays from a preset.',
       image: PHOTOS.permWarm,
       primaryLabel:'See a lit house →', primaryAction:()=>navigate('work'),
@@ -2020,7 +2026,7 @@ function NetworkingPage({navigate}) {
     }}
     hero={{
       eyebrow:'Networking',
-      h1:'A network <em>your home is built on,</em> not bolted to.',
+      h1:'A network <em>your home is built on,</em> not bolted to.', kw:'Home Wi-Fi & Network Cabling · Sarasota & Manatee',
       lead:'Enterprise-grade Wi-Fi and structured cabling designed before drywall. Wired wherever wires can land, mesh only where it belongs — so every device works the day you move in.',
       image: PHOTOS.netRack,
       primaryLabel:'See a finished rack →', primaryAction:()=>navigate('work'),
@@ -2983,7 +2989,7 @@ function ServiceSupportPage({navigate}) {
               </div>
             ))}
           </div>
-          <p className="fx-plans-note">Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. LUMA Home Systems LLC, Sarasota: Florida licensed low-voltage contractor, insured for residential and light commercial work.</p>
+          <p className="fx-plans-note">Membership covers planning, remote labor, and coordination. Hardware, truck rolls, and parts are invoiced separately at the discounted rates above. LUMA Smart Home is a DBA of Tegra-Media LLC, Sarasota. Low-voltage work is carried out with our Florida-licensed low-voltage partner.</p>
         </div>
       </section>
 
@@ -3568,6 +3574,12 @@ function CityServicePage({cityId, serviceId, navigate}){
                 {(row.paragraphs||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
               </div>
               {row.bullets && <ul className="fx-points fx-points--list">{row.bullets.map(b=><li key={b}>{b}</li>)}</ul>}
+              {(row.sections||[]).map(sec=>(
+                <div key={sec.h2} className="fx-lede" style={{marginTop:32}}>
+                  <h2 className="fx-d3">{sec.h2}</h2>
+                  {sec.text.map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+                </div>
+              ))}
               <p style={{marginTop:24}}>
                 <NavLink page={serviceId} navigate={navigate} className="fx-more">{svc.nav} overview <i aria-hidden="true">→</i></NavLink>
                 <span style={{margin:'0 14px',color:'var(--cream3)'}}>·</span>
@@ -3578,6 +3590,21 @@ function CityServicePage({cityId, serviceId, navigate}){
           </div>
         </div>
       </section>
+      {row.faq && row.faq.length > 0 && (
+        <section className="fx-py-md">
+          <div className="fx-field">
+            <h2 className="fx-d3">{svc.nav} in {city.name}: common questions</h2>
+            <div className="fx-faq">
+              {row.faq.map((q,i)=>(
+                <details key={q.q} className="fx-faq-item" open={i===0}>
+                  <summary>{q.q}</summary>
+                  <p><LinkedText text={q.a} navigate={navigate}/></p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       <FxMap query={city.name + ', Florida'} title={'Map of ' + city.name}/>
       <FxCallout navigate={navigate} kicker={city.name + ' · ' + svc.nav} h2="Ready for a walkthrough?"
         body={'Tell us about the house and what the ' + (svc.nav || 'system').toLowerCase() + ' should do. We come out, walk it with you, and send a line-item proposal.'}/>
@@ -3698,7 +3725,7 @@ function BrandPage({navigate}){
         <Crumbs items={[{page:'home', label:'Home'},{label:'LUMA Smart Home Sarasota'}]} navigate={navigate}/>
         <div className="geo-prose">
           <p>LUMA Smart Home (lumasmarthome.com) is a residential technology studio based in Sarasota, Florida. We specify and install Lutron lighting, motorized shades, whole-home audio, UniFi cameras and Wi-Fi, and automation for houses in Sarasota and Manatee Counties. See <NavLink page="service-areas" navigate={navigate} className="inline-link">where we work</NavLink> and <NavLink page="about" navigate={navigate} className="inline-link">about the studio</NavLink>.</p>
-          <p>Legal name: LUMA Home Systems LLC. The public name on this site and on Google should stay LUMA Smart Home — Sarasota, with the trades in the description so a search for lighting or smart home does not land you on an events platform.</p>
+          <p>Legal name: Tegra-Media LLC (LUMA Smart Home is its DBA). The public name on this site and on Google should stay LUMA Smart Home — Sarasota, with the trades in the description so a search for lighting or smart home does not land you on an events platform.</p>
         </div>
         <address className="geo-nap">
           <strong>LUMA Smart Home</strong>

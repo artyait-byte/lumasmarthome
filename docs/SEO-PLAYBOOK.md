@@ -51,6 +51,87 @@ Lutron dealer Sarasota · Lutron RadioRA 3 installer · Lutron shades Sarasota �
 **D. Informational (the journal)**
 home automation cost Florida · motorized shades cost · RadioRA 3 vs HomeWorks · Control4 vs Savant · home theater cost · smart home hurricane preparation · UniFi vs eero large homes · smart home for seasonal residents Florida
 
+## Six-month plan: Sarasota top 10 by 2027-04-15
+
+Written 2026-10-15 from the Search Console export of 2026-10-13 (last 3 months) and the live site.
+
+### Baseline (GSC, 2026-07-15 → 2026-10-13)
+
+- 2 clicks, ~450 impressions, average position ~42. Impressions only start 2026-09-29, so the site is about two weeks old in Google's eyes.
+- 44 of 50 known URLs indexed. Not indexed: http/www variants (correct), `/networking.html` and `/service-areas/palmetto` (canonical report, validation started 2026-10-15), one new article (indexing requested).
+- Desktop 367 impressions, mobile 81. US 428 of 450.
+- Head terms are far away: smart home installation sarasota 37, smart home sarasota 61, home automation sarasota fl 45, home theater sarasota 44, smart home company sarasota 58.
+- Already close to page 1: house/home security cameras sarasota fl 7–13, home theater longboat key 7.5, smart home installation venice 9, lutron homeworks near me 9, lutron integrator fl 5, longboat key fl outdoor motorized shades 7, longboat key fl motorized window treatments 14.
+- Largest demand cluster by count: motorized shades × place × type (Longboat Key, Siesta Key, south Sarasota, Palmetto, Whitfield, Ridgewood Heights; exterior, blackout, roman, roller, blinds). Last 7 days the top queries were all Longboat Key and Siesta Key shades.
+- Noise to ignore: Sonoma, Santa Monica, Gulf Shores AL, Alamo, Boca, Tampa — national Lutron/Sonance terms where we have no local intent.
+
+### Problems found
+
+1. **Cannibalization.** "smart home installation sarasota" was split across 10 URLs (city hub, 6 city×service pages, About), none of them the home page, because the home title did not contain the phrase. Lutron terms split between `/service-areas/sarasota/lighting`, `/lighting` and the Lutron article; "sonance whole home audio florida" between `/audio` and `/service-areas/sarasota/audio`.
+2. Slogan H1s on the 8 service pages (backlog #1).
+3. Thin money pages: 35 of 48 under 600 words.
+4. No page for the demand Google is already sending: Longboat Key and Siesta Key shades.
+5. Schema and site text named a company that does not exist (LUMA Home Systems LLC) and claimed a contractor licence. Fixed: Tegra-Media LLC, licensed partner wording.
+6. Off-site: no verified Google Business Profile, no reviews, Yelp phone and hours differ from the site, almost no backlinks.
+
+### One keyword, one page (do not create a second page for the same phrase)
+
+| Primary phrase | Page |
+|---|---|
+| smart home installation sarasota · smart home sarasota · smart home company sarasota | `/` (home) |
+| smart home projects by neighborhood (Bird Key, Lido, Palmer Ranch…) | `/service-areas/sarasota` |
+| lutron installer sarasota · lutron lighting sarasota | `/service-areas/sarasota/lighting` |
+| lighting control systems (regional, brand detail) | `/lighting` |
+| motorized shades sarasota · electric blinds sarasota · exterior shades sarasota | `/service-areas/sarasota/shading` |
+| motorized shades longboat key (exterior, blackout, window treatments) | `/service-areas/longboat-key/shading` |
+| motorized shades siesta key (blinds, roller, roman, screens) | `/service-areas/siesta-key/shading` |
+| security camera installation sarasota · house security cameras sarasota fl | `/service-areas/sarasota/security` |
+| home automation sarasota fl | `/service-areas/sarasota/automation` |
+| whole home audio sarasota · sonance sarasota | `/service-areas/sarasota/audio` |
+| home theater sarasota · home theater installation sarasota | `/service-areas/sarasota/theaters` |
+| smart home venice / bradenton / lakewood ranch / longboat key / siesta key | the city page |
+| RadioRA 3 vs HomeWorks, costs, comparisons | journal articles |
+
+Internal links use these phrases as anchor text and point at the page in the right column. Service pages (`/lighting`, `/shading`…) carry the regional H1 "· Sarasota & Manatee" and link down to the city×service page.
+
+### Done on 2026-10-15 (branch claude/seo-keyword-plan)
+
+- Home title "Smart Home Installation Sarasota, FL | LUMA Smart Home" and a matching description.
+- Sarasota city page re-aimed at neighbourhoods, with a link up to the home page as "smart home installation in Sarasota".
+- Keyword H1 on 8 service pages (the slogan stays as the visible headline; the H1 is set as the kicker line, same look as before).
+- Sections + FAQ (FAQPage schema) on Sarasota lighting, shading, security and automation: 440–490 → 740–850 words.
+- New pages: `/service-areas/longboat-key/shading`, `/service-areas/siesta-key/shading`, linked from the shades article, the Sarasota shades page and their city pages.
+- Security page title and H1 moved to "security camera installation".
+- Legal name fixed site-wide.
+
+### Month by month (one gate per month; do not move on if the gate fails)
+
+| Month | Site (the Tuesday routine does this) | Owner, off-site | Gate at month end |
+|---|---|---|---|
+| 1 · Oct 15–Nov 15 | Merge this branch; request indexing for the 2 new pages and the 6 changed money pages. Sections + FAQ on Sarasota audio, theaters, networking. Articles #1–#2 from the queue. | **Verify the Google Business Profile** (category "Home automation company", service area Sarasota + Manatee, no street address shown). Fix Yelp phone and hours to match the site. Ask the first 3 real clients for a Google review. | All 48 URLs indexed; home page shows for "smart home installation sarasota"; GBP verified |
+| 2 · Nov 15–Dec 15 | Put the GBP CID into `NAP.mapsUrl` and schema `hasMap`/`sameAs`. Expand `/shading`, `/security`, `/audio` to 1,000+ words. City×service pages where GSC already shows demand: Venice automation, Longboat Key theaters, Palmetto shades. | Citations with identical NAP: Apple Business Connect, Bing Places, Houzz, Angi, Thumbtack, BBB, Nextdoor, Sarasota and Manatee chambers. Ask Lutron, Somfy and Ubiquiti about dealer/installer locator listings. | 10+ citations live; 5+ reviews; positions 5–15 on the close-in terms above |
+| 3 · Dec 15–Jan 15 | Brand pages: `/lutron`, `/somfy`, `/unifi` (backlog #6). Two articles. Update the shades and cameras articles to 1,200+ words. | 2–3 links from local partners: interior designers, builders, architects we work with (a "trade partner" page on their site or ours). | Page 1 for 3+ city×service phrases |
+| 4 · Jan 15–Feb 15 | Critical CSS for LCP. New cities only if GSC shows impressions there (Osprey, Nokomis, Parrish, North Port). Two articles. | One real case study with photos per month on `/work`, shared on GBP. Local press pitch (Sarasota Magazine, Herald-Tribune home section, YourObserver) around hurricane prep or seasonal homes. | Home page top 20 for "smart home installation sarasota" |
+| 5 · Feb 15–Mar 15 | Refresh every money page with the GSC queries it now gets (add the phrases people actually use). Two articles. | Reviews 10+; GBP posts weekly; Q&A on GBP. | Top 10 on 5+ money phrases |
+| 6 · Mar 15–Apr 15 | Prune or merge anything with no impressions after 90 days. Plan the next half-year from GSC. | Keep reviews and posts going. | **Top 10 for "smart home installation sarasota" and "motorized shades sarasota"; Map Pack appearances** |
+
+### Being cited by AI answers (ChatGPT, Perplexity, Google AI Overviews)
+
+- Same name, phone and service area everywhere (site, GBP, Yelp, Houzz, BBB). Inconsistent NAP is the main reason an AI answer picks a competitor.
+- Short, direct answers on the page (the FAQ blocks), with a named place and product in the first sentence.
+- The "not luma.com / Luma AI" page stays; it is what disambiguates the brand for crawlers.
+- Third-party mentions (directories, partners, press) matter more than anything on our own site for citations.
+
+### Honest expectations
+
+Long-tail and island phrases (Longboat Key and Siesta Key shades, cameras in Sarasota, Venice) can reach page 1 in 1–3 months. "smart home installation sarasota" against Wicked, Sarasota Smart Homes and the directories needs the verified GBP, reviews and local links; without them, six months is unlikely regardless of what the site does. Track every month against the gate, not against a feeling.
+
+### Open questions for the owner
+
+1. Do we take small office / light commercial camera jobs? GSC shows steady "office security cameras system sarasota fl" impressions at position 12–17. If yes, one page; if no, ignore.
+2. Google Business Profile: who owns it and what blocks verification?
+3. Yelp shows (941) 217-1616 and different hours; the site shows (941) 431-4640, Mon–Sat 9–6. Which is right?
+
 ## Article queue (the routine takes the top unpublished item)
 
 | # | Working title | Target keyword | Cluster |
@@ -85,7 +166,7 @@ Also expand the six thin articles already published to 1,200+ words, one per mon
 ## Site fix backlog (one-time, by priority)
 
 0. Static content in HTML: precompile `js/app.js` (no `@babel/standalone` in the browser) and render each page's H1, main copy, images with alt and FAQ into the generated HTML, so Google sees the content without running JS. Biggest technical lever (see Technical checklist). **Done 2026-10-08** (branch claude/seo-prerender): `npm run build` prerenders all pages via scripts/prerender.mjs; raw HTML now 360–1,180 words. Next lever is depth: most pages are still under 600 words.
-1. Keyword-first H1 on the 8 service pages and the home page.
+1. Keyword-first H1 on the 8 service pages and the home page. **Done 2026-10-15** (branch claude/seo-keyword-plan).
 2. Google Business Profile: verify, set the CID in `NAP.mapsUrl` and schema `hasMap`, add `sameAs`.
 3. Search Console + GA4 (or Plausible): confirm verification, submit the sitemap, watch indexing.
 4. Depth on the service pages: 1,000+ words each, FAQ, process, price range, related cases.
