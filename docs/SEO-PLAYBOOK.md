@@ -87,6 +87,7 @@ Written 2026-10-15 from the Search Console export of 2026-10-13 (last 3 months) 
 | motorized shades siesta key (blinds, roller, roman, screens) | `/service-areas/siesta-key/shading` |
 | security camera installation sarasota · house security cameras sarasota fl | `/service-areas/sarasota/security` |
 | home automation sarasota fl | `/service-areas/sarasota/automation` |
+| office / business security cameras sarasota fl (also Bradenton) | `/service-areas/sarasota/business-security` |
 | whole home audio sarasota · sonance sarasota | `/service-areas/sarasota/audio` |
 | home theater sarasota · home theater installation sarasota | `/service-areas/sarasota/theaters` |
 | smart home venice / bradenton / lakewood ranch / longboat key / siesta key | the city page |
@@ -128,8 +129,8 @@ Long-tail and island phrases (Longboat Key and Siesta Key shades, cameras in Sar
 
 ### Open questions for the owner
 
-1. Do we take small office / light commercial camera jobs? GSC shows steady "office security cameras system sarasota fl" impressions at position 12–17. If yes, one page; if no, ignore.
-2. Google Business Profile: who owns it and what blocks verification?
+1. ~~Office / light commercial camera jobs?~~ Yes (owner, 2026-10-15): `/service-areas/sarasota/business-security` added.
+2. Google Business Profile (checked 2026-10-15 in artyait@gmail.com): 3 profiles, 0 verified — Luma Smart Home (shows old address 4656 Ashton Rd as a storefront) and two duplicate Luma Christmas Lighting profiles. No rejection email in that inbox. Owner fixes within a week.
 3. Yelp shows (941) 217-1616 and different hours; the site shows (941) 431-4640, Mon–Sat 9–6. Which is right?
 
 ## Article queue (the routine takes the top unpublished item)

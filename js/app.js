@@ -35,7 +35,10 @@ function hasCityService(city, service){
   return !!(g.cityServices && g.cityServices[city+'/'+service]);
 }
 function servicePageForCity(city, service){
-  return hasCityService(city, service) ? cityServicePageId(city, service) : service;
+  if (hasCityService(city, service)) return cityServicePageId(city, service);
+  // a service without its own top-level page (business-security) points at its parent page
+  const svc = (geoData().services || {})[service];
+  return (svc && svc.page) || service;
 }
 
 function pathFor(page){
@@ -280,12 +283,17 @@ const services = [
   {id:'networking', name:'Networking',                  sub:'Wi-Fi 6 / 7 · enterprise-grade',       page:'networking'},
   {id:'automation', name:'Home Automation',             sub:'Daily routines · one tap',             page:'automation'},
   {id:'permanent',  name:'Permanent Outdoor Lighting',  sub:'Roofline LEDs · warm white to holiday',  page:'permanent-lighting'},
+  {id:'business',   name:'Business Security Cameras',   sub:'Offices · shops · no monthly fees',     page:'sa-sarasota-business-security'},
 ];
+// the business entry reuses the security icon and preview photo
+serviceIcons.business = serviceIcons.security;
+PHOTOS.business = PHOTOS.security;
 
 /* ─── MEGA DROPDOWN ─── */
 function MegaDropdown({active, hoverId, setHoverId, navigate}) {
-  const left  = services.slice(0,4);
-  const right = services.slice(4);
+  const half  = Math.ceil(services.length/2);
+  const left  = services.slice(0,half);
+  const right = services.slice(half);
   const hovered = services.find(s=>s.id===hoverId)||services[0];
   return (
     <div className={`dropdown-wrap${active?' open':''}`}>
@@ -1475,7 +1483,7 @@ function AutomationPage({navigate}) {
   />;
 }
 /* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
-function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases, diagram}) {
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases, diagram, aside}) {
   /* The reference's inner page, section for section: a short hero, one
      centred paragraph with a bold lead, a "what it does for you" grid (copy
      in five columns, four icon items in seven), a row of photo cards, and
@@ -1526,6 +1534,17 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           </div>
         </div>
       </section>
+
+      {aside && (
+        <section className="fx-band--plain fx-py-md" id={aside.id}>
+          <div className="fx-field">
+            <div className="fx-lede">
+              <h2 className="fx-d3">{aside.h2}</h2>
+              <p>{aside.body} <NavLink page={aside.page} navigate={navigate} className="fx-more">{aside.link} <i aria-hidden="true">→</i></NavLink></p>
+            </div>
+          </div>
+        </section>
+      )}
 
       {scenes && <FxScenes heading={scenes.h2} lede={scenes.lead} band={false}/>}
 
@@ -1911,6 +1930,8 @@ function SecurityPage({navigate}) {
         {n:'03', text:'Two-year hardware warranty, parts and labor. Anything that fails in normal use, we replace — including the labor to swap it.'},
       ],
     }}
+    aside={{id:'business', h2:'For offices and shops', page:'sa-sarasota-business-security', link:'Business camera systems in Sarasota',
+      body:'The same UniFi Protect stack works for offices, showrooms, retail and small warehouses: wired cameras on the doors, the counter and the lot, recording on site with no per-camera fees, and one app for owners and managers.'}}
     cases={['case-bighouse']}
     credentials={['Ubiquiti UVP Partner','UniFi Protect Certified','CEDIA Member','Insured & bonded']}
     ctaCopy={{
@@ -2250,6 +2271,7 @@ function Footer({navigate}) {
     {label:'Solutions', links:[
       ['lighting','Lighting'],['shading','Shading'],['theaters','Home theaters'],
       ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],['permanent-lighting','Permanent outdoor lighting'],
+      ['sa-sarasota-business-security','Business cameras'],
     ]},
     {label:'Studio', links:[
       ['work','Our work'],['about','About'],      ['journal','Journal'],
@@ -3581,7 +3603,7 @@ function CityServicePage({cityId, serviceId, navigate}){
                 </div>
               ))}
               <p style={{marginTop:24}}>
-                <NavLink page={serviceId} navigate={navigate} className="fx-more">{svc.nav} overview <i aria-hidden="true">→</i></NavLink>
+                <NavLink page={svc.page || serviceId} navigate={navigate} className="fx-more">{svc.nav} overview <i aria-hidden="true">→</i></NavLink>
                 <span style={{margin:'0 14px',color:'var(--cream3)'}}>·</span>
                 <NavLink page={cityPageId(cityId)} navigate={navigate} className="fx-more">Everything in {city.name} <i aria-hidden="true">→</i></NavLink>
               </p>
