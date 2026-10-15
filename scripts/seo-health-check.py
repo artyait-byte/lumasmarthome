@@ -66,6 +66,13 @@ def site_checks() -> None:
             loc = h.get("location", "")
             ok = st in (301, 308) and loc.startswith("https://lumasmarthome.com")
             report("PASS" if ok else "FAIL", f"redirect {src} -> {st} {loc}")
+        # .html twins of pretty URLs must 301, not answer 200 with a canonical.
+        for src, want in (("/lighting.html", "/lighting"), ("/index.html", "/"),
+                          ("/service-areas/sarasota/lighting.html", "/service-areas/sarasota/lighting")):
+            st, h, _ = fetch(BASE + src, "HEAD", follow=False)
+            loc = h.get("location", "")
+            ok = st in (301, 308) and loc.rstrip("/").endswith(want.rstrip("/"))
+            report("PASS" if ok else "FAIL", f"redirect {src} -> {st} {loc}")
         st, h, _ = fetch(BASE + "/", "HEAD")
         report("PASS" if "strict-transport-security" in h else "WARN", "HSTS header")
         if "cf-mitigated" in h or h.get("server", "").lower() == "cloudflare":
