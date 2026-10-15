@@ -402,6 +402,16 @@ window.LUMA_SEO = {
       "service": "shading",
       "h1": "Motorized shades on Siesta Key"
     },
+    "sa-sarasota-business-security": {
+      "id": "sa-sarasota-business-security",
+      "path": "/service-areas/sarasota/business-security",
+      "title": "Office Security Camera Systems Sarasota FL | UniFi | LUMA",
+      "description": "Security camera systems for Sarasota offices, shops and small commercial spaces. UniFi Protect, wired PoE cameras, on-site recording, no per-camera fees.",
+      "kind": "city-service",
+      "city": "sarasota",
+      "service": "business-security",
+      "h1": "Office and business security camera systems in Sarasota"
+    },
     "journal": {
       "id": "journal",
       "path": "/journal",
@@ -579,6 +589,14 @@ window.LUMA_GEO = {
       "page": "networking",
       "short": "UniFi Wi-Fi 6/7 and Cat6A designed before drywall.",
       "og": "/assets/photos/hero-networking.jpg"
+    },
+    "business-security": {
+      "id": "business-security",
+      "name": "Business security cameras",
+      "nav": "Security",
+      "page": "security",
+      "short": "UniFi Protect camera systems for offices, shops and small commercial spaces.",
+      "og": "/assets/photos/hero-security-v2.jpg"
     },
     "automation": {
       "id": "automation",
@@ -985,6 +1003,10 @@ window.LUMA_GEO = {
         {
           "q": "Do you install cameras in Bradenton and Manatee County?",
           "a": "Yes. See [home cameras in Bradenton](sa-bradenton-security). We cover Sarasota and Manatee Counties."
+        },
+        {
+          "q": "Do you install cameras for offices and shops?",
+          "a": "Yes. See [office and business security camera systems in Sarasota](sa-sarasota-business-security)."
         }
       ]
     },
@@ -1182,6 +1204,57 @@ window.LUMA_GEO = {
         {
           "q": "Do you install exterior lanai screens on Siesta Key?",
           "a": "Yes, with outdoor-rated motors and hardware, and with association approval when the building requires it."
+        }
+      ]
+    },
+    "sarasota/business-security": {
+      "city": "sarasota",
+      "service": "business-security",
+      "h1": "Office and business security camera systems in Sarasota",
+      "title": "Office Security Camera Systems Sarasota FL | UniFi | LUMA",
+      "description": "Security camera systems for Sarasota offices, shops and small commercial spaces. UniFi Protect, wired PoE cameras, on-site recording, no per-camera fees.",
+      "lede": "An office, a showroom or a small warehouse needs the same thing a good home system gives: clear video of the doors, the counter and the lot, recorded on site, and an app the owner can check from anywhere. We design and install UniFi Protect camera systems for small commercial spaces in Sarasota and Manatee County.",
+      "paragraphs": [
+        "Every job starts with a walk of the space: entrances, the register or front desk, stock rooms, the parking lot and the back door. Cameras are wired PoE, so there are no batteries and one cable carries power and video. Recording stays on a UniFi recorder in your building, with no monthly fee per camera.",
+        "The cameras sit on their own network segment, separate from the office computers and guest Wi-Fi. If the network itself needs work, we do that in the same project. See [Wi-Fi and cabling in Sarasota](sa-sarasota-networking)."
+      ],
+      "bullets": [
+        "Offices, shops, showrooms and small warehouses",
+        "Wired PoE cameras, on-site UniFi recorder",
+        "No per-camera monthly fees",
+        "One app for owners and managers"
+      ],
+      "sections": [
+        {
+          "h2": "What a business camera system covers",
+          "text": [
+            "Entrances and exits with faces at a usable size, the point of sale or reception desk, stock and storage rooms, and the parking lot with vehicles in frame. We plan each camera for what it must capture, and we tell you where a camera would add little.",
+            "Owners and managers get their own logins with the access they need. Footage can be found by time and by person or vehicle detection, and exported as a clip when an incident needs to be shared."
+          ]
+        },
+        {
+          "h2": "Homes and businesses on one stack",
+          "text": [
+            "Many owners also want cameras at home. UniFi Protect at home and at the office means one app for both. For the house, see [security camera installation in Sarasota](sa-sarasota-security)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Do business security cameras need a monthly subscription?",
+          "a": "Not with UniFi Protect. Video records to a recorder in your building, so there is no per-camera cloud fee."
+        },
+        {
+          "q": "Can I watch the cameras from my phone?",
+          "a": "Yes. Owners and managers can view live and recorded video in the UniFi Protect app, each with their own login."
+        },
+        {
+          "q": "Do you install office cameras in Bradenton and Lakewood Ranch?",
+          "a": "Yes. We cover Sarasota and Manatee Counties, including Bradenton, Lakewood Ranch and Venice."
+        },
+        {
+          "q": "Can you also fix the office network and Wi-Fi?",
+          "a": "Yes. Cameras depend on the network, so we can design both together: switching, Wi-Fi and a separate segment for the cameras."
         }
       ]
     }
@@ -1929,6 +2002,10 @@ window.LUMA_GEO = {
         "label": "Home automation in Sarasota"
       },
       {
+        "id": "sa-sarasota-business-security",
+        "label": "Office and business security camera systems in Sarasota"
+      },
+      {
         "id": "journal-smart-home-sarasota",
         "label": "What smart home Sarasota means"
       },
@@ -2359,6 +2436,32 @@ window.LUMA_GEO = {
       {
         "id": "journal-shades-gulf",
         "label": "Motorized shades for Gulf sun"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      },
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "sa-sarasota-business-security": [
+      {
+        "id": "security",
+        "label": "Security"
+      },
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
+      {
+        "id": "journal-smart-home-sarasota",
+        "label": "What smart home Sarasota means"
       },
       {
         "id": "service-areas",

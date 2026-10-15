@@ -56,6 +56,14 @@ SERVICES = {
         "short": "UniFi Wi-Fi 6/7 and Cat6A designed before drywall.",
         "og": "/assets/photos/hero-networking.jpg",
     },
+    "business-security": {
+        "id": "business-security",
+        "name": "Business security cameras",
+        "nav": "Security",
+        "page": "security",
+        "short": "UniFi Protect camera systems for offices, shops and small commercial spaces.",
+        "og": "/assets/photos/hero-security-v2.jpg",
+    },
     "automation": {
         "id": "automation",
         "name": "Home automation",
@@ -453,7 +461,10 @@ CITY_SERVICES = [
                      'steadier, and one cable carries both power and video.'},
             {   'q': 'Do you install cameras in Bradenton and Manatee County?',
                 'a': 'Yes. See [home cameras in Bradenton](sa-bradenton-security). We cover Sarasota and '
-                     'Manatee Counties.'}],
+                     'Manatee Counties.'},
+            {   'q': 'Do you install cameras for offices and shops?',
+                'a': 'Yes. See [office and business security camera systems in '
+                     'Sarasota](sa-sarasota-business-security).'}],
     },
     {
         "city": "sarasota",
@@ -618,6 +629,39 @@ CITY_SERVICES = [
             {"q": "Motorized shades or motorized blinds for a Siesta Key house?", "a": "Usually roller shades with a solar-screen fabric. They keep the view, handle heat well and have fewer parts to suffer in salt air than tilting blinds."},
             {"q": "Are motorized shades a good idea for a rental?", "a": "Yes. Guests cannot break cords or lose remotes, and shades on a schedule protect floors and furniture from sun between stays."},
             {"q": "Do you install exterior lanai screens on Siesta Key?", "a": "Yes, with outdoor-rated motors and hardware, and with association approval when the building requires it."},
+        ],
+    },
+    {
+        "city": "sarasota",
+        "service": "business-security",
+        "h1": "Office and business security camera systems in Sarasota",
+        "title": "Office Security Camera Systems Sarasota FL | UniFi | LUMA",
+        "description": "Security camera systems for Sarasota offices, shops and small commercial spaces. UniFi Protect, wired PoE cameras, on-site recording, no per-camera fees.",
+        "lede": "An office, a showroom or a small warehouse needs the same thing a good home system gives: clear video of the doors, the counter and the lot, recorded on site, and an app the owner can check from anywhere. We design and install UniFi Protect camera systems for small commercial spaces in Sarasota and Manatee County.",
+        "paragraphs": [
+            "Every job starts with a walk of the space: entrances, the register or front desk, stock rooms, the parking lot and the back door. Cameras are wired PoE, so there are no batteries and one cable carries power and video. Recording stays on a UniFi recorder in your building, with no monthly fee per camera.",
+            "The cameras sit on their own network segment, separate from the office computers and guest Wi-Fi. If the network itself needs work, we do that in the same project. See [Wi-Fi and cabling in Sarasota](sa-sarasota-networking).",
+        ],
+        "bullets": [
+            "Offices, shops, showrooms and small warehouses",
+            "Wired PoE cameras, on-site UniFi recorder",
+            "No per-camera monthly fees",
+            "One app for owners and managers",
+        ],
+        "sections": [
+            {"h2": "What a business camera system covers", "text": [
+                "Entrances and exits with faces at a usable size, the point of sale or reception desk, stock and storage rooms, and the parking lot with vehicles in frame. We plan each camera for what it must capture, and we tell you where a camera would add little.",
+                "Owners and managers get their own logins with the access they need. Footage can be found by time and by person or vehicle detection, and exported as a clip when an incident needs to be shared.",
+            ]},
+            {"h2": "Homes and businesses on one stack", "text": [
+                "Many owners also want cameras at home. UniFi Protect at home and at the office means one app for both. For the house, see [security camera installation in Sarasota](sa-sarasota-security).",
+            ]},
+        ],
+        "faq": [
+            {"q": "Do business security cameras need a monthly subscription?", "a": "Not with UniFi Protect. Video records to a recorder in your building, so there is no per-camera cloud fee."},
+            {"q": "Can I watch the cameras from my phone?", "a": "Yes. Owners and managers can view live and recorded video in the UniFi Protect app, each with their own login."},
+            {"q": "Do you install office cameras in Bradenton and Lakewood Ranch?", "a": "Yes. We cover Sarasota and Manatee Counties, including Bradenton, Lakewood Ranch and Venice."},
+            {"q": "Can you also fix the office network and Wi-Fi?", "a": "Yes. Cameras depend on the network, so we can design both together: switching, Wi-Fi and a separate segment for the cameras."},
         ],
     },
 ]
@@ -986,6 +1030,8 @@ def related_map() -> dict:
         "automation": "journal-smart-home-sarasota",
     }
     for sid in SERVICES:
+        if SERVICES[sid]["page"] != sid:
+            continue  # no top-level page of its own (business-security)
         combo = f"sa-sarasota-{sid}"
         rel[sid] = _rel(
             combo,
@@ -1050,7 +1096,7 @@ def related_map() -> dict:
     for row in CITY_SERVICES:
         pid = f"sa-{row['city']}-{row['service']}"
         rel[pid] = _rel(
-            row["service"],
+            SERVICES[row["service"]]["page"],
             f"sa-{row['city']}",
             journal_for.get(row["service"], "journal-smart-home-sarasota"),
             "service-areas",

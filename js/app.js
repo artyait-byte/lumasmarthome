@@ -35,7 +35,10 @@ function hasCityService(city, service){
   return !!(g.cityServices && g.cityServices[city+'/'+service]);
 }
 function servicePageForCity(city, service){
-  return hasCityService(city, service) ? cityServicePageId(city, service) : service;
+  if (hasCityService(city, service)) return cityServicePageId(city, service);
+  // a service without its own top-level page (business-security) points at its parent page
+  const svc = (geoData().services || {})[service];
+  return (svc && svc.page) || service;
 }
 
 function pathFor(page){
@@ -3581,7 +3584,7 @@ function CityServicePage({cityId, serviceId, navigate}){
                 </div>
               ))}
               <p style={{marginTop:24}}>
-                <NavLink page={serviceId} navigate={navigate} className="fx-more">{svc.nav} overview <i aria-hidden="true">→</i></NavLink>
+                <NavLink page={svc.page || serviceId} navigate={navigate} className="fx-more">{svc.nav} overview <i aria-hidden="true">→</i></NavLink>
                 <span style={{margin:'0 14px',color:'var(--cream3)'}}>·</span>
                 <NavLink page={cityPageId(cityId)} navigate={navigate} className="fx-more">Everything in {city.name} <i aria-hidden="true">→</i></NavLink>
               </p>
