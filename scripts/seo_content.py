@@ -788,7 +788,7 @@ CITY_SERVICES = [
         "description": "Security cameras for Sarasota retail stores and boutiques: register, entrance, sales floor and stock room. UniFi Protect, on-site recording, no monthly fees.",
         "lede": "A store needs four things from its cameras: a clear face at the door, a clear view of the register, the sales floor covered without blind aisles, and the stock room and back door recorded. We design UniFi Protect retail security camera systems for Sarasota shops and boutiques, from St. Armands and Main Street to the plazas along Tamiami Trail.",
         "paragraphs": [
-            "Retail losses come from three directions: shoplifting on the floor, mistakes and theft at the register, and stock leaving by the back door. A good layout covers all three without turning the store into something that feels watched. Cameras are wired PoE and record to a recorder in the back office, with no monthly fee per camera.",
+            "Retail losses come from three directions: shoplifting on the floor, mistakes and theft at the register, and stock leaving by the back door. A good layout covers all three without turning the store into something that feels watched. Cameras are wired PoE and record to a recorder in the back office, with no monthly fee per camera. Installation work is carried out with our Florida-licensed low-voltage partner.",
         ],
         "bullets": [
             "Face-height camera at every customer entrance",
@@ -801,7 +801,7 @@ CITY_SERVICES = [
                 "This is the layout we start from for a typical Sarasota storefront, before the walkthrough changes it:",
             ], "table": {"head": ["Position", "Camera", "What it should capture"], "rows": [
                 ["Customer entrance", "G6 Dome", "Every face coming in, at a size you could hand to the police."],
-                ["Register", "G6 Mini Dome overhead", "The drawer, the screen and the customer's hands at the counter."],
+                ["Register", "G6 Mini Dome overhead", "The drawer, the screen and the customer's hands at the counter, angled away from the card reader's PIN pad."],
                 ["Sales floor", "AI Theta Pro", "A 360° view of the floor from one small ceiling camera."],
                 ["Fitting room corridor", "G6 Turret", "The corridor and entrance only. Never inside a fitting room."],
                 ["Stock room and back door", "G6 Turret", "Who comes in and out, and deliveries arriving."],
@@ -833,7 +833,7 @@ CITY_SERVICES = [
         "description": "Security camera systems for Sarasota restaurants and bars: entrance, bar, POS, kitchen line, back door and deliveries. UniFi Protect, no monthly fees.",
         "lede": "A restaurant runs on cash, inventory and a back door that is open half the day. Its cameras have to cover the bar and the registers, the kitchen line, deliveries and the dumpster area, and still be useful at midnight when the owner wants to know who locked up. We install UniFi Protect restaurant security camera systems in Sarasota and Manatee County.",
         "paragraphs": [
-            "Most of what owners ask us for is not about break-ins. It is about disputes at the register, a slip-and-fall claim, a delivery that came short, or a staff question that needs a clear answer. Cameras placed for those moments are different from cameras placed for a burglar.",
+            "Most of what owners ask us for is not about break-ins. It is about disputes at the register, a slip-and-fall claim, a delivery that came short, or a staff question that needs a clear answer. Cameras placed for those moments are different from cameras placed for a burglar. Installation work is carried out with our Florida-licensed low-voltage partner.",
         ],
         "bullets": [
             "Bar, POS stations and cash office",
@@ -879,7 +879,7 @@ CITY_SERVICES = [
         "description": "Warehouse and yard security camera systems in Sarasota and Manatee: dock doors, aisles, yard, gate and plates. UniFi Protect 4K cameras, on-site recorder.",
         "lede": "A warehouse needs coverage where goods and vehicles move: dock doors, the yard, the gate, and the aisles where stock sits. We design UniFi Protect warehouse security camera systems for distribution space, workshops and storage buildings in Sarasota and Manatee County, with a licence plate camera at the gate and enough recorder for weeks of footage.",
         "paragraphs": [
-            "Warehouses are big, tall and often dark at night. That changes the camera choice: longer infrared range, optical zoom for long aisles, and fewer, better cameras on the yard instead of many cheap ones. Every camera is wired, so there is nothing to recharge on a 30-foot ceiling.",
+            "Warehouses are big, tall and often dark at night. That changes the camera choice: longer infrared range, optical zoom for long aisles, and fewer, better cameras on the yard instead of many cheap ones. Every camera is wired, so there is nothing to recharge on a 30-foot ceiling. Installation work is carried out with our Florida-licensed low-voltage partner.",
         ],
         "bullets": [
             "Dock doors and loading bays",
@@ -904,6 +904,7 @@ CITY_SERVICES = [
             ]},
             {"h2": "Plates, vehicles and search", "text": [
                 "UniFi's AI LPR camera is built for plate capture at entrances, where vehicles slow down. Mounted low and at a shallow angle, it records the plate of every vehicle through the gate, and Protect lets you search footage by plate or by vehicle detection. A second camera next to it records the vehicle and driver.",
+                "Plate data stays on your recorder. There is no cloud service and no per-camera subscription, and nothing is shared with third parties unless you export a clip.",
             ]},
             {"h2": "Related pages", "text": [
                 "The full camera range and recorder sizing are on [office and business security camera systems in Sarasota](sa-sarasota-business-security). In Manatee County, see [commercial security cameras in Bradenton](sa-bradenton-business-security). For long cable runs, fiber and the network, see [Wi-Fi and cabling in Sarasota](sa-sarasota-networking).",
@@ -924,7 +925,7 @@ CITY_SERVICES = [
         "description": "Security cameras for Sarasota HOAs and condo associations: gates, pools, mail rooms, garages and clubhouses. UniFi Protect with on-site recording, no fees.",
         "lede": "A community association needs cameras where residents share space: the gate, the pool, the mail room, the garage and the clubhouse. It also needs a system the board can explain to residents, with clear rules on who sees the footage. We install UniFi Protect HOA and condo security camera systems in Sarasota, Lakewood Ranch and Manatee County.",
         "paragraphs": [
-            "The questions boards ask us are mostly about policy, not hardware: which areas can be recorded, who on the board or the management company gets access, how long footage is kept, and how a resident asks for a clip after a car is scratched in the garage. We help put the system together so those answers are simple.",
+            "The questions boards ask us are mostly about policy, not hardware: which areas can be recorded, who on the board or the management company gets access, how long footage is kept, and how a resident asks for a clip after a car is scratched in the garage. We help put the system together so those answers are simple. Installation work is carried out with our Florida-licensed low-voltage partner.",
         ],
         "bullets": [
             "Gates with licence plate recording",
@@ -960,6 +961,7 @@ CITY_SERVICES = [
             {"q": "Who can see the footage?", "a": "Only the people the board names. Each gets a UniFi Protect login limited to the cameras and history they are allowed."},
             {"q": "Is there a monthly fee for the association?", "a": "No per-camera fee. Footage records to a recorder in the building."},
             {"q": "Can the gate camera read licence plates?", "a": "Yes. UniFi's AI LPR camera records plates at the gate, and footage can be searched by plate."},
+            {"q": "Where is the licence plate data stored?", "a": "On the association's own recorder in the building. There is no cloud plate database and no yearly per-camera fee, and plates are not shared with anyone unless the board exports a clip."},
         ],
     },
 ]
