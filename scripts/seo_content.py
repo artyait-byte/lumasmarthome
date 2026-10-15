@@ -59,10 +59,46 @@ SERVICES = {
     "business-security": {
         "id": "business-security",
         "name": "Business security cameras",
-        "nav": "Security",
+        "nav": "Business cameras",
         "page": "security",
         "short": "UniFi Protect camera systems for offices, shops and small commercial spaces.",
         "og": "/assets/photos/hero-security-v2.jpg",
+    },
+    "retail-security-cameras": {
+        "id": "retail-security-cameras",
+        "name": "Retail store security cameras",
+        "nav": "Business cameras",
+        "page": "security",
+        "listed": False,
+        "short": "Register, entrance, sales floor and stock room cameras for shops.",
+        "og": "/assets/photos/cam-dome.jpg",
+    },
+    "restaurant-security-cameras": {
+        "id": "restaurant-security-cameras",
+        "name": "Restaurant security cameras",
+        "nav": "Business cameras",
+        "page": "security",
+        "listed": False,
+        "short": "Bar, POS, kitchen line and back-door cameras for restaurants.",
+        "og": "/assets/photos/cam-dome.jpg",
+    },
+    "warehouse-security-cameras": {
+        "id": "warehouse-security-cameras",
+        "name": "Warehouse security cameras",
+        "nav": "Business cameras",
+        "page": "security",
+        "listed": False,
+        "short": "Dock, aisle, yard and gate cameras with plate recording.",
+        "og": "/assets/photos/cam-bullet.jpg",
+    },
+    "hoa-security-cameras": {
+        "id": "hoa-security-cameras",
+        "name": "HOA and condo security cameras",
+        "nav": "Business cameras",
+        "page": "security",
+        "listed": False,
+        "short": "Gate, pool, mail room and garage cameras for associations.",
+        "og": "/assets/photos/cam-bullet.jpg",
     },
     "automation": {
         "id": "automation",
@@ -637,31 +673,293 @@ CITY_SERVICES = [
         "h1": "Office and business security camera systems in Sarasota",
         "title": "Office Security Camera Systems Sarasota FL | UniFi | LUMA",
         "description": "Security camera systems for Sarasota offices, shops and small commercial spaces. UniFi Protect, wired PoE cameras, on-site recording, no per-camera fees.",
-        "lede": "An office, a showroom or a small warehouse needs the same thing a good home system gives: clear video of the doors, the counter and the lot, recorded on site, and an app the owner can check from anywhere. We design and install UniFi Protect camera systems for small commercial spaces in Sarasota and Manatee County.",
+        "lede": "An office, a showroom or a small warehouse needs the same thing a good home system gives: clear video of the doors, the counter and the lot, recorded on site, and an app the owner can check from anywhere. We design and install UniFi Protect office security camera systems for small commercial spaces in Sarasota and Manatee County.",
         "paragraphs": [
             "Every job starts with a walk of the space: entrances, the register or front desk, stock rooms, the parking lot and the back door. Cameras are wired PoE, so there are no batteries and one cable carries power and video. Recording stays on a UniFi recorder in your building, with no monthly fee per camera.",
-            "The cameras sit on their own network segment, separate from the office computers and guest Wi-Fi. If the network itself needs work, we do that in the same project. See [Wi-Fi and cabling in Sarasota](sa-sarasota-networking).",
+            "The cameras sit on their own network segment, separate from the office computers and guest Wi-Fi. If the network itself needs work, we do that in the same project. See [Wi-Fi and cabling in Sarasota](sa-sarasota-networking). Installation work is carried out with our Florida-licensed low-voltage partner.",
         ],
         "bullets": [
             "Offices, shops, showrooms and small warehouses",
             "Wired PoE cameras, on-site UniFi recorder",
-            "No per-camera monthly fees",
+            "No per-camera monthly fees or licences",
             "One app for owners and managers",
         ],
         "sections": [
             {"h2": "What a business camera system covers", "text": [
                 "Entrances and exits with faces at a usable size, the point of sale or reception desk, stock and storage rooms, and the parking lot with vehicles in frame. We plan each camera for what it must capture, and we tell you where a camera would add little.",
-                "Owners and managers get their own logins with the access they need. Footage can be found by time and by person or vehicle detection, and exported as a clip when an incident needs to be shared.",
+                "Owners and managers get their own logins with the access they need. Footage can be found by time and by person or vehicle detection, and exported as a clip when an incident needs to be shared with an insurer or the police.",
+            ]},
+            {"h2": "Which UniFi camera goes where", "text": [
+                "These are the current UniFi Protect models we specify for small commercial spaces. The right mix depends on the building, but most Sarasota offices and shops come down to the same handful of positions.",
+            ], "table": {"head": ["Position", "Camera", "Why"], "rows": [
+                ["Front door and lobby", "G6 Dome", "4K, IK10 vandal-resistant housing. Mounted low enough that faces fill the frame as people walk in."],
+                ["Reception or register", "G6 Dome or G6 Mini Dome", "Overhead view of the counter, the cash drawer and the customer side."],
+                ["Open office or sales floor", "AI Theta Pro", "A small 360° ceiling camera that covers a whole room without looking like surveillance. Indoor only."],
+                ["Back door, hallways, stock room", "G6 Turret", "4K, IP66, infrared to about 98 ft. A good all-round camera for doors and corridors."],
+                ["Parking lot and building sides", "G6 Pro Bullet", "4K with a larger sensor and 2.36× optical zoom, so a vehicle across the lot is still identifiable."],
+                ["Lot entrance or gate", "AI LPR", "UniFi's licence plate camera. Reads plates at the entrance day and night; paired with a second camera for the vehicle itself."],
+                ["Large lots and yards", "G6 PTZ", "Pan, tilt and 10× hybrid zoom for following a person or vehicle across open ground."],
+            ]}, "after": [
+                "Every one of these cameras records 4K, runs on a single PoE cable and does person and vehicle detection on the camera. The G6 and AI models also support face and licence plate recognition in UniFi Protect.",
+            ]},
+            {"h2": "How we size the recorder", "text": [
+                "Storage is a simple calculation: number of cameras, times the bitrate each records at, times the hours per day it records, times the days you need to keep. Continuous 4K on every camera fills drives fastest; recording on detection, or keeping recent days at full quality and older days at lower quality, stretches the same drives much further.",
+                "Most offices and shops ask for about 30 days. A lease, an insurer or your own policy may ask for more, so we confirm the number before choosing the recorder:",
+            ], "table": {"head": ["Recorder", "Drive bays", "Up to (4K cameras)"], "rows": [
+                ["UNVR Instant", "1", "6 cameras: a small office or a single shop"],
+                ["UNVR", "4", "18 cameras: most offices, restaurants and retail"],
+                ["UNVR Pro", "7", "24 cameras: larger sites and longer retention"],
+                ["UNVR G2 Pro", "8", "50 cameras: multi-building sites and warehouses"],
+            ]}, "after": [
+                "The recorder goes in a locked closet or rack with the network equipment, on a battery backup so a power blip does not cost you footage. Drives run in RAID, so one failed drive does not lose the recordings.",
+            ]},
+            {"h2": "Camera systems by type of business", "text": [
+                "The positions change with the business. We have written up the common layouts:",
+            ], "bullets": [
+                "[Retail store security cameras](sa-sarasota-retail-security-cameras): register, fitting rooms entrance, stock room and the front door",
+                "[Restaurant security cameras](sa-sarasota-restaurant-security-cameras): host stand, bar, kitchen line, back door and deliveries",
+                "[Warehouse security cameras](sa-sarasota-warehouse-security-cameras): dock doors, yard, aisles and the perimeter",
+                "[HOA and condo security cameras](sa-sarasota-hoa-security-cameras): gates, pools, mail rooms and garages",
+                "Medical, dental and professional offices: entrances, reception and records rooms, never treatment rooms",
+                "Marinas and waterfront buildings: docks and gates, with cameras mounted under cover away from direct spray",
             ]},
             {"h2": "Homes and businesses on one stack", "text": [
-                "Many owners also want cameras at home. UniFi Protect at home and at the office means one app for both. For the house, see [security camera installation in Sarasota](sa-sarasota-security).",
+                "Many owners also want cameras at home. UniFi Protect at home and at the office means one app for both. For the house, see [security camera installation in Sarasota](sa-sarasota-security), or the [security systems overview](security). In Manatee County, see [commercial security cameras in Bradenton](sa-bradenton-business-security).",
             ]},
         ],
         "faq": [
-            {"q": "Do business security cameras need a monthly subscription?", "a": "Not with UniFi Protect. Video records to a recorder in your building, so there is no per-camera cloud fee."},
+            {"q": "Do business security cameras need a monthly subscription?", "a": "Not with UniFi Protect. Video records to a recorder in your building, and Ubiquiti charges no licence or per-camera fee."},
             {"q": "Can I watch the cameras from my phone?", "a": "Yes. Owners and managers can view live and recorded video in the UniFi Protect app, each with their own login."},
-            {"q": "Do you install office cameras in Bradenton and Lakewood Ranch?", "a": "Yes. We cover Sarasota and Manatee Counties, including Bradenton, Lakewood Ranch and Venice."},
-            {"q": "Can you also fix the office network and Wi-Fi?", "a": "Yes. Cameras depend on the network, so we can design both together: switching, Wi-Fi and a separate segment for the cameras."},
+            {"q": "How many cameras does a small office need?", "a": "Usually 4 to 8: the front door, reception, the back door, any room with equipment or records, and one or two on the parking lot. We count them on the walkthrough, not from a floor plan."},
+            {"q": "How long should a business keep security camera footage?", "a": "About 30 days is common for offices and shops. If an insurer, a lease or your own policy asks for longer, we size the recorder drives for it."},
+            {"q": "Can the cameras read licence plates?", "a": "Yes. UniFi makes a dedicated licence plate camera, the AI LPR, for a lot entrance or gate. It works best where cars slow down and the camera can be mounted at a low angle."},
+            {"q": "Do cameras survive salt air near the water?", "a": "UniFi outdoor cameras carry an IP66 weather rating. Near the Gulf or the bay we mount them under eaves or covers wherever we can and keep connections sealed."},
+            {"q": "Do you install office cameras in Bradenton and Lakewood Ranch?", "a": "Yes. We cover Sarasota and Manatee Counties. See [commercial security cameras in Bradenton](sa-bradenton-business-security)."},
+            {"q": "Can you also fix the office network and Wi-Fi?", "a": "Yes. Cameras depend on the network, so we can design both together: switching, Wi-Fi and a separate segment for the cameras. See [UniFi networking](networking)."},
+        ],
+    },
+    {
+        "city": "bradenton",
+        "service": "business-security",
+        "h1": "Commercial security camera systems in Bradenton",
+        "title": "Commercial Security Cameras Bradenton FL | UniFi | LUMA",
+        "description": "Commercial security camera systems for Bradenton, Lakewood Ranch and Palmetto businesses. UniFi Protect, wired 4K cameras, on-site recorder, no monthly fees.",
+        "lede": "Bradenton businesses range from storefronts on Manatee Avenue and offices in Lakewood Ranch to workshops and storage yards along the river and in Palmetto. We design and install UniFi Protect commercial security camera systems for them: wired 4K cameras, recording on a box you own, and no per-camera monthly fees.",
+        "paragraphs": [
+            "We are based in Sarasota and work across Manatee County. The process is the same as anywhere: we walk the site, mark each camera on a plan with what it has to capture, and send a line-item proposal. Installation work is carried out with our Florida-licensed low-voltage partner.",
+            "A lot of Manatee County commercial property is spread out: a building, a yard, a fenced lot, sometimes a second building. That is where wired cameras earn their place. One cable per camera carries power and video, so there are no batteries to replace and no Wi-Fi links dropping across a yard.",
+        ],
+        "bullets": [
+            "Offices, retail, workshops, yards and storage",
+            "4K PoE cameras with on-camera person and vehicle detection",
+            "On-site UniFi recorder sized for your retention",
+            "Licence plate camera for gates and lot entrances",
+        ],
+        "sections": [
+            {"h2": "Typical layouts in Manatee County", "text": [
+                "Office suites and medical offices in Lakewood Ranch usually need the entrance, the reception desk, the back door and the parking lot. A G6 Dome at the door, a G6 Turret in the corridor and a G6 Pro Bullet on the lot covers most of them.",
+                "Workshops, contractors' yards and storage lots need the perimeter and the gate. G6 Pro Bullets along the fence line, an AI LPR at the gate to record plates, and a G6 PTZ when the yard is large enough that someone has to follow a vehicle across it.",
+                "Storefronts and restaurants on the main corridors need the register, the front door and the back door. See [retail store security cameras](sa-sarasota-retail-security-cameras) and [restaurant security cameras](sa-sarasota-restaurant-security-cameras) for those layouts.",
+            ]},
+            {"h2": "Recording and remote access", "text": [
+                "Video records to a UniFi recorder on the property: a UNVR Instant for up to 6 cameras, a UNVR for up to 18, larger recorders above that. We size the drives for how many days you need to keep, commonly about 30, and put the recorder on a battery backup.",
+                "Owners and managers view the cameras in the UniFi Protect app from anywhere, each with their own login. Clips can be exported and handed to an insurer or the police.",
+            ]},
+            {"h2": "Weather, salt and power", "text": [
+                "Riverfront and island sites see salt air and summer storms. UniFi outdoor cameras are rated IP66; we mount them under eaves or covers where we can, seal cable entries, and protect the recorder and switch with a UPS so a brief outage does not leave gaps in the recording.",
+            ]},
+            {"h2": "Related pages", "text": [
+                "The full camera-by-position table and recorder sizing are on [office security camera systems in Sarasota](sa-sarasota-business-security). For homes in Manatee County, see [home security cameras in Bradenton](sa-bradenton-security). For everything we do in the area, see [smart home installation in Bradenton](sa-bradenton).",
+            ]},
+        ],
+        "faq": [
+            {"q": "Do you install commercial security cameras in Bradenton?", "a": "Yes. We cover Bradenton, Lakewood Ranch, Palmetto, Ellenton, Parrish and the rest of Manatee County from our Sarasota base."},
+            {"q": "Is there a monthly fee for the cameras?", "a": "No. UniFi Protect records to a recorder on your property and Ubiquiti charges no per-camera licence."},
+            {"q": "Can you cover a yard or a gate far from the building?", "a": "Usually yes. Cameras up to about 300 ft of cable from a switch run on one cable; beyond that we add a switch closer to the camera or use fiber."},
+            {"q": "Can the system record licence plates at our gate?", "a": "Yes, with the UniFi AI LPR camera aimed where vehicles slow down at the gate or entrance."},
+            {"q": "Can we add cameras later?", "a": "Yes. We size the recorder and the switch with spare capacity so more cameras can be added without replacing the core."},
+        ],
+    },
+    {
+        "city": "sarasota",
+        "service": "retail-security-cameras",
+        "h1": "Retail store security cameras in Sarasota",
+        "title": "Retail Store Security Cameras Sarasota FL | UniFi | LUMA",
+        "description": "Security cameras for Sarasota retail stores and boutiques: register, entrance, sales floor and stock room. UniFi Protect, on-site recording, no monthly fees.",
+        "lede": "A store needs four things from its cameras: a clear face at the door, a clear view of the register, the sales floor covered without blind aisles, and the stock room and back door recorded. We design UniFi Protect retail security camera systems for Sarasota shops and boutiques, from St. Armands and Main Street to the plazas along Tamiami Trail.",
+        "paragraphs": [
+            "Retail losses come from three directions: shoplifting on the floor, mistakes and theft at the register, and stock leaving by the back door. A good layout covers all three without turning the store into something that feels watched. Cameras are wired PoE and record to a recorder in the back office, with no monthly fee per camera.",
+        ],
+        "bullets": [
+            "Face-height camera at every customer entrance",
+            "Overhead view of each register and cash drawer",
+            "360° ceiling cameras for the sales floor",
+            "Stock room and back door recorded around the clock",
+        ],
+        "sections": [
+            {"h2": "Where the cameras go in a store", "text": [
+                "This is the layout we start from for a typical Sarasota storefront, before the walkthrough changes it:",
+            ], "table": {"head": ["Position", "Camera", "What it should capture"], "rows": [
+                ["Customer entrance", "G6 Dome", "Every face coming in, at a size you could hand to the police."],
+                ["Register", "G6 Mini Dome overhead", "The drawer, the screen and the customer's hands at the counter."],
+                ["Sales floor", "AI Theta Pro", "A 360° view of the floor from one small ceiling camera."],
+                ["Fitting room corridor", "G6 Turret", "The corridor and entrance only. Never inside a fitting room."],
+                ["Stock room and back door", "G6 Turret", "Who comes in and out, and deliveries arriving."],
+                ["Storefront and parking", "G6 Pro Bullet", "The sidewalk, the lot and vehicles, with optical zoom for distance."],
+            ]}},
+            {"h2": "Finding the moment that matters", "text": [
+                "Scrubbing through hours of video is where most store systems fail. UniFi Protect tags every person and vehicle the cameras see, so you can jump to the people who stood at the register between 2 and 3 pm, or every vehicle at the back door after closing. A clip can be exported in a few taps for a police report or an insurance claim.",
+                "Managers and owners get separate logins. A store manager can see live video and the last week, while the owner sees everything, including other locations on the same app.",
+            ]},
+            {"h2": "Privacy rules a store has to respect", "text": [
+                "Cameras never go inside fitting rooms or restrooms. Florida also requires consent from everyone in a conversation before it is recorded, so we leave camera microphones switched off in customer areas unless you have taken advice that says otherwise. A visible sign at the door that the premises are recorded is good practice and often deters on its own.",
+            ]},
+            {"h2": "Related pages", "text": [
+                "The general camera-by-position guide and recorder sizing are on [office and business security camera systems in Sarasota](sa-sarasota-business-security). Restaurants have their own layout: [restaurant security cameras](sa-sarasota-restaurant-security-cameras). For the network the cameras run on, see [Wi-Fi and cabling in Sarasota](sa-sarasota-networking).",
+            ]},
+        ],
+        "faq": [
+            {"q": "How many cameras does a small retail store need?", "a": "A single-room boutique usually needs 4 to 6: the entrance, the register, one or two for the floor, and the stock room or back door."},
+            {"q": "Can the cameras record audio at the register?", "a": "They can, but Florida requires everyone's consent to record a conversation, so we leave audio off in customer areas unless you have legal advice to use it."},
+            {"q": "Is there a monthly fee?", "a": "No. Video records to a UniFi recorder in your store, with no per-camera subscription."},
+            {"q": "Can I see more than one store in the same app?", "a": "Yes. Each location has its own recorder, and the owner sees all of them in the UniFi Protect app."},
+        ],
+    },
+    {
+        "city": "sarasota",
+        "service": "restaurant-security-cameras",
+        "h1": "Restaurant security cameras in Sarasota",
+        "title": "Restaurant Security Cameras Sarasota FL | UniFi | LUMA",
+        "description": "Security camera systems for Sarasota restaurants and bars: entrance, bar, POS, kitchen line, back door and deliveries. UniFi Protect, no monthly fees.",
+        "lede": "A restaurant runs on cash, inventory and a back door that is open half the day. Its cameras have to cover the bar and the registers, the kitchen line, deliveries and the dumpster area, and still be useful at midnight when the owner wants to know who locked up. We install UniFi Protect restaurant security camera systems in Sarasota and Manatee County.",
+        "paragraphs": [
+            "Most of what owners ask us for is not about break-ins. It is about disputes at the register, a slip-and-fall claim, a delivery that came short, or a staff question that needs a clear answer. Cameras placed for those moments are different from cameras placed for a burglar.",
+        ],
+        "bullets": [
+            "Bar, POS stations and cash office",
+            "Dining room and entrance for incident claims",
+            "Kitchen line and walk-in cooler door",
+            "Back door, deliveries and dumpster area",
+        ],
+        "sections": [
+            {"h2": "Where the cameras go in a restaurant", "text": [
+                "The starting layout for a typical Sarasota restaurant:",
+            ], "table": {"head": ["Position", "Camera", "What it should capture"], "rows": [
+                ["Entrance and host stand", "G6 Dome", "Faces on the way in, and the door at closing."],
+                ["Bar and POS stations", "G6 Mini Dome overhead", "Pours, the register and the cash drawer."],
+                ["Dining room", "AI Theta Pro or G6 180", "The floor between tables, for slip-and-fall and incident claims."],
+                ["Kitchen line", "G6 Turret", "The line and the pass. Mounted away from fryer heat and grease."],
+                ["Cash office and walk-in door", "G6 Turret", "Who opened the safe or the cooler, and when."],
+                ["Back door and deliveries", "G6 Pro Bullet", "Vendors, deliveries and the dumpster area, with vehicles in frame."],
+                ["Patio and parking", "G6 Pro Bullet", "Outdoor seating and the lot after dark."],
+            ]}},
+            {"h2": "Heat, grease and humidity", "text": [
+                "Kitchens are hard on electronics. We keep cameras out of the hood plume, use sealed IP66 turrets where they can be wiped down, and route cable so it is not in the cleaning path. Outdoor patio cameras on the water get the same treatment as any Gulf Coast install: under cover where possible, sealed connections.",
+            ]},
+            {"h2": "Answers in minutes, not hours", "text": [
+                "UniFi Protect marks every person and vehicle it detects, so finding the moment of a dispute is a search, not an evening of scrubbing. Managers can review from their phones; clips are exported for an insurer or the police in a few taps. Recording stays on a recorder in the office, so there is no monthly fee per camera.",
+                "Audio is a special case. Florida requires consent from everyone in a conversation before it is recorded, so we leave camera microphones off in the dining room and bar unless you have taken legal advice.",
+            ]},
+            {"h2": "Related pages", "text": [
+                "The general guide to [business security camera systems in Sarasota](sa-sarasota-business-security) covers recorder sizing and the full camera range. Shops have their own layout: [retail store security cameras](sa-sarasota-retail-security-cameras). For the guest Wi-Fi and the network behind the cameras, see [UniFi networking](networking).",
+            ]},
+        ],
+        "faq": [
+            {"q": "How many cameras does a restaurant need?", "a": "A small restaurant usually needs 8 to 12: the entrance, the bar and each POS, the dining room, the kitchen line, the cash office, the back door and the lot."},
+            {"q": "Should restaurant cameras record audio?", "a": "In Florida we recommend no audio in guest areas, because recording a conversation requires everyone's consent."},
+            {"q": "Can managers check the cameras from home?", "a": "Yes. Each manager gets a UniFi Protect login with the cameras and the history you choose."},
+            {"q": "Will the cameras keep working in a hot kitchen?", "a": "Yes, if they are placed out of the direct heat and grease. We choose sealed turret cameras for kitchens and keep them out of the hood area."},
+        ],
+    },
+    {
+        "city": "sarasota",
+        "service": "warehouse-security-cameras",
+        "h1": "Warehouse security cameras in Sarasota",
+        "title": "Warehouse Security Cameras Sarasota FL | UniFi | LUMA",
+        "description": "Warehouse and yard security camera systems in Sarasota and Manatee: dock doors, aisles, yard, gate and plates. UniFi Protect 4K cameras, on-site recorder.",
+        "lede": "A warehouse needs coverage where goods and vehicles move: dock doors, the yard, the gate, and the aisles where stock sits. We design UniFi Protect warehouse security camera systems for distribution space, workshops and storage buildings in Sarasota and Manatee County, with a licence plate camera at the gate and enough recorder for weeks of footage.",
+        "paragraphs": [
+            "Warehouses are big, tall and often dark at night. That changes the camera choice: longer infrared range, optical zoom for long aisles, and fewer, better cameras on the yard instead of many cheap ones. Every camera is wired, so there is nothing to recharge on a 30-foot ceiling.",
+        ],
+        "bullets": [
+            "Dock doors and loading bays",
+            "Gate with licence plate recording",
+            "Long aisles with optical zoom",
+            "Yard and perimeter at night",
+        ],
+        "sections": [
+            {"h2": "Where the cameras go in a warehouse", "text": [
+                "The layout we start from:",
+            ], "table": {"head": ["Position", "Camera", "What it should capture"], "rows": [
+                ["Gate or yard entrance", "AI LPR + G6 Pro Bullet", "The plate on every vehicle in and out, and the vehicle itself."],
+                ["Dock doors", "G6 Pro Bullet", "Trucks, pallets and people at each door, inside and out."],
+                ["Aisles and racking", "G6 Pro Turret", "Long, narrow views down the aisle with optical zoom."],
+                ["Open floor and staging", "G6 180", "A wide floor area from one mounting point."],
+                ["Yard and perimeter", "G6 PTZ", "Following a person or vehicle across open ground at night."],
+                ["Offices and entrances", "G6 Dome", "Faces at the staff and visitor doors."],
+            ]}},
+            {"h2": "Recorder and retention", "text": [
+                "Warehouses usually have more cameras and need longer retention than an office, because a missing pallet is often noticed weeks later. That points to a UNVR Pro (up to 24 4K cameras) or a UNVR G2 Pro (up to 50) with large drives, recording continuously at the dock and gate and on detection elsewhere.",
+                "The recorder and switches go on a battery backup. Cameras far from the building get their own switch or a fiber run, since a copper network cable stops at about 300 ft.",
+            ]},
+            {"h2": "Plates, vehicles and search", "text": [
+                "UniFi's AI LPR camera is built for plate capture at entrances, where vehicles slow down. Mounted low and at a shallow angle, it records the plate of every vehicle through the gate, and Protect lets you search footage by plate or by vehicle detection. A second camera next to it records the vehicle and driver.",
+            ]},
+            {"h2": "Related pages", "text": [
+                "The full camera range and recorder sizing are on [office and business security camera systems in Sarasota](sa-sarasota-business-security). In Manatee County, see [commercial security cameras in Bradenton](sa-bradenton-business-security). For long cable runs, fiber and the network, see [Wi-Fi and cabling in Sarasota](sa-sarasota-networking).",
+            ]},
+        ],
+        "faq": [
+            {"q": "How far can a warehouse camera see at night?", "a": "It depends on the model. The G6 Turret's infrared reaches about 98 ft and the G6 Pro Bullet's about 130 ft; large yards are covered with a PTZ or extra lighting."},
+            {"q": "Can the system read licence plates at our gate?", "a": "Yes, with the UniFi AI LPR camera, mounted where vehicles slow down and at a low angle to the plate."},
+            {"q": "How long should a warehouse keep footage?", "a": "Longer than an office, because losses are found later. We size the recorder for the number of days you choose."},
+            {"q": "Do the cameras need Wi-Fi in the warehouse?", "a": "No. Every camera is wired PoE back to a switch, which is more reliable than Wi-Fi across racking and metal walls."},
+        ],
+    },
+    {
+        "city": "sarasota",
+        "service": "hoa-security-cameras",
+        "h1": "HOA and condo security cameras in Sarasota",
+        "title": "HOA & Condo Security Cameras Sarasota FL | UniFi | LUMA",
+        "description": "Security cameras for Sarasota HOAs and condo associations: gates, pools, mail rooms, garages and clubhouses. UniFi Protect with on-site recording, no fees.",
+        "lede": "A community association needs cameras where residents share space: the gate, the pool, the mail room, the garage and the clubhouse. It also needs a system the board can explain to residents, with clear rules on who sees the footage. We install UniFi Protect HOA and condo security camera systems in Sarasota, Lakewood Ranch and Manatee County.",
+        "paragraphs": [
+            "The questions boards ask us are mostly about policy, not hardware: which areas can be recorded, who on the board or the management company gets access, how long footage is kept, and how a resident asks for a clip after a car is scratched in the garage. We help put the system together so those answers are simple.",
+        ],
+        "bullets": [
+            "Gates with licence plate recording",
+            "Pools, mail rooms and clubhouses",
+            "Parking garages and lots",
+            "Separate logins for the board and management",
+        ],
+        "sections": [
+            {"h2": "Where the cameras go in a community", "text": [
+                "A starting layout for a gated community or condo building:",
+            ], "table": {"head": ["Position", "Camera", "What it should capture"], "rows": [
+                ["Entry and exit gates", "AI LPR + G6 Pro Bullet", "Plates of every vehicle and the vehicle itself, day and night."],
+                ["Pool and pool gate", "G6 Pro Bullet", "The deck and the gate, for incidents and after-hours use."],
+                ["Mail and package room", "G6 Dome", "Faces at the door and who takes which package."],
+                ["Lobby and elevators", "G6 Dome", "Entrances and the elevator lobby, vandal-resistant housing."],
+                ["Parking garage", "G6 Turret", "Drive aisles and stairwell doors, infrared for low light."],
+                ["Clubhouse and fitness room", "AI Theta Pro", "A discreet 360° ceiling view of shared rooms."],
+            ]}},
+            {"h2": "Policy first, then cameras", "text": [
+                "Cameras belong in common areas only, never pointed into a unit, a balcony or a window. Florida requires consent from everyone in a conversation before it is recorded, so association cameras run with audio off. Signs at the entrances say the common areas are recorded.",
+                "Before we install, the board decides who can view live video, who can export clips, and how many days are kept. UniFi Protect gives each person their own login with only the cameras and history the board allows, and keeps the footage on a recorder in the building rather than a vendor's cloud. Your association's attorney should approve the written policy; we make sure the system matches it.",
+            ]},
+            {"h2": "Island and waterfront buildings", "text": [
+                "On Siesta Key, Longboat Key and the bayfront, salt air and wind are the main enemies. UniFi outdoor cameras are IP66 rated; we mount them under overhangs where we can, seal every connection, and put the recorder in a conditioned room with a battery backup.",
+            ]},
+            {"h2": "Related pages", "text": [
+                "The camera range and recorder sizing are on [business security camera systems in Sarasota](sa-sarasota-business-security). For cameras at a private home, see [security camera installation in Sarasota](sa-sarasota-security). The gate and building network is covered in [Wi-Fi and cabling in Sarasota](sa-sarasota-networking).",
+            ]},
+        ],
+        "faq": [
+            {"q": "Can an HOA put security cameras in common areas in Florida?", "a": "Common areas such as gates, pools and mail rooms are usually recorded with the board's approval and posted signs. Your association's attorney should approve the written camera policy."},
+            {"q": "Can HOA cameras record audio?", "a": "We install them with audio off. Florida requires everyone's consent to record a conversation."},
+            {"q": "Who can see the footage?", "a": "Only the people the board names. Each gets a UniFi Protect login limited to the cameras and history they are allowed."},
+            {"q": "Is there a monthly fee for the association?", "a": "No per-camera fee. Footage records to a recorder in the building."},
+            {"q": "Can the gate camera read licence plates?", "a": "Yes. UniFi's AI LPR camera records plates at the gate, and footage can be searched by plate."},
         ],
     },
 ]
@@ -1093,8 +1391,20 @@ def related_map() -> dict:
         elif city["id"] == "siesta-key":
             extra = ["journal-shades-gulf", "sa-sarasota", "contact"]
         rel[f"sa-{city['id']}"] = _rel(*ids, *extra)
+    business = {"business-security", *[k for k, v in SERVICES.items() if v.get("listed") is False]}
     for row in CITY_SERVICES:
         pid = f"sa-{row['city']}-{row['service']}"
+        if row["service"] in business:
+            rel[pid] = _rel(
+                "sa-sarasota-business-security",
+                "sa-bradenton-business-security",
+                *[f"sa-sarasota-{k}" for k in sorted(business - {"business-security"})],
+                "sa-sarasota-security",
+                "sa-sarasota-networking",
+                "contact",
+            )
+            rel[pid] = [r for r in rel[pid] if r["id"] != pid]
+            continue
         rel[pid] = _rel(
             SERVICES[row["service"]]["page"],
             f"sa-{row['city']}",

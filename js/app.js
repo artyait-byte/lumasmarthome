@@ -1541,6 +1541,9 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
             <div className="fx-lede">
               <h2 className="fx-d3">{aside.h2}</h2>
               <p>{aside.body} <NavLink page={aside.page} navigate={navigate} className="fx-more">{aside.link} <i aria-hidden="true">→</i></NavLink></p>
+              {aside.links && <p>{aside.links.map(([pg,label],i,arr)=>(
+                <React.Fragment key={pg}><NavLink page={pg} navigate={navigate} className="fx-inline">{label}</NavLink>{i < arr.length-1 ? ' · ' : ''}</React.Fragment>
+              ))}</p>}
             </div>
           </div>
         </section>
@@ -1931,7 +1934,8 @@ function SecurityPage({navigate}) {
       ],
     }}
     aside={{id:'business', h2:'For offices and shops', page:'sa-sarasota-business-security', link:'Business camera systems in Sarasota',
-      body:'The same UniFi Protect stack works for offices, showrooms, retail and small warehouses: wired cameras on the doors, the counter and the lot, recording on site with no per-camera fees, and one app for owners and managers.'}}
+      body:'The same UniFi Protect stack works for offices, showrooms, retail and small warehouses: wired cameras on the doors, the counter and the lot, recording on site with no per-camera fees, and one app for owners and managers.',
+      links:[['sa-sarasota-retail-security-cameras','Retail store security cameras'],['sa-sarasota-restaurant-security-cameras','Restaurant security cameras'],['sa-sarasota-warehouse-security-cameras','Warehouse security cameras'],['sa-sarasota-hoa-security-cameras','HOA and condo security cameras'],['sa-bradenton-business-security','Commercial security cameras in Bradenton']]}}
     cases={['case-bighouse']}
     credentials={['Ubiquiti UVP Partner','UniFi Protect Certified','CEDIA Member','Insured & bonded']}
     ctaCopy={{
@@ -2099,6 +2103,8 @@ function NetworkingPage({navigate}) {
         {n:'03', text:'We ship the network 30 days before move-in so you arrive online — gateway provisioned, APs surveyed, every device pre-onboarded.'},
       ],
     }}
+    aside={{id:'business', h2:'Networks for offices and cameras', page:'sa-sarasota-business-security', link:'Office security camera systems in Sarasota',
+      body:'Business camera systems run on the same UniFi switching: cameras on their own network segment, the recorder on a battery backup, and fiber where a yard camera is beyond copper range.'}}
     cases={['case-spacious', 'case-urban']}
     credentials={['Ubiquiti UEWA','Ubiquiti UWA-Pro','Cat6A bonded subcontractor','Insured & bonded']}
     ctaCopy={{
@@ -3552,7 +3558,7 @@ function CityHubPage({cityId, navigate}){
         <div className="fx-field">
           <h2 className="fx-d3">What we install in {city.name}</h2>
           <p className="fx-lede">
-            {Object.keys(services).map((sid,i,arr)=>(
+            {Object.keys(services).filter(sid=>services[sid].listed!==false).map((sid,i,arr)=>(
               <React.Fragment key={sid}>
                 <NavLink page={servicePageForCity(cityId, sid)} navigate={navigate} className="fx-inline">{services[sid].name}</NavLink>{i < arr.length-1 ? ', ' : '.'}
               </React.Fragment>
@@ -3599,7 +3605,19 @@ function CityServicePage({cityId, serviceId, navigate}){
               {(row.sections||[]).map(sec=>(
                 <div key={sec.h2} className="fx-lede" style={{marginTop:32}}>
                   <h2 className="fx-d3">{sec.h2}</h2>
-                  {sec.text.map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+                  {(sec.text||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+                  {sec.table && (
+                    <div className="fx-spec-wrap">
+                      <table className="fx-spec">
+                        <thead><tr>{sec.table.head.map(h=><th key={h} scope="col">{h}</th>)}</tr></thead>
+                        <tbody>{sec.table.rows.map((r,i)=>(
+                          <tr key={i}>{r.map((c,j)=>j===0 ? <th key={j} scope="row">{c}</th> : <td key={j} data-label={sec.table.head[j]}><LinkedText text={c} navigate={navigate}/></td>)}</tr>
+                        ))}</tbody>
+                      </table>
+                    </div>
+                  )}
+                  {sec.bullets && <ul className="fx-checks">{sec.bullets.map(b=><li key={b}><LinkedText text={b} navigate={navigate}/></li>)}</ul>}
+                  {(sec.after||[]).map((p,i)=><p key={'a'+i}><LinkedText text={p} navigate={navigate}/></p>)}
                 </div>
               ))}
               <p style={{marginTop:24}}>
