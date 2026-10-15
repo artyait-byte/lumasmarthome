@@ -614,12 +614,25 @@ CONTACT_FIELDS = [
 ]
 
 
+# The permanent-lighting calculator posts its lead the same way.
+QUOTE_FIELDS = [
+    "name", "email", "phone", "address", "style", "storeys", "roofline",
+    "zones", "options", "estimate", "source_page",
+]
+
+NETLIFY_FORMS = {
+    "contact": ("contact", CONTACT_FIELDS),
+    "permanent-lighting": ("permanent-lighting-quote", QUOTE_FIELDS),
+}
+
+
 def netlify_form(route: dict) -> str:
-    if route["id"] != "contact":
+    if route["id"] not in NETLIFY_FORMS:
         return ""
-    inputs = "".join(f'<input name="{f}">' for f in CONTACT_FIELDS)
+    name, fields = NETLIFY_FORMS[route["id"]]
+    inputs = "".join(f'<input name="{f}">' for f in fields)
     return (
-        '<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>'
+        f'<form name="{name}" data-netlify="true" netlify-honeypot="bot-field" hidden>'
         f'<input name="bot-field">{inputs}</form>\n'
     )
 

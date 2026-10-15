@@ -1475,7 +1475,7 @@ function AutomationPage({navigate}) {
   />;
 }
 /* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
-function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases, diagram}) {
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases, diagram, quote}) {
   /* The reference's inner page, section for section: a short hero, one
      centred paragraph with a bold lead, a "what it does for you" grid (copy
      in five columns, four icon items in seven), a row of photo cards, and
@@ -1520,6 +1520,9 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           </div>
         </div>
       </section>
+
+      {/* 2b. instant quote — pages that price themselves, straight under the intro */}
+      {quote}
 
       {scenes && <FxScenes heading={scenes.h2} lede={scenes.lead} band={false}/>}
 
@@ -1917,6 +1920,343 @@ function SecurityPage({navigate}) {
 }
 
 
+/* ─── PERMANENT LIGHTING QUOTE CALCULATOR ───
+   The SmartNova landscape quick-quote, rebuilt for the roofline: pick a
+   style, start from a typical house, adjust the feet per zone, the storeys
+   and the roofline, and read an installed price with the 7% sales tax on
+   its own line. Every number lives in PLQ_CFG so the owner can tune it.
+   Calibrated so the front of a one-storey house (120 ft) starts near
+   $2,000 in warm white and $4,000 in full colour, tax included. */
+const PLQ_CFG = {
+  taxRate: 0.07,
+  perFt: {white: 14, color: 27},          // channel + diodes + install, one storey, simple eaves
+  storeyAdd: {1: 0, 2: 3, 3: 6},          // $/ft for ladder and lift work above the first storey
+  shape: {simple: 1, hipped: 1.07, complex: 1.15},
+  cagePerFt: {white: 13, color: 24},      // along the top beams of a screen enclosure
+  colorMatchPerFt: 1.5,                   // custom powder coat instead of a stock channel colour
+  controller: {white: 250, color: 500, feet: 400}, // one controller drives about 400 ft on two ports
+  outlet: 325,                            // new exterior GFCI outlet under the eave, by our electrician
+  integration: 500,                       // roofline on the Lutron / home keypad and scenes
+  minimum: 1800,                          // smallest job before tax
+  rangeLow: 0.9, rangeHigh: 1.15,
+  feetPerDay: {1: 180, 2: 130, 3: 90},    // two-person crew
+};
+
+const PLQ_STYLES = {
+  white: {
+    title: 'Architectural warm white',
+    tag: 'Warm white · dimmable',
+    body: 'A quiet 2700K line under every overhang, dimmable and on a sunset schedule. The everyday look, at the lower price.',
+    photo: PHOTOS.permWarm,
+    alt: 'Two-storey Sarasota home at dusk with a warm-white line under every overhang',
+    sub: 'Warm white every night, dimmable, on a sunset schedule. Pick a starting point and adjust the feet below.',
+  },
+  color: {
+    title: 'Full colour and white',
+    tag: 'Colour presets · app control',
+    body: 'Individually addressed diodes: warm white most nights, then game day, the holidays or full-bright security from a preset.',
+    photo: PHOTOS.permanentHoliday,
+    alt: 'The same home at dusk with the roofline in warm white and deep red for the holidays',
+    sub: 'Warm white most nights and every colour on top, scheduled or from the app. Pick a starting point and adjust the feet below.',
+  },
+};
+
+const PLQ_ZONES = [
+  {id:'front', name:'Front roofline', use:'The street side: eaves, gables and the garage front',
+   svg:<><path d="M6 56H114"/><path d="M22 56V34H98V56"/><path d="M14 35L40 20H80L106 35" className="lit"/><path d="M54 56V43H66V56"/><rect x="30" y="40" width="12" height="8"/><rect x="78" y="40" width="12" height="8"/></>},
+  {id:'sides', name:'Sides and back', use:'Side returns and the rear eaves facing the pool or water',
+   svg:<><path d="M6 56H114"/><path d="M16 56V34L44 22V56M44 56V22L104 30V56H44"/><path d="M10 36L44 20" /><path d="M44 20L110 29" className="lit"/><path d="M60 40H70V48H60zM84 42H94V50H84z"/></>},
+  {id:'cage',  name:'Pool cage or lanai', use:'Along the top beams of the screen enclosure', cage:true,
+   svg:<><path d="M6 56H114"/><path d="M14 56V30L30 18H104V56"/><path d="M14 30H104M30 18V56M52 18V56M78 18V56" strokeOpacity=".55"/><path d="M14 30L30 18H104" className="lit"/><path d="M40 50Q60 44 92 50" strokeOpacity=".7"/></>},
+];
+
+const PLQ_PRESETS = [
+  {id:'front', label:'Front of the house', note:'120 ft', q:{front:120, sides:0, cage:0}},
+  {id:'three', label:'Front and sides',    note:'200 ft', q:{front:120, sides:80, cage:0}},
+  {id:'whole', label:'Whole house',        note:'300 ft', q:{front:120, sides:180, cage:0}},
+  {id:'pool',  label:'Whole house + pool cage', note:'300 + 90 ft', q:{front:120, sides:180, cage:90}},
+];
+
+const PLQ_STOREYS = [
+  {k:1, label:'One storey', note:'Ranch, villa, most new builds',
+   svg:<><path d="M6 56H114"/><path d="M26 56V36H94V56"/><path d="M18 37L60 18L102 37" className="lit"/><path d="M54 56V44H66V56"/><rect x="34" y="42" width="10" height="7"/><rect x="76" y="42" width="10" height="7"/></>},
+  {k:2, label:'Two storey', note:'Most coastal homes',
+   svg:<><path d="M6 56H114"/><path d="M32 56V22H88V56"/><path d="M24 23L60 8L96 23" className="lit"/><path d="M24 39H96" className="lit"/><path d="M54 56V46H66V56"/><rect x="40" y="27" width="9" height="7"/><rect x="71" y="27" width="9" height="7"/><rect x="40" y="45" width="9" height="6"/><rect x="71" y="45" width="9" height="6"/></>},
+  {k:3, label:'Three storey', note:'Elevated, on pilings',
+   svg:<><path d="M6 56H114"/><path d="M38 56V8H82V56"/><path d="M32 9H88" className="lit"/><path d="M32 25H88M32 40H88" className="lit"/><path d="M44 56V44M76 56V44"/><rect x="45" y="13" width="8" height="7"/><rect x="67" y="13" width="8" height="7"/><rect x="45" y="29" width="8" height="7"/><rect x="67" y="29" width="8" height="7"/></>},
+];
+
+const PLQ_SHAPES = [
+  {k:'simple', label:'Simple', note:'Long straight eaves',
+   svg:<><path d="M6 56H114"/><path d="M22 56V34H98V56"/><path d="M14 34H106" className="lit"/><rect x="34" y="40" width="12" height="8"/><rect x="74" y="40" width="12" height="8"/><path d="M54 56V42H66V56"/></>},
+  {k:'hipped', label:'Hipped', note:'Corners and returns',
+   svg:<><path d="M6 56H114"/><path d="M20 56V36H100V56"/><path d="M12 37L32 22H88L108 37" className="lit"/><path d="M54 56V44H66V56"/><rect x="30" y="42" width="11" height="7"/><rect x="79" y="42" width="11" height="7"/></>},
+  {k:'complex', label:'Complex', note:'Gables, peaks, barrel tile',
+   svg:<><path d="M6 56H114"/><path d="M14 56V36H106V56"/><path d="M8 37L28 20L46 37L60 14L76 37L92 24L112 37" className="lit"/><path d="M54 56V44H66V56"/><rect x="22" y="42" width="9" height="7"/><rect x="88" y="42" width="9" height="7"/></>},
+];
+
+const PLQ_INCLUDES = [
+  ['Run plan', 'A drawing of every run, corner and power point, measured from the county sketch and checked on site.'],
+  ['Colour-matched channel', 'A slim extrusion in a stock colour close to your fascia, fastened to the fascia, not clipped to a gutter.'],
+  ['Controller and app', 'The controller, power supply and set-up, with warm white, security, game day and holiday presets loaded.'],
+  ['Written warranty', 'Terms for the product line you choose, in writing in the proposal, before anything is ordered.'],
+];
+
+const plqMoney = (n) => '$' + Math.round(n).toLocaleString('en-US');
+const plqRound50 = (n) => Math.round(n/50)*50;
+
+function plqCalc(s){
+  const C = PLQ_CFG;
+  const lines = [];
+  const roofFt = (s.q.front|0) + (s.q.sides|0), cageFt = s.q.cage|0, feet = roofFt + cageFt;
+  const roofRate = (C.perFt[s.style] + C.storeyAdd[s.storeys]) * C.shape[s.shape];
+  PLQ_ZONES.forEach(z => {
+    const ft = s.q[z.id]|0; if (!ft) return;
+    const rate = z.cage ? C.cagePerFt[s.style] : roofRate;
+    lines.push({label: z.name + ', ' + ft + ' ft', note: '$' + rate.toFixed(2) + '/ft installed', amount: ft*rate});
+  });
+  const controllers = feet ? Math.max(1, Math.ceil(feet / C.controller.feet)) : 0;
+  if (controllers) lines.push({label: (controllers > 1 ? controllers + ' controllers' : 'Controller') + ' and power supply', note: 'Set-up and presets', amount: controllers*C.controller[s.style]});
+  if (feet && s.colorMatch) lines.push({label: 'Custom colour-matched channel', note: '$' + C.colorMatchPerFt.toFixed(2) + '/ft', amount: feet*C.colorMatchPerFt});
+  if (feet && s.outlets) lines.push({label: s.outlets + ' new exterior outlet' + (s.outlets > 1 ? 's' : ''), note: 'GFCI, by our electrician', amount: s.outlets*C.outlet});
+  if (feet && s.integration) lines.push({label: 'Keypad and scene integration', note: 'Lutron or home automation', amount: C.integration});
+  let sub = lines.reduce((a,l) => a + l.amount, 0);
+  let minAdj = 0;
+  if (feet && sub < C.minimum) { minAdj = C.minimum - sub; sub = C.minimum; }
+  const tax = sub * C.taxRate;
+  const days = feet ? Math.max(1, Math.ceil(roofFt / C.feetPerDay[s.storeys] + cageFt / C.feetPerDay[1])) : 0;
+  return {lines, feet, controllers, minAdj, sub, tax, total: sub + tax, days};
+}
+
+function PlqPick({options, value, onChange, label}){
+  return (
+    <div className="plq-seg" role="radiogroup" aria-label={label}>
+      {options.map(o => (
+        <button key={o.k} type="button" role="radio" aria-checked={value===o.k} className={value===o.k ? 'on' : ''} onClick={() => onChange(o.k)}>
+          <svg viewBox="0 0 120 64" aria-hidden="true">{o.svg}</svg>
+          <b>{o.label}</b><small>{o.note}</small>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function PlqStepper({value, onChange, step, max, label, unit}){
+  const set = (v) => onChange(Math.max(0, Math.min(max, Math.round(v) || 0)));
+  return (
+    <div className="plq-stepper">
+      <button type="button" aria-label={'Less ' + label} onClick={() => set(value - step)}>−</button>
+      <input type="number" inputMode="numeric" min="0" max={max} step={step} value={value} aria-label={label + (unit ? ' in ' + unit : '')}
+        onChange={e => set(parseInt(e.target.value, 10))}/>
+      {unit && <span>{unit}</span>}
+      <button type="button" aria-label={'More ' + label} onClick={() => set(value + step)}>+</button>
+    </div>
+  );
+}
+
+function PermanentQuote(){
+  const nap = napInfo();
+  const [step, setStep] = React.useState(1);
+  const [s, setS] = React.useState({style:'white', preset:'three', q:{...PLQ_PRESETS[1].q}, storeys:2, shape:'hipped', colorMatch:false, outlets:0, integration:false});
+  const [lead, setLead] = React.useState('closed');   // closed | open | sending | sent | error
+  const top = useRef(null);
+  const r = plqCalc(s);
+  const up = (patch) => setS(prev => ({...prev, ...patch}));
+  const setFt = (id, v) => setS(prev => ({...prev, preset:null, q:{...prev.q, [id]: v}}));
+  const moved = useRef(false);
+  const start = (style) => { setS(prev => ({...prev, style})); moved.current = true; setStep(2); };
+  const back = () => { moved.current = true; setStep(1); };
+  // scroll once the new step has rendered, so the target is measured at its final height
+  React.useEffect(() => {
+    if (moved.current && top.current) top.current.scrollIntoView({behavior:'smooth', block:'start'});
+    moved.current = false;
+  }, [step]);
+  const from = (style) => plqMoney(plqRound50(plqCalc({style, q:PLQ_PRESETS[0].q, storeys:1, shape:'simple', outlets:0}).total));
+  const range = r.feet ? 'Typical range ' + plqMoney(plqRound50(r.total*PLQ_CFG.rangeLow)) + ' – ' + plqMoney(plqRound50(r.total*PLQ_CFG.rangeHigh)) : 'Add some roofline to see your estimate';
+  const st = PLQ_STYLES[s.style];
+
+  function summaryText(){
+    const z = PLQ_ZONES.filter(z => s.q[z.id]).map(z => z.name + ' ' + s.q[z.id] + ' ft').join(', ');
+    const opts = [s.colorMatch && 'custom colour match', s.outlets && s.outlets + ' new outlet(s)', s.integration && 'keypad integration'].filter(Boolean).join(', ');
+    return {style: st.title, storeys: String(s.storeys), roofline: s.shape, zones: z, options: opts || 'none',
+      estimate: plqMoney(r.total) + ' with tax (' + range.replace('Typical range ', 'range ') + ')'};
+  }
+
+  async function send(e){
+    e.preventDefault();
+    const f = e.currentTarget;
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    const data = new FormData(f);
+    const sum = summaryText();
+    Object.keys(sum).forEach(k => data.set(k, sum[k]));
+    data.set('source_page', window.location.pathname);
+    setLead('sending');
+    try {
+      const res = await fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(data).toString()});
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      setLead('sent');
+    } catch(err) { setLead('error'); }
+  }
+
+  return (
+    <section className="plq" id="quote" ref={top} aria-labelledby="plq-h">
+      <div className="fx-wide">
+        <svg className="plq-ornament" viewBox="0 0 640 60" aria-hidden="true">
+          <path d="M0 52H160L230 22L300 40L360 10L430 40L480 26L550 52H640"/>
+          {[[160,52],[195,37],[230,22],[265,31],[300,40],[330,25],[360,10],[395,25],[430,40],[455,33],[480,26],[515,39],[550,52]].map(([x,y],i) => <circle key={i} cx={x} cy={y} r="3.2"/>)}
+        </svg>
+        <div className="plq-cue"><span aria-hidden="true">↓</span>Instant price calculator<span aria-hidden="true">↓</span></div>
+        <div className="fx-heads plq-heads">
+          <h2 className="fx-d3" id="plq-h">What would your roofline <em>cost to light?</em></h2>
+          <p className="fx-lede">{step === 1 ? 'Three short steps and you have an installed price, tax included. Start with the look you want.' : st.sub}</p>
+        </div>
+        <ol className="plq-steps" aria-label="Steps">
+          <li className={step === 1 ? 'on' : 'done'}><i>1</i><span>Choose a look</span></li>
+          <li className={step === 2 ? 'on' : ''}><i>2</i><span>Describe the house</span></li>
+          <li className={step === 2 ? 'on' : ''}><i>3</i><span>See your price</span></li>
+        </ol>
+
+        {step === 1 && (
+          <div className="plq-choices">
+            {['white','color'].map(k => { const c = PLQ_STYLES[k]; return (
+              <button key={k} type="button" className="plq-choice" onClick={() => start(k)}>
+                <span className="plq-choice-img"><img src={c.photo} alt={c.alt} loading="lazy" decoding="async"/></span>
+                <span className="plq-choice-body">
+                  <span className="plq-tag"><i className={'plq-dot plq-dot--' + k}/>{c.tag}</span>
+                  <h3>{c.title}</h3>
+                  <p>{c.body}</p>
+                </span>
+                <span className="plq-from"><span>Front of the house from <b>{from(k)}</b></span><span className="plq-go">Start →</span></span>
+              </button>
+            );})}
+          </div>
+        )}
+
+        {step === 2 && (
+          <div className="plq-grid">
+            <div className="plq-main">
+              <div className="plq-panel plq-panel--style">
+                <button type="button" className="plq-back" onClick={back}>← Change style</button>
+                <div className="plq-chips" role="radiogroup" aria-label="Lighting style">
+                  {['white','color'].map(k => (
+                    <button key={k} type="button" role="radio" aria-checked={s.style===k} className={'fx-chip' + (s.style===k ? ' on' : '')} onClick={() => up({style:k})}>
+                      <i className={'plq-dot plq-dot--' + k}/>{PLQ_STYLES[k].title}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="plq-panel">
+                <h3>Start from a typical house</h3>
+                <p className="plq-hint">Pick one to fill in the feet, then adjust them below.</p>
+                <div className="plq-chips">
+                  {PLQ_PRESETS.map(p => (
+                    <button key={p.id} type="button" aria-pressed={s.preset===p.id} className={'plq-preset' + (s.preset===p.id ? ' on' : '')} onClick={() => up({preset:p.id, q:{...p.q}})}>
+                      {p.label}<small>{p.note}</small>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="plq-panel">
+                <h3>Feet of light, by zone</h3>
+                <p className="plq-hint">Not sure? A single-storey Sarasota home usually has 100–150 ft along the front and 250–350 ft all the way round. We check it against the county sketch before the visit.</p>
+                <div className="plq-zones">
+                  {PLQ_ZONES.map(z => (
+                    <div key={z.id} className={'plq-zone' + (s.q[z.id] ? ' on' : '')}>
+                      <svg className="plq-pic" viewBox="0 0 120 64" aria-hidden="true">{z.svg}</svg>
+                      <div><b>{z.name}</b><span>{z.use}</span></div>
+                      <PlqStepper value={s.q[z.id]|0} step={10} max={2000} unit="ft" label={z.name} onChange={v => setFt(z.id, v)}/>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="plq-panel">
+                <h3>How tall is the house?</h3>
+                <p className="plq-hint">Higher eaves mean a taller ladder or a lift, and slower runs.</p>
+                <PlqPick label="Storeys" options={PLQ_STOREYS} value={s.storeys} onChange={v => up({storeys:v})}/>
+              </div>
+
+              <div className="plq-panel">
+                <h3>What is the roofline like?</h3>
+                <p className="plq-hint">Every corner, peak and return is a cut and a joint in the channel.</p>
+                <PlqPick label="Roofline" options={PLQ_SHAPES} value={s.shape} onChange={v => up({shape:v})}/>
+              </div>
+
+              <div className="plq-panel">
+                <h3>Options</h3>
+                <div className="plq-opts">
+                  <label className="plq-opt">
+                    <input type="checkbox" checked={s.colorMatch} onChange={e => up({colorMatch:e.target.checked})}/>
+                    <span><b>Custom colour match</b><small>Channel powder-coated to your exact fascia colour instead of the closest stock one</small></span>
+                  </label>
+                  <label className="plq-opt">
+                    <input type="checkbox" checked={s.integration} onChange={e => up({integration:e.target.checked})}/>
+                    <span><b>Keypad and scene integration</b><small>The roofline on a Lutron keypad by the door and in the Evening and Away scenes</small></span>
+                  </label>
+                  <div className="plq-opt plq-opt--qty">
+                    <span><b>New exterior outlets</b><small>If there is no outlet near the eave or in the attic for the power supply</small></span>
+                    <PlqStepper value={s.outlets} step={1} max={6} label="new exterior outlets" onChange={v => up({outlets:v})}/>
+                  </div>
+                </div>
+              </div>
+
+              <div className="plq-panel">
+                <h3>Every quote includes</h3>
+                <div className="plq-includes">
+                  {PLQ_INCLUDES.map(([t,d]) => <div key={t}><b>{t}</b><span>{d}</span></div>)}
+                </div>
+              </div>
+            </div>
+
+            <a className="plq-bar" href="#plq-price" onClick={e => { e.preventDefault(); const el = document.getElementById('plq-price'); if (el) el.scrollIntoView({behavior:'smooth', block:'start'}); }}>
+              <span>Your estimate<b>{plqMoney(r.total)}</b></span><span className="plq-bar-go">Details ↓</span>
+            </a>
+            <aside className="plq-summary" id="plq-price" aria-label="Estimate" aria-live="polite">
+              <div className="plq-label">Estimated installed price</div>
+              <div className="plq-total">{plqMoney(r.total)}</div>
+              <div className="plq-range">{range}</div>
+              <div className="plq-stats">
+                <div><b>{r.feet}</b><span>feet of light</span></div>
+                <div><b>{r.controllers}</b><span>controller{r.controllers === 1 ? '' : 's'}</span></div>
+                <div><b>{r.days}</b><span>install day{r.days === 1 ? '' : 's'}</span></div>
+              </div>
+              <div className="plq-rows">
+                {r.lines.map(l => <div key={l.label} className="plq-row"><span>{l.label}<small>{l.note}</small></span><b>{plqMoney(l.amount)}</b></div>)}
+                {r.minAdj > 0 && <div className="plq-row"><span>Minimum project<small>Smallest job we take on</small></span><b>{plqMoney(r.minAdj)}</b></div>}
+                <div className="plq-row plq-row--sub"><span>Before tax</span><b>{plqMoney(r.sub)}</b></div>
+                <div className="plq-row"><span>Sales tax (7%)</span><b>{plqMoney(r.tax)}</b></div>
+                <div className="plq-row plq-row--sum"><span>Estimated total</span><b>{plqMoney(r.total)}</b></div>
+              </div>
+
+              {lead === 'closed' && <button type="button" className="fx-btn plq-cta" onClick={() => setLead('open')} disabled={!r.feet}>Get my run plan and quote</button>}
+              {(lead === 'open' || lead === 'sending' || lead === 'error') && (
+                <form className="plq-lead" name="permanent-lighting-quote" method="POST" onSubmit={send}>
+                  <input type="hidden" name="form-name" value="permanent-lighting-quote"/>
+                  <p hidden><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off"/></label></p>
+                  <p className="plq-lead-title">Where should we send it?</p>
+                  <label className="fx-input"><span>Name</span><input name="name" autoComplete="name" required/></label>
+                  <label className="fx-input"><span>Email</span><input name="email" type="email" autoComplete="email" required/></label>
+                  <label className="fx-input"><span>Phone</span><input name="phone" type="tel" autoComplete="tel" required/></label>
+                  <label className="fx-input"><span>Street address <small>so we can pull the county sketch</small></span><input name="address" autoComplete="street-address"/></label>
+                  <button type="submit" className="fx-btn plq-cta" disabled={lead==='sending'}>{lead==='sending' ? 'Sending…' : 'Send my request'}</button>
+                  {lead === 'error' && <p className="fx-form-err" role="alert">That did not go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a> or write to <a href={nap.mailHref}>{nap.email}</a>.</p>}
+                </form>
+              )}
+              {lead === 'sent' && (
+                <div className="plq-done" role="status"><b>Thank you, your request is in.</b> We will call to arrange a short visit, then send a run plan, a channel colour and a written quote.</div>
+              )}
+              <a className="plq-call" href={nap.telHref}>Call {nap.telephoneDisplay}</a>
+              <p className="plq-fine">A ballpark, not a final price. The written quote follows a short visit and a run plan. Assumes power within reach of the eave and fascia we can fasten to; rotten fascia, tile work and permits are quoted separately if needed.</p>
+            </aside>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 /* ─── PERMANENT LIGHTING PAGE ─── */
 function PermanentLightingPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
@@ -1997,6 +2337,7 @@ function PermanentLightingPage({navigate}) {
       {q:'Can it join the rest of the house?', a:'If LUMA did the lighting or automation, the roofline joins the same scenes: Evening turns it on with the lanai, Away turns it off with everything else, and a keypad by the door has a button for it.'},
       {q:'What is the warranty?', a:'Warranty terms depend on the product line you choose; we set them out in writing in the proposal, before anything is ordered.'},
     ]}
+    quote={<PermanentQuote/>}
     ctaTitle='Tell us what your roofline should do'
     ctaBody='Send a photo of the front of the house. We will come back with a run plan, a channel colour, and an honest range before anything is ordered.'
   />;
