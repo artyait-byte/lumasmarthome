@@ -1921,118 +1921,129 @@ function SecurityPage({navigate}) {
 
 
 /* ─── PERMANENT LIGHTING QUOTE CALCULATOR ───
-   Built to the same plan as the SmartNova landscape quick-quote: two photo
-   cards to pick a look, then a builder (typical packages, runs with photos,
-   house height, roofline, extras, what every quote includes) beside a dark
-   estimate card with a parts list and a request form. Photos are our own.
-   Every rate lives in PQ_CFG. Calibrated so the front of a one-storey house
-   (120 ft) starts near $2,000 in warm white and $4,000 in full colour,
-   7% sales tax included. */
+   A copy of the SmartNova landscape quick-quote, part for part, for
+   permanent lighting: pick a style on two photo cards, then build from a
+   catalogue of lights with − / + steppers (white first, colour in "add
+   more", or the other way round), pick the home size, and read the
+   estimate: lights & equipment, installation, 7% sales tax on equipment,
+   a priced parts list and a request form. Controllers, power supplies,
+   cable and connectors are added by the calculator, as transformers are
+   on theirs. Photos are our own. Every number lives in PQ_CFG.
+   Calibrated so a 120 ft front (White / Colour basic, compact home) comes
+   to about $2,050 and $4,000 with tax. */
 const PQ_CFG = {
-  taxRate: 0.07,
-  perFt: {white: 14, color: 27},          // channel + diodes + install, one storey, simple eaves
-  storeyAdd: {1: 0, 2: 3, 3: 6},          // $/ft for ladder and lift work above the first storey
-  roof: {straight: 1, hip: 1.05, gable: 1.12, tile: 1.15},
-  cagePerFt: {white: 13, color: 24},      // along the top beams of a screen enclosure
-  equipShare: 0.55,                       // share of the per-foot rate that is product, the rest is labour
-  controller: {white: 250, color: 500, feet: 400},
-  colorMatchPerFt: 1.5,                   // custom powder coat instead of a stock channel colour
-  outlet: 325,                            // new exterior GFCI outlet, by our electrician
-  integration: 500,                       // roofline on a Lutron keypad and in the house scenes
-  minimum: 1800,                          // smallest job before tax
-  rangeLow: 0.9, rangeHigh: 1.15,
-  feetPerDay: {1: 180, 2: 130, 3: 90},    // two-person crew
+  taxRate: 0.07,          // FL sales tax on equipment only (labour non-taxable)
+  equipMarkup: 0,
+  labor: {
+    base: 200,            // mobilisation, run plan, final walk-through
+    perController: 150,   // mount, power, schedules and presets
+    perSection: 38,       // fasten and connect each 10 ft of track or cage channel
+    perPeak: 15,          // cut, bend and seal each corner or peak
+    perPuck: 45,          // cut the soffit and fit each downlight
+    perString: 60,        // span, tension and anchor each café string
+    perFoot: 3.00,        // cable run from the outlet and between runs
+    colorBase: 150,       // app, Wi-Fi and colour presets
+    perColorItem: 10      // map and group each colour item
+  },
+  yard: {compact:1, average:2, large:3, estate:4.5}, // feet of cable per item
+  leadIn: 25,             // feet from the outlet to the first run
+  rangeLow: 0.9, rangeHigh: 1.12
 };
 const pqImg = (n) => lu('/assets/photos/permanent-calc/' + n + '.jpg');
 
-const PQ_STYLES = {
-  white: {title:'Warm white, every night', tag:'Warm white · dimmable', dot:'warm',
-    body:'A quiet 2700K line under the eaves, on at sunset and off when you choose. The everyday look most owners run, at the lower price.',
-    photo: PHOTOS.permWarm, alt:'Sarasota home at dusk with a warm-white line of light under every eave',
-    h1:'Warm-white roofline lighting', sub:'Warm white every night, dimmable, on a sunset schedule. Pick a package or set the feet below.',
-    prod:'Colour-matched channel · 2700K warm-white diodes'},
-  color: {title:'Colour for every occasion', tag:'Millions of colours · app control', dot:'rgb',
-    body:'Warm white most nights, then the holidays, game day or full-bright security from a preset on your phone. Nothing goes up or comes down.',
-    photo: PHOTOS.permanentHoliday, alt:'The same home at dusk with the roofline in warm white and red for the holidays',
-    h1:'Colour roofline lighting', sub:'Warm white most nights and every colour on top, scheduled or from the app. Pick a package or set the feet below.',
-    prod:'Colour-matched channel · RGB + warm-white diodes'},
+const PQ_WHITE = [
+  {id:'track',  kind:'section', name:'Roofline light track', use:'Under the eaves, across the garage and round the house', prod:'Colour-matched aluminium channel, 10 ft, 2700K warm-white diodes', price:52, w:12, img:'prod-channel'},
+  {id:'peak',   kind:'peak', name:'Peak and corner kit', use:'Takes the line up and over a gable, or round a hip corner', prod:'Pre-bent corner piece, 2 end caps and seals', price:24, w:0, img:'p-peak'},
+  {id:'cage',   kind:'section', name:'Pool cage beam light', use:'Along the top beams of the screen enclosure over the pool', prod:'Low-profile clip-on channel, 10 ft, 2700K warm white', price:59, w:10, img:'p-cage'},
+  {id:'puck',   kind:'puck', name:'Soffit downlight', use:'Recessed in the soffit to wash the walls, columns and entry', prod:'2-in flush LED puck, warm white', price:39, w:3, img:'p-soffit'},
+  {id:'string', kind:'string', name:'Lanai café string', use:'A permanent string over the pool deck or the lanai', prod:'Commercial café string on steel cable, 24 ft, 12 warm bulbs', price:119, w:12, img:'p-string'},
+];
+const PQ_COLOR = [
+  {id:'ctrack',  kind:'section', name:'Colour roofline track', use:'Warm white most nights, any colour for holidays and game day', prod:'Colour-matched aluminium channel, 10 ft, RGB + warm-white pixels', price:168, w:18, rgb:1, img:'p-track-color'},
+  {id:'cpeak',   kind:'peak', name:'Colour peak and corner kit', use:'Keeps the colour line continuous over each peak and corner', prod:'Pre-bent corner piece with pixels, 2 end caps and seals', price:29, w:1, rgb:1, img:'p-peak'},
+  {id:'ccage',   kind:'section', name:'Colour pool cage beam light', use:'The pool cage in colour for parties, back to white after', prod:'Low-profile clip-on channel, 10 ft, RGB + warm-white pixels', price:159, w:15, rgb:1, img:'p-cage-color'},
+  {id:'cpuck',   kind:'puck', name:'Colour soffit downlight', use:'Washes the walls and columns in any colour', prod:'2-in flush RGB + white LED puck', price:69, w:5, rgb:1, img:'p-soffit-color'},
+  {id:'cstring', kind:'string', name:'Colour café string', use:'Lanai string that changes colour with the scene', prod:'Commercial café string on steel cable, 24 ft, 12 RGB + white bulbs', price:189, w:18, rgb:1, img:'p-string-color'},
+];
+const PQ_ALL = {}; PQ_WHITE.concat(PQ_COLOR).forEach(f => { PQ_ALL[f.id] = f; });
+
+const PQ_PRESETS = {
+  white: {label:'White basic', note:'12 track sections · 120 ft', q:{track:12}, yard:'average'},
+  color: {label:'Colour basic', note:'12 colour sections · 120 ft', q:{ctrack:12}, yard:'average'},
 };
 
-const PQ_RUNS = [
-  {id:'front', name:'Front roofline', use:'The street side: eaves across the garage and the entry', img:'run-front'},
-  {id:'sides', name:'Sides and back', use:'Side returns and the rear eaves over the lanai or the water', img:'run-sides'},
-  {id:'cage',  name:'Pool cage', use:'Along the top beams of the screen enclosure, over the pool', img:'run-cage', cage:true},
-];
-const PQ_MORE = [
-  {id:'guest', name:'Detached garage or guest house', use:'A second building on the same controller', img:'run-guest'},
+const PQ_YARDS = [
+  {k:'compact', label:'Compact', note:'Villa / townhome', img:'run-front'},
+  {k:'average', label:'Average', note:'Typical single family', img:'storey-1'},
+  {k:'large',   label:'Large', note:'Two storey / big lot', img:'storey-2'},
+  {k:'estate',  label:'Estate', note:'Waterfront / acreage', img:'roof-tile'},
 ];
 
-const PQ_PACKAGES = [
-  {id:'front', label:'Front of the house', note:'120 ft', q:{front:120}},
-  {id:'three', label:'Front and sides',    note:'200 ft', q:{front:120, sides:80}},
-  {id:'whole', label:'Whole house',        note:'300 ft', q:{front:120, sides:180}},
-  {id:'pool',  label:'Whole house + pool cage', note:'300 + 90 ft', q:{front:120, sides:180, cage:90}},
-];
-
-const PQ_STOREYS = [
-  {k:1, label:'One storey', note:'Ranch, villa', img:'storey-1'},
-  {k:2, label:'Two storey', note:'Most coastal homes', img:'storey-2'},
-  {k:3, label:'Three storey', note:'Raised on pilings', img:'storey-3'},
-];
-const PQ_ROOFS = [
-  {k:'straight', label:'Straight eaves', note:'Flat or modern', img:'roof-straight'},
-  {k:'hip',      label:'Hip roof', note:'Corners and returns', img:'roof-hip'},
-  {k:'gable',    label:'Gables and peaks', note:'Up and over each peak', img:'roof-gable'},
-  {k:'tile',     label:'Barrel tile', note:'Many short eaves', img:'roof-tile'},
-];
+const PQ_STYLES = {
+  white: {title:'Warm white, every night', tag:'Warm white · any tone', dot:'warm',
+    body:'An elegant warm-white line under the eaves, on at sunset and off on a schedule. The look most owners run every night.',
+    photo: PHOTOS.permWarm, alt:'Sarasota home at dusk with a warm-white line of light under every eave',
+    h1:'Warm-white permanent lighting', sub:'Timeless warm white on a sunset schedule. Pick a package or set quantities below.'},
+  color: {title:'Colour scenes', tag:'Millions of colours · app control', dot:'rgb',
+    body:'Smart pixels you control from your phone: holidays, game days and parties, then back to warm white with one tap.',
+    photo: PHOTOS.permanentHoliday, alt:'The same home at dusk with the roofline in warm white and red for the holidays',
+    h1:'Colour permanent lighting', sub:'Smart colour lights for holidays, parties and game days, and warm white every other night.'},
+};
 
 const PQ_INCLUDES = [
-  {img:'prod-channel', t:'Colour-matched channel', d:'A slim aluminium profile fastened to the fascia, in the colour closest to your trim. Invisible by day.'},
-  {img:'prod-diode', t:'Long-life LED diodes', d:'Sealed against salt air and summer rain, spaced evenly so the line reads as one.'},
-  {img:'prod-controller', t:'Controller and app', d:'Sunset schedules and presets on your phone, set up and explained before we leave.'},
-  {t:'Run plan and warranty', d:'A drawing of every run and power point before anything is ordered, and the warranty in writing.'},
+  ['Run plan', 'A drawing of every run, peak and power point on your house, usually ready within a week.'],
+  ['Pro-grade gear', 'Colour-matched aluminium channel, sealed LED pixels, outdoor power supplies and a controller with a sunset timer.'],
+  ['Clean install', 'Fastened to the fascia, not clipped to the gutter, cable hidden, every run tested and set up after dark.'],
+  ['Peace of mind', 'Workmanship warranty from LUMA in writing, plus the manufacturer warranties on the hardware.'],
 ];
 
 const pqMoney = (n) => '$' + Math.round(n).toLocaleString('en-US');
+const pqMoney2 = (n) => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
 const pqRound50 = (n) => Math.round(n/50)*50;
 
-function pqCalc(s){
-  const C = PQ_CFG, q = s.q || {};
-  const roofRate = (C.perFt[s.style] + C.storeyAdd[s.storeys]) * C.roof[s.roof];
-  let runs = 0, feet = 0, cageFt = 0;
-  PQ_RUNS.concat(PQ_MORE).forEach(r => {
-    const ft = q[r.id]|0; if (!ft) return;
-    feet += ft; if (r.cage) cageFt += ft;
-    runs += ft * (r.cage ? C.cagePerFt[s.style] : roofRate);
+function pqCalc(q, yard){
+  const C = PQ_CFG, L = C.labor, lines = [];
+  let n = 0, nC = 0, wW = 0, wC = 0, sections = 0, peaks = 0, pucks = 0, strings = 0;
+  Object.keys(q).forEach(id => {
+    const k = q[id]|0; if (!k) return; const f = PQ_ALL[id];
+    lines.push([f.prod, k, f.price]);
+    n += k; if (f.rgb) { nC += k; wC += k*f.w; } else { wW += k*f.w; }
+    if (f.kind === 'section') sections += k; else if (f.kind === 'peak') peaks += k; else if (f.kind === 'puck') pucks += k; else strings += k;
   });
-  const controllers = feet ? Math.max(1, Math.ceil(feet / C.controller.feet)) : 0;
-  const equip = runs*C.equipShare + controllers*C.controller[s.style];
-  let labor = runs*(1 - C.equipShare);
-  const extras = feet ? (s.colorMatch ? feet*C.colorMatchPerFt : 0) + (s.outlets|0)*C.outlet + (s.integration ? C.integration : 0) : 0;
-  let sub = equip + labor + extras;
-  if (feet && sub < C.minimum) { labor += C.minimum - sub; sub = C.minimum; }
-  const tax = sub*C.taxRate;
-  const days = feet ? Math.max(1, Math.ceil((feet - cageFt)/C.feetPerDay[s.storeys] + cageFt/C.feetPerDay[1])) : 0;
-  const corners = {straight:4, hip:8, gable:12, tile:16}[s.roof];
-  const bom = feet ? [
-    [feet + ' ft', 'aluminium channel, ' + (s.colorMatch ? 'custom powder-coated to your fascia' : 'stock colour closest to your fascia')],
-    [Math.round(feet*3) + '', (s.style === 'color' ? 'RGB + warm-white' : '2700K warm-white') + ' LED diodes, about 3 per foot'],
-    [Math.max(4, Math.round(corners*feet/100)) + '', 'corner joints, end caps and weather seals'],
-    [controllers + '', (s.style === 'color' ? 'app controller with colour presets' : 'controller with sunset schedule and dimming')],
-    [Math.max(1, Math.ceil(feet/150)) + '', 'outdoor-rated power supplies'],
-    ...(s.outlets ? [[s.outlets + '', 'new exterior GFCI outlets']] : []),
-    ...(s.integration ? [['1', 'keypad and scene programming']] : []),
-  ] : [];
-  return {feet, controllers, equip, labor, extras, tax, total: sub + tax, days, bom};
+  let controllers = 0;
+  if (wW || (n - nC)) {
+    const psu = Math.max(1, Math.ceil(wW/120)), k = Math.max(1, Math.ceil(psu/4));
+    lines.push(['LUMA warm-white controller with sunset timer and dimming', k, 179]);
+    lines.push(['Outdoor-rated 150 W LED power supply', psu, 69]);
+    controllers += k;
+  }
+  if (nC) {
+    const psu = Math.max(1, Math.ceil(wC/120)), k = Math.max(1, Math.ceil(psu/4));
+    lines.push(['LUMA app controller (Wi-Fi, colour presets and schedules)', k, 349]);
+    lines.push(['Outdoor-rated 150 W LED power supply', psu, 69]);
+    controllers += k;
+  }
+  const feet = n ? Math.round(C.leadIn + n*C.yard[yard]) : 0;
+  if (n) {
+    if (feet <= 100) lines.push(['18/3 outdoor-rated cable, 100 ft', 1, 24.99]);
+    else lines.push(['18/3 outdoor-rated cable, 250 ft', Math.max(1, Math.ceil(feet/250)), 59.99]);
+    lines.push(['Waterproof T-connectors (5-pack)', Math.max(1, Math.ceil(n*0.3)), 12.99]);
+    if (sections) lines.push(['Stainless screws and mounting clips (100 pcs)', Math.max(1, Math.ceil(sections/6)), 14.99]);
+  }
+  const equip = lines.reduce((s, l) => s + l[1]*l[2], 0) * (1 + C.equipMarkup);
+  let labor = n ? L.base + L.perController*controllers + L.perSection*sections + L.perPeak*peaks + L.perPuck*pucks + L.perString*strings + L.perFoot*feet + (nC ? L.colorBase + L.perColorItem*nC : 0) : 0;
+  labor = Math.round(labor/10)*10;
+  const tax = equip*C.taxRate, total = equip + labor + tax;
+  return {lines, n, feet, lightFt: sections*10, controllers, equip, labor, tax, total, days: n ? Math.max(1, Math.ceil(labor/72/16)) : 0};
 }
 
-function PqStepper({value, onChange, step, max, label}){
-  const set = (v) => onChange(Math.max(0, Math.min(max, Math.round(v) || 0)));
+function PqStepper({value, onChange, label}){
+  const set = (v) => onChange(Math.max(0, Math.min(200, v|0)));
   return (
     <div className="pq-stepper">
-      <button type="button" aria-label={'Less ' + label} onClick={() => set(value - step)}>−</button>
-      <input type="number" inputMode="numeric" min="0" max={max} value={value} aria-label={label} onChange={e => set(parseInt(e.target.value, 10))}/>
-      <button type="button" aria-label={'More ' + label} onClick={() => set(value + step)}>+</button>
+      <button type="button" aria-label={'Fewer ' + label} onClick={() => set(value - 1)}>−</button>
+      <input type="number" min="0" max="200" inputMode="numeric" aria-label={label + ' quantity'} value={value} onChange={e => set(parseInt(e.target.value, 10) || 0)}/>
+      <button type="button" aria-label={'More ' + label} onClick={() => set(value + 1)}>+</button>
     </div>
   );
 }
@@ -2040,70 +2051,64 @@ function PqStepper({value, onChange, step, max, label}){
 function PermanentQuote(){
   const nap = napInfo();
   const [step, setStep] = React.useState(1);
-  const [s, setS] = React.useState({style:'white', pkg:'three', q:{...PQ_PACKAGES[1].q}, storeys:1, roof:'hip', colorMatch:false, outlets:0, integration:false});
+  const [mode, setMode] = React.useState('white');
+  const [q, setQ] = React.useState({...PQ_PRESETS.white.q});
+  const [yard, setYard] = React.useState('average');
+  const [preset, setPreset] = React.useState('white');
+  const [more, setMore] = React.useState(false);
   const [lead, setLead] = React.useState('closed');
   const top = useRef(null), moved = useRef(false);
-  const r = pqCalc(s);
-  const st = PQ_STYLES[s.style];
-  const up = (patch) => setS(prev => ({...prev, ...patch}));
-  const setFt = (id, v) => setS(prev => ({...prev, pkg:null, q:{...prev.q, [id]: v}}));
-  const go = (n) => { moved.current = true; setStep(n); };
-  const start = (style) => { setS(prev => ({...prev, style})); go(2); };
+  const r = pqCalc(q, yard);
+  const st = PQ_STYLES[mode];
   React.useEffect(() => {
     if (moved.current && top.current) top.current.scrollIntoView({behavior:'smooth', block:'start'});
     moved.current = false;
     document.body.classList.toggle('pq-step2', step === 2);
     return () => document.body.classList.remove('pq-step2');
   }, [step]);
-  const from = (style) => pqMoney(pqRound50(pqCalc({style, q:PQ_PACKAGES[0].q, storeys:1, roof:'straight'}).total));
-  const range = r.feet ? 'Typical range ' + pqMoney(pqRound50(r.total*PQ_CFG.rangeLow)) + ' – ' + pqMoney(pqRound50(r.total*PQ_CFG.rangeHigh)) : 'Add some roofline to see your estimate';
-  const rate = (run) => '$' + ((run.cage ? PQ_CFG.cagePerFt[s.style] : (PQ_CFG.perFt[s.style] + PQ_CFG.storeyAdd[s.storeys]) * PQ_CFG.roof[s.roof])).toFixed(2) + '/ft installed';
+  const choose = (m) => {
+    setMode(m); setQ({...PQ_PRESETS[m].q}); setYard(PQ_PRESETS[m].yard); setPreset(m);
+    setMore(false); moved.current = true; setStep(2);
+  };
+  const usePreset = (m) => { setMode(m); setQ({...PQ_PRESETS[m].q}); setYard(PQ_PRESETS[m].yard); setPreset(m); setMore(false); };
+  const setQty = (id, v) => { setQ(prev => ({...prev, [id]: v})); setPreset(null); };
+  const from = (m) => pqMoney(pqRound50(pqCalc(PQ_PRESETS[m].q, 'compact').total));
+  const range = r.n ? 'Typical range ' + pqMoney(pqRound50(r.total*PQ_CFG.rangeLow)) + ' – ' + pqMoney(pqRound50(r.total*PQ_CFG.rangeHigh)) : 'Add some lights to see your estimate';
+  const primary = mode === 'white' ? PQ_WHITE : PQ_COLOR, secondary = mode === 'white' ? PQ_COLOR : PQ_WHITE;
+  const moreOpen = more || secondary.some(f => q[f.id] > 0);
 
-  const runRow = (run) => {
-    const v = s.q[run.id]|0;
+  const fxRow = (f) => {
+    const v = q[f.id]|0;
     return (
-      <div key={run.id} className={'pq-fx' + (v ? ' on' : '')}>
-        <img src={pqImg(run.img)} alt="" loading="lazy" decoding="async"/>
+      <div key={f.id} className={'pq-fx' + (v ? ' on' : '')}>
+        <img src={pqImg(f.img)} alt="" loading="lazy" decoding="async"/>
         <div>
-          <div className="pq-name">{run.name} <span className={'pq-badge' + (s.style === 'color' ? ' rgb' : '')}>{s.style === 'color' ? 'Colour' : 'Warm white'}</span></div>
-          <div className="pq-use">{run.use}</div>
-          <div className="pq-prod">{st.prod} · {rate(run)}</div>
+          <div className="pq-name">{f.name} <span className={'pq-badge' + (f.rgb ? ' rgb' : '')}>{f.rgb ? 'Colour' : 'White'}</span></div>
+          <div className="pq-use">{f.use}</div>
+          <div className="pq-prod">{f.prod} · {pqMoney2(f.price)}</div>
         </div>
-        <div className="pq-qty"><PqStepper value={v} step={10} max={2000} label={run.name + ' in feet'} onChange={n => setFt(run.id, n)}/><small>feet</small></div>
+        <PqStepper value={v} label={f.name} onChange={n => setQty(f.id, n)}/>
       </div>
     );
   };
-  const toggleRow = (key, img, name, use, price) => (
-    <div className={'pq-fx' + (s[key] ? ' on' : '')}>
-      <img src={img} alt="" loading="lazy" decoding="async"/>
-      <div><div className="pq-name">{name}</div><div className="pq-use">{use}</div><div className="pq-prod">{price}</div></div>
-      <button type="button" className={'pq-add' + (s[key] ? ' on' : '')} aria-pressed={!!s[key]} onClick={() => up({[key]: !s[key]})}>{s[key] ? '✓ Added' : 'Add'}</button>
-    </div>
-  );
-  const seg = (opts, key, label) => (
-    <div className={'pq-seg pq-seg--' + opts.length} role="radiogroup" aria-label={label}>
-      {opts.map(o => (
-        <button key={o.k} type="button" role="radio" aria-checked={s[key]===o.k} className={s[key]===o.k ? 'on' : ''} onClick={() => up({[key]: o.k})}>
-          <img src={pqImg(o.img)} alt="" loading="lazy" decoding="async"/>
-          <b>{o.label}</b><small>{o.note}</small>
-        </button>
-      ))}
-    </div>
-  );
 
-  function summaryFields(){
-    const zones = PQ_RUNS.concat(PQ_MORE).filter(z => s.q[z.id]).map(z => z.name + ' ' + s.q[z.id] + ' ft').join(', ');
-    const opts = [s.colorMatch && 'custom colour match', s.outlets && s.outlets + ' new outlet(s)', s.integration && 'keypad integration'].filter(Boolean).join(', ');
-    return {style: st.title, storeys: String(s.storeys), roofline: PQ_ROOFS.find(x => x.k === s.roof).label, zones, options: opts || 'none',
-      estimate: pqMoney(r.total) + ' with tax (' + range.replace('Typical range ', 'range ') + ')'};
+  function selection(){
+    const picked = Object.keys(q).filter(k => q[k] > 0);
+    return {
+      style: mode === 'white' ? 'Warm white' : 'Colour scenes',
+      yard: yard.charAt(0).toUpperCase() + yard.slice(1),
+      lights: picked.map(k => q[k] + ' x ' + PQ_ALL[k].name).join(', '),
+      estimate: pqMoney(r.total) + ' (' + range.replace('Typical range ', 'typical range ') + ')',
+      parts: r.lines.map(l => l[1] + ' x ' + l[0]).join('; '),
+    };
   }
   async function send(e){
     e.preventDefault();
     const f = e.currentTarget;
+    if (!r.n) return;
     if (!f.checkValidity()) { f.reportValidity(); return; }
-    const data = new FormData(f);
-    const sum = summaryFields();
-    Object.keys(sum).forEach(k => data.set(k, sum[k]));
+    const data = new FormData(f), sel = selection();
+    Object.keys(sel).forEach(k => data.set(k, sel[k]));
     data.set('source_page', window.location.pathname);
     setLead('sending');
     try {
@@ -2116,7 +2121,7 @@ function PermanentQuote(){
   return (
     <section className="pq-band" id="quote" ref={top} aria-labelledby="pq-title">
       <div className="pq-inner">
-        <h2 className="pq-band-title" id="pq-title">Price your roofline <span>in under a minute</span></h2>
+        <h2 className="pq-band-title" id="pq-title">Price your lighting <span>in under a minute</span></h2>
         <div className="pq-cue"><span className="pq-pill">
           <span className="pq-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v15M5 12l7 7 7-7"/></svg></span>
           <span>Use our calculator to get a quick quote</span>
@@ -2126,7 +2131,7 @@ function PermanentQuote(){
         {step === 1 && (
           <div className="pq-choices">
             {['white','color'].map(k => { const c = PQ_STYLES[k]; return (
-              <button key={k} type="button" className="pq-choice" onClick={() => start(k)} aria-label={c.title}>
+              <button key={k} type="button" className="pq-choice" onClick={() => choose(k)} aria-label={c.title}>
                 <img src={c.photo} alt={c.alt}/>
                 <div className="pq-choice-body">
                   <span className="pq-tag"><i className={'pq-dot ' + c.dot}/>{c.tag}</span>
@@ -2142,7 +2147,7 @@ function PermanentQuote(){
         {step === 2 && (
           <div className="pq-builder">
             <div className="pq-builder-head">
-              <button type="button" className="pq-back" onClick={() => go(1)}>← Change style</button>
+              <button type="button" className="pq-back" onClick={() => { moved.current = true; setStep(1); }}>← Change style</button>
               <h3 className="pq-h1">{st.h1}</h3>
               <p className="pq-sub">{st.sub}</p>
             </div>
@@ -2150,61 +2155,45 @@ function PermanentQuote(){
               <div>
                 <div className="pq-panel">
                   <h4>Start from a typical package</h4>
-                  <p className="pq-hint">Pick one to fill in the feet, then adjust as you like.</p>
+                  <p className="pq-hint">Pick one to fill in the quantities, then adjust as you like.</p>
                   <div className="pq-presets">
-                    {PQ_PACKAGES.map(p => (
-                      <button key={p.id} type="button" className="pq-chip" aria-pressed={s.pkg===p.id} onClick={() => up({pkg:p.id, q:{...p.q}})}>
-                        <i className={'pq-dot ' + st.dot}/> {p.label}<small>{p.note}</small>
+                    {['white','color'].map(m => (
+                      <button key={m} type="button" className="pq-chip" aria-pressed={preset === m} onClick={() => usePreset(m)}>
+                        <i className={'pq-dot ' + PQ_STYLES[m].dot}/> {PQ_PRESETS[m].label}<small>{PQ_PRESETS[m].note}</small>
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div className="pq-panel">
-                  <h4>Choose where the light goes</h4>
-                  <p className="pq-hint">Feet of roofline in each place. A typical single-storey Sarasota home has 100–150 ft across the front and 250–350 ft all the way round; we check it against the county sketch before the visit.</p>
-                  <div className="pq-fixtures">{PQ_RUNS.map(runRow)}</div>
-                  <details className="pq-more" open={PQ_MORE.some(m => s.q[m.id] > 0)}>
-                    <summary>Add a second building</summary>
-                    <div className="pq-fixtures">{PQ_MORE.map(runRow)}</div>
+                  <h4>{mode === 'white' ? 'Choose your lights' : 'Choose your colour lights'}</h4>
+                  <p className="pq-hint">{mode === 'white'
+                    ? 'Slim aluminium channel colour-matched to your fascia, with sealed 2700K diodes. One track section covers 10 ft of roofline. Prices are per item.'
+                    : 'Smart RGB + warm-white pixels with millions of colours and a true warm white. Control and schedule them from the app. One track section covers 10 ft of roofline.'}</p>
+                  <div className="pq-fixtures">{primary.map(fxRow)}</div>
+                  <details className="pq-more" open={moreOpen} onToggle={e => setMore(e.currentTarget.open)}>
+                    <summary>{mode === 'white' ? 'Add a few colour lights (app-controlled)' : 'Add warm-white lights to the same system'}</summary>
+                    <div className="pq-fixtures">{secondary.map(fxRow)}</div>
                   </details>
                 </div>
 
                 <div className="pq-panel">
-                  <h4>How tall is the house?</h4>
-                  <p className="pq-hint">Higher eaves mean a taller ladder or a lift, and slower runs.</p>
-                  {seg(PQ_STOREYS, 'storeys', 'House height')}
-                </div>
-
-                <div className="pq-panel">
-                  <h4>What does the roofline look like?</h4>
-                  <p className="pq-hint">Every corner, peak and return is a cut and a joint in the channel.</p>
-                  {seg(PQ_ROOFS, 'roof', 'Roofline')}
-                </div>
-
-                <div className="pq-panel">
-                  <h4>Extras</h4>
-                  <p className="pq-hint">Only if your house needs them; we confirm on the visit.</p>
-                  <div className="pq-fixtures">
-                    <div className={'pq-fx' + (s.outlets ? ' on' : '')}>
-                      <img src={pqImg('prod-outlet')} alt="" loading="lazy" decoding="async"/>
-                      <div><div className="pq-name">New outdoor outlet</div><div className="pq-use">If there is no outlet near the eave or in the attic for the power supply</div><div className="pq-prod">Weatherproof GFCI, fitted by our electrician · {pqMoney(PQ_CFG.outlet)} each</div></div>
-                      <div className="pq-qty"><PqStepper value={s.outlets} step={1} max={6} label="New outdoor outlets" onChange={n => up({outlets:n})}/><small>outlets</small></div>
-                    </div>
-                    {toggleRow('colorMatch', PHOTOS.permEaveDay, 'Exact colour match', 'The channel powder-coated to your fascia colour instead of the closest stock one', '$' + PQ_CFG.colorMatchPerFt.toFixed(2) + '/ft')}
-                    {toggleRow('integration', pqImg('prod-keypad'), 'Keypad by the front door', 'The roofline on a Lutron keypad and in the Evening and Away scenes', pqMoney(PQ_CFG.integration))}
+                  <h4>Home size</h4>
+                  <p className="pq-hint">This sets how much cable we plan for, from the outlet to the lights and between the runs.</p>
+                  <div className="pq-seg pq-seg--4" role="radiogroup" aria-label="Home size">
+                    {PQ_YARDS.map(o => (
+                      <button key={o.k} type="button" role="radio" aria-checked={yard === o.k} className={yard === o.k ? 'on' : ''} onClick={() => { setYard(o.k); setPreset(null); }}>
+                        <img src={pqImg(o.img)} alt="" loading="lazy" decoding="async"/>
+                        <b>{o.label}</b><small>{o.note}</small>
+                      </button>
+                    ))}
                   </div>
                 </div>
 
                 <div className="pq-panel">
                   <h4>Every quote includes</h4>
                   <div className="pq-includes">
-                    {PQ_INCLUDES.map(i => (
-                      <div key={i.t} className="pq-inc">
-                        {i.img && <img src={pqImg(i.img)} alt="" loading="lazy" decoding="async"/>}
-                        <b>{i.t}</b><span>{i.d}</span>
-                      </div>
-                    ))}
+                    {PQ_INCLUDES.map(([t, d]) => <div key={t} className="pq-inc"><b>{t}</b><span>{d}</span></div>)}
                   </div>
                 </div>
               </div>
@@ -2214,22 +2203,21 @@ function PermanentQuote(){
                 <div className="pq-total">{pqMoney(r.total)}</div>
                 <div className="pq-range">{range}</div>
                 <div className="pq-stats">
-                  <div className="pq-stat"><b>{r.feet} ft</b><span>of light</span></div>
-                  <div className="pq-stat"><b>{r.controllers}</b><span>controller{r.controllers === 1 ? '' : 's'}</span></div>
-                  <div className="pq-stat"><b>{r.days}</b><span>install day{r.days === 1 ? '' : 's'}</span></div>
+                  <div className="pq-stat"><b>{r.n}</b><span>lights & runs</span></div>
+                  <div className="pq-stat"><b>{r.lightFt} ft</b><span>of roofline</span></div>
+                  <div className="pq-stat"><b>{r.days}</b><span>install days</span></div>
                 </div>
                 <div className="pq-rows">
-                  <div className="pq-row"><span>Lights, channel and controller</span><b>{pqMoney(r.equip)}</b></div>
-                  <div className="pq-row"><span>Installation and set-up</span><b>{pqMoney(r.labor)}</b></div>
-                  {r.extras > 0 && <div className="pq-row"><span>Extras</span><b>{pqMoney(r.extras)}</b></div>}
-                  <div className="pq-row"><span>Sales tax (7%)</span><b>{pqMoney(r.tax)}</b></div>
+                  <div className="pq-row"><span>Lights &amp; equipment</span><b>{pqMoney(r.equip)}</b></div>
+                  <div className="pq-row"><span>Installation &amp; setup</span><b>{pqMoney(r.labor)}</b></div>
+                  <div className="pq-row"><span>Sales tax (7%, equipment)</span><b>{pqMoney(r.tax)}</b></div>
                   <div className="pq-row sum"><span>Estimated total</span><b>{pqMoney(r.total)}</b></div>
                 </div>
                 <details className="pq-bom">
-                  <summary>See what we would install</summary>
-                  <ul>{r.bom.length ? r.bom.map(([n, t]) => <li key={t}><span>{t}</span><b>{n}</b></li>) : <li className="pq-empty">No runs yet</li>}</ul>
+                  <summary>See full parts list</summary>
+                  <ul>{r.lines.length ? r.lines.map((l, i) => <li key={i}><span>{l[1]} × {l[0]}</span><b>{pqMoney2(l[1]*l[2])}</b></li>) : <li className="pq-empty">No items yet</li>}</ul>
                 </details>
-                {lead === 'closed' && <button type="button" className="pq-cta" disabled={!r.feet} onClick={() => setLead('open')}>Get my free run plan</button>}
+                {lead === 'closed' && <button type="button" className="pq-cta" onClick={() => setLead('open')}>Get my free run plan</button>}
                 {(lead === 'open' || lead === 'sending' || lead === 'error') && (
                   <form className="pq-lead" name="permanent-lighting-quote" method="POST" onSubmit={send}>
                     <input type="hidden" name="form-name" value="permanent-lighting-quote"/>
@@ -2238,14 +2226,14 @@ function PermanentQuote(){
                     <label>Name<input name="name" autoComplete="name" required/></label>
                     <label>Email<input name="email" type="email" autoComplete="email" required/></label>
                     <label>Phone<input name="phone" type="tel" autoComplete="tel" required/></label>
-                    <label>Street address <small>(optional)</small><input name="address" autoComplete="street-address"/></label>
-                    <button type="submit" className="pq-cta" disabled={lead==='sending'}>{lead==='sending' ? 'Sending…' : 'Send my request'}</button>
-                    {lead === 'error' && <p className="pq-msg">That did not go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a> or write to <a href={nap.mailHref}>{nap.email}</a>.</p>}
+                    <button type="submit" className="pq-cta" disabled={lead === 'sending' || !r.n}>{lead === 'sending' ? 'Sending…' : 'Send my free run plan'}</button>
+                    {!r.n && <p className="pq-msg">Add at least one light to your plan first.</p>}
+                    {lead === 'error' && <p className="pq-msg">Sorry, that didn't go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a> or write to <a href={nap.mailHref}>{nap.email}</a>.</p>}
                   </form>
                 )}
-                {lead === 'sent' && <div className="pq-done" role="status"><b>Thank you! Your request is in.</b>We will call to set up a short visit, then send your run plan, a channel colour and a written quote.</div>}
+                {lead === 'sent' && <div className="pq-done" role="status"><b>Thanks! Your request is in.</b>We'll call to set up a short site visit, then send your run plan, usually within a week.</div>}
                 <a className="pq-cta ghost" href={nap.telHref}>Call {nap.telephoneDisplay}</a>
-                <p className="pq-fine">This is a ballpark estimate, not a final price. Your written quote follows a short visit and a run plan. Assumes power within reach of the eave and fascia we can fasten to; fascia repairs, tile work and permits are quoted separately if needed.</p>
+                <p className="pq-fine">This is a ballpark estimate, not a final price. Your final proposal comes after a short site visit and a run plan drawing. Assumes fascia we can fasten to and an outdoor outlet within reach of the power supply location.</p>
               </aside>
             </div>
             <div className="pq-mbar">

@@ -616,8 +616,8 @@ CONTACT_FIELDS = [
 
 # The permanent-lighting calculator posts its lead the same way.
 QUOTE_FIELDS = [
-    "name", "email", "phone", "address", "style", "storeys", "roofline",
-    "zones", "options", "estimate", "source_page",
+    "name", "email", "phone", "style", "yard", "lights", "estimate", "parts",
+    "source_page",
 ]
 
 NETLIFY_FORMS = {
