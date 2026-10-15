@@ -279,6 +279,11 @@
     X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
+  for = "/brochure"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
   for = "/_archive/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"

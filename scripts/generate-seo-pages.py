@@ -778,7 +778,9 @@ def write_redirects() -> None:
         "/smart-home-demo    /automation  301",
         "/demo               /automation  301",
         "/demo.html          /automation  301",
-        "/index.html         /            301",
+        # "!" forces the rule: the file exists, and Netlify would serve it
+        # with 200 instead of redirecting (shadowing).
+        "/index.html         /            301!",
         "",
         "# Service area narrowed to Sarasota & Manatee Counties (2026-09)",
         "/service-areas/naples/*        /service-areas  301",
@@ -791,7 +793,10 @@ def write_redirects() -> None:
         "/service-areas/punta-gorda     /service-areas  301",
         "/service-areas/punta-gorda.html /service-areas 301",
         "",
-        "# Duplicate .html URLs → canonical pretty paths",
+        "# Duplicate .html URLs → canonical pretty paths.",
+        "# Forced (301!): the .html files are real, so an unforced rule is",
+        "# shadowed and the duplicate answers 200 (GSC: alternate page with",
+        "# proper canonical tag).",
     ]
     skip_files = {"brochure.html", "404.html", "thank-you.html"}
     for r in ROUTES:
@@ -804,7 +809,7 @@ def write_redirects() -> None:
             continue
         if html_url.rstrip("/") == pretty:
             continue
-        lines.append(f"{html_url}  {pretty}  301")
+        lines.append(f"{html_url}  {pretty}  301!")
     (ROOT / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
