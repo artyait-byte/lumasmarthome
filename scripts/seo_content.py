@@ -72,10 +72,10 @@ CITIES = [
         "name": "Sarasota",
         "county": "Sarasota County",
         "tagline": "Our home county — and the first place we spec a Gulf Coast hour.",
-        "h1": "Smart home systems in Sarasota, Florida",
-        "title": "Sarasota Smart Home Installer | Lighting, Shades & AV | LUMA",
+        "h1": "Smart home projects across Sarasota, neighborhood by neighborhood",
+        "title": "Sarasota Smart Home Projects by Neighborhood | LUMA",
         "description": "LUMA Smart Home designs and installs lighting control, motorized shades, audio, security and Wi-Fi for Sarasota homes. Local studio, not luma.com.",
-        "lede": "If you searched smart home Sarasota, you are in the right place: LUMA is a residential technology studio based here, specifying Lutron, UniFi, Somfy, and Sonos for houses that live with Gulf sun, salt air, and seasonal occupancy.",
+        "lede": "Bird Key, Lido, Palmer Ranch and downtown each ask different things of a house. This page is the Sarasota map of what we install where. For the studio itself, start with [smart home installation in Sarasota](home): LUMA is a residential technology studio based here, specifying Lutron, UniFi, Somfy, and Sonos for houses that live with Gulf sun, salt air, and seasonal occupancy.",
         "paragraphs": [
             "Sarasota is not a generic 'smart home market.' West-facing glass on the bay, lanais that become the living room eight months of the year, and HOA rules on Siesta and Lido all change how lighting, shades, and cameras should be drawn. We walk the property at the hour you actually use it — late afternoon glare, not a noon site visit.",
             "Most of our Sarasota work is existing homes and thoughtful remodels: RadioRA 3 where a full HomeWorks processor is overkill, Sivoia or Somfy on the elevations that cook, UniFi Protect with the NVR in a conditioned closet. New construction gets a wired spine first. Either way, proposals are line-item, and the same technicians who pull cable still answer the phone after turnover.",
@@ -279,6 +279,41 @@ CITY_SERVICES = [
             "Landscape and path lighting on the same keypad",
             "Line-item proposals — every keypad, every load",
         ],
+        "sections": [   {   'h2': 'RadioRA 3, HomeWorks or Ketra: which Lutron fits a Sarasota house',
+                'text': [   'RadioRA 3 is the right system for most existing Sarasota homes and condos. '
+                            'The dimmers and keypads replace the switches you have, the main repeater '
+                            'talks to them wirelessly, and nothing has to be pulled back to a panel. A '
+                            'house in Palmer Ranch or a Lido Key condo can be fully on Lutron in days, not '
+                            'months.',
+                            'HomeWorks is for new construction and deep remodels where the lighting design '
+                            'is doing serious work: many loads, panelized dimming in a closet, and keypads '
+                            'that need to look like architecture. Ketra adds tunable white and colour that '
+                            'shifts through the day, which matters most on gulf-facing rooms where the '
+                            'light outside changes fast. We explain the choice in plain terms in [RadioRA '
+                            '3 vs HomeWorks in Sarasota](journal-lutron-sarasota).']},
+            {   'h2': 'What a Lutron installation includes',
+                'text': [   'A walkthrough at the hour you use the house, a load schedule that lists every '
+                            'circuit and fixture, keypad engraving in your words, and programming on site '
+                            'with you in the room. Shades from the same family, Lutron Sivoia, join the '
+                            'same keypads and the same astronomical clock, so sunset can lower the screens '
+                            'and warm the dining room in one step. See [motorized shades in '
+                            'Sarasota](sa-sarasota-shading).',
+                            'After turnover the same team adjusts scenes as you live with them. That is '
+                            'part of the job, not an upsell.']}],
+        "faq": [   {   'q': 'Do I need to rewire my house for Lutron?',
+                'a': 'Usually not. RadioRA 3 replaces existing switches with wireless dimmers and keypads, '
+                     'so most Sarasota homes keep their wiring. New construction and big remodels are the '
+                     'time to consider HomeWorks with central panels.'},
+            {   'q': 'Can Lutron control my shades and landscape lights too?',
+                'a': 'Yes. Lutron Sivoia shades and exterior lighting circuits can sit on the same keypads '
+                     'and schedules as the interior lighting, so one button sets the whole room.'},
+            {   'q': 'Will my existing LED fixtures work with Lutron dimmers?',
+                'a': 'Most quality LED fixtures do. We check each load during the walkthrough and flag '
+                     'fixtures that flicker or will not dim smoothly before anything is installed.'},
+            {   'q': 'Do you install Lutron outside Sarasota?',
+                'a': 'Yes, across Sarasota and Manatee Counties, including '
+                     '[Bradenton](sa-bradenton-lighting), Lakewood Ranch, Venice, Longboat Key and Siesta '
+                     'Key.'}],
     },
     {
         "city": "sarasota",
@@ -297,6 +332,41 @@ CITY_SERVICES = [
             "Somfy for wide openings and outdoor volumes",
             "Programmed to sunrise, sunset, and Away",
         ],
+        "sections": [   {   'h2': 'Interior shades, exterior screens and blackout',
+                'text': [   'Most Sarasota houses need two or three kinds of motorized shading. Interior '
+                            'roller shades with a solar-screen fabric cut glare and heat while you still '
+                            'see the water. Blackout shades or motorized drapery make bedrooms dark after '
+                            'a late dinner. Exterior motorized screens on the lanai block low western sun '
+                            'and insects without enclosing the space.',
+                            'We choose fabric openness by elevation: a denser screen on the west and '
+                            'southwest glass that cooks from mid-afternoon, a lighter one where the view '
+                            'and the morning light matter more.']},
+            {   'h2': 'Lutron Sivoia or Somfy',
+                'text': [   'If the lighting is already Lutron, Sivoia shades join the same keypads and '
+                            'clock. Somfy motors are the better fit for very wide openings, existing '
+                            'pockets and many outdoor screens. Both can be scheduled to sunrise and sunset '
+                            'and grouped into scenes such as Away. Why layered shades beat one compromise '
+                            'fabric is explained in [motorized shades for Gulf Coast '
+                            'sun](journal-shades-gulf).']},
+            {   'h2': 'Near the water',
+                'text': [   'On Siesta Key, Lido Key, Bird Key and Longboat Key, salt and wind are part of '
+                            'the spec: outdoor-rated motors and hardware, and fabrics chosen for UV. '
+                            'Island homes have their own pages: [motorized shades on Siesta '
+                            'Key](sa-siesta-key-shading) and [motorized shades on Longboat '
+                            'Key](sa-longboat-key-shading).']}],
+        "faq": [   {   'q': 'What is the difference between motorized shades and motorized blinds?',
+                'a': 'Shades are fabric that rolls or folds; blinds have slats that tilt. For Gulf Coast '
+                     'glare we usually recommend roller shades with a solar-screen fabric, because they '
+                     'keep the view and are simpler to motorize and maintain.'},
+            {   'q': 'Can motorized shades be added to an existing home?',
+                'a': 'Yes. Battery or low-voltage motors can go into existing window openings. Hardwired '
+                     'motors are easiest during a remodel, but they are not required.'},
+            {   'q': 'Do you install exterior motorized screens for lanais?',
+                'a': 'Yes. Exterior motorized screens are one of the most useful upgrades on west-facing '
+                     'lanais. We specify outdoor-rated motors and hardware for salt air.'},
+            {   'q': 'Can shades open and close on their own?',
+                'a': 'Yes. Shades can follow an astronomical clock (sunrise and sunset for your address), '
+                     'a scene button, or an Away mode when the house is empty for the summer.'}],
     },
     {
         "city": "sarasota",
@@ -337,8 +407,8 @@ CITY_SERVICES = [
     {
         "city": "sarasota",
         "service": "security",
-        "h1": "Home cameras & security in Sarasota",
-        "title": "Home Security Cameras Sarasota FL | UniFi Protect | LUMA",
+        "h1": "Security camera installation in Sarasota",
+        "title": "Security Camera Installation Sarasota FL | UniFi | LUMA",
         "description": "On-premise UniFi Protect cameras in Sarasota — no monthly cloud fees. Property-walked placement, NVR on site, optional alarm monitoring.",
         "lede": "Sarasota homeowners are tired of doorbell brands that rent them their own driveway. UniFi Protect records on a box in your closet. We place cameras after walking sunset glare and neighbor angles — not from a floor plan in the office.",
         "paragraphs": [
@@ -351,6 +421,39 @@ CITY_SERVICES = [
             "Placement after a property walk, including glare",
             "Optional alarm panel and monitoring",
         ],
+        "sections": [   {   'h2': 'How a camera installation works',
+                'text': [   'We walk the property first, at the time of day the glare is worst, and mark '
+                            'each camera on a plan with what it needs to see: drive, front door, side '
+                            'yards, dock, pool gate. Cameras are wired PoE, so there are no batteries to '
+                            'charge, and they record to a UniFi Protect recorder on the property. You see '
+                            'everything in one app from wherever you spend the summer.',
+                            'Because the cameras run on the home network, we design that too: cameras on '
+                            'their own network segment, the recorder on a UPS, and remote access without '
+                            'opening the house to the internet. See [Wi-Fi and cabling in '
+                            'Sarasota](sa-sarasota-networking).']},
+            {   'h2': 'No monthly cloud fee',
+                'text': [   'Recordings stay on the recorder in your house, so there is no per-camera '
+                            'subscription. If you want an off-site copy, it can be added as an option. The '
+                            'trade-offs between cloud cameras and on-premise recording are covered in '
+                            '[home cameras without a monthly cloud](journal-cameras-fees).']},
+            {   'h2': 'Seasonal homes and HOAs',
+                'text': [   'For owners who are away half the year, the system should tell you about real '
+                            'events and stay quiet the rest of the time: person and vehicle detection, '
+                            'alerts only for the zones that matter, and a view you can check from '
+                            'anywhere. On Siesta Key, Longboat Key and in many Sarasota HOAs, visible '
+                            'hardware needs approval; we bring cut sheets before we drill.']}],
+        "faq": [   {   'q': 'Do UniFi Protect cameras need a subscription?',
+                'a': 'No. Video records to a UniFi recorder in your home. There is no monthly fee per '
+                     'camera.'},
+            {   'q': 'Can I see my cameras when I am out of state?',
+                'a': 'Yes. The UniFi Protect app shows live and recorded video from anywhere, with alerts '
+                     'for people and vehicles.'},
+            {   'q': 'Wired or wireless cameras for a Florida house?',
+                'a': 'Wired PoE cameras. They do not depend on batteries in the heat, the picture is '
+                     'steadier, and one cable carries both power and video.'},
+            {   'q': 'Do you install cameras in Bradenton and Manatee County?',
+                'a': 'Yes. See [home cameras in Bradenton](sa-bradenton-security). We cover Sarasota and '
+                     'Manatee Counties.'}],
     },
     {
         "city": "sarasota",
@@ -387,6 +490,37 @@ CITY_SERVICES = [
             "Climate, audio, and security as citizens, not add-ons",
             "Twelve months of scene care included",
         ],
+        "sections": [   {   'h2': 'What home automation does in a Sarasota house',
+                'text': [   'Good automation is a few scenes that run the house the way you already live '
+                            'in it. Good morning opens selected shades and sets the kitchen lights and '
+                            'music. Away closes the exterior screens, keeps a lived-in lighting pattern, '
+                            'arms the cameras and sets the thermostats for an empty summer. Movie dims the '
+                            'room and lowers the shades in one press.',
+                            'Each scene uses systems that also work on their own: [Lutron '
+                            'lighting](sa-sarasota-lighting), [motorized shades](sa-sarasota-shading), '
+                            '[cameras](sa-sarasota-security), [whole-home audio](sa-sarasota-audio) and '
+                            'the network under all of them.']},
+            {   'h2': 'Control4, Lutron or Josh.ai',
+                'text': [   'For many homes, Lutron keypads and the Lutron app are enough. When the house '
+                            'has audio, video, climate and security to bring together, Control4 gives one '
+                            'remote, one touchscreen and one app. Josh.ai adds voice control that '
+                            'understands rooms and scenes without a cloud speaker in every room. We '
+                            'recommend the smallest system that does the job, and open platforms so you '
+                            'are not tied to one installer.']}],
+        "faq": [   {   'q': 'What is the difference between a smart home and home automation?',
+                'a': 'Smart devices each have their own app. Home automation ties lighting, shades, '
+                     'climate, audio and security together so one button or one schedule sets the whole '
+                     'house.'},
+            {   'q': 'Can you automate an existing home without opening walls?',
+                'a': 'Mostly yes. Wireless Lutron dimmers, battery or low-voltage shade motors and Wi-Fi '
+                     'controllers cover most existing homes. Cameras and speakers need some cable, which '
+                     'we route with as little patching as possible.'},
+            {   'q': 'Can I control the house when I am up north for the summer?',
+                'a': 'Yes. Lights, shades, thermostats and cameras can be checked and changed from your '
+                     'phone, and Away scenes run on their own.'},
+            {   'q': 'Do you serve Lakewood Ranch and Bradenton?',
+                'a': 'Yes. We work across Sarasota and Manatee Counties. See [Lakewood '
+                     'Ranch](sa-lakewood-ranch) and [Bradenton](sa-bradenton).'}],
     },
     {
         "city": "bradenton",
@@ -422,6 +556,68 @@ CITY_SERVICES = [
             "Dock, side-yard, and drive coverage",
             "HOA-aware mounts on the islands",
             "On-prem NVR, optional alarm",
+        ],
+    },
+    {
+        "city": "longboat-key",
+        "service": "shading",
+        "h1": "Motorized shades on Longboat Key",
+        "title": "Motorized Shades Longboat Key FL | Lanai Screens | LUMA",
+        "description": "Motorized interior shades, blackout and exterior lanai screens for Longboat Key homes and condos. Salt-rated motors, Lutron Sivoia and Somfy, HOA-ready.",
+        "lede": "On Longboat Key the view is the house, and the afternoon sun off the Gulf is the problem. Motorized shades let you keep the water in sight at 4 p.m. and still sleep in a dark room, without a wall of cords and remotes.",
+        "paragraphs": [
+            "We plan three layers. Interior roller shades with a solar-screen fabric take the glare and heat off the living room while the Gulf stays visible. Blackout shades or motorized drapery handle the bedrooms. Exterior motorized screens close the lanai against low western sun and insects, and roll away when the breeze is welcome.",
+            "Everything is chosen for the barrier island: outdoor-rated motors and hardware on the lanai, fabrics picked for UV, and shades on a sunrise and sunset schedule so the house looks after itself while you are away for the summer.",
+        ],
+        "bullets": [
+            "Interior solar screen, blackout and drapery",
+            "Exterior motorized lanai screens, salt-rated",
+            "Lutron Sivoia or Somfy, on one schedule",
+            "Away mode for seasonal owners",
+        ],
+        "sections": [
+            {"h2": "Condos and association rules", "text": [
+                "Many Longboat Key buildings control what the exterior can show: screen colour, housing size, where a cassette can mount. We bring fabric samples and cut sheets to the board before ordering, and we measure each opening twice, because gulf-front openings are rarely square.",
+            ]},
+            {"h2": "Shades that work with the rest of the house", "text": [
+                "If the lighting is Lutron, Sivoia shades share its keypads, so one button can lower the screens and set the evening lights. Somfy motors fit wide sliders and existing pockets. Either way the shades can join an Away scene with the [cameras and Wi-Fi](sa-longboat-key) the house already depends on. More on fabrics and layers in [motorized shades for Gulf Coast sun](journal-shades-gulf).",
+            ]},
+        ],
+        "faq": [
+            {"q": "Do exterior motorized screens survive salt air on Longboat Key?", "a": "With the right spec, yes. We use outdoor-rated motors and hardware and fabrics chosen for UV, and we plan for wind: screens retract on a schedule or a button before a storm."},
+            {"q": "Can motorized shades be installed in an existing condo?", "a": "Yes. Battery or low-voltage motors fit most existing openings. We confirm what the association allows before anything is ordered."},
+            {"q": "Can the shades close on their own when nobody is home?", "a": "Yes. They can follow sunrise and sunset for your address and an Away scene, so the furniture is protected all summer."},
+        ],
+    },
+    {
+        "city": "siesta-key",
+        "service": "shading",
+        "h1": "Motorized shades on Siesta Key",
+        "title": "Motorized Shades Siesta Key FL | Blinds & Screens | LUMA",
+        "description": "Motorized shades, blinds and exterior lanai screens for Siesta Key homes, condos and rentals. Lutron Sivoia and Somfy with salt-rated hardware.",
+        "lede": "Siesta Key glass faces the Gulf, the sand reflects even more light back in, and a lot of homes change hands between owners and renters through the year. Motorized shades fix the glare and make the house simple for whoever is staying there.",
+        "paragraphs": [
+            "Interior roller shades with a solar-screen fabric are the everyday layer: they cut glare and heat and keep the beach in view. Bedrooms get blackout shades. Lanais get exterior motorized screens that drop at sunset and roll up when you want the breeze.",
+            "For rentals and second homes, fewer buttons is better. Shades run on a schedule, a single keypad in each room covers the rest, and an Away scene closes the house between stays.",
+        ],
+        "bullets": [
+            "Roller shades with solar-screen fabric",
+            "Blackout for bedrooms and media rooms",
+            "Exterior lanai screens with outdoor motors",
+            "Simple keypads for guests and renters",
+        ],
+        "sections": [
+            {"h2": "Built for the island", "text": [
+                "Salt and wind decide the hardware. Outdoor-rated motors and brackets go on every exterior screen, and fabrics are chosen for UV. In condos and HOA communities we bring cut sheets and colour samples before ordering, so the exterior stays approved.",
+            ]},
+            {"h2": "With lighting and cameras", "text": [
+                "Shades can share keypads with Lutron lighting and join an Away scene with on-premise cameras, so the house looks lived-in and protected when it is empty. See [smart home on Siesta Key](sa-siesta-key) and [motorized shades in Sarasota](sa-sarasota-shading).",
+            ]},
+        ],
+        "faq": [
+            {"q": "Motorized shades or motorized blinds for a Siesta Key house?", "a": "Usually roller shades with a solar-screen fabric. They keep the view, handle heat well and have fewer parts to suffer in salt air than tilting blinds."},
+            {"q": "Are motorized shades a good idea for a rental?", "a": "Yes. Guests cannot break cords or lose remotes, and shades on a schedule protect floors and furniture from sun between stays."},
+            {"q": "Do you install exterior lanai screens on Siesta Key?", "a": "Yes, with outdoor-rated motors and hardware, and with association approval when the building requires it."},
         ],
     },
 ]
@@ -494,7 +690,7 @@ ARTICLES = [
             {"type": "p", "text": "Wide lanai volumes, existing pockets, and outdoor rollers often land on Somfy. It is not a downgrade; it is the motor that fits. We still program astronomical clocks and Away. Salt-rated hardware is in the spec for barrier islands — indoor motors on a gulf lanai are how you buy the job twice."},
             {"type": "h2", "text": "HOA and glass"},
             {"type": "p", "text": "What the street is allowed to see matters in Siesta Key and Longboat Key design review. We bring fabric and exterior-roller cut sheets early. Measuring gulf-front openings twice is cheaper than a motor that racks in an out-of-square pocket."},
-            {"type": "p", "text": "More on [motorized shades in Sarasota](sa-sarasota-shading), or on [Siesta Key](sa-siesta-key) if you are on the island."},
+            {"type": "p", "text": "More on [motorized shades in Sarasota](sa-sarasota-shading), or on the islands: [motorized shades on Siesta Key](sa-siesta-key-shading) and [motorized shades on Longboat Key](sa-longboat-key-shading)."},
         ],
     },
     {
@@ -575,7 +771,7 @@ BRAND = {
 
 NAP = {
     "name": "LUMA Smart Home",
-    "legalName": "LUMA Home Systems LLC",
+    "legalName": "Tegra-Media LLC",
     "locality": "Sarasota",
     "region": "FL",
     "country": "US",
@@ -869,7 +1065,9 @@ def related_map() -> dict:
         "contact",
     )
     rel["journal-lutron-sarasota"] = _rel("sa-sarasota-lighting", "lighting", "sa-sarasota", "contact")
-    rel["journal-shades-gulf"] = _rel("sa-sarasota-shading", "shading", "sa-siesta-key", "contact")
+    rel["journal-shades-gulf"] = _rel(
+        "sa-sarasota-shading", "sa-siesta-key-shading", "sa-longboat-key-shading", "shading", "contact"
+    )
     rel["journal-theater-sarasota"] = _rel("sa-sarasota-theaters", "theaters", "work", "contact")
     rel["journal-not-luma-com"] = _rel(
         "luma-smart-home-sarasota", "sa-sarasota", "journal-cameras-fees", "contact"
