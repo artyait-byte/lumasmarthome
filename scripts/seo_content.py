@@ -451,56 +451,60 @@ CITY_SERVICES = [
     {
         "city": "sarasota",
         "service": "security",
+        "camera": "home",
+        "photo": "/assets/photos/stock/camera-under-eave.jpg",
+        "photo_alt": "Wired bullet security camera mounted under a roof overhang",
+        "packages_h2": "Home security camera packages in Sarasota",
         "h1": "Security camera installation in Sarasota",
         "title": "Security Camera Installation Sarasota FL | UniFi | LUMA",
         "description": "On-premise UniFi Protect cameras in Sarasota — no monthly cloud fees. Property-walked placement, NVR on site, optional alarm monitoring.",
         "lede": "Sarasota homeowners are tired of doorbell brands that rent them their own driveway. UniFi Protect records on a box in your closet. We place cameras after walking sunset glare and neighbor angles — not from a floor plan in the office.",
         "paragraphs": [
             "Seasonal occupancy is the local twist: you need to see the house from somewhere else without paying a cloud tax all summer. On-prem storage plus optional encrypted off-site backup is the honest stack. We will also tell you where a camera is pointless because the HOA or the foliage will win.",
-            "This is not Snap One's Luma camera line, and it is not a DIY kit. LUMA Smart Home is the Sarasota studio that designs the network the cameras sit on.",
+            "Home security cameras in Sarasota start from $2,900 plus tax for four wired cameras with a recorder, installed. The packages and prices are below. This is not Snap One's Luma camera line, and it is not a DIY kit. LUMA Smart Home is the Sarasota studio that designs the network the cameras sit on. Work is carried out with our Florida-licensed low-voltage partner.",
         ],
         "bullets": [
-            "UniFi Protect G-series, PoE, no batteries",
-            "NVR on the property, 30+ day retention typical",
+            "UniFi Protect G6 cameras, PoE, no batteries",
+            "Recorder in the house, no monthly subscription",
             "Placement after a property walk, including glare",
-            "Optional alarm panel and monitoring",
+            "Optional video doorbell and alarm",
         ],
-        "sections": [   {   'h2': 'How a camera installation works',
-                'text': [   'We walk the property first, at the time of day the glare is worst, and mark '
-                            'each camera on a plan with what it needs to see: drive, front door, side '
-                            'yards, dock, pool gate. Cameras are wired PoE, so there are no batteries to '
-                            'charge, and they record to a UniFi Protect recorder on the property. You see '
-                            'everything in one app from wherever you spend the summer.',
-                            'Because the cameras run on the home network, we design that too: cameras on '
-                            'their own network segment, the recorder on a UPS, and remote access without '
-                            'opening the house to the internet. See [Wi-Fi and cabling in '
-                            'Sarasota](sa-sarasota-networking).']},
-            {   'h2': 'No monthly cloud fee',
-                'text': [   'Recordings stay on the recorder in your house, so there is no per-camera '
-                            'subscription. If you want an off-site copy, it can be added as an option. The '
-                            'trade-offs between cloud cameras and on-premise recording are covered in '
-                            '[home cameras without a monthly cloud](journal-cameras-fees).']},
-            {   'h2': 'Seasonal homes and HOAs',
-                'text': [   'For owners who are away half the year, the system should tell you about real '
-                            'events and stay quiet the rest of the time: person and vehicle detection, '
-                            'alerts only for the zones that matter, and a view you can check from '
-                            'anywhere. On Siesta Key, Longboat Key and in many Sarasota HOAs, visible '
-                            'hardware needs approval; we bring cut sheets before we drill.']}],
-        "faq": [   {   'q': 'Do UniFi Protect cameras need a subscription?',
-                'a': 'No. Video records to a UniFi recorder in your home. There is no monthly fee per '
-                     'camera.'},
-            {   'q': 'Can I see my cameras when I am out of state?',
-                'a': 'Yes. The UniFi Protect app shows live and recorded video from anywhere, with alerts '
-                     'for people and vehicles.'},
-            {   'q': 'Wired or wireless cameras for a Florida house?',
-                'a': 'Wired PoE cameras. They do not depend on batteries in the heat, the picture is '
-                     'steadier, and one cable carries both power and video.'},
-            {   'q': 'Do you install cameras in Bradenton and Manatee County?',
-                'a': 'Yes. See [home cameras in Bradenton](sa-bradenton-security). We cover Sarasota and '
-                     'Manatee Counties.'},
-            {   'q': 'Do you install cameras for offices and shops?',
-                'a': 'Yes. See [office and business security camera systems in '
-                     'Sarasota](sa-sarasota-business-security).'}],
+        "sections": [
+            {"h2": "How many cameras a Sarasota house needs", "text": [
+                "Most house security camera systems in Sarasota come down to four to eight positions. Four covers a typical single-family home; waterfront and corner lots, or houses with a detached garage, usually need more.",
+            ], "bullets": [
+                "The driveway and the street, with vehicles in frame",
+                "The front door and the porch, with faces at a usable size",
+                "The back yard, the lanai and the pool gate",
+                "Each side yard or gate where someone could walk in",
+                "The dock or the seawall on a waterfront lot",
+            ], "after": [
+                "We count the cameras on the walk, not from a floor plan, and tell you where a camera would add little.",
+            ]},
+            {"h2": "How we install house security cameras", "text": [
+                "We walk the property first, at the time of day the glare is worst, and mark each camera on a plan with what it needs to see: drive, front door, side yards, dock, pool gate. Cameras are wired PoE, so there are no batteries to charge, and they record to a UniFi Protect recorder on the property. You see everything in one app from wherever you spend the summer.",
+                "Because the cameras run on the home network, we design that too: cameras on their own network segment, the recorder on a UPS, and remote access without opening the house to the internet. See [Wi-Fi and cabling in Sarasota](sa-sarasota-networking).",
+            ]},
+            {"h2": "No monthly cloud fee", "text": [
+                "Recordings stay on the recorder in your house, so there is no per-camera subscription. If you want an off-site copy, it can be added as an option. The trade-offs between cloud cameras and on-premise recording are covered in [home cameras without a monthly cloud](journal-cameras-fees).",
+            ]},
+            {"h2": "Seasonal homes and HOAs", "text": [
+                "For owners who are away half the year, the system should tell you about real events and stay quiet the rest of the time: person and vehicle detection, alerts only for the zones that matter, and a view you can check from anywhere. On Siesta Key, Longboat Key and in many Sarasota HOAs, visible hardware needs approval; we bring cut sheets before we drill.",
+            ]},
+            {"h2": "Cameras for an office or a shop", "text": [
+                "The same UniFi stack runs offices, shops and small warehouses, with more cameras and a larger recorder. See [office and business security camera systems in Sarasota](sa-sarasota-business-security).",
+            ]},
+        ],
+        "faq": [
+            {"q": "How much does security camera installation cost in Sarasota?", "a": "Our packages start from $2,900 for 4 cameras, from $5,900 for 8 cameras and from $12,900 for 12 or more, plus tax. Each includes the cameras, a UniFi recorder and the installation. The final fixed price comes after a free walk of the property, once we know the cable runs and mounting points."},
+            {"q": "How many cameras do I need?", "a": "Most houses need four to eight: the driveway, the front door, the back yard or lanai, and each side gate. Waterfront homes often add one for the dock. We count them with you on the walk."},
+            {"q": "Do I have to pay a monthly fee?", "a": "No. Video records to the UniFi recorder in your house. There is no subscription and no per-camera fee."},
+            {"q": "Do you record audio?", "a": "Audio is off by default. Florida law requires the consent of everyone in a conversation before it is recorded (Fla. Stat. 934.03), so we leave camera microphones switched off."},
+            {"q": "Can I see my cameras when I am out of state?", "a": "Yes. The UniFi Protect app shows live and recorded video from anywhere, with alerts for people and vehicles."},
+            {"q": "Wired or wireless cameras for a Florida house?", "a": "Wired PoE cameras. They do not depend on batteries in the heat, the picture is steadier, and one cable carries both power and video."},
+            {"q": "Do you install cameras in Bradenton and Manatee County?", "a": "Yes. See [home cameras in Bradenton](sa-bradenton-security). We cover Sarasota and Manatee Counties."},
+            {"q": "Do you install cameras for offices and shops?", "a": "Yes. See [office and business security camera systems in Sarasota](sa-sarasota-business-security)."},
+        ],
     },
     {
         "city": "sarasota",
@@ -670,12 +674,17 @@ CITY_SERVICES = [
     {
         "city": "sarasota",
         "service": "business-security",
+        "camera": "business",
+        "photo": "/assets/photos/stock/cameras-office-building-corner.jpg",
+        "photo_alt": "Three security cameras on the corner of a dark-clad office building",
+        "packages_h2": "Business security camera system packages in Sarasota",
         "h1": "Office and business security camera systems in Sarasota",
         "title": "Office Security Camera Systems Sarasota FL | UniFi | LUMA",
         "description": "Security camera systems for Sarasota offices, shops and small commercial spaces. UniFi Protect, wired PoE cameras, on-site recording, no per-camera fees.",
         "lede": "An office, a showroom or a small warehouse needs the same thing a good home system gives: clear video of the doors, the counter and the lot, recorded on site, and an app the owner can check from anywhere. We design and install UniFi Protect office security camera systems for small commercial spaces in Sarasota and Manatee County.",
         "paragraphs": [
             "Every job starts with a walk of the space: entrances, the register or front desk, stock rooms, the parking lot and the back door. Cameras are wired PoE, so there are no batteries and one cable carries power and video. Recording stays on a UniFi recorder in your building, with no monthly fee per camera.",
+            "Business security camera systems start from $5,900 plus tax for eight cameras (Office 8) and from $12,900 plus tax for twelve or more (Business Pro). The packages are below; the final fixed price follows a free walk of the site.",
             "The cameras sit on their own network segment, separate from the office computers and guest Wi-Fi. If the network itself needs work, we do that in the same project. See [Wi-Fi and cabling in Sarasota](sa-sarasota-networking). Installation work is carried out with our Florida-licensed low-voltage partner.",
         ],
         "bullets": [
@@ -724,10 +733,11 @@ CITY_SERVICES = [
                 "Marinas and waterfront buildings: docks and gates, with cameras mounted under cover away from direct spray",
             ]},
             {"h2": "Homes and businesses on one stack", "text": [
-                "Many owners also want cameras at home. UniFi Protect at home and at the office means one app for both. For the house, see [security camera installation in Sarasota](sa-sarasota-security), or the [security systems overview](security). In Manatee County, see [commercial security cameras in Bradenton](sa-bradenton-business-security).",
+                "Many owners also want cameras at home. UniFi Protect at home and at the office means one app for both. For the house, see [home and house security cameras in Sarasota](sa-sarasota-security), or the [security systems overview](security). In Manatee County, see [commercial security cameras in Bradenton](sa-bradenton-business-security).",
             ]},
         ],
         "faq": [
+            {"q": "How much does a business security camera system cost in Sarasota?", "a": "Our packages start from $5,900 for 8 cameras (Office 8) and from $12,900 for 12 or more (Business Pro), plus tax. A small office with four cameras starts from $2,900. The final fixed price comes after a free walk of the site."},
             {"q": "Do business security cameras need a monthly subscription?", "a": "Not with UniFi Protect. Video records to a recorder in your building, and Ubiquiti charges no licence or per-camera fee."},
             {"q": "Can I watch the cameras from my phone?", "a": "Yes. Owners and managers can view live and recorded video in the UniFi Protect app, each with their own login."},
             {"q": "How many cameras does a small office need?", "a": "Usually 4 to 8: the front door, reception, the back door, any room with equipment or records, and one or two on the parking lot. We count them on the walkthrough, not from a floor plan."},
@@ -736,11 +746,16 @@ CITY_SERVICES = [
             {"q": "Do cameras survive salt air near the water?", "a": "UniFi outdoor cameras carry an IP66 weather rating. Near the Gulf or the bay we mount them under eaves or covers wherever we can and keep connections sealed."},
             {"q": "Do you install office cameras in Bradenton and Lakewood Ranch?", "a": "Yes. We cover Sarasota and Manatee Counties. See [commercial security cameras in Bradenton](sa-bradenton-business-security)."},
             {"q": "Can you also fix the office network and Wi-Fi?", "a": "Yes. Cameras depend on the network, so we can design both together: switching, Wi-Fi and a separate segment for the cameras. See [UniFi networking](networking)."},
+            {"q": "Do the cameras record audio?", "a": "Audio is off by default. Florida requires the consent of everyone in a conversation before it is recorded (Fla. Stat. 934.03), so we leave camera microphones switched off."},
         ],
     },
     {
         "city": "bradenton",
         "service": "business-security",
+        "camera": "business",
+        "photo": "/assets/photos/stock/camera-pole-office-district.jpg",
+        "photo_alt": "Security camera on a pole in front of an office building",
+        "packages_h2": "Commercial camera packages",
         "h1": "Commercial security camera systems in Bradenton",
         "title": "Commercial Security Cameras Bradenton FL | UniFi | LUMA",
         "description": "Commercial security camera systems for Bradenton, Lakewood Ranch and Palmetto businesses. UniFi Protect, wired 4K cameras, on-site recorder, no monthly fees.",
@@ -773,16 +788,22 @@ CITY_SERVICES = [
             ]},
         ],
         "faq": [
+            {"q": "What does a commercial camera system cost in Bradenton?", "a": "The same as in Sarasota: from $5,900 for 8 cameras and from $12,900 for 12 or more, plus tax, with a fixed price after a free walk of the site."},
             {"q": "Do you install commercial security cameras in Bradenton?", "a": "Yes. We cover Bradenton, Lakewood Ranch, Palmetto, Ellenton, Parrish and the rest of Manatee County from our Sarasota base."},
             {"q": "Is there a monthly fee for the cameras?", "a": "No. UniFi Protect records to a recorder on your property and Ubiquiti charges no per-camera licence."},
             {"q": "Can you cover a yard or a gate far from the building?", "a": "Usually yes. Cameras up to about 300 ft of cable from a switch run on one cable; beyond that we add a switch closer to the camera or use fiber."},
             {"q": "Can the system record licence plates at our gate?", "a": "Yes, with the UniFi AI LPR camera aimed where vehicles slow down at the gate or entrance."},
             {"q": "Can we add cameras later?", "a": "Yes. We size the recorder and the switch with spare capacity so more cameras can be added without replacing the core."},
+            {"q": "Do the cameras record audio?", "a": "No, audio is off by default. Florida requires everyone's consent to record a conversation (Fla. Stat. 934.03)."},
         ],
     },
     {
         "city": "sarasota",
         "service": "retail-security-cameras",
+        "camera": "business",
+        "photo": "/assets/photos/stock/camera-storefront-corner.jpg",
+        "photo_alt": "Security camera hanging under the overhang of a white brick building",
+        "packages_h2": "Camera packages for shops",
         "h1": "Retail store security cameras in Sarasota",
         "title": "Retail Store Security Cameras Sarasota FL | UniFi | LUMA",
         "description": "Security cameras for Sarasota retail stores and boutiques: register, entrance, sales floor and stock room. UniFi Protect, on-site recording, no monthly fees.",
@@ -819,6 +840,7 @@ CITY_SERVICES = [
             ]},
         ],
         "faq": [
+            {"q": "What does a store camera system cost?", "a": "Our packages start from $2,900 for 4 cameras, $5,900 for 8 and $12,900 for 12 or more, plus tax. The fixed price for your store follows a free walk."},
             {"q": "How many cameras does a small retail store need?", "a": "A single-room boutique usually needs 4 to 6: the entrance, the register, one or two for the floor, and the stock room or back door."},
             {"q": "Can the cameras record audio at the register?", "a": "They can, but Florida requires everyone's consent to record a conversation, so we leave audio off in customer areas unless you have legal advice to use it."},
             {"q": "Is there a monthly fee?", "a": "No. Video records to a UniFi recorder in your store, with no per-camera subscription."},
@@ -828,6 +850,10 @@ CITY_SERVICES = [
     {
         "city": "sarasota",
         "service": "restaurant-security-cameras",
+        "camera": "business",
+        "photo": "/assets/photos/stock/camera-storefront-corner.jpg",
+        "photo_alt": "Security camera hanging under the overhang of a white brick building",
+        "packages_h2": "Camera packages for restaurants",
         "h1": "Restaurant security cameras in Sarasota",
         "title": "Restaurant Security Cameras Sarasota FL | UniFi | LUMA",
         "description": "Security camera systems for Sarasota restaurants and bars: entrance, bar, POS, kitchen line, back door and deliveries. UniFi Protect, no monthly fees.",
@@ -865,15 +891,21 @@ CITY_SERVICES = [
             ]},
         ],
         "faq": [
+            {"q": "What does a restaurant camera system cost?", "a": "Most restaurants fit the Office 8 package, from $5,900 plus tax, or Business Pro for 12 or more cameras, from $12,900 plus tax. The fixed price follows a free walk of the restaurant."},
             {"q": "How many cameras does a restaurant need?", "a": "A small restaurant usually needs 8 to 12: the entrance, the bar and each POS, the dining room, the kitchen line, the cash office, the back door and the lot."},
             {"q": "Should restaurant cameras record audio?", "a": "In Florida we recommend no audio in guest areas, because recording a conversation requires everyone's consent."},
             {"q": "Can managers check the cameras from home?", "a": "Yes. Each manager gets a UniFi Protect login with the cameras and the history you choose."},
             {"q": "Will the cameras keep working in a hot kitchen?", "a": "Yes, if they are placed out of the direct heat and grease. We choose sealed turret cameras for kitchens and keep them out of the hood area."},
+            {"q": "Is there a monthly fee?", "a": "No. Video records to a UniFi recorder in the restaurant, with no subscription and no per-camera fee."},
         ],
     },
     {
         "city": "sarasota",
         "service": "warehouse-security-cameras",
+        "camera": "pro",
+        "photo": "/assets/photos/stock/camera-pole-office-district.jpg",
+        "photo_alt": "Security camera on a pole in front of an office building",
+        "packages_h2": "Camera packages for warehouses and yards",
         "h1": "Warehouse security cameras in Sarasota",
         "title": "Warehouse Security Cameras Sarasota FL | UniFi | LUMA",
         "description": "Warehouse and yard security camera systems in Sarasota and Manatee: dock doors, aisles, yard, gate and plates. UniFi Protect 4K cameras, on-site recorder.",
@@ -911,15 +943,21 @@ CITY_SERVICES = [
             ]},
         ],
         "faq": [
+            {"q": "What does a warehouse camera system cost?", "a": "Warehouses usually start with Business Pro: 12 or more cameras, a plate camera at the gate and a UNVR G2 Pro recorder, from $12,900 plus tax. The fixed price follows a free walk of the site."},
             {"q": "How far can a warehouse camera see at night?", "a": "It depends on the model. The G6 Turret's infrared reaches about 98 ft and the G6 Pro Bullet's about 130 ft; large yards are covered with a PTZ or extra lighting."},
             {"q": "Can the system read licence plates at our gate?", "a": "Yes, with the UniFi AI LPR camera, mounted where vehicles slow down and at a low angle to the plate."},
             {"q": "How long should a warehouse keep footage?", "a": "Longer than an office, because losses are found later. We size the recorder for the number of days you choose."},
             {"q": "Do the cameras need Wi-Fi in the warehouse?", "a": "No. Every camera is wired PoE back to a switch, which is more reliable than Wi-Fi across racking and metal walls."},
+            {"q": "Is there a monthly fee?", "a": "No. Footage and plate data stay on your recorder, with no subscription and no per-camera fee."},
         ],
     },
     {
         "city": "sarasota",
         "service": "hoa-security-cameras",
+        "camera": "pro",
+        "photo": "/assets/photos/stock/cameras-office-building-corner.jpg",
+        "photo_alt": "Three security cameras on the corner of a dark-clad building",
+        "packages_h2": "Camera packages for associations",
         "h1": "HOA and condo security cameras in Sarasota",
         "title": "HOA & Condo Security Cameras Sarasota FL | UniFi | LUMA",
         "description": "Security cameras for Sarasota HOAs and condo associations: gates, pools, mail rooms, garages and clubhouses. UniFi Protect with on-site recording, no fees.",
@@ -956,6 +994,7 @@ CITY_SERVICES = [
             ]},
         ],
         "faq": [
+            {"q": "What does an HOA camera system cost?", "a": "A gate with a plate camera plus the pool, mail room and garage usually means Business Pro, from $12,900 plus tax. Smaller buildings can start from Office 8, from $5,900 plus tax. The board gets a fixed price after a free walk."},
             {"q": "Can an HOA put security cameras in common areas in Florida?", "a": "Common areas such as gates, pools and mail rooms are usually recorded with the board's approval and posted signs. Your association's attorney should approve the written camera policy."},
             {"q": "Can HOA cameras record audio?", "a": "We install them with audio off. Florida requires everyone's consent to record a conversation."},
             {"q": "Who can see the footage?", "a": "Only the people the board names. Each gets a UniFi Protect login limited to the cameras and history they are allowed."},

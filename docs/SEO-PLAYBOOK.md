@@ -13,7 +13,7 @@ Audit and competitor scan: 2026-09-30.
 
 - Never invent reviews, star ratings, install counts, years in business, licence numbers or certifications. Certifications are not shown on the site (owner decision 2026-09-29).
 - Case studies only from the real cases already on `/work`.
-- Prices: only the ranges already published on `/budget` and the LUMA Care page. Don't create new prices; flag in the report if an article needs one.
+- Prices: only the ranges already published on `/budget` and the LUMA Care page, plus the owner-approved camera packages (2026-10-22: Home 4 from $2,900, Office 8 from $5,900, Business Pro 12+ from $12,900, all + tax; source of truth `CAMERA_PACKAGES` in `js/app.js`). Don't create new prices; flag in the report if an article needs one.
 - Brand canon: Lutron (RadioRA 3, HomeWorks, Ketra, Sivoia), Somfy, UniFi (Protect, Wi-Fi 6/7), Sonos, Control4, Savant, Josh.ai.
 - English only. Voice: calm, specific, technical, no hype.
 
@@ -159,6 +159,26 @@ Ignore: Sonoma, Santa Monica, Gulf Shores, Tampa, LA and other out-of-area queri
 - Links in: `/security` "For offices and shops" band lists all five, new band on `/networking`, Sarasota and Bradenton city hubs, related links between all business pages.
 - After merge, request indexing in this order: the hub, Bradenton, retail, restaurant, warehouse, HOA, then `/security` and `/networking` (changed).
 - Not done, owner to confirm: UniFi Access door control (not on the pages), prices (none on the pages), credential badges on `/security` and `/networking`.
+
+### Done on 2026-10-22 (branch claude/camera-packages)
+
+Conversion pass on the camera pages. The unmerged `claude/business-cameras` work (above) is carried on this branch, rebuilt on top of the canonical guard (PR #16), so merging this branch merges both.
+
+- **Pages:** `/security`, `/service-areas/sarasota/security`, `/service-areas/sarasota/business-security`, `/service-areas/bradenton/business-security`, `/service-areas/sarasota/{retail,restaurant,warehouse,hoa}-security-cameras`. A row is a camera page when it has `"camera"` in `CITY_SERVICES` (`home`, `business` or `pro` decides which package leads).
+- **Packages block** (owner-approved, "from" prices, "+ tax"):
+  - Home 4 — from $2,900: 4 UniFi G6 turret/bullet, UNVR, 8 TB drive, PoE switch, installation and app setup.
+  - Office 8 — from $5,900: 6 G6 turret/bullet + 2 G6 Dome (entrance, register), UNVR Pro, 2 drives, cameras on their own network segment.
+  - Business Pro 12+ — from $12,900: G6 Pro vandal-resistant, AI LPR with an overview camera, G6 180, UNVR G2 Pro, 4 drives.
+  - Every package: no monthly subscription, footage on site, NDAA-compliant UniFi hardware, work carried out with our Florida-licensed low-voltage partner, final fixed price after the free walk. Options: video doorbell, extra cameras, plate camera for gates, alarm.
+  - Lead card: Home 4 on `/security` and `/service-areas/sarasota/security`; Office 8 on the business hub, Bradenton, retail, restaurant; Business Pro on warehouse and HOA. No LUMA Care plan, no warranty terms, reviews, install counts or certifications.
+- **Inline form** "Free camera plan in 48 hours" on every camera page: name, phone, email (optional), home or business, number of cameras, city, message, plus hidden `page` and `package`. Netlify form name `camera-quote` (hidden twin written by `netlify_form()` in `scripts/generate-seo-pages.py`). Thank-you state in place. Picking a package card fills the form.
+- **Mobile call bar** (under 768 px, camera pages only): "Call (941) 431-4640" + "Get a free plan". The "Talk to LUMA" launcher is lifted above the bar; the corner lead card does not auto-open on these pages.
+- **Money questions** in copy and FAQ (FAQPage schema is built from the visible FAQ): cost (points to the packages), how many cameras, monthly fee (no), audio (off by default, Fla. Stat. 934.03). Each page words the cost question differently.
+- **Keywords:** `/service-areas/sarasota/security` keeps "security camera installation Sarasota FL" (title, H1) and adds home / house security cameras in H2s ("Home security camera packages in Sarasota", "How many cameras a Sarasota house needs", "How we install house security cameras"). `/service-areas/sarasota/business-security` keeps office / business security camera systems ("Business security camera system packages in Sarasota"). Cross-links: "Office and business security camera systems in Sarasota" → hub, "Home and house security cameras in Sarasota" → `/service-areas/sarasota/security`.
+- **Photos:** 4 Unsplash-licence stock photos in `/assets/photos/stock/` (sources and authors in `assets/photos/stock/SOURCES.md`), alt text only, never captioned as our installs.
+- **Netlify:** after merge, check Forms → `camera-quote` appears as an active form and set its notification email (hello@lumasmarthome.com).
+- **Request indexing after merge, in this order:** `/service-areas/sarasota/security`, `/service-areas/sarasota/business-security`, `/security`, `/service-areas/bradenton/business-security`, `/service-areas/sarasota/retail-security-cameras`, `/service-areas/sarasota/restaurant-security-cameras`, `/service-areas/sarasota/warehouse-security-cameras`, `/service-areas/sarasota/hoa-security-cameras`, then `/networking`, `/service-areas/sarasota`, `/service-areas/bradenton` (changed links).
+- **Owner to confirm:** "Installation and app setup" is listed on all three cards (the brief had it on Home 4 only); `/security` still has an install photo strip ("What a LUMA install looks like", e.g. "Dock camera on Sarasota Bay") — if those are not photos of real LUMA jobs, recaption or remove them.
 
 ### Month by month (one gate per month; do not move on if the gate fails)
 

@@ -21,7 +21,7 @@ import re
 from datetime import date
 from pathlib import Path
 
-from seo_content import CITIES, NAP, extra_routes, geo_payload
+from seo_content import CITIES, CITY_SERVICES, NAP, extra_routes, geo_payload
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://lumasmarthome.com"
@@ -614,14 +614,33 @@ CONTACT_FIELDS = [
 ]
 
 
+# The inline "Free camera plan" form on the camera pages (CameraQuoteForm in
+# js/app.js) posts with form-name=camera-quote. Registered on every page that
+# shows it.
+CAMERA_QUOTE_FIELDS = [
+    "name", "phone", "email", "property_type", "cameras", "city", "message",
+    "package", "page",
+]
+CAMERA_QUOTE_PAGES = {"security"} | {
+    f"sa-{r['city']}-{r['service']}" for r in CITY_SERVICES if r.get("camera")
+}
+
+
 def netlify_form(route: dict) -> str:
-    if route["id"] != "contact":
-        return ""
-    inputs = "".join(f'<input name="{f}">' for f in CONTACT_FIELDS)
-    return (
-        '<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>'
-        f'<input name="bot-field">{inputs}</form>\n'
-    )
+    out = ""
+    if route["id"] == "contact":
+        inputs = "".join(f'<input name="{f}">' for f in CONTACT_FIELDS)
+        out += (
+            '<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>'
+            f'<input name="bot-field">{inputs}</form>\n'
+        )
+    if route["id"] in CAMERA_QUOTE_PAGES:
+        inputs = "".join(f'<input name="{f}">' for f in CAMERA_QUOTE_FIELDS)
+        out += (
+            '<form name="camera-quote" data-netlify="true" netlify-honeypot="bot-field" hidden>'
+            f'<input name="bot-field">{inputs}</form>\n'
+        )
+    return out
 
 
 def head_for(route: dict) -> str:
