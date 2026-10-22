@@ -1949,7 +1949,7 @@ function SecurityPage({navigate}) {
       links={[['sa-sarasota-security','Home security cameras in Sarasota'],['sa-sarasota-business-security','Office and business security camera systems in Sarasota']]}/>}
     quote={<CameraQuoteForm lead="home"/>}
     faq={[
-      {q:'What does a security camera system cost?', a:'Our packages start from $2,500 for 4 cameras (Home 4), from $4,900 for 8 cameras (Office 8) and from $11,500 for 12 or more (Business Pro), plus tax. The final fixed price comes after a free walk of the property.'},
+      {q:'What does a security camera system cost?', a:'Our packages start from $2,500 for 4 cameras (Home 4), from $4,200 for 8 cameras (Office 8) and from $10,900 for 12 or more (Business Pro), plus tax. The final fixed price comes after a free walk of the property.'},
       {q:'How many cameras does a house need?', a:'Usually four to eight: the driveway, the front door, the back yard or lanai, and each side gate. Small offices usually need four to eight as well. We count them with you on the walk.'},
       {q:'Is there a monthly fee?', a:'No. Video records to a UniFi recorder on your property. There is no subscription and no per-camera fee.'},
       {q:'Do the cameras record audio?', a:'Audio is off by default. Florida requires the consent of everyone in a conversation before it is recorded (Fla. Stat. 934.03), so we leave camera microphones switched off.'},
@@ -3849,11 +3849,11 @@ const CAMERA_PACKAGES = {
     fit:'The drive, the front door, the back yard and a side gate.',
     items:['4 UniFi G6 cameras, turret or bullet','UniFi UNVR recorder with an 8 TB drive','PoE switch: one cable per camera for power and video','Installation and app setup'],
     quote:{property:'Home', cameras:'1–4'}},
-  office8: {name:'Office 8', price:'$4,900', tag:'For an office or a shop', kit:'/assets/photos/cameras/cam-kit-office8.jpg', kitAlt:'Business camera kit: eight cameras, a rack recorder, a PoE switch and a tablet showing eight camera views', line:'8 cameras + recorder',
+  office8: {name:'Office 8', price:'$4,200', tag:'For an office or a shop', kit:'/assets/photos/cameras/cam-kit-office8.jpg', kitAlt:'Business camera kit: eight cameras, a rack recorder, a PoE switch and a tablet showing eight camera views', line:'8 cameras + recorder',
     fit:'Doors, the register or front desk, the back door and the lot.',
     items:['6 UniFi G6 cameras, turret or bullet','2 G6 Dome cameras for the entrance and the register','UNVR Pro recorder with 2 drives','Cameras on their own network segment','Installation and app setup'],
     quote:{property:'Business', cameras:'5–8'}},
-  pro12: {name:'Business Pro 12+', price:'$11,500', tag:'For larger sites and gates', kit:'/assets/photos/cameras/cam-kit-pro12.jpg', kitAlt:'Commercial camera kit: vandal-resistant domes, bullet cameras, a plate camera, a panoramic camera, a large recorder and a switch', line:'12+ cameras + recorder',
+  pro12: {name:'Business Pro 12+', price:'$10,900', tag:'For larger sites and gates', kit:'/assets/photos/cameras/cam-kit-pro12.jpg', kitAlt:'Commercial camera kit: vandal-resistant domes, bullet cameras, a plate camera, a panoramic camera, a large recorder and a switch', line:'12+ cameras + recorder',
     fit:'Warehouses, yards, associations and multi-entrance buildings.',
     items:['G6 Pro vandal-resistant cameras','AI LPR plate camera with an overview camera','G6 180 wide-angle camera','UNVR G2 Pro recorder with 4 drives','Installation and app setup'],
     quote:{property:'Business', cameras:'9–16'}},

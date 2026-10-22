@@ -406,7 +406,7 @@ window.LUMA_SEO = {
       "id": "sa-sarasota-business-security",
       "path": "/service-areas/sarasota/business-security",
       "title": "Office & Business Security Camera Systems Sarasota FL | LUMA",
-      "description": "Office and business security camera systems in Sarasota, FL: UniFi cameras, an on-site recorder and manager logins, no per-camera fees. From $4,900 + tax.",
+      "description": "Office and business security camera systems in Sarasota, FL: UniFi cameras, an on-site recorder and manager logins, no per-camera fees. From $4,200 + tax.",
       "kind": "city-service",
       "city": "sarasota",
       "service": "business-security",
@@ -1372,7 +1372,7 @@ window.LUMA_GEO = {
       "faq": [
         {
           "q": "How much does security camera installation cost in Sarasota?",
-          "a": "Our packages start from $2,500 for 4 cameras (Home 4), from $4,900 for 8 cameras (Office 8) and from $11,500 for 12 or more (Business Pro), plus tax. Each includes the cameras, a UniFi recorder and the installation. The final fixed price follows a free walk of the property."
+          "a": "Our packages start from $2,500 for 4 cameras (Home 4), from $4,200 for 8 cameras (Office 8) and from $10,900 for 12 or more (Business Pro), plus tax. Each includes the cameras, a UniFi recorder and the installation. The final fixed price follows a free walk of the property."
         },
         {
           "q": "How many security cameras does a house need?",
@@ -1615,7 +1615,7 @@ window.LUMA_GEO = {
       "camera": "business",
       "h1": "Business Security Camera Systems in Sarasota, FL",
       "title": "Office & Business Security Camera Systems Sarasota FL | LUMA",
-      "description": "Office and business security camera systems in Sarasota, FL: UniFi cameras, an on-site recorder and manager logins, no per-camera fees. From $4,900 + tax.",
+      "description": "Office and business security camera systems in Sarasota, FL: UniFi cameras, an on-site recorder and manager logins, no per-camera fees. From $4,200 + tax.",
       "lede": "Office and business security camera systems do two jobs. They discourage theft and trouble before it starts, and afterwards they answer the hard questions, from a till that came up short to a slip-and-fall claim, with video you can hand to an insurer or the police.",
       "paragraphs": [
         "A Sarasota storefront or office takes the same coastal beating as a house: salt air near the water, humidity in every season, summer lightning. We fit weather-rated UniFi cameras with sealed connections, wired back to a recorder in your building, and keep them on their own network, apart from the office computers."
@@ -1941,7 +1941,7 @@ window.LUMA_GEO = {
       "faq": [
         {
           "q": "How much does a business security camera system cost in Sarasota?",
-          "a": "Most offices and shops start with Office 8, from $4,900 plus tax for eight cameras. Larger sites, gates and warehouses start with Business Pro, from $11,500 plus tax for twelve or more. A small office with four cameras can start from $2,500 plus tax. The price is fixed after a free site walk."
+          "a": "Most offices and shops start with Office 8, from $4,200 plus tax for eight cameras. Larger sites, gates and warehouses start with Business Pro, from $10,900 plus tax for twelve or more. A small office with four cameras can start from $2,500 plus tax. The price is fixed after a free site walk."
         },
         {
           "q": "Can I see several locations in one app?",
@@ -2090,7 +2090,7 @@ window.LUMA_GEO = {
       "faq": [
         {
           "q": "What does a commercial camera system cost in Bradenton?",
-          "a": "The same as in Sarasota: from $4,900 for 8 cameras and from $11,500 for 12 or more, plus tax, with a fixed price after a free walk of the site."
+          "a": "The same as in Sarasota: from $4,200 for 8 cameras and from $10,900 for 12 or more, plus tax, with a fixed price after a free walk of the site."
         },
         {
           "q": "Do you install commercial security cameras in Bradenton?",
@@ -2266,7 +2266,7 @@ window.LUMA_GEO = {
       "faq": [
         {
           "q": "What does a store camera system cost?",
-          "a": "Our packages start from $2,500 for 4 cameras, $4,900 for 8 and $11,500 for 12 or more, plus tax. The fixed price for your store follows a free walk."
+          "a": "Our packages start from $2,500 for 4 cameras, $4,200 for 8 and $10,900 for 12 or more, plus tax. The fixed price for your store follows a free walk."
         },
         {
           "q": "How many cameras does a small retail store need?",
@@ -2434,7 +2434,7 @@ window.LUMA_GEO = {
       "faq": [
         {
           "q": "What does a restaurant camera system cost?",
-          "a": "Most restaurants fit the Office 8 package, from $4,900 plus tax, or Business Pro for 12 or more cameras, from $11,500 plus tax. The fixed price follows a free walk of the restaurant."
+          "a": "Most restaurants fit the Office 8 package, from $4,200 plus tax, or Business Pro for 12 or more cameras, from $10,900 plus tax. The fixed price follows a free walk of the restaurant."
         },
         {
           "q": "How many cameras does a restaurant need?",
@@ -2606,7 +2606,7 @@ window.LUMA_GEO = {
       "faq": [
         {
           "q": "What does a warehouse camera system cost?",
-          "a": "Warehouses usually start with Business Pro: 12 or more cameras, a plate camera at the gate and a UNVR G2 Pro recorder, from $11,500 plus tax. The fixed price follows a free walk of the site."
+          "a": "Warehouses usually start with Business Pro: 12 or more cameras, a plate camera at the gate and a UNVR G2 Pro recorder, from $10,900 plus tax. The fixed price follows a free walk of the site."
         },
         {
           "q": "How far can a warehouse camera see at night?",
@@ -2774,7 +2774,7 @@ window.LUMA_GEO = {
       "faq": [
         {
           "q": "What does an HOA camera system cost?",
-          "a": "A gate with a plate camera plus the pool, mail room and garage usually means Business Pro, from $11,500 plus tax. Smaller buildings can start from Office 8, from $4,900 plus tax. The board gets a fixed price after a free walk."
+          "a": "A gate with a plate camera plus the pool, mail room and garage usually means Business Pro, from $10,900 plus tax. Smaller buildings can start from Office 8, from $4,200 plus tax. The board gets a fixed price after a free walk."
         },
         {
           "q": "Can an HOA put security cameras in common areas in Florida?",
