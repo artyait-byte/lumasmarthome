@@ -13,7 +13,7 @@ Audit and competitor scan: 2026-09-30.
 
 - Never invent reviews, star ratings, install counts, years in business, licence numbers or certifications. Certifications are not shown on the site (owner decision 2026-09-29).
 - Case studies only from the real cases already on `/work`.
-- Prices: only the ranges already published on `/budget` and the LUMA Care page. Don't create new prices; flag in the report if an article needs one.
+- Prices: only the ranges already published on `/budget` and the LUMA Care page, plus the owner-approved camera packages (2026-10-22, revised to the Tampa Bay market middle: Home 4 from $2,500, Office 8 from $4,200, Business Pro 12+ from $10,900, all + tax; source of truth `CAMERA_PACKAGES` in `js/app.js`). Don't create new prices; flag in the report if an article needs one.
 - Brand canon: Lutron (RadioRA 3, HomeWorks, Ketra, Sivoia), Somfy, UniFi (Protect, Wi-Fi 6/7), Sonos, Control4, Savant, Josh.ai.
 - English only. Voice: calm, specific, technical, no hype.
 
@@ -87,13 +87,60 @@ Written 2026-10-15 from the Search Console export of 2026-10-13 (last 3 months) 
 | motorized shades siesta key (blinds, roller, roman, screens) | `/service-areas/siesta-key/shading` |
 | security camera installation sarasota · house security cameras sarasota fl | `/service-areas/sarasota/security` |
 | home automation sarasota fl | `/service-areas/sarasota/automation` |
-| office / business security cameras sarasota fl (also Bradenton) | `/service-areas/sarasota/business-security` |
+| office / business security cameras sarasota fl · office surveillance camera system sarasota · business security camera systems sarasota | `/service-areas/sarasota/business-security` (hub for the business section) |
+| commercial security cameras bradenton · office surveillance camera system bradenton fl | `/service-areas/bradenton/business-security` |
+| retail store security cameras sarasota | `/service-areas/sarasota/retail-security-cameras` |
+| restaurant security cameras sarasota | `/service-areas/sarasota/restaurant-security-cameras` |
+| warehouse security cameras sarasota | `/service-areas/sarasota/warehouse-security-cameras` |
+| hoa / condo security cameras sarasota | `/service-areas/sarasota/hoa-security-cameras` |
 | whole home audio sarasota · sonance sarasota | `/service-areas/sarasota/audio` |
 | home theater sarasota · home theater installation sarasota | `/service-areas/sarasota/theaters` |
 | smart home venice / bradenton / lakewood ranch / longboat key / siesta key | the city page |
 | RadioRA 3 vs HomeWorks, costs, comparisons | journal articles |
 
 Internal links use these phrases as anchor text and point at the page in the right column. Service pages (`/lighting`, `/shading`…) carry the regional H1 "· Sarasota & Manatee" and link down to the city×service page.
+
+### Keyword targets for the Sarasota top 10 (GSC 2026-10-13, last 3 months)
+
+Position = average position in Search Console (impressions in brackets). "—" = no impressions yet. Priority: P1 = within reach this quarter (pos ≤ 25 or new page with a weak SERP), P2 = needs depth + GBP, P3 = needs reviews and links. Recheck every month on the Tuesday routine and update this table.
+
+| Keyword | Page | GSC pos (impr) | Cluster | Priority |
+|---|---|---|---|---|
+| house security cameras sarasota fl | `/service-areas/sarasota/security` | 11.8 (6) | A cameras | P1 |
+| house surveillance camera(s) sarasota fl | `/service-areas/sarasota/security` | 11–13.7 (7) | A cameras | P1 |
+| home security camera sarasota fl | `/service-areas/sarasota/security` | 10 (2) | A cameras | P1 |
+| security camera sarasota fl · surveillance cameras sarasota fl | `/service-areas/sarasota/security` | 11–12 (2) | A cameras | P1 |
+| security camera installation sarasota (fl) | `/service-areas/sarasota/security` | 64 (2) | A cameras | P2 |
+| security cameras sarasota | `/service-areas/sarasota/security` | 30 (3) | A cameras | P2 |
+| home security sarasota fl | `/service-areas/sarasota/security` | 23 (5) | A cameras | P2 |
+| video doorbell camera sarasota · doorbell camera sarasota | `/service-areas/sarasota/security` | 31.5–74 (3) | A cameras | P3 |
+| office security camera(s) system(s) sarasota fl | `/service-areas/sarasota/business-security` | 12–17 (9) | A business cameras | P1 |
+| office surveillance camera system(s) sarasota fl | `/service-areas/sarasota/business-security` | 12–23 (8) | A business cameras | P1 |
+| business security camera systems sarasota | `/service-areas/sarasota/business-security` | — | A business cameras | P1 |
+| security cameras supplier sarasota fl | `/service-areas/sarasota/business-security` | 11 (1) | A business cameras | P2 |
+| commercial security cameras bradenton · office surveillance camera system bradenton fl | `/service-areas/bradenton/business-security` | 25 (2) | A business cameras | P1 |
+| retail store security cameras sarasota | `/service-areas/sarasota/retail-security-cameras` | — | A business cameras | P2 |
+| restaurant security cameras sarasota | `/service-areas/sarasota/restaurant-security-cameras` | — | A business cameras | P2 |
+| warehouse security cameras sarasota | `/service-areas/sarasota/warehouse-security-cameras` | — | A business cameras | P2 |
+| hoa / condo security cameras sarasota | `/service-areas/sarasota/hoa-security-cameras` | — | A business cameras | P2 |
+| smart home installation sarasota | `/` | 37 (14) | A general | P2 |
+| smart home sarasota · smart house sarasota | `/` | 61 (6) | A general | P3 |
+| smart home company sarasota | `/` | 58.5 (4) | A general | P3 |
+| smart home integration sarasota · smart home price sarasota fl | `/` | — | A general | P3 |
+| home automation sarasota fl | `/service-areas/sarasota/automation` | 45 (5) | A general | P2 |
+| home automation system bradenton fl | `/service-areas/bradenton` | 32 (5) | B cities | P2 |
+| smart home installation venice | `/service-areas/venice` | 9.2 (5) | B cities | P1 |
+| motorized shades sarasota · motorized blinds sarasota · roller shades sarasota | `/service-areas/sarasota/shading` | ~55 (cluster) | A shades | P2 |
+| motorized shades longboat key (exterior, blackout, window treatments) | `/service-areas/longboat-key/shading` | 7–14 | A shades | P1 |
+| motorized shades siesta key (blinds, roller, screens) | `/service-areas/siesta-key/shading` | ~50 (cluster) | A shades | P1 |
+| lutron installer sarasota · lutron sarasota | `/service-areas/sarasota/lighting` | ~55 (cluster) | C brands | P2 |
+| lutron homeworks near me · lutron integrator fl | `/lighting` | 5–9 | C brands | P1 |
+| home theater sarasota · home theater installation sarasota | `/service-areas/sarasota/theaters` | 44 (4) | A theater | P2 |
+| home theater longboat key | `/service-areas/longboat-key` | 7.5 (4) | B cities | P1 |
+| sonance whole home audio florida · whole home audio sarasota | `/service-areas/sarasota/audio` | 30 (16) | A audio | P2 |
+| permanent outdoor lighting sarasota | `/permanent-lighting` | — | A lighting | P3 |
+
+Ignore: Sonoma, Santa Monica, Gulf Shores, Tampa, LA and other out-of-area queries (weighted avg ~57); national brand terms with no local intent.
 
 ### Done on 2026-10-15 (branch claude/seo-keyword-plan)
 
@@ -104,6 +151,52 @@ Internal links use these phrases as anchor text and point at the page in the rig
 - New pages: `/service-areas/longboat-key/shading`, `/service-areas/siesta-key/shading`, linked from the shades article, the Sarasota shades page and their city pages.
 - Security page title and H1 moved to "security camera installation".
 - Legal name fixed site-wide.
+
+### Done on 2026-10-15 (branch claude/business-cameras)
+
+- Business cameras section, hub = `/service-areas/sarasota/business-security` (URL kept, it already ranks 12–17): 700 → ~1,460 words, camera-by-position table with current UniFi models (G6 Dome / Mini Dome / Turret / Pro Bullet / PTZ / 180, AI Theta Pro, AI LPR), recorder sizing table (UNVR Instant / UNVR / UNVR Pro / UNVR G2 Pro), links to business-type pages, 8 FAQ.
+- New pages (unique layouts and FAQ each, 890–970 words): `/service-areas/bradenton/business-security`, `/service-areas/sarasota/retail-security-cameras`, `…/restaurant-security-cameras`, `…/warehouse-security-cameras`, `…/hoa-security-cameras`. Medical/dental and marinas are a line on the hub only (weak search demand).
+- Links in: `/security` "For offices and shops" band lists all five, new band on `/networking`, Sarasota and Bradenton city hubs, related links between all business pages.
+- After merge, request indexing in this order: the hub, Bradenton, retail, restaurant, warehouse, HOA, then `/security` and `/networking` (changed).
+- Not done, owner to confirm: UniFi Access door control (not on the pages), prices (none on the pages), credential badges on `/security` and `/networking`.
+
+### Done on 2026-10-22 (branch claude/camera-packages)
+
+Conversion pass on the camera pages. The unmerged `claude/business-cameras` work (above) is carried on this branch, rebuilt on top of the canonical guard (PR #16), so merging this branch merges both.
+
+- **Pages:** `/security`, `/service-areas/sarasota/security`, `/service-areas/sarasota/business-security`, `/service-areas/bradenton/business-security`, `/service-areas/sarasota/{retail,restaurant,warehouse,hoa}-security-cameras`. A row is a camera page when it has `"camera"` in `CITY_SERVICES` (`home`, `business` or `pro` decides which package leads).
+- **Packages block** (owner-approved, "from" prices, "+ tax"):
+  - Home 4 — from $2,500: 4 UniFi G6 turret/bullet, UNVR, 8 TB drive, PoE switch, installation and app setup.
+  - Office 8 — from $4,200: 6 G6 turret/bullet + 2 G6 Dome (entrance, register), UNVR Pro, 2 drives, cameras on their own network segment.
+  - Business Pro 12+ — from $10,900: G6 Pro vandal-resistant, AI LPR with an overview camera, G6 180, UNVR G2 Pro, 4 drives.
+  - Every package: no monthly subscription, footage on site, NDAA-compliant UniFi hardware, work carried out with our Florida-licensed low-voltage partner, final fixed price after the free walk. Options: video doorbell, extra cameras, plate camera for gates, alarm.
+  - Lead card: Home 4 on `/security` and `/service-areas/sarasota/security`; Office 8 on the business hub, Bradenton, retail, restaurant; Business Pro on warehouse and HOA. No LUMA Care plan, no warranty terms, reviews, install counts or certifications.
+- **Inline form** "Free camera plan in 48 hours" on every camera page: name, phone, email (optional), home or business, number of cameras, city, message, plus hidden `page` and `package`. Netlify form name `camera-quote` (hidden twin written by `netlify_form()` in `scripts/generate-seo-pages.py`). Thank-you state in place. Picking a package card fills the form.
+- **Mobile call bar** (under 768 px, camera pages only): "Call (941) 431-4640" + "Get a free plan". The "Talk to LUMA" launcher is lifted above the bar; the corner lead card does not auto-open on these pages.
+- **Money questions** in copy and FAQ (FAQPage schema is built from the visible FAQ): cost (points to the packages), how many cameras, monthly fee (no), audio (off by default, Fla. Stat. 934.03). Each page words the cost question differently.
+- **Keywords:** `/service-areas/sarasota/security` keeps "security camera installation Sarasota FL" (title, H1) and adds home / house security cameras in H2s ("Home security camera packages in Sarasota", "How many cameras a Sarasota house needs", "How we install house security cameras"). `/service-areas/sarasota/business-security` keeps office / business security camera systems ("Business security camera system packages in Sarasota"). Cross-links: "Office and business security camera systems in Sarasota" → hub, "Home and house security cameras in Sarasota" → `/service-areas/sarasota/security`.
+- **Photos:** 4 Unsplash-licence stock photos in `/assets/photos/stock/` (sources and authors in `assets/photos/stock/SOURCES.md`), alt text only, never captioned as our installs.
+- **Netlify, blocker:** on 2026-10-22 the site had form detection OFF (`processing_settings.ignore_html_forms: true`, no forms registered, not even `contact`). Until the owner turns on Forms → "Enable form detection" and redeploys, neither the contact form, the lead card nor `camera-quote` is stored; visitors see the "did not go through, please call" message. After enabling: check `contact` and `camera-quote` appear and set notifications to hello@lumasmarthome.com.
+- **Request indexing after merge, in this order:** `/service-areas/sarasota/security`, `/service-areas/sarasota/business-security`, `/security`, `/service-areas/bradenton/business-security`, `/service-areas/sarasota/retail-security-cameras`, `/service-areas/sarasota/restaurant-security-cameras`, `/service-areas/sarasota/warehouse-security-cameras`, `/service-areas/sarasota/hoa-security-cameras`, then `/networking`, `/service-areas/sarasota`, `/service-areas/bradenton` (changed links).
+- **Owner to confirm:** "Installation and app setup" is listed on all three cards (the brief had it on Home 4 only); `/security` still has an install photo strip ("What a LUMA install looks like", e.g. "Dock camera on Sarasota Bay") — if those are not photos of real LUMA jobs, recaption or remove them.
+
+### Done on 2026-10-22 (branch claude/camera-section-v2, on top of claude/camera-packages)
+
+Camera section v2: the seven camera pages rebuilt on the structure of the reference the owner picked (SafeTouch, "Security Camera Installation in Tampa, FL"), block by block, with LUMA copy and photos. Merging this branch also merges `claude/camera-packages` and `claude/business-cameras`.
+
+- **Where it lives.** Copy: `scripts/camera_content.py` (`CAMERA_ROWS` replaces the camera rows of `CITY_SERVICES`; `CAMERA_TYPES` feeds the accordion, sent to the browser as `LUMA_GEO.cameraTypes`). Template: `CameraSectionPage` in `js/app.js` (renders any city×service row with a `cam` key), styles under `.cx` in `css/spa.css`. `/security` keeps its own layout.
+- **Block order (main page and business hub):** centered hero with eyebrow, H1, two paragraphs, "Call" and "Get a free camera plan" pills, three tall 3:4 photos → sticky tab bar (Packages · Cameras · Benefits · Why LUMA · Where we install · FAQ, in page order, active tab marked on scroll) → two-step form (name/phone/email, then home or business, number of cameras, city; Netlify form `camera-quote`, same field names) → process block (terracotta panel + Sarasota bayfront photo) → packages band (unchanged prices) → camera-types accordion (Bullet, Dome, Turret, Panoramic 180°, Vandal-resistant dome, LPR, Video doorbell; the photo switches with the open row) → benefits (21:9 photo + 6 icon cards) → Why LUMA (accordion beside the rack photo) → How it works (4-step card deck) → scenarios (banner + 6 photo cards linking to the segment pages) → choosing the right camera → watch from anywhere → FAQ (visible `<details class="fx-faq-item">`, FAQPage schema built from it) → call bar → final estimate form. The map block is not on these pages (the reference has none).
+- **Segment pages** (Bradenton commercial, retail, restaurant, warehouse, HOA): hero, tabs, form, packages (right lead card), a 5-type accordion with copy written for that business, one layout section (position/camera table where there was one), FAQ, call bar, final form.
+- **Left out of the reference on purpose:** client-logo wall, awards and certifications, "24/7 monitoring center", response-time guarantees, the integrations wall, the "Why choose SafeTouch" slider, the logo marquee. LUMA has none of these. Alarm monitoring is mentioned only as "available on request".
+- **Keyword per page** (H1 / title):
+  - `/service-areas/sarasota/security`: "Security Camera Installation in Sarasota, FL" / "Security Camera Installation Sarasota FL | UniFi | LUMA". Also in copy: house/home security cameras (packages H2, FAQ), surveillance (benefits H2 "Video Surveillance System"), video doorbell (accordion).
+  - `/service-areas/sarasota/business-security`: "Business Security Camera Systems in Sarasota, FL" / "Office & Business Security Camera Systems Sarasota FL | LUMA" (title keeps "office", which already ranks 12–17).
+  - Bradenton: "Commercial Security Camera Systems in Bradenton, FL"; retail / restaurant / warehouse / HOA: "<Type> Security Cameras in Sarasota, FL". Titles unchanged.
+  - Cross-links: main page → hub "Office and business security camera systems in Sarasota" (packages, scenarios, FAQ); hub → main page "Home and house security cameras in Sarasota" and "security camera installation in Sarasota".
+- **Photos:** `assets/photos/cameras/` (17 illustrations generated for LUMA, see its `SOURCES.md`); never captioned as a LUMA job or a client.
+- **Not done, owner to confirm in person:** a "Trusted by" client row. A first attempt to add client names was refused by the agent's permission system, so no client names or logos are on the pages; see the PR description.
+- **Netlify:** form detection is still OFF on the site (`processing_settings.ignore_html_forms = true`); until it is turned on, `camera-quote` submissions show the "please call" message. Site settings were not changed.
+- **Request indexing after merge, in this order:** `/service-areas/sarasota/security`, `/service-areas/sarasota/business-security`, `/service-areas/bradenton/business-security`, `/service-areas/sarasota/retail-security-cameras`, `/service-areas/sarasota/restaurant-security-cameras`, `/service-areas/sarasota/warehouse-security-cameras`, `/service-areas/sarasota/hoa-security-cameras`, then `/security` (unchanged layout, new packages and form from the previous branch).
 
 ### Month by month (one gate per month; do not move on if the gate fails)
 

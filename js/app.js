@@ -1487,7 +1487,7 @@ function AutomationPage({navigate}) {
   />;
 }
 /* ─── SHARED VALUE-PROP / WHY / WORK BLOCKS ─── */
-function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases, diagram, aside}) {
+function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy, formName, installGrid, navigate, intro, values, panels, pair, faq, ctaTitle, ctaBody, scenes, cases, diagram, aside, packages, quote}) {
   /* The reference's inner page, section for section: a short hero, one
      centred paragraph with a bold lead, a "what it does for you" grid (copy
      in five columns, four icon items in seven), a row of photo cards, and
@@ -1539,12 +1539,17 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
         </div>
       </section>
 
+      {packages}
+
       {aside && (
         <section className="fx-band--plain fx-py-md" id={aside.id}>
           <div className="fx-field">
             <div className="fx-lede">
               <h2 className="fx-d3">{aside.h2}</h2>
               <p>{aside.body} <NavLink page={aside.page} navigate={navigate} className="fx-more">{aside.link} <i aria-hidden="true">→</i></NavLink></p>
+              {aside.links && <p>{aside.links.map(([pg,label],i,arr)=>(
+                <React.Fragment key={pg}><NavLink page={pg} navigate={navigate} className="fx-inline">{label}</NavLink>{i < arr.length-1 ? ' · ' : ''}</React.Fragment>
+              ))}</p>}
             </div>
           </div>
         </section>
@@ -1649,6 +1654,8 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           </div>
         </section>
       )}
+
+      {quote}
 
       {/* 5. FAQ — the reference's accordion, only where a page has questions */}
       {faq && (
@@ -1935,8 +1942,19 @@ function SecurityPage({navigate}) {
       ],
     }}
     aside={{id:'business', h2:'For offices and shops', page:'sa-sarasota-business-security', link:'Business camera systems in Sarasota',
-      body:'The same UniFi Protect stack works for offices, showrooms, retail and small warehouses: wired cameras on the doors, the counter and the lot, recording on site with no per-camera fees, and one app for owners and managers.'}}
+      body:'The same UniFi Protect stack works for offices, showrooms, retail and small warehouses: wired cameras on the doors, the counter and the lot, recording on site with no per-camera fees, and one app for owners and managers.',
+      links:[['sa-sarasota-retail-security-cameras','Retail store security cameras'],['sa-sarasota-restaurant-security-cameras','Restaurant security cameras'],['sa-sarasota-warehouse-security-cameras','Warehouse security cameras'],['sa-sarasota-hoa-security-cameras','HOA and condo security cameras'],['sa-bradenton-business-security','Commercial security cameras in Bradenton']]}}
     cases={['case-bighouse']}
+    packages={<CameraPackages lead="home" h2="Camera packages and prices" navigate={navigate}
+      links={[['sa-sarasota-security','Home security cameras in Sarasota'],['sa-sarasota-business-security','Office and business security camera systems in Sarasota']]}/>}
+    quote={<CameraQuoteForm lead="home"/>}
+    faq={[
+      {q:'What does a security camera system cost?', a:'Our packages start from $2,500 for 4 cameras (Home 4), from $4,200 for 8 cameras (Office 8) and from $10,900 for 12 or more (Business Pro), plus tax. The final fixed price comes after a free walk of the property.'},
+      {q:'How many cameras does a house need?', a:'Usually four to eight: the driveway, the front door, the back yard or lanai, and each side gate. Small offices usually need four to eight as well. We count them with you on the walk.'},
+      {q:'Is there a monthly fee?', a:'No. Video records to a UniFi recorder on your property. There is no subscription and no per-camera fee.'},
+      {q:'Do the cameras record audio?', a:'Audio is off by default. Florida requires the consent of everyone in a conversation before it is recorded (Fla. Stat. 934.03), so we leave camera microphones switched off.'},
+      {q:'Who installs the cameras?', a:'LUMA Smart Home, a DBA of Tegra-Media LLC, designs and sets up the system. The installation work is carried out with our Florida-licensed low-voltage partner.'},
+    ]}
     credentials={['Ubiquiti UVP Partner','UniFi Protect Certified','CEDIA Member','Insured & bonded']}
     ctaCopy={{
       h2:'Start a <em>security conversation.</em>',
@@ -2103,6 +2121,8 @@ function NetworkingPage({navigate}) {
         {n:'03', text:'We ship the network 30 days before move-in so you arrive online — gateway provisioned, APs surveyed, every device pre-onboarded.'},
       ],
     }}
+    aside={{id:'business', h2:'Networks for offices and cameras', page:'sa-sarasota-business-security', link:'Office security camera systems in Sarasota',
+      body:'Business camera systems run on the same UniFi switching: cameras on their own network segment, the recorder on a battery backup, and fiber where a yard camera is beyond copper range.'}}
     cases={['case-spacious', 'case-urban']}
     credentials={['Ubiquiti UEWA','Ubiquiti UWA-Pro','Cat6A bonded subcontractor','Insured & bonded']}
     ctaCopy={{
@@ -3556,7 +3576,7 @@ function CityHubPage({cityId, navigate}){
         <div className="fx-field">
           <h2 className="fx-d3">What we install in {city.name}</h2>
           <p className="fx-lede">
-            {Object.keys(services).map((sid,i,arr)=>(
+            {Object.keys(services).filter(sid=>services[sid].listed!==false).map((sid,i,arr)=>(
               <React.Fragment key={sid}>
                 <NavLink page={servicePageForCity(cityId, sid)} navigate={navigate} className="fx-inline">{services[sid].name}</NavLink>{i < arr.length-1 ? ', ' : '.'}
               </React.Fragment>
@@ -3587,7 +3607,33 @@ function CityServicePage({cityId, serviceId, navigate}){
   const svc = (g.services && g.services[serviceId]) || {};
   const row = (g.cityServices && g.cityServices[cityId+'/'+serviceId]) || null;
   if (!row) return <CityHubPage cityId={cityId} navigate={navigate}/>;
-  const photo = lu(svc.og || '/assets/photos/lighting-scene.jpg');
+  if (row.cam) return <CameraSectionPage cityId={cityId} serviceId={serviceId} row={row} navigate={navigate}/>;
+  const photo = lu(row.photo || svc.og || '/assets/photos/lighting-scene.jpg');
+  const sections = (row.sections||[]).map(sec=>(
+    <div key={sec.h2} className="fx-lede" style={{marginTop:32}}>
+      <h2 className="fx-d3">{sec.h2}</h2>
+      {(sec.text||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+      {sec.table && (
+        <div className="fx-spec-wrap">
+          <table className="fx-spec">
+            <thead><tr>{sec.table.head.map(h=><th key={h} scope="col">{h}</th>)}</tr></thead>
+            <tbody>{sec.table.rows.map((r,i)=>(
+              <tr key={i}>{r.map((c,j)=>j===0 ? <th key={j} scope="row">{c}</th> : <td key={j} data-label={sec.table.head[j]}><LinkedText text={c} navigate={navigate}/></td>)}</tr>
+            ))}</tbody>
+          </table>
+        </div>
+      )}
+      {sec.bullets && <ul className="fx-checks">{sec.bullets.map(b=><li key={b}><LinkedText text={b} navigate={navigate}/></li>)}</ul>}
+      {(sec.after||[]).map((p,i)=><p key={'a'+i}><LinkedText text={p} navigate={navigate}/></p>)}
+    </div>
+  ));
+  const moreLinks = (
+    <p style={{marginTop:24}}>
+      <NavLink page={svc.page || serviceId} navigate={navigate} className="fx-more">{svc.nav} overview <i aria-hidden="true">→</i></NavLink>
+      <span style={{margin:'0 14px',color:'var(--cream3)'}}>·</span>
+      <NavLink page={cityPageId(cityId)} navigate={navigate} className="fx-more">Everything in {city.name} <i aria-hidden="true">→</i></NavLink>
+    </p>
+  );
   return (
     <div className="page">
       <FxInnerHero kicker={city.name + ' · ' + svc.nav} h1={row.h1} image={PLACE_PHOTO(cityId)} alt={city.name}/>
@@ -3600,19 +3646,9 @@ function CityServicePage({cityId, serviceId, navigate}){
                 {(row.paragraphs||[]).map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
               </div>
               {row.bullets && <ul className="fx-points fx-points--list">{row.bullets.map(b=><li key={b}>{b}</li>)}</ul>}
-              {(row.sections||[]).map(sec=>(
-                <div key={sec.h2} className="fx-lede" style={{marginTop:32}}>
-                  <h2 className="fx-d3">{sec.h2}</h2>
-                  {sec.text.map((p,i)=><p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
-                </div>
-              ))}
-              <p style={{marginTop:24}}>
-                <NavLink page={svc.page || serviceId} navigate={navigate} className="fx-more">{svc.nav} overview <i aria-hidden="true">→</i></NavLink>
-                <span style={{margin:'0 14px',color:'var(--cream3)'}}>·</span>
-                <NavLink page={cityPageId(cityId)} navigate={navigate} className="fx-more">Everything in {city.name} <i aria-hidden="true">→</i></NavLink>
-              </p>
+              {sections}{moreLinks}
             </div>
-            <div className="fx-row-media"><img src={photo} alt={svc.name} loading="lazy" decoding="async"/></div>
+            <div className="fx-row-media"><img src={photo} alt={row.photo_alt || svc.name} loading="lazy" decoding="async"/></div>
           </div>
         </div>
       </section>
@@ -3803,6 +3839,673 @@ function readPageFromUrl(){
   return 'home';
 }
 
+/* ─── CAMERA PAGES: packages, inline quote form, mobile call bar ───
+   On /security, /service-areas/sarasota/security and the business camera
+   pages (rows with `camera` in scripts/seo_content.py). Prices are the
+   owner-approved "from" prices, shown plus tax. The form posts to the Netlify
+   form "camera-quote", registered by scripts/generate-seo-pages.py. */
+const CAMERA_PACKAGES = {
+  home4: {name:'Home 4', price:'$2,500', tag:'For a house', note:'Less than a typical 5-year camera contract, and you own it.', kit:'/assets/photos/cameras/cam-kit-home4.jpg', kitAlt:'Home camera kit: four outdoor cameras, a recorder, a PoE switch and a phone showing four camera views', line:'4 cameras + recorder',
+    fit:'The drive, the front door, the back yard and a side gate.',
+    items:['4 UniFi G6 cameras, turret or bullet','UniFi UNVR recorder with an 8 TB drive','PoE switch: one cable per camera for power and video','Installation and app setup'],
+    quote:{property:'Home', cameras:'1–4'}},
+  office8: {name:'Office 8', price:'$4,200', tag:'For an office or a shop', kit:'/assets/photos/cameras/cam-kit-office8.jpg', kitAlt:'Business camera kit: eight cameras, a rack recorder, a PoE switch and a tablet showing eight camera views', line:'8 cameras + recorder',
+    fit:'Doors, the register or front desk, the back door and the lot.',
+    items:['6 UniFi G6 cameras, turret or bullet','2 G6 Dome cameras for the entrance and the register','UNVR Pro recorder with 2 drives','Cameras on their own network segment','Installation and app setup'],
+    quote:{property:'Business', cameras:'5–8'}},
+  pro12: {name:'Business Pro 12+', price:'$10,900', tag:'For larger sites and gates', kit:'/assets/photos/cameras/cam-kit-pro12.jpg', kitAlt:'Commercial camera kit: vandal-resistant domes, bullet cameras, a plate camera, a panoramic camera, a large recorder and a switch', line:'12+ cameras + recorder',
+    fit:'Warehouses, yards, associations and multi-entrance buildings.',
+    items:['G6 Pro vandal-resistant cameras','AI LPR plate camera with an overview camera','G6 180 wide-angle camera','UNVR G2 Pro recorder with 4 drives','Installation and app setup'],
+    quote:{property:'Business', cameras:'9–16'}},
+};
+const CAMERA_ORDER = {home:['home4','office8','pro12'], business:['office8','pro12','home4'], pro:['pro12','office8','home4']};
+const CAMERA_COMMON = ['No monthly subscription','Footage stays on site, on a recorder you own','NDAA-compliant UniFi hardware','Work carried out with our Florida-licensed low-voltage partner','Final fixed price after the free walk'];
+const CAMERA_INCLUDES = [['tool','Professional installation'],['cloudoff','No monthly fees or contract'],['app','Live view and alerts on your phone'],['shield','NDAA-compliant UniFi hardware'],['clipboard','Fixed price after a free walk'],['users','Florida-licensed low-voltage partner']];
+const CAMERA_OPTIONS = ['Video doorbell','Extra cameras','Plate camera for gates','Alarm'];
+const CAMERA_COUNTS = ['1–4','5–8','9–16','17+','Not sure yet'];
+
+function cameraLeadFor(page){
+  if (page === 'security') return 'home';
+  const r = ((window.LUMA_SEO && window.LUMA_SEO.routes) || {})[page];
+  if (!r || r.kind !== 'city-service') return null;
+  const row = (geoData().cityServices || {})[r.city + '/' + r.service];
+  return (row && row.camera) || null;
+}
+// Height of what is pinned to the top: the fixed nav, plus the in-page tab
+// bar on the camera section pages.
+function camStickyOffset(){
+  const nav = document.querySelector('.nav-shell') || document.querySelector('.nav');
+  const tabs = document.querySelector('.cx-tabs');
+  return (nav ? nav.offsetHeight : 80) + (tabs ? tabs.offsetHeight : 0);
+}
+function scrollToCameraForm(){
+  const el = document.getElementById('camera-plan');
+  if (!el) return;
+  const head = el.querySelector('h2') || el;
+  const top = head.getBoundingClientRect().top + window.scrollY - (camStickyOffset() + 24);
+  window.scrollTo({top: Math.max(0, top), behavior:'smooth'});
+  setTimeout(() => { const f = el.querySelector('input[name="name"]'); if (f) try { f.focus({preventScroll:true}); } catch(e) {} }, 600);
+}
+
+function CameraPackages({lead, h2, links, navigate}){
+  const order = CAMERA_ORDER[lead] || CAMERA_ORDER.home;
+  const pick = (id) => {
+    try { window.dispatchEvent(new CustomEvent('luma:camera-pick', {detail:id})); } catch(e) {}
+    scrollToCameraForm();
+  };
+  return (
+    <section className="fx-band fx-py-lg" id="camera-packages">
+      <div className="fx-wide">
+        <div className="fx-heads" style={{marginBottom:40}}>
+          <h2 className="fx-d3">{h2 || 'Camera packages and prices'}</h2>
+          <p className="fx-lede">Three starting points with real prices. Each system is fitted to the property on a free walk, and you get a fixed price before any work starts.</p>
+        </div>
+        <div className="pk-grid">
+          {order.map((id,i) => { const p = CAMERA_PACKAGES[id]; return (
+            <article key={id} className={'pk-card' + (i === 0 ? ' is-lead' : '')}>
+              <div className="pk-media"><img src={lu(p.kit)} alt={p.kitAlt} loading="lazy" decoding="async" width="1200" height="900"/></div>
+              <div className="pk-body">
+                <p className="pk-tag">{p.tag}</p>
+                <h3 className="pk-name">{p.name}</h3>
+                <p className="pk-fit">{p.fit}</p>
+                <a className="pk-call" href={napInfo().telHref}>{napInfo().telephoneDisplay.replace(/^\+1\s*/, '')}<span className="pk-call-ic"><CxIcon name="call" size={16}/></span></a>
+                <p className="pk-sub">Package option:</p>
+                <ul className="pk-opts"><li><span className="pk-dot" aria-hidden="true"></span><span><strong>{p.line} – from {p.price}</strong> equipment &amp; installation, + tax. No monthly fee.</span></li></ul>
+                {p.note && <p className="pk-note">{p.note}</p>}
+                <p className="pk-sub">What is in the kit:</p>
+                <ul className="pk-list">{p.items.map(x => <li key={x}>{x}</li>)}</ul>
+                <button type="button" className="pk-plan" onClick={() => pick(id)}>Get a free plan <span aria-hidden="true">→</span></button>
+              </div>
+            </article>
+          );})}
+        </div>
+        <div className="pk-includes">
+          <h3>All LUMA camera packages include</h3>
+          <ul>{CAMERA_INCLUDES.map(([ic,label]) => <li key={label}><span className="pk-inc-ic"><CxIcon name={ic} size={26}/></span>{label}</li>)}</ul>
+          <p className="pk-optline"><strong>Add-ons:</strong> {CAMERA_OPTIONS.join(' · ')}</p>
+        </div>
+        {links && links.length > 0 && (
+          <p className="fx-cam-links">{links.map(([pg,label],i,arr) => (
+            <React.Fragment key={pg}><NavLink page={pg} navigate={navigate} className="fx-inline">{label}</NavLink>{i < arr.length-1 ? ' · ' : ''}</React.Fragment>
+          ))}</p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// Posts a camera-quote form (same fields everywhere, see CAMERA_QUOTE_FIELDS
+// in scripts/generate-seo-pages.py). Throws when Netlify does not accept it.
+async function postCameraQuote(form, pkg){
+  const data = new FormData(form);
+  data.set('page', window.location.pathname);
+  data.set('package', pkg);
+  const res = await fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(data).toString()});
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  leadSave({sent: Date.now()});
+}
+function useCameraPick(lead){
+  const first = CAMERA_PACKAGES[(CAMERA_ORDER[lead] || CAMERA_ORDER.home)[0]].quote;
+  const [property, setProperty] = useState(first.property);
+  const [cameras, setCameras] = useState(first.cameras);
+  const [pkg, setPkg] = useState('');
+  useEffect(() => {
+    const on = (e) => { const p = CAMERA_PACKAGES[e.detail]; if (!p) return; setPkg(p.name); setProperty(p.quote.property); setCameras(p.quote.cameras); };
+    window.addEventListener('luma:camera-pick', on);
+    return () => window.removeEventListener('luma:camera-pick', on);
+  }, []);
+  return {property, setProperty, cameras, setCameras, pkg, setPkg};
+}
+function camSelect(name, label, value, set, opts){
+  return (
+    <label className="fx-input">
+      <span>{label}</span>
+      <select name={name} value={value} onChange={e => set(e.target.value)}>{opts.map(o => <option key={o} value={o}>{o}</option>)}</select>
+    </label>
+  );
+}
+
+/* The full camera-quote form. On /security it is the "Free camera plan"
+   block (id camera-plan); on the camera section pages it is the final
+   estimate card (variant "cx", id camera-estimate). */
+function CameraQuoteForm({lead, variant, id, h2, lede}){
+  const nap = napInfo();
+  const tel = nap.telephoneDisplay.replace(/^\+1\s*/, '');
+  const {property, setProperty, cameras, setCameras, pkg, setPkg} = useCameraPick(lead);
+  const [status, setStatus] = useState('idle');
+  async function submit(e){
+    e.preventDefault();
+    setStatus('sending');
+    try { await postCameraQuote(e.currentTarget, pkg); setStatus('sent'); }
+    catch(err) { setStatus('error'); }
+  }
+  const done = (
+    <div className="fx-form-done" role="status">
+      <h3 className="fx-d3">Thank you, we have your request.</h3>
+      <p className="fx-lede">We will call you to set up the free walk. If it cannot wait, call <a href={nap.telHref}>{tel}</a>.</p>
+    </div>
+  );
+  const form = (
+    <form className="fx-form fx-cam-form" name="camera-quote" method="POST" onSubmit={submit}>
+      <input type="hidden" name="form-name" value="camera-quote"/>
+      <input type="hidden" name="page" value=""/>
+      <input type="hidden" name="package" value={pkg}/>
+      <p hidden><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off"/></label></p>
+      {pkg && <p className="fx-cam-picked">Package: <strong>{pkg}</strong> <button type="button" onClick={() => setPkg('')}>clear</button></p>}
+      <div className="fx-cam-row">
+        <label className="fx-input"><span>Name<b aria-hidden="true"> *</b></span><input name="name" required autoComplete="name"/></label>
+        <label className="fx-input"><span>Phone<b aria-hidden="true"> *</b></span><input name="phone" type="tel" required autoComplete="tel"/></label>
+      </div>
+      <div className="fx-cam-row">
+        <label className="fx-input"><span>Email <small>Optional</small></span><input name="email" type="email" autoComplete="email"/></label>
+        <label className="fx-input"><span>City</span><input name="city" autoComplete="address-level2" placeholder="Sarasota"/></label>
+      </div>
+      <div className="fx-cam-row">
+        {camSelect('property_type', 'Home or business', property, setProperty, ['Home','Business'])}
+        {camSelect('cameras', 'About how many cameras', cameras, setCameras, CAMERA_COUNTS)}
+      </div>
+      <label className="fx-input"><span>Message <small>Optional</small></span><textarea name="message" rows={3} placeholder="What should the cameras see? Gates, a dock, the register, the lot…"/></label>
+      <button type="submit" className="fx-btn" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Get my free camera plan'}</button>
+      {status === 'error' && <p className="fx-form-err" role="alert">That did not go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a> or write to <a href={nap.mailHref}>{nap.email}</a>.</p>}
+      <p className="fx-cam-fine">LUMA Smart Home is a DBA of Tegra-Media LLC. {tel} · {nap.email} · Mon–Sat 9am–6pm · {nap.area}.</p>
+    </form>
+  );
+  if (variant === 'cx') return (
+    <section className="cx-sec cx-gray" id={id || 'camera-estimate'}>
+      <div className="cx-wrap">
+        <div className="cx-final">
+          <div className="cx-final-copy">
+            <span className="cx-final-ic" aria-hidden="true"><CxIcon name="clipboard"/></span>
+            <h2 className="cx-h2">{h2}</h2>
+            <p>{lede}</p>
+            <ul className="cx-final-nap">
+              <li><a href={nap.telHref}>Call {tel}</a></li>
+              <li><a href={nap.mailHref}>{nap.email}</a></li>
+              <li>Mon–Sat 9am–6pm · {nap.area}</li>
+            </ul>
+          </div>
+          <div className="cx-final-form">{status === 'sent' ? done : form}</div>
+        </div>
+      </div>
+    </section>
+  );
+  return (
+    <section className="fx-band--plain fx-py-lg fx-cam-quote" id={id || 'camera-plan'}>
+      <div className="fx-field">
+        <div className="fx-heads" style={{marginBottom:32}}>
+          <h2 className="fx-d3">{h2 || 'Free camera plan in 48 hours'}</h2>
+          <p className="fx-lede">{lede || 'A free on-site walk, a camera-by-camera plan and a fixed price. No obligation.'}</p>
+        </div>
+        {status === 'sent' ? done : form}
+      </div>
+    </section>
+  );
+}
+
+function CameraCallBar(){
+  const nap = napInfo();
+  return (
+    <>
+      <div className="fx-cambar-space" aria-hidden="true"/>
+      <div className="fx-cambar" role="region" aria-label="Call or get a free camera plan">
+        <a href={nap.telHref} className="fx-cambar-call">Call {nap.telephoneDisplay.replace(/^\+1\s*/, '')}</a>
+        <button type="button" className="fx-cambar-plan" onClick={scrollToCameraForm}>Get a free plan</button>
+      </div>
+    </>
+  );
+}
+
+/* ─── CAMERA SECTION (v2) ───
+   The owner picked a reference page (SafeTouch, "Security Camera Installation
+   in Tampa, FL") and asked for its structure one-to-one: centered hero on a
+   light background with a row of tall photos, a sticky in-page tab bar, a
+   short two-step form, a colour block with a skyline, an accordion of camera
+   types with one photo that switches, a wide photo over icon cards, scenario
+   cards with photos, choosing/watch splits, FAQ, a call bar and the final
+   form. LUMA copy and photos live in scripts/camera_content.py (row.cam).
+   Left out on purpose: client logos, awards, a monitoring centre and
+   response-time claims, the integrations wall. */
+const CX_ICONS = {
+  shield: <><path d="M12 3l7 3v5c0 4.5-3 8.2-7 9.5-4-1.3-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></>,
+  tag: <><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="8" r="1.5"/></>,
+  file: <><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></>,
+  phone: <><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18h2"/></>,
+  cloudoff: <><path d="M7 18h10a4 4 0 0 0 .6-8A6 6 0 0 0 6.2 9 4.5 4.5 0 0 0 7 18z"/><path d="M3 3l18 18"/></>,
+  home: <><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10M10 20v-6h4v6"/></>,
+  building: <><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></>,
+  users: <><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14c2.8 0 5 2.2 5 5"/></>,
+  map: <><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></>,
+  clipboard: <><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></>,
+  tool: <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>,
+  app: <><rect x="7" y="2.5" width="10" height="19" rx="2"/><rect x="9.5" y="6" width="5" height="4" rx=".5"/><path d="M9.5 13h5M9.5 16h3"/></>,
+  call: <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>,
+  arrow: <path d="M5 12h14M13 6l6 6-6 6"/>,
+  chevron: <path d="M7 10l5 5 5-5"/>,
+  plus: <path d="M12 6v12M6 12h12"/>,
+};
+function CxIcon({name, size}){
+  return <svg width={size || 28} height={size || 28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{CX_ICONS[name]}</svg>;
+}
+function CxHead({h2, lede, navigate}){
+  return (
+    <div className="cx-head">
+      <h2 className="cx-h2">{h2}</h2>
+      {lede && <p className="cx-lede"><LinkedText text={lede} navigate={navigate}/></p>}
+    </div>
+  );
+}
+function CxImg({photo, eager, className, w, h}){
+  return <img className={className} src={lu(photo[0])} alt={photo[1]} loading={eager ? 'eager' : 'lazy'} decoding="async" width={w} height={h}/>;
+}
+
+/* Sticky in-page tabs under the nav; the tab of the section in view is marked. */
+function CxTabs({tabs}){
+  const [active, setActive] = useState('');
+  const barRef = useRef(null);
+  useEffect(() => {
+    const bar = barRef.current;
+    const on = () => {
+      const nav = document.querySelector('.nav-shell');
+      if (bar && nav) bar.style.top = nav.offsetHeight + 'px';
+      const line = camStickyOffset() + 32;
+      let cur = '';
+      tabs.forEach(([id]) => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= line) cur = id; });
+      setActive(cur);
+    };
+    on();
+    window.addEventListener('scroll', on, {passive:true});
+    window.addEventListener('resize', on);
+    return () => { window.removeEventListener('scroll', on); window.removeEventListener('resize', on); };
+  }, []);
+  useEffect(() => {
+    const bar = barRef.current;
+    const a = bar && bar.querySelector('a.is-active');
+    if (a && bar.firstChild.scrollWidth > bar.firstChild.clientWidth) {
+      try { bar.firstChild.scrollTo({left: a.offsetLeft - 16, behavior:'smooth'}); } catch(e) {}
+    }
+  }, [active]);
+  const go = (e, id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    window.scrollTo({top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - camStickyOffset() + 1), behavior:'smooth'});
+  };
+  return (
+    <nav className="cx-tabs" aria-label="On this page" ref={barRef}>
+      <div className="cx-tabs-in">
+        {tabs.map(([id, label]) => (
+          <a key={id} href={'#' + id} className={active === id ? 'is-active' : undefined} aria-current={active === id ? 'true' : undefined} onClick={(e) => go(e, id)}>{label}</a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+/* Accordion beside one photo. With per-item photos the photo switches to the
+   open item; with `photo` it stays put (the "Why LUMA" block). */
+function CxAccordion({id, items, photo}){
+  const [open, setOpen] = useState(0);
+  const [shown, setShown] = useState(0);
+  const toggle = (i) => { if (open === i) setOpen(-1); else { setOpen(i); setShown(i); } };
+  return (
+    <div className="cx-acc">
+      <div className="cx-acc-media">
+        {photo ? <CxImg photo={photo} className="is-on"/> :
+          items.map((it, i) => <CxImg key={it.key} photo={it.photo} className={i === shown ? 'is-on' : undefined}/>)}
+      </div>
+      <div className="cx-acc-list">
+        {items.map((it, i) => {
+          const on = open === i;
+          const pid = id + '-' + it.key;
+          return (
+            <div key={it.key} className={'cx-acc-item' + (on ? ' is-open' : '')}>
+              <h3>
+                <button type="button" aria-expanded={on} aria-controls={pid} onClick={() => toggle(i)}>
+                  <span>{it.title}</span>
+                  <i className="cx-round" aria-hidden="true"><CxIcon name="chevron" size={18}/></i>
+                </button>
+              </h3>
+              <div id={pid} className="cx-acc-body" hidden={!on}>{it.body}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* The top form: the reference's one-line "Start customizing" form, as two
+   short steps. Same Netlify form and field names as CameraQuoteForm. */
+function CxPlanForm({lead, plan}){
+  const nap = napInfo();
+  const {property, setProperty, cameras, setCameras, pkg, setPkg} = useCameraPick(lead);
+  const [step, setStep] = useState(1);
+  const [status, setStatus] = useState('idle');
+  const formRef = useRef(null);
+  const next = () => {
+    const f = formRef.current;
+    if (!f) return;
+    for (const n of ['name', 'phone', 'email']) {
+      const el = f.elements[n];
+      if (el && !el.checkValidity()) { el.reportValidity(); return; }
+    }
+    setStep(2);
+    setTimeout(() => { const s = f.elements['property_type']; if (s) try { s.focus(); } catch(e) {} }, 30);
+  };
+  async function submit(e){
+    e.preventDefault();
+    if (step === 1) { next(); return; }
+    setStatus('sending');
+    try { await postCameraQuote(e.currentTarget, pkg); setStatus('sent'); }
+    catch(err) { setStatus('error'); }
+  }
+  return (
+    <section className="cx-sec cx-white cx-plan" id="camera-plan">
+      <div className="cx-wrap">
+        <div className="cx-plan-box">
+          <div className="cx-plan-head">
+            <h2 className="cx-h3">{plan.h2}</h2>
+            <p>{plan.lede}</p>
+            {status !== 'sent' && <p className="cx-plan-step">Step {step} of 2</p>}
+          </div>
+          {status === 'sent' ? (
+            <div className="cx-plan-done" role="status">
+              <p><strong>Thank you, we have your request.</strong> We will call you to set up the free walk. If it cannot wait, call <a href={nap.telHref}>{nap.telephoneDisplay.replace(/^\+1\s*/, '')}</a>.</p>
+            </div>
+          ) : (
+            <form ref={formRef} className="cx-plan-form" name="camera-quote" method="POST" onSubmit={submit} noValidate={step === 2 ? undefined : true}>
+              <input type="hidden" name="form-name" value="camera-quote"/>
+              <input type="hidden" name="page" value=""/>
+              <input type="hidden" name="package" value={pkg}/>
+              <p hidden><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off"/></label></p>
+              <div className="cx-plan-fields" hidden={step !== 1}>
+                <label className="fx-input"><span>Name<b aria-hidden="true"> *</b></span><input name="name" required autoComplete="name"/></label>
+                <label className="fx-input"><span>Phone<b aria-hidden="true"> *</b></span><input name="phone" type="tel" required autoComplete="tel"/></label>
+                <label className="fx-input"><span>Email <small>Optional</small></span><input name="email" type="email" autoComplete="email"/></label>
+                <button type="button" className="cx-pill cx-pill--dark cx-plan-btn" onClick={next}>Next<span className="cx-pill-ic"><CxIcon name="arrow" size={18}/></span></button>
+              </div>
+              <div className="cx-plan-fields" hidden={step !== 2}>
+                {camSelect('property_type', 'Home or business', property, setProperty, ['Home','Business'])}
+                {camSelect('cameras', 'Number of cameras', cameras, setCameras, CAMERA_COUNTS)}
+                <label className="fx-input"><span>City</span><input name="city" autoComplete="address-level2" placeholder="Sarasota"/></label>
+                <button type="submit" className="cx-pill cx-pill--dark cx-plan-btn" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Send'}<span className="cx-pill-ic"><CxIcon name="arrow" size={18}/></span></button>
+              </div>
+              <div className="cx-plan-foot">
+                {pkg && <p className="fx-cam-picked">Package: <strong>{pkg}</strong> <button type="button" onClick={() => setPkg('')}>clear</button></p>}
+                {step === 2 && <button type="button" className="cx-back" onClick={() => setStep(1)}>← Back</button>}
+                {status === 'error' && <p className="fx-form-err" role="alert">That did not go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a> or write to <a href={nap.mailHref}>{nap.email}</a>.</p>}
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* "How it works": copy on the left, a deck of step cards on the right with
+   arrows, like the reference's "Security that never sleeps" slider. */
+function CxSteps({s, navigate}){
+  const [i, setI] = useState(0);
+  const n = s.items.length;
+  return (
+    <section className="cx-sec cx-gray">
+      <div className="cx-wrap cx-steps">
+        <div className="cx-steps-copy">
+          <p className="cx-eyebrow">{s.eyebrow}</p>
+          <h2 className="cx-h2">{s.h2}</h2>
+          <p className="cx-lede"><LinkedText text={s.lede} navigate={navigate}/></p>
+        </div>
+        <div className="cx-steps-deck">
+          <ol className="cx-steps-stack">
+            {s.items.map(([ic, t, d], k) => (
+              <li key={t} className={'cx-step' + (k === i ? ' is-on' : '')} aria-hidden={k === i ? undefined : 'true'}>
+                <div className="cx-step-title">
+                  <span className="cx-step-ic"><CxIcon name={ic} size={34}/></span>
+                  <h3><small>Step {k + 1}</small>{t}</h3>
+                </div>
+                <p>{d}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="cx-steps-nav">
+            <button type="button" aria-label="Previous step" onClick={() => setI((i - 1 + n) % n)}><span style={{display:'inline-flex',transform:'scaleX(-1)'}}><CxIcon name="arrow" size={18}/></span></button>
+            <span>{i + 1} / {n}</span>
+            <button type="button" aria-label="Next step" onClick={() => setI((i + 1) % n)}><CxIcon name="arrow" size={18}/></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CxSplit({id, h2, text, photo, navigate, children, cta}){
+  return (
+    <section className="cx-sec cx-white" id={id}>
+      <div className="cx-wrap">
+        <div className={'cx-split' + (cta ? ' cx-split--cta' : '')}>
+          <div className="cx-split-copy">
+            <h2 className="cx-h2">{h2}</h2>
+            {(text || []).map((p, k) => <p key={k}><LinkedText text={p} navigate={navigate}/></p>)}
+            {cta && <button type="button" className="cx-pill cx-pill--dark" onClick={scrollToCameraForm}>Get a free camera plan<span className="cx-pill-ic"><CxIcon name="arrow" size={18}/></span></button>}
+          </div>
+          <div className="cx-split-media"><CxImg photo={photo}/></div>
+        </div>
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function CameraSectionPage({cityId, serviceId, row, navigate}){
+  const c = row.cam;
+  const nap = napInfo();
+  const tel = nap.telephoneDisplay.replace(/^\+1\s*/, '');
+  const types = geoData().cameraTypes || {};
+  const camLinks = row.camera === 'home'
+    ? [['sa-sarasota-business-security','Office and business security camera systems in Sarasota']]
+    : [['sa-sarasota-security','Home and house security cameras in Sarasota']].concat(
+        cityId + '/' + serviceId === 'sarasota/business-security' ? [] : [['sa-sarasota-business-security','Business security camera systems in Sarasota']]);
+  const typeItems = c.types.items.map((it) => {
+    const [key, text, best] = Array.isArray(it) ? it : [it];
+    const t = types[key] || {};
+    const v = t[c.types.variant || 'business'] || [];
+    return {key, title: t.name, photo: t.photo, body: (
+      <>
+        <p>{text || v[0]}</p>
+        <p className="cx-best"><strong>Best for:</strong> {best || v[1]}.</p>
+      </>
+    )};
+  });
+  const tableOf = (tb) => (
+    <div className="fx-spec-wrap cx-table">
+      <table className="fx-spec">
+        <thead><tr>{tb.head.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead>
+        <tbody>{tb.rows.map((r, i) => (
+          <tr key={i}>{r.map((cell, j) => j === 0 ? <th key={j} scope="row">{cell}</th> : <td key={j} data-label={tb.head[j]}>{cell}</td>)}</tr>
+        ))}</tbody>
+      </table>
+    </div>
+  );
+  return (
+    <div className="page cx">
+      {/* 1. Hero: centered copy, two pills, a row of three tall photos */}
+      <section className={'cx-hero' + (c.hero_bg ? ' cx-hero--bg' : '')}>
+        <div className="cx-hero-top">
+        {c.hero_bg && <div className="cx-hero-bg" aria-hidden="true"><CxImg photo={c.hero_bg} eager w={2400} h={1029}/></div>}
+        <div className="cx-hero-copy">
+          <p className="cx-eyebrow">{c.eyebrow}</p>
+          <h1 className="cx-h1">{row.h1}</h1>
+          <p><LinkedText text={row.lede} navigate={navigate}/></p>
+          {(row.paragraphs || []).map((p, i) => <p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+          <div className="cx-hero-btns">
+            <a href={nap.telHref} className="cx-pill cx-pill--dark">Call {tel}<span className="cx-pill-ic"><CxIcon name="call" size={18}/></span></a>
+            <button type="button" className="cx-pill cx-pill--light" onClick={scrollToCameraForm}>Get a free camera plan<span className="cx-pill-ic"><CxIcon name="arrow" size={18}/></span></button>
+          </div>
+        </div>
+        </div>
+        <div className="cx-hero-row">
+          {c.hero_photos.map((p, i) => <CxImg key={p[0]} photo={p} eager={i === 0} w={600} h={800}/>)}
+        </div>
+      </section>
+
+      {/* 2. Sticky in-page tabs */}
+      <CxTabs tabs={c.tabs}/>
+
+      {/* 3. Short form */}
+      <CxPlanForm lead={row.camera} plan={c.plan}/>
+
+      {/* 4. Process: colour block + Sarasota skyline */}
+      {c.process && (
+        <section className="cx-sec cx-white cx-sec--tight">
+          <div className="cx-wrap">
+            <div className="cx-process">
+              <div className="cx-process-copy">
+                <h2 className="cx-h2">{c.process.h2}</h2>
+                {c.process.text.map((p, i) => <p key={i}><LinkedText text={p} navigate={navigate}/></p>)}
+              </div>
+              <div className="cx-process-media"><CxImg photo={c.process.photo}/></div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 5. Packages band */}
+      <CameraPackages lead={row.camera} h2={row.packages_h2} links={camLinks} navigate={navigate}/>
+
+      {/* 6. Camera types: accordion with a photo that switches */}
+      <section className="cx-sec cx-white" id="cameras">
+        <div className="cx-wrap">
+          <CxHead h2={c.types.h2} lede={c.types.lede} navigate={navigate}/>
+          <CxAccordion id="cam-type" items={typeItems}/>
+        </div>
+      </section>
+
+      {/* 7. Benefits: wide photo + icon cards */}
+      {c.benefits && (
+        <section className="cx-sec cx-gray" id="benefits">
+          <div className="cx-wrap">
+            <div className="cx-wide">
+              <CxImg photo={c.benefits.photo}/>
+              <div className="cx-wide-copy">
+                <h2 className="cx-h2">{c.benefits.h2}</h2>
+                <p className="cx-lede">{c.benefits.lede}</p>
+              </div>
+            </div>
+            <div className="cx-cards">
+              {c.benefits.cards.map(([ic, t, d]) => (
+                <article key={t} className="cx-card">
+                  <span className="cx-card-ic"><CxIcon name={ic} size={40}/></span>
+                  <h3>{t}</h3>
+                  <p>{d}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 8. Why LUMA: accordion beside one photo */}
+      {c.why && (
+        <section className="cx-sec cx-white" id="why">
+          <div className="cx-wrap">
+            <CxHead h2={c.why.h2} lede={c.why.lede} navigate={navigate}/>
+            <CxAccordion id="cam-why" photo={c.why.photo} items={c.why.items.map(([t, d], i) => ({key: String(i), title: t, body: <p><LinkedText text={d} navigate={navigate}/></p>}))}/>
+          </div>
+        </section>
+      )}
+
+      {/* 8b. Trusted by: one row of real clients (names and links only) */}
+      {c.trusted && (
+        <section className="cx-trusted" aria-label={c.trusted.label}>
+          <div className="cx-wrap">
+            <p className="cx-trusted-label">{c.trusted.label}</p>
+            <ul className="cx-trusted-row">
+              {c.trusted.clients.map(cl => (
+                <li key={cl.name}>
+                  <a href={cl.url} target="_blank" rel="noopener" aria-label={cl.name}>
+                    {cl.logo ? <img src={cl.logo} alt={cl.name} loading="lazy" decoding="async"/> : <span className="cx-trusted-word">{cl.name}</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* 9. How it works */}
+      {c.steps && <CxSteps s={c.steps} navigate={navigate}/>}
+
+      {/* 10. Scenarios: banner + cards with photos */}
+      {c.scenarios && (
+        <section className="cx-sec cx-white" id="where">
+          <div className="cx-wrap">
+            <div className="cx-banner">
+              <CxImg photo={c.scenarios.banner}/>
+              <div className="cx-banner-copy">
+                <h2 className="cx-h2">{c.scenarios.h2}</h2>
+                <p>{c.scenarios.lede}</p>
+              </div>
+            </div>
+            <div className="cx-scen">
+              {c.scenarios.cards.map((cd, k) => (
+                <article key={cd.title} className={'cx-scen-card ' + (k < 2 ? 'cx-scen-card--v' : 'cx-scen-card--h') + (k % 2 ? ' is-flip' : '')}>
+                  <div className="cx-scen-media"><CxImg photo={cd.photo}/></div>
+                  <div className="cx-scen-copy">
+                    <h3>{cd.title}</h3>
+                    <p>{cd.text}</p>
+                    {cd.links && cd.links.map(([pg, label]) => (
+                      <p key={pg} className="cx-scen-link"><NavLink page={pg} navigate={navigate} className="fx-more">{label} <i aria-hidden="true">→</i></NavLink></p>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Segment pages: one scenario-specific section */}
+      {c.focus && (
+        <CxSplit id={c.focus.id} h2={c.focus.h2} text={c.focus.text} photo={c.focus.photo} navigate={navigate}>
+          {c.focus.table && tableOf(c.focus.table)}
+          {(c.focus.after || []).map((p, i) => <p key={i} className="cx-after"><LinkedText text={p} navigate={navigate}/></p>)}
+        </CxSplit>
+      )}
+
+      {/* 11. Choosing the right camera */}
+      {c.choosing && <CxSplit h2={c.choosing.h2} text={c.choosing.text} photo={c.choosing.photo} navigate={navigate}/>}
+
+      {/* 12. Watch from anywhere */}
+      {c.watch && <CxSplit h2={c.watch.h2} text={c.watch.text} photo={c.watch.photo} navigate={navigate} cta/>}
+
+      {/* 13. FAQ */}
+      {row.faq && row.faq.length > 0 && (
+        <section className="cx-sec cx-gray" id="faq">
+          <div className="cx-wrap cx-faqwrap">
+            <h2 className="cx-h2 cx-center">{row.faq_h2 || 'Frequently Asked Questions'}</h2>
+            <div className="cx-faq">
+              {row.faq.map((q) => (
+                <details key={q.q} className="fx-faq-item"><summary>{q.q}<i aria-hidden="true"><CxIcon name="plus" size={18}/></i></summary><p><LinkedText text={q.a} navigate={navigate}/></p></details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Call bar */}
+      <section className="cx-sec cx-gray cx-sec--call">
+        <div className="cx-wrap">
+          <p className="cx-callbar">Call <a href={nap.telHref}>{tel}</a> {c.call}</p>
+        </div>
+      </section>
+
+      {/* 14. Final form */}
+      <CameraQuoteForm lead={row.camera} variant="cx" id="camera-estimate" h2={c.final.h2} lede={c.final.text}/>
+    </div>
+  );
+}
+
 /* ─── LEAD CARD ───
    The reference collects leads with a card that opens on its own in the
    corner (theirs is a pre-chat form). LUMA has no live chat, so the card is
@@ -3815,7 +4518,7 @@ const LEAD_KEY = 'luma_lead_v1';
 function leadState(){ try { return JSON.parse(localStorage.getItem(LEAD_KEY) || '{}'); } catch(e) { return {}; } }
 function leadSave(v){ try { localStorage.setItem(LEAD_KEY, JSON.stringify(Object.assign(leadState(), v))); } catch(e) {} }
 
-function FxLeadCard({page}){
+function FxLeadCard({page, quiet, raised}){
   const nap = napInfo();
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(1);
@@ -3823,7 +4526,7 @@ function FxLeadCard({page}){
   const [status, setStatus] = useState('idle');
   const blocked = page === 'contact';
   useEffect(() => {
-    if (blocked) return;
+    if (blocked || quiet) return; // pages with the inline camera form: launcher only, no auto-open
     const st = leadState();
     if (st.sent || (st.closed && Date.now() - st.closed < 7*864e5)) return;
     let done = false;
@@ -3835,7 +4538,7 @@ function FxLeadCard({page}){
     document.addEventListener('mouseout', onOut);
     function cleanup(){ clearTimeout(t); window.removeEventListener('scroll', onScroll); document.removeEventListener('mouseout', onOut); }
     return cleanup;
-  }, [blocked]);
+  }, [blocked, quiet]);
   useEffect(() => {
     if (!open) return;
     const k = (e) => { if (e.key === 'Escape') close(); };
@@ -3860,7 +4563,7 @@ function FxLeadCard({page}){
   return (
     <>
       {!open && status !== 'sent' && (
-        <button type="button" className="fx-lead-launch" onClick={() => { setOpen(true); setStep(1); }}>
+        <button type="button" className={'fx-lead-launch' + (raised ? ' fx-lead-launch--raised' : '')} onClick={() => { setOpen(true); setStep(1); }}>
           <span className="fx-lead-dot" aria-hidden="true"/>Talk to LUMA
         </button>
       )}
@@ -3975,6 +4678,7 @@ function App() {
     else view = <HomePage navigate={navigate}/>;
   }
   const serviceIds = ['lighting','shading','theaters','audio','security','networking','automation'];
+  const cam = cameraLeadFor(page);
   return (
     <div>
       <Nav navigate={navigate}/>
@@ -3982,7 +4686,8 @@ function App() {
       {serviceIds.includes(page) && <GeoStrip serviceId={page} navigate={navigate}/>}
       {page !== 'home' && <RelatedLinks page={page} navigate={navigate}/>}
       <Footer navigate={navigate}/>
-      <FxLeadCard key={page === 'contact' ? 'c' : 'x'} page={page}/>
+      {cam && <CameraCallBar/>}
+      <FxLeadCard key={page === 'contact' ? 'c' : 'x'} page={page} quiet={!!cam} raised={!!cam}/>
     </div>
   );
 }

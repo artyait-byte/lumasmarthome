@@ -7,6 +7,9 @@ Tony's remodeling SEO playbook, applied to this studio:
   - One NAP in the footer, with a Google Maps search link until a GBP CID exists.
 """
 
+from camera_content import CAMERA_ROWS, CAMERA_TYPES
+
+
 SERVICES = {
     "lighting": {
         "id": "lighting",
@@ -59,10 +62,46 @@ SERVICES = {
     "business-security": {
         "id": "business-security",
         "name": "Business security cameras",
-        "nav": "Security",
+        "nav": "Business cameras",
         "page": "security",
         "short": "UniFi Protect camera systems for offices, shops and small commercial spaces.",
         "og": "/assets/photos/hero-security-v2.jpg",
+    },
+    "retail-security-cameras": {
+        "id": "retail-security-cameras",
+        "name": "Retail store security cameras",
+        "nav": "Business cameras",
+        "page": "security",
+        "listed": False,
+        "short": "Register, entrance, sales floor and stock room cameras for shops.",
+        "og": "/assets/photos/cam-dome.jpg",
+    },
+    "restaurant-security-cameras": {
+        "id": "restaurant-security-cameras",
+        "name": "Restaurant security cameras",
+        "nav": "Business cameras",
+        "page": "security",
+        "listed": False,
+        "short": "Bar, POS, kitchen line and back-door cameras for restaurants.",
+        "og": "/assets/photos/cam-dome.jpg",
+    },
+    "warehouse-security-cameras": {
+        "id": "warehouse-security-cameras",
+        "name": "Warehouse security cameras",
+        "nav": "Business cameras",
+        "page": "security",
+        "listed": False,
+        "short": "Dock, aisle, yard and gate cameras with plate recording.",
+        "og": "/assets/photos/cam-bullet.jpg",
+    },
+    "hoa-security-cameras": {
+        "id": "hoa-security-cameras",
+        "name": "HOA and condo security cameras",
+        "nav": "Business cameras",
+        "page": "security",
+        "listed": False,
+        "short": "Gate, pool, mail room and garage cameras for associations.",
+        "og": "/assets/photos/cam-bullet.jpg",
     },
     "automation": {
         "id": "automation",
@@ -412,60 +451,7 @@ CITY_SERVICES = [
             "Wired backbone before wireless fills",
         ],
     },
-    {
-        "city": "sarasota",
-        "service": "security",
-        "h1": "Security camera installation in Sarasota",
-        "title": "Security Camera Installation Sarasota FL | UniFi | LUMA",
-        "description": "On-premise UniFi Protect cameras in Sarasota — no monthly cloud fees. Property-walked placement, NVR on site, optional alarm monitoring.",
-        "lede": "Sarasota homeowners are tired of doorbell brands that rent them their own driveway. UniFi Protect records on a box in your closet. We place cameras after walking sunset glare and neighbor angles — not from a floor plan in the office.",
-        "paragraphs": [
-            "Seasonal occupancy is the local twist: you need to see the house from somewhere else without paying a cloud tax all summer. On-prem storage plus optional encrypted off-site backup is the honest stack. We will also tell you where a camera is pointless because the HOA or the foliage will win.",
-            "This is not Snap One's Luma camera line, and it is not a DIY kit. LUMA Smart Home is the Sarasota studio that designs the network the cameras sit on.",
-        ],
-        "bullets": [
-            "UniFi Protect G-series, PoE, no batteries",
-            "NVR on the property, 30+ day retention typical",
-            "Placement after a property walk, including glare",
-            "Optional alarm panel and monitoring",
-        ],
-        "sections": [   {   'h2': 'How a camera installation works',
-                'text': [   'We walk the property first, at the time of day the glare is worst, and mark '
-                            'each camera on a plan with what it needs to see: drive, front door, side '
-                            'yards, dock, pool gate. Cameras are wired PoE, so there are no batteries to '
-                            'charge, and they record to a UniFi Protect recorder on the property. You see '
-                            'everything in one app from wherever you spend the summer.',
-                            'Because the cameras run on the home network, we design that too: cameras on '
-                            'their own network segment, the recorder on a UPS, and remote access without '
-                            'opening the house to the internet. See [Wi-Fi and cabling in '
-                            'Sarasota](sa-sarasota-networking).']},
-            {   'h2': 'No monthly cloud fee',
-                'text': [   'Recordings stay on the recorder in your house, so there is no per-camera '
-                            'subscription. If you want an off-site copy, it can be added as an option. The '
-                            'trade-offs between cloud cameras and on-premise recording are covered in '
-                            '[home cameras without a monthly cloud](journal-cameras-fees).']},
-            {   'h2': 'Seasonal homes and HOAs',
-                'text': [   'For owners who are away half the year, the system should tell you about real '
-                            'events and stay quiet the rest of the time: person and vehicle detection, '
-                            'alerts only for the zones that matter, and a view you can check from '
-                            'anywhere. On Siesta Key, Longboat Key and in many Sarasota HOAs, visible '
-                            'hardware needs approval; we bring cut sheets before we drill.']}],
-        "faq": [   {   'q': 'Do UniFi Protect cameras need a subscription?',
-                'a': 'No. Video records to a UniFi recorder in your home. There is no monthly fee per '
-                     'camera.'},
-            {   'q': 'Can I see my cameras when I am out of state?',
-                'a': 'Yes. The UniFi Protect app shows live and recorded video from anywhere, with alerts '
-                     'for people and vehicles.'},
-            {   'q': 'Wired or wireless cameras for a Florida house?',
-                'a': 'Wired PoE cameras. They do not depend on batteries in the heat, the picture is '
-                     'steadier, and one cable carries both power and video.'},
-            {   'q': 'Do you install cameras in Bradenton and Manatee County?',
-                'a': 'Yes. See [home cameras in Bradenton](sa-bradenton-security). We cover Sarasota and '
-                     'Manatee Counties.'},
-            {   'q': 'Do you install cameras for offices and shops?',
-                'a': 'Yes. See [office and business security camera systems in '
-                     'Sarasota](sa-sarasota-business-security).'}],
-    },
+    CAMERA_ROWS["sarasota/security"],
     {
         "city": "sarasota",
         "service": "networking",
@@ -631,39 +617,12 @@ CITY_SERVICES = [
             {"q": "Do you install exterior lanai screens on Siesta Key?", "a": "Yes, with outdoor-rated motors and hardware, and with association approval when the building requires it."},
         ],
     },
-    {
-        "city": "sarasota",
-        "service": "business-security",
-        "h1": "Office and business security camera systems in Sarasota",
-        "title": "Office Security Camera Systems Sarasota FL | UniFi | LUMA",
-        "description": "Security camera systems for Sarasota offices, shops and small commercial spaces. UniFi Protect, wired PoE cameras, on-site recording, no per-camera fees.",
-        "lede": "An office, a showroom or a small warehouse needs the same thing a good home system gives: clear video of the doors, the counter and the lot, recorded on site, and an app the owner can check from anywhere. We design and install UniFi Protect camera systems for small commercial spaces in Sarasota and Manatee County.",
-        "paragraphs": [
-            "Every job starts with a walk of the space: entrances, the register or front desk, stock rooms, the parking lot and the back door. Cameras are wired PoE, so there are no batteries and one cable carries power and video. Recording stays on a UniFi recorder in your building, with no monthly fee per camera.",
-            "The cameras sit on their own network segment, separate from the office computers and guest Wi-Fi. If the network itself needs work, we do that in the same project. See [Wi-Fi and cabling in Sarasota](sa-sarasota-networking).",
-        ],
-        "bullets": [
-            "Offices, shops, showrooms and small warehouses",
-            "Wired PoE cameras, on-site UniFi recorder",
-            "No per-camera monthly fees",
-            "One app for owners and managers",
-        ],
-        "sections": [
-            {"h2": "What a business camera system covers", "text": [
-                "Entrances and exits with faces at a usable size, the point of sale or reception desk, stock and storage rooms, and the parking lot with vehicles in frame. We plan each camera for what it must capture, and we tell you where a camera would add little.",
-                "Owners and managers get their own logins with the access they need. Footage can be found by time and by person or vehicle detection, and exported as a clip when an incident needs to be shared.",
-            ]},
-            {"h2": "Homes and businesses on one stack", "text": [
-                "Many owners also want cameras at home. UniFi Protect at home and at the office means one app for both. For the house, see [security camera installation in Sarasota](sa-sarasota-security).",
-            ]},
-        ],
-        "faq": [
-            {"q": "Do business security cameras need a monthly subscription?", "a": "Not with UniFi Protect. Video records to a recorder in your building, so there is no per-camera cloud fee."},
-            {"q": "Can I watch the cameras from my phone?", "a": "Yes. Owners and managers can view live and recorded video in the UniFi Protect app, each with their own login."},
-            {"q": "Do you install office cameras in Bradenton and Lakewood Ranch?", "a": "Yes. We cover Sarasota and Manatee Counties, including Bradenton, Lakewood Ranch and Venice."},
-            {"q": "Can you also fix the office network and Wi-Fi?", "a": "Yes. Cameras depend on the network, so we can design both together: switching, Wi-Fi and a separate segment for the cameras."},
-        ],
-    },
+    CAMERA_ROWS["sarasota/business-security"],
+    CAMERA_ROWS["bradenton/business-security"],
+    CAMERA_ROWS["sarasota/retail-security-cameras"],
+    CAMERA_ROWS["sarasota/restaurant-security-cameras"],
+    CAMERA_ROWS["sarasota/warehouse-security-cameras"],
+    CAMERA_ROWS["sarasota/hoa-security-cameras"],
 ]
 
 ARTICLES = [
@@ -1093,8 +1052,20 @@ def related_map() -> dict:
         elif city["id"] == "siesta-key":
             extra = ["journal-shades-gulf", "sa-sarasota", "contact"]
         rel[f"sa-{city['id']}"] = _rel(*ids, *extra)
+    business = {"business-security", *[k for k, v in SERVICES.items() if v.get("listed") is False]}
     for row in CITY_SERVICES:
         pid = f"sa-{row['city']}-{row['service']}"
+        if row["service"] in business:
+            rel[pid] = _rel(
+                "sa-sarasota-business-security",
+                "sa-bradenton-business-security",
+                *[f"sa-sarasota-{k}" for k in sorted(business - {"business-security"})],
+                "sa-sarasota-security",
+                "sa-sarasota-networking",
+                "contact",
+            )
+            rel[pid] = [r for r in rel[pid] if r["id"] != pid]
+            continue
         rel[pid] = _rel(
             SERVICES[row["service"]]["page"],
             f"sa-{row['city']}",
@@ -1138,4 +1109,5 @@ def geo_payload() -> dict:
         "articles": {a["id"]: a for a in ARTICLES},
         "articleOrder": [a["id"] for a in sorted(ARTICLES, key=lambda a: a["date"], reverse=True)],
         "related": related_map(),
+        "cameraTypes": CAMERA_TYPES,
     }
