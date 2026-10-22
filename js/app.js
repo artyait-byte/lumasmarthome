@@ -3894,7 +3894,10 @@ function cameraLeadFor(page){
 function scrollToCameraForm(){
   const el = document.getElementById('camera-plan');
   if (!el) return;
-  el.scrollIntoView({behavior:'smooth', block:'start'});
+  const head = el.querySelector('h2') || el;
+  const nav = document.querySelector('.nav');
+  const top = head.getBoundingClientRect().top + window.scrollY - ((nav ? nav.offsetHeight : 80) + 24);
+  window.scrollTo({top: Math.max(0, top), behavior:'smooth'});
   setTimeout(() => { const f = el.querySelector('input[name="name"]'); if (f) try { f.focus({preventScroll:true}); } catch(e) {} }, 600);
 }
 
