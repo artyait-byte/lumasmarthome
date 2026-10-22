@@ -247,6 +247,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lumasmarthome.com/service-areas/bradenton/business-security</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lumasmarthome.com/service-areas/sarasota/retail-security-cameras</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lumasmarthome.com/service-areas/sarasota/restaurant-security-cameras</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lumasmarthome.com/service-areas/sarasota/warehouse-security-cameras</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lumasmarthome.com/service-areas/sarasota/hoa-security-cameras</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://lumasmarthome.com/journal</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>

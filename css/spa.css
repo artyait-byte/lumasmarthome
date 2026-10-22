@@ -1848,3 +1848,19 @@ body{font-size:16px;line-height:1.5}
 
 /* Heading kept for document outline and search, not shown. */
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* city-service sections: spec tables and check lists */
+.fx-spec-wrap{margin:20px 0 8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fx-spec{width:100%;border-collapse:collapse;font-size:16px;line-height:1.4;color:var(--mid)}
+.fx-spec th,.fx-spec td{text-align:left;vertical-align:top;padding:12px 14px 12px 0;border-bottom:1px solid var(--cream3)}
+.fx-spec thead th{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--dark);font-weight:600;border-bottom:1px solid var(--dark)}
+.fx-spec tbody th{color:var(--dark);font-weight:600;min-width:120px}
+.fx-checks{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px;font-size:17px;line-height:1.45;color:var(--mid)}
+.fx-checks li{position:relative;padding-left:22px}
+.fx-checks li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:1px;background:var(--accent,#C57238)}
+@media (max-width:767px){
+  .fx-spec{font-size:15px}
+  .fx-spec thead{display:none}
+  .fx-spec tr{display:block;padding:12px 0;border-bottom:1px solid var(--cream3)}
+  .fx-spec th,.fx-spec td{display:block;border:0;padding:2px 0}
+  .fx-spec td[data-label]::before{content:attr(data-label) ": ";color:var(--dark);font-weight:600}
+}

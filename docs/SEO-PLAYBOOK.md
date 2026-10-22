@@ -87,13 +87,60 @@ Written 2026-10-15 from the Search Console export of 2026-10-13 (last 3 months) 
 | motorized shades siesta key (blinds, roller, roman, screens) | `/service-areas/siesta-key/shading` |
 | security camera installation sarasota · house security cameras sarasota fl | `/service-areas/sarasota/security` |
 | home automation sarasota fl | `/service-areas/sarasota/automation` |
-| office / business security cameras sarasota fl (also Bradenton) | `/service-areas/sarasota/business-security` |
+| office / business security cameras sarasota fl · office surveillance camera system sarasota · business security camera systems sarasota | `/service-areas/sarasota/business-security` (hub for the business section) |
+| commercial security cameras bradenton · office surveillance camera system bradenton fl | `/service-areas/bradenton/business-security` |
+| retail store security cameras sarasota | `/service-areas/sarasota/retail-security-cameras` |
+| restaurant security cameras sarasota | `/service-areas/sarasota/restaurant-security-cameras` |
+| warehouse security cameras sarasota | `/service-areas/sarasota/warehouse-security-cameras` |
+| hoa / condo security cameras sarasota | `/service-areas/sarasota/hoa-security-cameras` |
 | whole home audio sarasota · sonance sarasota | `/service-areas/sarasota/audio` |
 | home theater sarasota · home theater installation sarasota | `/service-areas/sarasota/theaters` |
 | smart home venice / bradenton / lakewood ranch / longboat key / siesta key | the city page |
 | RadioRA 3 vs HomeWorks, costs, comparisons | journal articles |
 
 Internal links use these phrases as anchor text and point at the page in the right column. Service pages (`/lighting`, `/shading`…) carry the regional H1 "· Sarasota & Manatee" and link down to the city×service page.
+
+### Keyword targets for the Sarasota top 10 (GSC 2026-10-13, last 3 months)
+
+Position = average position in Search Console (impressions in brackets). "—" = no impressions yet. Priority: P1 = within reach this quarter (pos ≤ 25 or new page with a weak SERP), P2 = needs depth + GBP, P3 = needs reviews and links. Recheck every month on the Tuesday routine and update this table.
+
+| Keyword | Page | GSC pos (impr) | Cluster | Priority |
+|---|---|---|---|---|
+| house security cameras sarasota fl | `/service-areas/sarasota/security` | 11.8 (6) | A cameras | P1 |
+| house surveillance camera(s) sarasota fl | `/service-areas/sarasota/security` | 11–13.7 (7) | A cameras | P1 |
+| home security camera sarasota fl | `/service-areas/sarasota/security` | 10 (2) | A cameras | P1 |
+| security camera sarasota fl · surveillance cameras sarasota fl | `/service-areas/sarasota/security` | 11–12 (2) | A cameras | P1 |
+| security camera installation sarasota (fl) | `/service-areas/sarasota/security` | 64 (2) | A cameras | P2 |
+| security cameras sarasota | `/service-areas/sarasota/security` | 30 (3) | A cameras | P2 |
+| home security sarasota fl | `/service-areas/sarasota/security` | 23 (5) | A cameras | P2 |
+| video doorbell camera sarasota · doorbell camera sarasota | `/service-areas/sarasota/security` | 31.5–74 (3) | A cameras | P3 |
+| office security camera(s) system(s) sarasota fl | `/service-areas/sarasota/business-security` | 12–17 (9) | A business cameras | P1 |
+| office surveillance camera system(s) sarasota fl | `/service-areas/sarasota/business-security` | 12–23 (8) | A business cameras | P1 |
+| business security camera systems sarasota | `/service-areas/sarasota/business-security` | — | A business cameras | P1 |
+| security cameras supplier sarasota fl | `/service-areas/sarasota/business-security` | 11 (1) | A business cameras | P2 |
+| commercial security cameras bradenton · office surveillance camera system bradenton fl | `/service-areas/bradenton/business-security` | 25 (2) | A business cameras | P1 |
+| retail store security cameras sarasota | `/service-areas/sarasota/retail-security-cameras` | — | A business cameras | P2 |
+| restaurant security cameras sarasota | `/service-areas/sarasota/restaurant-security-cameras` | — | A business cameras | P2 |
+| warehouse security cameras sarasota | `/service-areas/sarasota/warehouse-security-cameras` | — | A business cameras | P2 |
+| hoa / condo security cameras sarasota | `/service-areas/sarasota/hoa-security-cameras` | — | A business cameras | P2 |
+| smart home installation sarasota | `/` | 37 (14) | A general | P2 |
+| smart home sarasota · smart house sarasota | `/` | 61 (6) | A general | P3 |
+| smart home company sarasota | `/` | 58.5 (4) | A general | P3 |
+| smart home integration sarasota · smart home price sarasota fl | `/` | — | A general | P3 |
+| home automation sarasota fl | `/service-areas/sarasota/automation` | 45 (5) | A general | P2 |
+| home automation system bradenton fl | `/service-areas/bradenton` | 32 (5) | B cities | P2 |
+| smart home installation venice | `/service-areas/venice` | 9.2 (5) | B cities | P1 |
+| motorized shades sarasota · motorized blinds sarasota · roller shades sarasota | `/service-areas/sarasota/shading` | ~55 (cluster) | A shades | P2 |
+| motorized shades longboat key (exterior, blackout, window treatments) | `/service-areas/longboat-key/shading` | 7–14 | A shades | P1 |
+| motorized shades siesta key (blinds, roller, screens) | `/service-areas/siesta-key/shading` | ~50 (cluster) | A shades | P1 |
+| lutron installer sarasota · lutron sarasota | `/service-areas/sarasota/lighting` | ~55 (cluster) | C brands | P2 |
+| lutron homeworks near me · lutron integrator fl | `/lighting` | 5–9 | C brands | P1 |
+| home theater sarasota · home theater installation sarasota | `/service-areas/sarasota/theaters` | 44 (4) | A theater | P2 |
+| home theater longboat key | `/service-areas/longboat-key` | 7.5 (4) | B cities | P1 |
+| sonance whole home audio florida · whole home audio sarasota | `/service-areas/sarasota/audio` | 30 (16) | A audio | P2 |
+| permanent outdoor lighting sarasota | `/permanent-lighting` | — | A lighting | P3 |
+
+Ignore: Sonoma, Santa Monica, Gulf Shores, Tampa, LA and other out-of-area queries (weighted avg ~57); national brand terms with no local intent.
 
 ### Done on 2026-10-15 (branch claude/seo-keyword-plan)
 
@@ -104,6 +151,14 @@ Internal links use these phrases as anchor text and point at the page in the rig
 - New pages: `/service-areas/longboat-key/shading`, `/service-areas/siesta-key/shading`, linked from the shades article, the Sarasota shades page and their city pages.
 - Security page title and H1 moved to "security camera installation".
 - Legal name fixed site-wide.
+
+### Done on 2026-10-15 (branch claude/business-cameras)
+
+- Business cameras section, hub = `/service-areas/sarasota/business-security` (URL kept, it already ranks 12–17): 700 → ~1,460 words, camera-by-position table with current UniFi models (G6 Dome / Mini Dome / Turret / Pro Bullet / PTZ / 180, AI Theta Pro, AI LPR), recorder sizing table (UNVR Instant / UNVR / UNVR Pro / UNVR G2 Pro), links to business-type pages, 8 FAQ.
+- New pages (unique layouts and FAQ each, 890–970 words): `/service-areas/bradenton/business-security`, `/service-areas/sarasota/retail-security-cameras`, `…/restaurant-security-cameras`, `…/warehouse-security-cameras`, `…/hoa-security-cameras`. Medical/dental and marinas are a line on the hub only (weak search demand).
+- Links in: `/security` "For offices and shops" band lists all five, new band on `/networking`, Sarasota and Bradenton city hubs, related links between all business pages.
+- After merge, request indexing in this order: the hub, Bradenton, retail, restaurant, warehouse, HOA, then `/security` and `/networking` (changed).
+- Not done, owner to confirm: UniFi Access door control (not on the pages), prices (none on the pages), credential badges on `/security` and `/networking`.
 
 ### Month by month (one gate per month; do not move on if the gate fails)
 
