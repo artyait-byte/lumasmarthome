@@ -2189,3 +2189,35 @@ body{font-size:16px;line-height:1.5}
   .cx-hero--bg .cx-hero-btns{justify-content:center;align-items:center}
   .cx-hero--bg .cx-hero-row{margin-top:24px}
 }
+
+/* Camera packages, on the reference's package cards: kit photo on top, name,
+   who it is for, a dark call pill, the price line with a filled dot, the kit
+   list, then one "all packages include" row with line icons. */
+.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.pk-card{background:#F3F1EE;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.pk-card.is-lead{box-shadow:0 0 0 2px var(--accent) inset}
+.pk-media{background:#ECEAE6;aspect-ratio:4/3;overflow:hidden}
+.pk-media img{width:100%;height:100%;object-fit:cover;display:block}
+.pk-body{padding:24px 28px 28px;display:flex;flex-direction:column;flex:1}
+.pk-tag{margin:0 0 6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.pk-name{margin:0 0 10px;font-size:24px;line-height:1.2;font-weight:600;color:var(--dark)}
+.pk-fit{margin:0 0 18px;font-size:15px;line-height:1.5;color:#5b5964}
+.pk-call{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--dark);color:#fff;border-radius:999px;padding:10px 10px 10px 20px;font-size:15px;font-weight:500;text-decoration:none;margin:0 0 22px}
+.pk-call-ic{width:34px;height:34px;border-radius:50%;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:#fff}
+.pk-sub{margin:0 0 10px;font-size:14px;font-weight:600;color:var(--dark)}
+.pk-opts,.pk-list{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:10px}
+.pk-opts li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45;color:#3d3b46}
+.pk-dot{flex:0 0 20px;height:20px;border-radius:50%;background:var(--accent);margin-top:1px;position:relative}
+.pk-dot::after{content:'';position:absolute;left:6px;top:4px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.pk-list li{position:relative;padding-left:18px;font-size:14px;line-height:1.45;color:#5b5964}
+.pk-list li::before{content:'';position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:#b9b4ad}
+.pk-plan{margin-top:auto;align-self:flex-start;background:none;border:0;padding:0;font:inherit;font-size:15px;font-weight:600;color:var(--accent);cursor:pointer}
+.pk-plan:hover{text-decoration:underline}
+.pk-includes{margin-top:40px;background:#F3F1EE;border-radius:20px;padding:36px 40px}
+.pk-includes h3{margin:0 0 26px;text-align:center;font-size:22px;font-weight:600;color:var(--dark)}
+.pk-includes ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px 32px}
+.pk-includes li{display:flex;align-items:center;gap:14px;font-size:15px;color:#3d3b46}
+.pk-inc-ic{flex:0 0 auto;color:var(--dark)}
+.pk-optline{margin:26px 0 0;text-align:center;font-size:14px;color:#5b5964}
+@media (max-width:1023px){.pk-grid{grid-template-columns:1fr 1fr}.pk-includes ul{grid-template-columns:1fr 1fr}}
+@media (max-width:767px){.pk-grid{grid-template-columns:1fr}.pk-includes{padding:28px 20px}.pk-includes ul{grid-template-columns:1fr}.pk-body{padding:20px 20px 24px}}

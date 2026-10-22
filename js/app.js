@@ -3845,21 +3845,22 @@ function readPageFromUrl(){
    owner-approved "from" prices, shown plus tax. The form posts to the Netlify
    form "camera-quote", registered by scripts/generate-seo-pages.py. */
 const CAMERA_PACKAGES = {
-  home4: {name:'Home 4', price:'$2,900', tag:'For a house',
+  home4: {name:'Home 4', price:'$2,900', tag:'For a house', kit:'/assets/photos/cameras/cam-kit-home4.jpg', kitAlt:'Home camera kit: four outdoor cameras, a recorder, a PoE switch and a phone showing four camera views', line:'4 cameras + recorder',
     fit:'The drive, the front door, the back yard and a side gate.',
     items:['4 UniFi G6 cameras, turret or bullet','UniFi UNVR recorder with an 8 TB drive','PoE switch: one cable per camera for power and video','Installation and app setup'],
     quote:{property:'Home', cameras:'1–4'}},
-  office8: {name:'Office 8', price:'$5,900', tag:'For an office or a shop',
+  office8: {name:'Office 8', price:'$5,900', tag:'For an office or a shop', kit:'/assets/photos/cameras/cam-kit-office8.jpg', kitAlt:'Business camera kit: eight cameras, a rack recorder, a PoE switch and a tablet showing eight camera views', line:'8 cameras + recorder',
     fit:'Doors, the register or front desk, the back door and the lot.',
     items:['6 UniFi G6 cameras, turret or bullet','2 G6 Dome cameras for the entrance and the register','UNVR Pro recorder with 2 drives','Cameras on their own network segment','Installation and app setup'],
     quote:{property:'Business', cameras:'5–8'}},
-  pro12: {name:'Business Pro 12+', price:'$12,900', tag:'For larger sites and gates',
+  pro12: {name:'Business Pro 12+', price:'$12,900', tag:'For larger sites and gates', kit:'/assets/photos/cameras/cam-kit-pro12.jpg', kitAlt:'Commercial camera kit: vandal-resistant domes, bullet cameras, a plate camera, a panoramic camera, a large recorder and a switch', line:'12+ cameras + recorder',
     fit:'Warehouses, yards, associations and multi-entrance buildings.',
     items:['G6 Pro vandal-resistant cameras','AI LPR plate camera with an overview camera','G6 180 wide-angle camera','UNVR G2 Pro recorder with 4 drives','Installation and app setup'],
     quote:{property:'Business', cameras:'9–16'}},
 };
 const CAMERA_ORDER = {home:['home4','office8','pro12'], business:['office8','pro12','home4'], pro:['pro12','office8','home4']};
 const CAMERA_COMMON = ['No monthly subscription','Footage stays on site, on a recorder you own','NDAA-compliant UniFi hardware','Work carried out with our Florida-licensed low-voltage partner','Final fixed price after the free walk'];
+const CAMERA_INCLUDES = [['tool','Professional installation'],['cloudoff','No monthly fees or contract'],['app','Live view and alerts on your phone'],['shield','NDAA-compliant UniFi hardware'],['clipboard','Fixed price after a free walk'],['users','Florida-licensed low-voltage partner']];
 const CAMERA_OPTIONS = ['Video doorbell','Extra cameras','Plate camera for gates','Alarm'];
 const CAMERA_COUNTS = ['1–4','5–8','9–16','17+','Not sure yet'];
 
@@ -3899,27 +3900,28 @@ function CameraPackages({lead, h2, links, navigate}){
           <h2 className="fx-d3">{h2 || 'Camera packages and prices'}</h2>
           <p className="fx-lede">Three starting points with real prices. Each system is fitted to the property on a free walk, and you get a fixed price before any work starts.</p>
         </div>
-        <div className="fx-cam-grid">
+        <div className="pk-grid">
           {order.map((id,i) => { const p = CAMERA_PACKAGES[id]; return (
-            <article key={id} className={'fx-cam-card' + (i === 0 ? ' is-lead' : '')}>
-              <p className="fx-cam-tag">{p.tag}</p>
-              <h3>{p.name}</h3>
-              <p className="fx-cam-price"><span>from</span> <strong>{p.price}</strong> <span>+ tax</span></p>
-              <p className="fx-cam-fit">{p.fit}</p>
-              <ul className="fx-checks">{p.items.map(x => <li key={x}>{x}</li>)}</ul>
-              <button type="button" className={'fx-btn' + (i === 0 ? '' : ' fx-btn--line')} onClick={() => pick(id)}>Get a free plan</button>
+            <article key={id} className={'pk-card' + (i === 0 ? ' is-lead' : '')}>
+              <div className="pk-media"><img src={lu(p.kit)} alt={p.kitAlt} loading="lazy" decoding="async" width="1200" height="900"/></div>
+              <div className="pk-body">
+                <p className="pk-tag">{p.tag}</p>
+                <h3 className="pk-name">{p.name}</h3>
+                <p className="pk-fit">{p.fit}</p>
+                <a className="pk-call" href={napInfo().telHref}>{napInfo().telephoneDisplay.replace(/^\+1\s*/, '')}<span className="pk-call-ic"><CxIcon name="call" size={16}/></span></a>
+                <p className="pk-sub">Package option:</p>
+                <ul className="pk-opts"><li><span className="pk-dot" aria-hidden="true"></span><span><strong>{p.line} – from {p.price}</strong> equipment &amp; installation, + tax. No monthly fee.</span></li></ul>
+                <p className="pk-sub">What is in the kit:</p>
+                <ul className="pk-list">{p.items.map(x => <li key={x}>{x}</li>)}</ul>
+                <button type="button" className="pk-plan" onClick={() => pick(id)}>Get a free plan <span aria-hidden="true">→</span></button>
+              </div>
             </article>
           );})}
         </div>
-        <div className="fx-cam-notes">
-          <div>
-            <h3>Every package</h3>
-            <ul className="fx-checks">{CAMERA_COMMON.map(x => <li key={x}>{x}</li>)}</ul>
-          </div>
-          <div>
-            <h3>Options</h3>
-            <ul className="fx-checks">{CAMERA_OPTIONS.map(x => <li key={x}>{x}</li>)}</ul>
-          </div>
+        <div className="pk-includes">
+          <h3>All LUMA camera packages include</h3>
+          <ul>{CAMERA_INCLUDES.map(([ic,label]) => <li key={label}><span className="pk-inc-ic"><CxIcon name={ic} size={26}/></span>{label}</li>)}</ul>
+          <p className="pk-optline"><strong>Add-ons:</strong> {CAMERA_OPTIONS.join(' · ')}</p>
         </div>
         {links && links.length > 0 && (
           <p className="fx-cam-links">{links.map(([pg,label],i,arr) => (
