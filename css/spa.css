@@ -2221,3 +2221,4 @@ body{font-size:16px;line-height:1.5}
 .pk-optline{margin:26px 0 0;text-align:center;font-size:14px;color:#5b5964}
 @media (max-width:1023px){.pk-grid{grid-template-columns:1fr 1fr}.pk-includes ul{grid-template-columns:1fr 1fr}}
 @media (max-width:767px){.pk-grid{grid-template-columns:1fr}.pk-includes{padding:28px 20px}.pk-includes ul{grid-template-columns:1fr}.pk-body{padding:20px 20px 24px}}
+.pk-note{margin:-8px 0 20px;padding:10px 14px;border-radius:12px;background:#fff;font-size:14px;font-weight:600;color:var(--dark);border-left:3px solid var(--accent)}

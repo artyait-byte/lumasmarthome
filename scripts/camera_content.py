@@ -136,7 +136,7 @@ SARASOTA_SECURITY = {
     "camera": "home",
     "h1": "Security Camera Installation in Sarasota, FL",
     "title": "Security Camera Installation Sarasota FL | UniFi | LUMA",
-    "description": "Security camera installation in Sarasota, FL: wired UniFi cameras for homes and businesses, recorded on site with no monthly fee. From $2,900 + tax.",
+    "description": "Security camera installation in Sarasota, FL: wired UniFi cameras for homes and businesses, recorded on site with no monthly fee. From $2,500 + tax.",
     "lede": "Cameras that are easy to see stop most break-ins before they start. When something does happen, clear 4K footage shows who it was, when, and which way they went, in a form the police and your insurer can use.",
     "paragraphs": [
         "Sarasota is hard on electronics. Salt air off the Gulf and the bay, humidity in every season and summer storms finish off cheap cameras and battery doorbells. We install weather-rated UniFi cameras with sealed connections, wired with PoE, so one cable carries power and video and nothing needs charging.",
@@ -254,7 +254,7 @@ SARASOTA_SECURITY = {
         },
     },
     "faq": [
-        {"q": "How much does security camera installation cost in Sarasota?", "a": "Our packages start from $2,900 for 4 cameras (Home 4), from $5,900 for 8 cameras (Office 8) and from $12,900 for 12 or more (Business Pro), plus tax. Each includes the cameras, a UniFi recorder and the installation. The final fixed price follows a free walk of the property."},
+        {"q": "How much does security camera installation cost in Sarasota?", "a": "Our packages start from $2,500 for 4 cameras (Home 4), from $4,900 for 8 cameras (Office 8) and from $11,500 for 12 or more (Business Pro), plus tax. Each includes the cameras, a UniFi recorder and the installation. The final fixed price follows a free walk of the property."},
         {"q": "How many security cameras does a house need?", "a": "Most Sarasota houses need four to eight: the driveway, the front door, the back yard or lanai, and each side gate. Waterfront homes often add one for the dock. We count them with you on the walk."},
         {"q": "Is there a monthly fee?", "a": "No. Video records to a UniFi recorder on your property, with no subscription and no per-camera fee. Alarm monitoring is a separate option, only if you ask for it."},
         {"q": "How long does installation take?", "a": "Most homes and small businesses are installed in one day. Larger sites, long cable runs and gates take longer; the camera plan states the number of days before you commit."},
@@ -276,7 +276,7 @@ SARASOTA_BUSINESS = {
     "camera": "business",
     "h1": "Business Security Camera Systems in Sarasota, FL",
     "title": "Office & Business Security Camera Systems Sarasota FL | LUMA",
-    "description": "Office and business security camera systems in Sarasota, FL: UniFi cameras, an on-site recorder and manager logins, no per-camera fees. From $5,900 + tax.",
+    "description": "Office and business security camera systems in Sarasota, FL: UniFi cameras, an on-site recorder and manager logins, no per-camera fees. From $4,900 + tax.",
     "lede": "Office and business security camera systems do two jobs. They discourage theft and trouble before it starts, and afterwards they answer the hard questions, from a till that came up short to a slip-and-fall claim, with video you can hand to an insurer or the police.",
     "paragraphs": [
         "A Sarasota storefront or office takes the same coastal beating as a house: salt air near the water, humidity in every season, summer lightning. We fit weather-rated UniFi cameras with sealed connections, wired back to a recorder in your building, and keep them on their own network, apart from the office computers.",
@@ -393,7 +393,7 @@ SARASOTA_BUSINESS = {
         },
     },
     "faq": [
-        {"q": "How much does a business security camera system cost in Sarasota?", "a": "Most offices and shops start with Office 8, from $5,900 plus tax for eight cameras. Larger sites, gates and warehouses start with Business Pro, from $12,900 plus tax for twelve or more. A small office with four cameras can start from $2,900 plus tax. The price is fixed after a free site walk."},
+        {"q": "How much does a business security camera system cost in Sarasota?", "a": "Most offices and shops start with Office 8, from $4,900 plus tax for eight cameras. Larger sites, gates and warehouses start with Business Pro, from $11,500 plus tax for twelve or more. A small office with four cameras can start from $2,500 plus tax. The price is fixed after a free site walk."},
         {"q": "Can I see several locations in one app?", "a": "Yes. Each location has its own UniFi recorder, and the owner sees every site in the UniFi Protect app. Managers can be limited to their own location."},
         {"q": "Can managers have their own access?", "a": "Yes. Each person gets a login with only the cameras and history you allow, and you can remove it at any time without touching anyone else's."},
         {"q": "How long should a business keep camera footage?", "a": "About 30 days is common for offices and shops. If your insurer, lease or policy asks for longer, we size the recorder drives for it. Clips of an incident can be exported and kept as long as you need."},
@@ -465,7 +465,7 @@ BRADENTON_BUSINESS = {
         },
     },
     "faq": [
-        {"q": "What does a commercial camera system cost in Bradenton?", "a": "The same as in Sarasota: from $5,900 for 8 cameras and from $12,900 for 12 or more, plus tax, with a fixed price after a free walk of the site."},
+        {"q": "What does a commercial camera system cost in Bradenton?", "a": "The same as in Sarasota: from $4,900 for 8 cameras and from $11,500 for 12 or more, plus tax, with a fixed price after a free walk of the site."},
         {"q": "Do you install commercial security cameras in Bradenton?", "a": "Yes. We cover Bradenton, Lakewood Ranch, Palmetto, Ellenton, Parrish and the rest of Manatee County from our Sarasota base."},
         {"q": "Is there a monthly fee for the cameras?", "a": "No. UniFi Protect records to a recorder on your property and Ubiquiti charges no per-camera licence."},
         {"q": "Can you cover a yard or a gate far from the building?", "a": "Usually yes. Cameras up to about 300 ft of cable from a switch run on one cable; beyond that we add a switch closer to the camera or use fiber."},
@@ -530,7 +530,7 @@ RETAIL = {
         },
     },
     "faq": [
-        {"q": "What does a store camera system cost?", "a": "Our packages start from $2,900 for 4 cameras, $5,900 for 8 and $12,900 for 12 or more, plus tax. The fixed price for your store follows a free walk."},
+        {"q": "What does a store camera system cost?", "a": "Our packages start from $2,500 for 4 cameras, $4,900 for 8 and $11,500 for 12 or more, plus tax. The fixed price for your store follows a free walk."},
         {"q": "How many cameras does a small retail store need?", "a": "A single-room boutique usually needs 4 to 6: the entrance, the register, one or two for the floor, and the stock room or back door."},
         {"q": "Can the cameras record audio at the register?", "a": "They can, but Florida requires everyone's consent to record a conversation, so we leave audio off in customer areas unless you have legal advice to use it."},
         {"q": "Is there a monthly fee?", "a": "No. Video records to a UniFi recorder in your store, with no per-camera subscription."},
@@ -593,7 +593,7 @@ RESTAURANT = {
         },
     },
     "faq": [
-        {"q": "What does a restaurant camera system cost?", "a": "Most restaurants fit the Office 8 package, from $5,900 plus tax, or Business Pro for 12 or more cameras, from $12,900 plus tax. The fixed price follows a free walk of the restaurant."},
+        {"q": "What does a restaurant camera system cost?", "a": "Most restaurants fit the Office 8 package, from $4,900 plus tax, or Business Pro for 12 or more cameras, from $11,500 plus tax. The fixed price follows a free walk of the restaurant."},
         {"q": "How many cameras does a restaurant need?", "a": "A small restaurant usually needs 8 to 12: the entrance, the bar and each POS, the dining room, the kitchen line, the cash office, the back door and the lot."},
         {"q": "Should restaurant cameras record audio?", "a": "In Florida we recommend no audio in guest areas, because recording a conversation requires everyone's consent."},
         {"q": "Can managers check the cameras from home?", "a": "Yes. Each manager gets a UniFi Protect login with the cameras and the history you choose."},
@@ -657,7 +657,7 @@ WAREHOUSE = {
         },
     },
     "faq": [
-        {"q": "What does a warehouse camera system cost?", "a": "Warehouses usually start with Business Pro: 12 or more cameras, a plate camera at the gate and a UNVR G2 Pro recorder, from $12,900 plus tax. The fixed price follows a free walk of the site."},
+        {"q": "What does a warehouse camera system cost?", "a": "Warehouses usually start with Business Pro: 12 or more cameras, a plate camera at the gate and a UNVR G2 Pro recorder, from $11,500 plus tax. The fixed price follows a free walk of the site."},
         {"q": "How far can a warehouse camera see at night?", "a": "It depends on the model. The G6 Turret's infrared reaches about 98 ft and the G6 Pro Bullet's further; large yards are covered with a PTZ or extra lighting."},
         {"q": "Can the system read licence plates at our gate?", "a": "Yes, with the UniFi AI LPR camera, mounted where vehicles slow down and at a low angle to the plate."},
         {"q": "How long should a warehouse keep footage?", "a": "Longer than an office, because losses are found later. We size the recorder for the number of days you choose."},
@@ -723,7 +723,7 @@ HOA = {
         },
     },
     "faq": [
-        {"q": "What does an HOA camera system cost?", "a": "A gate with a plate camera plus the pool, mail room and garage usually means Business Pro, from $12,900 plus tax. Smaller buildings can start from Office 8, from $5,900 plus tax. The board gets a fixed price after a free walk."},
+        {"q": "What does an HOA camera system cost?", "a": "A gate with a plate camera plus the pool, mail room and garage usually means Business Pro, from $11,500 plus tax. Smaller buildings can start from Office 8, from $4,900 plus tax. The board gets a fixed price after a free walk."},
         {"q": "Can an HOA put security cameras in common areas in Florida?", "a": "Common areas such as gates, pools and mail rooms are usually recorded with the board's approval and posted signs. Your association's attorney should approve the written camera policy."},
         {"q": "Can HOA cameras record audio?", "a": "We install them with audio off. Florida requires everyone's consent to record a conversation."},
         {"q": "Who can see the footage?", "a": "Only the people the board names. Each gets a UniFi Protect login limited to the cameras and history they are allowed."},

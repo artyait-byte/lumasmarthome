@@ -13,7 +13,7 @@ Audit and competitor scan: 2026-09-30.
 
 - Never invent reviews, star ratings, install counts, years in business, licence numbers or certifications. Certifications are not shown on the site (owner decision 2026-09-29).
 - Case studies only from the real cases already on `/work`.
-- Prices: only the ranges already published on `/budget` and the LUMA Care page, plus the owner-approved camera packages (2026-10-22: Home 4 from $2,900, Office 8 from $5,900, Business Pro 12+ from $12,900, all + tax; source of truth `CAMERA_PACKAGES` in `js/app.js`). Don't create new prices; flag in the report if an article needs one.
+- Prices: only the ranges already published on `/budget` and the LUMA Care page, plus the owner-approved camera packages (2026-10-22, revised to the Tampa Bay market middle: Home 4 from $2,500, Office 8 from $4,900, Business Pro 12+ from $11,500, all + tax; source of truth `CAMERA_PACKAGES` in `js/app.js`). Don't create new prices; flag in the report if an article needs one.
 - Brand canon: Lutron (RadioRA 3, HomeWorks, Ketra, Sivoia), Somfy, UniFi (Protect, Wi-Fi 6/7), Sonos, Control4, Savant, Josh.ai.
 - English only. Voice: calm, specific, technical, no hype.
 
@@ -166,9 +166,9 @@ Conversion pass on the camera pages. The unmerged `claude/business-cameras` work
 
 - **Pages:** `/security`, `/service-areas/sarasota/security`, `/service-areas/sarasota/business-security`, `/service-areas/bradenton/business-security`, `/service-areas/sarasota/{retail,restaurant,warehouse,hoa}-security-cameras`. A row is a camera page when it has `"camera"` in `CITY_SERVICES` (`home`, `business` or `pro` decides which package leads).
 - **Packages block** (owner-approved, "from" prices, "+ tax"):
-  - Home 4 — from $2,900: 4 UniFi G6 turret/bullet, UNVR, 8 TB drive, PoE switch, installation and app setup.
-  - Office 8 — from $5,900: 6 G6 turret/bullet + 2 G6 Dome (entrance, register), UNVR Pro, 2 drives, cameras on their own network segment.
-  - Business Pro 12+ — from $12,900: G6 Pro vandal-resistant, AI LPR with an overview camera, G6 180, UNVR G2 Pro, 4 drives.
+  - Home 4 — from $2,500: 4 UniFi G6 turret/bullet, UNVR, 8 TB drive, PoE switch, installation and app setup.
+  - Office 8 — from $4,900: 6 G6 turret/bullet + 2 G6 Dome (entrance, register), UNVR Pro, 2 drives, cameras on their own network segment.
+  - Business Pro 12+ — from $11,500: G6 Pro vandal-resistant, AI LPR with an overview camera, G6 180, UNVR G2 Pro, 4 drives.
   - Every package: no monthly subscription, footage on site, NDAA-compliant UniFi hardware, work carried out with our Florida-licensed low-voltage partner, final fixed price after the free walk. Options: video doorbell, extra cameras, plate camera for gates, alarm.
   - Lead card: Home 4 on `/security` and `/service-areas/sarasota/security`; Office 8 on the business hub, Bradenton, retail, restaurant; Business Pro on warehouse and HOA. No LUMA Care plan, no warranty terms, reviews, install counts or certifications.
 - **Inline form** "Free camera plan in 48 hours" on every camera page: name, phone, email (optional), home or business, number of cameras, city, message, plus hidden `page` and `package`. Netlify form name `camera-quote` (hidden twin written by `netlify_form()` in `scripts/generate-seo-pages.py`). Thank-you state in place. Picking a package card fills the form.
