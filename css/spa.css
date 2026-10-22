@@ -2157,3 +2157,35 @@ body{font-size:16px;line-height:1.5}
   .cx-final{padding:28px 18px}
   .cx .fx-cam-card{padding:28px 22px}
 }
+
+/* Camera pages: "Trusted by" row, logos in one muted tone */
+.cx-trusted{background:#fff;padding:8px 0 56px}
+.cx-trusted-label{text-align:center;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin:0 0 20px}
+.cx-trusted-row{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px 56px}
+.cx-trusted-row a{display:flex;align-items:center;height:64px;opacity:.62;transition:opacity .2s}
+.cx-trusted-row a:hover,.cx-trusted-row a:focus-visible{opacity:1}
+.cx-trusted-row img{height:64px;width:auto;max-width:200px;object-fit:contain;filter:brightness(0)}
+.cx-trusted-word{font-family:var(--serif);font-size:26px;letter-spacing:.06em;color:#000;white-space:nowrap}
+@media (max-width:767px){.cx-trusted-row{gap:20px 32px}.cx-trusted-row a,.cx-trusted-row img{height:48px}.cx-trusted-word{font-size:20px}}
+
+/* Camera pages: full-width hero photo behind the H1 block, copy on the left over a dark fade */
+.cx-hero--bg{padding-top:0}
+.cx-hero--bg .cx-hero-top{position:relative;overflow:hidden;display:flex;align-items:center;min-height:min(620px,76vh)}
+.cx-hero--bg .cx-hero-bg{position:absolute;inset:0}
+.cx-hero--bg .cx-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:70% 50%;display:block}
+.cx-hero--bg .cx-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,14,22,.84) 0%,rgba(12,14,22,.64) 42%,rgba(12,14,22,.14) 72%,rgba(12,14,22,0) 100%)}
+.cx-hero--bg .cx-hero-copy{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:clamp(96px,13vh,132px) 32px 64px;text-align:left;box-sizing:border-box}
+.cx-hero--bg .cx-hero-copy > *{max-width:600px}
+.page.cx .cx-hero--bg .cx-eyebrow,.page.cx .cx-hero--bg .cx-h1{color:#FCFAF6}
+.cx-hero--bg .cx-hero-copy > p:not(.cx-eyebrow){color:rgba(252,250,246,.88)}
+.cx-hero--bg .cx-hero-btns{justify-content:flex-start}
+.cx-hero--bg .cx-hero-row{margin-top:40px}
+@media (max-width:767px){
+  .cx-hero--bg .cx-hero-top{min-height:0}
+  .cx-hero--bg .cx-hero-bg img{object-position:78% 50%}
+  .cx-hero--bg .cx-hero-bg::after{background:linear-gradient(180deg,rgba(12,14,22,.6) 0%,rgba(12,14,22,.8) 55%,rgba(12,14,22,.86) 100%)}
+  .cx-hero--bg .cx-hero-copy{padding:84px 16px 40px;text-align:center}
+  .cx-hero--bg .cx-hero-copy > *{max-width:none}
+  .cx-hero--bg .cx-hero-btns{justify-content:center;align-items:center}
+  .cx-hero--bg .cx-hero-row{margin-top:24px}
+}

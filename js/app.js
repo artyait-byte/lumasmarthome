@@ -4327,7 +4327,9 @@ function CameraSectionPage({cityId, serviceId, row, navigate}){
   return (
     <div className="page cx">
       {/* 1. Hero: centered copy, two pills, a row of three tall photos */}
-      <section className="cx-hero">
+      <section className={'cx-hero' + (c.hero_bg ? ' cx-hero--bg' : '')}>
+        <div className="cx-hero-top">
+        {c.hero_bg && <div className="cx-hero-bg" aria-hidden="true"><CxImg photo={c.hero_bg} eager w={2400} h={1029}/></div>}
         <div className="cx-hero-copy">
           <p className="cx-eyebrow">{c.eyebrow}</p>
           <h1 className="cx-h1">{row.h1}</h1>
@@ -4337,6 +4339,7 @@ function CameraSectionPage({cityId, serviceId, row, navigate}){
             <a href={nap.telHref} className="cx-pill cx-pill--dark">Call {tel}<span className="cx-pill-ic"><CxIcon name="call" size={18}/></span></a>
             <button type="button" className="cx-pill cx-pill--light" onClick={scrollToCameraForm}>Get a free camera plan<span className="cx-pill-ic"><CxIcon name="arrow" size={18}/></span></button>
           </div>
+        </div>
         </div>
         <div className="cx-hero-row">
           {c.hero_photos.map((p, i) => <CxImg key={p[0]} photo={p} eager={i === 0} w={600} h={800}/>)}
@@ -4405,6 +4408,24 @@ function CameraSectionPage({cityId, serviceId, row, navigate}){
           <div className="cx-wrap">
             <CxHead h2={c.why.h2} lede={c.why.lede} navigate={navigate}/>
             <CxAccordion id="cam-why" photo={c.why.photo} items={c.why.items.map(([t, d], i) => ({key: String(i), title: t, body: <p><LinkedText text={d} navigate={navigate}/></p>}))}/>
+          </div>
+        </section>
+      )}
+
+      {/* 8b. Trusted by: one row of real clients (names and links only) */}
+      {c.trusted && (
+        <section className="cx-trusted" aria-label={c.trusted.label}>
+          <div className="cx-wrap">
+            <p className="cx-trusted-label">{c.trusted.label}</p>
+            <ul className="cx-trusted-row">
+              {c.trusted.clients.map(cl => (
+                <li key={cl.name}>
+                  <a href={cl.url} target="_blank" rel="noopener" aria-label={cl.name}>
+                    {cl.logo ? <img src={cl.logo} alt={cl.name} loading="lazy" decoding="async"/> : <span className="cx-trusted-word">{cl.name}</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

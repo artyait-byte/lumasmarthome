@@ -34,6 +34,8 @@ ALT = {
     "cam-scen-retail": "Customer paying at a shop counter with a dome camera on the ceiling",
     "cam-scen-office": "Visitor checking in at a bright reception desk with a small ceiling camera",
     "cam-monitor-phone": "Hand holding a phone with four camera views in front of a storefront at dusk",
+    "cam-hero-wide-a": "Dome and bullet cameras on the corner of a stucco building at sunset over Sarasota Bay",
+    "cam-hero-wide-b": "Bullet camera with infrared glow on a waterfront Florida home at dusk, pool and palms behind",
 }
 
 
@@ -115,6 +117,16 @@ ALL_TYPES = ["bullet", "dome", "turret", "panoramic", "vandal", "lpr", "doorbell
 
 PARTNER = "Installation work is carried out with our Florida-licensed low-voltage partner."
 
+# "Trusted by" row (owner-approved clients, names and links only).
+TRUSTED = {
+    "label": "Trusted by",
+    "clients": [
+        {"name": "Accent Florida Homes", "url": "https://accentfh.com/", "logo": "/assets/clients/accent-florida-homes.webp"},
+        {"name": "The Twins Spa", "url": "https://www.thetwinspa.com/", "logo": "/assets/clients/twins-spa.webp"},
+        {"name": "MVM Custom Homes", "url": "https://mvmch.com/", "logo": None},
+    ],
+}
+
 # ---------------------------------------------------------------------------
 # /service-areas/sarasota/security  (main page)
 # ---------------------------------------------------------------------------
@@ -134,6 +146,7 @@ SARASOTA_SECURITY = {
     "cam": {
         "eyebrow": "Video Surveillance",
         "hero_photos": [ph("cam-hero-office"), ph("cam-hero-dome"), ph("cam-hero-owner")],
+        "hero_bg": ph("cam-hero-wide-b"),
         "tabs": TABS_FULL,
         "plan": {"h2": "Start your free camera plan",
                  "lede": "Two short steps. We call you back to book a free walk of the property."},
@@ -165,6 +178,7 @@ SARASOTA_SECURITY = {
                 ["home", "Lock-and-leave for seasonal homes", "When the house sits empty from May to November, you can check the dock, the drive and the lanai after a storm without calling a neighbour."],
             ],
         },
+        "trusted": TRUSTED,
         "why": {
             "h2": "What Makes LUMA the Right Camera Company in Sarasota",
             "lede": "A small local studio that designs the network the cameras run on, not a national alarm brand.",
@@ -272,6 +286,7 @@ SARASOTA_BUSINESS = {
     "cam": {
         "eyebrow": "Commercial Video Surveillance",
         "hero_photos": [ph("cam-hero-office"), ph("cam-scen-retail"), ph("cam-hero-dome")],
+        "hero_bg": ph("cam-hero-wide-a"),
         "tabs": TABS_FULL,
         "plan": {"h2": "Start your free business camera plan",
                  "lede": "Two short steps. We call back to book a walk of the site at a time that suits the business."},
@@ -303,6 +318,7 @@ SARASOTA_BUSINESS = {
                 ["cloudoff", "No per-camera fees", "Footage stays on a recorder you own. Adding a camera later adds hardware, not another monthly line on the bill."],
             ],
         },
+        "trusted": TRUSTED,
         "why": {
             "h2": "Why Sarasota Businesses Choose LUMA for Cameras",
             "lede": "A local team that treats the cameras and the network as one job.",
@@ -416,6 +432,7 @@ BRADENTON_BUSINESS = {
     "cam": {
         "eyebrow": "Commercial Video Surveillance · Manatee County",
         "hero_photos": [ph("cam-scen-office"), ph("cam-type-bullet"), ph("cam-scen-warehouse")],
+        "hero_bg": ph("cam-hero-wide-a"),
         "tabs": seg_tabs("Layouts"),
         "plan": {"h2": "Start your free camera plan for a Manatee County site",
                  "lede": "Two short steps. We call back to set up a walk of the site in Bradenton, Lakewood Ranch or Palmetto."},
@@ -474,6 +491,7 @@ RETAIL = {
     "cam": {
         "eyebrow": "Retail Video Surveillance",
         "hero_photos": [ph("cam-scen-retail"), ph("cam-type-dome"), ph("cam-hero-owner")],
+        "hero_bg": ph("cam-hero-wide-a"),
         "tabs": seg_tabs("Store layout"),
         "plan": {"h2": "Start your free store camera plan",
                  "lede": "Two short steps. We walk the store before opening or after closing."},
@@ -536,6 +554,7 @@ RESTAURANT = {
     "cam": {
         "eyebrow": "Restaurant Video Surveillance",
         "hero_photos": [ph("cam-type-panoramic"), ph("cam-type-bullet"), ph("cam-hero-dome")],
+        "hero_bg": ph("cam-hero-wide-a"),
         "tabs": seg_tabs("Restaurant layout"),
         "plan": {"h2": "Start your free restaurant camera plan",
                  "lede": "Two short steps. We walk the restaurant between services, when the floor is quiet."},
@@ -599,6 +618,7 @@ WAREHOUSE = {
     "cam": {
         "eyebrow": "Warehouse Video Surveillance",
         "hero_photos": [ph("cam-scen-warehouse"), ph("cam-type-vandal"), ph("cam-why-rack")],
+        "hero_bg": ph("cam-hero-wide-a"),
         "tabs": seg_tabs("Warehouse layout"),
         "plan": {"h2": "Start your free warehouse camera plan",
                  "lede": "Two short steps. We walk the building, the docks and the yard with you."},
@@ -662,6 +682,7 @@ HOA = {
     "cam": {
         "eyebrow": "Community Video Surveillance",
         "hero_photos": [ph("cam-type-lpr"), ph("cam-type-vandal"), ph("cam-scen-marina")],
+        "hero_bg": ph("cam-hero-wide-a"),
         "tabs": seg_tabs("Policy & layout"),
         "plan": {"h2": "Start a free camera plan for your association",
                  "lede": "Two short steps. A board member or the manager can walk the common areas with us."},

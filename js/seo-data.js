@@ -1064,6 +1064,10 @@ window.LUMA_GEO = {
             "Boutique owner checking her store cameras on a phone at the counter"
           ]
         ],
+        "hero_bg": [
+          "/assets/photos/cameras/cam-hero-wide-b.jpg",
+          "Bullet camera with infrared glow on a waterfront Florida home at dusk, pool and palms behind"
+        ],
         "tabs": [
           [
             "camera-packages",
@@ -1158,6 +1162,26 @@ window.LUMA_GEO = {
               "Lock-and-leave for seasonal homes",
               "When the house sits empty from May to November, you can check the dock, the drive and the lanai after a storm without calling a neighbour."
             ]
+          ]
+        },
+        "trusted": {
+          "label": "Trusted by",
+          "clients": [
+            {
+              "name": "Accent Florida Homes",
+              "url": "https://accentfh.com/",
+              "logo": "/assets/clients/accent-florida-homes.webp"
+            },
+            {
+              "name": "The Twins Spa",
+              "url": "https://www.thetwinspa.com/",
+              "logo": "/assets/clients/twins-spa.webp"
+            },
+            {
+              "name": "MVM Custom Homes",
+              "url": "https://mvmch.com/",
+              "logo": null
+            }
           ]
         },
         "why": {
@@ -1614,6 +1638,10 @@ window.LUMA_GEO = {
             "Dome security camera under a stucco soffit with palm trees behind it"
           ]
         ],
+        "hero_bg": [
+          "/assets/photos/cameras/cam-hero-wide-a.jpg",
+          "Dome and bullet cameras on the corner of a stucco building at sunset over Sarasota Bay"
+        ],
         "tabs": [
           [
             "camera-packages",
@@ -1708,6 +1736,26 @@ window.LUMA_GEO = {
               "No per-camera fees",
               "Footage stays on a recorder you own. Adding a camera later adds hardware, not another monthly line on the bill."
             ]
+          ]
+        },
+        "trusted": {
+          "label": "Trusted by",
+          "clients": [
+            {
+              "name": "Accent Florida Homes",
+              "url": "https://accentfh.com/",
+              "logo": "/assets/clients/accent-florida-homes.webp"
+            },
+            {
+              "name": "The Twins Spa",
+              "url": "https://www.thetwinspa.com/",
+              "logo": "/assets/clients/twins-spa.webp"
+            },
+            {
+              "name": "MVM Custom Homes",
+              "url": "https://mvmch.com/",
+              "logo": null
+            }
           ]
         },
         "why": {
@@ -1962,6 +2010,10 @@ window.LUMA_GEO = {
             "Box truck at a loading dock under a wall-mounted camera"
           ]
         ],
+        "hero_bg": [
+          "/assets/photos/cameras/cam-hero-wide-a.jpg",
+          "Dome and bullet cameras on the corner of a stucco building at sunset over Sarasota Bay"
+        ],
         "tabs": [
           [
             "camera-packages",
@@ -2094,6 +2146,10 @@ window.LUMA_GEO = {
             "/assets/photos/cameras/cam-hero-owner.jpg",
             "Boutique owner checking her store cameras on a phone at the counter"
           ]
+        ],
+        "hero_bg": [
+          "/assets/photos/cameras/cam-hero-wide-a.jpg",
+          "Dome and bullet cameras on the corner of a stucco building at sunset over Sarasota Bay"
         ],
         "tabs": [
           [
@@ -2258,6 +2314,10 @@ window.LUMA_GEO = {
             "/assets/photos/cameras/cam-hero-dome.jpg",
             "Dome security camera under a stucco soffit with palm trees behind it"
           ]
+        ],
+        "hero_bg": [
+          "/assets/photos/cameras/cam-hero-wide-a.jpg",
+          "Dome and bullet cameras on the corner of a stucco building at sunset over Sarasota Bay"
         ],
         "tabs": [
           [
@@ -2427,6 +2487,10 @@ window.LUMA_GEO = {
             "Hands patching network cables into a PoE switch above a video recorder in a rack"
           ]
         ],
+        "hero_bg": [
+          "/assets/photos/cameras/cam-hero-wide-a.jpg",
+          "Dome and bullet cameras on the corner of a stucco building at sunset over Sarasota Bay"
+        ],
         "tabs": [
           [
             "camera-packages",
@@ -2594,6 +2658,10 @@ window.LUMA_GEO = {
             "/assets/photos/cameras/cam-scen-marina.jpg",
             "Dome camera on a pole above a marina dock with sailboats"
           ]
+        ],
+        "hero_bg": [
+          "/assets/photos/cameras/cam-hero-wide-a.jpg",
+          "Dome and bullet cameras on the corner of a stucco building at sunset over Sarasota Bay"
         ],
         "tabs": [
           [
