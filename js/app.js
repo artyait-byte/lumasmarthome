@@ -63,10 +63,14 @@ function applySeo(page){
   if (route.title) document.title = route.title;
   const desc = document.querySelector('meta[name="description"]');
   if (desc && route.description) desc.setAttribute('content', route.description);
+  // Only when the address bar is this page: if the route table is stale (a
+  // cached seo-data.js) the app can fall back to another page, and it must
+  // never point the canonical of the URL Google fetched somewhere else.
+  const here = normalizePath(window.location.pathname) === normalizePath(route.path);
   const canon = document.querySelector('link[rel="canonical"]');
-  if (canon && window.LUMA_SEO.siteUrl) canon.setAttribute('href', window.LUMA_SEO.siteUrl + route.path);
+  if (here && canon && window.LUMA_SEO.siteUrl) canon.setAttribute('href', window.LUMA_SEO.siteUrl + route.path);
   const ogUrl = document.querySelector('meta[property="og:url"]');
-  if (ogUrl && window.LUMA_SEO.siteUrl) ogUrl.setAttribute('content', window.LUMA_SEO.siteUrl + route.path);
+  if (here && ogUrl && window.LUMA_SEO.siteUrl) ogUrl.setAttribute('content', window.LUMA_SEO.siteUrl + route.path);
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle && route.title) ogTitle.setAttribute('content', route.title);
 }
@@ -3923,7 +3927,6 @@ function App() {
 
   function navigate(p){
     setPage(p);
-    applySeo(p);
     try {
       const next = pathFor(p);
       const current = normalizePath(window.location.pathname);
@@ -3933,6 +3936,7 @@ function App() {
     } catch(e) {
       window.location.hash = p==='home' ? '' : '/' + p;
     }
+    applySeo(p); // after pushState: applySeo only rewrites the canonical for the current address
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
