@@ -14,6 +14,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 import * as esbuild from 'esbuild';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -28,6 +29,13 @@ writeFileSync(join(ROOT, 'js/app.min.js'), '/* Built from js/app.js by scripts/p
 console.log(`[ok] js/app.min.js  ${(minified.length / 1024).toFixed(0)} KB`);
 
 const seoData = readFileSync(join(ROOT, 'js/seo-data.js'), 'utf8');
+
+// Versioned URLs for the files every page loads. Googlebot's renderer keeps
+// its own cache of scripts; an unversioned /js/seo-data.js can be weeks old,
+// and with an old route table the app falls back to the home page. A ?v= that
+// changes with the content forces a fresh copy.
+const ver = (rel) => createHash('sha1').update(readFileSync(join(ROOT, rel))).digest('hex').slice(0, 10);
+const V = { app: ver('js/app.min.js'), seo: ver('js/seo-data.js'), css: ver('css/spa.css') };
 const appScript = new vm.Script(compiled, { filename: 'app.js' });
 const seoScript = new vm.Script(seoData, { filename: 'seo-data.js' });
 
@@ -98,7 +106,10 @@ for (const file of shells(ROOT)) {
     .replace(NOSCRIPT_RE, '')
     .replace(BABEL_RE, '')
     .replace(APP_RE, '<script src="/js/app.min.js" defer></script>')
-    .replace(HEAD_SCRIPT_RE, '<script defer src="$1"');
+    .replace(HEAD_SCRIPT_RE, '<script defer src="$1"')
+    .replace('src="/js/app.min.js"', `src="/js/app.min.js?v=${V.app}"`)
+    .replace('src="/js/seo-data.js"', `src="/js/seo-data.js?v=${V.seo}"`)
+    .replace('href="/css/spa.css"', `href="/css/spa.css?v=${V.css}"`);
   if (!html.includes('"FAQPage"')) {
     const faq = faqJsonLd(markup);
     if (faq) html = html.replace('</head>', faq + '</head>');
