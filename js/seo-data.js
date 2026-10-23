@@ -185,8 +185,8 @@ window.LUMA_SEO = {
     "case-waterfront": {
       "id": "case-waterfront",
       "path": "/work/waterfront-family-home",
-      "title": "Waterfront Family Home | Sonos & UniFi Case Study | LUMA",
-      "description": "A relaxed coastal home on the water with discreet Sonos in-ceiling audio, Samsung TVs, and a UniFi network behind a clean equipment rack.",
+      "title": "Waterfront Family Home | Sarasota County Case Study | LUMA",
+      "description": "A relaxed Sarasota County home on the water with discreet Sonos in-ceiling audio, Samsung TVs, and a UniFi network behind a clean equipment rack.",
       "kind": "case",
       "city": null,
       "service": null,
@@ -3501,6 +3501,10 @@ window.LUMA_GEO = {
       }
     ],
     "case-waterfront": [
+      {
+        "id": "sa-sarasota",
+        "label": "Sarasota smart home"
+      },
       {
         "id": "work",
         "label": "Our work"
