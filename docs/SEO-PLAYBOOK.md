@@ -86,6 +86,7 @@ Written 2026-10-15 from the Search Console export of 2026-10-13 (last 3 months) 
 | motorized shades longboat key (exterior, blackout, window treatments) | `/service-areas/longboat-key/shading` |
 | motorized shades siesta key (blinds, roller, roman, screens) | `/service-areas/siesta-key/shading` |
 | security camera installation sarasota · house security cameras sarasota fl | `/service-areas/sarasota/security` |
+| security cameras & video surveillance sarasota & manatee (regional hub, homes + businesses, whole UniFi Protect system) | `/security` (links down to the two detail pages; never targets "security camera installation sarasota fl") |
 | home automation sarasota fl | `/service-areas/sarasota/automation` |
 | office / business security cameras sarasota fl · office surveillance camera system sarasota · business security camera systems sarasota | `/service-areas/sarasota/business-security` (hub for the business section) |
 | commercial security cameras bradenton · office surveillance camera system bradenton fl | `/service-areas/bradenton/business-security` |
@@ -197,6 +198,13 @@ Camera section v2: the seven camera pages rebuilt on the structure of the refere
 - **Not done, owner to confirm in person:** a "Trusted by" client row. A first attempt to add client names was refused by the agent's permission system, so no client names or logos are on the pages; see the PR description.
 - **Netlify:** form detection is still OFF on the site (`processing_settings.ignore_html_forms = true`); until it is turned on, `camera-quote` submissions show the "please call" message. Site settings were not changed.
 - **Request indexing after merge, in this order:** `/service-areas/sarasota/security`, `/service-areas/sarasota/business-security`, `/service-areas/bradenton/business-security`, `/service-areas/sarasota/retail-security-cameras`, `/service-areas/sarasota/restaurant-security-cameras`, `/service-areas/sarasota/warehouse-security-cameras`, `/service-areas/sarasota/hoa-security-cameras`, then `/security` (unchanged layout, new packages and form from the previous branch).
+
+### Done on 2026-10-23 (branch claude/security-hub)
+
+- **`/security` rebuilt on `CameraSectionPage`** with its own copy object `SECURITY_HUB` in `scripts/camera_content.py`, sent to the browser as `LUMA_GEO.cameraHub`. Old `SecurityPage` removed. Title "Security Cameras & Video Surveillance Sarasota | LUMA", H1 "Security Cameras & Video Surveillance in Sarasota & Manatee". Regional hub: homes and businesses, the whole UniFi Protect system (cameras, recorder, doorbells, plate cameras, alarm on request), Lakewood Ranch, Bradenton, Venice, Longboat Key, Siesta Key, Anna Maria. A two-card chooser under the hero links to `/service-areas/sarasota/security` and `/service-areas/sarasota/business-security`, plus the five segment pages.
+- **Navigation:** "Security Cameras Sarasota" → `/service-areas/sarasota/security` in the Solutions menu (after "Security & Surveillance") and in the footer; home page intro links "security camera installation in Sarasota".
+- **Camera pop-up** on every camera page (replaces the lead card there): 25 s / 55% scroll / exit intent, 7-day quiet after close, never after a send or while the inline form is used, never before the first scroll on phones. Offer "10% off installation labor" only in the pop-up and the mid-page band. Every `camera-quote` submission carries `offer=10-labor`; the pop-up sends `package=popup`.
+- **Request indexing after merge:** `/security`, then `/` (new link), `/service-areas/sarasota/security`.
 
 ### Month by month (one gate per month; do not move on if the gate fails)
 

@@ -7,7 +7,7 @@ Tony's remodeling SEO playbook, applied to this studio:
   - One NAP in the footer, with a Google Maps search link until a GBP CID exists.
 """
 
-from camera_content import CAMERA_ROWS, CAMERA_TYPES
+from camera_content import CAMERA_ROWS, CAMERA_TYPES, SECURITY_HUB
 
 
 SERVICES = {
@@ -1110,4 +1110,5 @@ def geo_payload() -> dict:
         "articleOrder": [a["id"] for a in sorted(ARTICLES, key=lambda a: a["date"], reverse=True)],
         "related": related_map(),
         "cameraTypes": CAMERA_TYPES,
+        "cameraHub": SECURITY_HUB,
     }

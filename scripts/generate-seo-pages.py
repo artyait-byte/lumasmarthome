@@ -122,9 +122,9 @@ ROUTES: list[dict] = [
         "id": "security",
         "path": "/security",
         "file": "security.html",
-        "title": "Home Security & Cameras | UniFi Protect | LUMA Sarasota",
-        "description": "On-premise UniFi Protect cameras with no monthly cloud fees. Property-walked camera placement, NVR on site, optional alarm monitoring.",
-        "h1": "Security Camera Installation · Sarasota & Manatee",
+        "title": "Security Cameras & Video Surveillance Sarasota | LUMA",
+        "description": "Security cameras and video surveillance for homes and businesses in Sarasota & Manatee: UniFi Protect, on-site recorder, no monthly fees.",
+        "h1": "Security Cameras & Video Surveillance in Sarasota & Manatee",
         "og_image": "/assets/og/security.jpg",
         "priority": 0.9,
         "changefreq": "monthly",
@@ -619,7 +619,7 @@ CONTACT_FIELDS = [
 # shows it.
 CAMERA_QUOTE_FIELDS = [
     "name", "phone", "email", "property_type", "cameras", "city", "message",
-    "package", "page",
+    "package", "page", "offer",
 ]
 CAMERA_QUOTE_PAGES = {"security"} | {
     f"sa-{r['city']}-{r['service']}" for r in CITY_SERVICES if r.get("camera")
