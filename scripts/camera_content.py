@@ -732,6 +732,180 @@ HOA = {
     ],
 }
 
+# ---------------------------------------------------------------------------
+# /security  (regional hub: Sarasota & Manatee, homes and businesses)
+# Owns "security cameras & video surveillance Sarasota & Manatee". The
+# Sarasota detail pages own "security camera installation Sarasota FL" and
+# "business security camera systems Sarasota"; this page sends visitors to
+# them through the chooser and never repeats their sentences.
+# ---------------------------------------------------------------------------
+SECURITY_HUB = {
+    "page": "security",
+    "camera": "home",
+    "h1": "Security Cameras & Video Surveillance in Sarasota & Manatee",
+    "lede": "One UniFi Protect system for the whole property: wired 4K cameras, a recorder that stays in your home or building, a video doorbell at the front door and, where a gate needs it, a license plate camera. We plan it, install it and set it up on your phone, for houses and for businesses from Anna Maria to Venice.",
+    "paragraphs": [
+        "Our work covers both counties: estates in Lakewood Ranch, offices and shops in Bradenton, homes on Longboat Key, Siesta Key and Anna Maria Island, and gated streets around Venice. An alarm system can be added on request; the cameras never need a subscription.",
+    ],
+    "chooser": {
+        "h2": "Which camera system are you looking for?",
+        "cards": [
+            {"page": "sa-sarasota-security", "icon": "home",
+             "title": "Home & house security cameras in Sarasota",
+             "text": "Driveway, front door, lanai, dock and side gates. Packages from $2,500 + tax.",
+             "cta": "Home cameras"},
+            {"page": "sa-sarasota-business-security", "icon": "building",
+             "title": "Office & business camera systems",
+             "text": "Entrances, registers, stock rooms and the lot, with logins for every manager. From $4,200 + tax.",
+             "cta": "Business cameras"},
+        ],
+        "more_label": "By type of business:",
+        "more": [
+            ["sa-sarasota-retail-security-cameras", "Retail stores"],
+            ["sa-sarasota-restaurant-security-cameras", "Restaurants"],
+            ["sa-sarasota-warehouse-security-cameras", "Warehouses"],
+            ["sa-sarasota-hoa-security-cameras", "HOAs and condos"],
+            ["sa-bradenton-business-security", "Bradenton businesses"],
+        ],
+    },
+    "pkg_links": [
+        ["sa-sarasota-security", "Home security cameras in Sarasota"],
+        ["sa-sarasota-business-security", "Business camera systems in Sarasota"],
+        ["sa-bradenton-business-security", "Commercial cameras in Bradenton"],
+    ],
+    "packages_h2": "Camera system packages for Sarasota & Manatee",
+    "faq_h2": "Video surveillance in Sarasota & Manatee: questions we hear",
+    "cam": {
+        "eyebrow": "Security & Surveillance",
+        "hero_photos": [ph("cam-hero-dome"), ph("cam-type-doorbell"), ph("cam-hero-owner")],
+        "hero_bg": ph("cam-hero-wide-a"),
+        "tabs": TABS_FULL,
+        "plan": {"h2": "Get a free camera plan",
+                 "lede": "Two short steps, for a house or a business anywhere in Sarasota or Manatee County. We call back to set up the walk."},
+        "process": {
+            "h2": "One System, From the Gate to Your Phone",
+            "text": [
+                "A video surveillance system is more than cameras on a wall. Behind them sit a PoE switch that powers every camera through its cable, a UniFi recorder with enough drive space for the weeks you want to keep, and a battery that keeps both running when the power flickers in a storm.",
+                "We design those parts together. The walk of the property sets the camera positions; the positions set the cable routes, the switch size and the recorder; and the plan you receive lists each of them with a fixed price.",
+                "On a home that often means a doorbell, four to eight cameras and a small recorder in a closet. On a business it can mean a plate camera at the entrance, vandal-resistant domes within reach, and separate logins for owners and staff.",
+            ],
+            "photo": ["/assets/photos/sarasota-ringling-bridge.jpg", "John Ringling Causeway bridge over Sarasota Bay with boats at a dock"],
+        },
+        "types": {
+            "h2": "Cameras in a UniFi Protect System",
+            "lede": "Every device below records to the same recorder and shows up in the same app, so a system can start small and grow one camera at a time.",
+            "items": [
+                ["bullet", "Points along one line and reaches far, with infrared for dark nights. The Pro version adds optical zoom for a distant gate or the back row of a lot.", "long drives, property lines, building sides and parking rows"],
+                ["dome", "Sits close to a ceiling or soffit and hides which way it looks. Indoors it watches a door or a counter without drawing the eye.", "entries, covered porches, lobbies and checkout counters"],
+                ["turret", "A lens with no dome over it, so night glare and fogging are not a problem in Gulf Coast humidity. Simple to re-aim if a space changes.", "eaves, back doors, pool cages and hallways"],
+                ["panoramic", "One 180° view from a single mount, with no seam in the middle. It can do the work of two or three fixed cameras across an open space.", "back yards, pool decks, shop floors and dining rooms"],
+                ["vandal", "A metal-housed dome rated IK10 for impacts. It is the one to use anywhere a hand or a thrown object can reach it.", "garages, gate posts, stairwells and parking decks"],
+                ["lpr", "Reads plates where vehicles slow down, by day and at night, and lets you search recordings by plate. Paired with an overview camera for the car and driver.", "gated entrances, community gates, lots and loading yards"],
+                ["doorbell", "Shows who is at the door, records deliveries and lets you talk from your phone. Wired, so there is no battery to swap, and recorded with the rest of the system.", "front doors, side entries and staff doors"],
+            ],
+        },
+        "benefits": {
+            "h2": "What a Video Surveillance System Does for You",
+            "lede": "It works before anything happens and keeps working when nobody is there to watch.",
+            "photo": ph("cam-benefits-wide"),
+            "cards": [
+                ["shield", "Makes a property a harder target", "Cameras that can be seen from the street, together with good lighting, tell anyone checking doors that this one is recorded."],
+                ["file", "Answers what happened", "When a package goes missing, a car is scraped or a door is found open, the timeline shows the minute it happened and who was there."],
+                ["phone", "Puts the property in your pocket", "Live view and alerts for people and vehicles on your phone, whether you are across town or out of state for the summer."],
+                ["building", "Covers a home and a business the same way", "The same app can show your house and your shop, each with its own recorder, so there is one thing to learn instead of two."],
+                ["cloudoff", "Keeps the video local", "Recordings sit on a recorder you own, on the property. Nothing is uploaded to a provider and there is no per-camera plan to renew."],
+                ["users", "Shares access on your terms", "Give a spouse, a manager or a house watcher a login that sees only their cameras, and take it back when you need to."],
+            ],
+        },
+        "trusted": TRUSTED,
+        "why": {
+            "h2": "Why Owners in Sarasota & Manatee Choose LUMA",
+            "lede": "A small team that plans the cameras, the network behind them and the handover, and stays your contact afterwards.",
+            "photo": ph("cam-why-rack"),
+            "items": [
+                ["Planned on the property", "Every system starts with a walk of the property, so positions account for glare, foliage, neighbours and where cable can actually run. " + PARTNER],
+                ["Built for salt air and storms", "Weather-rated cameras, sealed connections, mounts under cover where possible, and a battery behind the recorder and switch."],
+                ["The network is part of the job", "Cameras get their own segment, apart from computers and guest Wi-Fi, and the recorder sits where it is secure and ventilated. See [Wi-Fi and cabling in Sarasota](sa-sarasota-networking)."],
+                ["Homes and businesses alike", "The same team handles a beach house on Anna Maria Island and a warehouse in Bradenton, with the same equipment line and the same app."],
+                ["Fixed, itemised pricing", "You see each camera, each cable run and the recorder as separate lines, and the price is fixed after the walk."],
+                ["NDAA-compliant equipment", "UniFi Protect cameras and recorders are NDAA-compliant, which some businesses and government contractors require."],
+            ],
+        },
+        "steps": {
+            "eyebrow": "From first call to first clip",
+            "h2": "How a Camera Project Runs",
+            "lede": "The same four steps for a house or a business. Small systems are usually installed in a day.",
+            "items": [
+                ["map", "Free walk of the property", "We look at every entrance, the approaches and the spots you worry about, and agree what each camera must show."],
+                ["clipboard", "Plan and fixed price", "Within 48 hours: camera positions and models, recorder size and retention, and a price on every line."],
+                ["tool", "Installation", "Cable runs, sealed connections, cameras on PoE and the recorder on battery backup, scheduled around your house or business hours."],
+                ["app", "Handover", "The UniFi Protect app on your phones, alerts set to people and vehicles, and a quick lesson in finding and sharing a clip."],
+            ],
+        },
+        "scenarios": {
+            "h2": "Where We Install Across Sarasota & Manatee",
+            "lede": "Different properties, the same system underneath.",
+            "banner": ["/assets/photos/sarasota-bay-house.jpg", "Waterfront home at dusk with a lit pool, palms and a dock on the bay"],
+            "cards": [
+                {"title": "Lakewood Ranch and inland estates", "photo": ph("cam-hero-wide-b"),
+                 "text": "Long drives, wide back yards and pool cages. A bullet at the drive, a 180° camera over the yard and a doorbell at the front door cover most of it.",
+                 "links": [["sa-lakewood-ranch", "Lakewood Ranch"]]},
+                {"title": "Islands and the waterfront", "photo": ph("cam-scen-marina"),
+                 "text": "Longboat Key, Siesta Key and Anna Maria Island homes face salt spray and long empty months. Cameras go under cover with sealed entries, and a dock camera watches the boat.",
+                 "links": [["sa-longboat-key", "Longboat Key"], ["sa-siesta-key", "Siesta Key"], ["sa-anna-maria-island", "Anna Maria Island"]]},
+                {"title": "Shops, offices and restaurants", "photo": ph("cam-scen-retail"),
+                 "text": "Doors, counters, back rooms and the lot, with a login for each manager. Installation is set around opening hours.",
+                 "links": [["sa-sarasota-business-security", "Business camera systems in Sarasota"], ["sa-bradenton-business-security", "Commercial cameras in Bradenton"]]},
+                {"title": "Warehouses and yards", "photo": ph("cam-scen-warehouse"),
+                 "text": "Dock doors, the yard and the gate, with a plate camera where trucks come in and a recorder sized for long retention.",
+                 "links": [["sa-sarasota-warehouse-security-cameras", "Warehouse security cameras"]]},
+                {"title": "Gated communities and condos", "photo": ph("cam-type-lpr"),
+                 "text": "Plate and overview cameras at the gate, then the pool, the mail room and the garage, with clear rules on who can see what.",
+                 "links": [["sa-sarasota-hoa-security-cameras", "HOA and condo security cameras"]]},
+                {"title": "Venice and the south county", "photo": ph("cam-type-turret"),
+                 "text": "Single-storey homes and seasonal residences around Venice, often with a lanai and a side yard to cover and an owner who is away part of the year.",
+                 "links": [["sa-venice", "Venice"]]},
+            ],
+        },
+        "choosing": {
+            "h2": "Planning Coverage for the Whole Property",
+            "photo": ph("cam-type-bullet"),
+            "text": [
+                "Start with the ways in: the drive, each door, side gates and, on the water, the dock. Those positions decide most of a system. Then add the places where something valuable sits, from a register to a boat.",
+                "Decide what each camera has to prove. Identifying a face or a plate needs the camera close or zoomed; seeing that someone crossed the yard does not. That choice sets the camera type and its resolution.",
+                "Choose how many days to keep. Retention, not the camera count alone, sets the recorder and its drives, and it is easier to size it right at the start than to add drives later.",
+                "Keep it wired. In Florida heat, PoE cameras outlast battery models and do not drop off Wi-Fi. Microphones stay off by default, because Florida requires everyone's consent before a conversation is recorded (Fla. Stat. 934.03).",
+            ],
+        },
+        "watch": {
+            "h2": "Your Cameras, On Every Screen You Use",
+            "photo": ph("cam-monitor-phone"),
+            "text": [
+                "UniFi Protect runs on phones, tablets and computers. Scroll the timeline, jump to the last person or vehicle detected, and save a clip in a few taps.",
+                "A house and a business can sit side by side in the same app, each with its own recorder and its own list of people who can see it.",
+                "If you want an alarm as well, we can add one on request. The cameras work without any subscription.",
+            ],
+        },
+        "call": "to plan cameras for a home or a business in Sarasota or Manatee County",
+        "final": {
+            "h2": "Request a Free Video Surveillance Plan",
+            "text": "Tell us about the property, the areas you want covered and how long footage should be kept. We call back to book a free walk, and the camera plan with a fixed price follows within 48 hours.",
+        },
+    },
+    "faq": [
+        {"q": "What does a video surveillance system cost in Sarasota or Manatee County?", "a": "Packages start from $2,500 for 4 cameras (Home 4), from $4,200 for 8 cameras (Office 8) and from $10,900 for 12 or more (Business Pro), plus tax, with the recorder and installation included. The fixed price for your property follows the free walk."},
+        {"q": "Do you work outside the city of Sarasota?", "a": "Yes. We work across Sarasota and Manatee Counties, including Lakewood Ranch, Bradenton, Palmetto, Venice, Osprey, Longboat Key, Siesta Key and Anna Maria Island."},
+        {"q": "What is in a UniFi Protect system?", "a": "Cameras, a UniFi recorder with drives, a PoE switch that powers the cameras over their cables, and the Protect app. Doorbells, plate cameras and extra cameras record to the same recorder."},
+        {"q": "Can one system cover my home and my business?", "a": "Each property gets its own recorder, and both can appear in the same UniFi Protect app on your phone, with separate access for family and staff."},
+        {"q": "Is there a subscription?", "a": "No. Video is stored on the recorder at the property, with no per-camera or cloud fee. An alarm can be added on request; it is the only optional extra with its own terms."},
+        {"q": "Do you install video doorbells and license plate cameras?", "a": "Yes. A wired UniFi doorbell is a common addition to a home, and an AI LPR plate camera with an overview camera is the usual choice for gates and lot entrances."},
+        {"q": "Will the cameras record sound?", "a": "Not by default. Under Fla. Stat. 934.03, recording a conversation needs the consent of everyone in it, so we switch camera microphones off."},
+        {"q": "Who does the installation?", "a": "LUMA plans and sets up the system. " + PARTNER},
+        {"q": "Where can I see details for a home or a business?", "a": "See [security camera installation in Sarasota](sa-sarasota-security) for houses and [office and business security camera systems](sa-sarasota-business-security) for companies."},
+    ],
+}
+
+
 CAMERA_ROWS = {
     f"{r['city']}/{r['service']}": r
     for r in (SARASOTA_SECURITY, SARASOTA_BUSINESS, BRADENTON_BUSINESS, RETAIL, RESTAURANT, WAREHOUSE, HOA)

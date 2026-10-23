@@ -283,15 +283,16 @@ const services = [
   {id:'window',     name:'Window Treatments',          sub:'Motorized shades & drapery',           page:'shading'},
   {id:'theater',    name:'Home Theaters',              sub:'Calibrated rooms · cinema seating',    page:'theaters'},
   {id:'security',   name:'Security & Surveillance',    sub:'On-prem cameras · no monthly fees',    page:'security'},
+  {id:'camsrq',     name:'Security Cameras Sarasota',   sub:'Homes · UniFi 4K · no monthly fees',    page:'sa-sarasota-security'},
   {id:'audio',      name:'Audio & Video',              sub:'Whole-home audio · indoor + lanai',    page:'audio'},
   {id:'networking', name:'Networking',                  sub:'Wi-Fi 6 / 7 · enterprise-grade',       page:'networking'},
   {id:'automation', name:'Home Automation',             sub:'Daily routines · one tap',             page:'automation'},
   {id:'permanent',  name:'Permanent Outdoor Lighting',  sub:'Roofline LEDs · warm white to holiday',  page:'permanent-lighting'},
   {id:'business',   name:'Business Security Cameras',   sub:'Offices · shops · no monthly fees',     page:'sa-sarasota-business-security'},
 ];
-// the business entry reuses the security icon and preview photo
-serviceIcons.business = serviceIcons.security;
-PHOTOS.business = PHOTOS.security;
+// the business and Sarasota camera entries reuse the security icon and preview photo
+serviceIcons.business = serviceIcons.camsrq = serviceIcons.security;
+PHOTOS.business = PHOTOS.camsrq = PHOTOS.security;
 
 /* ─── MEGA DROPDOWN ─── */
 function MegaDropdown({active, hoverId, setHoverId, navigate}) {
@@ -581,6 +582,7 @@ function FxIntro({navigate}) {
           <div className="fx-lede">
             <p>Lighting, shade, sound, cameras and the network are one drawing set, issued to your architect and your electrician before a single box is hung.</p>
             <p>We are based in Sarasota and work across Sarasota and Manatee Counties. Controls are matched to your switch plates, speakers are flush-trimmed and painted, and the rack lives where nobody has to look at it.</p>
+            <p>Cameras only? We also take on <NavLink page="sa-sarasota-security" navigate={navigate} className="fx-inline">security camera installation in Sarasota</NavLink> as a project of its own.</p>
             <p style={{marginTop:16}}>
               <NavLink page="about" navigate={navigate} className="fx-more">Learn more <i aria-hidden="true">→</i></NavLink>
             </p>
@@ -1868,104 +1870,6 @@ function AudioPage({navigate}) {
   />;
 }
 
-/* ─── SECURITY PAGE ─── */
-function SecurityPage({navigate}) {
-  return <ServicePageShell
-    navigate={navigate}
-    formName="security-inquiry"
-    hero={{
-      eyebrow:'Security & surveillance',
-      h1:'Your footage. <em>Your property.</em>', kw:'Security Camera Installation · Sarasota & Manatee',
-      lead:'On-premise camera systems with no monthly cloud fees and no third party with a copy of your driveway. Cameras placed by walking the property, not by floor plan.',
-      image: PHOTOS.securityHero,
-      primaryLabel:'See a finished install →', primaryAction:()=>navigate('work'),
-      secondaryLabel:'Talk to us', secondaryAction:()=>navigate('contact'),
-    }}
-    installGrid={{
-      eyebrow:'On the property',
-      h2:'What a LUMA install <em>looks like.</em>',
-      lead:'Cameras, recorder, panels, and the app — what actually goes on the wall, in the closet, and in your hand.',
-      items:[
-        {key:'installBullet',   cap:'G6 Pro Bullet under the soffit', size:'tall'},
-        {key:'installDome',     cap:'G6 Dome at the entry'},
-        {key:'installDoorbell', cap:'UniFi doorbell'},
-        {key:'installNvr',      cap:'UNVR in the rack'},
-        {key:'installPanel',    cap:'Control4 in-wall touchscreen'},
-        {key:'installDock',     cap:'Dock camera on Sarasota Bay'},
-        {key:'installPhone',    cap:'Protect app on your phone'},
-      ],
-    }}
-    diagram={{image:lu('/assets/photos/layers-security.jpg'), alt:'Model of a home front: bullet cameras under the eaves, a dome over the door and a video doorbell, a recorder rack and alarm keypad in the garage', pins:[[41.3,33.7],[79.2,34.7],[88.3,40.5]], base:'base',
-      states:{base:lu('/assets/photos/live/security-base.jpg'), night:lu('/assets/photos/live/sc-sec-night.jpg'), motion:lu('/assets/photos/live/sc-sec-motion.jpg'), package:lu('/assets/photos/live/sc-sec-package.jpg'), away:lu('/assets/photos/live/sc-sec-away.jpg')},
-      modesTitle:'Scenarios',
-      modes:[
-        {key:'night',label:'Night, armed',fx:[{t:'dot',at:[36.1,42]},{t:'dot',at:[22,38]},{t:'dot',at:[84,40]}]},
-        {key:'motion',label:'Car in the drive',fx:[{t:'cone',at:[66.3,38.7],to:[62,78],w:11},{t:'cone',at:[41.3,33.7],to:[46,70],w:10}]},
-        {key:'package',label:'Package at the door',fx:[{t:'cone',at:[38.9,40.8],to:[37,58],w:7}]},
-        {key:'away',label:'Away'},
-      ],
-      fx:[
-        [{t:'cone',at:[41.3,33.7],to:[44,72],w:10},{t:'cone',at:[66.3,38.7],to:[60,80],w:10},{t:'cone',at:[13.1,30.3],to:[12,62],w:9},{t:'cone',at:[34.4,27],to:[31,58],w:8}],
-        [{t:'spot',at:[79.2,34.7],r:7},{t:'line',pts:[[41.3,33.7],[60,31],[79.2,34.7]]},{t:'line',pts:[[66.3,38.7],[79.2,34.7]]},{t:'line',pts:[[34.4,27],[55,24],[79.2,34.7]]}],
-        [{t:'spot',at:[88.3,40.5],r:4},{t:'rings',at:[88.3,40.5],r:5},{t:'dot',at:[38.9,40.8]},{t:'dot',at:[36.1,42]},{t:'dot',at:[22,38]},{t:'dot',at:[84,40]}],
-      ]}}
-    valueProp={{
-      eyebrow:'How it works',
-      h2:'A system <em>you don\'t manage.</em>',
-      lead:'Three layers — the cameras at the perimeter, the recorder in your network closet, and the alarm system that ties everything to your phone and your local responders.',
-      cards:[
-        {title:'Cameras', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="2.5"/><circle cx="14.5" cy="6" r="0.7" fill="currentColor"/></svg>,
-         desc:'Ubiquiti UniFi Protect G6 series: G6 Pro Bullet at the perimeter, G6 Dome at the doors, AI Theta indoors where a camera should not look like one. 4K, on-camera AI detection, PoE, no batteries.'},
-        {title:'NVR & storage', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="2.5" y="5" width="15" height="3.5" rx="0.6"/><rect x="2.5" y="11.5" width="15" height="3.5" rx="0.6"/><circle cx="14.5" cy="6.75" r="0.6" fill="currentColor"/><circle cx="14.5" cy="13.25" r="0.6" fill="currentColor"/></svg>,
-         desc:'UniFi Protect on-prem NVR. RAID storage, 30+ days retention, encrypted at rest. Your footage stays on your property.'},
-        {title:'Alarm & monitoring', icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2.5l-7 3v5c0 4 3 7 7 8 4-1 7-4 7-8v-5l-7-3z"/></svg>,
-         desc:'Alarm.com or DSC PowerSeries integrated with cameras. Glass-break, motion, door contacts. Local response, optional UL monitoring.'},
-      ],
-      split:{
-        eyebrow:'Footage philosophy',
-        h2:'Your video <em>stays on your property.</em>',
-        image: PHOTOS.securityFootage,
-        alt:'On-prem network video recorder',
-        rows:[
-          {name:'No monthly cloud fees',  desc:'UniFi Protect runs on hardware you own. No subscription, no rented storage, no vendor with a backdoor.'},
-          {name:'Walked, not drawn',       desc:'Camera placement done on-site, in the conditions you actually live in — sunset glare, landscape lighting, neighbor angles.'},
-          {name:'Encrypted off-site backup',desc:'Optional encrypted cold backup to a property of your choosing — a second home, an office, a safe deposit drive.'},
-        ],
-      },
-    }}
-    why={{
-      h2:'Surveillance that <em>respects the home.</em>',
-      rows:[
-        {n:'01', text:'All footage stored on-prem on UniFi Protect — no monthly cloud fees, no third party reviewing your driveway, no rented retention windows.'},
-        {n:'02', text:'Cameras placed after a property walkthrough, not from a floor plan. Sunset glare, foliage growth, and neighbor sightlines factored in before mounting.'},
-        {n:'03', text:'Two-year hardware warranty, parts and labor. Anything that fails in normal use, we replace — including the labor to swap it.'},
-      ],
-    }}
-    aside={{id:'business', h2:'For offices and shops', page:'sa-sarasota-business-security', link:'Business camera systems in Sarasota',
-      body:'The same UniFi Protect stack works for offices, showrooms, retail and small warehouses: wired cameras on the doors, the counter and the lot, recording on site with no per-camera fees, and one app for owners and managers.',
-      links:[['sa-sarasota-retail-security-cameras','Retail store security cameras'],['sa-sarasota-restaurant-security-cameras','Restaurant security cameras'],['sa-sarasota-warehouse-security-cameras','Warehouse security cameras'],['sa-sarasota-hoa-security-cameras','HOA and condo security cameras'],['sa-bradenton-business-security','Commercial security cameras in Bradenton']]}}
-    cases={['case-bighouse']}
-    packages={<CameraPackages lead="home" h2="Camera packages and prices" navigate={navigate}
-      links={[['sa-sarasota-security','Home security cameras in Sarasota'],['sa-sarasota-business-security','Office and business security camera systems in Sarasota']]}/>}
-    quote={<CameraQuoteForm lead="home"/>}
-    faq={[
-      {q:'What does a security camera system cost?', a:'Our packages start from $2,500 for 4 cameras (Home 4), from $4,200 for 8 cameras (Office 8) and from $10,900 for 12 or more (Business Pro), plus tax. The final fixed price comes after a free walk of the property.'},
-      {q:'How many cameras does a house need?', a:'Usually four to eight: the driveway, the front door, the back yard or lanai, and each side gate. Small offices usually need four to eight as well. We count them with you on the walk.'},
-      {q:'Is there a monthly fee?', a:'No. Video records to a UniFi recorder on your property. There is no subscription and no per-camera fee.'},
-      {q:'Do the cameras record audio?', a:'Audio is off by default. Florida requires the consent of everyone in a conversation before it is recorded (Fla. Stat. 934.03), so we leave camera microphones switched off.'},
-      {q:'Who installs the cameras?', a:'LUMA Smart Home, a DBA of Tegra-Media LLC, designs and sets up the system. The installation work is carried out with our Florida-licensed low-voltage partner.'},
-    ]}
-    credentials={['Ubiquiti UVP Partner','UniFi Protect Certified','CEDIA Member','Insured & bonded']}
-    ctaCopy={{
-      h2:'Start a <em>security conversation.</em>',
-      lead:'Tell us about the property. We\'ll send a camera placement plan within 48 hours.',
-      placeholder:'Property size, perimeter, areas of concern, existing system…',
-      onSubmit:()=>navigate('contact'),
-    }}
-  />;
-}
-
-
 /* ─── PERMANENT LIGHTING PAGE ─── */
 function PermanentLightingPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
@@ -2295,7 +2199,7 @@ function Footer({navigate}) {
     {label:'Solutions', links:[
       ['lighting','Lighting'],['shading','Shading'],['theaters','Home theaters'],
       ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],['permanent-lighting','Permanent outdoor lighting'],
-      ['sa-sarasota-business-security','Business cameras'],
+      ['sa-sarasota-security','Security cameras Sarasota'],['sa-sarasota-business-security','Business cameras'],
     ]},
     {label:'Studio', links:[
       ['work','Our work'],['about','About'],      ['journal','Journal'],
@@ -3940,6 +3844,7 @@ async function postCameraQuote(form, pkg){
   const data = new FormData(form);
   data.set('page', window.location.pathname);
   data.set('package', pkg);
+  data.set('offer', '10-labor');
   const res = await fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(data).toString()});
   if (!res.ok) throw new Error('HTTP ' + res.status);
   leadSave({sent: Date.now()});
@@ -4302,7 +4207,7 @@ function CameraSectionPage({cityId, serviceId, row, navigate}){
   const nap = napInfo();
   const tel = nap.telephoneDisplay.replace(/^\+1\s*/, '');
   const types = geoData().cameraTypes || {};
-  const camLinks = row.camera === 'home'
+  const camLinks = row.pkg_links ? row.pkg_links : row.camera === 'home'
     ? [['sa-sarasota-business-security','Office and business security camera systems in Sarasota']]
     : [['sa-sarasota-security','Home and house security cameras in Sarasota']].concat(
         cityId + '/' + serviceId === 'sarasota/business-security' ? [] : [['sa-sarasota-business-security','Business security camera systems in Sarasota']]);
@@ -4349,6 +4254,32 @@ function CameraSectionPage({cityId, serviceId, row, navigate}){
         </div>
       </section>
 
+      {/* 1b. Hub only: which detail page to go to */}
+      {row.chooser && (
+        <section className="cx-sec cx-white cx-sec--chooser" aria-labelledby="cx-chooser-h">
+          <div className="cx-wrap">
+            <h2 className="cx-h2 cx-center" id="cx-chooser-h">{row.chooser.h2}</h2>
+            <div className="cx-choose">
+              {row.chooser.cards.map(cd => (
+                <NavLink key={cd.page} page={cd.page} navigate={navigate} className="cx-choose-card">
+                  <span className="cx-choose-ic" aria-hidden="true"><CxIcon name={cd.icon} size={30}/></span>
+                  <span className="cx-choose-copy">
+                    <strong>{cd.title}</strong>
+                    <span>{cd.text}</span>
+                  </span>
+                  <span className="cx-choose-go">{cd.cta}<i className="cx-pill-ic"><CxIcon name="arrow" size={18}/></i></span>
+                </NavLink>
+              ))}
+            </div>
+            {row.chooser.more && (
+              <p className="cx-choose-more"><span>{row.chooser.more_label}</span> {row.chooser.more.map(([pg, label], i, arr) => (
+                <React.Fragment key={pg}><NavLink page={pg} navigate={navigate} className="fx-inline">{label}</NavLink>{i < arr.length - 1 ? ' · ' : ''}</React.Fragment>
+              ))}</p>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* 2. Sticky in-page tabs */}
       <CxTabs tabs={c.tabs}/>
 
@@ -4380,6 +4311,9 @@ function CameraSectionPage({cityId, serviceId, row, navigate}){
           <CxAccordion id="cam-type" items={typeItems}/>
         </div>
       </section>
+
+      {/* 6b. Mid-page CTA band: opens the camera pop-up */}
+      <CameraCtaBand/>
 
       {/* 7. Benefits: wide photo + icon cards */}
       {c.benefits && (
@@ -4502,6 +4436,169 @@ function CameraSectionPage({cityId, serviceId, row, navigate}){
 
       {/* 14. Final form */}
       <CameraQuoteForm lead={row.camera} variant="cx" id="camera-estimate" h2={c.final.h2} lede={c.final.text}/>
+    </div>
+  );
+}
+
+/* ─── CAMERA POP-UP ───
+   On every camera page (the /security hub, the Sarasota camera pages and the
+   segment pages) this replaces the site-wide lead card. Opens after 25 s, past
+   ~55% of the page, or on desktop exit intent, whichever is first. Quiet for
+   7 days after a close (luma_lead_v1), never after a request was sent, never
+   while or right after the visitor uses an inline camera form, and on phones
+   never before the first scroll. The mid-page band and other buttons open it
+   with the luma:camera-popup event. Posts to the camera-quote form with
+   package="popup" and offer="10-labor". */
+const CAMERA_OFFER_FINE = 'Applies to the labor portion of a new camera installation booked within 30 days of the plan. One per property. Not combinable with other offers.';
+function openCameraPopup(){ try { window.dispatchEvent(new CustomEvent('luma:camera-popup')); } catch(e) {} }
+
+function CameraCtaBand(){
+  return (
+    <section className="cx-sec cx-white cx-sec--tight cx-ctaband-wrap">
+      <div className="cx-wrap">
+        <div className="cx-ctaband">
+          <div>
+            <h2 className="cx-h2">Not sure how many cameras you need? Get a free camera plan</h2>
+            <p>We count them with you on a free walk of the property. Book your plan online and get 10% off installation labor.</p>
+          </div>
+          <button type="button" className="cx-pill cx-pill--light" onClick={openCameraPopup}>Get my free plan<span className="cx-pill-ic"><CxIcon name="arrow" size={18}/></span></button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CameraPopup({lead}){
+  const nap = napInfo();
+  const tel = nap.telephoneDisplay.replace(/^\+1\s*/, '');
+  const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState('idle');
+  const [property, setProperty] = useState(lead === 'home' ? 'Home' : 'Business');
+  const [cameras, setCameras] = useState('Not sure yet');
+  const boxRef = useRef(null);
+  const lastFocus = useRef(null);
+  const usedInline = useRef(false);
+
+  // manual open (CTA band)
+  useEffect(() => {
+    const on = () => { lastFocus.current = document.activeElement; setOpen(true); };
+    window.addEventListener('luma:camera-popup', on);
+    return () => window.removeEventListener('luma:camera-popup', on);
+  }, []);
+
+  // automatic open
+  useEffect(() => {
+    const st = leadState();
+    if (st.sent || (st.closed && Date.now() - st.closed < 7*864e5)) return;
+    const mobile = window.matchMedia && window.matchMedia('(max-width: 767px), (pointer: coarse)').matches;
+    let done = false, scrolled = false, due = false;
+    const inlineBusy = () => {
+      if (usedInline.current) return true;
+      const a = document.activeElement;
+      return !!(a && a.closest && a.closest('form[name="camera-quote"]') && !(boxRef.current && boxRef.current.contains(a)));
+    };
+    const fire = () => {
+      if (done || inlineBusy()) return;
+      if (mobile && !scrolled) { due = true; return; }
+      done = true; lastFocus.current = document.activeElement; setOpen(true); cleanup();
+    };
+    const t = setTimeout(fire, 25000);
+    const onScroll = () => {
+      if (window.scrollY > 40) scrolled = true;
+      const h = document.documentElement;
+      if (due || h.scrollTop / Math.max(1, h.scrollHeight - innerHeight) > 0.55) fire();
+    };
+    const onOut = (e) => { if (!mobile && !e.relatedTarget && e.clientY < 8) fire(); };
+    const onInline = (e) => {
+      const f = e.target && e.target.closest && e.target.closest('form[name="camera-quote"]');
+      if (f && !(boxRef.current && boxRef.current.contains(f))) usedInline.current = true;
+    };
+    const onPick = () => { usedInline.current = true; };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    document.addEventListener('mouseout', onOut);
+    document.addEventListener('focusin', onInline);
+    document.addEventListener('input', onInline);
+    window.addEventListener('luma:camera-pick', onPick);
+    function cleanup(){
+      clearTimeout(t);
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('mouseout', onOut);
+      document.removeEventListener('focusin', onInline);
+      document.removeEventListener('input', onInline);
+      window.removeEventListener('luma:camera-pick', onPick);
+    }
+    return cleanup;
+  }, []);
+
+  // while open: Esc, focus trap, no page scroll behind the sheet
+  useEffect(() => {
+    if (!open) return;
+    const box = boxRef.current;
+    const focusables = () => box ? Array.from(box.querySelectorAll('a[href],button:not([disabled]),input:not([type="hidden"]):not([tabindex="-1"]),select,textarea')).filter(el => el.offsetParent !== null) : [];
+    setTimeout(() => { const f = box && (box.querySelector('input[name="name"]') || focusables()[0]); if (f) try { f.focus(); } catch(e) {} }, 30);
+    const onKey = (e) => {
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;
+      const els = focusables();
+      if (!els.length) return;
+      const first = els[0], last = els[els.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = prev; };
+  }, [open]);
+
+  function close(){
+    setOpen(false);
+    if (status !== 'sent') leadSave({closed: Date.now()});
+    const f = lastFocus.current;
+    if (f && f.focus) setTimeout(() => { try { f.focus({preventScroll:true}); } catch(e) {} }, 0);
+  }
+  async function submit(e){
+    e.preventDefault();
+    setStatus('sending');
+    try { await postCameraQuote(e.currentTarget, 'popup'); setStatus('sent'); }
+    catch(err) { setStatus('error'); }
+  }
+  if (!open) return null;
+  return (
+    <div className="cx-pop-veil" onMouseDown={(e) => { if (e.target === e.currentTarget) close(); }}>
+      <div className="cx-pop" role="dialog" aria-modal="true" aria-labelledby="cx-pop-h" ref={boxRef}>
+        <button type="button" className="cx-pop-x" aria-label="Close" onClick={close}>×</button>
+        {status === 'sent' ? (
+          <div className="cx-pop-body" role="status">
+            <h2 className="cx-pop-h" id="cx-pop-h">Thank you, we have your request.</h2>
+            <p className="cx-pop-p">We will call you to set up the free walk. If it cannot wait, call <a href={nap.telHref}>{tel}</a>.</p>
+            <button type="button" className="cx-pop-btn" onClick={close}>Close</button>
+          </div>
+        ) : (
+          <form className="cx-pop-body" name="camera-quote" method="POST" onSubmit={submit}>
+            <input type="hidden" name="form-name" value="camera-quote"/>
+            <input type="hidden" name="page" value=""/>
+            <input type="hidden" name="package" value="popup"/>
+            <input type="hidden" name="offer" value="10-labor"/>
+            <p hidden><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off"/></label></p>
+            <h2 className="cx-pop-h" id="cx-pop-h">Get a free camera plan in 48 hours</h2>
+            <p className="cx-pop-p">Free on-site walk, a camera-by-camera plan and a fixed price. No monthly fees.</p>
+            <p className="cx-pop-offer">Book your free camera plan online and get 10% off installation labor.</p>
+            <div className="cx-pop-row">
+              <label className="fx-input"><span>Name<b aria-hidden="true"> *</b></span><input name="name" required autoComplete="name"/></label>
+              <label className="fx-input"><span>Phone<b aria-hidden="true"> *</b></span><input name="phone" type="tel" required autoComplete="tel"/></label>
+            </div>
+            <div className="cx-pop-row">
+              {camSelect('property_type', 'Home or business', property, setProperty, ['Home','Business'])}
+              {camSelect('cameras', 'Number of cameras', cameras, setCameras, CAMERA_COUNTS)}
+            </div>
+            <button type="submit" className="cx-pop-btn" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Get my free plan'}</button>
+            <p className="cx-pop-fine">{CAMERA_OFFER_FINE}</p>
+            {status === 'error' && <p className="fx-form-err" role="alert">That did not go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a> or write to <a href={nap.mailHref}>{nap.email}</a>.</p>}
+            <a className="cx-pop-call" href={nap.telHref}>Or call {tel}</a>
+          </form>
+        )}
+      </div>
     </div>
   );
 }
@@ -4649,7 +4746,7 @@ function App() {
     theaters:  <TheatersPage navigate={navigate}/>,
     automation:<AutomationPage navigate={navigate}/>,
     audio:     <AudioPage navigate={navigate}/>,
-    security:  <SecurityPage navigate={navigate}/>,
+    security:  <CameraSectionPage row={geoData().cameraHub} navigate={navigate}/>,
     networking:<NetworkingPage navigate={navigate}/>,
     'permanent-lighting':<PermanentLightingPage navigate={navigate}/>,
     lighting:  <LightingPage navigate={navigate}/>,
@@ -4687,7 +4784,7 @@ function App() {
       {page !== 'home' && <RelatedLinks page={page} navigate={navigate}/>}
       <Footer navigate={navigate}/>
       {cam && <CameraCallBar/>}
-      <FxLeadCard key={page === 'contact' ? 'c' : 'x'} page={page} quiet={!!cam} raised={!!cam}/>
+      {cam ? <CameraPopup key={page} lead={cam}/> : <FxLeadCard key={page === 'contact' ? 'c' : 'x'} page={page}/>}
     </div>
   );
 }
