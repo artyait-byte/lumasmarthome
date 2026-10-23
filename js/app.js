@@ -499,22 +499,22 @@ const LUMA_CASES = {
   'case-golf':     {title:'Golf Simulator Room', place:'Siesta Key', photo:PHOTOS.caseGfHero,
     scope:'Uneekor EYE XO2 · 180-inch impact screen · turnkey room build',
     lede:'A bare ground-floor room turned into a turnkey golf studio: a tour-grade Uneekor launch monitor, a 15-foot impact screen, acoustic walls, safety netting and two-layer turf.'},
-  'case-waterfront': {title:'Waterfront Family Home', place:'Florida Gulf Coast', photo:PHOTOS.caseWfHero,
+  'case-waterfront': {title:'Waterfront Family Home', place:'', photo:PHOTOS.caseWfHero,
     scope:'Sonos in-ceiling audio · Samsung TVs · UniFi network',
     lede:'A relaxed coastal home on the water, where the technology stays out of sight: Sonos audio, Samsung TVs and a UniFi network by the water.'},
-  'case-urban':    {title:'Urban Home',        place:'Sarasota · Bird Key',  photo:PHOTOS.caseUrHero,
+  'case-urban':    {title:'Urban Home',        place:'',  photo:PHOTOS.caseUrHero,
     scope:'Bowers & Wilkins · 7.1.2 Dolby Atmos · UniFi network',
     lede:'A waterfront urban residence built around music: Bowers & Wilkins from the media room to the pool deck, and a UniFi network that just works.'},
-  'case-family':   {title:'Huge Family House', place:'Bonita Bay',           photo:PHOTOS.caseHfHero,
+  'case-family':   {title:'Huge Family House', place:'Texas',           photo:PHOTOS.caseHfHero,
     scope:'Cove lighting · Lutron RadioRA 3 · landscape lighting',
-    lede:'A 9,000+ sq ft residence where the lighting was designed to disappear into the architecture. Hidden cove LEDs, layered scenes, one keypad in every room.'},
-  'case-spacious': {title:'Spacious Modern',   place:'Naples · Port Royal',  photo:PHOTOS.caseSpHero,
+    lede:'A new-construction family estate where the lighting was designed to disappear into the architecture. Hidden cove LEDs, layered scenes, one keypad in every room.'},
+  'case-spacious': {title:'Spacious Modern',   place:'Texas',  photo:PHOTOS.caseSpHero,
     scope:'Sonos whole-home audio · UniFi network · Sonance in-ceiling',
-    lede:'A 7,400 sq ft modern home wired end-to-end for music, network and effortless ownership.'},
-  'case-modern':   {title:'Modern Residence',  place:'Tampa Bay Area',       photo:PHOTOS.projMrExterior,
+    lede:'A modern home wired end-to-end for music, network and effortless ownership.'},
+  'case-modern':   {title:'Modern Residence',  place:'',       photo:PHOTOS.projMrExterior,
     scope:'Five AV zones · Denon · Martin Logan · Sonos Arc',
     lede:'Five independent AV zones in a single hillside home, unified under one control layer.'},
-  'case-bighouse': {title:'Big Modern House',  place:'Texas Hill Country',   photo:PHOTOS.projBmExterior,
+  'case-bighouse': {title:'Big Modern House',  place:'Texas',   photo:PHOTOS.projBmExterior,
     scope:'URC · 16 audio / 6 video zones · 7.2.4 Atmos theater · perimeter cameras',
     lede:'16 audio zones, 6 video zones and a full Dolby Atmos theater, all running from a single URC processor.'},
 };
@@ -821,14 +821,14 @@ function FxWork({navigate}) {
           {FX_WORK.map(id => { const c = LUMA_CASES[id]; return (
             <NavLink key={id} page={id} navigate={navigate} className="fx-work-card">
               <img src={c.photo} alt={c.title} loading="lazy" decoding="async"/>
-              <div className="fx-work-meta"><span>{c.place}</span><span>{c.scope}</span></div>
+              <div className="fx-work-meta">{c.place && <span>{c.place}</span>}<span>{c.scope}</span></div>
               <h3>{c.title}</h3>
               <p>{c.lede}</p>
             </NavLink>
           );})}
         </div>
         <p style={{textAlign:'center',marginTop:32}}>
-          <NavLink page="work" navigate={navigate} className="fx-more">All seven projects <i aria-hidden="true">→</i></NavLink>
+          <NavLink page="work" navigate={navigate} className="fx-more">See our work <i aria-hidden="true">→</i></NavLink>
         </p>
       </div>
     </section>
@@ -1330,7 +1330,7 @@ function DesignersPage({navigate}) {
       <section className="fx-values">
         <div className="fx-wide">
           <div className="fx-values-grid">
-            <div className="fx-values-photo"><img src={PHOTOS.caseHfGreatRoom} alt="Huge Family House, Bonita Bay: cove lighting designed with the architect" loading="lazy" decoding="async"/></div>
+            <div className="fx-values-photo"><img src={PHOTOS.caseHfGreatRoom} alt="Huge Family House: cove lighting designed with the architect" loading="lazy" decoding="async"/></div>
             <div className="fx-values-copy">
               <div>
                 <h2 className="fx-d3">What we deliver</h2>
@@ -1668,7 +1668,7 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
               {cases.map(id => { const c = LUMA_CASES[id]; return (
                 <NavLink key={id} page={id} navigate={navigate} className="fx-work-card">
                   <img src={c.photo} alt={c.title} loading="lazy" decoding="async"/>
-                  <div className="fx-work-meta"><span>{c.place}</span></div>
+                  {c.place && <div className="fx-work-meta"><span>{c.place}</span></div>}
                   <h3>{c.title}</h3>
                   <p>{c.scope}</p>
                 </NavLink>
@@ -2984,7 +2984,7 @@ function CasesPage({navigate}) {
       <section className="fx-work-hero">
         <div className="fx-work-hero-inner">
           <h1 className="fx-d2">Our work</h1>
-          <p>Seven finished projects, from a Siesta Key golf room and a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed and the equipment list.</p>
+          <p>A selection of finished projects: the systems we installed and the equipment in each.</p>
         </div>
       </section>
 
@@ -2992,7 +2992,7 @@ function CasesPage({navigate}) {
         <div className="fx-work-feature">
           <NavLink page={lead} navigate={navigate} className="fx-work-feature-img"><img src={L.photo} alt={L.title} loading="eager" decoding="async"/></NavLink>
           <div className="fx-work-feature-copy">
-            <span className="fx-panel-kicker">{L.place}</span>
+            {L.place && <span className="fx-panel-kicker">{L.place}</span>}
             <h2 className="fx-d3">{L.title}</h2>
             <p className="fx-lede">{L.lede}</p>
             <NavLink page={lead} navigate={navigate} className="fx-more">View project <i aria-hidden="true">→</i></NavLink>
@@ -3007,7 +3007,7 @@ function CasesPage({navigate}) {
               <NavLink key={id} page={id} navigate={navigate} className="fx-work-item">
                 <span className="fx-work-item-img"><img src={c.photo} alt={c.title} loading="lazy" decoding="async"/></span>
                 <span className="fx-work-item-copy">
-                  <small>{c.place}</small>
+                  {c.place && <small>{c.place}</small>}
                   <h3>{c.title}</h3>
                   <p>{c.scope}</p>
                 </span>
@@ -3178,9 +3178,9 @@ const CASE_DETAIL = {
     ],
   },
   'case-spacious': {
-    lede:'A 7,400 sq ft modern home wired end-to-end for music, network, and effortless ownership: calm in the rooms, organized in the rack, easy on the family.',
+    lede:'A modern home wired end-to-end for music, network, and effortless ownership: calm in the rooms, organized in the rack, easy on the family.',
     about:[
-      'The brief was simple: music everywhere, no visible boxes, and a network the family could rely on year-round between Naples and the northeast. We delivered a single Sonos backbone covering every interior zone plus the lanai and pool deck.',
+      'The brief was simple: music everywhere, no visible boxes, and a network the family could rely on year-round. We delivered a single Sonos backbone covering every interior zone plus the lanai and pool deck.',
       'Behind the scenes: a documented UniFi network with full Wi-Fi 6 coverage, a managed WattBox so the rack reboots itself if anything hangs, and remote monitoring so we see issues before the homeowner does.',
     ],
     rooms:[
@@ -3215,7 +3215,7 @@ const CASE_DETAIL = {
     ],
   },
   'case-family': {
-    lede:'A 9,000+ sq ft family residence where the architecture is the story, and the lighting was designed to disappear into it. Hidden cove LEDs, layered scenes, and one keypad in every room.',
+    lede:'A family residence where the architecture is the story, and the lighting was designed to disappear into it. Hidden cove LEDs, layered scenes, and one keypad in every room.',
     about:[
       'This was a lighting-led project from the first walkthrough. We worked with the architect and designer to hide the fixtures inside the architecture itself: coves above the great room, linear runs under the wood paneling, and a layered scheme that lets a single keypad take the home from morning to evening to overnight.',
       'The result is a house that feels handcrafted in light. No lamp clutter, no glare. Each scene was tuned in person after dark, then handed over with a one-page guide the family actually uses.',
@@ -3305,7 +3305,7 @@ function FxCasePage({id, navigate}){
     <div className="page">
       <section className="lit-hero-wrap fx-hero--case">
         <div>
-          <div>{c.place}</div>
+          {c.place && <div>{c.place}</div>}
           <h1>{c.title}</h1>
         </div>
         <div><img src={c.photo} alt={c.title} loading="eager" fetchpriority="high" decoding="async"/></div>
@@ -3390,7 +3390,7 @@ const PLACE_PHOTO = (id) => lu('/assets/photos/places/' + id + '.jpg');
 /* the kind of house each place page describes (generated, graded); the
    place itself stays a real geotagged photo in the hero */
 const PLACE_HOME = (id) => lu('/assets/photos/homes/' + id + '.jpg');
-const CITY_CASES = { sarasota: 'case-urban' };
+const CITY_CASES = { 'siesta-key': 'case-golf' };
 
 function FxInnerHero({kicker, h1, image, alt}){
   return (
@@ -3499,7 +3499,7 @@ function CityHubPage({cityId, navigate}){
   if (!city) return <ServiceAreasHub navigate={navigate}/>;
   const caseId = CITY_CASES[cityId];
   const kase = caseId && LUMA_CASES[caseId];
-  const gallery = cityId === 'sarasota' ? [PHOTOS.caseUrHero, PHOTOS.caseUrPool, PHOTOS.caseUrInWall, PHOTOS.caseUrRack] : null;
+  const gallery = cityId === 'siesta-key' ? [PHOTOS.caseGfHero, PHOTOS.caseGfRoom, PHOTOS.caseGfScreen, PHOTOS.caseGfTee] : null;
   return (
     <div className="page">
       <FxInnerHero kicker={city.county} h1={city.h1} image={PLACE_PHOTO(cityId)} alt={city.name}/>
@@ -3524,7 +3524,7 @@ function CityHubPage({cityId, navigate}){
           <div className="fx-wide">
             <div className="fx-heads" style={{marginBottom:40}}>
               <h2 className="fx-d3">Finished in {city.name}: {kase.title}</h2>
-              <p className="fx-lede">{kase.place}. {kase.lede}</p>
+              <p className="fx-lede">{kase.lede}</p>
             </div>
             <div className="fx-gallery">
               {gallery.map((src,i)=><img key={i} src={src} alt={kase.title} loading="lazy" decoding="async"/>)}

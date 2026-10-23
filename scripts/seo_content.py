@@ -1032,7 +1032,7 @@ def related_map() -> dict:
     rel["budget-calculator"] = _rel("contact", "lighting", "service-areas")
     for case, city in (
         ("case-spacious", "work"),
-        ("case-urban", "sa-sarasota"),
+        ("case-urban", "work"),
         ("case-family", "work"),
         ("case-waterfront", "work"),
         ("case-golf", "sa-siesta-key"),

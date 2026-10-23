@@ -1655,11 +1655,14 @@ body{font-size:16px;line-height:1.5}
 .fx-form-done .fx-d3{margin-bottom:16px}
 
 /* work: short teal band, the newest project raised over it, then the grid */
-.fx-work-hero{background:var(--teal) radial-gradient(120% 140% at 80% 0%,rgba(240,195,155,.18),transparent 55%);
+.fx-work-hero{position:relative;background:#14131e url(/assets/photos/work-bayfront.jpg) center 62%/cover no-repeat;
+  background-image:image-set(url(/assets/photos/work-bayfront.webp) type("image/webp"),url(/assets/photos/work-bayfront.jpg) type("image/jpeg"));
   color:#FCFAF6;padding:95px 0 0;text-align:center}
-.fx-work-hero-inner{max-width:768px;margin:0 auto;padding:96px var(--fx-gutter) 150px}
+.fx-work-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,30,.66) 0%,rgba(14,22,30,.52) 45%,rgba(14,22,30,.6) 100%)}
+.fx-work-hero-inner{position:relative}
+.fx-work-hero-inner{max-width:768px;margin:0 auto;padding:120px var(--fx-gutter) 190px}
 .fx-work-hero .fx-d2{color:#FCFAF6;margin:0 0 16px}
-.fx-work-hero p{font-size:20px;line-height:1.45;color:rgba(252,250,246,.86);max-width:620px;margin:0 auto}
+.fx-work-hero p{font-size:20px;line-height:1.45;color:rgba(252,250,246,.92);max-width:620px;margin:0 auto;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .fx-work-feature-wrap{position:relative;z-index:1;max-width:1280px;margin:-96px auto 0;padding:0 var(--fx-gutter)}
 .fx-work-feature{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px;background:#fff;border:1px solid var(--cream2);
   border-radius:var(--fx-radius);padding:32px;box-shadow:0 10px 15px -3px rgba(20,19,30,.1),0 4px 6px -4px rgba(20,19,30,.1)}
