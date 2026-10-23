@@ -1,7 +1,7 @@
 const {useState, useEffect, useRef} = React;
 
 /* ─── PATH ROUTING (crawlable URLs, not ?p=) ─── */
-const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','permanent-lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','case-waterfront']);
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','permanent-lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','case-waterfront','case-golf']);
 
 function knownPages(){
   const keys = new Set(ROUTE_KEYS);
@@ -255,6 +255,12 @@ const PHOTOS = {
   caseHfLedDetail:    lu('/assets/photos/cases/huge-family/web-led-detail.jpg'),
   caseHfShower:       lu('/assets/photos/cases/huge-family/web-shower-niche.jpg'),
 
+  /* ── Case study: Golf Simulator Room (Uneekor EYE XO2 · turnkey room) ── */
+  caseGfHero:         lu('/assets/photos/cases/golf-simulator-room/web-hero.jpg'),
+  caseGfEnclosure:    lu('/assets/photos/cases/golf-simulator-room/web-enclosure.jpg'),
+  caseGfScreen:       lu('/assets/photos/cases/golf-simulator-room/web-screen.jpg'),
+  caseGfTee:          lu('/assets/photos/cases/golf-simulator-room/web-tee.jpg'),
+
   /* ── Case study: Waterfront Family Home (Sonos · Samsung · UniFi) ── */
   caseWfHero:         lu('/assets/photos/cases/waterfront-family-home/web-hero.jpg'),
   caseWfLivingTv:     lu('/assets/photos/cases/waterfront-family-home/web-living-tv.jpg'),
@@ -486,9 +492,12 @@ function ServiceCard({id, name, height=240}) {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 
-/* The six real projects, taken verbatim from their case pages. Nothing on
+/* The seven real projects, taken verbatim from their case pages. Nothing on
    the site may describe a project that is not in this list. */
 const LUMA_CASES = {
+  'case-golf':     {title:'Golf Simulator Room', place:'Sarasota · Bay Island', photo:PHOTOS.caseGfHero,
+    scope:'Uneekor EYE XO2 · 180-inch impact screen · turnkey room build',
+    lede:'A bare ground-floor room turned into a turnkey golf studio: a tour-grade Uneekor launch monitor, a 15-foot impact screen, acoustic walls, safety netting and two-layer turf.'},
   'case-waterfront': {title:'Waterfront Family Home', place:'Florida Gulf Coast', photo:PHOTOS.caseWfHero,
     scope:'Sonos in-ceiling audio · Samsung TVs · UniFi network',
     lede:'A relaxed coastal home on the water, where the technology stays out of sight: Sonos audio, Samsung TVs and a UniFi network by the water.'},
@@ -818,7 +827,7 @@ function FxWork({navigate}) {
           );})}
         </div>
         <p style={{textAlign:'center',marginTop:32}}>
-          <NavLink page="work" navigate={navigate} className="fx-more">All six projects <i aria-hidden="true">→</i></NavLink>
+          <NavLink page="work" navigate={navigate} className="fx-more">All seven projects <i aria-hidden="true">→</i></NavLink>
         </p>
       </div>
     </section>
@@ -2964,7 +2973,7 @@ function ServiceSupportPage({navigate}) {
 /* ─── WORK ───
    The reference's /work: a short navy band, the newest project as a raised
    card, the rest in a grid. Only LUMA_CASES. */
-const WORK_ORDER = ['case-waterfront','case-urban','case-family','case-spacious','case-modern','case-bighouse'];
+const WORK_ORDER = ['case-golf','case-waterfront','case-urban','case-family','case-spacious','case-modern','case-bighouse'];
 
 function CasesPage({navigate}) {
   const [lead, ...rest] = WORK_ORDER;
@@ -2974,7 +2983,7 @@ function CasesPage({navigate}) {
       <section className="fx-work-hero">
         <div className="fx-work-hero-inner">
           <h1 className="fx-d2">Our work</h1>
-          <p>Six finished projects, from a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed and the equipment list.</p>
+          <p>Seven finished projects, from a Bay Island golf room and a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed and the equipment list.</p>
         </div>
       </section>
 
@@ -3128,6 +3137,24 @@ function BudgetCalculatorPage({navigate}) {
    had. Most are portrait phone shots, so the band is a filmstrip of one
    height and each frame keeps its own shape instead of being cropped. */
 const CASE_DETAIL = {
+  'case-golf': {
+    lede:'A bare ground-floor room in a Bay Island waterfront home, turned into a turnkey golf studio. We built the room, installed the simulator and calibrated it, so the owner walks in, tees up and plays.',
+    about:[
+      'The room started as bare walls. We built it out as a complete golf studio: a custom frame for the 180 × 113 inch impact screen, sound-isolation and absorption panels along the sides, padded wall panels and safety netting to take full-power drives, and a two-layer artificial turf floor.',
+      'Then the technology went in: an overhead Uneekor EYE XO2 launch monitor with three Swing Optix HD cameras and a Balance Optix pressure mat, a BenQ 4K laser projector, and a dedicated simulator PC running a professional Uneekor license. Everything was set up, aligned and calibrated to the room, one team from bare walls to the first round.',
+    ],
+    rooms:[
+      {room:'Launch monitor',  gear:'Uneekor EYE XO2 overhead · 3 Swing Optix HD cameras · Balance Optix pressure mat · Polycarbonate guard'},
+      {room:'Display',         gear:'HiQ impact screen 180 × 113 in (16:10) · BenQ 4K laser projector · Ceiling mount'},
+      {room:'Simulator',       gear:'Dedicated simulator PC · 4K monitor · Professional Uneekor software license'},
+      {room:'Room build',      gear:'Custom screen frame · Sound-isolation and absorption side panels · Padded wall panels · Safety netting · Two-layer artificial turf'},
+    ],
+    photos:[
+      {src:PHOTOS.caseGfEnclosure, alt:'Golf simulator room with acoustic wall panels, safety netting and an overhead launch monitor'},
+      {src:PHOTOS.caseGfScreen, alt:'180-inch impact screen showing a golf hole with shot data'},
+      {src:PHOTOS.caseGfTee, alt:'Uneekor Balance Optix pressure mat and ball on the turf'},
+    ],
+  },
   'case-waterfront': {
     lede:'A relaxed coastal home on the water, where the technology stays out of sight. Discreet in-ceiling speakers carry Sonos music through the main living spaces without touching the airy, beach-house look.',
     about:[
@@ -3135,10 +3162,10 @@ const CASE_DETAIL = {
       'Samsung TVs handle effortless everyday viewing, and everything runs on a fast, reliable UniFi network, with a clean, organized equipment rack behind the scenes.',
     ],
     rooms:[
-      {room:'Whole-home audio', gear:'Sonos · discreet in-ceiling speakers · main living spaces'},
+      {room:'Whole-home audio', gear:'Sonos · Discreet in-ceiling speakers · Main living spaces'},
       {room:'Outdoor',          gear:'Weatherproof speaker on the waterfront terrace'},
-      {room:'Video',            gear:'Samsung TVs · wall-mounted · everyday streaming'},
-      {room:'Network & rack',   gear:'UniFi network · Wi-Fi throughout · clean, organized equipment rack'},
+      {room:'Video',            gear:'Samsung TVs · Wall-mounted · Everyday streaming'},
+      {room:'Network & rack',   gear:'UniFi network · Wi-Fi throughout · Clean, organized equipment rack'},
     ],
     photos:[
       {src:PHOTOS.caseWfLivingTv, alt:'Sunroom with a wall-mounted Samsung TV over the water'},
@@ -4789,6 +4816,7 @@ function App() {
     'case-urban':    <FxCasePage id="case-urban" navigate={navigate}/>,
     'case-family':   <FxCasePage id="case-family" navigate={navigate}/>,
     'case-waterfront': <FxCasePage id="case-waterfront" navigate={navigate}/>,
+    'case-golf':     <FxCasePage id="case-golf" navigate={navigate}/>,
     'case-modern':   <FxCasePage id="case-modern" navigate={navigate}/>,
     'case-bighouse': <FxCasePage id="case-bighouse" navigate={navigate}/>,
     about:     <AboutPage navigate={navigate}/>,
