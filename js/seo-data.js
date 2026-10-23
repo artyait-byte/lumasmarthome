@@ -106,7 +106,7 @@ window.LUMA_SEO = {
       "id": "work",
       "path": "/work",
       "title": "Our Work | Finished Smart Home Projects | LUMA",
-      "description": "Seven finished LUMA projects, from a Bay Island golf room to a Bonita Bay residence: the systems installed and the equipment in each.",
+      "description": "Seven finished LUMA projects, from a Siesta Key golf room to a Bonita Bay residence: the systems installed and the equipment in each.",
       "kind": "page",
       "city": null,
       "service": null,
@@ -175,8 +175,8 @@ window.LUMA_SEO = {
     "case-golf": {
       "id": "case-golf",
       "path": "/work/golf-simulator-room",
-      "title": "Golf Simulator Room | Sarasota Bay Island Case Study | LUMA",
-      "description": "A turnkey golf simulator room in Sarasota: Uneekor EYE XO2 launch monitor, 180-inch impact screen, 4K laser projector, acoustic panels, netting and turf.",
+      "title": "Golf Simulator Room | Siesta Key Case Study | LUMA",
+      "description": "A turnkey golf simulator room on Siesta Key: Uneekor EYE XO2 launch monitor, 180-inch impact screen, 4K laser projector, acoustic panels, netting and turf.",
       "kind": "case",
       "city": null,
       "service": null,
@@ -3520,8 +3520,8 @@ window.LUMA_GEO = {
     ],
     "case-golf": [
       {
-        "id": "sa-sarasota",
-        "label": "Sarasota smart home"
+        "id": "sa-siesta-key",
+        "label": "Siesta Key smart home"
       },
       {
         "id": "work",

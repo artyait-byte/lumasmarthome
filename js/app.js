@@ -257,6 +257,7 @@ const PHOTOS = {
 
   /* ── Case study: Golf Simulator Room (Uneekor EYE XO2 · turnkey room) ── */
   caseGfHero:         lu('/assets/photos/cases/golf-simulator-room/web-hero.jpg'),
+  caseGfRoom:         lu('/assets/photos/cases/golf-simulator-room/web-room.jpg'),
   caseGfEnclosure:    lu('/assets/photos/cases/golf-simulator-room/web-enclosure.jpg'),
   caseGfScreen:       lu('/assets/photos/cases/golf-simulator-room/web-screen.jpg'),
   caseGfTee:          lu('/assets/photos/cases/golf-simulator-room/web-tee.jpg'),
@@ -495,7 +496,7 @@ function ServiceCard({id, name, height=240}) {
 /* The seven real projects, taken verbatim from their case pages. Nothing on
    the site may describe a project that is not in this list. */
 const LUMA_CASES = {
-  'case-golf':     {title:'Golf Simulator Room', place:'Sarasota · Bay Island', photo:PHOTOS.caseGfHero,
+  'case-golf':     {title:'Golf Simulator Room', place:'Siesta Key', photo:PHOTOS.caseGfHero,
     scope:'Uneekor EYE XO2 · 180-inch impact screen · turnkey room build',
     lede:'A bare ground-floor room turned into a turnkey golf studio: a tour-grade Uneekor launch monitor, a 15-foot impact screen, acoustic walls, safety netting and two-layer turf.'},
   'case-waterfront': {title:'Waterfront Family Home', place:'Florida Gulf Coast', photo:PHOTOS.caseWfHero,
@@ -2983,7 +2984,7 @@ function CasesPage({navigate}) {
       <section className="fx-work-hero">
         <div className="fx-work-hero-inner">
           <h1 className="fx-d2">Our work</h1>
-          <p>Seven finished projects, from a Bay Island golf room and a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed and the equipment list.</p>
+          <p>Seven finished projects, from a Siesta Key golf room and a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed and the equipment list.</p>
         </div>
       </section>
 
@@ -3138,7 +3139,7 @@ function BudgetCalculatorPage({navigate}) {
    height and each frame keeps its own shape instead of being cropped. */
 const CASE_DETAIL = {
   'case-golf': {
-    lede:'A bare ground-floor room in a Bay Island waterfront home, turned into a turnkey golf studio. We built the room, installed the simulator and calibrated it, so the owner walks in, tees up and plays.',
+    lede:'A bare ground-floor room in a Siesta Key waterfront home, turned into a turnkey golf studio. We built the room, installed the simulator and calibrated it, so the owner walks in, tees up and plays.',
     about:[
       'The room started as bare walls. We built it out as a complete golf studio: a custom frame for the 180 × 113 inch impact screen, sound-isolation and absorption panels along the sides, padded wall panels and safety netting to take full-power drives, and a two-layer artificial turf floor.',
       'Then the technology went in: an overhead Uneekor EYE XO2 launch monitor with three Swing Optix HD cameras and a Balance Optix pressure mat, a BenQ 4K laser projector, and a dedicated simulator PC running a professional Uneekor license. Everything was set up, aligned and calibrated to the room, one team from bare walls to the first round.',
@@ -3150,6 +3151,7 @@ const CASE_DETAIL = {
       {room:'Room build',      gear:'Custom screen frame · Sound-isolation and absorption side panels · Padded wall panels · Safety netting · Two-layer artificial turf'},
     ],
     photos:[
+      {src:PHOTOS.caseGfRoom, alt:'Golf simulator room with the impact screen on, safety netting and sliding doors to the water'},
       {src:PHOTOS.caseGfEnclosure, alt:'Golf simulator room with acoustic wall panels, safety netting and an overhead launch monitor'},
       {src:PHOTOS.caseGfScreen, alt:'180-inch impact screen showing a golf hole with shot data'},
       {src:PHOTOS.caseGfTee, alt:'Uneekor Balance Optix pressure mat and ball on the turf'},
