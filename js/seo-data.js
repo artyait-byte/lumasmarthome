@@ -106,7 +106,7 @@ window.LUMA_SEO = {
       "id": "work",
       "path": "/work",
       "title": "Our Work | Finished Smart Home Projects | LUMA",
-      "description": "Five finished LUMA projects, from a Bird Key waterfront home to a Bonita Bay residence: the systems installed and the equipment in each.",
+      "description": "Seven finished LUMA projects, from a Siesta Key golf room to a Bonita Bay residence: the systems installed and the equipment in each.",
       "kind": "page",
       "city": null,
       "service": null,
@@ -171,6 +171,26 @@ window.LUMA_SEO = {
       "city": null,
       "service": null,
       "h1": "Urban Home"
+    },
+    "case-golf": {
+      "id": "case-golf",
+      "path": "/work/golf-simulator-room",
+      "title": "Golf Simulator Room | Siesta Key Case Study | LUMA",
+      "description": "A turnkey golf simulator room on Siesta Key: Uneekor EYE XO2 launch monitor, 180-inch impact screen, 4K laser projector, acoustic panels, netting and turf.",
+      "kind": "case",
+      "city": null,
+      "service": null,
+      "h1": "Golf Simulator Room"
+    },
+    "case-waterfront": {
+      "id": "case-waterfront",
+      "path": "/work/waterfront-family-home",
+      "title": "Waterfront Family Home | Sonos & UniFi Case Study | LUMA",
+      "description": "A relaxed coastal home on the water with discreet Sonos in-ceiling audio, Samsung TVs, and a UniFi network behind a clean equipment rack.",
+      "kind": "case",
+      "city": null,
+      "service": null,
+      "h1": "Waterfront Family Home"
     },
     "case-family": {
       "id": "case-family",
@@ -3471,6 +3491,38 @@ window.LUMA_GEO = {
       }
     ],
     "case-family": [
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "case-waterfront": [
+      {
+        "id": "work",
+        "label": "Our work"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      },
+      {
+        "id": "service-areas",
+        "label": "All service areas"
+      }
+    ],
+    "case-golf": [
+      {
+        "id": "sa-siesta-key",
+        "label": "Siesta Key smart home"
+      },
       {
         "id": "work",
         "label": "Our work"

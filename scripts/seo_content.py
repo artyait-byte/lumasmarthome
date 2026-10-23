@@ -1034,6 +1034,8 @@ def related_map() -> dict:
         ("case-spacious", "work"),
         ("case-urban", "sa-sarasota"),
         ("case-family", "work"),
+        ("case-waterfront", "work"),
+        ("case-golf", "sa-siesta-key"),
         ("case-modern", "work"),
         ("case-bighouse", "work"),
     ):
