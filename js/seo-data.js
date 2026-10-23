@@ -106,7 +106,7 @@ window.LUMA_SEO = {
       "id": "work",
       "path": "/work",
       "title": "Our Work | Finished Smart Home Projects | LUMA",
-      "description": "Seven finished LUMA projects, from a Siesta Key golf room to a Bonita Bay residence: the systems installed and the equipment in each.",
+      "description": "A selection of finished LUMA projects: the systems we installed and the equipment in each, from a Siesta Key golf room to whole-home audio and lighting.",
       "kind": "page",
       "city": null,
       "service": null,
@@ -155,8 +155,8 @@ window.LUMA_SEO = {
     "case-spacious": {
       "id": "case-spacious",
       "path": "/work/spacious-modern",
-      "title": "Spacious Modern | Naples Port Royal Case Study | LUMA",
-      "description": "A 7,400 sq ft Naples home with Sonos whole-home audio, UniFi networking, and WattBox managed power — calm in the rooms, organized in the rack.",
+      "title": "Spacious Modern | Sonos & UniFi Case Study | LUMA",
+      "description": "A modern home with Sonos whole-home audio, UniFi networking, and WattBox managed power — calm in the rooms, organized in the rack.",
       "kind": "case",
       "city": null,
       "service": null,
@@ -165,8 +165,8 @@ window.LUMA_SEO = {
     "case-urban": {
       "id": "case-urban",
       "path": "/work/urban-home",
-      "title": "Urban Home | Sarasota Bird Key Case Study | LUMA",
-      "description": "A Bird Key waterfront residence built around Bowers & Wilkins, a 7.1.2 Atmos array, landscape audio, and a UniFi network.",
+      "title": "Urban Home | Bowers & Wilkins Case Study | LUMA",
+      "description": "An urban residence built around Bowers & Wilkins, a 7.1.2 Atmos array, landscape audio, and a UniFi network.",
       "kind": "case",
       "city": null,
       "service": null,
@@ -195,8 +195,8 @@ window.LUMA_SEO = {
     "case-family": {
       "id": "case-family",
       "path": "/work/huge-family-house",
-      "title": "Huge Family House | Bonita Bay Lighting Case Study | LUMA",
-      "description": "A 9,000+ sq ft Bonita Bay residence with hidden cove LEDs, layered Lutron RadioRA 3 scenes, and designer keypads in every room.",
+      "title": "Huge Family House | Lighting Case Study | LUMA",
+      "description": "A new-construction family estate with hidden cove LEDs, layered Lutron RadioRA 3 scenes, and designer keypads in every room.",
       "kind": "case",
       "city": null,
       "service": null,
@@ -205,7 +205,7 @@ window.LUMA_SEO = {
     "case-modern": {
       "id": "case-modern",
       "path": "/work/modern-residence",
-      "title": "Modern Residence | Tampa Bay AV Case Study | LUMA",
+      "title": "Modern Residence | Five-Zone AV Case Study | LUMA",
       "description": "Five independent AV zones in a hillside home — entertainment room, living room, and three outdoor patios — unified under one control layer.",
       "kind": "case",
       "city": null,
@@ -3473,10 +3473,6 @@ window.LUMA_GEO = {
       }
     ],
     "case-urban": [
-      {
-        "id": "sa-sarasota",
-        "label": "Sarasota smart home"
-      },
       {
         "id": "work",
         "label": "Our work"
