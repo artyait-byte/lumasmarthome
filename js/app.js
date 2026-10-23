@@ -1,7 +1,7 @@
 const {useState, useEffect, useRef} = React;
 
 /* ─── PATH ROUTING (crawlable URLs, not ?p=) ─── */
-const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','permanent-lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family']);
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','permanent-lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','case-waterfront']);
 
 function knownPages(){
   const keys = new Set(ROUTE_KEYS);
@@ -254,6 +254,14 @@ const PHOTOS = {
   caseHfLedCove:      lu('/assets/photos/cases/huge-family/web-led-cove.jpg'),
   caseHfLedDetail:    lu('/assets/photos/cases/huge-family/web-led-detail.jpg'),
   caseHfShower:       lu('/assets/photos/cases/huge-family/web-shower-niche.jpg'),
+
+  /* ── Case study: Waterfront Family Home (Sonos · Samsung · UniFi) ── */
+  caseWfHero:         lu('/assets/photos/cases/waterfront-family-home/web-hero.jpg'),
+  caseWfLivingTv:     lu('/assets/photos/cases/waterfront-family-home/web-living-tv.jpg'),
+  caseWfKitchen:      lu('/assets/photos/cases/waterfront-family-home/web-kitchen.jpg'),
+  caseWfOutdoor:      lu('/assets/photos/cases/waterfront-family-home/web-outdoor-speaker.jpg'),
+  caseWfDining:       lu('/assets/photos/cases/waterfront-family-home/web-dining.jpg'),
+  caseWfRack:         lu('/assets/photos/cases/waterfront-family-home/web-rack.jpg'),
 };
 
 /* ─── ICON PATHS ─── */
@@ -478,9 +486,12 @@ function ServiceCard({id, name, height=240}) {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 
-/* The five real projects, taken verbatim from their case pages. Nothing on
+/* The six real projects, taken verbatim from their case pages. Nothing on
    the site may describe a project that is not in this list. */
 const LUMA_CASES = {
+  'case-waterfront': {title:'Waterfront Family Home', place:'Florida Gulf Coast', photo:PHOTOS.caseWfHero,
+    scope:'Sonos in-ceiling audio · Samsung TVs · UniFi network',
+    lede:'A relaxed coastal home on the water, where the technology stays out of sight: Sonos audio, Samsung TVs and a UniFi network by the water.'},
   'case-urban':    {title:'Urban Home',        place:'Sarasota · Bird Key',  photo:PHOTOS.caseUrHero,
     scope:'Bowers & Wilkins · 7.1.2 Dolby Atmos · UniFi network',
     lede:'A waterfront urban residence built around music: Bowers & Wilkins from the media room to the pool deck, and a UniFi network that just works.'},
@@ -807,7 +818,7 @@ function FxWork({navigate}) {
           );})}
         </div>
         <p style={{textAlign:'center',marginTop:32}}>
-          <NavLink page="work" navigate={navigate} className="fx-more">All five projects <i aria-hidden="true">→</i></NavLink>
+          <NavLink page="work" navigate={navigate} className="fx-more">All six projects <i aria-hidden="true">→</i></NavLink>
         </p>
       </div>
     </section>
@@ -2953,7 +2964,7 @@ function ServiceSupportPage({navigate}) {
 /* ─── WORK ───
    The reference's /work: a short navy band, the newest project as a raised
    card, the rest in a grid. Only LUMA_CASES. */
-const WORK_ORDER = ['case-urban','case-family','case-spacious','case-modern','case-bighouse'];
+const WORK_ORDER = ['case-waterfront','case-urban','case-family','case-spacious','case-modern','case-bighouse'];
 
 function CasesPage({navigate}) {
   const [lead, ...rest] = WORK_ORDER;
@@ -2963,7 +2974,7 @@ function CasesPage({navigate}) {
       <section className="fx-work-hero">
         <div className="fx-work-hero-inner">
           <h1 className="fx-d2">Our work</h1>
-          <p>Five finished projects, from a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed and the equipment list.</p>
+          <p>Six finished projects, from a Bird Key waterfront home to a 9,000+ sq ft Bonita Bay residence. Each one shows the systems we installed and the equipment list.</p>
         </div>
       </section>
 
@@ -3117,6 +3128,26 @@ function BudgetCalculatorPage({navigate}) {
    had. Most are portrait phone shots, so the band is a filmstrip of one
    height and each frame keeps its own shape instead of being cropped. */
 const CASE_DETAIL = {
+  'case-waterfront': {
+    lede:'A relaxed coastal home on the water, where the technology stays out of sight. Discreet in-ceiling speakers carry Sonos music through the main living spaces without touching the airy, beach-house look.',
+    about:[
+      'The brief was a beach house that stays a beach house. Discreet in-ceiling speakers deliver Sonos music through the main living spaces, set flush into the white shiplap ceilings so nothing competes with the view of the water.',
+      'Samsung TVs handle effortless everyday viewing, and everything runs on a fast, reliable UniFi network, with a clean, organized equipment rack behind the scenes.',
+    ],
+    rooms:[
+      {room:'Whole-home audio', gear:'Sonos · discreet in-ceiling speakers · main living spaces'},
+      {room:'Outdoor',          gear:'Weatherproof speaker on the waterfront terrace'},
+      {room:'Video',            gear:'Samsung TVs · wall-mounted · everyday streaming'},
+      {room:'Network & rack',   gear:'UniFi network · Wi-Fi throughout · clean, organized equipment rack'},
+    ],
+    photos:[
+      {src:PHOTOS.caseWfLivingTv, alt:'Sunroom with a wall-mounted Samsung TV over the water'},
+      {src:PHOTOS.caseWfKitchen, alt:'Kitchen with in-ceiling speakers in the shiplap ceiling'},
+      {src:PHOTOS.caseWfDining, alt:'Dining and living room with a flush in-ceiling speaker'},
+      {src:PHOTOS.caseWfOutdoor, alt:'Outdoor speaker under the eave, facing the bay'},
+      {src:PHOTOS.caseWfRack, alt:'UniFi equipment rack'},
+    ],
+  },
   'case-spacious': {
     lede:'A 7,400 sq ft modern home wired end-to-end for music, network, and effortless ownership: calm in the rooms, organized in the rack, easy on the family.',
     about:[
@@ -4757,6 +4788,7 @@ function App() {
     'case-spacious': <FxCasePage id="case-spacious" navigate={navigate}/>,
     'case-urban':    <FxCasePage id="case-urban" navigate={navigate}/>,
     'case-family':   <FxCasePage id="case-family" navigate={navigate}/>,
+    'case-waterfront': <FxCasePage id="case-waterfront" navigate={navigate}/>,
     'case-modern':   <FxCasePage id="case-modern" navigate={navigate}/>,
     'case-bighouse': <FxCasePage id="case-bighouse" navigate={navigate}/>,
     about:     <AboutPage navigate={navigate}/>,
