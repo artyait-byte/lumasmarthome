@@ -1540,6 +1540,8 @@ body{font-size:16px;line-height:1.5}
 .fx-post-prose h2{font-family:var(--serif);font-size:32px;font-weight:500!important;line-height:1.2;margin:48px 0 16px}
 .fx-post-prose ul{margin:0 0 24px;padding-left:24px}
 .fx-post-prose li{margin-bottom:8px}
+.fx-post-prose .fx-faq{margin-top:8px}
+.fx-post-prose .fx-faq-item p{font-size:18px;line-height:1.5;margin:0 0 22px}
 .fx-post-prose a{color:var(--dark);text-decoration:underline;text-decoration-color:rgba(197,114,56,.5);text-underline-offset:3px}
 .fx-post-prose a:hover{color:var(--accent)}
 @media (max-width:1023px){.fx-blog-grid{grid-template-columns:1fr 1fr}}
