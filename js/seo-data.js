@@ -562,6 +562,46 @@ window.LUMA_SEO = {
       "service": null,
       "h1": "Smart home hurricane preparation in Florida"
     },
+    "journal-snowbird-smart-home": {
+      "id": "journal-snowbird-smart-home",
+      "path": "/journal/smart-home-snowbirds-florida",
+      "title": "Smart Home for Snowbirds in Florida | LUMA",
+      "description": "Opening a Florida seasonal home, running it remotely all summer and closing it in spring: humidity, leak sensors, cameras, lock codes and the network.",
+      "kind": "article",
+      "city": null,
+      "service": null,
+      "h1": "Smart home for snowbirds in Florida: running a seasonal house from up north"
+    },
+    "journal-lutron-cost": {
+      "id": "journal-lutron-cost",
+      "path": "/journal/lutron-radiora-3-cost-sarasota",
+      "title": "Lutron RadioRA 3 Cost in a Sarasota Home | LUMA",
+      "description": "What drives Lutron RadioRA 3 cost in a Sarasota home: loads, keypads, retrofit vs new build, shades and programming, plus what to ask in a quote.",
+      "kind": "article",
+      "city": null,
+      "service": null,
+      "h1": "Lutron RadioRA 3 cost in a Sarasota home"
+    },
+    "journal-permanent-vs-seasonal": {
+      "id": "journal-permanent-vs-seasonal",
+      "path": "/journal/permanent-outdoor-lighting-cost-sarasota",
+      "title": "Permanent Outdoor Lighting Cost in Sarasota | LUMA",
+      "description": "Permanent roofline lighting vs a yearly holiday install in Sarasota: what drives the cost, salt air, HOAs, tile roofs, and when each one makes sense.",
+      "kind": "article",
+      "city": null,
+      "service": null,
+      "h1": "Permanent outdoor lighting in Sarasota: cost and how it compares to a seasonal install"
+    },
+    "journal-prewire-lwr": {
+      "id": "journal-prewire-lwr",
+      "path": "/journal/smart-home-pre-wire-lakewood-ranch",
+      "title": "Smart Home Pre-Wire in Lakewood Ranch | LUMA",
+      "description": "What to run before drywall in a Lakewood Ranch new build: Cat6A home runs, shade power, keypads, cameras, lanai conduit and the rack, and builder timing.",
+      "kind": "article",
+      "city": null,
+      "service": null,
+      "h1": "Smart home pre-wire for a Lakewood Ranch new build"
+    },
     "luma-smart-home-sarasota": {
       "id": "luma-smart-home-sarasota",
       "path": "/luma-smart-home-sarasota",
@@ -3231,10 +3271,646 @@ window.LUMA_GEO = {
           ]
         }
       ]
+    },
+    "journal-snowbird-smart-home": {
+      "id": "journal-snowbird-smart-home",
+      "slug": "smart-home-snowbirds-florida",
+      "title": "Smart Home for Snowbirds in Florida | LUMA",
+      "h1": "Smart home for snowbirds in Florida: running a seasonal house from up north",
+      "description": "Opening a Florida seasonal home, running it remotely all summer and closing it in spring: humidity, leak sensors, cameras, lock codes and the network.",
+      "og": "/assets/photos/live/a-away.jpg",
+      "date": "2026-10-24",
+      "category": "Seasonal homes",
+      "dek": "What to check when you arrive in the fall, what has to keep working while you are away, and how to close the house in April.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Late October is when the Gulf Coast fills back up. Cars with Ohio and Ontario plates reappear on Gulf of Mexico Drive, the lanai furniture comes out of the garage, and a house that sat closed for six months has to become a home again in a weekend. In April it all runs in reverse. For a seasonal owner, the smart home is not about voice control or party scenes. It is the set of systems that keeps an empty house dry, secure and reachable from a thousand miles away, and makes the two changeovers each year predictable."
+        },
+        {
+          "type": "p",
+          "text": "This is how we think about a smart home for snowbirds in Florida: what to check when you arrive, what has to keep working while you are gone, and how to close the house in spring so that next October is uneventful."
+        },
+        {
+          "type": "h2",
+          "text": "Opening the house on arrival"
+        },
+        {
+          "type": "p",
+          "text": "The first hour in a seasonal house tells you how the summer went. Walk the systems in a fixed order, because each depends on the one before it."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Network first: check that the gateway, switch and Wi-Fi access points are online and that the internet line is the speed you pay for. Everything else rides on it.",
+            "Climate next: move the thermostats from the Away profile back to occupied setpoints, and look at the humidity history for the summer, not just today's reading.",
+            "Water: open the main if it was shut, run every tap and shower for a minute, and confirm each leak sensor still reports to the app.",
+            "Cameras and recorder: confirm the recorder kept writing all summer and check that the clock and storage are correct.",
+            "Shades and lighting: run each scene once. Motors that sat idle for months sometimes need their limits reset.",
+            "Locks and codes: retire the codes issued to summer contractors and confirm which ones your house manager still needs."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Expect firmware updates to have piled up. A controller, a set of access points and a camera recorder that were left alone for six months may all want updates at once. Run them in sequence during the first week, not the night before guests arrive, and note what changed."
+        },
+        {
+          "type": "h2",
+          "text": "Humidity and HVAC: the system that matters most while you are away"
+        },
+        {
+          "type": "p",
+          "text": "An empty Florida house does not usually fail through break-ins. It fails through moisture. A thermostat set too high to save power and a closed house can push indoor humidity well past 60 percent. Closets, mattresses and the backs of cabinets go first."
+        },
+        {
+          "type": "p",
+          "text": "The practical setup is a connected thermostat, such as an Ecobee or a Honeywell Home model, running an Away profile with a cooling setpoint chosen for humidity rather than for the lowest bill, plus a dehumidify setting where the equipment supports it. Your HVAC contractor should set the exact numbers for your equipment. Then add independent temperature and humidity sensors in a closet and an interior room, reporting through the hub rather than through the thermostat itself. If the air handler fails, the thermostat that controls it may not tell you. A separate sensor will."
+        },
+        {
+          "type": "p",
+          "text": "Set three alerts: humidity above your threshold for several hours, indoor temperature high enough that the AC is clearly not running, and the thermostat going offline. Three useful alerts beat twenty you learn to ignore."
+        },
+        {
+          "type": "h2",
+          "text": "Water, cameras, presence and access for vendors"
+        },
+        {
+          "type": "p",
+          "text": "Leak sensors are cheap insurance. Put them under the air handler and its condensate line, the water heater, the kitchen sink, the dishwasher, the ice maker and each toilet supply. A clogged condensate line is one of the most common summer failures in a closed Florida house, and a sensor in the drain pan catches it early. For a fuller answer, a whole-house shutoff valve such as a Moen Flo or a Phyn monitors flow at the main and can close the water automatically when it sees a leak, or when water runs while the house is supposed to be empty."
+        },
+        {
+          "type": "p",
+          "text": "Cameras should earn their place. A recorder on site, such as UniFi Protect, keeps footage locally and lets you look in from your phone without paying a monthly fee to watch an empty driveway. Point cameras at the entry, the garage, the dock or seawall side and the pool equipment rather than at the street. Glare and foliage decide placement more than the floor plan does."
+        },
+        {
+          "type": "p",
+          "text": "For presence, a Lutron system can run a randomized evening schedule in a few rooms, with landscape lighting on an astronomical clock. Keep it modest. A house lit like a dinner party every night reads as staged."
+        },
+        {
+          "type": "p",
+          "text": "Most seasonal owners rely on a house watch service, a cleaner, a pool company and the occasional contractor. A smart lock from Yale or Schlage that connects to the home system lets you give each one their own code, limited to the days and hours they work, and see each entry in a log. When the pool company changes staff, you delete one code instead of rekeying the house. Pair the lock with a camera at the door, and an entry alert tells you both who came in and that it was actually them."
+        },
+        {
+          "type": "p",
+          "text": "Gated communities add a layer. Many developments in Lakewood Ranch and Venice run their own gate access systems, and the HOA controls who gets a visitor pass. Your home system cannot open that gate, but it keeps a clean record of who entered your door and when."
+        },
+        {
+          "type": "h2",
+          "text": "Network reliability: everything else depends on it"
+        },
+        {
+          "type": "p",
+          "text": "Every alert in this article travels over the house network. If the modem locks up in July and nobody is there to unplug it, every camera and sensor goes silent and you will not know until something else goes wrong. A seasonal house needs a network built to recover by itself: a business-grade gateway such as UniFi, a UPS on the rack, managed power that can restart the modem remotely, and a cellular backup that takes over when the cable or fiber line drops. We cover that layer in more detail on the [networking page](networking), and the storm side of it in [hurricane preparation for a smart home](journal-hurricane-smart-home)."
+        },
+        {
+          "type": "p",
+          "text": "Someone also has to watch the network while you are away. That is the work our [LUMA Care plans](support) are built for. The Shoreline plan, at $75 a month, is designed for seasonal residences and lock-and-leave homes and includes remote diagnostics and firmware guidance for the gear we installed."
+        },
+        {
+          "type": "h2",
+          "text": "Closing the house in spring"
+        },
+        {
+          "type": "p",
+          "text": "The close-up is where a little discipline pays off all summer. Run the same written checklist every year, and test the alerts before leaving rather than after landing up north."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Switch thermostats to the Away profile and confirm the humidity setting is active",
+            "Test one leak sensor by touching it with a damp cloth and confirm the alert reaches your phone",
+            "Replace batteries in leak, humidity and door sensors, even if the app shows them as fine",
+            "Decide whether the water main stays open for irrigation or is shut by the automatic valve",
+            "Confirm the recorder has space for the summer and every camera is recording",
+            "Set the lighting presence schedule and turn off scenes nobody needs",
+            "Issue time-limited lock codes to the house watch, cleaner and pool service; delete the rest",
+            "Unplug the modem for a minute and check the house still reports over the cellular backup",
+            "Leave a written contact sheet for whoever has a key: who to call for HVAC, water and the network"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Island, condo and HOA realities"
+        },
+        {
+          "type": "p",
+          "text": "Location changes the details. On [Longboat Key](sa-longboat-key) and Siesta Key, salt air shortens the life of exterior hardware, so outdoor cameras and fixtures need marine-rated finishes, and many residences are condos where the association controls the exterior walls, the roof and the common network closet. In a condo you usually cannot drill the facade for a camera or run cable through common areas without board approval, so plans have to work inside the unit. Leak sensors and an automatic shutoff matter even more there, because a leak in your unit becomes your downstairs neighbor's ceiling."
+        },
+        {
+          "type": "p",
+          "text": "In Lakewood Ranch and Venice, the typical seasonal home is a single-family house in a deed-restricted community. Architectural review boards often have rules on visible cameras, exterior lighting color and anything mounted to the roofline, so it is worth checking before work begins. Gated access is common, and many communities have their own house watch vendors who already know the neighborhood."
+        },
+        {
+          "type": "p",
+          "text": "If you are opening the house this season and want the systems checked, or you are planning what to add before spring, [book a walkthrough](contact). We will look at what you already have and tell you what is worth changing."
+        },
+        {
+          "type": "h2",
+          "text": "Frequently asked questions"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "What thermostat setting should I use when my Florida home is empty for the summer?",
+              "a": "Set it for humidity, not just temperature. Use dehumidification where the equipment supports it, and let your HVAC contractor set the exact numbers. Add a separate humidity sensor so you hear about a problem even if the thermostat does not."
+            },
+            {
+              "q": "Do I need a monthly subscription to watch my cameras from up north?",
+              "a": "Not with an on-site recorder. A system such as UniFi Protect stores footage in the house and lets you view it remotely from your phone. You need a reliable internet line, ideally with a cellular backup, but no paid cloud plan."
+            },
+            {
+              "q": "How do I give cleaners and contractors access without handing out keys?",
+              "a": "Use a connected smart lock with individual codes for each service, limited to their working days and hours. Every entry is logged, and a code can be deleted the day a vendor changes staff, without rekeying the house."
+            },
+            {
+              "q": "Can I add smart home equipment in a Longboat Key or Siesta Key condo?",
+              "a": "Usually yes, inside the unit. Thermostats, leak sensors, an automatic water shutoff, lighting control and interior networking rarely need board approval. Anything on the exterior walls, the roof or in common areas typically does, so check the association rules first."
+            }
+          ]
+        }
+      ]
+    },
+    "journal-lutron-cost": {
+      "id": "journal-lutron-cost",
+      "slug": "lutron-radiora-3-cost-sarasota",
+      "title": "Lutron RadioRA 3 Cost in a Sarasota Home | LUMA",
+      "h1": "Lutron RadioRA 3 cost in a Sarasota home",
+      "description": "What drives Lutron RadioRA 3 cost in a Sarasota home: loads, keypads, retrofit vs new build, shades and programming, plus what to ask in a quote.",
+      "og": "/assets/photos/layers-lighting.jpg",
+      "date": "2026-10-24",
+      "category": "Lighting",
+      "dek": "Loads, keypads, wiring and programming decide the number, not the brand. Here is how to budget and what a quote should show.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ask three people what Lutron RadioRA 3 costs and you will get three numbers that are all correct for a different house. A Lutron system is not priced by the square foot or by the brand. It is priced by how many circuits it controls, what you touch on the wall, how hard it is to reach the wiring, and how much of the house the system is expected to run. This article walks through those drivers for a Sarasota or Manatee home, shows the ranges our own estimator uses, and lists what should be on a quote before you compare one against another."
+        },
+        {
+          "type": "p",
+          "text": "If you are still deciding between Lutron product lines, start with [choosing Lutron in a Sarasota house](journal-lutron-sarasota). This piece assumes you are leaning toward RadioRA 3 and want to understand the budget."
+        },
+        {
+          "type": "h2",
+          "text": "What you are actually paying for in a RadioRA 3 system"
+        },
+        {
+          "type": "p",
+          "text": "A RadioRA 3 job has four parts, and every honest quote shows all four."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Hardware: the processor, dimmers and switches, keypads, any plug-in or lamp modules, sensors, and the wallplates that finish them",
+            "Installation: replacing existing controls, adding boxes or wiring where a keypad needs to live, and testing every load",
+            "Design: deciding which circuits belong to which scenes, where keypads go, and what each button is engraved with",
+            "Programming: building the scenes, timeclock events, occupancy behaviour and the app, then adjusting them after you have lived with them"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Hardware is the part people look up online, and it is rarely the part that surprises them. The surprises come from design and installation: a great room with eleven circuits on one wall, a keypad location with no neutral, a lanai circuit nobody can find in the panel. That is why two houses of the same size can land far apart."
+        },
+        {
+          "type": "h2",
+          "text": "The cost drivers, one by one"
+        },
+        {
+          "type": "p",
+          "text": "Number of loads. A load is one circuit you want to dim or switch: the kitchen cans, the island pendants, the under-cabinet strip, the lanai fans. Each one needs a dimmer or a switch, wired or in a panel. Load count is the single best predictor of hardware cost, and Gulf Coast houses tend to have a lot of them. Open plans with tray ceilings, cove lighting, pendants over a long island and multiple sliders to the lanai can put fifteen or more loads in what is effectively one room."
+        },
+        {
+          "type": "p",
+          "text": "Keypads versus dimmers. A dimmer controls one load. A keypad controls scenes: Entertain, Dinner, Evening, Off. Keypads replace banks of dimmers and are what make the system feel finished, but each one is a device to buy, a location to wire and engraving to design. A house with a keypad at every entry and bedside costs more than one that keeps individual dimmers in secondary rooms and uses keypads only where people actually arrive and leave."
+        },
+        {
+          "type": "p",
+          "text": "Wired versus wireless, new build versus existing home. RadioRA 3 is designed for retrofit: wireless dimmers and keypads replace existing devices in the same wall boxes, talking to a processor over Lutron's radio network. In a finished house this avoids opening walls, which is why it is our usual recommendation for existing homes. New construction changes the math. Pre-wiring keypad locations, landing loads where you want them and planning a panel before drywall is cheaper than retrofitting later, and it opens the door to wired and panelized options."
+        },
+        {
+          "type": "p",
+          "text": "The processor and the size of the house. One RadioRA 3 processor covers a typical home. Large single-storey plans, concrete-block walls, detached guest suites and pool houses may need additional processors or repeaters so the radio signal reaches every device reliably. That is a site question, not a catalogue question, and it should be answered during a walkthrough."
+        },
+        {
+          "type": "h2",
+          "text": "Caséta, RadioRA 3 or HomeWorks"
+        },
+        {
+          "type": "p",
+          "text": "These three lines share a lot of thinking but are priced and scoped very differently."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Caséta suits a handful of rooms, a condo or a first step. It is the least expensive Lutron option, but it has a smaller device limit and fewer keypad and engraving choices",
+            "RadioRA 3 covers most finished single-family homes on the Gulf Coast: whole-house scenes, engraved keypads, occupancy sensors, shades on the same system, and an app that is not a toy",
+            "HomeWorks fits large new builds and deep remodels with a lighting designer: panelized loads, more architectural keypads, larger systems and tighter integration with fixtures"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Ketra sits on top of the decision rather than beside it. Ketra fixtures and lamps change colour temperature through the day and need their own design work, so they move a project toward HomeWorks and a different budget conversation. If someone quotes Ketra on a straightforward retrofit, ask why."
+        },
+        {
+          "type": "p",
+          "text": "Shades on the same system. Many Sarasota homes add motorized shades on the same Lutron system, so sunset drops the solar screens and warms the dining room from one keypad. That is the strongest argument for putting lighting and shades on one platform, but shades are budgeted separately. Each shade is its own motor, fabric and bracket, and wide gulf-facing openings cost more than bedroom windows. More on the layers we use on west glass on the [motorized shades page](shading)."
+        },
+        {
+          "type": "h2",
+          "text": "How to budget for Lutron lighting control in Sarasota"
+        },
+        {
+          "type": "p",
+          "text": "Our [budget estimator](budget-calculator) prices lighting control by how much of the house it covers. Its Gulf Coast ranges for the lighting-control line are:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "A few rooms only: $1,400 to $3,200",
+            "Main areas plus exterior (most living areas, lanai, landscape lights): $3,800 to $9,500",
+            "Whole house plus landscape: $12,000 to $38,000"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "In the same estimator, motorized shades are counted per shade at $900 to $1,900 each, and the tool adds a design and project-management allowance on top of the line items. These are indicative ranges for planning, not a quote. Where a project lands inside a range depends on load count, keypad count, retrofit difficulty and how much programming the house needs."
+        },
+        {
+          "type": "p",
+          "text": "For context, the whole-home packages on the same page put Lutron RadioRA 3 lighting in the Foundation tier, $45k to $85k for 2,500 to 4,000 sq ft, alongside cabling, Wi-Fi and cameras. The Signature tier, $120k to $220k for 4,000 to 7,500 sq ft, moves to Lutron HomeWorks lighting and shades. Those are whole-system figures, not lighting alone."
+        },
+        {
+          "type": "p",
+          "text": "A practical way to budget is to phase it. Start with the rooms you use every evening and the exterior, which is where scenes pay off first, and leave secondary bedrooms on standard dimmers that can join later. RadioRA 3 grows well, so a first phase does not lock you out of a whole-house system."
+        },
+        {
+          "type": "h2",
+          "text": "Gulf Coast homes change the brief"
+        },
+        {
+          "type": "p",
+          "text": "Lanais. The lanai is a living room here, and it usually brings fans, downlights, pool and landscape lighting onto the system. Outdoor loads are often on separate circuits with GFCI protection, sometimes in a sub-panel, and tracing them adds installation time. Exterior keypads and devices need the right location and enclosure for heat and humidity."
+        },
+        {
+          "type": "p",
+          "text": "Coastal homes. On Siesta Key, Longboat Key and Anna Maria Island, salt air and raised construction affect where equipment lives. The processor belongs in conditioned space above the flood line, not in a ground-level garage, and that can lengthen wire runs or add a repeater."
+        },
+        {
+          "type": "p",
+          "text": "Seasonal owners. If the house sits empty for months, the timeclock, an Away scene that varies lights in the evening, and remote access through the app matter more than a keypad in every room. Programming those behaviours carefully, and testing them before you leave in spring, is part of the budget, not an extra."
+        },
+        {
+          "type": "h2",
+          "text": "What to ask in a Lutron quote"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Is every load, keypad, sensor and processor listed with a price, or is it one lump sum?",
+            "How many loads did you count, and did you open the panel to confirm them?",
+            "Which rooms get keypads, and what will each button say?",
+            "Which devices are wireless retrofit and which need new wiring or boxes?",
+            "Are shades, Ketra and landscape lighting included, quoted separately or excluded?",
+            "How many hours of design and programming are included, and what does a change after move-in cost?",
+            "Who owns the programming file, and can another integrator service the system later?"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A quote that answers these clearly is easier to compare than a lower number that does not. For how we approach the work locally, see [Lutron lighting control in Sarasota](sa-sarasota-lighting). When you want a number for your own house, [book a walkthrough](contact) and we will count the loads with you."
+        },
+        {
+          "type": "h2",
+          "text": "Frequently asked questions"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "How much does Lutron RadioRA 3 cost for a Sarasota home?",
+              "a": "It depends mostly on the number of loads, keypads and how much of the house is covered. Our budget estimator uses $1,400 to $3,200 for a few rooms, $3,800 to $9,500 for main areas plus exterior, and $12,000 to $38,000 for the whole house plus landscape. A walkthrough turns that range into a quote."
+            },
+            {
+              "q": "Can RadioRA 3 be installed in an existing home without opening walls?",
+              "a": "Usually, yes. RadioRA 3 dimmers and keypads are wireless and replace existing devices in the same wall boxes. Walls are opened only where a keypad needs a new location or a box lacks the wiring the device requires."
+            },
+            {
+              "q": "Is HomeWorks worth it over RadioRA 3?",
+              "a": "For most finished Gulf Coast homes, RadioRA 3 covers what owners need. HomeWorks makes sense in large new builds and deep remodels where a lighting designer, panelized loads or Ketra are part of the plan."
+            },
+            {
+              "q": "Are motorized shades included in a lighting quote?",
+              "a": "They can run on the same Lutron system, but they are priced separately because each shade has its own motor, fabric and hardware. Our estimator counts them at $900 to $1,900 per shade."
+            }
+          ]
+        }
+      ]
+    },
+    "journal-permanent-vs-seasonal": {
+      "id": "journal-permanent-vs-seasonal",
+      "slug": "permanent-outdoor-lighting-cost-sarasota",
+      "title": "Permanent Outdoor Lighting Cost in Sarasota | LUMA",
+      "h1": "Permanent outdoor lighting in Sarasota: cost and how it compares to a seasonal install",
+      "description": "Permanent roofline lighting vs a yearly holiday install in Sarasota: what drives the cost, salt air, HOAs, tile roofs, and when each one makes sense.",
+      "og": "/assets/photos/permanent-holiday.jpg",
+      "date": "2026-10-24",
+      "category": "Outdoor lighting",
+      "dek": "A clip-on holiday install goes up and comes down every year; a permanent channel stays on the fascia and does more than December. Here is how to weigh the two on a Gulf Coast house.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Late October is when the question comes up. The neighbors are booking their holiday lights, the ladder is in the garage, and someone in the house asks whether it is time to stop doing this every year. On the Gulf Coast there are two serious ways to light a roofline for the season: a seasonal install of clip-on C9 bulbs or string lights that goes up in November and comes down in January, or a permanent LED channel fastened under the overhangs that stays there all year and runs warm white most nights."
+        },
+        {
+          "type": "p",
+          "text": "Both are reasonable, and they are paid for differently. Here is how each works, what drives the cost of permanent outdoor lighting in Sarasota and Manatee, and how to decide for your own house."
+        },
+        {
+          "type": "h2",
+          "text": "Two ways to light a roofline"
+        },
+        {
+          "type": "p",
+          "text": "A seasonal install is temporary by design. C9 or C7 bulbs or an LED string are clipped to the gutter, drip edge or shingles, plugged into an outdoor outlet and set on a timer. After the holidays everything comes down and goes into storage. Next year it repeats, including the roof access and the hunt for the strand that stopped working."
+        },
+        {
+          "type": "p",
+          "text": "A permanent system is installed once. A slim aluminum channel is powder-coated to match the fascia or soffit color, cut on site to the eaves, gables and returns, and fastened into the fascia rather than clipped to a gutter. Individually addressable LEDs sit inside the channel. A controller, usually in the garage or the network rack, drives the whole run. During the day it reads as trim. At night it can be a quiet 2700K warm white line that finishes the elevation, full-brightness white for security, team colors on game day, or a holiday preset in December. Nothing goes up in November and nothing comes down in January. The details of how we build it are on our [permanent outdoor lighting page](permanent-lighting)."
+        },
+        {
+          "type": "h2",
+          "text": "What drives the cost of permanent outdoor lighting in Sarasota"
+        },
+        {
+          "type": "p",
+          "text": "There is no honest flat price for a permanent roofline, because the house sets most of the number. When we put together a range, these are the variables that move it:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Linear feet of roofline: the length of every eave, gable and return you want lit, measured on the drawing, not estimated from the street",
+            "Stories and access: a single-story ranch in Palmer Ranch is a ladder job; a two-story home in Lakewood Ranch or a raised house near the water can need a lift and more labor per foot",
+            "Roof type and fascia condition: barrel tile, flat tile, metal and shingle each change how the channel is fastened and how corners and peaks are handled, and rotted fascia should be repaired before anything is mounted",
+            "Number of zones: front elevation only, or front, garage side, lanai and pool cage on separate runs that can be lit independently",
+            "Power and controller: where the power supplies live, whether a new circuit is needed, and whether the controller stands alone or ties into an existing lighting or automation system",
+            "Channel color and finish: a standard color, or a custom match to an unusual fascia or trim paint"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A seasonal install is simpler but it repeats: labor to install, labor to take down, and storage or replacement of bulbs, clips and wire every year. Done yourself, it is a weekend on a ladder twice a year. The useful comparison is several seasons of install and takedown against one installation that also lights the house the other eleven months."
+        },
+        {
+          "type": "p",
+          "text": "To get a real range for your house, send us a photo of the front elevation and the address. We measure the roofline from the drawings or county records, and we come back with a run plan, a channel color and a range before anything is ordered."
+        },
+        {
+          "type": "h2",
+          "text": "Gulf Coast conditions: salt, sun and storms"
+        },
+        {
+          "type": "p",
+          "text": "Salt air corrodes exposed metal contacts. Seasonal strands spend only a couple of months outside, but the sockets, plugs and timers are rarely built for marine exposure, so a strand that worked last year can come out of storage with green contacts and dead sections. A permanent system keeps the diodes and connections inside a sealed channel, with the power supplies in a protected location. On barrier-island and bayfront homes we pay particular attention to connector sealing and to where the power supplies sit."
+        },
+        {
+          "type": "p",
+          "text": "UV is the second factor. Florida sun degrades plastics, and cheap wire jackets and bulb covers become brittle within a few seasons. A powder-coated aluminum channel shades the diodes from direct sun. Manufacturers generally rate LEDs for tens of thousands of hours, but real-world life depends on heat, moisture and the quality of the power supply, so treat any rating as a manufacturer figure, not a promise about your roofline."
+        },
+        {
+          "type": "p",
+          "text": "Then there are hurricanes. Clip-on lights are down long before the next storm season, which favors a seasonal install. A permanent channel stays up through summer, so fastening matters: ours goes into the fascia, not the gutter, so it stays put and does not interfere with drainage. After a major storm, give the roofline a visual check along with the gutters."
+        },
+        {
+          "type": "h2",
+          "text": "HOA rules, roof types and two-story homes"
+        },
+        {
+          "type": "p",
+          "text": "Many communities in Lakewood Ranch, Venice and Palmer Ranch have architectural review boards with rules on exterior lighting: allowed colors, hours, brightness and whether holiday displays are limited to certain dates. A permanent system usually helps here, because the daytime look is trim matched to the house and the nighttime default is a restrained warm white. Colors and holiday presets can be scheduled to fit the dates the HOA allows. Still, check the documents and submit to the board before installation if the community requires it. If you are in [Lakewood Ranch](sa-lakewood-ranch) or [Venice](sa-venice), we can help you prepare the drawing and product details the board typically asks for."
+        },
+        {
+          "type": "p",
+          "text": "Roof type matters for both options. Barrel tile is common in Sarasota and Venice, and clips that slide under tiles can crack or lift them, a common source of winter roof leaks after a seasonal install. Metal roofs dent and scratch, and clips on standing seam can slip. A fascia-mounted channel avoids walking the roof field at all after installation, since nothing has to be put up or taken down each year."
+        },
+        {
+          "type": "p",
+          "text": "Two-story homes are where a seasonal install costs most over time: upper eaves need taller ladders or a lift twice a season. A permanent system goes up once."
+        },
+        {
+          "type": "h2",
+          "text": "When each option makes sense"
+        },
+        {
+          "type": "p",
+          "text": "A seasonal install is a sensible choice if you only want lights in December, if you are selling or renting the house in the next year or two, if the HOA does not allow any permanent exterior fixtures, or if the house's trim and fascia need work before anything should be fastened to them. It is also the low-commitment way to find out how much you enjoy a lit roofline."
+        },
+        {
+          "type": "p",
+          "text": "A permanent system makes more sense if you plan to stay, if the house is two stories or has a tile or metal roof, if you would like the roofline lit year-round as part of the architecture, or if you are tired of the yearly install and takedown. It is also a fit for seasonal residents: the lights can follow a schedule and be checked from the app while you are away, and nobody has to climb up in January to take anything down."
+        },
+        {
+          "type": "h2",
+          "text": "How it ties into the home's lighting control"
+        },
+        {
+          "type": "p",
+          "text": "A permanent roofline works on its own with the manufacturer's app and a schedule: sunset on, midnight off, a preset for the date. It becomes more useful when it is part of the house. If the home has a Lutron system or a whole-home automation platform, the roofline can join the same scenes as the landscape, pool and lanai lights. An Evening scene turns it on with the rest of the exterior, Away turns it off with everything else, and a keypad button by the door handles it without a phone. Security mode can raise it to full-brightness white on a camera event. That is the same approach we take to [lighting control](lighting) inside the house: one schedule, one keypad, fewer apps."
+        },
+        {
+          "type": "p",
+          "text": "If you are weighing a permanent roofline against another year of clip-on lights, [send us a photo of the house](contact). We will tell you whether a permanent channel makes sense for your roofline, and if it does not, we will say so."
+        },
+        {
+          "type": "h2",
+          "text": "Frequently asked questions"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "How much does permanent outdoor lighting cost in Sarasota?",
+              "a": "It depends mainly on the linear feet of roofline, the number of stories, the roof type, the number of zones and how the controller is powered and integrated. We give a range for your house after measuring the roofline from a photo and drawings or county records, before anything is ordered."
+            },
+            {
+              "q": "Can permanent lights do Christmas and holiday colors?",
+              "a": "Yes. The LEDs are individually addressable, so the same channel that runs warm white most nights can switch to a holiday preset, team colors or full-brightness white. Presets can be scheduled for the dates you or your HOA choose."
+            },
+            {
+              "q": "Will permanent roofline lighting survive salt air and hurricanes?",
+              "a": "The diodes sit inside a sealed, powder-coated channel fastened into the fascia rather than clipped to a gutter, which is built for exposure. Manufacturers rate LEDs for tens of thousands of hours in general terms; warranty terms depend on the product line and are set out in writing in the proposal."
+            },
+            {
+              "q": "Does my HOA need to approve permanent lighting?",
+              "a": "Many communities in Lakewood Ranch, Venice and Palmer Ranch require architectural review for exterior fixtures or set rules on colors and hours. Check your documents first; we can supply the drawing and product details the board usually asks for."
+            },
+            {
+              "q": "Is a seasonal install ever the better choice?",
+              "a": "Yes, if you only want lights in December, plan to sell soon, your HOA does not allow permanent fixtures, or the fascia needs repair first. A seasonal install is also a low-commitment way to see how much you use a lit roofline."
+            }
+          ]
+        }
+      ]
+    },
+    "journal-prewire-lwr": {
+      "id": "journal-prewire-lwr",
+      "slug": "smart-home-pre-wire-lakewood-ranch",
+      "title": "Smart Home Pre-Wire in Lakewood Ranch | LUMA",
+      "h1": "Smart home pre-wire for a Lakewood Ranch new build",
+      "description": "What to run before drywall in a Lakewood Ranch new build: Cat6A home runs, shade power, keypads, cameras, lanai conduit and the rack, and builder timing.",
+      "og": "/assets/photos/trade-roughin.jpg",
+      "date": "2026-10-24",
+      "category": "New construction",
+      "dek": "Cable, boxes and conduit are cheap before drywall and expensive after it. Here is what to run in a Lakewood Ranch new build and when.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "If you are building in Lakewood Ranch, the cheapest moment to decide how the house will be wired is the few weeks between framing and drywall. In Waterside, Lake Club, Star Farms, Azario and the newer villages, production and semi-custom builders move quickly, and the low-voltage stage often passes before the owner has thought about where the rack, the access points or the shade motors go. Once insulation and drywall are in, every one of those decisions turns into cutting, fishing and patching."
+        },
+        {
+          "type": "p",
+          "text": "Here is what goes into a smart home pre-wire for a Lakewood Ranch new build, how it fits the builder's schedule, and what skipping it costs."
+        },
+        {
+          "type": "h2",
+          "text": "Why the pre-wire matters more in a Florida new build"
+        },
+        {
+          "type": "p",
+          "text": "Many new homes on both the Manatee and Sarasota sides of the Ranch are concrete block (CBS) on the ground floor, with wood-framed interior walls, a wood-framed second floor where there is one, and a truss roof. That mix decides where cable can go later and where it cannot."
+        },
+        {
+          "type": "p",
+          "text": "Exterior block walls are the hard part. A cable or a box on an exterior wall either goes in the furring space before drywall or gets chased into the block afterward, which is slow, loud and visible. The attic is the other route, and in Southwest Florida it is a poor place to work: summer attic temperatures make retrofit pulls slow, and the trusses are tied down with hurricane straps and clips that nobody should be drilling through to save a few feet of cable. A house wired at rough-in avoids all of that."
+        },
+        {
+          "type": "p",
+          "text": "There is also the lanai. Screen enclosures (the aluminum lanai cage) usually go up late in the build, often by a separate contractor. If there is no conduit stubbed out to the cage posts and the outdoor ceiling, outdoor speakers, cameras and lighting end up on surface-mounted wiremold or wireless gear that struggles with the heat and humidity."
+        },
+        {
+          "type": "h2",
+          "text": "What we run before drywall"
+        },
+        {
+          "type": "p",
+          "text": "A pre-wire is not a box of spare cable. It is a plan: every location marked on the drawings, every cable labelled at both ends, and every run going back to one place. On a typical Lakewood Ranch new build that plan covers:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Cat6A home runs to every TV location, office, media room and bedroom wall that may host a screen or a desk, each run returning to the rack rather than daisy-chained",
+            "Ceiling access point locations, one Cat6A drop each, placed from a coverage plan rather than one per room by default, including the bonus room, the primary suite and the lanai",
+            "Camera locations with a Cat6A drop for PoE at eaves, the garage, the front entry and the lanai, so cameras take power and data from the switch and need no outlet",
+            "Shade pockets or recesses at the windows where the builder will frame them, with low-voltage or line-voltage power at the head of each window depending on the shade system",
+            "Keypad locations in deep boxes at the main entries, the kitchen, the primary bedroom and wherever scenes will be used, so keypads stack cleanly with the electrician's switches",
+            "In-ceiling and in-wall speaker locations with speaker wire back to the rack, plus backboxes or brackets so the ceiling is cut once, in the right place",
+            "Conduit from the house to the lanai cage, pool equipment, a dock if the lot has water access, and a driveway gate or entry pillars, with pull string left in",
+            "A rack location in conditioned space with its own dedicated circuit, room for airflow, and conduit to the attic and to the service entrance for the internet provider"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Two items deserve a word. Shades are where most retrofits go wrong: a motorized roller shade needs a pocket or a clean head detail and power at the window, and neither can be added cleanly after drywall and trim. If you are even considering motorized shades on the west and south elevations, wire for them now; the [shading page](shading) covers how we size and pick the motors. And the rack belongs inside the air-conditioned envelope, typically an interior closet or a corner of the laundry room, not the garage and not the attic. Heat is what shortens the life of switches, recorders and power supplies in this climate."
+        },
+        {
+          "type": "h2",
+          "text": "Low-voltage pre-wire vs the builder's tech package"
+        },
+        {
+          "type": "p",
+          "text": "Most builders in the Ranch offer a structured wiring or technology package at the design center. Some are a handful of coax and Cat5e or Cat6 outlets and a small panel in a closet; others are more complete. Ask the same questions either way:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "What cable is it: Cat6A, Cat6 or Cat5e, and are the runs home runs or looped between outlets?",
+            "Where does everything terminate, and is that location in conditioned space with power and room for a rack?",
+            "Are there any ceiling drops for access points, or any camera drops at the eaves?",
+            "Is there anything for shades, keypads or the lanai, or only data and TV outlets?",
+            "Who labels and tests the cables, and do you get a map of what went where?"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A builder's package is not wrong; it is usually just written for a different house than the one you want. Often the right answer is to keep the builder's electrical scope as it is, decline or trim the tech package, and have a dedicated low-voltage contractor rough in to a plan drawn for the systems you actually intend to install."
+        },
+        {
+          "type": "h2",
+          "text": "Coordinating with the builder's schedule"
+        },
+        {
+          "type": "p",
+          "text": "Builders run on a sequence, and low-voltage has to fit inside it. First, we mark up the plan set before or at framing: device locations, box types, shade details, conduit and the rack. Those markups go to the builder and the electrician so nothing surprises them on site. Second, after framing and the electrical rough-in, and before insulation, we run the low-voltage rough-in, ideally in one visit,. Third, we walk the job with you and, if possible, the superintendent, confirming every location on the studs rather than on paper."
+        },
+        {
+          "type": "p",
+          "text": "After drywall and paint, trim-out is when devices go in: keypads, speakers, access points, cameras and the rack itself. Some builders allow trim before closing, others only after; both work if the rough-in was done right. We work from your builder's schedule, not ours, and we do not promise dates that depend on someone else's calendar. More on how we work alongside builders and designers is on the [designers and builders page](designers)."
+        },
+        {
+          "type": "p",
+          "text": "One practical note for buyers: confirm early, in writing, that your builder allows an outside low-voltage contractor on site before closing. Policies differ by builder, and it is easier to settle at contract than after framing."
+        },
+        {
+          "type": "h2",
+          "text": "Retrofit later vs wire now"
+        },
+        {
+          "type": "p",
+          "text": "Skipping the pre-wire rarely saves money; it moves the cost later and makes it larger. In a finished Lakewood Ranch home, running a new cable to an exterior block wall means chasing or surface conduit. Pulling through a hot attic past straps, blocking and insulation takes far longer than the same run through open studs. Shades without pockets get mounted on the face of the window trim. Cameras without PoE drops end up on Wi-Fi with batteries or local power supplies. And the rack ends up where there happens to be space, which in many houses is the garage."
+        },
+        {
+          "type": "p",
+          "text": "There is a middle path if the budget is tight at build time: run the cable and conduit now, and install the equipment later. Cable and boxes are a small part of a finished system and the only part that is truly hard to add afterward. Speakers, keypads, shades and cameras can all be installed after you move in, as long as the wire is waiting for them."
+        },
+        {
+          "type": "p",
+          "text": "For a sense of scale, our [budget estimator](budget-calculator) uses a range of about $1.60 to $3.40 per square foot of heated and cooled space for new-construction pre-wire and infrastructure, before any devices or control systems. It is an indicative range, not a quote; the real number depends on how many locations you want and what the house looks like on paper."
+        },
+        {
+          "type": "h2",
+          "text": "How to start before your framing date"
+        },
+        {
+          "type": "p",
+          "text": "The best time to call is when you have a plan set and a rough idea of the builder's schedule, ideally before framing. Bring the floor plan and a short list of what you want the house to do: shades on the west side, music on the lanai, cameras at the gate, Wi-Fi in the bonus room. We mark up the plans and tell you what has to happen before drywall and what can wait. Our [Lakewood Ranch page](sa-lakewood-ranch) covers the kinds of homes we see across the Ranch, and when you are ready, [send us your plans](contact)."
+        },
+        {
+          "type": "h2",
+          "text": "Frequently asked questions"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "When should I schedule a smart home pre-wire in Lakewood Ranch?",
+              "a": "Before framing if you can, so locations are on the plans. The low-voltage rough-in itself happens after framing and the electrical rough-in, and before insulation and drywall. Once drywall is up, the pre-wire window has closed."
+            },
+            {
+              "q": "Is the builder's structured wiring package enough?",
+              "a": "Sometimes, but check what it includes: the cable type, whether runs are home runs, where they terminate, and whether there are any drops for access points, cameras, shades, keypads or the lanai. Many packages cover TV and data outlets only."
+            },
+            {
+              "q": "Why Cat6A instead of Cat6?",
+              "a": "Cat6A supports 10-gigabit Ethernet over full-length runs and handles PoE power for cameras and access points with less heat build-up in the bundle. The cable is a small share of the cost, and walls in a block house are expensive to reopen."
+            },
+            {
+              "q": "Can I pre-wire now and add equipment later?",
+              "a": "Yes. Running cable, conduit, deep boxes and shade power during construction, then installing speakers, cameras, keypads and shades after closing, is a common and sensible way to split the budget."
+            },
+            {
+              "q": "Where should the network rack go in a Florida new build?",
+              "a": "In conditioned space with a dedicated circuit and some airflow, usually an interior closet or part of the laundry room. Avoid the garage and the attic, where heat shortens equipment life."
+            }
+          ]
+        }
+      ]
     }
   },
   "articleOrder": [
     "journal-hurricane-smart-home",
+    "journal-snowbird-smart-home",
+    "journal-lutron-cost",
+    "journal-permanent-vs-seasonal",
+    "journal-prewire-lwr",
     "journal-cameras-fees",
     "journal-theater-sarasota",
     "journal-shades-gulf",
@@ -3244,6 +3920,14 @@ window.LUMA_GEO = {
   ],
   "related": {
     "lighting": [
+      {
+        "id": "journal-permanent-vs-seasonal",
+        "label": "Permanent vs seasonal lighting"
+      },
+      {
+        "id": "journal-lutron-cost",
+        "label": "Lutron RadioRA 3 cost"
+      },
       {
         "id": "sa-sarasota-lighting",
         "label": "Lutron lighting control in Sarasota"
@@ -3375,6 +4059,10 @@ window.LUMA_GEO = {
     ],
     "networking": [
       {
+        "id": "journal-prewire-lwr",
+        "label": "Smart home pre-wire in Lakewood Ranch"
+      },
+      {
         "id": "sa-sarasota-networking",
         "label": "Wi-Fi & structured cabling in Sarasota"
       },
@@ -3456,6 +4144,22 @@ window.LUMA_GEO = {
       }
     ],
     "journal": [
+      {
+        "id": "journal-prewire-lwr",
+        "label": "Smart home pre-wire in Lakewood Ranch"
+      },
+      {
+        "id": "journal-permanent-vs-seasonal",
+        "label": "Permanent vs seasonal lighting"
+      },
+      {
+        "id": "journal-lutron-cost",
+        "label": "Lutron RadioRA 3 cost"
+      },
+      {
+        "id": "journal-snowbird-smart-home",
+        "label": "Smart home for snowbirds"
+      },
       {
         "id": "journal-hurricane-smart-home",
         "label": "Smart home hurricane preparation"
@@ -3567,6 +4271,10 @@ window.LUMA_GEO = {
     ],
     "designers": [
       {
+        "id": "journal-prewire-lwr",
+        "label": "Smart home pre-wire in Lakewood Ranch"
+      },
+      {
         "id": "contact",
         "label": "Start a project"
       },
@@ -3585,6 +4293,10 @@ window.LUMA_GEO = {
     ],
     "support": [
       {
+        "id": "journal-snowbird-smart-home",
+        "label": "Smart home for snowbirds"
+      },
+      {
         "id": "contact",
         "label": "Start a project"
       },
@@ -3594,6 +4306,10 @@ window.LUMA_GEO = {
       }
     ],
     "budget-calculator": [
+      {
+        "id": "journal-lutron-cost",
+        "label": "Lutron RadioRA 3 cost"
+      },
       {
         "id": "contact",
         "label": "Start a project"
@@ -3811,6 +4527,14 @@ window.LUMA_GEO = {
     ],
     "sa-lakewood-ranch": [
       {
+        "id": "journal-prewire-lwr",
+        "label": "Smart home pre-wire in Lakewood Ranch"
+      },
+      {
+        "id": "journal-permanent-vs-seasonal",
+        "label": "Permanent vs seasonal lighting"
+      },
+      {
         "id": "lighting",
         "label": "Lighting"
       },
@@ -3829,6 +4553,10 @@ window.LUMA_GEO = {
     ],
     "sa-venice": [
       {
+        "id": "journal-permanent-vs-seasonal",
+        "label": "Permanent vs seasonal lighting"
+      },
+      {
         "id": "lighting",
         "label": "Lighting"
       },
@@ -3846,6 +4574,10 @@ window.LUMA_GEO = {
       }
     ],
     "sa-siesta-key": [
+      {
+        "id": "journal-snowbird-smart-home",
+        "label": "Smart home for snowbirds"
+      },
       {
         "id": "sa-siesta-key-shading",
         "label": "Motorized shades on Siesta Key"
@@ -3868,6 +4600,10 @@ window.LUMA_GEO = {
       }
     ],
     "sa-longboat-key": [
+      {
+        "id": "journal-snowbird-smart-home",
+        "label": "Smart home for snowbirds"
+      },
       {
         "id": "sa-longboat-key-shading",
         "label": "Motorized shades on Longboat Key"
@@ -3926,6 +4662,10 @@ window.LUMA_GEO = {
       }
     ],
     "sa-sarasota-lighting": [
+      {
+        "id": "journal-lutron-cost",
+        "label": "Lutron RadioRA 3 cost"
+      },
       {
         "id": "lighting",
         "label": "Lighting"
@@ -4439,6 +5179,10 @@ window.LUMA_GEO = {
     ],
     "journal-lutron-sarasota": [
       {
+        "id": "journal-lutron-cost",
+        "label": "Lutron RadioRA 3 cost"
+      },
+      {
         "id": "sa-sarasota-lighting",
         "label": "Lutron lighting control in Sarasota"
       },
@@ -4533,6 +5277,14 @@ window.LUMA_GEO = {
     ],
     "journal-hurricane-smart-home": [
       {
+        "id": "journal-prewire-lwr",
+        "label": "Smart home pre-wire in Lakewood Ranch"
+      },
+      {
+        "id": "journal-snowbird-smart-home",
+        "label": "Smart home for snowbirds"
+      },
+      {
         "id": "networking",
         "label": "Networking"
       },
@@ -4551,6 +5303,100 @@ window.LUMA_GEO = {
       {
         "id": "contact",
         "label": "Start a project"
+      }
+    ],
+    "journal-snowbird-smart-home": [
+      {
+        "id": "support",
+        "label": "support"
+      },
+      {
+        "id": "sa-longboat-key",
+        "label": "Longboat Key smart home"
+      },
+      {
+        "id": "networking",
+        "label": "Networking"
+      },
+      {
+        "id": "journal-hurricane-smart-home",
+        "label": "Smart home hurricane preparation"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-lutron-cost": [
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "sa-sarasota-lighting",
+        "label": "Lutron lighting control in Sarasota"
+      },
+      {
+        "id": "journal-lutron-sarasota",
+        "label": "Choosing Lutron in Sarasota"
+      },
+      {
+        "id": "budget-calculator",
+        "label": "Budget calculator"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-permanent-vs-seasonal": [
+      {
+        "id": "permanent-lighting",
+        "label": "permanent-lighting"
+      },
+      {
+        "id": "lighting",
+        "label": "Lighting"
+      },
+      {
+        "id": "sa-lakewood-ranch",
+        "label": "Lakewood Ranch smart home"
+      },
+      {
+        "id": "sa-venice",
+        "label": "Venice smart home"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "journal-prewire-lwr": [
+      {
+        "id": "sa-lakewood-ranch",
+        "label": "Lakewood Ranch smart home"
+      },
+      {
+        "id": "designers",
+        "label": "designers"
+      },
+      {
+        "id": "networking",
+        "label": "Networking"
+      },
+      {
+        "id": "budget-calculator",
+        "label": "Budget calculator"
+      },
+      {
+        "id": "contact",
+        "label": "Start a project"
+      }
+    ],
+    "permanent-lighting": [
+      {
+        "id": "journal-permanent-vs-seasonal",
+        "label": "Permanent vs seasonal lighting"
       }
     ]
   },

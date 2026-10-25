@@ -238,10 +238,10 @@ Long-tail and island phrases (Longboat Key and Siesta Key shades, cameras in Sar
 
 | # | Working title | Target keyword | Cluster |
 |---|---|---|---|
-| 1 | Hurricane-ready smart home: power, shades and remote eyes | smart home hurricane preparation Florida | D |
-| 2 | What Lutron lighting control costs in a Sarasota home | Lutron RadioRA 3 cost | C/D |
-| 3 | Running a seasonal home from up north | smart home for snowbirds Florida | D |
-| 4 | Pre-wiring a new build in Lakewood Ranch | smart home pre-wire Lakewood Ranch | B |
+| 1 | ~~Hurricane-ready smart home: power, shades and remote eyes~~ (published 2026-10-24) | smart home hurricane preparation Florida | D |
+| 2 | ~~What Lutron lighting control costs in a Sarasota home~~ (published 2026-10-24) | Lutron RadioRA 3 cost | C/D |
+| 3 | ~~Running a seasonal home from up north~~ (published 2026-10-24) | smart home for snowbirds Florida | D |
+| 4 | ~~Pre-wiring a new build in Lakewood Ranch~~ (published 2026-10-24) | smart home pre-wire Lakewood Ranch | B |
 | 5 | Lutron vs Somfy motorized shades in Gulf Coast sun | Lutron vs Somfy shades | C |
 | 6 | Home theater cost in Sarasota, 2026 | home theater cost Sarasota | A/D |
 | 7 | Wi-Fi in concrete-block homes and lanais | Wi-Fi dead zones Florida home | A |
@@ -250,7 +250,7 @@ Long-tail and island phrases (Longboat Key and Siesta Key shades, cameras in Sar
 | 10 | Outdoor audio that survives salt air | outdoor speakers coastal Florida | A |
 | 11 | Wired PoE cameras vs Ring in Florida heat | wired security cameras vs wireless Florida | A |
 | 12 | Smart lighting without opening walls | Lutron retrofit existing home | C |
-| 13 | Permanent roofline lighting vs a seasonal install | permanent outdoor lighting cost Sarasota | A |
+| 13 | ~~Permanent roofline lighting vs a seasonal install~~ (published 2026-10-24) | permanent outdoor lighting cost Sarasota | A |
 | 14 | UniFi vs eero for large homes | UniFi for large homes | C |
 | 15 | What a smart-home service plan should cover | smart home maintenance plan | D |
 
