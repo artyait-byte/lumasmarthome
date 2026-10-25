@@ -4554,7 +4554,10 @@ function CameraPopup({lead}){
   // automatic open
   useEffect(() => {
     const st = leadState();
-    if (st.sent || (st.closed && Date.now() - st.closed < 7*864e5)) return;
+    // Own close flag: closing the site-wide card elsewhere must not hide the
+    // camera offer. ?offer in the URL always opens it (owner testing).
+    const force = /[?&]offer\b/.test(window.location.search);
+    if (!force && (st.sent || (st.camClosed && Date.now() - st.camClosed < 7*864e5))) return;
     const mobile = window.matchMedia && window.matchMedia('(max-width: 767px), (pointer: coarse)').matches;
     let done = false, scrolled = false, due = false;
     const inlineBusy = () => {
@@ -4619,7 +4622,7 @@ function CameraPopup({lead}){
 
   function close(){
     setOpen(false);
-    if (status !== 'sent') leadSave({closed: Date.now()});
+    if (status !== 'sent') leadSave({camClosed: Date.now()});
     const f = lastFocus.current;
     if (f && f.focus) setTimeout(() => { try { f.focus({preventScroll:true}); } catch(e) {} }, 0);
   }
