@@ -3700,6 +3700,11 @@ function JournalArticle({articleId, navigate}){
           {(a.blocks||[]).map((b,i)=>{
             if (b.type==='h2') return <h2 key={i}>{b.text}</h2>;
             if (b.type==='ul') return <ul key={i}>{b.items.map(it=><li key={it}><LinkedText text={it} navigate={navigate}/></li>)}</ul>;
+            if (b.type==='faq') return <div key={i} className="fx-faq">{b.items.map((it,j)=>(
+              <details key={it.q} className="fx-faq-item" open={j===0}>
+                <summary>{it.q}<i aria-hidden="true">+</i></summary>
+                <p><LinkedText text={it.a} navigate={navigate}/></p>
+              </details>))}</div>;
             return <p key={i}><LinkedText text={b.text} navigate={navigate}/></p>;
           })}
         </div>
