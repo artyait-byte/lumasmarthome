@@ -4567,7 +4567,12 @@ function CameraPopup({lead}){
       if (mobile && !scrolled) { due = true; return; }
       done = true; lastFocus.current = document.activeElement; setOpen(true); cleanup();
     };
-    const t = setTimeout(fire, 25000);
+    // Visitors who landed here from a search engine get the offer sooner.
+    const fromSearch = (() => { try {
+      const r = document.referrer ? new URL(document.referrer).hostname : '';
+      return /(^|\.)(google|bing|yahoo|duckduckgo)\./.test(r) || /[?&]utm_source=(google|bing)/.test(location.search);
+    } catch(e) { return false; } })();
+    const t = setTimeout(fire, fromSearch ? 8000 : 25000);
     const onScroll = () => {
       if (window.scrollY > 40) scrolled = true;
       const h = document.documentElement;
