@@ -4564,15 +4564,11 @@ function CameraPopup({lead}){
     };
     const fire = () => {
       if (done || inlineBusy()) return;
-      if (mobile && !scrolled) { due = true; return; }
       done = true; lastFocus.current = document.activeElement; setOpen(true); cleanup();
     };
-    // Visitors who landed here from a search engine get the offer sooner.
-    const fromSearch = (() => { try {
-      const r = document.referrer ? new URL(document.referrer).hostname : '';
-      return /(^|\.)(google|bing|yahoo|duckduckgo)\./.test(r) || /[?&]utm_source=(google|bing)/.test(location.search);
-    } catch(e) { return false; } })();
-    const t = setTimeout(fire, fromSearch ? 8000 : 25000);
+    // Owner decision 2026-10-24: the offer opens for every visitor on every
+    // camera page about 3 s after load (desktop and phone alike).
+    const t = setTimeout(fire, 3000);
     const onScroll = () => {
       if (window.scrollY > 40) scrolled = true;
       const h = document.documentElement;
