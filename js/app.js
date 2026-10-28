@@ -1933,7 +1933,7 @@ function qcCalc(cat, q, yard){
   let labor = n ? cat.labor({n, nB, feet, count, units:g.units}) : 0;
   labor = Math.round(labor/10)*10;
   const tax = equip*cat.taxRate, total = equip + labor + tax;
-  return {lines, n, feet, equip, labor, tax, total, days: n ? Math.max(1, Math.ceil(labor/72/16)) : 0};
+  return {lines, n, feet, equip, labor, tax, total, days: n ? Math.max(1, Math.ceil(labor/(cat.rate||72)/16)) : 0};
 }
 
 function QcStepper({value, onChange, label}){
@@ -2133,40 +2133,37 @@ function QuoteCalculator({cat}){
   );
 }
 
-/* Landscape lighting — Pampa Lighting catalogue, retail prices from
-   pampalighting.com (October 2026). Fixtures priced with their 2700K lamp
-   (or the RGBWW Wi-Fi lamp for colour), antique brass finish. */
+/* Landscape lighting — AMP Lighting catalogue, the SmartNova AV quick-quote
+   line for line: AMP pro prices from amplighting.com (October 2026), lamp
+   included, solid brass. Colour = AMP iQ smart RGBCW fixtures. */
 const LANDSCAPE_A = [
-  {id:'spot',  kind:'fixture', name:'Spotlight', use:'Uplight palms, trees, columns and walls', prod:'Pampa Stelvio brass spotlight + MR16 5W 2700K', price:86.95, w:5, img:'pampa-stelvio-spot'},
-  {id:'path',  kind:'fixture', name:'Path light', use:'Line walkways, driveways and garden beds', prod:'Pampa Tulay BH 18" brass path light + G4 2W 2700K', price:101.42, w:2, img:'pampa-tulay-path'},
-  {id:'step',  kind:'fixture', name:'Step / wall light', use:'Stairs, retaining walls, pool decks', prod:'Pampa Tulay brass louvered step light + 2× G4 2W', price:80.95, w:4, img:'pampa-tulay-step'},
-  {id:'hard',  kind:'fixture', name:'Hardscape light', use:'Under wall caps, seat walls, outdoor kitchens', prod:'Pampa Tulay brass hardscape light, 7"', price:87.95, w:3, img:'pampa-tulay-hardscape'},
-  {id:'well',  kind:'fixture', name:'In-ground well light', use:'Flush with the lawn: facades, columns, palms', prod:'Pampa Tulay brass in-ground well light + MR16 5W', price:92.95, w:5, img:'pampa-tulay-well'},
-  {id:'down',  kind:'fixture', name:'Downlight (moonlighting)', use:'Mounted high in trees for soft moonlight', prod:'Pampa Stelvio brass down light + MR16 5W + tree strap', price:143.95, w:5, img:'pampa-stelvio-down'},
-  {id:'deck',  kind:'fixture', name:'Deck / dock light', use:'Docks, decks, steps and posts', prod:'Pampa Rein Louv mini integrated brass deck light', price:79.95, w:2, img:'pampa-rein-deck'},
-  {id:'water', kind:'fixture', name:'Underwater light', use:'Fountains, ponds and water features', prod:'Pampa underwater bronze light + MR16 4W 2700K', price:157.95, w:4, img:'pampa-underwater'},
-  {id:'bistro',kind:'string', name:'Bistro string light', use:'Over the lanai, pool deck or pergola', prod:"Pampa bistro light, 48', 12V", price:142.75, w:24, img:'pampa-bistro'},
+  {id:'spot',  kind:'fixture', name:'Spotlight', use:'Uplight palms, trees, columns and walls', prod:'AMP PinnaclePro MR16 brass spotlight + 5W 2700K LED', price:66.98, w:5, img:'amp-spot'},
+  {id:'path',  kind:'fixture', name:'Path light', use:'Line walkways, driveways and garden beds', prod:'AMP MagnumPro brass path & area light + 3W LED', price:86.98, w:3, img:'amp-path'},
+  {id:'step',  kind:'fixture', name:'Step / wall light', use:'Stairs, retaining walls, pool decks', prod:'AMP InfusePro thin LED step light (louvered)', price:79.99, w:2, img:'amp-step'},
+  {id:'hard',  kind:'fixture', name:'Hardscape light', use:'Under wall caps, seat walls, outdoor kitchens', prod:'AMP ControlPro modular rotatable LED hardscape light', price:59.99, w:3, img:'amp-hard'},
+  {id:'well',  kind:'fixture', name:'In-ground well light', use:'Flush with the lawn: facades, columns, palms', prod:'AMP Core Drill MR11 well light + LED lamp', price:65.98, w:4, img:'amp-well'},
+  {id:'down',  kind:'fixture', name:'Downlight (moonlighting)', use:'Mounted high in trees for soft moonlight', prod:'AMP PinnaclePro MR16 downlight + 5W LED', price:80.98, w:5, img:'amp-down'},
+  {id:'deck',  kind:'fixture', name:'Deck / dock light', use:'Docks, decks, fences and posts', prod:'AMP Deck-Design Pro brass deck light + LED', price:56.98, w:2, img:'amp-deck'},
 ];
 const LANDSCAPE_B = [
-  {id:'cspot',  kind:'fixture', name:'Colour spotlight', use:'Palms and the facade in any colour', prod:'Pampa Stelvio brass spotlight + RGBWW 6W Wi-Fi lamp', price:135.95, w:6, alt:1, img:'pampa-stelvio-spot'},
-  {id:'cpath',  kind:'fixture', name:'Colour path light', use:'Walkways that change with the occasion', prod:'Pampa Tulay BH 18" brass path light + RGBWW 2W', price:143.95, w:2, alt:1, img:'pampa-tulay-path'},
-  {id:'cwell',  kind:'fixture', name:'Colour well light', use:'In-ground colour washes on walls and palms', prod:'Pampa Tulay brass in-ground well light + RGBWW 6W', price:142.95, w:6, alt:1, img:'pampa-tulay-well'},
-  {id:'cdown',  kind:'fixture', name:'Colour downlight', use:'Moonlighting from the trees, any colour', prod:'Pampa Stelvio brass down light + RGBWW 6W', price:136.95, w:6, alt:1, img:'pampa-stelvio-down'},
-  {id:'cwater', kind:'fixture', name:'Colour underwater light', use:'Fountains and ponds in colour', prod:'Pampa underwater bronze light + RGBWW 6W', price:221.95, w:6, alt:1, img:'pampa-underwater'},
-  {id:'pool',   kind:'pool', name:'Pool light', use:'Inside the pool or spa wall, any colour', prod:'Pampa 1.5" mini pool light RGBW, 50\' lead', price:339.95, w:6, alt:1, img:'pampa-pool'},
-  {id:'strip',  kind:'strip', name:'Colour strip light', use:'Under bench caps, steps, the lanai beam or a fire pit', prod:"Pampa RGBWW 1616 top bend strip light, 16.4'", price:378.00, w:30, alt:1, img:'pampa-strip'},
+  {id:'cspot', kind:'fixture', name:'Colour spotlight', use:'Palms, trees and the facade in any colour', prod:'AMP iQ smart RGBCW LED spotlight (16W)', price:249.99, w:16, alt:1, img:'amp-iq-spot'},
+  {id:'cpath', kind:'fixture', name:'Colour path light', use:'Walkways that change with the occasion', prod:'AMP iQ smart RGBCW MagnumPro path light', price:199.99, w:7, alt:1, img:'amp-iq-path'},
+  {id:'cwell', kind:'fixture', name:'Colour well light', use:'In-ground colour washes on walls and palms', prod:'AMP iQ smart RGBCW LED well light', price:224.99, w:12, alt:1, img:'amp-iq-well'},
+  {id:'chard', kind:'fixture', name:'Colour hardscape light', use:'Wall caps, seat walls and steps in colour', prod:'AMP iQ smart RGBCW rotatable hardscape light', price:89.99, w:5, alt:1, img:'amp-iq-hard'},
+  {id:'cdeck', kind:'fixture', name:'Colour deck / dock light', use:'Docks, decks and posts in colour', prod:'AMP iQ smart RGBCW LED deck light', price:99.99, w:3, alt:1, img:'amp-iq-deck'},
 ];
 const LANDSCAPE_CAT = (() => {
   const all = {}; LANDSCAPE_A.concat(LANDSCAPE_B).forEach(f => { all[f.id] = f; });
   return {
     all, listA: LANDSCAPE_A, listB: LANDSCAPE_B, badgeA:'White', badgeB:'Colour',
     taxRate: 0.07, rangeLow: 0.9, rangeHigh: 1.12, leadIn: 25,
+    rate: 95,                                               // what we sell a crew hour for
     yard: {compact:6, average:9, large:13, estate:18},     // feet of trench and wire per fixture
     title: 'Price your landscape lighting', fromLabel: 'Small front yard from', statLabel: 'fixtures',
     form: 'landscape-lighting-quote', cta: 'Get my free lighting layout', send: 'Send my free layout',
     leadTitle: 'Where should we send your layout?',
     done: "We'll call to set up a short site visit, then send your scaled lighting layout, usually within a week.",
-    fine: 'This is a ballpark estimate, not a final price. Your final proposal comes after a short site visit and a lighting layout drawing. Assumes standard soil and an outdoor GFCI outlet near the transformer. Fixture prices are current Pampa Lighting retail prices.',
+    fine: 'This is a ballpark estimate, not a final price. Your final proposal comes after a short site visit and a lighting layout drawing. Assumes standard soil and an outdoor GFCI outlet near the transformer. Fixture prices are current AMP Lighting prices.',
     yardHint: 'This sets how much wire and trenching we plan for, measured from the power outlet to the lights.',
     presets: {
       a: {label:'White basic', note:'6 spots · 4 path', q:{spot:6, path:4}, yard:'average'},
@@ -2177,40 +2174,50 @@ const LANDSCAPE_CAT = (() => {
           alt:'Florida home at night with palms and facade lit in warm white',
           body:'Elegant lighting for palms, walkways, steps and walls in warm 2700K white, solid brass fixtures. On at dusk, off on a schedule.',
           h1:'White landscape lighting', sub:'Timeless warm-white light on a dusk-to-dawn timer. Pick a package or set quantities below.',
-          listTitle:'Choose your lights', listHint:'Solid brass Pampa Lighting fixtures in antique brass. Priced with a warm 2700K lamp; other whites and finishes are available. Prices are per fixture, lamp included.',
+          listTitle:'Choose your lights', listHint:'Solid brass AMP Lighting fixtures in bronze, with a lifetime warranty. Priced with a warm 2700K lamp; other whites are available. Prices are per fixture, lamp included.',
           moreLabel:'Add a few colour lights (app-controlled)'},
       b: {title:'Colour scenes', tag:'Millions of colours · app control', dot:'rgb', photo: PHOTOS.landColor,
           alt:'The same Florida home at night with palms and the pool in colour',
-          body:'Smart RGBWW lamps and pool lights you control from your phone: holidays, game days and parties, then back to white with one tap.',
+          body:'Smart RGBCW lights you control from your phone: holidays, game days and parties, then back to white with one tap.',
           h1:'Colour landscape lighting', sub:'Smart colour lights for holidays, parties and game days, and classic white every other night.',
-          listTitle:'Choose your colour lights', listHint:'The same brass fixtures with Pampa RGBWW Wi-Fi lamps, plus colour pool lights and strip light. Control and schedule them from the app.',
+          listTitle:'Choose your colour lights', listHint:'AMP iQ smart RGBCW fixtures in brass, on an iQ smart transformer and Wi-Fi gateway. Control and schedule them from the app.',
           moreLabel:'Add white lights to the same system'},
     },
     includes: [
       ['Lighting layout', 'A scaled plan showing where each fixture, transformer and wire run goes, usually ready within a week.'],
-      ['Pro-grade gear', 'Solid brass Pampa Lighting fixtures, a sized transformer, timer and photocell, plus direct-burial 12/2 cable.'],
+      ['Pro-grade gear', 'Solid brass AMP Lighting fixtures, a sized transformer, timer and photocell, plus direct-burial cable.'],
       ['Clean install', 'Trenching, wire runs, waterproof connections, aiming at night and system setup.'],
       ['Peace of mind', 'Workmanship warranty from LUMA in writing, plus the manufacturer warranties on the hardware.'],
     ],
-    gear({n, nB, wA, wB, feet, count}){
-      const lines = [], W = wA + wB;
-      // size the transformer to 80% load
-      const T = [[120,'150W',239.95],[160,'200W',254.95],[240,'300W',324.95],[480,'600W',423.95]];
-      let units = 0, left = W;
-      while (left > 0) { const t = T.find(x => left <= x[0]) || T[3]; lines.push(['Pampa 12VAC black dimmable transformer, ' + t[1], 1, t[2]]); left -= t[0]; units++; }
-      const merged = {};
-      lines.forEach(l => { merged[l[0]] = merged[l[0]] ? [l[0], merged[l[0]][1]+1, l[2]] : l; });
-      const out = Object.values(merged);
-      out.push(['Pampa photocell', units, 57.95]);
-      out.push(['Intermatic mechanical timer (Pampa)', units, 49.95]);
-      if (nB) out.push(['Pampa RGBWW smart Wi-Fi 12V repeater, 300W', Math.max(1, Math.ceil(wB/240)), 654.95]);
-      if (count.strip) out.push(['Pampa 12V AC/DC RGBWW Wi-Fi driver for strip light', count.strip, 137.95]);
-      out.push(feet <= 250 ? ["Pampa low-voltage landscape wire 12/2, 250'", 1, 228.00] : ["Pampa low-voltage landscape wire 12/2, 500'", Math.ceil(feet/500), 457.00]);
-      out.push(['Pampa gel-filled waterproof wire connectors, 20 pcs', Math.max(1, Math.ceil(n*2/20)), 25.95]);
+    gear({n, nB, wA, wB, feet}){
+      const out = [];
+      let units = 0;
+      // white: size the transformer to 80% load
+      if (wA) {
+        const k = wA <= 240 ? 1 : Math.ceil(wA/480);
+        if (wA <= 80) out.push(['AMP 100W Slim Line LED transformer', 1, 134.99], ['AMP timer & photocell combo (Slim Line)', 1, 34.99]);
+        else if (wA <= 120) out.push(['AMP 150W Slim Line LED transformer', 1, 179.99], ['AMP timer & photocell combo (Slim Line)', 1, 34.99]);
+        else if (wA <= 240) out.push(['AMP 300W multi-tap low voltage transformer', 1, 204.99], ['Timer & photocell extension combo', 1, 34.99], ['Photocell with swivel mount', 1, 22.99]);
+        else out.push(['AMP 600W multi-tap low voltage transformer', k, 249.99], ['Timer & photocell extension combo', k, 34.99], ['Photocell with swivel mount', k, 22.99]);
+        units += k;
+      }
+      if (nB) {
+        const k = Math.max(1, Math.ceil(wB/240));
+        out.push(['AMP iQ 300W smart transformer with repeater', k, 299.99], ['AMP iQ smart gateway (Wi-Fi / app control)', 1, 59.99]);
+        units += k;
+      }
+      if (feet <= 120) out.push(['12/2 direct burial cable, 100 ft', 1, 18.99]);
+      else {
+        const spools = Math.max(1, Math.round(feet/2/250));  // 12/2 home runs + 16/2 branches
+        out.push(['12/2 direct burial cable, 250 ft', spools, 123.99], ['16/2 direct burial cable, 250 ft', spools, 67.99]);
+      }
+      out.push(['AMP Pro Nano-Junction 3-way connectors (2-pack)', Math.max(1, Math.ceil(n*0.36)), 9.99]);
+      out.push(['Waterproof wire connectors (25 pcs)', Math.max(1, Math.ceil(n/40)), 19.99]);
       return {lines: out, units};
     },
-    labor({n, nB, feet, count, units}){
-      return 200 + 150*units + 37*n + 3.00*feet + (nB ? 150 + 15*nB : 0) + 120*(count.pool||0);
+    // SmartNova's labour model is in dollars at ~$72 per crew hour; we bill `rate`
+    labor({n, nB, feet, units}){
+      return (200 + 150*units + 37*n + 3.00*feet + (nB ? 150 + 15*nB : 0)) / 72 * this.rate;
     },
   };
 })();
@@ -2293,14 +2300,14 @@ function LandscapeLightingPage({navigate}) {
     }}
     intro={{
       lead:'Low-voltage landscape lighting for Gulf Coast homes, priced before anyone visits.',
-      body:'LUMA designs and installs solid brass landscape lighting across Sarasota and Manatee Counties: uplights on the palms, path lights along the walk, step and hardscape lights on the pool deck, underwater and pool lights, and colour scenes from your phone when you want them. Build your plan below for a ballpark price, then we walk the property and send a scaled layout.'
+      body:'LUMA designs and installs solid brass landscape lighting across Sarasota and Manatee Counties: uplights on the palms, path lights along the walk, step and hardscape lights on the pool deck, deck lights on the dock, and colour scenes from your phone when you want them. Build your plan below for a ballpark price, then we walk the property and send a scaled layout.'
     }}
     quote={<QuoteCalculator cat={LANDSCAPE_CAT}/>}
     faq={[
-      {q:'What fixtures do you install?', a:'Solid brass Pampa Lighting fixtures in antique brass, black or bronze, with warm 2700K LED lamps, or RGBWW Wi-Fi lamps where you want colour. The calculator shows the exact models and their current prices.'},
+      {q:'What fixtures do you install?', a:'Solid brass AMP Lighting fixtures with warm 2700K LED lamps and a lifetime warranty, or AMP iQ smart colour fixtures where you want colour. The calculator shows the exact models and their current prices.'},
       {q:'Is the price in the calculator final?', a:'It is a ballpark from current fixture prices and our installation rates. The final proposal follows a short site visit and a scaled lighting layout.'},
       {q:'How are the lights switched on?', a:'A transformer with a photocell and timer turns them on at dusk and off when you choose. Colour lamps add app control, schedules and scenes; if LUMA does your lighting control, the landscape joins the same keypad scenes.'},
-      {q:'Can you light the pool and the dock?', a:'Yes: pool and spa lights in colour, underwater lights for fountains and ponds, step lights on the deck and low lights along the dock edges.'},
+      {q:'Can you light the pool and the dock?', a:'Yes: step and hardscape lights on the pool deck, deck lights along the dock edges, and colour versions of both. Lights inside the pool itself are quoted after the site visit.'},
     ]}
     ctaTitle='Tell us what your yard should do after dark'
     ctaBody='Send a photo of the front of the house and the back yard. We will come back with a layout, the fixture list and an honest range.'
