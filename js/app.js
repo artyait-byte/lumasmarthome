@@ -2394,7 +2394,7 @@ function PermanentLightingPage({navigate}) {
       {q:'Can it join the rest of the house?', a:'If LUMA did the lighting or automation, the roofline joins the same scenes: Evening turns it on with the lanai, Away turns it off with everything else, and a keypad by the door has a button for it.'},
       {q:'What is the warranty?', a:'Warranty terms depend on the product line you choose; we set them out in writing in the proposal, before anything is ordered.'},
     ]}
-    quote={<QuoteCalculator cat={PERMANENT_CAT}/>}
+    quote={ASCEND_PENDING ? null : <QuoteCalculator cat={PERMANENT_CAT}/>}  /* shown once the Dauer prices are in */
     ctaTitle='Tell us what your roofline should do'
     ctaBody='Send a photo of the front of the house. We will come back with a run plan, a channel colour, and an honest range before anything is ordered.'
   />;
