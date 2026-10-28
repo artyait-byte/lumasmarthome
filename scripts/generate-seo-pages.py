@@ -161,6 +161,21 @@ ROUTES: list[dict] = [
         "index": True,
     },
     {
+        "id": "landscape-lighting",
+        "path": "/landscape-lighting",
+        "file": "landscape-lighting.html",
+        "title": "Landscape Lighting Sarasota | Instant Quote | LUMA Smart Home",
+        "description": "Solid brass landscape lighting for Sarasota homes: palms, paths, pool and dock. Build your plan and get an instant installed price, then a free layout.",
+        "h1": "Palms, paths and the pool, lit after dark.",
+        "og_image": "/assets/photos/landscape-white.jpg",
+        "priority": 0.8,
+        "changefreq": "monthly",
+        "kind": "service",
+        "service_name": "Landscape lighting",
+        # Off the index until the owner switches it on after the SEO pass.
+        "index": False,
+    },
+    {
         "id": "designers",
         "path": "/designers",
         "file": "designers.html",
@@ -651,6 +666,16 @@ CAMERA_QUOTE_PAGES = {"security"} | {
     f"sa-{r['city']}-{r['service']}" for r in CITY_SERVICES if r.get("camera")
 }
 
+# The lighting calculators post their leads the same way.
+QUOTE_FIELDS = [
+    "name", "email", "phone", "style", "yard", "lights", "estimate", "parts",
+    "source_page",
+]
+QUOTE_FORMS = {
+    "permanent-lighting": "permanent-lighting-quote",
+    "landscape-lighting": "landscape-lighting-quote",
+}
+
 
 def netlify_form(route: dict) -> str:
     out = ""
@@ -664,6 +689,12 @@ def netlify_form(route: dict) -> str:
         inputs = "".join(f'<input name="{f}">' for f in CAMERA_QUOTE_FIELDS)
         out += (
             '<form name="camera-quote" data-netlify="true" netlify-honeypot="bot-field" hidden>'
+            f'<input name="bot-field">{inputs}</form>\n'
+        )
+    if route["id"] in QUOTE_FORMS:
+        inputs = "".join(f'<input name="{f}">' for f in QUOTE_FIELDS)
+        out += (
+            f'<form name="{QUOTE_FORMS[route["id"]]}" data-netlify="true" netlify-honeypot="bot-field" hidden>'
             f'<input name="bot-field">{inputs}</form>\n'
         )
     return out

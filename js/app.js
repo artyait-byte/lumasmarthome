@@ -1,7 +1,7 @@
 const {useState, useEffect, useRef} = React;
 
 /* ─── PATH ROUTING (crawlable URLs, not ?p=) ─── */
-const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','permanent-lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','case-waterfront','case-golf']);
+const ROUTE_KEYS = new Set(['home','shading','theaters','automation','audio','security','networking','lighting','permanent-lighting','landscape-lighting','designers','contact','budget-calculator','work','about','support','case-modern','case-bighouse','case-spacious','case-urban','case-family','case-waterfront','case-golf']);
 
 function knownPages(){
   const keys = new Set(ROUTE_KEYS);
@@ -147,6 +147,8 @@ const PHOTOS = {
   permSecurity:    lu('/assets/photos/permanent-security.jpg'),
   permEaveDay:     lu('/assets/photos/permanent-eave-day.jpg'),
   permEaveNight:   lu('/assets/photos/permanent-eave-night.jpg'),
+  landWhite:       lu('/assets/photos/landscape-white.jpg'),
+  landColor:       lu('/assets/photos/landscape-color.jpg'),
   tradeFlatlay:    lu('/assets/photos/trade-flatlay.jpg'),
   workBayfront:    lu('/assets/photos/work-bayfront.jpg'),
   workFamily:      lu('/assets/photos/work-family.jpg'),
@@ -304,6 +306,7 @@ const services = [
   {id:'automation', name:'Home Automation',             sub:'Daily routines · one tap',             page:'automation'},
   {id:'permanent',  name:'Permanent Outdoor Lighting',  sub:'Roofline LEDs · warm white to holiday',  page:'permanent-lighting'},
   {id:'business',   name:'Business Security Cameras',   sub:'Offices · shops · no monthly fees',     page:'sa-sarasota-business-security'},
+  {id:'landscape',  name:'Landscape Lighting',  sub:'Palms, paths, pool · brass fixtures',  page:'landscape-lighting'},
 ];
 // the business and Sarasota camera entries reuse the security icon and preview photo
 serviceIcons.business = serviceIcons.camsrq = serviceIcons.security;
@@ -1562,6 +1565,9 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
         </div>
       </section>
 
+      {/* 2b. instant quote — pages that price themselves, straight under the intro */}
+      {quote}
+
       {packages}
 
       {aside && (
@@ -1677,8 +1683,6 @@ function ServicePageShell({hero, valueProp, why, projects, credentials, ctaCopy,
           </div>
         </section>
       )}
-
-      {quote}
 
       {/* 5. FAQ — the reference's accordion, only where a page has questions */}
       {faq && (
@@ -1891,6 +1895,418 @@ function AudioPage({navigate}) {
   />;
 }
 
+/* ─── LIGHTING QUOTE CALCULATORS ───
+   One engine, laid out part for part like the SmartNova landscape
+   quick-quote: two photo cards to choose a style, typical packages, a
+   catalogue of real products with photo, model, unit price and − / +
+   steppers (the other style under "add more"), home size for the cable
+   run, and an estimate card with lights & equipment, installation, 7%
+   sales tax on equipment, a priced parts list and a request form.
+   Equipment (transformers, controllers, cable, connectors) is added by
+   each catalogue's own `gear` function, the way transformers are added on
+   theirs. Product photos are the manufacturers' own, hosted here. */
+const qcImg = (n) => lu('/assets/photos/catalog/' + n + '.jpg');
+const qcMoney = (n) => '$' + Math.round(n).toLocaleString('en-US');
+const qcMoney2 = (n) => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+const qcRound50 = (n) => Math.round(n/50)*50;
+const QC_YARDS = [
+  {k:'compact', label:'Compact', note:'Villa / townhome', img:'yard-compact'},
+  {k:'average', label:'Average', note:'Typical single family', img:'yard-average'},
+  {k:'large',   label:'Large', note:'Big lot / long drive', img:'yard-large'},
+  {k:'estate',  label:'Estate', note:'Waterfront / acreage', img:'yard-estate'},
+];
+
+function qcCalc(cat, q, yard){
+  const all = cat.all, lines = [];
+  let n = 0, nB = 0, wA = 0, wB = 0;
+  const count = {};
+  Object.keys(q).forEach(id => {
+    const k = q[id]|0; if (!k) return; const f = all[id];
+    lines.push([f.prod, k, f.price]);
+    n += k; count[f.kind] = (count[f.kind]||0) + k;
+    if (f.alt) { nB += k; wB += k*f.w; } else { wA += k*f.w; }
+  });
+  const feet = n ? Math.round(cat.leadIn + n*cat.yard[yard]) : 0;
+  const g = n ? cat.gear({n, nB, wA, wB, feet, count}) : {lines:[], units:0};
+  g.lines.forEach(l => lines.push(l));
+  const equip = lines.reduce((s, l) => s + l[1]*l[2], 0);
+  let labor = n ? cat.labor({n, nB, feet, count, units:g.units}) : 0;
+  labor = Math.round(labor/10)*10;
+  const tax = equip*cat.taxRate, total = equip + labor + tax;
+  return {lines, n, feet, equip, labor, tax, total, days: n ? Math.max(1, Math.ceil(labor/72/16)) : 0};
+}
+
+function QcStepper({value, onChange, label}){
+  const set = (v) => onChange(Math.max(0, Math.min(200, v|0)));
+  return (
+    <div className="pq-stepper">
+      <button type="button" aria-label={'Fewer ' + label} onClick={() => set(value - 1)}>−</button>
+      <input type="number" min="0" max="200" inputMode="numeric" aria-label={label + ' quantity'} value={value} onChange={e => set(parseInt(e.target.value, 10) || 0)}/>
+      <button type="button" aria-label={'More ' + label} onClick={() => set(value + 1)}>+</button>
+    </div>
+  );
+}
+
+function QuoteCalculator({cat}){
+  const nap = napInfo();
+  const [step, setStep] = React.useState(1);
+  const [mode, setMode] = React.useState('a');
+  const [q, setQ] = React.useState({...cat.presets.a.q});
+  const [yard, setYard] = React.useState(cat.presets.a.yard);
+  const [preset, setPreset] = React.useState('a');
+  const [more, setMore] = React.useState(false);
+  const [lead, setLead] = React.useState('closed');
+  const top = useRef(null), moved = useRef(false);
+  const r = qcCalc(cat, q, yard);
+  const st = cat.styles[mode];
+  React.useEffect(() => {
+    if (moved.current && top.current) top.current.scrollIntoView({behavior:'smooth', block:'start'});
+    moved.current = false;
+    document.body.classList.toggle('pq-step2', step === 2);
+    return () => document.body.classList.remove('pq-step2');
+  }, [step]);
+  const usePreset = (m) => { setMode(m); setQ({...cat.presets[m].q}); setYard(cat.presets[m].yard); setPreset(m); setMore(false); };
+  const choose = (m) => { usePreset(m); moved.current = true; setStep(2); };
+  const setQty = (id, v) => { setQ(prev => ({...prev, [id]: v})); setPreset(null); };
+  const from = (m) => qcMoney(qcRound50(qcCalc(cat, cat.presets[m].q, 'compact').total));
+  const range = r.n ? 'Typical range ' + qcMoney(qcRound50(r.total*cat.rangeLow)) + ' – ' + qcMoney(qcRound50(r.total*cat.rangeHigh)) : 'Add some lights to see your estimate';
+  const primary = mode === 'a' ? cat.listA : cat.listB, secondary = mode === 'a' ? cat.listB : cat.listA;
+  const moreOpen = more || secondary.some(f => q[f.id] > 0);
+
+  const fxRow = (f) => {
+    const v = q[f.id]|0;
+    return (
+      <div key={f.id} className={'pq-fx' + (v ? ' on' : '')}>
+        <img src={qcImg(f.img)} alt="" loading="lazy" decoding="async"/>
+        <div>
+          <div className="pq-name">{f.name} <span className={'pq-badge' + (f.alt ? ' rgb' : '')}>{f.alt ? cat.badgeB : cat.badgeA}</span></div>
+          <div className="pq-use">{f.use}</div>
+          <div className="pq-prod">{f.prod} · {f.price ? qcMoney2(f.price) : 'price pending'}</div>
+        </div>
+        <QcStepper value={v} label={f.name} onChange={k => setQty(f.id, k)}/>
+      </div>
+    );
+  };
+
+  async function send(e){
+    e.preventDefault();
+    const f = e.currentTarget;
+    if (!r.n) return;
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    const data = new FormData(f);
+    const picked = Object.keys(q).filter(k => q[k] > 0);
+    data.set('style', st.title);
+    data.set('yard', yard.charAt(0).toUpperCase() + yard.slice(1));
+    data.set('lights', picked.map(k => q[k] + ' x ' + cat.all[k].name).join(', '));
+    data.set('estimate', cat.pending ? 'price pending (installation ' + qcMoney(r.labor) + ')' : qcMoney(r.total) + ' (' + range.replace('Typical range ', 'typical range ') + ')');
+    data.set('parts', r.lines.map(l => l[1] + ' x ' + l[0]).join('; '));
+    data.set('source_page', window.location.pathname);
+    setLead('sending');
+    try {
+      const res = await fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(data).toString()});
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      setLead('sent');
+    } catch(err) { setLead('error'); }
+  }
+
+  const arrow = <span className="pq-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v15M5 12l7 7 7-7"/></svg></span>;
+  return (
+    <section className="pq-band" id="quote" ref={top} aria-labelledby="pq-title">
+      <div className="pq-inner">
+        <h2 className="pq-band-title" id="pq-title">{cat.title} <span>in under a minute</span></h2>
+        <div className="pq-cue"><span className="pq-pill">{arrow}<span>Use our calculator to get a quick quote</span>{arrow}</span></div>
+
+        {step === 1 && (
+          <div className="pq-choices">
+            {['a','b'].map(k => { const c = cat.styles[k]; return (
+              <button key={k} type="button" className="pq-choice" onClick={() => choose(k)} aria-label={c.title}>
+                <img src={c.photo} alt={c.alt}/>
+                <div className="pq-choice-body">
+                  <span className="pq-tag"><i className={'pq-dot ' + c.dot}/>{c.tag}</span>
+                  <h3>{c.title}</h3>
+                  <p>{c.body}</p>
+                </div>
+                <div className="pq-from"><span>{cat.pending ? 'Pricing coming soon' : <>{cat.fromLabel} <b>{from(k)}</b></>}</span><span className="pq-go">Start →</span></div>
+              </button>
+            );})}
+          </div>
+        )}
+
+        {step === 2 && (
+          <div className="pq-builder">
+            <div className="pq-builder-head">
+              <button type="button" className="pq-back" onClick={() => { moved.current = true; setStep(1); }}>← Change style</button>
+              <h3 className="pq-h1">{st.h1}</h3>
+              <p className="pq-sub">{st.sub}</p>
+            </div>
+            <div className="pq-grid">
+              <div>
+                <div className="pq-panel">
+                  <h4>Start from a typical package</h4>
+                  <p className="pq-hint">Pick one to fill in the quantities, then adjust as you like.</p>
+                  <div className="pq-presets">
+                    {['a','b'].map(m => (
+                      <button key={m} type="button" className="pq-chip" aria-pressed={preset === m} onClick={() => usePreset(m)}>
+                        <i className={'pq-dot ' + cat.styles[m].dot}/> {cat.presets[m].label}<small>{cat.presets[m].note}</small>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pq-panel">
+                  <h4>{st.listTitle}</h4>
+                  <p className="pq-hint">{st.listHint}</p>
+                  <div className="pq-fixtures">{primary.map(fxRow)}</div>
+                  <details className="pq-more" open={moreOpen} onToggle={e => setMore(e.currentTarget.open)}>
+                    <summary>{st.moreLabel}</summary>
+                    <div className="pq-fixtures">{secondary.map(fxRow)}</div>
+                  </details>
+                </div>
+
+                <div className="pq-panel">
+                  <h4>Property size</h4>
+                  <p className="pq-hint">{cat.yardHint}</p>
+                  <div className="pq-seg pq-seg--4" role="radiogroup" aria-label="Property size">
+                    {QC_YARDS.map(o => (
+                      <button key={o.k} type="button" role="radio" aria-checked={yard === o.k} className={yard === o.k ? 'on' : ''} onClick={() => { setYard(o.k); setPreset(null); }}>
+                        <img src={qcImg(o.img)} alt="" loading="lazy" decoding="async"/>
+                        <b>{o.label}</b><small>{o.note}</small>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pq-panel">
+                  <h4>Every quote includes</h4>
+                  <div className="pq-includes">
+                    {cat.includes.map(([t, d]) => <div key={t} className="pq-inc"><b>{t}</b><span>{d}</span></div>)}
+                  </div>
+                </div>
+              </div>
+
+              <aside className="pq-summary" id="pq-estimate" aria-label="Estimate" aria-live="polite">
+                <div className="pq-label">Estimated installed price</div>
+                <div className="pq-total">{cat.pending ? 'On request' : qcMoney(r.total)}</div>
+                <div className="pq-range">{cat.pending ? 'Product prices are being confirmed with the manufacturer. Your plan is counted below; send it and we quote the same day.' : range}</div>
+                <div className="pq-stats">
+                  <div className="pq-stat"><b>{r.n}</b><span>{cat.statLabel}</span></div>
+                  <div className="pq-stat"><b>{r.feet} ft</b><span>wire run</span></div>
+                  <div className="pq-stat"><b>{r.days}</b><span>install days</span></div>
+                </div>
+                <div className="pq-rows">
+                  <div className="pq-row"><span>Lights &amp; equipment</span><b>{cat.pending ? 'pending' : qcMoney(r.equip)}</b></div>
+                  <div className="pq-row"><span>Installation &amp; setup</span><b>{qcMoney(r.labor)}</b></div>
+                  <div className="pq-row"><span>Sales tax (7%, equipment)</span><b>{cat.pending ? 'pending' : qcMoney(r.tax)}</b></div>
+                  <div className="pq-row sum"><span>Estimated total</span><b>{cat.pending ? 'on request' : qcMoney(r.total)}</b></div>
+                </div>
+                <details className="pq-bom">
+                  <summary>See full parts list</summary>
+                  <ul>{r.lines.length ? r.lines.map((l, i) => <li key={i}><span>{l[1]} × {l[0]}</span><b>{l[2] ? qcMoney2(l[1]*l[2]) : '—'}</b></li>) : <li className="pq-empty">No items yet</li>}</ul>
+                </details>
+                {lead === 'closed' && <button type="button" className="pq-cta" onClick={() => setLead('open')}>{cat.cta}</button>}
+                {(lead === 'open' || lead === 'sending' || lead === 'error') && (
+                  <form className="pq-lead" name={cat.form} method="POST" onSubmit={send}>
+                    <input type="hidden" name="form-name" value={cat.form}/>
+                    <p hidden><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off"/></label></p>
+                    <p className="pq-lead-title">{cat.leadTitle}</p>
+                    <label>Name<input name="name" autoComplete="name" required/></label>
+                    <label>Email<input name="email" type="email" autoComplete="email" required/></label>
+                    <label>Phone<input name="phone" type="tel" autoComplete="tel" required/></label>
+                    <button type="submit" className="pq-cta" disabled={lead === 'sending' || !r.n}>{lead === 'sending' ? 'Sending…' : cat.send}</button>
+                    {!r.n && <p className="pq-msg">Add at least one light to your plan first.</p>}
+                    {lead === 'error' && <p className="pq-msg">Sorry, that didn't go through. Please call <a href={nap.telHref}>{nap.telephoneDisplay}</a> or write to <a href={nap.mailHref}>{nap.email}</a>.</p>}
+                  </form>
+                )}
+                {lead === 'sent' && <div className="pq-done" role="status"><b>Thanks! Your request is in.</b>{cat.done}</div>}
+                <a className="pq-cta ghost" href={nap.telHref}>Call {nap.telephoneDisplay}</a>
+                <p className="pq-fine">{cat.fine}</p>
+              </aside>
+            </div>
+            <div className="pq-mbar">
+              <div><span>Estimated total</span><b>{qcMoney(r.total)}</b></div>
+              <a href="#pq-estimate" onClick={e => { e.preventDefault(); const el = document.getElementById('pq-estimate'); if (el) el.scrollIntoView({behavior:'smooth', block:'start'}); }}>See estimate</a>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/* Landscape lighting — Pampa Lighting catalogue, retail prices from
+   pampalighting.com (October 2026). Fixtures priced with their 2700K lamp
+   (or the RGBWW Wi-Fi lamp for colour), antique brass finish. */
+const LANDSCAPE_A = [
+  {id:'spot',  kind:'fixture', name:'Spotlight', use:'Uplight palms, trees, columns and walls', prod:'Pampa Stelvio brass spotlight + MR16 5W 2700K', price:86.95, w:5, img:'pampa-stelvio-spot'},
+  {id:'path',  kind:'fixture', name:'Path light', use:'Line walkways, driveways and garden beds', prod:'Pampa Tulay BH 18" brass path light + G4 2W 2700K', price:101.42, w:2, img:'pampa-tulay-path'},
+  {id:'step',  kind:'fixture', name:'Step / wall light', use:'Stairs, retaining walls, pool decks', prod:'Pampa Tulay brass louvered step light + 2× G4 2W', price:80.95, w:4, img:'pampa-tulay-step'},
+  {id:'hard',  kind:'fixture', name:'Hardscape light', use:'Under wall caps, seat walls, outdoor kitchens', prod:'Pampa Tulay brass hardscape light, 7"', price:87.95, w:3, img:'pampa-tulay-hardscape'},
+  {id:'well',  kind:'fixture', name:'In-ground well light', use:'Flush with the lawn: facades, columns, palms', prod:'Pampa Tulay brass in-ground well light + MR16 5W', price:92.95, w:5, img:'pampa-tulay-well'},
+  {id:'down',  kind:'fixture', name:'Downlight (moonlighting)', use:'Mounted high in trees for soft moonlight', prod:'Pampa Stelvio brass down light + MR16 5W + tree strap', price:143.95, w:5, img:'pampa-stelvio-down'},
+  {id:'deck',  kind:'fixture', name:'Deck / dock light', use:'Docks, decks, steps and posts', prod:'Pampa Rein Louv mini integrated brass deck light', price:79.95, w:2, img:'pampa-rein-deck'},
+  {id:'water', kind:'fixture', name:'Underwater light', use:'Fountains, ponds and water features', prod:'Pampa underwater bronze light + MR16 4W 2700K', price:157.95, w:4, img:'pampa-underwater'},
+  {id:'bistro',kind:'string', name:'Bistro string light', use:'Over the lanai, pool deck or pergola', prod:"Pampa bistro light, 48', 12V", price:142.75, w:24, img:'pampa-bistro'},
+];
+const LANDSCAPE_B = [
+  {id:'cspot',  kind:'fixture', name:'Colour spotlight', use:'Palms and the facade in any colour', prod:'Pampa Stelvio brass spotlight + RGBWW 6W Wi-Fi lamp', price:135.95, w:6, alt:1, img:'pampa-stelvio-spot'},
+  {id:'cpath',  kind:'fixture', name:'Colour path light', use:'Walkways that change with the occasion', prod:'Pampa Tulay BH 18" brass path light + RGBWW 2W', price:143.95, w:2, alt:1, img:'pampa-tulay-path'},
+  {id:'cwell',  kind:'fixture', name:'Colour well light', use:'In-ground colour washes on walls and palms', prod:'Pampa Tulay brass in-ground well light + RGBWW 6W', price:142.95, w:6, alt:1, img:'pampa-tulay-well'},
+  {id:'cdown',  kind:'fixture', name:'Colour downlight', use:'Moonlighting from the trees, any colour', prod:'Pampa Stelvio brass down light + RGBWW 6W', price:136.95, w:6, alt:1, img:'pampa-stelvio-down'},
+  {id:'cwater', kind:'fixture', name:'Colour underwater light', use:'Fountains and ponds in colour', prod:'Pampa underwater bronze light + RGBWW 6W', price:221.95, w:6, alt:1, img:'pampa-underwater'},
+  {id:'pool',   kind:'pool', name:'Pool light', use:'Inside the pool or spa wall, any colour', prod:'Pampa 1.5" mini pool light RGBW, 50\' lead', price:339.95, w:6, alt:1, img:'pampa-pool'},
+  {id:'strip',  kind:'strip', name:'Colour strip light', use:'Under bench caps, steps, the lanai beam or a fire pit', prod:"Pampa RGBWW 1616 top bend strip light, 16.4'", price:378.00, w:30, alt:1, img:'pampa-strip'},
+];
+const LANDSCAPE_CAT = (() => {
+  const all = {}; LANDSCAPE_A.concat(LANDSCAPE_B).forEach(f => { all[f.id] = f; });
+  return {
+    all, listA: LANDSCAPE_A, listB: LANDSCAPE_B, badgeA:'White', badgeB:'Colour',
+    taxRate: 0.07, rangeLow: 0.9, rangeHigh: 1.12, leadIn: 25,
+    yard: {compact:6, average:9, large:13, estate:18},     // feet of trench and wire per fixture
+    title: 'Price your landscape lighting', fromLabel: 'Small front yard from', statLabel: 'fixtures',
+    form: 'landscape-lighting-quote', cta: 'Get my free lighting layout', send: 'Send my free layout',
+    leadTitle: 'Where should we send your layout?',
+    done: "We'll call to set up a short site visit, then send your scaled lighting layout, usually within a week.",
+    fine: 'This is a ballpark estimate, not a final price. Your final proposal comes after a short site visit and a lighting layout drawing. Assumes standard soil and an outdoor GFCI outlet near the transformer. Fixture prices are current Pampa Lighting retail prices.',
+    yardHint: 'This sets how much wire and trenching we plan for, measured from the power outlet to the lights.',
+    presets: {
+      a: {label:'White basic', note:'6 spots · 4 path', q:{spot:6, path:4}, yard:'average'},
+      b: {label:'Colour basic', note:'6 colour spots · 4 colour path', q:{cspot:6, cpath:4}, yard:'average'},
+    },
+    styles: {
+      a: {title:'White, any standard light', tag:'Classic white · 2700K', dot:'warm', photo: PHOTOS.landWhite,
+          alt:'Florida home at night with palms and facade lit in warm white',
+          body:'Elegant lighting for palms, walkways, steps and walls in warm 2700K white, solid brass fixtures. On at dusk, off on a schedule.',
+          h1:'White landscape lighting', sub:'Timeless warm-white light on a dusk-to-dawn timer. Pick a package or set quantities below.',
+          listTitle:'Choose your lights', listHint:'Solid brass Pampa Lighting fixtures in antique brass. Priced with a warm 2700K lamp; other whites and finishes are available. Prices are per fixture, lamp included.',
+          moreLabel:'Add a few colour lights (app-controlled)'},
+      b: {title:'Colour scenes', tag:'Millions of colours · app control', dot:'rgb', photo: PHOTOS.landColor,
+          alt:'The same Florida home at night with palms and the pool in colour',
+          body:'Smart RGBWW lamps and pool lights you control from your phone: holidays, game days and parties, then back to white with one tap.',
+          h1:'Colour landscape lighting', sub:'Smart colour lights for holidays, parties and game days, and classic white every other night.',
+          listTitle:'Choose your colour lights', listHint:'The same brass fixtures with Pampa RGBWW Wi-Fi lamps, plus colour pool lights and strip light. Control and schedule them from the app.',
+          moreLabel:'Add white lights to the same system'},
+    },
+    includes: [
+      ['Lighting layout', 'A scaled plan showing where each fixture, transformer and wire run goes, usually ready within a week.'],
+      ['Pro-grade gear', 'Solid brass Pampa Lighting fixtures, a sized transformer, timer and photocell, plus direct-burial 12/2 cable.'],
+      ['Clean install', 'Trenching, wire runs, waterproof connections, aiming at night and system setup.'],
+      ['Peace of mind', 'Workmanship warranty from LUMA in writing, plus the manufacturer warranties on the hardware.'],
+    ],
+    gear({n, nB, wA, wB, feet, count}){
+      const lines = [], W = wA + wB;
+      // size the transformer to 80% load
+      const T = [[120,'150W',239.95],[160,'200W',254.95],[240,'300W',324.95],[480,'600W',423.95]];
+      let units = 0, left = W;
+      while (left > 0) { const t = T.find(x => left <= x[0]) || T[3]; lines.push(['Pampa 12VAC black dimmable transformer, ' + t[1], 1, t[2]]); left -= t[0]; units++; }
+      const merged = {};
+      lines.forEach(l => { merged[l[0]] = merged[l[0]] ? [l[0], merged[l[0]][1]+1, l[2]] : l; });
+      const out = Object.values(merged);
+      out.push(['Pampa photocell', units, 57.95]);
+      out.push(['Intermatic mechanical timer (Pampa)', units, 49.95]);
+      if (nB) out.push(['Pampa RGBWW smart Wi-Fi 12V repeater, 300W', Math.max(1, Math.ceil(wB/240)), 654.95]);
+      if (count.strip) out.push(['Pampa 12V AC/DC RGBWW Wi-Fi driver for strip light', count.strip, 137.95]);
+      out.push(feet <= 250 ? ["Pampa low-voltage landscape wire 12/2, 250'", 1, 228.00] : ["Pampa low-voltage landscape wire 12/2, 500'", Math.ceil(feet/500), 457.00]);
+      out.push(['Pampa gel-filled waterproof wire connectors, 20 pcs', Math.max(1, Math.ceil(n*2/20)), 25.95]);
+      return {lines: out, units};
+    },
+    labor({n, nB, feet, count, units}){
+      return 200 + 150*units + 37*n + 3.00*feet + (nB ? 150 + 15*nB : 0) + 120*(count.pool||0);
+    },
+  };
+})();
+
+/* Permanent lighting — ASCEND by Dauer. Product list, wattage and power
+   rules from the 2026 Ascend brochure (dauermanufacturing.com).
+   PRICES ARE PENDING: Dauer publishes no prices ("call for price" at
+   distributors); set `price` on each item from the Dauer price sheet. */
+const ASCEND_PENDING = true;
+const PERMANENT_A = [
+  {id:'single', kind:'section', name:'Roofline section, 40"', use:'Under the eaves and across the gables, one section every 40 in', prod:'Ascend 40" aluminum single track (APL11210) + RGBW 3000K 5-light string (APL11012-5)', price:0, w:4.8, img:'ascend-track'},
+  {id:'light',  kind:'light', name:'Single light, 8"', use:'Short returns, columns and corners between sections', prod:'Ascend RGBW 3000K 12V single light (APL11012-1)', price:0, w:0.96, img:'ascend-single'},
+];
+const PERMANENT_B = [
+  {id:'parapet', kind:'section', name:'Parapet section, 40"', use:'Flat roofs and parapet walls: light along the top edge', prod:'Ascend 40" parapet track 90° (APL11230-90) + RGBW 3000K 5-light string (APL11012-5)', price:0, w:4.8, alt:1, img:'ascend-track'},
+  {id:'plight',  kind:'light', name:'Single light, 8"', use:'Short runs and corners on the parapet', prod:'Ascend RGBW 3000K 12V single light (APL11012-1)', price:0, w:0.96, alt:1, img:'ascend-single'},
+];
+const PERMANENT_CAT = (() => {
+  const all = {}; PERMANENT_A.concat(PERMANENT_B).forEach(f => { all[f.id] = f; });
+  return {
+    all, listA: PERMANENT_A, listB: PERMANENT_B, badgeA:'Eaves', badgeB:'Parapet', pending: ASCEND_PENDING,
+    taxRate: 0.07, rangeLow: 0.9, rangeHigh: 1.12, leadIn: 10,
+    yard: {compact:1, average:2, large:3, estate:4.5},
+    title: 'Price your permanent lighting', fromLabel: 'Front of the house from', statLabel: 'sections & lights',
+    form: 'permanent-lighting-quote', cta: 'Get my free run plan', send: 'Send my free run plan',
+    leadTitle: 'Where should we send your run plan?',
+    done: "We'll call to set up a short site visit, then send your run plan, usually within a week.",
+    fine: 'This is a ballpark estimate, not a final price. Your final proposal comes after a short site visit and a run plan drawing. Assumes fascia we can fasten to and an outdoor outlet within reach of the control box.',
+    yardHint: 'This sets the power and data cable from the control box to the first light and between the runs.',
+    presets: {
+      a: {label:'Front of the house', note:'36 sections · 120 ft', q:{single:36}, yard:'average'},
+      b: {label:'Flat roof front', note:'36 parapet sections · 120 ft', q:{parapet:36}, yard:'average'},
+    },
+    styles: {
+      a: {title:'Pitched roof, under the eaves', tag:'RGBW + 3000K white · app control', dot:'warm', photo: PHOTOS.permWarm,
+          alt:'Sarasota home at dusk with a warm-white line of light under every eave',
+          body:'A 40-inch aluminum track fastened under the fascia, a light every 8 inches. Warm white every night, any colour from the app.',
+          h1:'Roofline permanent lighting', sub:'Single track under the eaves, colour-matched to your trim. Pick a package or set quantities below.',
+          listTitle:'Choose your roofline', listHint:'ASCEND by Dauer: 40" aluminum track sections in white, black, cream or dark brown, five RGBW + 3000K lights per section, lifetime warranty. Prices are per section.',
+          moreLabel:'Add parapet sections for a flat roof'},
+      b: {title:'Flat roof or parapet', tag:'90° parapet track · app control', dot:'rgb', photo: PHOTOS.permanentHoliday,
+          alt:'The same home at dusk with the roofline in warm white and red for the holidays',
+          body:'A 90° parapet track along the top of flat roofs and parapet walls, for modern Florida homes. Warm white, colours and holiday presets.',
+          h1:'Parapet permanent lighting', sub:'Parapet track along the top edge of a flat roof. Pick a package or set quantities below.',
+          listTitle:'Choose your parapet runs', listHint:'ASCEND by Dauer 90° parapet track, five RGBW + 3000K lights per 40" section. Prices are per section.',
+          moreLabel:'Add roofline sections under the eaves'},
+    },
+    includes: [
+      ['Run plan', 'A drawing of every run, corner, control box and power injection point on your house, usually ready within a week.'],
+      ['Pro-grade gear', 'ASCEND by Dauer aluminum track and sealed RGBW pucks, UL- and ETL-listed, IP67, Wi-Fi control box.'],
+      ['Clean install', 'Track fastened to the fascia, cable in loom, power injected every 75 lights, every run tested after dark.'],
+      ['Peace of mind', 'Workmanship warranty from LUMA in writing, plus the Dauer limited lifetime warranty on the lights.'],
+    ],
+    gear({n, wA, wB, feet, count}){
+      const lights = (count.section||0)*5 + (count.light||0), out = [];
+      const big = lights > 300;
+      const boxes = big ? Math.ceil(lights/510) : 1;
+      out.push([(big ? 'Ascend 12V 600W control box with Wi-Fi hub controller, signal booster, female adapter (APL11111-600-KIT)' : 'Ascend 12V 350W control box with Wi-Fi hub controller, signal booster, female adapter (APL11111-350-KIT)'), boxes, 0]);
+      const inj = Math.max(0, Math.ceil(lights/75) - boxes);
+      if (inj) out.push(['Ascend 12V power injection T (APL11123)', inj, 0]);
+      if (feet > 50) out.push(["Ascend 50' extension with signal booster (APL11130)", Math.floor(feet/50), 0]);
+      out.push(['Ascend system wire end cap IP67, bag of 25 (APL11330)', 1, 0]);
+      out.push(["Ascend wire loom 17mm, 300' (APL11331)", Math.max(1, Math.ceil(feet/300)), 0]);
+      return {lines: out, units: boxes};
+    },
+    labor({n, feet, count, units}){
+      return 200 + 150*units + 30*(count.section||0) + 8*(count.light||0) + 3.00*feet + 150;
+    },
+  };
+})();
+
+/* ─── LANDSCAPE LIGHTING PAGE ─── */
+function LandscapeLightingPage({navigate}) {
+  return <ServicePageShell
+    navigate={navigate}
+    hero={{
+      eyebrow:'Landscape lighting',
+      h1:'Palms, paths and the pool, <em>lit after dark.</em>',
+      image: PHOTOS.landWhite,
+    }}
+    intro={{
+      lead:'Low-voltage landscape lighting for Gulf Coast homes, priced before anyone visits.',
+      body:'LUMA designs and installs solid brass landscape lighting across Sarasota and Manatee Counties: uplights on the palms, path lights along the walk, step and hardscape lights on the pool deck, underwater and pool lights, and colour scenes from your phone when you want them. Build your plan below for a ballpark price, then we walk the property and send a scaled layout.'
+    }}
+    quote={<QuoteCalculator cat={LANDSCAPE_CAT}/>}
+    faq={[
+      {q:'What fixtures do you install?', a:'Solid brass Pampa Lighting fixtures in antique brass, black or bronze, with warm 2700K LED lamps, or RGBWW Wi-Fi lamps where you want colour. The calculator shows the exact models and their current prices.'},
+      {q:'Is the price in the calculator final?', a:'It is a ballpark from current fixture prices and our installation rates. The final proposal follows a short site visit and a scaled lighting layout.'},
+      {q:'How are the lights switched on?', a:'A transformer with a photocell and timer turns them on at dusk and off when you choose. Colour lamps add app control, schedules and scenes; if LUMA does your lighting control, the landscape joins the same keypad scenes.'},
+      {q:'Can you light the pool and the dock?', a:'Yes: pool and spa lights in colour, underwater lights for fountains and ponds, step lights on the deck and low lights along the dock edges.'},
+    ]}
+    ctaTitle='Tell us what your yard should do after dark'
+    ctaBody='Send a photo of the front of the house and the back yard. We will come back with a layout, the fixture list and an honest range.'
+  />;
+}
+
 /* ─── PERMANENT LIGHTING PAGE ─── */
 function PermanentLightingPage({navigate}) {
   const I = (d) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
@@ -1971,6 +2387,7 @@ function PermanentLightingPage({navigate}) {
       {q:'Can it join the rest of the house?', a:'If LUMA did the lighting or automation, the roofline joins the same scenes: Evening turns it on with the lanai, Away turns it off with everything else, and a keypad by the door has a button for it.'},
       {q:'What is the warranty?', a:'Warranty terms depend on the product line you choose; we set them out in writing in the proposal, before anything is ordered.'},
     ]}
+    quote={<QuoteCalculator cat={PERMANENT_CAT}/>}
     ctaTitle='Tell us what your roofline should do'
     ctaBody='Send a photo of the front of the house. We will come back with a run plan, a channel colour, and an honest range before anything is ordered.'
   />;
@@ -2219,7 +2636,7 @@ function Footer({navigate}) {
   const groups = [
     {label:'Solutions', links:[
       ['lighting','Lighting'],['shading','Shading'],['theaters','Home theaters'],
-      ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],['permanent-lighting','Permanent outdoor lighting'],
+      ['audio','Audio & video'],['security','Security'],['networking','Networking'],['automation','Automation'],['permanent-lighting','Permanent outdoor lighting'],['landscape-lighting','Landscape lighting'],
       ['sa-sarasota-security','Security cameras Sarasota'],['sa-sarasota-business-security','Business cameras'],
     ]},
     {label:'Studio', links:[
@@ -4818,6 +5235,7 @@ function App() {
     security:  <CameraSectionPage row={geoData().cameraHub} navigate={navigate}/>,
     networking:<NetworkingPage navigate={navigate}/>,
     'permanent-lighting':<PermanentLightingPage navigate={navigate}/>,
+    'landscape-lighting':<LandscapeLightingPage navigate={navigate}/>,
     lighting:  <LightingPage navigate={navigate}/>,
     designers: <DesignersPage navigate={navigate}/>,
     contact:   <ContactPage navigate={navigate}/>,

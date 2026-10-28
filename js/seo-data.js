@@ -92,6 +92,16 @@ window.LUMA_SEO = {
       "service": null,
       "h1": "Permanent Outdoor Lighting · Sarasota & Manatee"
     },
+    "landscape-lighting": {
+      "id": "landscape-lighting",
+      "path": "/landscape-lighting",
+      "title": "Landscape Lighting Sarasota | Instant Quote | LUMA Smart Home",
+      "description": "Solid brass landscape lighting for Sarasota homes: palms, paths, pool and dock. Build your plan and get an instant installed price, then a free layout.",
+      "kind": "service",
+      "city": null,
+      "service": null,
+      "h1": "Palms, paths and the pool, lit after dark."
+    },
     "designers": {
       "id": "designers",
       "path": "/designers",
